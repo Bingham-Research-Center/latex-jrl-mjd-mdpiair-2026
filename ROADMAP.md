@@ -50,7 +50,7 @@ The third and fourth narratives enter Results only if the inventory exposes defe
 - Use critiques before extracted papers; use extracted sections before PDFs.
 - Carry the Matichuk/Ahmadov warning that tuning emissions can absorb meteorology, photolysis, and deposition errors.
 - Carry the Neemann/Tran warning that on/off experiments, nudging labels, PBL diagnostics, and chemistry-grid mismatches can hide confounding.
-- Treat the UBAQR/Tran synthesis as a challenge to any claim that meteorology is uniquely dominant.
+- Use `notes/literature-synthesis-register.md` to carry the three synthesis collections' shared challenge to any claim that meteorology is uniquely dominant.
 
 ### Figures and reviewer reserve
 

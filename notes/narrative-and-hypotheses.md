@@ -35,6 +35,19 @@ Ahmadov and Matichuk show strong emissions and process sensitivities, but both d
 Neemann and Tran show that snow, clouds, mixing, initialization, and nudging can change the cold pool, while their critiques identify confounded controls and incomplete validation.
 The useful synthesis is therefore a controlled hierarchy of meteorological questions with an air-chemistry consequence attached to each.
 
+## Cross-study synthesis constraints
+
+The three 10 July 2026 synthesis collections are registered in `notes/literature-synthesis-register.md`.
+They add five constraints to the narrative:
+
+1. Shared episode and model lineage do not make cross-paper effect sizes additive or controlled.
+2. “Nudging” must be decomposed by variable, height/radius gate, coefficient, input dataset, and assimilated sites.
+3. Snow affects WRF cold-pool structure and chemistry-model photolysis through separate interfaces that both need verification.
+4. WRF version, snow initialization, surface physics, microphysics, and nudging interact strongly enough that bias sign is not portable between configurations.
+5. The reviewed sequences never cross their best meteorology with their best chemistry, so none can establish that meteorology, inventory, or mechanism is universally dominant.
+
+These constraints strengthen the case for a meteorology-first evaluation while narrowing the causal claims it can support.
+
 ## Five candidate experiment threads
 
 | Thread | Constructively critical literature question | Candidate experiment | Candidate hypothesis | Falsifier or limiting result | Air-chemistry consequence | Status |
