@@ -13,7 +13,8 @@ observed episode. Two figures:
    out like the Jan baseline's +4-6 C warm bias implies?
 
 Inputs are the per-station files from reduce_wrf_to_stations.py (WRF units: temp K,
-pressure Pa; converted here). Obs stays local, figures are tracked like the obs set.
+pressure Pa; converted here). Obs stays local. Candidate figures go to
+verification/figures/candidates unless an explicit output directory is supplied.
 
 Run:
     PYTHONPATH=~/brc-tools python verification/scripts/plot_wrf_vs_obs_feb0102.py \\
@@ -32,7 +33,7 @@ import matplotlib.pyplot as plt
 import polars as pl
 
 from plot_obs_feb0102 import (
-    DEFAULT_OBS, KAPPA, TS_STATIONS, UTC_TO_MST,
+    DEFAULT_OBS, DEFAULT_OUT, KAPPA, TS_STATIONS, UTC_TO_MST,
     elev_color, load, panel_letter, save, shade_nights, style_axes,
 )
 from verify_runs_feb0102 import _read, run_label
@@ -68,7 +69,7 @@ def x_axis_days(ax) -> None:
 
 
 def fig_temp_timeseries(wrf: pl.DataFrame, hourly: pl.DataFrame, names: dict,
-                        runs: list[str]) -> None:
+                        runs: list[str], out_dir: Path) -> None:
     fig, axes = plt.subplots(2, 2, figsize=(9.5, 6.2), sharex=True, sharey=True)
     t_min = min(hourly["hour_mst"].min(), wrf["hour_mst"].min())
     t_max = max(hourly["hour_mst"].max(), wrf["hour_mst"].max())
@@ -99,7 +100,7 @@ def fig_temp_timeseries(wrf: pl.DataFrame, hourly: pl.DataFrame, names: dict,
         ax.set_xlabel("Local time (MST); shaded = night")
     axes.flat[0].legend(loc="lower right", ncols=1)
     fig.tight_layout()
-    save(fig, "wrf_temp_timeseries_feb0102")
+    save(fig, "wrf_temp_timeseries_feb0102", out_dir)
 
 
 def _dtheta(df: pl.DataFrame, key: str, group: list[str]) -> pl.DataFrame:
@@ -114,7 +115,8 @@ def _dtheta(df: pl.DataFrame, key: str, group: list[str]) -> pl.DataFrame:
                 .sort(group))
 
 
-def fig_inversion_index(wrf: pl.DataFrame, hourly: pl.DataFrame, runs: list[str]) -> None:
+def fig_inversion_index(wrf: pl.DataFrame, hourly: pl.DataFrame, runs: list[str],
+                        out_dir: Path) -> None:
     obs_d = _dtheta(hourly, "stid", ["hour_mst"])
     fig, ax = plt.subplots(figsize=(9, 3.8))
     t_min, t_max = obs_d["hour_mst"].min(), obs_d["hour_mst"].max()
@@ -135,7 +137,7 @@ def fig_inversion_index(wrf: pl.DataFrame, hourly: pl.DataFrame, runs: list[str]
     ax.legend(loc="upper left")
     style_axes(ax)
     fig.tight_layout()
-    save(fig, "wrf_inversion_index_feb0102")
+    save(fig, "wrf_inversion_index_feb0102", out_dir)
 
 
 def main() -> None:
@@ -143,6 +145,8 @@ def main() -> None:
     ap.add_argument("--wrf", nargs="+", required=True, type=Path,
                     help="per-station csv/parquet files from reduce_wrf_to_stations.py, one per run")
     ap.add_argument("--obs", type=Path, default=DEFAULT_OBS)
+    ap.add_argument("--out-dir", type=Path, default=DEFAULT_OUT,
+                    help="candidate-figure output directory")
     args = ap.parse_args()
 
     hourly, names = load(args.obs)
@@ -150,8 +154,8 @@ def main() -> None:
     runs = wrf["run"].unique(maintain_order=True).to_list()
     print(f"runs: {runs}; WRF stations: {sorted(wrf['waypoint'].unique().to_list())}")
 
-    fig_temp_timeseries(wrf, hourly, names, runs)
-    fig_inversion_index(wrf, hourly, runs)
+    fig_temp_timeseries(wrf, hourly, names, runs, args.out_dir)
+    fig_inversion_index(wrf, hourly, runs, args.out_dir)
 
 
 if __name__ == "__main__":

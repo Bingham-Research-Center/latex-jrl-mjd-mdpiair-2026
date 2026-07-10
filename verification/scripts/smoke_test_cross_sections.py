@@ -50,7 +50,7 @@ def fake_wrfout(path: Path, stamps: list[str], inv_strength: float) -> None:
             "PHB": (("Time", "bottom_top_stag", "south_north", "west_east"), ph_stag),
         }
     )
-    ds.to_netcdf(path, format="NETCDF4")
+    ds.to_netcdf(path)
 
 
 def main() -> None:

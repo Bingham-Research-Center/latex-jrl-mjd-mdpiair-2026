@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """End-to-end smoke test for the multi-run pipeline, no WRF data needed.
 
-Builds two synthetic "runs" in exactly the format reduce_wrf_to_stations.py writes
-(WRF units: temp K, pressure Pa; run/waypoint/valid_time keys) by perturbing the real
-Feb 1-2 obs (+3 K warm / +1 K cool, small noise), then drives verify_runs_feb0102 and
-plot_wrf_vs_obs_feb0102 on them and checks the outputs. So when the three real
+Builds a synthetic observation file and two synthetic "runs" in exactly the format
+reduce_wrf_to_stations.py writes (WRF units: temp K, pressure Pa; run/waypoint/
+valid_time keys), then drives verify_runs_feb0102 and plot_wrf_vs_obs_feb0102 on them
+and checks the outputs. So when the real
 touchstone CSVs arrive from CHPC, the same two commands are known-good.
 
 Run:
@@ -16,13 +16,37 @@ from __future__ import annotations
 import subprocess
 import sys
 import tempfile
+from datetime import datetime, timedelta
 from pathlib import Path
 
 import numpy as np
 import polars as pl
 
 SCRIPTS = Path(__file__).resolve().parent
-DEFAULT_OBS = Path.home() / "brc-tools/data/obs_basin_2013_feb0102.parquet"
+META_CSV = SCRIPTS.parent / "data" / "stations_2013_selection.csv"
+
+
+def synth_obs(meta_path: Path) -> pl.DataFrame:
+    """Create deterministic, physically plausible station observations in memory."""
+    meta = pl.read_csv(meta_path)
+    rows = []
+    start = datetime(2013, 2, 1, 0)
+    for station in meta.iter_rows(named=True):
+        elev_m = float(station["elev_m"])
+        pressure = 101325.0 * np.exp(-elev_m / 8400.0)
+        for hour in range(73):
+            valid_time = start + timedelta(hours=hour)
+            phase = 2.0 * np.pi * ((valid_time.hour - 21) % 24) / 24.0
+            rows.append({
+                "stid": station["stid"],
+                "valid_time": valid_time,
+                "temp_2m": -9.0 - 0.002 * (elev_m - 1465.0) + 3.0 * np.sin(phase),
+                "pressure_surface": pressure,
+                "wind_speed_10m": 1.5 + 0.3 * np.cos(phase),
+                "wind_dir_10m": 180.0,
+                "elevation": elev_m / 0.3048,
+            })
+    return pl.DataFrame(rows)
 
 
 def synth_run(obs: pl.DataFrame, label: str, temp_bias_k: float, seed: int) -> pl.DataFrame:
@@ -50,11 +74,11 @@ def synth_run(obs: pl.DataFrame, label: str, temp_bias_k: float, seed: int) -> p
 
 
 def main() -> None:
-    if not DEFAULT_OBS.exists():
-        sys.exit(f"obs parquet not found: {DEFAULT_OBS} (local-only file; pull it first)")
-    obs = pl.read_parquet(DEFAULT_OBS)
-
     tmp = Path(tempfile.mkdtemp(prefix="wrf_smoke_"))
+    obs_path = tmp / "obs_feb0102.parquet"
+    obs = synth_obs(META_CSV)
+    obs.write_parquet(obs_path)
+    figures = tmp / "figures"
     runs = {"fake_warm": +3.0, "fake_cool": -1.0}
     paths = []
     for (label, bias), seed in zip(runs.items(), (1, 2)):
@@ -65,8 +89,9 @@ def main() -> None:
 
     env_cmd = [sys.executable]
     for script, extra in (
-        ("verify_runs_feb0102.py", ["--out-dir", str(tmp)]),
-        ("plot_wrf_vs_obs_feb0102.py", []),
+        ("verify_runs_feb0102.py", ["--obs", str(obs_path), "--out-dir", str(tmp)]),
+        ("plot_wrf_vs_obs_feb0102.py",
+         ["--obs", str(obs_path), "--out-dir", str(figures)]),
     ):
         cmd = env_cmd + [str(SCRIPTS / script), "--wrf", *paths, *extra]
         print(f"\n$ {' '.join(cmd)}")
@@ -79,12 +104,11 @@ def main() -> None:
     assert 2.5 < warm < 3.5, f"fake_warm temp bias {warm:.2f}, expected ~+3"
     assert -1.5 < cool < -0.5, f"fake_cool temp bias {cool:.2f}, expected ~-1"
     assert (tmp / "wrf_runs_spread_feb0102.csv").exists()
-    figs = SCRIPTS.parent / "data" / "figures"
     for stem in ("wrf_temp_timeseries_feb0102", "wrf_inversion_index_feb0102"):
-        assert (figs / f"{stem}.png").exists(), f"missing figure {stem}.png"
+        assert (figures / f"{stem}.png").exists(), f"missing figure {stem}.png"
     print(f"\nOK: biases recovered (warm {warm:+.2f} K, cool {cool:+.2f} K), "
           "spread table + 2 figures written")
-    print("NOTE: figures are synthetic-fixture output — regenerate with real runs before use")
+    print(f"NOTE: all synthetic-fixture outputs remain isolated under {tmp}")
 
 
 if __name__ == "__main__":

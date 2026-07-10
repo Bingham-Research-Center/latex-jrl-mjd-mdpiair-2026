@@ -20,7 +20,8 @@ Whiteman & Hoch 2014 (JAMC 53, pseudo-vertical profiles):
    H = sum rho*cp*(theta_top - theta)*dz integrated over the station pseudo-profile.
 
 Data stays LOCAL: reads the obs parquet from the local cache (never committed; the
-repo gitignores *.parquet). Figures are small tracked PNGs like the baseline set.
+repo gitignores *.parquet). Candidate figures go to verification/figures/candidates
+unless an explicit output directory is supplied.
 
 Run:
     PYTHONPATH=~/brc-tools python verification/scripts/plot_obs_feb0102.py
@@ -68,7 +69,7 @@ FULL_W = 6.3
 REPO = Path(__file__).resolve().parents[1]
 DEFAULT_OBS = Path.home() / "brc-tools/data/obs_basin_2013_feb0102.parquet"
 META_CSV = REPO / "data" / "stations_2013_selection.csv"
-OUT = REPO / "data" / "figures"
+DEFAULT_OUT = REPO / "figures" / "candidates"
 
 KAPPA = 0.2854
 CP = 1004.0  # J kg-1 K-1
@@ -149,12 +150,13 @@ def style_axes(ax) -> None:
         ax.spines[side].set_visible(False)
 
 
-def save(fig, stem: str) -> None:
+def save(fig, stem: str, out_dir: Path = DEFAULT_OUT) -> None:
     """600 dpi PNG (MDPI submission minimum); vector PDF for the LaTeX draft."""
+    out_dir.mkdir(parents=True, exist_ok=True)
     for ext, dpi in (("png", 600), ("pdf", None)):
-        fig.savefig(OUT / f"{stem}.{ext}", dpi=dpi, bbox_inches="tight")
+        fig.savefig(out_dir / f"{stem}.{ext}", dpi=dpi, bbox_inches="tight")
     plt.close(fig)
-    print(f"wrote {stem}.png + .pdf")
+    print(f"wrote {out_dir / stem}.png + .pdf")
 
 
 def panel_letter(ax, letter: str, extra: str = "") -> None:
@@ -177,7 +179,7 @@ def shade_nights(ax, t_min, t_max) -> None:
         day += dt.timedelta(days=1)
 
 
-def fig_theta_profiles(hourly: pl.DataFrame, names: dict) -> None:
+def fig_theta_profiles(hourly: pl.DataFrame, names: dict, out_dir: Path) -> None:
     fig, axes = plt.subplots(2, 3, figsize=(FULL_W, 4.5), sharex=True, sharey=True,
                              layout="constrained")
     for ax, snap, letter in zip(axes.flat, SNAPSHOTS_MST, "abcdef"):
@@ -216,10 +218,10 @@ def fig_theta_profiles(hourly: pl.DataFrame, names: dict) -> None:
         ax.set_ylabel("Station elevation (m)")
     for ax in axes[1, :]:
         ax.set_xlabel("Potential temperature θ (K)")
-    save(fig, "obs_theta_profiles_feb0102")
+    save(fig, "obs_theta_profiles_feb0102", out_dir)
 
 
-def fig_temp_timeseries(hourly: pl.DataFrame, names: dict) -> None:
+def fig_temp_timeseries(hourly: pl.DataFrame, names: dict, out_dir: Path) -> None:
     fig, ax = plt.subplots(figsize=(FULL_W, 2.9), layout="constrained")
     t_min, t_max = hourly["hour_mst"].min(), hourly["hour_mst"].max()
     shade_nights(ax, t_min, t_max)
@@ -240,10 +242,10 @@ def fig_temp_timeseries(hourly: pl.DataFrame, names: dict) -> None:
     ax.tick_params(axis="x", which="major", length=7)
     ax.legend(loc="upper left", title="Station (elevation)", title_fontsize=8)
     style_axes(ax)
-    save(fig, "obs_temp_timeseries_feb0102")
+    save(fig, "obs_temp_timeseries_feb0102", out_dir)
 
 
-def fig_inversion_index(hourly: pl.DataFrame, names: dict) -> None:
+def fig_inversion_index(hourly: pl.DataFrame, names: dict, out_dir: Path) -> None:
     top, floor = "USU03", "USU07"
     th = hourly.filter(pl.col("theta").is_not_null() & pl.col("theta").is_finite())
     dth = (
@@ -304,21 +306,22 @@ def fig_inversion_index(hourly: pl.DataFrame, names: dict) -> None:
     panel_letter(ax2, "b")
     style_axes(ax2)
 
-    save(fig, "obs_inversion_index_feb0102")
+    save(fig, "obs_inversion_index_feb0102", out_dir)
 
 
 def main() -> None:
     ap = argparse.ArgumentParser(description="Observed-case figures, Feb 1-2 2013 CAP.")
-    ap.add_argument("--obs", default=str(DEFAULT_OBS), help="local obs parquet")
+    ap.add_argument("--obs", type=Path, default=DEFAULT_OBS, help="local obs parquet")
+    ap.add_argument("--out-dir", type=Path, default=DEFAULT_OUT,
+                    help="candidate-figure output directory")
     args = ap.parse_args()
 
-    OUT.mkdir(parents=True, exist_ok=True)
-    hourly, names = load(Path(args.obs).expanduser())
+    hourly, names = load(args.obs.expanduser())
     n_theta = hourly.filter(pl.col("theta").is_not_null())["stid"].n_unique()
     print(f"stations: {hourly['stid'].n_unique()} total, {n_theta} with pressure (theta)")
-    fig_theta_profiles(hourly, names)
-    fig_temp_timeseries(hourly, names)
-    fig_inversion_index(hourly, names)
+    fig_theta_profiles(hourly, names, args.out_dir)
+    fig_temp_timeseries(hourly, names, args.out_dir)
+    fig_inversion_index(hourly, names, args.out_dir)
 
 
 if __name__ == "__main__":
