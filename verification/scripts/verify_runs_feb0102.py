@@ -53,10 +53,14 @@ def main() -> None:
     ap.add_argument("--min-time", default=None,
                     help="drop WRF rows before this valid time (spin-up exclusion), "
                          "e.g. 2013-02-02T14:00")
+    ap.add_argument("--max-time", default=None,
+                    help="drop WRF rows after this valid time so longer runs use the "
+                         "same evaluation window, e.g. 2013-02-02T18:00")
     ap.add_argument("--out-suffix", default="",
                     help="suffix for the output csv names, e.g. _postspinup")
     args = ap.parse_args()
     min_time = datetime.fromisoformat(args.min_time) if args.min_time else None
+    max_time = datetime.fromisoformat(args.max_time) if args.max_time else None
 
     obs = _read(args.obs)
     if "waypoint" not in obs.columns and "stid" in obs.columns:
@@ -69,6 +73,8 @@ def main() -> None:
         nwp = _read(path)
         if min_time is not None:
             nwp = nwp.filter(pl.col("valid_time") >= min_time)
+        if max_time is not None:
+            nwp = nwp.filter(pl.col("valid_time") <= max_time)
         label = run_label(nwp, path)
         present = [v for v in VARIABLES if v in nwp.columns and v in obs.columns]
         scores = paired_scores(nwp.drop("run", strict=False), obs,

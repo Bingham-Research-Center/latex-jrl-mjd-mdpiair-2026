@@ -55,6 +55,7 @@ def fake_wrfout(path: Path, stamps: list[str], inv_strength: float) -> None:
 
 def main() -> None:
     tmp = Path(tempfile.mkdtemp(prefix="wrf_xsect_smoke_"))
+    fake_wrfout(tmp / "wrfout_d02_2013-02-01_12:00:00", ["2013-02-01_12:00:00"], 12.0)
     fake_wrfout(tmp / "wrfout_d03_2013-02-01_12:00:00", ["2013-02-01_12:00:00"], 12.0)
     fake_wrfout(tmp / "wrfout_d03_2013-02-02_12:00:00", ["2013-02-02_12:00:00"], 8.0)
 
@@ -67,7 +68,16 @@ def main() -> None:
     for stem in ("wrf_xsect_theta_fake", "wrf_timeheight_theta_fake"):
         f = tmp / "figures" / f"{stem}.png"
         assert f.exists() and f.stat().st_size > 10_000, f"missing/empty {f}"
-    print(f"\nOK: both cross-section figures rendered -> {tmp}/figures")
+
+    locator_dir = tmp / "locator"
+    locator_cmd = [sys.executable, str(SCRIPTS / "plot_wrf_transect_locator.py"),
+                   "--wrf-dir", str(tmp), "--out-dir", str(locator_dir)]
+    print(f"$ {' '.join(locator_cmd)}")
+    subprocess.run(locator_cmd, check=True)
+    for ext in ("png", "pdf"):
+        f = locator_dir / f"wrf_transect_locator_d02_d03.{ext}"
+        assert f.exists() and f.stat().st_size > 10_000, f"missing/empty {f}"
+    print(f"\nOK: cross-section/time-height figures + locator rendered -> {tmp}")
 
 
 if __name__ == "__main__":

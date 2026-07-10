@@ -28,11 +28,13 @@ import matplotlib
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+from matplotlib.ticker import FuncFormatter, MaxNLocator
 import numpy as np
 import pandas as pd
 import xarray as xr
 
 from plot_wrf_cross_sections import open_run, times_of
+from reduce_wrf_to_stations import DEFAULT_STATIONS_CSV
 
 THETA_BASE = 300.0
 QUIVER_STRIDE = 12
@@ -57,8 +59,16 @@ def level_fields(ds: xr.Dataset, it: int, p0: float) -> dict[str, np.ndarray]:
     v = np.asarray(ds["V"].isel(Time=it))
     u = 0.5 * (u[:, :, :-1] + u[:, :, 1:])
     v = 0.5 * (v[:, :-1, :] + v[:, 1:, :])
-    return {name: interp_plevel(f, p, p0) for name, f in
-            (("theta", theta), ("u", u), ("v", v))}
+    theta_p = interp_plevel(theta, p, p0)
+    u_grid = interp_plevel(u, p, p0)
+    v_grid = interp_plevel(v, p, p0)
+    cosa = np.asarray(ds["COSALPHA"].isel(Time=it))
+    sina = np.asarray(ds["SINALPHA"].isel(Time=it))
+    # WRF U/V are grid-relative; maps are drawn in latitude/longitude, so rotate
+    # vectors to earth-relative components before plotting or differencing runs.
+    u_earth = u_grid * cosa - v_grid * sina
+    v_earth = v_grid * cosa + u_grid * sina
+    return {"theta": theta_p, "u": u_earth, "v": v_earth}
 
 
 def collect(files: list[str], want_times: pd.DatetimeIndex, p0: float) -> list[tuple]:
@@ -74,41 +84,70 @@ def collect(files: list[str], want_times: pd.DatetimeIndex, p0: float) -> list[t
     return sorted(out, key=lambda x: x[0])
 
 
-def plot_level(panels, xlat, xlon, hgt, run, lev_hpa, out_dir, diff_of=None) -> None:
+def plot_level(panels, xlat, xlon, hgt, run, lev_hpa, out_dir, diff_of=None,
+               theta_min=None, theta_max=None, diff_limit=None, stations=None,
+               wind_key=None, dpi=300, display_label=None) -> None:
     ncol = min(len(panels), 2)
     nrow = -(-len(panels) // ncol)
     fig, axes = plt.subplots(nrow, ncol, figsize=(7.0 * ncol, 5.6 * nrow),
                              sharex=True, sharey=True, squeeze=False)
     if diff_of is None:
         vals = np.concatenate([p[1]["theta"][np.isfinite(p[1]["theta"])] for p in panels])
-        levels = np.arange(np.floor(vals.min()), np.ceil(vals.max()) + 0.25, 0.25)
+        lo = float(np.floor(vals.min())) if theta_min is None else float(theta_min)
+        hi = float(np.ceil(vals.max())) if theta_max is None else float(theta_max)
+        levels = np.linspace(lo, hi, 25)
+        ticks = np.linspace(lo, hi, 7)
         cmap, label = "turbo", f"θ at {lev_hpa} hPa (K)"
     else:
-        amax = max(np.nanmax(np.abs(p[1]["theta"])) for p in panels) or 0.1
+        amax = (max(np.nanmax(np.abs(p[1]["theta"])) for p in panels) or 0.1
+                if diff_limit is None else float(diff_limit))
         levels = np.linspace(-amax, amax, 21)
-        cmap, label = "RdBu_r", f"Δθ at {lev_hpa} hPa (K), {run}"
+        ticks = np.linspace(-amax, amax, 5)
+        cmap, label = "RdBu_r", f"Δθ at {lev_hpa} hPa (K), {display_label or run}"
     s = QUIVER_STRIDE
-    for ax, (t, f) in zip(axes.flat, panels):
+    for panel_index, (ax, (t, f)) in enumerate(zip(axes.flat, panels)):
+        ax.set_facecolor("0.86")
         cf = ax.contourf(xlon, xlat, f["theta"], levels=levels, cmap=cmap, extend="both")
         ax.contour(xlon, xlat, hgt, levels=[1700, 2000, 2300], colors="0.35",
                    linewidths=0.5, linestyles="--")
-        ax.quiver(xlon[::s, ::s], xlat[::s, ::s], f["u"][::s, ::s], f["v"][::s, ::s],
-                  scale=250, width=0.002, color="k")
-        ax.set_title(f"{run} — {t:%d %b %H:%M} UTC", fontsize=10)
+        q = ax.quiver(xlon[::s, ::s], xlat[::s, ::s], f["u"][::s, ::s], f["v"][::s, ::s],
+                      scale=250, width=0.002, color="k")
+        if stations is not None:
+            ax.scatter(stations["longitude"], stations["latitude"], s=14, facecolor="white",
+                       edgecolor="black", linewidth=0.5, zorder=4)
+            for row in stations.itertuples():
+                ax.annotate(row.stid, (row.longitude, row.latitude), xytext=(2, 2),
+                            textcoords="offset points", fontsize=5.5, color="0.1", zorder=5)
+        if panel_index == 0:
+            key = wind_key if wind_key is not None else (1.0 if diff_of else 5.0)
+            key_label = f"{key:g} m s⁻¹" + (" wind difference" if diff_of else " wind")
+            ax.quiverkey(q, 0.96, 0.07, key, key_label, coordinates="axes",
+                         labelpos="W", fontproperties={"size": 7})
+            if any(np.isnan(item[1]["theta"]).any() for item in panels):
+                ax.text(0.02, 0.03, "gray = below ground", transform=ax.transAxes, fontsize=6.5,
+                        bbox={"facecolor": "white", "edgecolor": "0.7", "alpha": 0.85, "pad": 2})
+        ax.set_title(f"{display_label or run} — {t:%d %b %H:%M} UTC", fontsize=10)
         ax.set_aspect(1.0 / np.cos(np.deg2rad(np.mean(xlat))))
+        ax.xaxis.set_major_locator(MaxNLocator(nbins=5))
+        ax.yaxis.set_major_locator(MaxNLocator(nbins=5))
+        ax.xaxis.set_major_formatter(FuncFormatter(lambda x, _: f"{abs(x):.1f}°W"))
+        ax.yaxis.set_major_formatter(FuncFormatter(lambda y, _: f"{y:.1f}°N"))
     for ax in axes.flat[len(panels):]:
         ax.set_visible(False)
-    fig.colorbar(cf, ax=axes, shrink=0.85, label=label)
+    fig.colorbar(cf, ax=axes, shrink=0.85, label=label, ticks=ticks)
     out = out_dir / f"wrf_upper_{lev_hpa}hPa_{run}.png"
-    fig.savefig(out, dpi=200, bbox_inches="tight")
+    fig.savefig(out, dpi=dpi, bbox_inches="tight")
+    fig.savefig(out.with_suffix(".pdf"), bbox_inches="tight")
     plt.close(fig)
-    print(f"wrote {out}")
+    print(f"wrote {out} + .pdf")
 
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--wrf-dir", required=True)
     ap.add_argument("--run-label", required=True)
+    ap.add_argument("--display-label", default=None,
+                    help="human-readable title/colorbar label; filenames still use --run-label")
     ap.add_argument("--glob", default="wrfout_d03_2013-0[12]-*")
     ap.add_argument("--times", nargs="+", default=["2013-02-02_16:00:00"],
                     help="wrfout timestamps (UTC, YYYY-MM-DD_HH:MM:SS)")
@@ -117,8 +156,22 @@ def main() -> None:
     ap.add_argument("--diff-dir", default=None,
                     help="second run dir on the SAME grid; plot theta difference "
                          "(wrf-dir minus diff-dir)")
+    ap.add_argument("--theta-min", type=float, default=None,
+                    help="fixed lower θ bound for absolute maps; use with --theta-max")
+    ap.add_argument("--theta-max", type=float, default=None,
+                    help="fixed upper θ bound for absolute maps; use with --theta-min")
+    ap.add_argument("--diff-limit", type=float, default=None,
+                    help="fixed symmetric ±K bound for difference maps")
+    ap.add_argument("--stations", type=Path, default=DEFAULT_STATIONS_CSV)
+    ap.add_argument("--mark-stations", nargs="*", default=["USU07", "USU03", "QRS", "KVEL"],
+                    help="station IDs to mark for basin context; pass no values to disable")
+    ap.add_argument("--wind-key", type=float, default=None,
+                    help="quiver-key magnitude in m/s (absolute or wind difference)")
+    ap.add_argument("--dpi", type=int, default=300)
     ap.add_argument("--out-dir", type=Path, default=None, help="default: <wrf-dir>/figures")
     args = ap.parse_args()
+    if (args.theta_min is None) != (args.theta_max is None):
+        raise SystemExit("--theta-min and --theta-max must be supplied together")
 
     files = open_run(args.wrf_dir, args.glob)
     print(f"{len(files)} wrfout files")
@@ -131,6 +184,13 @@ def main() -> None:
     ds0.close()
     out_dir = args.out_dir or Path(args.wrf_dir) / "figures"
     out_dir.mkdir(parents=True, exist_ok=True)
+    station_rows = None
+    if args.mark_stations:
+        station_meta = pd.read_csv(args.stations)
+        station_rows = station_meta[station_meta["stid"].isin(args.mark_stations)].copy()
+        missing = sorted(set(args.mark_stations) - set(station_rows["stid"]))
+        if missing:
+            raise SystemExit(f"unknown --mark-stations values: {missing}")
 
     diff_files = open_run(args.diff_dir, args.glob) if args.diff_dir else None
     for lev in args.levels:
@@ -142,7 +202,9 @@ def main() -> None:
                            "u": f["u"] - other[t]["u"], "v": f["v"] - other[t]["v"]})
                       for t, f in panels if t in other]
         plot_level(panels, xlat, xlon, hgt, args.run_label, int(lev), out_dir,
-                   diff_of=args.diff_dir)
+                   diff_of=args.diff_dir, theta_min=args.theta_min, theta_max=args.theta_max,
+                   diff_limit=args.diff_limit, stations=station_rows,
+                   wind_key=args.wind_key, dpi=args.dpi, display_label=args.display_label)
 
 
 if __name__ == "__main__":

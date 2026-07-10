@@ -34,6 +34,8 @@ def fake_wrfout(path: Path, stamp: str, warm_offset: float) -> None:
     theta_pert = warm_offset + 4.0 * (z_mass - 1500.0) / 3000.0  # stable profile
     u = np.full((NZ, NY, NX + 1), 3.0)
     v = np.full((NZ, NY + 1, NX), -1.0)
+    cosa = np.ones((NY, NX))
+    sina = np.zeros((NY, NX))
 
     times = np.array([list(stamp.ljust(19))], dtype="S1")
     e = lambda a: a[None]  # add Time dim
@@ -48,6 +50,8 @@ def fake_wrfout(path: Path, stamp: str, warm_offset: float) -> None:
             "PB": (("Time", "bottom_top", "south_north", "west_east"), e(p_full)),
             "U": (("Time", "bottom_top", "south_north", "west_east_stag"), e(u)),
             "V": (("Time", "bottom_top", "south_north_stag", "west_east"), e(v)),
+            "COSALPHA": (("Time", "south_north", "west_east"), e(cosa)),
+            "SINALPHA": (("Time", "south_north", "west_east"), e(sina)),
         }
     )
     ds.to_netcdf(path)

@@ -3,6 +3,9 @@ SHELL := /bin/bash
 MAIN := main
 STAGE := dist/mdpi-air-submission
 SUBMISSION_FIGURES ?=
+PYTHON ?= python
+BRC_TOOLS_DIR ?= $(HOME)/brc-tools
+MPLCONFIGDIR ?= /tmp/mdpi-air-matplotlib
 
 .PHONY: pdf clean check smoke submission
 
@@ -18,9 +21,10 @@ check: pdf
 	@! rg -n "fake_(cool|warm)|2 February 2026|2--February--2026" $(MAIN).tex figures
 
 smoke:
-	conda run -n brc-tools env PYTHONPATH="$$HOME/brc-tools" python verification/scripts/smoke_test_runs_feb0102.py
-	conda run -n brc-tools python verification/scripts/smoke_test_cross_sections.py
-	conda run -n brc-tools python verification/scripts/smoke_test_upper_air.py
+	mkdir -p "$(MPLCONFIGDIR)"
+	env MPLCONFIGDIR="$(MPLCONFIGDIR)" PYTHONPATH="$(BRC_TOOLS_DIR)" $(PYTHON) verification/scripts/smoke_test_runs_feb0102.py
+	env MPLCONFIGDIR="$(MPLCONFIGDIR)" $(PYTHON) verification/scripts/smoke_test_cross_sections.py
+	env MPLCONFIGDIR="$(MPLCONFIGDIR)" $(PYTHON) verification/scripts/smoke_test_upper_air.py
 
 submission: check
 	rm -rf $(STAGE)

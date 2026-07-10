@@ -23,6 +23,7 @@ Run:
 from __future__ import annotations
 
 import argparse
+from datetime import datetime, timedelta
 from pathlib import Path
 
 import matplotlib
@@ -61,15 +62,19 @@ def load_runs(paths: list[Path]) -> pl.DataFrame:
     )
 
 
-def x_axis_days(ax) -> None:
-    ax.xaxis.set_major_locator(mdates.DayLocator())
-    ax.xaxis.set_major_formatter(mdates.DateFormatter("%d %b"))
-    ax.xaxis.set_minor_locator(mdates.HourLocator(byhour=[12]))
-    ax.tick_params(axis="x", which="major", length=7)
+def x_axis_time(ax, t_min, t_max) -> None:
+    if t_max - t_min <= timedelta(days=1):
+        ax.xaxis.set_major_locator(mdates.HourLocator(interval=1))
+        ax.xaxis.set_major_formatter(mdates.DateFormatter("%H:%M"))
+    else:
+        ax.xaxis.set_major_locator(mdates.DayLocator())
+        ax.xaxis.set_major_formatter(mdates.DateFormatter("%d %b"))
+        ax.xaxis.set_minor_locator(mdates.HourLocator(byhour=[12]))
+        ax.tick_params(axis="x", which="major", length=7)
 
 
 def fig_temp_timeseries(wrf: pl.DataFrame, hourly: pl.DataFrame, names: dict,
-                        runs: list[str], out_dir: Path) -> None:
+                        runs: list[str], out_dir: Path, out_suffix: str = "") -> None:
     fig, axes = plt.subplots(2, 2, figsize=(9.5, 6.2), sharex=True, sharey=True)
     t_min = min(hourly["hour_mst"].min(), wrf["hour_mst"].min())
     t_max = max(hourly["hour_mst"].max(), wrf["hour_mst"].max())
@@ -92,7 +97,7 @@ def fig_temp_timeseries(wrf: pl.DataFrame, hourly: pl.DataFrame, names: dict,
         ev = names[st]["elev_m"]
         panel_letter(ax, letter, f"{names[st]['name']} ({ev:.0f} m)")
         ax.set_xlim(t_min, t_max)
-        x_axis_days(ax)
+        x_axis_time(ax, t_min, t_max)
         style_axes(ax)
     for ax in axes[:, 0]:
         ax.set_ylabel("2 m temperature (°C)")
@@ -100,7 +105,7 @@ def fig_temp_timeseries(wrf: pl.DataFrame, hourly: pl.DataFrame, names: dict,
         ax.set_xlabel("Local time (MST); shaded = night")
     axes.flat[0].legend(loc="lower right", ncols=1)
     fig.tight_layout()
-    save(fig, "wrf_temp_timeseries_feb0102", out_dir)
+    save(fig, f"wrf_temp_timeseries_feb0102{out_suffix}", out_dir)
 
 
 def _dtheta(df: pl.DataFrame, key: str, group: list[str]) -> pl.DataFrame:
@@ -116,7 +121,7 @@ def _dtheta(df: pl.DataFrame, key: str, group: list[str]) -> pl.DataFrame:
 
 
 def fig_inversion_index(wrf: pl.DataFrame, hourly: pl.DataFrame, runs: list[str],
-                        out_dir: Path) -> None:
+                        out_dir: Path, out_suffix: str = "") -> None:
     obs_d = _dtheta(hourly, "stid", ["hour_mst"])
     fig, ax = plt.subplots(figsize=(9, 3.8))
     t_min, t_max = obs_d["hour_mst"].min(), obs_d["hour_mst"].max()
@@ -128,34 +133,61 @@ def fig_inversion_index(wrf: pl.DataFrame, hourly: pl.DataFrame, runs: list[str]
     ax.plot(obs_d["hour_mst"], obs_d["dtheta"], color="black", lw=1.5, zorder=3, label="obs")
     ax.axhline(8.0, color="0.4", lw=1.0, ls="--")
     ax.annotate("8 K CAP threshold", xy=(0.99, 8.0), xycoords=("axes fraction", "data"),
-                xytext=(0, -10), textcoords="offset points", fontsize=8, color="0.35",
-                ha="right", va="top")
+                xytext=(0, 6), textcoords="offset points", fontsize=8, color="0.35",
+                ha="right", va="bottom")
     ax.set_ylabel("Δθ bench − floor (K)")
     ax.set_xlabel("Local time (MST); shaded = night")
     ax.set_xlim(t_min, t_max)
-    x_axis_days(ax)
+    x_axis_time(ax, t_min, t_max)
     ax.legend(loc="upper left")
     style_axes(ax)
     fig.tight_layout()
-    save(fig, "wrf_inversion_index_feb0102", out_dir)
+    save(fig, f"wrf_inversion_index_feb0102{out_suffix}", out_dir)
 
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--wrf", nargs="+", required=True, type=Path,
                     help="per-station csv/parquet files from reduce_wrf_to_stations.py, one per run")
+    ap.add_argument("--labels", nargs="*", default=None,
+                    help="optional display labels in the same order as --wrf inputs")
     ap.add_argument("--obs", type=Path, default=DEFAULT_OBS)
     ap.add_argument("--out-dir", type=Path, default=DEFAULT_OUT,
                     help="candidate-figure output directory")
+    ap.add_argument("--min-time", default=None,
+                    help="first UTC valid time to retain, e.g. 2013-02-02T14:00")
+    ap.add_argument("--max-time", default=None,
+                    help="last UTC valid time to retain, e.g. 2013-02-02T18:00")
+    ap.add_argument("--out-suffix", default="",
+                    help="suffix appended to both output stems, e.g. _gfs_vs_nam")
     args = ap.parse_args()
 
     hourly, names = load(args.obs)
     wrf = load_runs(args.wrf)
+    for value, op in ((args.min_time, "min"), (args.max_time, "max")):
+        if value is None:
+            continue
+        utc = datetime.fromisoformat(value)
+        mst = utc + timedelta(hours=UTC_TO_MST)
+        if op == "min":
+            wrf = wrf.filter(pl.col("valid_time") >= utc)
+            hourly = hourly.filter(pl.col("hour_mst") >= mst)
+        else:
+            wrf = wrf.filter(pl.col("valid_time") <= utc)
+            hourly = hourly.filter(pl.col("hour_mst") <= mst)
+    if wrf.is_empty() or hourly.is_empty():
+        raise SystemExit("selected valid-time window leaves no WRF or observation rows")
     runs = wrf["run"].unique(maintain_order=True).to_list()
+    if args.labels is not None:
+        if len(args.labels) != len(runs):
+            raise SystemExit(f"--labels needs {len(runs)} values, got {len(args.labels)}")
+        label_map = dict(zip(runs, args.labels))
+        wrf = wrf.with_columns(pl.col("run").replace_strict(label_map))
+        runs = args.labels
     print(f"runs: {runs}; WRF stations: {sorted(wrf['waypoint'].unique().to_list())}")
 
-    fig_temp_timeseries(wrf, hourly, names, runs, args.out_dir)
-    fig_inversion_index(wrf, hourly, runs, args.out_dir)
+    fig_temp_timeseries(wrf, hourly, names, runs, args.out_dir, args.out_suffix)
+    fig_inversion_index(wrf, hourly, runs, args.out_dir, args.out_suffix)
 
 
 if __name__ == "__main__":

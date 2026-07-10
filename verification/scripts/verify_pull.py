@@ -51,7 +51,10 @@ def main() -> None:
     bad = []
     for col, (lo, hi) in ranges.items():
         if col in df.columns:
-            mn, mx = df.select(pl.col(col).min(), pl.col(col).max()).row(0)
+            mn, mx = df.select(
+                pl.col(col).min().alias("minimum"),
+                pl.col(col).max().alias("maximum"),
+            ).row(0)
             if (mn is not None and mn < lo) or (mx is not None and mx > hi):
                 bad.append(f"{col} min={mn} max={mx} (expected {lo}..{hi})")
     if bad:
