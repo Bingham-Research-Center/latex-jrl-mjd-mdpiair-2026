@@ -2,7 +2,7 @@
 
 Supporting analysis only; this file is excluded from the MDPI submission package.
 
-The three synthesis directories under `~/reviews/synth-*` were inspected on 10 July 2026.
+The four synthesis directories under `~/reviews/synth-*` were inspected on 10 July 2026.
 They are critiques of linked study sets, not citable publications and not independent evidence.
 Use them to locate contradictions, design gaps, and source passages; cite the underlying paper or report after verifying it.
 
@@ -13,6 +13,7 @@ Use them to locate contradictions, design gaps, and source passages; cite the un
 | `synth-ahmadov+neemann+tran` | Ahmadov et al. (2015), Neemann et al. (2015), and Tran et al. (2018) | Three peer-reviewed studies sharing the 2013 Uinta Basin episode but pulling emissions/chemistry, snow/cloud meteorology, and FDDA levers under different models and baselines | Introduction framing and experiment-design cautions | All three keys already exist in `paperpile.bib`: `Ahmadov2015-zm`, `Neemann2015-ws`, `Tran2018-ax`. |
 | `synth-bingham+saprc+tran` | BRC 2023 annual-report section 8, the 2015 low-temperature SAPRC report, and the 2021 Uinta Basin Ozone SIP WRF MPE report | The BRC/USU configuration lineage: incomplete self-citation, missing namelist-level disclosure, WRF-version discontinuities, snow/LSM confounding, and a repeatedly lost ice-fog fix | Methods disclosure standard, archive fingerprinting, and future controlled experiments | Underlying reports are not in the current bibliography; Paperpile placeholders below. |
 | `synth-ubaqr19+ubaqr20+tran` | Tran et al. (2018), UBAQR-2019 section 8, and UBAQR-2020 section 5 | The group sequence from surface nudging, to sounding nudging, to chemistry mechanisms; especially uncrossed meteorology/mechanism levers and changing platforms/emissions | Strongest check on a meteorology-only narrative; held-out verification and factorial-design guidance | `Tran2018-ax` exists; both annual-report sections need real Paperpile entries. |
+| `synth-ramboll+topdown+rmp` | A 2023 CAMx mechanism-sensitivity report, a top-down inventory report section for a 2019 episode, and a 2022 utility-report section on a failed 2019 CAMx application | Downstream consequences when the meteorological driver vents or dilutes the cold pool; attribution among meteorology, inventory, and mechanism; and overclaims about profile nudging | Motivation for retention/ventilation diagnostics, time-resolved evaluation, and run-level provenance | All three reports need verified metadata and Paperpile entries; the synthesis and extracted critiques are not citable sources. |
 
 ## 1. Peer-reviewed 2013 modeling triad
 
@@ -88,18 +89,47 @@ They still change WRF versions, CTMs, emissions bases, and evaluation practice b
 - The free-forecast touchstones can be useful precisely because their design differs from production nudging, but a fair comparison cannot treat that difference as one isolated lever.
 - “Best meteorology × best mechanism” is a future coupled-study experiment, not a claim this meteorology paper can settle.
 
+## 4. Downstream CAMx failure set
+
+Source: `~/reviews/synth-ramboll+topdown+rmp/synthesis.md`.
+
+### Context
+
+The set assembles three BRC/USU-orbit report slices in which WRF meteorology drives CAMx.
+The Ramboll mechanism study covers February 2013, whereas the top-down inventory and Rocky Mountain Power sections cover a late-February 2019 episode and may share a platform family.
+They are related institutional products, not three independent replications, and the 2019 anchor run cannot yet be reconstructed consistently from the inspected material.
+
+### What it critiques
+
+- The 2019 inventory analysis finds modeled ambient precursors no higher than observations despite strongly elevated inventoried NOx, supporting excessive ventilation over a simple missing-emissions explanation for that episode; the regime and run identity remain unresolved.
+- The consistent-platform mechanism study changes chemistry while holding its meteorological driver fixed, but no mechanism recovers observed ozone accumulation and the report attributes much of the miss to meteorology.
+- Mechanism and emissions sensitivities measured inside a diluted model state are regime-bound; they do not show what those levers would do inside a realistically trapped cold pool.
+- A utility report's claim that tethersonde nudging is required is neither a necessity nor a sufficiency result: non-profile-nudged counterexamples exist, and a later mechanism report still blames meteorology from a lineage that included profile nudging without identifying its exact run.
+- Window or episode averages can look tolerable while the model misses day-over-day buildup, inversion retention, or event timing; several inherited printed statistics also fail basic arithmetic checks.
+- Figure-level reuse obscures the exact WRF/CAMx run, version, forcing, and nudging state across the 2019 reports.
+
+### Useful consequences here
+
+- The paper has a sharper air-quality question than generic configuration ranking: does each WRF simulation retain the shallow, weakly ventilated layer that a chemistry model would receive?
+- Every promoted comparison should include time-resolved stability, inversion-depth, wind, or another defensible retention/ventilation diagnostic alongside aggregate surface scores.
+- The frozen five-hour touchstone window can support claims about short-window structure and evolution only; multi-day persistence remains literature motivation unless longer provenance-checked runs enter the experiment matrix.
+- Sensitivities from failed or compromised states may be useful as paired differences, but they must be labeled as conditional on that state.
+- Before any of these reports enters manuscript prose, verify its full bibliographic metadata and the exact underlying passage; do not cite this synthesis or its critiques.
+
 ## Cross-synthesis constraints on this manuscript
 
-Across all three syntheses, the most defensible shared lessons are methodological:
+Across all four syntheses, the most defensible shared lessons are methodological:
 
 1. Archive and disclose the exact configuration before interpreting its result.
 2. Separate run identity, configuration equivalence, storage location, and report lineage.
 3. Match domains, stations, windows, and assimilation independence before ranking simulations.
 4. Expect interactions among snow, surface schemes, microphysics, nudging, version, and chemistry rather than additive sensitivities.
-5. Validate the field and grid actually supplied to downstream chemistry.
-6. Treat valley winds and ice fog as persistent weaknesses requiring direct evidence.
-7. Avoid attributing tuned concentration agreement to one input category.
-8. Preserve null and contradictory results because they determine which narrative survives.
+5. Validate the field, layer depth, ventilation, and grid actually supplied to downstream chemistry.
+6. Pair aggregate metrics with time-resolved diagnostics that can expose premature cold-pool breakup or dilution.
+7. Treat valley winds and ice fog as persistent weaknesses requiring direct evidence.
+8. Treat sensitivities measured in a compromised model state as conditional on that regime.
+9. Avoid attributing tuned concentration agreement to one input category.
+10. Preserve null and contradictory results because they determine which narrative survives.
 
 The syntheses do not establish a universal ordering of meteorology, emissions, and chemistry errors.
 They establish that the ordering changes with configuration and that no reviewed sequence completes the factorial design needed to apportion all three cleanly.
@@ -113,6 +143,7 @@ They establish that the ordering changes with configuration and that no reviewed
 | Direct driving-analysis versus sonde/profile comparison | Strong diagnostic for inherited error | Data and exact analysis fields TBC. |
 | Snow initialization crossed with LSM | Possible later sensitivity | Inventory TBC. |
 | Fixed-physics WRF version ladder | Possible later sensitivity | Inventory TBC. |
+| Time-resolved inversion-retention and ventilation diagnostic across every promoted pair | Required diagnostic spine | Exact profile fields and observations TBC; the current five-hour window cannot establish multi-day persistence. |
 | Ice-retention microphysics crossed with nudging | Future/reviewer reserve | No controlled pair established. |
 | Surface-only versus profile temperature/moisture nudging with held-out sites | Future/reviewer reserve | Relevant archived lineage exists; exact production identities TBC. |
 | Best meteorology crossed with a competent winter mechanism | Separate coupled-chemistry study | Outside the present paper's scope. |
@@ -127,5 +158,8 @@ John will create a manuscript-specific Paperpile export containing the sources t
 - **PAPERPILE-TODO:** *Uinta Basin Ozone SIP Meteorological Modeling---WRF Model Performance Evaluation* (2021); verify exact author list, commissioning institution, report number, and stable URL.
 - **PAPERPILE-TODO:** Bingham Research Center 2023 Annual Report, section 8, “Improvements to Methods for Simulation of Wintertime Inversions”; verify chapter authors and report metadata.
 - **PAPERPILE-TODO:** *Adapting the SAPRC Chemistry Mechanism for Low Temperature Conditions* (2015 final report); verify exact authors, funder/recipient, report number, and stable URL.
+- **PAPERPILE-TODO:** *Assessing Wintertime Ozone Prediction Sensitivity to Photochemical Mechanism* (2023 final report); verify the complete author list, report number, funder, and stable URL.
+- **PAPERPILE-TODO:** *Top-Down Estimates of Emissions from Oil and Gas Production in the Uinta Basin*; verify the complete author list, publication year, institution, report number, and stable URL.
+- **PAPERPILE-TODO:** *Projecting the Impact of Electrification of the Uinta Basin Oil and Gas Fields on Air Quality* (2022 final report to Rocky Mountain Power); verify the complete author list, institution, report number, and stable URL.
 
 Until those entries exist, cite only the already verified Ahmadov, Neemann, and Tran journal articles in manuscript prose.

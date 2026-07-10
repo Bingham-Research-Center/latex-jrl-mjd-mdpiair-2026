@@ -18,7 +18,8 @@ Do not mark a scientific task done because prose exists; mark it done only when 
 - [ ] **INV-08 · next** — Mark every observation station assimilated by any comparator so verification independence is visible.
 - [ ] **DES-01 · blocked by INV-03--08** — Freeze the primary experiment matrix and write one predicted diagnostic plus one falsifier per comparison.
 - [ ] **DES-02 · blocked by DES-01** — Freeze the common domain, station sample, 14--18 UTC window, and spin-up exclusion.
-- [ ] **ANA-01 · blocked by DES-02** — Re-reduce promoted runs from raw output using recorded commands and hashes.
+- [ ] **DES-03 · blocked by DES-02** — Pre-register the time-resolved stability/retention diagnostic used across comparisons and state that a five-hour window cannot establish multi-day persistence.
+- [ ] **ANA-01 · blocked by DES-03** — Re-reduce promoted runs from raw output using recorded commands and hashes.
 - [ ] **ANA-02 · blocked by ANA-01** — Recompute per-run deterministic scores and across-run spread.
 - [ ] **ANA-03 · blocked by ANA-02** — Add uncertainty appropriate for a five-hour, autocorrelated sample and record its limitations.
 - [ ] **COA-01 · next** — Ask Michael for the code/input/command/meaning mapping for each Teams plot still under consideration.
@@ -50,20 +51,22 @@ Do not mark a scientific task done because prose exists; mark it done only when 
 - [ ] **ANA-12 · later** — Test sensitivity to the two-hour spin-up decision.
 - [ ] **ANA-13 · later** — Compare a no-signal/null period only if the experiment and data can be made genuinely comparable.
 - [ ] **ANA-14 · later** — Build a reviewer-reserve table of null, contradictory, and secondary results.
+- [ ] **ANA-15 · blocked by ANA-01** — Pair aggregate surface scores with the preregistered time evolution of inversion strength/depth and ventilation over the matched window.
 
 ### Literature and narrative
 
 - [ ] **LIT-01 · next** — Convert the completed Matichuk critique into a claim/evidence/caveat row set for the introduction and discussion.
-- [ ] **LIT-02 · next** — Build a compact comparison table for Ahmadov, Neemann, Matichuk, Tran, UBAQR-2019/2020, and OSIP-2021: case, model, meteorological lever, chemistry lever, observations, and principal confounds.
+- [ ] **LIT-02 · next** — Build a compact comparison table for Ahmadov, Neemann, Matichuk, Tran, UBAQR-2019/2020, OSIP-2021, Ramboll-2023, the top-down inventory report, and the Rocky Mountain Power report: case, model, meteorological lever, chemistry lever, observations, and principal confounds.
 - [ ] **LIT-03 · later** — Verify every manuscript citation against the extracted paper passage or source PDF.
 - [ ] **LIT-04 · later** — Decide whether report literature belongs in the main article, supplement, or reviewer reserve.
 - [ ] **LIT-05 · next** — Use `notes/literature-synthesis-register.md` to select which report sources genuinely survive narrative freeze.
-- [ ] **LIT-06 · blocked by LIT-05** — Add the selected UBAQR, SIP-MPE, BRC-2023, and SAPRC-report sources to Paperpile and replace the register's citation placeholders through a complete export.
+- [ ] **LIT-06 · blocked by LIT-05** — Add the selected report sources to Paperpile and replace the register's citation placeholders through a complete export.
 - [ ] **NAR-01 · blocked by DES-01** — Select the primary narrative from the roadmap matrix.
 - [ ] **NAR-02 · blocked by NAR-01** — Select at most two secondary narratives and explicitly reject unsupported angles.
 - [ ] **NAR-03 · next** — Preserve the chemistry caveat: meteorology is necessary but not shown to be uniquely dominant.
-- [ ] **NAR-04 · later** — Write the air-chemistry bridge in terms of dilution volume, stability, transport, photolysis, and deposition interfaces.
+- [ ] **NAR-04 · later** — Write the air-chemistry bridge in terms of dilution volume, cold-pool retention/ventilation, stability, transport, photolysis, and deposition interfaces.
 - [ ] **NAR-05 · later** — Decide whether the SIP-era and January runs add useful context or merely distract from controlled touchstones.
+- [ ] **NAR-06 · blocked by LIT-05 and DES-01** — Decide whether the downstream CAMx failure lineage is the Introduction's motivating problem or Discussion context after its report sources and the defensible experiment matrix are known.
 
 ### Figures
 
