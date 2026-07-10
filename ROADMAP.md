@@ -3,6 +3,7 @@
 Current phase: **reconcile the experiment inventory before promoting results**.
 
 The paper's durable claim is that credible cold-pool meteorology is a prerequisite for interpreting winter-ozone chemistry.
+Its air-focused evaluation target is whether WRF retains the shallow, weakly ventilated layer in which precursor and ozone accumulation would occur, not merely which run has the smallest aggregate surface bias.
 It must not claim that chemistry, emissions, deposition, or photolysis are already settled.
 
 ## Candidate large-scale narratives
@@ -13,7 +14,7 @@ It must not claim that chemistry, emissions, deposition, or photolysis are alrea
 | Domain design and nest feedback affect the structure seen by a chemistry grid | Secondary candidate | NAM one-way/two-way pair; d02/d03 coverage contrast | Prove the pair isolates feedback; distinguish grid resolution from station-coverage artifacts. |
 | Stable-layer, surface, snow, terrain, or cloud choices control cold-pool persistence | Experiment-led candidate | Several local run families and literature sensitivities | Inventory must yield controlled pairs; do not infer a physics sensitivity from unrelated configurations. |
 | Nudging can correct or manufacture cold-pool structure | Context or result, depending on recovered runs | Tran critique, SIP-era comparator, January historical evaluation | A same-case controlled nudged/free pair and held-out verification are required for a result. |
-| Meteorological error changes the volume available for ozone chemistry | Air-focused bridge | Consistent literature rationale | Phrase as an implication of evaluated structure, not proof that meteorology dominates inventory or mechanism error. |
+| Meteorological error changes the volume available for ozone chemistry | Air-focused bridge | Literature rationale plus downstream reports of dilution and premature ventilation | Verify and cite the underlying reports; phrase as an implication of evaluated structure, not proof that meteorology dominates inventory or mechanism error. |
 
 The preferred paper is a compact original-research article led by the first two narratives.
 The third and fourth narratives enter Results only if the inventory exposes defensible controls; otherwise they remain Discussion and future work.
@@ -43,6 +44,7 @@ The third and fourth narratives enter Results only if the inventory exposes defe
 
 - Freeze the 2 February 2013 evaluation window, station sample, domain, and spin-up rule before recomputing tables.
 - Add uncertainty suitable for autocorrelated short time series; retain circular treatment for wind direction.
+- Pair aggregate scores with time-resolved inversion and ventilation diagnostics over the verified window; a five-hour sample cannot support a multi-day persistence claim.
 - Use independent or held-out observations for any nudging claim.
 
 ### Literature and argument
@@ -50,7 +52,8 @@ The third and fourth narratives enter Results only if the inventory exposes defe
 - Use critiques before extracted papers; use extracted sections before PDFs.
 - Carry the Matichuk/Ahmadov warning that tuning emissions can absorb meteorology, photolysis, and deposition errors.
 - Carry the Neemann/Tran warning that on/off experiments, nudging labels, PBL diagnostics, and chemistry-grid mismatches can hide confounding.
-- Use `notes/literature-synthesis-register.md` to carry the three synthesis collections' shared challenge to any claim that meteorology is uniquely dominant.
+- Use `notes/literature-synthesis-register.md` to carry the four synthesis collections' shared challenge to any claim that meteorology is uniquely dominant.
+- Use the downstream CAMx failure set to motivate retention and ventilation diagnostics, while treating its related institutional reports, unresolved run identities, and mixed 2013/2019 episodes as context rather than independent proof.
 
 ### Figures and reviewer reserve
 
