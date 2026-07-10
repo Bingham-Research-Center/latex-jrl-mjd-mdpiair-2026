@@ -188,8 +188,8 @@ templates (see §2.3).
 
 ## 8. Open questions for the authors (confirm before Methods goes final)
 
-**Update 2026-07-10 (JRL + Opus):** the "which dataset is the baseline?" question is now resolved —
-see the root memo [`opinion-opus-data.md`](../../opinion-opus-data.md), cross-checked against JRL's
+**Update 2026-07-10 (JRL + Opus):** the "which dataset is the baseline?" question was investigated —
+see the current [`claim-evidence-ledger.md`](../../notes/claim-evidence-ledger.md), cross-checked against JRL's
 own Tran-2018 extraction in `~/reviews/tran-2018-fdda/` (`_paper.md`, `critique.md`,
 `wrf-data-paper-contradictions.md`). Resolutions and the still-open residue:
 
@@ -218,8 +218,8 @@ own Tran-2018 extraction in `~/reviews/tran-2018-fdda/` (`_paper.md`, `critique.
 
 ## 9. Suggested manuscript reconciliations — **PROPOSALS ONLY (`main.tex` untouched)**
 
-Offered for you + Michael to accept/reject; nothing has been edited. The rationale and the
-proposed replacement wording now live in [`opinion-opus-data.md`](../../opinion-opus-data.md).
+Offered for you + Michael to accept/reject; nothing has been edited. The surviving claims and
+their present status now live in [`claim-evidence-ledger.md`](../../notes/claim-evidence-ledger.md).
 
 - **`main.tex:156–157` & `216–217`** ("un-nudged reference run of `\citet{tran2018}`"): keep
   "un-nudged" (it checks out), but (a) pin the run to the file confirmed in §8, and (b) soften the

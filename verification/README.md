@@ -1,53 +1,44 @@
-# Verification — 2013 baseline (Trang frozone WRF vs Basin obs)
+# Verification and provenance
 
-Baseline evaluation for the MDPI *Air* WRF paper: Trang's existing `WRF_TRANG_frozone/WRF_anlnudge` run scored against 6 Uinta Basin stations for the Jan 15-21 2013 wintertime ozone event. Headline result: a systematic **+4 to +6 °C 2 m warm bias** (the model over-mixes and cannot hold the cold pool) with correct surface pressure — the number the improved run must beat.
+This directory retains Michael's useful 2013 evaluation work, small derived tables, candidate diagnostics, and CHPC provenance tools.
+It is supporting evidence, not a second manuscript and not part of the MDPI submission package.
 
-## Contents
-- `baseline-eval-2013.md` — full writeup: setup, pipeline, figure guide, scores, interpretation.
-- `scripts/` — the verification pipeline (`reduce_wrf_to_stations.py` -> `case_study_2013_obs.py` -> `verify_baseline.py` -> `plot_baseline_eval.py`).
-- `data/baseline_scores_jan1521.csv` — per-station scores.
-- `data/figures/` — the 7 diagnostic figures.
+## Layout
 
-## Running the code
-Scripts are copied here from the canonical source, brc-tools branch `mjdavies/synoptic-2013-verify`, for a self-contained record. They import `brc_tools` (e.g. `brc_tools.verify.paired_scores`), so run with that on the path:
+- `data/` — small station selections, reduced WRF tables, scores, and spread tables.
+- `figures/candidates/` — inherited diagnostic longlist; none is automatically manuscript-ready.
+- `figures/manifest.csv` — candidate status and provenance.
+- `scripts/` — reduction, scoring, plotting, and smoke tests.
+- `docs/` — reproduction notes and historical evaluations.
+- `provenance/` — CHPC inventory tools, run mappings, and the TBC canonical run inventory.
+
+## Evidence tiers
+
+1. The GFS two-way, NAM two-way, and NAM one-way touchstones are candidate controlled comparisons pending as-run namelist reconciliation.
+2. The SIP-era `trang_ref` is heterogeneous same-case context, not the literal Tran et al. (2018) run or a controlled fourth member.
+3. The January nudged-run analysis in `docs/baseline-eval-2013.md` is cross-period historical context, not a baseline that February runs must beat.
+
+See `notes/claim-evidence-ledger.md` before moving any result into `main.tex`.
+
+## Local observations
+
+Bulk Synoptic observations remain local, normally under `~/brc-tools/data/`, and are ignored by Git.
+The tracked CSVs are derived products and must remain traceable to their source window and reduction command.
+
+## Commands
+
+Use the `brc-tools` conda environment and make synthetic outputs explicit:
 
 ```bash
-PYTHONPATH=~/brc-tools python verification/scripts/verify_baseline.py ...
+make smoke
+
+PYTHONPATH=~/brc-tools conda run -n brc-tools \
+  python verification/scripts/plot_wrf_vs_obs_feb0102.py \
+  --obs ~/brc-tools/data/obs_basin_2013_feb0102.parquet \
+  --wrf verification/data/wrf_gfs_2way_d02_per_station.csv \
+        verification/data/wrf_nam_2way_d02_per_station.csv \
+        verification/data/wrf_nam_1way_d02_per_station.csv \
+  --out-dir verification/figures/candidates
 ```
 
-See `baseline-eval-2013.md` section 6 for the full reproduce commands (WRF output staged on CHPC scratch).
-
-## Feb 1-2 2013 case study (independent runs)
-
-Separate from the Jan 15-21 baseline above: an independent evaluation for the **Feb 1-2 2013** high-ozone episode (the case in Tran et al. 2018), obs vs John's WRF runs.
-
-- `scripts/select_stations_2013.py` — matches the 7 Tran (2018) eval sites to Synoptic STIDs (USU01-USU07), pulls authoritative metadata, and gates on real case-window data. Writes `data/stations_2013_selection.csv`.
-- `scripts/verify_pull.py` — QC gate on a pulled obs parquet (station coverage + unit sanity).
-- Station list = the 7 eval sites + basin context (USU08/UUT01/KVEL/QV4/QRS) = `BASIN_2013` in `case_study_2013_obs.py`. USU06 (Sand Wash) is offline over Feb 1-2, so 6 of 7 eval sites are usable.
-
-**Obs data stays local.** `*.parquet` is gitignored — bulk obs never enter the repo; only the small selection/score CSVs and figures are tracked. The pull writes to a local cache (`~/brc-tools/data/`):
-
-```bash
-# 1. station selection + availability table (small CSV, tracked)
-PYTHONPATH=~/brc-tools python verification/scripts/select_stations_2013.py
-
-# 2. obs pull -> LOCAL parquet (NOT the repo)
-PYTHONPATH=~/brc-tools python verification/scripts/case_study_2013_obs.py \
-    --start "2013-01-31 00Z" --end "2013-02-04 00Z" \
-    --out ~/brc-tools/data/obs_basin_2013_feb0102.parquet
-
-# 3. verification gate on the local parquet
-python verification/scripts/verify_pull.py \
-    ~/brc-tools/data/obs_basin_2013_feb0102.parquet \
-    --expected USU01 USU02 USU03 USU04 USU05 USU06 USU07 USU08 UUT01 KVEL QV4 QRS
-
-# 4. observed-case figures (obs-only; WRF overlays come later)
-PYTHONPATH=~/brc-tools python verification/scripts/plot_obs_feb0102.py
-```
-
-### Observed-case figures (`plot_obs_feb0102.py` -> `data/figures/*_feb0102.{png,pdf}`; the PDFs are the vector versions for the LaTeX manuscript)
-Conventions follow Neemann et al. 2015 (ACP 15 — the same 31 Jan-6 Feb 2013 case), Lyman & Tran 2015 (Figs. 5/7/8), and Whiteman & Hoch 2014 (pseudo-vertical profiles); all three are in `references.bib`.
-
-- `obs_theta_profiles_feb0102.png` — pseudo-vertical θ-vs-elevation profiles at six snapshot times (9 pressure-reporting stations). θ, not raw T, so inversion strength reads directly; midday panels are the most free-air-representative (Whiteman & Hoch caveat).
-- `obs_temp_timeseries_feb0102.png` — 2 m T at four stations spanning floor -> bench (1465 -> 2228 m), sequential elevation-keyed colors + distinct line styles (CVD/print-safe).
-- `obs_inversion_index_feb0102.png` — CAP bulk metrics: bench−floor Δθ (8 K PCAPS threshold marked) and valley heat deficit from the station pseudo-profile. The panel John's runs get judged against.
+Before accepting regenerated results, verify the host, run identities, exact 2013 window, common stations/domain, and unchanged Git state outside intended outputs.

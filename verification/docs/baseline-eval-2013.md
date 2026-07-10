@@ -1,10 +1,15 @@
-# Baseline evaluation — Trang 2013 frozone WRF vs Basin obs
+# Historical evaluation — January 2013 nudged WRF versus Basin observations
+
+> **Context only.** This January run is not the same-case baseline for the 2 February touchstones.
+> Its run identity and published-configuration relationship remain partly unresolved.
+> Preserve the analysis as inherited diagnostic work, but do not use “baseline we have to beat” wording in the manuscript.
 
 **Jan 15–21 2013 wintertime ozone event · domain d03 · branch `mjdavies/synoptic-2013-verify`**
 Owner: Michael · scored 2026-06-22 · for the MDPI *Air* meteorology/methods paper (John leads; Michael owns diagnostics + figures).
 
 ## Headline
-Trang's existing run is the **baseline we have to beat**. Scored against 6 Basin stations it shows a **systematic +4 to +6 °C warm bias in 2 m temperature at every station**, paired with a mild **over-windiness** at 10 m. Surface pressure is essentially correct. Read together: the synoptic mass field is right, but the model's **PBL over-mixes and cannot hold the surface cold pool / inversion** — which is precisely the error a wintertime-ozone run must fix. **Shrinking the surface warm bias = holding the cold pool = beating the baseline.**
+The archived January run shows a **systematic +4 to +6 °C warm bias in 2 m temperature at every scored station**, paired with mild over-windiness at 10 m and comparatively accurate surface pressure.
+That pattern is consistent with excessive mixing in this configuration, but it is not a controlled comparison with the February touchstones and should not be used to rank them.
 
 ---
 
@@ -20,11 +25,11 @@ Fully reproducible, standalone scripts on the branch above (`scripts/`):
 1. **`reduce_wrf_to_stations.py`** — reads the staged `wrfout_d03`, finds the nearest d03 grid cell to each station (XLAT/XLONG), extracts `T2 / U10 / V10 / PSFC / Q2`, **rotates the 10 m winds grid→earth-relative** (COSALPHA/SINALPHA — wrfout winds are grid-relative), derives speed/direction, and writes a tidy per-station hourly CSV. Runs on a CHPC compute node; needs only xarray + netCDF4 + numpy + pandas.
 2. **`case_study_2013_obs.py`** — Synoptic obs pull for the 6 stations using the *correct 2013-era STIDs* → `data/obs_basin_2013_jan1521.parquet`.
 3. **`verify_baseline.py`** — aligns WRF↔obs on `(station, valid_time)` within a 30-min tolerance and scores each variable per station via `brc_tools.verify.paired_scores` (`harmonize=True` handles K→°C). Wind direction uses a **circular-aware metric** (wrap-corrected bias/MAE/RMSE + Jammalamadaka circular correlation — fixed #32, the old metric had wraparound artifacts). → `data/baseline_scores_jan1521.csv`.
-4. **`plot_baseline_eval.py`** — writes the 7 figures below to `data/figures/`.
+4. **`plot_baseline_eval.py`** — writes the 7 figures below to the local `~/brc-tools/data/figures/`; selected inherited copies are retained under `verification/figures/candidates/`.
 
 **Stations (6):** USU01, USU05, USU08 (USU network), KVEL (NWS/RAWS), QV4, QRS (UDOT — *no pressure reported*). Obs are resampled to hourly means to match WRF's native hourly output; WRF is shown as-is.
 
-## 3. The figures (`data/figures/`, what each shows)
+## 3. The retained figures (`verification/figures/candidates/`, what each shows)
 | File | What it is |
 |------|------------|
 | `baseline_temp_timeseries_jan1521.png` | 6-panel 2 m T, obs (black, hourly mean) vs WRF (red), per station — the warm bias is visible everywhere |
@@ -80,7 +85,7 @@ python scripts/verify_baseline.py \
   --wrf data/wrf_trang_2013_per_station.csv \
   --obs data/obs_basin_2013_jan1521.parquet \
   --out data/baseline_scores_jan1521.csv
-python scripts/plot_baseline_eval.py             # -> data/figures/*.png
+python scripts/plot_baseline_eval.py             # -> ~/brc-tools/data/figures/*.png
 ```
 
 ## 7. Open for John

@@ -12,7 +12,7 @@ two-way OFF (Neemann/Tran-like). Directory names contain `333m`.
 
 ```sh
 ssh u6060939@notchpeak1.chpc.utah.edu
-ls -d ~jrlawson/wrf_archive/*333m* 2>/dev/null || find ~jrlawson/wrf_archive -maxdepth 2 -type d -name '*333m*'
+ls -d /uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/*333m* 2>/dev/null
 du -sh <each dir>          # sanity: how much are we staging?
 ls <dir> | head            # confirm wrfout naming + which domain is the 333 m nest
 ```
@@ -75,15 +75,17 @@ the 333 m nest, rerun with `--transect USU07 USU05` (or slice the 1 km domain vi
 scp 'u6060939@notchpeak1.chpc.utah.edu:/scratch/general/vast/u6060939/wrf_touchstones_2013/wrf_*_per_station.csv' ~/brc-tools/data/
 scp -r 'u6060939@notchpeak1.chpc.utah.edu:/scratch/general/vast/u6060939/wrf_touchstones_2013/*/figures' ./xsect-figs/
 
-cd ~/lawson-davies-air-wrf-2026
+cd ~/latex-jrl-mjd-mdpiair-2026
 PYTHONPATH=~/brc-tools python verification/scripts/verify_runs_feb0102.py \
-    --wrf ~/brc-tools/data/wrf_{gfs_2way,nam_2way,nam_1way}_per_station.csv
+    --wrf ~/brc-tools/data/wrf_{gfs_2way,nam_2way,nam_1way}_per_station.csv \
+    --out-dir verification/data
 PYTHONPATH=~/brc-tools python verification/scripts/plot_wrf_vs_obs_feb0102.py \
-    --wrf ~/brc-tools/data/wrf_{gfs_2way,nam_2way,nam_1way}_per_station.csv
+    --wrf ~/brc-tools/data/wrf_{gfs_2way,nam_2way,nam_1way}_per_station.csv \
+    --out-dir verification/figures/candidates
 ```
 
 Outputs: `wrf_runs_scores_feb0102.csv` + `wrf_runs_spread_feb0102.csv` (verification/data/),
-overlay figures (verification/data/figures/). Both pipelines are smoke-tested green
+overlay figures (`verification/figures/candidates/`). Both pipelines have hermetic smoke tests
 (`smoke_test_runs_feb0102.py`, `smoke_test_cross_sections.py`) — synthetic fixtures,
 so the first real-data run should still be eyeballed against the QC list in
 `docs/how-to-obs-verify.md` (actual-T-not-potential, 1-h offset, units/sign/axis).
