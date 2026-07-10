@@ -3,8 +3,8 @@
 
 Builds a synthetic observation file and two synthetic "runs" in exactly the format
 reduce_wrf_to_stations.py writes (WRF units: temp K, pressure Pa; run/waypoint/
-valid_time keys), then drives verify_runs_feb0102 and plot_wrf_vs_obs_feb0102 on them
-and checks the outputs. So when the real
+valid_time keys), then drives verify_runs_feb0102, plot_wrf_vs_obs_feb0102, and
+plot_obs_feb0102 on them and checks the outputs. So when the real
 touchstone CSVs arrive from CHPC, the same two commands are known-good.
 
 Run:
@@ -97,6 +97,12 @@ def main() -> None:
         print(f"\n$ {' '.join(cmd)}")
         subprocess.run(cmd, check=True)
 
+    obs_figures = tmp / "obs_figures"
+    obs_cmd = env_cmd + [str(SCRIPTS / "plot_obs_feb0102.py"),
+                         "--obs", str(obs_path), "--out-dir", str(obs_figures)]
+    print(f"\n$ {' '.join(obs_cmd)}")
+    subprocess.run(obs_cmd, check=True)
+
     scores = pl.read_csv(tmp / "wrf_runs_scores_feb0102.csv")
     t = scores.filter(pl.col("variable") == "temp_2m")
     warm = t.filter(pl.col("run") == "fake_warm")["bias"].mean()
@@ -106,8 +112,13 @@ def main() -> None:
     assert (tmp / "wrf_runs_spread_feb0102.csv").exists()
     for stem in ("wrf_temp_timeseries_feb0102", "wrf_inversion_index_feb0102"):
         assert (figures / f"{stem}.png").exists(), f"missing figure {stem}.png"
+    for stem in ("obs_theta_profiles_feb0102", "obs_temp_timeseries_feb0102",
+                 "obs_inversion_index_feb0102"):
+        for ext in ("png", "pdf"):
+            f = obs_figures / f"{stem}.{ext}"
+            assert f.exists() and f.stat().st_size > 10_000, f"missing/empty {f}"
     print(f"\nOK: biases recovered (warm {warm:+.2f} K, cool {cool:+.2f} K), "
-          "spread table + 2 figures written")
+          "spread table + 5 logical figures written")
     print(f"NOTE: all synthetic-fixture outputs remain isolated under {tmp}")
 
 

@@ -269,7 +269,11 @@ def fig_inversion_index(hourly: pl.DataFrame, names: dict, out_dir: Path) -> Non
         rho = p / (RD * tk)
         theta_top = theta[grp["stid"].to_list().index(top)]
         deficit = rho * CP * np.maximum(theta_top - theta, 0.0)
-        trapz = getattr(np, "trapezoid", np.trapz)
+        # NumPy 2.4 removed np.trapz. Avoid an eager fallback expression that
+        # touches the removed attribute even when np.trapezoid is available.
+        trapz = getattr(np, "trapezoid", None)
+        if trapz is None:  # pragma: no cover - compatibility with older NumPy
+            trapz = np.trapz
         h = float(trapz(deficit, z)) / 1e6  # MJ m-2
         rows.append({"hour_mst": t, "heat_deficit": h})
     hd = pl.DataFrame(
