@@ -57,6 +57,8 @@ Do not mark a scientific task done because prose exists; mark it done only when 
 - [ ] **LIT-02 · next** — Build a compact comparison table for Ahmadov, Neemann, Matichuk, Tran, UBAQR-2019/2020, and OSIP-2021: case, model, meteorological lever, chemistry lever, observations, and principal confounds.
 - [ ] **LIT-03 · later** — Verify every manuscript citation against the extracted paper passage or source PDF.
 - [ ] **LIT-04 · later** — Decide whether report literature belongs in the main article, supplement, or reviewer reserve.
+- [ ] **LIT-05 · next** — Use `notes/literature-synthesis-register.md` to select which report sources genuinely survive narrative freeze.
+- [ ] **LIT-06 · blocked by LIT-05** — Add the selected UBAQR, SIP-MPE, BRC-2023, and SAPRC-report sources to Paperpile and replace the register's citation placeholders through a complete export.
 - [ ] **NAR-01 · blocked by DES-01** — Select the primary narrative from the roadmap matrix.
 - [ ] **NAR-02 · blocked by NAR-01** — Select at most two secondary narratives and explicitly reject unsupported angles.
 - [ ] **NAR-03 · next** — Preserve the chemistry caveat: meteorology is necessary but not shown to be uniquely dominant.
