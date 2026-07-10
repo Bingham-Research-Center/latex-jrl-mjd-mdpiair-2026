@@ -86,7 +86,7 @@ def collect(files: list[str], want_times: pd.DatetimeIndex, p0: float) -> list[t
 
 def plot_level(panels, xlat, xlon, hgt, run, lev_hpa, out_dir, diff_of=None,
                theta_min=None, theta_max=None, diff_limit=None, stations=None,
-               wind_key=None, dpi=300, display_label=None) -> None:
+               wind_key=None, quiver_scale=250.0, dpi=300, display_label=None) -> None:
     ncol = min(len(panels), 2)
     nrow = -(-len(panels) // ncol)
     fig, axes = plt.subplots(nrow, ncol, figsize=(7.0 * ncol, 5.6 * nrow),
@@ -111,7 +111,7 @@ def plot_level(panels, xlat, xlon, hgt, run, lev_hpa, out_dir, diff_of=None,
         ax.contour(xlon, xlat, hgt, levels=[1700, 2000, 2300], colors="0.35",
                    linewidths=0.5, linestyles="--")
         q = ax.quiver(xlon[::s, ::s], xlat[::s, ::s], f["u"][::s, ::s], f["v"][::s, ::s],
-                      scale=250, width=0.002, color="k")
+                      scale=quiver_scale, width=0.002, color="k")
         if stations is not None:
             ax.scatter(stations["longitude"], stations["latitude"], s=14, facecolor="white",
                        edgecolor="black", linewidth=0.5, zorder=4)
@@ -167,11 +167,15 @@ def main() -> None:
                     help="station IDs to mark for basin context; pass no values to disable")
     ap.add_argument("--wind-key", type=float, default=None,
                     help="quiver-key magnitude in m/s (absolute or wind difference)")
+    ap.add_argument("--quiver-scale", type=float, default=250.0,
+                    help="fixed quiver scale shared by all panels (smaller = longer arrows)")
     ap.add_argument("--dpi", type=int, default=300)
     ap.add_argument("--out-dir", type=Path, default=None, help="default: <wrf-dir>/figures")
     args = ap.parse_args()
     if (args.theta_min is None) != (args.theta_max is None):
         raise SystemExit("--theta-min and --theta-max must be supplied together")
+    if args.quiver_scale <= 0:
+        raise SystemExit("--quiver-scale must be positive")
 
     files = open_run(args.wrf_dir, args.glob)
     print(f"{len(files)} wrfout files")
@@ -204,7 +208,8 @@ def main() -> None:
         plot_level(panels, xlat, xlon, hgt, args.run_label, int(lev), out_dir,
                    diff_of=args.diff_dir, theta_min=args.theta_min, theta_max=args.theta_max,
                    diff_limit=args.diff_limit, stations=station_rows,
-                   wind_key=args.wind_key, dpi=args.dpi, display_label=args.display_label)
+                   wind_key=args.wind_key, quiver_scale=args.quiver_scale,
+                   dpi=args.dpi, display_label=args.display_label)
 
 
 if __name__ == "__main__":
