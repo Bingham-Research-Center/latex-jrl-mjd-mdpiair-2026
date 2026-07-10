@@ -1,56 +1,52 @@
-# Repository Guidelines
+# Repository guide
 
-This is the private working repository for an MDPI **Air** manuscript about WRF meteorology during the 2 February 2013 Uinta Basin winter-ozone episode.
+Private working repository for an MDPI **Air** manuscript about WRF meteorology during the 2 February 2013 Uinta Basin winter-ozone episode.
 
 ## Cold start
 
 1. Read `README.md`.
-2. Read `notes/narrative-and-hypotheses.md` for framing work or `notes/claim-evidence-ledger.md` before changing a scientific claim.
-3. Open only the relevant manuscript, provenance record, script, table, or figure.
+2. Read the current phase and exit gate in `ROADMAP.md`.
+3. Open one task-specific route below; do not load the whole evidence tree.
 
-Do not ingest `Definitions/`, every file under `verification/`, or all of `~/reviews` by default.
+| Work | Open | Avoid by default |
+|---|---|---|
+| Pick or update work | `tasks/microtasks.md` | Legacy checklists without their disposition map. |
+| Change scientific framing | `notes/narrative-and-hypotheses.md`, then `notes/claim-evidence-ledger.md` | Draft numbers or inherited conclusions. |
+| Verify a run or comparison | `verification/provenance/run-inventory.csv`, `notes/hosts-data-and-figures.md`, then one relevant provenance record | Inferring identity from filenames, folders, or candidate namelists. |
+| Generate/promote a figure | `verification/figures/manifest.csv`, `figures/MANIFEST.md` | Copying candidate images directly into `figures/`. |
+| Mine literature/history | `notes/resource-map.md`, then the named critique, extract, commit, issue, or PR | All of `~/reviews`, raw PDFs, image trees, or the full legacy repo. |
+| Edit manuscript/build | `main.tex`, `paperpile.bib`, `Makefile` | `Definitions/` unless debugging the class/template. |
 
-## Evidence rules
+## Evidence contract
 
-- Treat `main.tex`, notes, scripts, tables, and prior papers as claims to reconcile, not mutually validating truth.
-- Separate controlled touchstone comparisons, heterogeneous historical references, and literature yardsticks.
-- Do not render draft numbers until the evaluation window, stations, run identity, and source artifact match.
+- Treat prose, code, tables, figures, papers, and agent notes as claims to reconcile, not mutual validation.
+- Separate controlled comparisons, heterogeneous context, and literature yardsticks.
+- Require matched run identity, domain, stations, window, source artifacts, and reproducible command before rendering a number.
 - Never call `trang_ref` the literal Tran et al. (2018) run.
-- Only files listed as `promoted` in `figures/MANIFEST.md` may be included by `main.tex`.
-- Synthetic tests must write only to temporary directories.
+- Meteorological fidelity is necessary for chemical interpretation; do not claim chemistry or inventories are settled.
+- Include only `promoted` files from `figures/MANIFEST.md`; synthetic tests write only to temporary directories.
+- Record new facts in the run inventory, figure manifest, or claim ledger before drafting prose.
 
 ## Hosts
 
-Check `hostname -f` and path existence first.
+Run `hostname -f` and test paths first.
 
-- Akamai/Linode: manuscript work and selective Markdown critiques under `~/reviews`.
-- CHPC: WRF and publication-figure work; archive root `/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/`.
-- `wrf-full-figures` is canonical only when its skill is actually installed and readable; otherwise record that styling remains provisional and use documented `brc-tools` conventions.
+- Akamai/Linode: writing, Git, local LaTeX, and selective critiques under `~/reviews`.
+- CHPC: WRF/data/figure work; archive root `/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/`; do not assume `~/reviews` exists.
+- Use `wrf-full-figures` only when the skill is installed and readable; otherwise mark styling provisional and use documented `brc-tools` conventions.
 
-## Manuscript conventions
+## Editing and checks
 
-- Keep `main.tex` single-file and sparse.
-- Use American English and one sentence per source line.
-- Compile with pdfLaTeX + BibTeX through `latexmk -pdf main.tex`; do not switch to XeLaTeX or biber.
-- Do not edit `Definitions/`; refresh it only from an official MDPI archive.
-- Replace `paperpile.bib` as a complete Paperpile export; do not hand-edit an exported library.
-- Routine `main.pdf` is ignored. Commit only meaningful dated PDFs under `drafts/`.
-
-## Commands
-
-```bash
-make pdf
-make check
-make smoke
-make submission
-```
-
-Before committing, confirm a clean build where Ghostscript is available, run `git diff --check`, and inspect the PDF when prose, citations, figures, or layout changed.
+- Keep `main.tex` single-file, sparse, American English, and one sentence per source line.
+- Build with pdfLaTeX + BibTeX via `latexmk -pdf main.tex`; never switch to XeLaTeX or biber.
+- Never hand-edit `Definitions/`; refresh it only from an official MDPI archive.
+- Replace `paperpile.bib` as a complete Paperpile export; do not hand-edit a later export.
+- Routine `main.pdf` is ignored; meaningful review milestones belong under `drafts/`.
+- Run `make check`; run `make smoke` for analysis-code changes; inspect the PDF after prose, citation, figure, or layout changes; use `make submission` only for the allowlisted package.
 
 ## Git
 
-- New work uses `jrl/<topic>` branches and PRs after the foundational setup.
-- Keep commits limited to one coherent manuscript or analysis concern.
-- Use John’s configured identity and add a Codex co-author trailer for Codex-assisted work.
-- Preserve Michael’s inherited authorship; do not add people or tools to commits they did not contribute to.
-- Push after each substantial, verified batch.
+- Work on `jrl/<topic>` branches and PR into protected `main`.
+- Commit one coherent, verified concern at a time and push after each substantial batch.
+- Use John’s configured identity plus `Co-Authored-By: Codex <noreply@openai.com>` for Codex-assisted commits.
+- Preserve inherited authorship; credit only contributors to the new commit.
