@@ -6,8 +6,11 @@ The study evaluates WRF meteorology for the 2 February 2013 Uinta Basin cold-air
 ## Start here
 
 - Manuscript: [`main.tex`](main.tex)
+- Large-scale plan and narrative gates: [`ROADMAP.md`](ROADMAP.md)
+- Active granular queue and recovered legacy to-dos: [`tasks/microtasks.md`](tasks/microtasks.md)
 - Scientific framing and candidate hypotheses: [`notes/narrative-and-hypotheses.md`](notes/narrative-and-hypotheses.md)
 - Claim status and provenance: [`notes/claim-evidence-ledger.md`](notes/claim-evidence-ledger.md)
+- Selective source-mining map: [`notes/resource-map.md`](notes/resource-map.md)
 - Hosts, data inventory, and figure workflow: [`notes/hosts-data-and-figures.md`](notes/hosts-data-and-figures.md)
 - Verification pipeline and inherited diagnostics: [`verification/README.md`](verification/README.md)
 - Publication-promoted figures only: [`figures/MANIFEST.md`](figures/MANIFEST.md)
