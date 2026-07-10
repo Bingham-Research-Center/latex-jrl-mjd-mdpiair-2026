@@ -1,4 +1,5 @@
-## LaTeX build artifacts
+# LaTeX output
+main.pdf
 *.aux
 *.bbl
 *.bcf
@@ -13,27 +14,19 @@
 *.spl
 *.synctex.gz
 *.toc
-
-## NOTE: the rendered main.pdf is intentionally TRACKED (see README) — not ignored.
-## Auto-generated EPS->PDF logo conversions from the build ARE ignored:
 *-eps-converted-to.pdf
 
-## Editor / OS cruft
+# Local template source and submission staging
+mdpi-template-acs.zip
+dist/
+
+# Local data, provenance archives, and Python output
+*.parquet
+*.log.txt
+wrf_provenance_*.tgz
+__pycache__/
+*.py[cod]
+
+# Editor and OS files
 *.swp
 .DS_Store
-
-## Personal, per-machine Claude settings (shared .claude/settings.json stays tracked)
-.claude/settings.local.json
-
-## Obs data — bulk timeseries kept LOCAL, never committed (small result/score CSVs stay tracked)
-*.parquet
-
-## CHPC provenance run logs — large raw dumps kept out of the repo (see verification/provenance/)
-*.log.txt
-
-## CHPC provenance inventory tarballs — evidence archive kept LOCAL, never committed to the public repo
-## (regenerate with verification/provenance/chpc_wrf_provenance.sh; see CHPC-WRF-INVENTORY-RESULTS.md)
-wrf_provenance_*.tgz
-
-## Python bytecode
-__pycache__/

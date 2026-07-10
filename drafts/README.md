@@ -1,9 +1,12 @@
-# Archived draft PDFs
+# Review milestones
 
-Dated snapshots of the manuscript at meaningful milestones. The live `main.pdf` at the repo root is
-overwritten on every build, so copy it here **before** overwriting to preserve a milestone:
+Commit only PDFs that mark a meaningful coauthor-review or submission milestone.
+Routine `main.pdf` builds remain ignored.
 
-    cp ../main.pdf main_$(date +%F)_<label>.pdf
-    # e.g. main_2026-06-30_pre-coauthor-review.pdf
+Use `main_<YYYY-MM-DD>_<short-label>.pdf`, for example:
 
-Naming: `main_<YYYY-MM-DD>_<short-label>.pdf`. These snapshots are tracked in git on purpose.
+```bash
+cp ../main.pdf main_2026-07-10_initial-review.pdf
+```
+
+This directory is excluded from the MDPI submission allowlist.

@@ -1,21 +1,5 @@
-%=================================================================
-% MDPI "Air" journal manuscript — built from the official MDPI
-% template.tex (journal option: air, ISSN 2813-4168, ACS numbered
-% citations). Filler text stripped; all structural commands kept.
-%
-% REQUIRES the official "Definitions/" folder (mdpi.cls, mdpi.bst,
-% logos) in the project root. Download the latest from
-% https://www.mdpi.com/authors/latex  ->  ACS Citation Style zip.
-% Compiler: pdfLaTeX.
-%=================================================================
-\documentclass[air,article,submit,pdftex,moreauthors]{Definitions/mdpi}
+\documentclass[air,article,submit,moreauthors]{Definitions/mdpi}
 
-% For an arXiv / preprint posting: switch journal to "preprints" and
-% "submit" to "accept" to drop line numbers, e.g.:
-% \documentclass[preprints,article,accept,pdftex,moreauthors]{Definitions/mdpi}
-
-%=================================================================
-% MDPI internal commands - do not modify
 \firstpage{1}
 \makeatletter
 \setcounter{page}{\@firstpage}
@@ -30,356 +14,63 @@
 \dateaccepted{ }
 \datepublished{ }
 
-%=================================================================
-\Title{Difficult meteorological forecasts during a wintertime surface-ozone IOP}
+\Title{Evaluation of WRF Meteorology for a Uinta Basin Winter Ozone Episode}
 
-\newcommand{\orcidauthorA}{0009-0009-9083-6568} % Michael Davies
-\newcommand{\orcidauthorB}{0000-0003-0305-4090} % John Lawson
-\Author{John R. Lawson $^{1,2,}$*\orcidB{}, Michael J. Davies $^{1}$\orcidA{}, Loknath Dhar $^{1,3}$ and Seth N. Lyman $^{1,3}$}
+\newcommand{\orcidauthorA}{0000-0003-0305-4090}
+\newcommand{\orcidauthorB}{0009-0009-9083-6568}
+\Author{John R. Lawson $^{1,2,}$*\orcidA{}, Michael J. Davies $^{1}$\orcidB{}, Loknath Dhar $^{1,3}$ and Seth N. Lyman $^{1,3}$}
 \AuthorNames{John R. Lawson, Michael J. Davies, Loknath Dhar and Seth N. Lyman}
+
 \address{%
-$^{1}$ \quad Bingham Research Center, Utah State University, Vernal, UT, USA\\
-$^{2}$ \quad Department of Mathematics and Statistics, Utah State University, Logan, UT, USA\\
-$^{3}$ \quad Department of Chemistry and Biochemistry, Utah State University, Logan, UT, USA}
+$^{1}$ \quad Bingham Research Center, Utah State University, Vernal, UT 84078, USA;\\
+$^{2}$ \quad Department of Mathematics and Statistics, Utah State University, Logan, UT 84322, USA;\\
+$^{3}$ \quad Department of Chemistry and Biochemistry, Utah State University, Logan, UT 84322, USA}
 \corres{Correspondence: john.lawson@usu.edu}
 
-\abstract{ABSTRACT}
+\keyword{winter ozone; WRF; cold-air pool; Uinta Basin; numerical weather prediction}
 
-\keyword{WRF; complex terrain; cold-air pool; numerical weather prediction; Uinta Basin}
-
-%=================================================================
 \begin{document}
 
 \section{Introduction}
-% DRAFT built from Seth's modeling-lineage background. Written as the case
-% the team would make; the competing emissions-inventory view is represented
-% for balance. Revise with Lawson before submission. Confirm every report
-% citation (years/titles) against the actual documents.
 
-Elevated wintertime surface ozone in Utah's Uinta Basin occurs when a
-persistent cold-air pool develops over a snow-covered surface, trapping
-emissions from the region's oil and natural gas industry beneath a strong
-temperature inversion while the high albedo of the snowpack supplies the
-actinic flux needed to drive photochemistry \citep{davies2025snowshadow}.
-Reproducing these episodes in three-dimensional photochemical models has
-proven persistently difficult: simulations of Uinta Basin winters have
-tended to underpredict observed ozone, and the field has advanced two
-broad explanations for the shortfall.
+Winter ozone episodes in Utah's Uinta Basin require both rapid photochemical production and sustained meteorological confinement.
+A snow-covered surface supports the radiative environment for ozone formation, while a shallow cold-air pool limits dilution and allows precursors and ozone to accumulate near the basin floor \citep{Davies2025-wy,Neemann2015-ws}.
+Meteorological errors therefore propagate directly into any subsequent interpretation of simulated O$_3$ production, transport, and loss.
 
-A complicating factor is that the snowpack governing this system is itself
-spatially diverse, and resolving that diversity is central to
-prediction \citep{davies2025snowshadow}. Because the cold pools that
-concentrate ozone are shallow and confined to the basin floor, coarse
-operational models can miss high-ozone events entirely: the national Air
-Quality Model, for instance, runs at roughly 13~km horizontal grid spacing,
-too coarse to capture the small-scale structure of mountain cold pools
-\citep{davies2025snowshadow}. The basin's position leeward of the Wasatch
-Mountains produces a suspected precipitation shadow in which subsiding air suppresses
-snowfall, so snow cover varies sharply across the basin floor; capturing
-that spatial variation is critical to improved prediction, yet the influence
-of terrain on snowfall remains poorly constrained, owing in part to the
-difficulty of high-resolution modeling and to sparse observations across
-this rural region \citep{davies2025snowshadow}. These constraints motivate a
-high-resolution modeling approach.
+Previous coupled modeling studies have often attributed underestimated winter ozone to emissions inventories or chemical processes.
+Increasing oil-and-gas volatile-organic-compound emissions improved simulated ozone in both WRF--Chem and CMAQ studies \citep{Ahmadov2015-zm,Matichuk2017-bq}.
+Those experiments also exposed important meteorological and process uncertainties, including mixing-depth errors, snow-dependent photolysis and deposition, and compensating effects between transport and emissions.
+Their results establish that inventory uncertainty matters, but do not make meteorological fidelity optional.
 
-The first attributes the gap to the emissions inventory. Studies that
-substituted higher, measurement-derived (``top-down'') volatile organic
-compound emissions for bottom-up inventory values were able to reproduce
-the observed 2013 ozone episodes, and concluded that the true emissions
-must exceed inventoried values \citep{ahmadov2015,matichuk2017}. Under this
-view, the limiting factor in earlier simulations was the magnitude of the
-precursor source rather than the representation of the atmosphere.
+Meteorology-focused studies demonstrate that Uinta Basin cold-air-pool simulations are sensitive to snow and cloud treatment, boundary-layer behavior, initialization, and data assimilation \citep{Neemann2015-ws,Tran2018-ax}.
+These sensitivities complicate attempts to identify a single best WRF configuration and can change the atmospheric volume into which chemical emissions are mixed.
+The meteorological component should consequently be evaluated on its own terms before it is used to diagnose chemical-model performance.
 
-A second explanation, which motivates the present work, locates the
-problem in the meteorology. If a model fails to build and maintain a
-sufficiently strong inversion, simulated pollutants disperse rather than
-accumulating beneath the cold-air pool, and ozone is underpredicted
-regardless of the inventory used. The earliest WRF study of a Uinta Basin
-cold-air pool established a baseline configuration for representing these
-events \citep{neemann2015}. Building on that configuration,
-\citet{tran2018} sought to improve the simulated meteorology by nudging
-the model toward observed conditions; because surface observations alone
-cannot constrain the warm layer aloft that defines an inversion, that
-approach was later extended using the balloon-borne sonde profiles
-available for the winter of 2013, the only Uinta Basin winter for which
-such vertical data exist \citep{ubaqr2019}. Subsequent coupled
-meteorology--chemistry experiments produced realistic ozone for 2013 under
-certain chemical mechanisms \citep{ubaqr2020}, prompting further work on
-mechanism sensitivity \citep{ramboll2023}. That follow-on work, however,
-relied on a 2019 simulation whose inversion was too weak, limiting its
-utility \citep{topdown2023}; the inadequacy of the 2019 meteorology for
-representing winter inversions was independently noted in later evaluations
-\citep{rmp2022}.
-
-Taken together, this body of work suggests that meteorological
-fidelity---specifically, the model's ability to reproduce the strength and
-persistence of the inversion---is a primary constraint on simulating Uinta
-Basin winter ozone. Here we [STATE THE AIM: e.g., develop and evaluate a
-WRF configuration for the winter 2013 cold-air-pool period, using the 2013
-sonde profiles to constrain the vertical structure, as a meteorological
-basis for subsequent photochemical modeling]. [State principal findings.]
+This study evaluates WRF simulations of the cold-air pool on 2 February 2013, during a documented Uinta Basin winter ozone episode.
+The analysis is designed to identify which configuration choices materially affect the simulated near-surface and lower-tropospheric structure, and to define a defensible meteorological basis for later coupled air-chemistry experiments.
 
 \section{Materials and Methods}
-% DRAFT scaffold (JRL, 2026-07). Structure + placeholders for the Feb 1-2 2013
-% touchstone experiment. Reconcile every configuration value against the recovered
-% namelist (verification/provenance/namelist_candidates.txt) and the run namelists
-% before submission.
 
-\subsection{WRF model configuration}
-% Reconcile against verification/provenance/namelist_candidates.txt before citing.
-We simulate the 1--2 February 2013 cold-air-pool episode with the Advanced
-Research WRF model \citep{skamarock2021wrf}.
-[TODO: model version.]
-The configuration uses three nested domains at 3, 1, and 0.333~km horizontal
-grid spacing
-[TODO: confirm nesting ratios and one-/two-way settings]
-with 75 vertical levels
-[TODO: confirm model top and level distribution].
-Physics follow the Uinta Basin cold-air-pool lineage
-\citep{neemann2015,tran2018}:
-[TODO: PBL, land-surface, microphysics, radiation, and surface-layer schemes
-from the recovered namelist].
+\subsection{Use of Artificial-Intelligence-Assisted Tools}
 
-\subsection{Initial and boundary conditions}
-The touchstone runs are driven by two operational analyses --- the Global
-Forecast System \citep{ncep2019gfs} and the North American Mesoscale model ---
-to bracket the initial-condition uncertainty that dominates cold-pool forecasts.
-[TODO: forcing resolution, cycle, and spin-up window.]
-
-\subsection{Numerical experiments}
-% The three "touchstone" runs + the Tran same-case reference.
-We evaluate three short-forecast touchstone runs that isolate the driving
-analysis and nest feedback: GFS-driven two-way nesting, NAM-driven two-way
-nesting, and NAM-driven one-way nesting.
-[TODO: forecast length, valid window, and the rationale for short forecasts.]
-For a same-case comparison against the established nudging approach, we reduce
-the un-nudged reference run of \citet{tran2018} over the identical window
-[TODO: identify the specific run and configuration].
-
-\subsection{Observations and evaluation}
-% Station selection + scoring pipeline in verification/; stations_2013_selection.csv.
-Model output is evaluated against surface observations at [TODO: N] Uinta Basin
-stations selected to match the \citet{tran2018} evaluation sites
-[TODO: describe the selection and quality-control gate].
-We compare 2~m temperature, 10~m wind, and surface pressure, and quantify
-cold-pool strength as the bench-minus-floor potential-temperature difference.
-Skill scores (bias, MAE, RMSE, correlation) and the across-run spread are
-computed with the pipeline archived under \texttt{verification/}.
-[TODO: state the comparison domain --- the 1~km nest, since the 0.333~km nest
-excludes most bench stations.]
-
-\subsection{Use of generative artificial intelligence}
-% MDPI requires disclosure; edit to match actual usage before submission.
-During the preparation of this work the authors used Claude (Anthropic) to
-assist with drafting scaffolding, figure-generation code, and language editing.
-The authors reviewed and edited all content and take full responsibility for
-the published article.
+During preparation of this study, the authors used Anthropic Claude and OpenAI Codex to assist with literature synthesis, provenance review, analysis-code review, and manuscript drafting and editing.
+The authors reviewed and edited all outputs and take full responsibility for the content of this publication.
 
 \section{Results}
-% DRAFT scaffold from the Feb 1-2 touchstone pipeline (PR #12). Headline numbers
-% are first-pass (verification/data/wrf_runs_scores_feb0102*.csv) --- verify against
-% final run output before submission. Figures live in verification/data/figures/;
-% copy chosen panels into figures/ and log them in figures/SOURCES.md when wiring in.
-
-\subsection{The observed cold-air pool}
-% Supporting figs: obs_temp_timeseries_feb0102, obs_theta_profiles_feb0102, obs_inversion_index_feb0102
-[TODO: describe the observed 1--2 February episode --- surface cooling, the
-potential-temperature profiles, and the bench-minus-floor inversion index the
-runs must reproduce.]
-
-\subsection{Surface skill and inter-run spread}
-% Supporting: wrf_temp_timeseries_feb0102; wrf_runs_scores_feb0102_postspinup*.csv, wrf_runs_spread_feb0102*.csv
-Post-spin-up (14--18~UTC 2~February), the NAM-driven runs reproduce 2~m
-temperature better than the GFS-driven run
-[DRAFT: NAM $+0.46$~$^{\circ}$C bias, MAE 2.3; GFS $+1.75$~$^{\circ}$C, MAE 3.3],
-both far closer than the January baseline's $+4$ to $+6$~$^{\circ}$C warm bias.
-The one- and two-way NAM runs are near-identical, so the skill-relevant spread
-is GFS versus NAM --- an initial-condition signal.
-
-\subsection{Cold-pool maintenance}
-% Supporting: wrf_inversion_index_feb0102; wrf_xsect_theta_*_d02_16z; wrf_timeheight_theta_*
-Both NAM runs track the observed inversion, holding the cold pool above the
-[DRAFT: 8~K] bench-minus-floor threshold, whereas the GFS run underpredicts the
-inversion by [DRAFT: 6--8~K] and mixes it out.
-[TODO: cross-sections and time--height along the floor-to-bench transect.]
-
-\subsection{Upper-air driving analysis}
-% Supporting: wrf_upper_500hPa_*_d02, wrf_upper_700hPa_*_d02, wrf_upper_*_minus_* diff panels
-At 500~hPa the GFS and NAM analyses converge by 16~UTC, but at 700~hPa the GFS
-retains a coherent [DRAFT: $+1.5$ to $+2$~K] basin-wide warm layer through the
-window, placing the residual disagreement in the lower troposphere that governs
-cold-pool maintenance.
-[TODO: mechanism --- inherited profile vs.\ cold-pool-top entrainment.]
-
-\subsection{Same-case comparison with the nudged reference}
-% Supporting: wrf_xsect_theta_trang_ref; wrf_trang_ref_per_station.csv, *_withtrang score tables
-Over the identical 14--18~UTC window, the un-nudged reference run of
-\citet{tran2018} runs [DRAFT: $-4.4$~$^{\circ}$C] cold with a
-deeper-than-observed cold pool --- an error opposite in sign to the January
-nudged baseline, and the gap that both nudging and the short-forecast approach
-target.
-[TODO: fair-comparison caveat --- one 6~h window vs.\ multi-week continuous runs.]
-
-% --- First figure to wire in (copy into figures/, log in SOURCES.md, then uncomment) ---
-% \begin{figure}[H]
-% \includegraphics[width=0.9\linewidth]{figures/wrf_temp_timeseries_feb0102.png}
-% \caption{Observed vs.\ simulated 2~m temperature at the floor-to-bench stations,
-% 1--2 February 2013; the shaded band is the across-run spread.\label{fig:wrf-temp}}
-% \end{figure}
-
-% --- Figure scaffold ---
-% \begin{figure}[H]
-% \includegraphics[width=0.9\linewidth]{figures/fig1.png}
-% \caption{Caption text. Cite as Figure~\ref{fig1}.\label{fig1}}
-% \end{figure}
-
-% --- Wide figure (spans full width) ---
-% \begin{figure}[H]
-% \begin{adjustwidth}{-\extralength}{0cm}
-% \centering
-% \includegraphics[width=\fulllength]{figures/fig2.png}
-% \end{adjustwidth}
-% \caption{Wide figure caption.\label{fig2}}
-% \end{figure}
-
-% --- Table scaffold ---
-% \begin{table}[H]
-% \caption{Caption text. Cite as Table~\ref{tab1}.\label{tab1}}
-% \begin{tabularx}{\textwidth}{CCC}
-% \toprule
-% \textbf{Title 1} & \textbf{Title 2} & \textbf{Title 3}\\
-% \midrule
-% Entry 1 & Data & Data\\
-% \bottomrule
-% \end{tabularx}
-% \end{table}
-
-% --- Equation (keep blank lines around it in submit mode) ---
-% \begin{linenomath}
-% \begin{equation}
-% a = b + c
-% \end{equation}
-% \end{linenomath}
 
 \section{Discussion}
 
 \section{Conclusions}
 
-%=================================================================
 \vspace{6pt}
 
-\authorcontributions{MJD, JRL,L?D,SNL}
-
-\funding{This research was funded by NAME OF FUNDER grant number XXX.}
-
 \institutionalreview{Not applicable.}
-
 \informedconsent{Not applicable.}
 
-\dataavailability{GFS WRF SYNOPTIC HRRR ETC.}
-
-\acknowledgments{shout out to all my homies}
-
-\conflictsofinterest{The authors declare no conflicts of interest.}
-
-%=================================================================
 \begin{adjustwidth}{-\extralength}{0cm}
-
 \reftitle{References}
-
-% Variant A — external BibTeX (recommended). Uncomment to use references.bib:
-% \bibliography{references}
-
-% Variant B — internal list. Air uses ACS numbered style, so entries go in
-% the \isAPAandChicago{}{...} branch below. Cite in text with \citep{key}.
-\isAPAandChicago{}{%
-\begin{thebibliography}{999}
-
-\bibitem[Davies et al.(2025)]{davies2025snowshadow}
-Davies, M.J.; Lawson, J.R.; O'Neil, T.; Lyman, S.N.; Zager, K.; Coxson, T.D.
-Uinta Basin Snow Shadow: Impact of Snow-Depth Variation on Winter Ozone
-Formation. {\em Air} {\bf 2025}, {\em 3}, 22.
-\url{https://doi.org/10.3390/air3030022}.
-
-% --- Emissions-inventory explanation (published) ---
-\bibitem[Ahmadov et al.(2015)]{ahmadov2015}
-Ahmadov, R.; McKeen, S.; Trainer, M.; Banta, R.; Brewer, A.; Brown, S.;
-Edwards, P.M.; de Gouw, J.A.; Frost, G.J.; Gilman, J.; et al.
-Understanding high wintertime ozone pollution events in an oil- and
-natural gas-producing region of the western US. {\em Atmos.\ Chem.\ Phys.}
-{\bf 2015}, {\em 15}, 411--429. \url{https://doi.org/10.5194/acp-15-411-2015}.
-
-\bibitem[Matichuk et al.(2017)]{matichuk2017}
-Matichuk, R.; Tonnesen, G.; Luecken, D.; Gilliam, R.; Napelenok, S.L.;
-Baker, K.R.; Schwede, D.; Murphy, B.; Helmig, D.; Lyman, S.; Roselle, S.
-Evaluation of the Community Multiscale Air Quality Model for Simulating
-Winter Ozone Formation in the Uinta Basin. {\em J.\ Geophys.\ Res.\ Atmos.}
-{\bf 2017}, {\em 122}, 13545--13572.
-\url{https://doi.org/10.1002/2017JD027057}.
-
-% --- Meteorology explanation (published) ---
-\bibitem[Neemann et al.(2015)]{neemann2015}
-Neemann, E.M.; Crosman, E.T.; Horel, J.D.; Avey, L. Simulations of a
-cold-air pool associated with elevated wintertime ozone in the Uintah
-Basin, Utah. {\em Atmos.\ Chem.\ Phys.} {\bf 2015}, {\em 15}, 135--151.
-\url{https://doi.org/10.5194/acp-15-135-2015}.
-
-\bibitem[Tran et al.(2018)]{tran2018}
-Tran, T.; Tran, H.; Mansfield, M.; Lyman, S.; Crosman, E. Four-dimensional
-data assimilation (FDDA) impacts on WRF performance in simulating inversion
-layer structure and distributions of CMAQ-simulated winter ozone
-concentrations in Uintah Basin. {\em Atmos.\ Environ.} {\bf 2018}, {\em 177},
-75--92. \url{https://doi.org/10.1016/j.atmosenv.2018.01.012}.
-
-% --- USU / DAQ technical reports (unpublished; VERIFY titles, years, page
-%     ranges, and authorship against the actual documents before submission)
-\bibitem[Lyman et al.(2019)]{ubaqr2019}
-Lyman, S.; et al. {\em Uintah Basin Air Quality Research 2019 Annual
-Report}; Section~8; Bingham Research Center, Utah State University: Vernal,
-UT, USA, 2019.
-
-\bibitem[Lyman et al.(2020)]{ubaqr2020}
-Lyman, S.; et al. {\em Uintah Basin Air Quality Research 2020 Annual
-Report}; Section~5; Bingham Research Center, Utah State University: Vernal,
-UT, USA, 2020.
-
-\bibitem[Ramboll and USU(2023)]{ramboll2023}
-Ramboll; Utah State University. {\em Assessing Wintertime Ozone Prediction
-Sensitivity to Photochemical Mechanism}; Technical report prepared for the
-Utah Division of Air Quality; 2023.
-
-\bibitem[Lyman et al.(2023a)]{topdown2023}
-Lyman, S.; et al. {\em Top-Down Emission Inventory Final Report}; Sections~9.6
-and~9.7; Bingham Research Center, Utah State University: Vernal, UT, USA, 2023.
-
-\bibitem[David et al.(2022)]{rmp2022}
-David, L.; et al. {\em Rocky Mountain Power Final Report}; Section~III.B;
-Bingham Research Center, Utah State University: Vernal, UT, USA, 2022.
-
-\bibitem[Skamarock et al.(2021)]{skamarock2021wrf}
-Skamarock, W.C.; Klemp, J.B.; Dudhia, J.; Gill, D.O.; Liu, Z.; Berner, J.;
-Wang, W.; Powers, J.G.; Duda, M.G.; Barker, D.M.; Huang, X.-Y.
-A Description of the Advanced Research WRF Model Version 4.3;
-NCAR Technical Note NCAR/TN-556+STR; National Center for Atmospheric
-Research: Boulder, CO, USA, 2021.
-\url{https://doi.org/10.5065/1dfh-6p97}.
-
-\bibitem[NCEP(2019)]{ncep2019gfs}
-National Centers for Environmental Prediction (NCEP).
-The Global Forecast System (GFS)---Global Spectral Model (GSM)
-Version 15.1; Environmental Modeling Center, NCEP/NOAA: College Park,
-MD, USA, 2019. Available online:
-\url{https://www.emc.ncep.noaa.gov/emc/pages/numerical_forecast_systems/gfs.php}
-(accessed on \today).
-
-\bibitem[Mansfield and Lyman(2021)]{mansfield2021ozone}
-Mansfield, M.L.; Lyman, S.N. Winter ozone pollution in Utah's Uinta Basin
-is attenuating. {\em Atmosphere} {\bf 2021}, {\em 12}, 4.
-\url{https://doi.org/10.3390/atmos12010004}.
-
-\end{thebibliography}
-}
-
+\bibliography{paperpile}
 \PublishersNote{}
 \end{adjustwidth}
+
 \end{document}
