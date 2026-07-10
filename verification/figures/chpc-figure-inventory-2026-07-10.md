@@ -299,7 +299,7 @@ differences, and two secondary feedback differences.  No row is promoted.
 
 | Candidate | Run/data support | Window/domain | Visual finding and use | Status |
 |---|---|---|---|---|
-| GFS two-way versus NAM two-way 2 m temperature | X6, X5, real observations | d02 stations, 14–18 UTC, five hours | GFS is much warmer at the floor and generally warmer/more weakly stratified than NAM; station behavior is heterogeneous. | Primary diagnostic; possible main-text surface panel after uncertainty/style review. |
+| GFS two-way versus NAM two-way 2 m temperature | X6, X5, real observations | d02 stations, 14–18 UTC, five hours | GFS is much warmer at the floor and generally warmer/more weakly stratified than NAM; station behavior is heterogeneous. | Primary diagnostic; dependence-aware surface summaries completed in job 13893307. |
 | GFS two-way versus NAM two-way bench−floor Δθ | X6, X5, real observations | USU03−USU07, 14–18 UTC | NAM stays near the observed bulk contrast; GFS is much weaker and briefly below 8 K at 14 UTC. | Primary diagnostic; not a measured inversion depth. |
 | NAM one-way versus NAM two-way 2 m temperature | X3, X5, real observations | d02 stations, 14–18 UTC | Lines almost overlap at all four highlighted stations. | Secondary null diagnostic. |
 | NAM one-way versus NAM two-way bench−floor Δθ | X3, X5, real observations | USU03−USU07, 14–18 UTC | Differences are small relative to observation evolution. | Secondary null diagnostic. |
@@ -408,8 +408,8 @@ current 4,500 m ASL limit compresses the cold pool.
 | Ladder step | Question | Supporting observation/comparison | Falsifier or competing explanation | Placement now |
 |---|---|---|---|---|
 | 1. Observed structure/evolution | Was a strong, evolving cold pool present? | Real temperature, bench−floor Δθ, heat deficit, and station pseudo-profiles | Pseudo-profile/site exposure dominates; sparse stations do not represent basin volume | Main: temperature/Δθ after robustness; pseudo-profile likely supplement. |
-| 2. Surface fidelity | Which matched WRF driving state follows observed floor/bench evolution? | X6 versus X5 on d02, identical five hours/stations | Observation representativeness or inherited forcing differences rather than developed WRF behavior | Main candidate after uncertainty and canonical styling. |
-| 3. Retention/inversion response | Does each run retain the shallow stable layer and weak ventilation through the window? | Future common-AGL θ depth, layer wind, PBLH, T2/U10, PSFC | A surface contrast does not track true depth; PBLH is scheme dependent | Main only after the next diagnostic; current time-height figures are diagnostic. |
+| 2. Surface fidelity | Which matched WRF driving state follows observed floor/bench evolution? | X6 versus X5 on d02, identical five hours/stations | Observation representativeness or inherited forcing differences rather than developed WRF behavior | Bulk theta-contrast PDF promoted with horizontal-profile caveat. |
+| 3. Retention/inversion response | Does each run retain the shallow stable layer and weak ventilation through the window? | Completed common-AGL stability, layer transport wind, PBLH, T2/U10, and PSFC summaries | Fixed station columns do not measure basin volume; PBLH is scheme dependent | Common-AGL PDF promoted; five-hour scope retained. |
 | 4. Lower-tropospheric origin | Is GFS−NAM disagreement larger near 700 than 500 hPa and connected to the basin layer? | Retained signed 500/700 hPa differences plus future profiles | Pressure-surface terrain/masking and lateral-boundary structure explain the map | Main/supplement candidate; profile support required. |
 | 5. Nest feedback test | Does one-way versus two-way nesting matter over six hours? | X3−X5 now; cleaner X9−X0 next | A defensible null result, or effects limited to d03/longer integration | Supplement/reviewer reserve; main only if the null is central and bounded. |
 | 6. Trang/January context | How do heterogeneous lineage runs frame limitations? | January figures and `trang_ref` diagnostics | They are mistaken for controlled members or literal published simulations | Reviewer reserve/supplement only. |
@@ -417,8 +417,8 @@ current 4,500 m ASL limit compresses the cold pool.
 
 ## Prioritized next five rerenders or diagnostics
 
-1. **Time-resolved retention and ventilation spine for X6/X5, with X3/X5 as
-   secondary.** On common d02 and all five hours, combine T2, earth-relative
+1. **Completed in Slurm job 13893307: time-resolved retention and ventilation
+   spine for X6/X5, with X3/X5 as secondary.** On common d02 and all five hours, combine T2, earth-relative
    U10/V10, PSFC, PBLH, lower-tropospheric θ/stability or inversion depth, and a
    pre-defined layer-wind/ventilation metric.  Use common AGL coordinates and
    state observation counts and uncertainty.
@@ -439,6 +439,65 @@ current 4,500 m ASL limit compresses the cold pool.
    1 km/333 m/111 m set with the same initialization, forecast age, domain
    footprint, feedback, terrain, vertical grid, slope/shading, and output
    cadence.  Do not spend narrative effort on the current confounded ladder.
+
+## Evidence-first closeout: Slurm job 13893307
+
+The first-draft retention/ventilation gate was completed after the inventory
+pass without launching another WRF treatment.  The analysis read the accepted
+X6, X5, and X3 d02 archives, retained the same 11 reporting-station columns and
+14--18 UTC window, and verified that all three latitude/longitude grids were
+identical to machine precision.
+
+The preregistered model-layer diagnostics were:
+
+- **stability:** theta at 500 m AGL minus theta at 50 m AGL;
+- **transport wind:** magnitude of the height-weighted mean earth-relative U/V
+  vector from 50 to 500 m AGL; this is a fixed-layer ventilation proxy, not
+  basin export or a chemistry-model ventilation coefficient; and
+- **PBLH:** the native WRF diagnostic, retained only as a scheme-dependent
+  companion field.
+
+Run differences were paired at each station and hour.  The spatially dependent
+station field was then reduced to one hourly median, and a two-hour circular
+moving-block resample was applied across the five hourly medians.  The interval
+below is a descriptive sensitivity interval, not a formal confidence interval.
+
+| Pair and metric | Mean hourly spatial-median difference | Two-hour block sensitivity interval | Hourly sign |
+|---|---:|---:|---:|
+| X6 GFS minus X5 NAM, 50--500 m stability | -3.63 K | -4.94 to -2.22 K | weaker GFS stability in 5/5 hours |
+| X6 GFS minus X5 NAM, transport wind | +0.79 m s-1 | +0.58 to +0.99 m s-1 | stronger GFS wind in 5/5 hours |
+| X6 GFS minus X5 NAM, PBLH | +1.14 m | -11.24 to +10.48 m | mixed, 3 positive/2 negative |
+| X3 one-way minus X5 two-way, stability | +0.002 K | -0.039 to +0.053 K | mixed |
+| X3 one-way minus X5 two-way, transport wind | +0.006 m s-1 | -0.017 to +0.026 m s-1 | mixed |
+| X3 one-way minus X5 two-way, PBLH | -0.056 m | -0.110 to -0.015 m | consistently signed but physically tiny |
+
+The surface check supports the same hierarchy.  Relative to X5, X6 increased
+the mean hourly station-median 2 m-temperature bias by 1.79 degrees C (block
+interval +0.57 to +3.08 degrees C) and absolute temperature error by 1.41
+degrees C (+0.64 to +2.17 degrees C).  Its 10 m-wind bias was 0.91 m s-1 larger
+(+0.03 to +1.89 m s-1), although the absolute-wind-error interval crossed zero.
+X3-minus-X5 surface differences were very small; the T2-bias interval spanned
+zero and the wind-bias difference was -0.038 m s-1.
+
+The resulting figure is
+`verification/figures/candidates/wrf_retention_ventilation_d02_14to18.{png,pdf}`.
+It was inspected at full resolution and the PDF was promoted into `figures/`
+with the observed evolution and bulk theta-contrast PDFs as the deliberately
+small first-draft figure spine.
+
+The exact wrapper is
+`verification/slurm/run_retention_analysis.slurm`, generator commit `bc4fa96`.
+Job `13893307` ran on `notch392` from 22:53:12 to 22:53:58 UTC and wrote the
+review packet under
+`/scratch/general/vast/u0737349/latex_jrl_retention_13893307/`.  `sacct` was
+unavailable through `slurmdbd`, so completion was verified from the wrapper's
+terminal `done_utc`, the complete output set, nonempty figure pairs, matching
+generator/station/observation hashes, and the artifact SHA-256 manifest.
+
+This closes the first-draft experiment choice.  X6/X5 is the primary result;
+X3/X5 is a bounded secondary null.  No additional WRF treatment is needed
+before drafting, and the present evidence does not establish multi-day
+persistence or distinguish initial-state from lateral-boundary causation.
 
 ## Exact reproduction commands
 
@@ -565,8 +624,9 @@ The observation-only figures were regenerated from commit `041183f` on job
    the clean fine-terrain feedback comparison as figure-complete.
 7. Reconcile the precise staged artifact behind `trang_ref`; continue to call it
    SIP-era/context lineage, never the literal Tran et al. (2018) run.
-8. Establish a defensible uncertainty treatment for five hourly samples and
-   spatially dependent stations before any numerical prose.
+8. Treat the completed two-hour block resampling as a descriptive sensitivity
+   interval only; stronger inferential uncertainty would require a longer or
+   replicated experiment.
 9. Confirm observation archive metadata/licensing, station pressure/elevation
    handling, and whether an independent sounding or vertical profile can anchor
    inversion depth.

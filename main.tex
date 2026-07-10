@@ -51,6 +51,43 @@ The analysis is designed to identify which configuration choices materially affe
 
 \section{Materials and Methods}
 
+\subsection{Case, Observations, and Evaluation Sample}
+
+The model evaluation focused on 2 February 2013 from 14:00 to 18:00 UTC.
+The first two forecast hours were excluded as spin-up, leaving five common hourly samples.
+The observation record used eleven stations for 2 m temperature, ten for 10 m wind speed, and nine for surface pressure.
+The 1 km second domain was used for the common station evaluation because the 333 m third domain excludes most of the higher bench sites.
+Observed context from 31 January through 4 February was retained to show the floor-to-bench temperature evolution surrounding the evaluation window.
+
+The horizontal bulk cold-pool contrast was calculated as the potential-temperature difference between Mountain Home on the northwest bench and Pariette Draw on the basin floor.
+This two-station contrast is a surface-based structural indicator rather than a measured free-air inversion depth.
+
+\subsection{WRF Experiment Matrix}
+
+The promoted simulations used WRF version 4.8.0 with three domains at 3, 1, and 0.333 km grid spacing, 75 vertical levels, and a 50 hPa model top.
+They used Thompson microphysics, RRTMG longwave and shortwave radiation, the revised MM5 surface layer, the Noah land-surface model, and the YSU planetary-boundary-layer scheme.
+All promoted simulations were free forecasts without FDDA and ran from 12:00 to 18:00 UTC.
+
+The primary comparison changed the driving analysis from the NAM analysis product to the GFS analysis product while retaining the same grid, physics, two-way nest feedback, terrain source, initialization time, and valid window.
+The source-dependent metgrid level count was 40 for NAM and 27 for GFS.
+The secondary comparison used the same NAM configuration and changed only nest feedback from two-way to one-way.
+
+\subsection{Surface, Retention, and Ventilation Diagnostics}
+
+Surface temperature, earth-relative 10 m wind, and surface pressure were sampled at the nearest d02 grid cell to each reporting station.
+For the lower-tropospheric analysis, potential temperature and earth-relative wind were linearly interpolated to common height-above-ground coordinates at each station column.
+Fixed-layer stability was defined as potential temperature at 500 m AGL minus potential temperature at 50 m AGL.
+The ventilation proxy was the magnitude of the height-weighted mean horizontal wind vector from 50 to 500 m AGL.
+This fixed-layer transport wind is not a direct measure of basin export or a chemistry-model ventilation coefficient.
+Native WRF PBL height was retained as a scheme-dependent companion diagnostic rather than treated as an observed physical layer depth.
+
+\subsection{Dependence and Short-Sample Uncertainty}
+
+Run differences were paired by station and valid hour before spatial aggregation.
+The fixed station field was reduced to one spatial median per hour so that the stations were not treated as independent replicates.
+A two-hour circular moving-block resample of the five hourly medians was repeated 20,000 times, and the 2.5th--97.5th percentile range was retained as a descriptive sensitivity interval.
+This interval is not a formal confidence interval, and the five-hour experiment cannot establish multi-day cold-pool persistence.
+
 \subsection{Use of Artificial-Intelligence-Assisted Tools}
 
 During preparation of this study, the authors used Anthropic Claude and OpenAI Codex to assist with literature synthesis, provenance review, analysis-code review, and manuscript drafting and editing.
@@ -58,9 +95,83 @@ The authors reviewed and edited all outputs and take full responsibility for the
 
 \section{Results}
 
+\subsection{Observed Cold-Pool Context}
+
+The basin-floor station repeatedly cooled below the higher bench stations during the multi-day observation window, with the strongest separation occurring during local nighttime and morning periods (Figure~\ref{fig:observed-evolution}).
+The station record therefore supports the presence of a strong but evolving horizontal cold-pool contrast during the modeled episode.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures/obs_temp_timeseries_feb0102.pdf}
+\caption{Observed 2 m-temperature evolution at four stations spanning the Uinta Basin floor and higher benches.
+The shaded intervals indicate local night.
+The sites provide elevation-spanning context but do not measure the full basin volume.}
+\label{fig:observed-evolution}
+\end{figure}
+
+\subsection{Response to Driving Analysis}
+
+The GFS-driven run produced a weaker horizontal bench-minus-floor potential-temperature contrast than the otherwise matched NAM-driven run throughout the evaluation window (Figure~\ref{fig:bulk-contrast}).
+The observed contrast ranged from 12.63 to 20.21 K, the NAM run ranged from 16.44 to 18.07 K, and the GFS run ranged from 7.35 to 11.74 K.
+These values describe a horizontal station contrast and are not interpreted as free-air inversion depths.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures/wrf_inversion_index_feb0102_gfs2way_vs_nam2way_d02_14to18.pdf}
+\caption{Observed and modeled Mountain Home-minus-Pariette Draw potential-temperature contrast during the matched evaluation window.
+The 8 K line is a literature yardstick rather than a case-specific physical threshold.}
+\label{fig:bulk-contrast}
+\end{figure}
+
+The mean hourly station-median 2 m-temperature bias was +2.09 \(^{\circ}\mathrm{C}\) for GFS and +0.40 \(^{\circ}\mathrm{C}\) for NAM.
+The paired GFS-minus-NAM bias difference was +1.79 \(^{\circ}\mathrm{C}\), with a two-hour block sensitivity interval of +0.57 to +3.08 \(^{\circ}\mathrm{C}\).
+The corresponding absolute-temperature-error difference was +1.41 \(^{\circ}\mathrm{C}\), with an interval of +0.64 to +2.17 \(^{\circ}\mathrm{C}\).
+The 10 m-wind bias was also larger in GFS by 0.91 m s$^{-1}$, although the difference in absolute wind error was not separated from zero by the block sensitivity interval.
+
+The common-AGL profiles showed the same structural separation (Figure~\ref{fig:retention-ventilation}).
+Across the five hourly spatial medians, GFS-minus-NAM 50--500 m stability was -3.63 K, with an interval of -4.94 to -2.22 K and the same sign in all five hours.
+GFS-minus-NAM transport wind was +0.79 m s$^{-1}$, with an interval of +0.58 to +0.99 m s$^{-1}$ and the same sign in all five hours.
+The native PBL-height difference changed sign across the window and had an interval of -11.24 to +10.48 m, so PBLH alone did not explain the stability and transport-wind separation.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures/wrf_retention_ventilation_d02_14to18.pdf}
+\caption{Time evolution of station-column medians and interquartile ranges for 50--500 m AGL potential-temperature stability, fixed-layer transport wind, and native WRF PBL height.
+GFS and NAM differ coherently in stability and transport wind, whereas the one-way and two-way NAM solutions nearly overlap.}
+\label{fig:retention-ventilation}
+\end{figure}
+
+\subsection{Response to Nest Feedback}
+
+The controlled NAM one-way-minus-two-way response was small relative to the driving-analysis response.
+Its mean hourly station-median difference was +0.002 K for 50--500 m stability and +0.006 m s$^{-1}$ for transport wind.
+The respective block sensitivity intervals were -0.039 to +0.053 K and -0.017 to +0.026 m s$^{-1}$.
+The surface-temperature-bias difference was -0.012 \(^{\circ}\mathrm{C}\), with an interval spanning zero, while the 10 m-wind-bias difference was -0.038 m s$^{-1}$.
+These results bound the feedback response only for the present five-hour d02 sample and do not establish general equivalence between one-way and two-way nesting.
+
 \section{Discussion}
 
+The driving analysis was the dominant tested control on the short-window cold-pool structure.
+The GFS-driven solution combined a larger warm surface error, weaker 50--500 m stability, and stronger fixed-layer transport wind than the NAM-driven solution.
+Those differences describe the meteorological state supplied to a downstream chemistry model, but the present experiment cannot partition the response between the 12:00 UTC initial state and the subsequent lateral boundary conditions.
+
+The near-null nest-feedback result narrows the interpretation of the primary comparison because the large GFS--NAM separation is not reproduced by changing feedback alone under NAM forcing.
+It does not show that feedback is unimportant for longer forecasts, the 333 m nest interior, different domain geometry, or other synoptic conditions.
+The current resolution ladder, nudging lineage, terrain experiments, and PBL treatments were therefore excluded from the first-draft Results rather than used as additional nominal sensitivities.
+
+For air-chemistry applications, the relevant implication is that the GFS-driven run supplied a less stable and more strongly ventilated lower layer during the evaluated window.
+Such a state increases the atmospheric volume available for dilution and can hinder modeled near-surface accumulation, but it does not establish that meteorology is the only or dominant source of winter-ozone error.
+Emissions, deposition, photolysis, snow representation, and chemical mechanisms remain material uncertainties.
+
+The principal limitation is temporal scope.
+Five post-spin-up hours can demonstrate a coherent structural difference but cannot establish cold-pool persistence across multiple diurnal cycles or the full ozone-accumulation period.
+The station columns also sample fixed locations rather than basin volume, and the observed bench-minus-floor contrast is horizontal rather than a colocated sounding.
+
 \section{Conclusions}
+
+For the matched 2 February 2013 simulations, the driving analysis materially affected the short-window cold-pool state, whereas changing NAM nest feedback produced only a very small response on the common d02 station sample.
+The GFS-driven simulation was warmer at the surface, less stable from 50 to 500 m AGL, and more strongly ventilated than the NAM-driven simulation.
+These findings provide a meteorological basis for later coupled modeling while remaining limited to a five-hour free-forecast comparison and leaving chemical and inventory uncertainties unresolved.
 
 \vspace{6pt}
 
