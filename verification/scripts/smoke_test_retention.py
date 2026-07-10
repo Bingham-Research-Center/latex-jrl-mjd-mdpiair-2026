@@ -87,6 +87,7 @@ def main() -> None:
     tmp = Path(tempfile.mkdtemp(prefix="wrf_retention_smoke_"))
     configs = {
         "gfs2": (3.0, 3.0, 300.0, -2.0),
+        "gfs1": (3.2, 3.1, 301.0, -1.9),
         "nam2": (8.0, 1.0, 100.0, -5.0),
         "nam1": (8.1, 1.05, 102.0, -4.9),
     }
@@ -106,13 +107,21 @@ def main() -> None:
         "--display",
         "gfs2=GFS two-way",
         "--display",
+        "gfs1=GFS one-way",
+        "--display",
         "nam2=NAM two-way",
         "--display",
         "nam1=NAM one-way",
         "--pair",
         "gfs2,nam2",
         "--pair",
+        "gfs1,nam1",
+        "--pair",
+        "gfs1,gfs2",
+        "--pair",
         "nam1,nam2",
+        "--interaction",
+        "gfs1,gfs2,nam1,nam2",
         "--obs",
         str(obs),
         "--stations",
@@ -126,7 +135,7 @@ def main() -> None:
     subprocess.run(cmd, check=True)
 
     rows = pd.read_csv(out / "retention_station_timeseries.csv")
-    assert len(rows) == 3 * 11 * 5, len(rows)
+    assert len(rows) == 4 * 11 * 5, len(rows)
     summary = pd.read_csv(out / "retention_pair_summary.csv")
 
     def estimate(pair: str, metric: str) -> float:
@@ -137,6 +146,12 @@ def main() -> None:
     assert abs(estimate("gfs2_minus_nam2", "stability_k") + 5.0) < 1.0e-6
     assert abs(estimate("gfs2_minus_nam2", "transport_wind_ms") - 2.0) < 1.0e-6
     assert abs(estimate("nam1_minus_nam2", "stability_k") - 0.1) < 1.0e-6
+    interaction = pd.read_csv(out / "retention_interaction_summary.csv")
+    row = interaction[
+        (interaction["interaction"] == "gfs1_minus_gfs2__minus__nam1_minus_nam2")
+        & (interaction["metric"] == "stability_k")
+    ]
+    assert len(row) == 1 and abs(float(row.iloc[0]["mean_hourly_spatial_median"]) - 0.1) < 1.0e-6
     surface = pd.read_csv(out / "surface_skill_pair_summary.csv")
     t2 = surface[(surface["pair"] == "gfs2_minus_nam2") & (surface["metric"] == "t2_bias_c")]
     assert len(t2) == 1 and abs(float(t2.iloc[0]["mean_hourly_spatial_median"]) - 3.0) < 1.0e-6

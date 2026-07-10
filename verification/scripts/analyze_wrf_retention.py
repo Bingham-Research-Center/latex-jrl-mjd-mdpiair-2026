@@ -55,6 +55,12 @@ DEFAULT_SEED = 20130202
 # Okabe-Ito, matching the existing WRF-versus-observation figures without
 # importing their brc_tools-dependent scoring module.
 RUN_COLORS = ["#0072B2", "#D55E00", "#009E73", "#CC79A7", "#E69F00"]
+RUN_STYLES = {
+    "gfs2": ("#0072B2", "-"),
+    "gfs1": ("#56B4E9", "--"),
+    "nam2": ("#D55E00", "-"),
+    "nam1": ("#E69F00", "--"),
+}
 
 PROFILE_METRICS = {
     "stability_k": ("Δθ, 50–500 m AGL (K)", "K"),
@@ -89,6 +95,15 @@ def parse_pair(spec: str) -> tuple[str, str]:
     if bits[0] == bits[1]:
         raise argparse.ArgumentTypeError("pair members must differ")
     return bits[0], bits[1]
+
+
+def parse_interaction(spec: str) -> tuple[str, str, str, str]:
+    bits = [item.strip() for item in spec.split(",")]
+    if len(bits) != 4 or not all(bits):
+        raise argparse.ArgumentTypeError(f"interaction must be A,B,C,D, got {spec!r}")
+    if len(set(bits)) != 4:
+        raise argparse.ArgumentTypeError("interaction members must be four distinct runs")
+    return bits[0], bits[1], bits[2], bits[3]
 
 
 def sha256(path: Path) -> str:
@@ -401,6 +416,75 @@ def paired_hourly(frame: pd.DataFrame, pairs: list[tuple[str, str]], metrics: li
     return pd.DataFrame(rows).sort_values(["pair", "metric", "valid_time"]).reset_index(drop=True)
 
 
+def interaction_hourly(
+    frame: pd.DataFrame,
+    interactions: list[tuple[str, str, str, str]],
+    metrics: list[str],
+) -> pd.DataFrame:
+    columns = [
+        "interaction",
+        "run_a",
+        "run_b",
+        "run_c",
+        "run_d",
+        "valid_time",
+        "metric",
+        "n_stations",
+        "mean",
+        "median",
+        "q25",
+        "q75",
+        "minimum",
+        "maximum",
+    ]
+    if not interactions:
+        return pd.DataFrame(columns=columns)
+    rows = []
+    for a, b, c, d in interactions:
+        indexed = {
+            run: frame[frame["run"] == run].set_index(["station", "valid_time"])
+            for run in (a, b, c, d)
+        }
+        common = indexed[a].index
+        for run in (b, c, d):
+            common = common.intersection(indexed[run].index)
+        if common.empty:
+            raise SystemExit(f"interaction {a},{b},{c},{d} has no common station/times")
+        name = f"{a}_minus_{b}__minus__{c}_minus_{d}"
+        for metric in metrics:
+            diff = (
+                indexed[a].loc[common, metric]
+                - indexed[b].loc[common, metric]
+                - indexed[c].loc[common, metric]
+                + indexed[d].loc[common, metric]
+            ).rename("value").reset_index()
+            for when, group in diff.groupby("valid_time"):
+                values = group["value"].dropna()
+                rows.append(
+                    {
+                        "interaction": name,
+                        "run_a": a,
+                        "run_b": b,
+                        "run_c": c,
+                        "run_d": d,
+                        "valid_time": when,
+                        "metric": metric,
+                        "n_stations": values.size,
+                        "mean": values.mean(),
+                        "median": values.median(),
+                        "q25": values.quantile(0.25),
+                        "q75": values.quantile(0.75),
+                        "minimum": values.min(),
+                        "maximum": values.max(),
+                    }
+                )
+    return (
+        pd.DataFrame(rows)
+        .sort_values(["interaction", "metric", "valid_time"])
+        .reset_index(drop=True)
+    )
+
+
 def load_obs(path: Path, start: pd.Timestamp, end: pd.Timestamp) -> pd.DataFrame:
     if path.suffix == ".csv":
         obs = pd.read_csv(path)
@@ -449,7 +533,9 @@ def plot_retention(
     for ax, (metric, (ylabel, _units)), letter in zip(axes, PROFILE_METRICS.items(), "abc"):
         for index, run in enumerate(run_order):
             part = hourly[(hourly["run"] == run) & (hourly["metric"] == metric)].sort_values("valid_time")
-            color = RUN_COLORS[index % len(RUN_COLORS)]
+            color, linestyle = RUN_STYLES.get(
+                run, (RUN_COLORS[index % len(RUN_COLORS)], "-")
+            )
             ax.fill_between(
                 part["valid_time"], part["q25"], part["q75"], color=color, alpha=0.16, linewidth=0
             )
@@ -460,6 +546,7 @@ def plot_retention(
                 markersize=3.2,
                 linewidth=1.25,
                 color=color,
+                linestyle=linestyle,
                 label=display.get(run, run),
             )
         panel_letter(ax, letter)
@@ -480,6 +567,14 @@ def main() -> None:
     ap.add_argument("--run", action="append", required=True, metavar="KEY=DIR")
     ap.add_argument("--display", action="append", default=[], metavar="KEY=LABEL")
     ap.add_argument("--pair", action="append", default=[], type=parse_pair, metavar="A,B")
+    ap.add_argument(
+        "--interaction",
+        action="append",
+        default=[],
+        type=parse_interaction,
+        metavar="A,B,C,D",
+        help="paired difference-in-differences: (A-B)-(C-D)",
+    )
     ap.add_argument("--glob", default="wrfout_d02_2013-02-02_*")
     ap.add_argument("--stations", type=Path, default=DEFAULT_STATIONS_CSV)
     ap.add_argument("--obs", type=Path, default=None)
@@ -499,7 +594,11 @@ def main() -> None:
     if len(runs) != len(run_items):
         raise SystemExit("duplicate --run key")
     display = dict(parse_key_value(item, "display") for item in args.display)
-    unknown = (set(display) | {member for pair in args.pair for member in pair}) - set(runs)
+    unknown = (
+        set(display)
+        | {member for pair in args.pair for member in pair}
+        | {member for interaction in args.interaction for member in interaction}
+    ) - set(runs)
     if unknown:
         raise SystemExit(f"display/pair refers to unknown runs: {sorted(unknown)}")
     if args.agl_bottom < 0 or args.agl_top <= args.agl_bottom or args.agl_step <= 0:
@@ -550,11 +649,21 @@ def main() -> None:
         args.bootstrap_resamples,
         args.seed,
     )
+    interaction_frame = interaction_hourly(station_frame, args.interaction, profile_metrics)
+    interaction_summary = summarize_hourly_values(
+        interaction_frame,
+        ["interaction", "run_a", "run_b", "run_c", "run_d", "metric"],
+        args.block_length,
+        args.bootstrap_resamples,
+        args.seed,
+    )
 
     station_frame.to_csv(args.out_dir / "retention_station_timeseries.csv", index=False)
     hourly.to_csv(args.out_dir / "retention_hourly_summary.csv", index=False)
     pair_hourly.to_csv(args.out_dir / "retention_pair_hourly.csv", index=False)
     pair_summary.to_csv(args.out_dir / "retention_pair_summary.csv", index=False)
+    interaction_frame.to_csv(args.out_dir / "retention_interaction_hourly.csv", index=False)
+    interaction_summary.to_csv(args.out_dir / "retention_interaction_summary.csv", index=False)
     plot_retention(hourly, list(runs), display, args.out_dir, args.agl_bottom, args.agl_top)
 
     if args.obs is not None:
@@ -577,6 +686,14 @@ def main() -> None:
             args.bootstrap_resamples,
             args.seed,
         )
+        skill_interaction = interaction_hourly(skill, args.interaction, skill_metrics)
+        skill_interaction_summary = summarize_hourly_values(
+            skill_interaction,
+            ["interaction", "run_a", "run_b", "run_c", "run_d", "metric"],
+            args.block_length,
+            args.bootstrap_resamples,
+            args.seed,
+        )
         skill[["run", "station", "valid_time", *skill_metrics]].to_csv(
             args.out_dir / "surface_skill_station_timeseries.csv", index=False
         )
@@ -584,6 +701,10 @@ def main() -> None:
         skill_summary.to_csv(args.out_dir / "surface_skill_summary.csv", index=False)
         skill_pair_hourly.to_csv(args.out_dir / "surface_skill_pair_hourly.csv", index=False)
         skill_pair_summary.to_csv(args.out_dir / "surface_skill_pair_summary.csv", index=False)
+        skill_interaction.to_csv(args.out_dir / "surface_skill_interaction_hourly.csv", index=False)
+        skill_interaction_summary.to_csv(
+            args.out_dir / "surface_skill_interaction_summary.csv", index=False
+        )
 
     metadata = {
         "generated_utc": datetime.now(timezone.utc).isoformat(),
@@ -603,6 +724,10 @@ def main() -> None:
         "window": {"start": start.isoformat(), "end": end.isoformat(), "n_hours": len(expected)},
         "common_agl_m": levels.tolist(),
         "block_length_hours": args.block_length,
+        "interactions": [
+            {"definition": "(A-B)-(C-D)", "a": a, "b": b, "c": c, "d": d}
+            for a, b, c, d in args.interaction
+        ],
         "bootstrap_resamples": args.bootstrap_resamples,
         "seed": args.seed,
         "stations": meta["stid"].tolist(),
@@ -627,6 +752,8 @@ def main() -> None:
     )
     print("\nRetention pair summary:")
     print(pair_summary.to_string(index=False))
+    print("\nRetention interaction summary:")
+    print(interaction_summary.to_string(index=False))
     print(f"\nwrote analysis to {args.out_dir}")
 
 

@@ -10,7 +10,7 @@
 #SBATCH --error=/scratch/general/vast/%u/latex_jrl_retention_%j.err
 
 # Manuscript-specific analysis wrapper.  WRF execution stays in brc-wrf and the
-# reusable figure engine stays in brc-tools; this job reads three accepted archive
+# reusable figure engine stays in brc-tools; this job reads four accepted archive
 # runs and writes a small review packet to scratch.
 set -euo pipefail
 
@@ -21,10 +21,11 @@ OBS=/scratch/general/vast/u0737349/latex_jrl_chpc_figure_inventory_20260710/obs_
 OUT=${RETENTION_OUT_DIR:-/scratch/general/vast/u0737349/latex_jrl_retention_${SLURM_JOB_ID}}
 
 GFS=${ARCHIVE}/pelican2013_gfs_3_1_333m_75lev/full6h/run_20260630T181555Z
+GFS1=${ARCHIVE}/pelican2013_gfs_3_1_333m_75lev_oneway/full6h/run_20260710T234000Z
 NAM2=${ARCHIVE}/pelican2013_nam_3_1_333m_75lev/full6h/run_20260626T163737Z
 NAM1=${ARCHIVE}/pelican2013_nam_3_1_333m_75lev_oneway/full6h/run_20260702T053120Z
 
-for path in "$PY" "$REPO" "$OBS" "$GFS" "$NAM2" "$NAM1"; do
+for path in "$PY" "$REPO" "$OBS" "$GFS" "$GFS1" "$NAM2" "$NAM1"; do
   test -r "$path"
 done
 mkdir -p "$OUT"
@@ -39,13 +40,18 @@ echo "out=$OUT"
 
 "$PY" verification/scripts/analyze_wrf_retention.py \
   --run "gfs2=$GFS" \
+  --run "gfs1=$GFS1" \
   --run "nam2=$NAM2" \
   --run "nam1=$NAM1" \
   --display "gfs2=GFS two-way" \
+  --display "gfs1=GFS one-way" \
   --display "nam2=NAM two-way" \
   --display "nam1=NAM one-way" \
   --pair gfs2,nam2 \
+  --pair gfs1,nam1 \
+  --pair gfs1,gfs2 \
   --pair nam1,nam2 \
+  --interaction gfs1,gfs2,nam1,nam2 \
   --glob 'wrfout_d02_2013-02-02_*' \
   --stations verification/data/stations_2013_selection.csv \
   --obs "$OBS" \
