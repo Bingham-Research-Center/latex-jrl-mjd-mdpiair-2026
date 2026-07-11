@@ -17,6 +17,8 @@ It does not duplicate large model output or reusable software.
 | Which run comparison supports which manuscript story | `verification/provenance/comparison-inventory.csv`, then `notes/narrative-and-hypotheses.md` |
 | Whether a dataset is raw, derived, current, superseded, or context only | `verification/data/manifest.csv` |
 | Which data, script, and output produced a candidate figure | `verification/figures/manifest.csv` |
+| Which full-figure sets exist or still need rendering | `verification/figures/archive-inventory.md` |
+| Which paper-specific full-figure configuration and Slurm wrapper to use | `verification/config/figures/` and `verification/slurm/pelican_figures.slurm` |
 | Which figures may appear in `main.tex` | `figures/MANIFEST.md` |
 | Where a paper, critique, dataset, namelist, script, or external artifact belongs | `notes/resource-map.md` |
 
@@ -26,7 +28,8 @@ The sibling repositories keep narrower technical responsibilities:
 - `../brc-tools` owns reusable download, reduction, verification, and plotting code.
 - Large WRF/NWP/observation files and bulk figure sets remain in CHPC archive or scratch storage; this repo records exact paths, hashes, and commands.
 
-`../wrf-nudge-ozone-air2026` is being treated as a temporary donor/archive while its paper-specific records are consolidated here in reviewable batches.
+`../wrf-nudge-ozone-air2026` is being treated as a temporary donor/archive while its remaining paper-specific notes are consolidated here in reviewable batches.
+Its accepted figure TOMLs, Slurm wrapper, and compact archive catalogue have moved under `verification/` here.
 Do not add new manuscript-facing truth there, and do not delete or archive it until its unique material and links have been reconciled.
 
 ## Start here
@@ -41,6 +44,7 @@ Do not add new manuscript-facing truth there, and do not delete or archive it un
 - Source-of-truth ownership and selective source-mining map: [`notes/resource-map.md`](notes/resource-map.md)
 - Four-collection literature synthesis register: [`notes/literature-synthesis-register.md`](notes/literature-synthesis-register.md)
 - Hosts, data inventory, and figure workflow: [`notes/hosts-data-and-figures.md`](notes/hosts-data-and-figures.md)
+- External full-figure coverage and gaps: [`verification/figures/archive-inventory.md`](verification/figures/archive-inventory.md)
 - Verification pipeline and inherited diagnostics: [`verification/README.md`](verification/README.md)
 - Publication-promoted figures only: [`figures/MANIFEST.md`](figures/MANIFEST.md)
 

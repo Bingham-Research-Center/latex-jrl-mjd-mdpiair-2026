@@ -8,6 +8,10 @@ It is supporting evidence, not a second manuscript and not part of the MDPI subm
 - `data/` — `manifest.csv` plus small station selections, reduced WRF tables, scores, block-sensitivity summaries, and common-AGL retention tables.
 - `figures/candidates/` — inherited diagnostic longlist; none is automatically manuscript-ready.
 - `figures/manifest.csv` — candidate status and provenance.
+- `figures/archive-inventory.md` — compact external full-figure coverage, gaps,
+  renderer/config state, and safe rerender routes.
+- `config/figures/` — paper-specific TOMLs consumed by the reusable `brc-tools`
+  WRF figure engine.
 - `scripts/` — reduction, scoring, plotting, and smoke tests.
 - `docs/` — reproduction notes and historical evaluations.
 - `provenance/` — CHPC inventory tools, the canonical run inventory, and the run-to-claim comparison inventory.
@@ -48,6 +52,10 @@ The real common-AGL analysis is intentionally off-login and reproducible through
 ```bash
 sbatch verification/slurm/run_retention_analysis.slurm
 ```
+
+The external full-figure catalogue is reproducible through
+`verification/slurm/pelican_figures.slurm`, using the accepted TOMLs under
+`verification/config/figures/`; generated images remain outside Git.
 
 The accepted four-run execution was Slurm job `13896641`; its exact archive paths, matched WRF files, station cells, interaction definition, software versions, diagnostics, and hashes are in `provenance/retention-analysis-13896641.json`.
 The earlier three-run execution `13893307` remains as historical provenance and is superseded for the promoted figure and tables.

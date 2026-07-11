@@ -129,7 +129,7 @@ sensitivity experiment.
 
 ## Large archive catalogue
 
-The sibling `../wrf-nudge-ozone-air2026/EXPERIMENT-FIGURE-INVENTORY.md`
+The consolidated `verification/figures/archive-inventory.md`
 provides exact compact paths, and targeted counts were independently checked.
 No archive image was opened.
 

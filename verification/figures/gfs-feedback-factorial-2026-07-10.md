@@ -28,7 +28,8 @@ new `real.exe`/`wrf.exe` integration but not a new GFS download or WPS run.
 
 The named `wrf-full-figures` skill was not installed in this session. The same
 maintained workflow was run directly through the documented `brc-tools` engine,
-the study TOML, and `slurm/pelican_figures.slurm`.
+`verification/config/figures/pelican2013.toml`, and
+`verification/slurm/pelican_figures.slurm`.
 
 ## Figure Inventory and Visual Review
 

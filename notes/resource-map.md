@@ -22,7 +22,7 @@ When two records disagree, use the authority named below and record the discrepa
 | Figure admitted to the manuscript | `figures/MANIFEST.md` | Matching verified row in `verification/figures/manifest.csv` | Only `promoted` files may enter `main.tex`. |
 | Bibliographic identity | Complete Paperpile export in `paperpile.bib` | Publisher record or source publication | Do not invent or hand-maintain replacement BibTeX entries. |
 | Literature interpretation or critique | `notes/literature-synthesis-register.md` and the relevant claim-ledger row | Named critique/extract under `~/reviews`, then the underlying publication | Critiques locate risks and passages; cite the underlying source. |
-| Paper-specific full-figure configuration and archive catalogue | Temporary pointer to `../wrf-nudge-ozone-air2026` during consolidation | `../brc-tools` figure engine and the external figure archive | Migrate the study TOMLs and compact catalogue here before deprecating the donor repo. |
+| Paper-specific full-figure configuration and archive catalogue | `verification/config/figures/` and `verification/figures/archive-inventory.md` | `../brc-tools` figure engine and the external figure archive | The TOMLs define requested products; the catalogue records coverage, gaps, renderer state, and visual checks. |
 
 ### Temporary consolidation rule
 
