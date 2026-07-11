@@ -17,7 +17,7 @@ When two records disagree, use the authority named below and record the discrepa
 | Runnable WRF case or namelist change | Pointer from the run inventory or provenance record | `../brc-wrf/brc-cases/` and the immutable archived control packet | `brc-wrf` owns execution; this repo records the verified paper-facing identity. |
 | Manuscript-specific analysis or plot | `verification/scripts/` plus its provenance/manifest row | Raw inputs named by that record | Keep one reproducible command and the source commit or hash. |
 | Reusable download, reduction, verification, or plotting behavior | Pointer from this repo | `../brc-tools` code, tests, and documentation | General code changes belong in `brc-tools`, not in a paper-specific wrapper. |
-| Raw WRF, NWP, observation, or cache data | Exact path and fingerprint in a provenance or manifest record | CHPC archive/scratch or the named data provider | Do not commit bulk data; tracked CSVs are derived evidence, not raw truth. |
+| Raw WRF, NWP, observation, or cache data | `verification/data/manifest.csv`, then its named provenance record | CHPC archive/scratch or the named data provider | Do not commit bulk data; tracked CSVs are derived evidence, not raw truth. |
 | Candidate or diagnostic image | `verification/figures/manifest.csv` | Generator, inputs, and external archive path recorded in its row | Presence or visual polish alone is not provenance. |
 | Figure admitted to the manuscript | `figures/MANIFEST.md` | Matching verified row in `verification/figures/manifest.csv` | Only `promoted` files may enter `main.tex`. |
 | Bibliographic identity | Complete Paperpile export in `paperpile.bib` | Publisher record or source publication | Do not invent or hand-maintain replacement BibTeX entries. |

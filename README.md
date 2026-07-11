@@ -15,6 +15,7 @@ It does not duplicate large model output or reusable software.
 | Whether a claim is defensible | `notes/claim-evidence-ledger.md` |
 | Which exact WRF run was inspected | `verification/provenance/run-inventory.csv` |
 | Which run comparison supports which manuscript story | `verification/provenance/comparison-inventory.csv`, then `notes/narrative-and-hypotheses.md` |
+| Whether a dataset is raw, derived, current, superseded, or context only | `verification/data/manifest.csv` |
 | Which data, script, and output produced a candidate figure | `verification/figures/manifest.csv` |
 | Which figures may appear in `main.tex` | `figures/MANIFEST.md` |
 | Where a paper, critique, dataset, namelist, script, or external artifact belongs | `notes/resource-map.md` |
@@ -36,6 +37,7 @@ Do not add new manuscript-facing truth there, and do not delete or archive it un
 - Scientific framing and candidate hypotheses: [`notes/narrative-and-hypotheses.md`](notes/narrative-and-hypotheses.md)
 - Claim status and provenance: [`notes/claim-evidence-ledger.md`](notes/claim-evidence-ledger.md)
 - Run-comparison lookup: [`verification/provenance/comparison-inventory.csv`](verification/provenance/comparison-inventory.csv)
+- Dataset lineage and status: [`verification/data/manifest.csv`](verification/data/manifest.csv)
 - Source-of-truth ownership and selective source-mining map: [`notes/resource-map.md`](notes/resource-map.md)
 - Four-collection literature synthesis register: [`notes/literature-synthesis-register.md`](notes/literature-synthesis-register.md)
 - Hosts, data inventory, and figure workflow: [`notes/hosts-data-and-figures.md`](notes/hosts-data-and-figures.md)

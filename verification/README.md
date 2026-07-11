@@ -5,7 +5,7 @@ It is supporting evidence, not a second manuscript and not part of the MDPI subm
 
 ## Layout
 
-- `data/` — small station selections, reduced WRF tables, scores, block-sensitivity summaries, and common-AGL retention tables.
+- `data/` — `manifest.csv` plus small station selections, reduced WRF tables, scores, block-sensitivity summaries, and common-AGL retention tables.
 - `figures/candidates/` — inherited diagnostic longlist; none is automatically manuscript-ready.
 - `figures/manifest.csv` — candidate status and provenance.
 - `scripts/` — reduction, scoring, plotting, and smoke tests.
@@ -25,6 +25,7 @@ See `notes/claim-evidence-ledger.md` before moving any result into `main.tex`.
 
 Bulk Synoptic observations remain local, with the frozen cache recorded in the figure report and retention provenance JSON, and are ignored by Git.
 The tracked CSVs are derived products and must remain traceable to their source window and reduction command.
+`data/manifest.csv` is the compact authority for that lineage and clearly marks superseded, context-only, and partially reproducible tables.
 
 ## Commands
 
