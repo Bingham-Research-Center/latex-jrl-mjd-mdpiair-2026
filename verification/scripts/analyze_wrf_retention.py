@@ -16,6 +16,8 @@ to common height-above-ground coordinates and computes:
 Run-pair differences are first paired by station and valid time.  Spatial dependence
 is preserved by reducing the fixed station field to one median per hour.  A descriptive
 two-hour circular moving-block interval is then formed across the five hourly medians.
+An optional four-run interaction applies the same pairing to (A-B)-(C-D) before
+the hourly spatial median is calculated.
 It is deliberately called a sensitivity interval, not a confidence interval: five
 hours cannot establish multi-day persistence or a population sampling distribution.
 
@@ -552,7 +554,8 @@ def plot_retention(
         panel_letter(ax, letter)
         ax.set_ylabel(ylabel.replace("50–500", f"{bottom:g}–{top:g}"))
         style_axes(ax)
-    axes[0].legend(loc="best", ncols=min(3, len(run_order)))
+    legend_columns = 2 if len(run_order) == 4 else min(3, len(run_order))
+    axes[0].legend(loc="best", ncols=legend_columns)
     axes[-1].set_xlabel("Valid time (UTC); lines = station median, shading = station IQR")
     axes[-1].xaxis.set_major_locator(mdates.HourLocator(interval=1))
     axes[-1].xaxis.set_major_formatter(mdates.DateFormatter("%H:%M"))
@@ -600,7 +603,7 @@ def main() -> None:
         | {member for interaction in args.interaction for member in interaction}
     ) - set(runs)
     if unknown:
-        raise SystemExit(f"display/pair refers to unknown runs: {sorted(unknown)}")
+        raise SystemExit(f"display/pair/interaction refers to unknown runs: {sorted(unknown)}")
     if args.agl_bottom < 0 or args.agl_top <= args.agl_bottom or args.agl_step <= 0:
         raise SystemExit("require 0 <= --agl-bottom < --agl-top and --agl-step > 0")
     if args.bootstrap_resamples < 100:
