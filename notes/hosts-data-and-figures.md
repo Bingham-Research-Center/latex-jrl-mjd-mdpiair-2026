@@ -21,8 +21,11 @@ Bulk WRF output, raw archive manifests, and observation caches remain off Git.
 
 ## CHPC inventory contract
 
-John's inventory is TBC.
-Add one row per independently runnable configuration to `verification/provenance/run-inventory.csv`.
+The default-terrain manuscript factorial is reconciled in
+`verification/provenance/run-inventory.csv`: X6/X10 GFS and X5/X3 NAM under
+two-way/one-way feedback.
+Add one row per independently runnable configuration; do not infer a new row
+from a folder name or candidate namelist.
 
 Required fields:
 
@@ -46,6 +49,12 @@ Required fields:
 | `confidence`, `notes` | `high`, `medium`, or `low`, plus unresolved caveats. |
 
 Do not place secret locations, credentials, or bulk archive listings in the public-facing manuscript package.
+
+The X10 WRF record is `verification/provenance/gfs-oneway-wrf-13894282.json`,
+and its four-run analysis record is
+`verification/provenance/retention-analysis-13896641.json`. Full figure counts,
+renderer state, and the representative visual audit are recorded in
+`verification/figures/gfs-feedback-factorial-2026-07-10.md`.
 
 ## Figure candidate contract
 

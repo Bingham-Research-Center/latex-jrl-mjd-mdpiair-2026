@@ -26,6 +26,9 @@ Private working repository for an MDPI **Air** manuscript about WRF meteorology 
 - Meteorological fidelity is necessary for chemical interpretation; do not claim chemistry or inventories are settled.
 - Include only `promoted` files from `figures/MANIFEST.md`; synthetic tests write only to temporary directories.
 - Record new facts in the run inventory, figure manifest, or claim ledger before drafting prose.
+- The current matched forcing-by-feedback factorial is X6 (GFS two-way), X10
+  (GFS one-way), X5 (NAM two-way), and X3 (NAM one-way); resolve their exact
+  paths through `verification/provenance/run-inventory.csv`, not this router.
 
 ## Hosts
 

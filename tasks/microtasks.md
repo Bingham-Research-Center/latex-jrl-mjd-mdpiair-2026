@@ -10,16 +10,16 @@ Do not mark a scientific task done because prose exists; mark it done only when 
 
 - [ ] **INV-01 · next** — Locate the out-of-band July 9 provenance archive and verify SHA-256 `b616ec6b4ff70f3a36048904d5cad7a99a2563ba4a19fd79198fbf923332a958`.
 - [x] **INV-02 · done** — Mapped the three JRL touchstone header fingerprints to exact durable archive basenames.
-- [x] **INV-03 · done** — Added canonical inventory rows for GFS two-way, NAM two-way, and NAM one-way.
+- [x] **INV-03 · done** — Added canonical inventory rows for GFS and NAM under both one-way and two-way feedback.
 - [x] **INV-04 · done** — Attached exact as-run namelist hashes to the touchstone rows.
 - [x] **INV-05 · done** — Recorded version, initialization, valid times, cadence, grid, levels, physics, forcing, and feedback.
 - [x] **INV-06 · done** — Proved that the default-terrain NAM one-/two-way pair differs only in feedback.
 - [ ] **INV-07 · later/context** — Fingerprint `REF_long`; it is excluded from the frozen result matrix and must never be called Tran-2018 NON.
 - [ ] **INV-08 · later/context** — Mark assimilated stations before any nudging comparison; no nudged run enters the frozen result matrix.
-- [x] **DES-01 · done** — Froze X6/X5 as primary and X3/X5 as a bounded secondary null, each with a predicted diagnostic and falsifier.
+- [x] **DES-01 · done** — Froze X6/X10/X5/X3 as a forcing-by-feedback factorial with forcing contrasts, within-source feedback contrasts, and a paired interaction.
 - [x] **DES-02 · done** — Froze d02, the reporting-station sample, 14--18 UTC, and a two-hour spin-up exclusion.
 - [x] **DES-03 · done** — Defined 50--500 m AGL stability and transport wind and stated the five-hour persistence limit.
-- [x] **ANA-01 · done for promoted core** — Re-reduced X3/X5/X6 from exact raw archive paths.
+- [x] **ANA-01 · done for promoted core** — Re-reduced X3/X5/X6/X10 from exact raw archive paths.
 - [x] **ANA-02 · done for promoted core** — Recomputed matched surface and vertical summaries.
 - [x] **ANA-03 · done for descriptive scope** — Added two-hour circular block sensitivity intervals while explicitly declining formal five-sample inference.
 - [x] **MAN-01--03 · done for first draft** — Drafted Methods and Results from the frozen claims and promoted three-figure spine; coauthor/scientific review is next.
@@ -43,7 +43,7 @@ Do not mark a scientific task done because prose exists; mark it done only when 
 
 - [ ] **ANA-04 · blocked** — Describe the observed 2 February cold pool using provenance-checked temperature, potential-temperature, and inversion diagnostics.
 - [x] **ANA-05 · done** — Tested the GFS-versus-NAM surface, common-AGL stability, and transport-wind differences on the frozen sample.
-- [x] **ANA-06 · done** — Bounded the one-way-versus-two-way feedback response on the frozen sample.
+- [x] **ANA-06 · done** — Bounded both within-source feedback responses and their paired forcing-by-feedback interaction on the frozen sample.
 - [ ] **ANA-07 · later** — Separate initialization from lateral-boundary and forecast-evolution effects only if the first draft or reviewers require another experiment.
 - [ ] **ANA-08 · blocked** — Quantify d02/d03 representativeness without treating missing bench stations as model skill.
 - [ ] **ANA-09 · later** — Stratify errors by station elevation and variable; avoid basin means that cancel opposing biases.
@@ -63,7 +63,7 @@ Do not mark a scientific task done because prose exists; mark it done only when 
 - [ ] **LIT-05 · next** — Use `notes/literature-synthesis-register.md` to select which report sources genuinely survive narrative freeze.
 - [ ] **LIT-06 · blocked by LIT-05** — Add the selected report sources to Paperpile and replace the register's citation placeholders through a complete export.
 - [x] **NAR-01 · done** — Selected the driving-state response as the primary narrative.
-- [x] **NAR-02 · done** — Selected nest feedback as a bounded secondary null and rejected resolution/nudging from first-draft Results.
+- [x] **NAR-02 · done** — Selected the small source-conditioned feedback interaction as the bounded secondary result and rejected resolution/nudging from first-draft Results.
 - [x] **NAR-03 · done** — Preserved the chemistry caveat: meteorology is necessary but not shown to be uniquely dominant.
 - [ ] **NAR-04 · later** — Write the air-chemistry bridge in terms of dilution volume, cold-pool retention/ventilation, stability, transport, photolysis, and deposition interfaces.
 - [ ] **NAR-05 · later** — Decide whether the SIP-era and January runs add useful context or merely distract from controlled touchstones.
@@ -77,7 +77,7 @@ Do not mark a scientific task done because prose exists; mark it done only when 
 - [ ] **FIG-04 · blocked by ANA-08** — Generate a domain/station-coverage orientation figure.
 - [ ] **FIG-05 · later** — Select cross-section and time-height panels only after the primary narrative is frozen.
 - [ ] **FIG-06 · later** — Select upper-air panels only if they explain a surface/cold-pool result.
-- [ ] **FIG-07 · later** — Apply `wrf-full-figures` on CHPC when available and record the style version/commit.
+- [x] **FIG-07 · done for the factorial** — The named skill was unavailable, so the documented maintained equivalent ran through the `brc-tools` engine at `89883ceb`, the study TOML, and Slurm; X10 has 63 PNGs and exact-config convergence `13896871` skipped all 730 tasks as current.
 - [ ] **FIG-08 · later** — Check print dimensions, fonts, units, color accessibility, captions, and raster resolution.
 - [x] **FIG-09 · done for first-draft spine** — Promoted the observed evolution, bulk theta contrast, and common-AGL retention/ventilation PDFs and completed both manifests.
 - [ ] **FIG-10 · later** — Retain reproducible supplementary/reviewer-reserve diagnostics outside `figures/`.
