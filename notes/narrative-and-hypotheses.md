@@ -10,6 +10,20 @@ The practical target is not a generic WRF ranking: it is whether the meteorologi
 The CHPC inventory and common-AGL analysis now support a narrow first-draft result core.
 The forcing response replicated across both feedback modes is primary, the small source-conditioned feedback interaction is secondary, and the remaining candidate hypotheses stay outside the first-draft Results.
 
+## Plain-language comparison-to-story map
+
+The machine-readable authority is `verification/provenance/comparison-inventory.csv`.
+Use this shorter view when deciding what story a run can support.
+
+| Story role | Comparison IDs | What the evidence can support | What it cannot support |
+|---|---|---|---|
+| Primary result | CMP01 and CMP02 | The GFS-minus-NAM response is coherent under both feedback modes over the matched five-hour d02 sample. | It cannot yet separate initial-condition effects from lateral-boundary effects or establish multi-day persistence. |
+| Secondary bounded result | CMP03, CMP04, and CMP05 | Feedback is nearly null under NAM, small under GFS, and much smaller than the forcing response; the interaction is source conditioned. | It is not general evidence that one-way and two-way nesting are equivalent. |
+| Reviewer reserve | CMP06--CMP11 | Fine-terrain feedback, slope/shading, PBL/surface-layer, and terrain-source pairs are controlled enough to motivate focused follow-up. | They should not enter first-draft Results without their named provenance or analysis gates. |
+| Excluded or context only | CMP12 and CMP13 | The apparent resolution ladder and legacy nudged lineage expose design and provenance limitations. | They cannot support a resolution ranking, a nudging-effect estimate, or attribution to the literal Tran et al. run. |
+
+In practical writing terms, lead with CMP01/CMP02, use CMP03--CMP05 to show that the main result survives a nesting choice, and mention the remaining rows only as limitations, reviewer reserve, or future controlled work.
+
 ## Title candidates
 
 The deliberately plain working title in `main.tex` is **Evaluation of WRF Meteorology for a Uinta Basin Winter Ozone Episode**.

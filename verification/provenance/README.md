@@ -18,6 +18,11 @@ config that produced the runs.
   fingerprints. Run it via `CHPC-WRF-INVENTORY-HANDOFF.md`.
 - `namelist_candidates.txt` — the `namelist.input` candidates surfaced from the archive
   (raw config to reconcile against the runs before it enters Methods).
+- `run-inventory.csv` — canonical paper-facing identities and fingerprints for each
+  independently runnable configuration inspected for this manuscript.
+- `comparison-inventory.csv` — controlled-pair and context register linking stable run
+  IDs to the scientific lever, claim IDs, figure IDs, manuscript role, caveats, and
+  next evidence gate.
 - `CHPC-WRF-INVENTORY-RESULTS.md` — summary of running the inventory (checksum, per-tree
   counts, config labels, header coverage) to reconcile against the run lookup table. The
   full report tarball is transferred out-of-band, not committed (raw archive listings /

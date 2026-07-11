@@ -10,7 +10,7 @@ It is supporting evidence, not a second manuscript and not part of the MDPI subm
 - `figures/manifest.csv` — candidate status and provenance.
 - `scripts/` — reduction, scoring, plotting, and smoke tests.
 - `docs/` — reproduction notes and historical evaluations.
-- `provenance/` — CHPC inventory tools, run mappings, and the TBC canonical run inventory.
+- `provenance/` — CHPC inventory tools, the canonical run inventory, and the run-to-claim comparison inventory.
 
 ## Evidence tiers
 
