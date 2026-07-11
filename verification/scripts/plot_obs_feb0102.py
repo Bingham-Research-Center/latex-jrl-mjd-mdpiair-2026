@@ -95,6 +95,21 @@ SNAPSHOTS_MST = [
     "2013-02-03 13:00",
 ]
 
+# Hand-tuned offsets for the one labeled pseudo-profile.  Six pressure-reporting
+# stations occupy only 150 m of elevation, so alternating left/right is not enough
+# to keep their labels distinct at true print size.
+PROFILE_LABEL_OFFSETS = {
+    "USU07": (6, 2),
+    "USU02": (-8, -5),
+    "UUT01": (8, -8),
+    "USU08": (-8, 5),
+    "KVEL": (8, 5),
+    "USU01": (-8, 12),
+    "USU05": (6, 4),
+    "USU04": (-6, -4),
+    "USU03": (6, 4),
+}
+
 
 def elev_color(elev_m: float) -> tuple:
     lo, hi = ELEV_RANGE
@@ -200,14 +215,12 @@ def fig_theta_profiles(hourly: pl.DataFrame, names: dict, out_dir: Path) -> None
         for i, (th, ev, st) in enumerate(zip(prof["theta"], elev, prof["stid"])):
             ax.scatter(th, ev, s=26, color=elev_color(ev), zorder=2, edgecolor="white", lw=0.5)
             if snap == SNAPSHOTS_MST[0]:
-                # Stations cluster near 1550-1620 m; alternate label side and add a small
-                # offset so names are less likely to collide.
-                side = 1 if i % 2 == 0 else -1
+                dx, dy = PROFILE_LABEL_OFFSETS.get(st, (6 if i % 2 == 0 else -6, 3))
                 ax.annotate(
                     names[st]["name"], (th, ev),
-                    xytext=(6 * side, 3 * side), textcoords="offset points",
+                    xytext=(dx, dy), textcoords="offset points",
                     fontsize=6.5, color="0.25", va="center",
-                    ha="left" if side > 0 else "right",
+                    ha="left" if dx > 0 else "right",
                 )
         hh = t.strftime("%H:%M")
         panel_letter(ax, letter,
@@ -216,8 +229,7 @@ def fig_theta_profiles(hourly: pl.DataFrame, names: dict, out_dir: Path) -> None
     axes[0, 0].set_ylim(1415, 2300)  # headroom so the bench marker clears the panel label
     for ax in axes[:, 0]:
         ax.set_ylabel("Station elevation (m)")
-    for ax in axes[1, :]:
-        ax.set_xlabel("Potential temperature θ (K)")
+    fig.supxlabel("Potential temperature θ (K)", fontsize=9.5)
     save(fig, "obs_theta_profiles_feb0102", out_dir)
 
 
@@ -269,7 +281,11 @@ def fig_inversion_index(hourly: pl.DataFrame, names: dict, out_dir: Path) -> Non
         rho = p / (RD * tk)
         theta_top = theta[grp["stid"].to_list().index(top)]
         deficit = rho * CP * np.maximum(theta_top - theta, 0.0)
-        trapz = getattr(np, "trapezoid", np.trapz)
+        # NumPy 2.4 removed np.trapz. Avoid an eager fallback expression that
+        # touches the removed attribute even when np.trapezoid is available.
+        trapz = getattr(np, "trapezoid", None)
+        if trapz is None:  # pragma: no cover - compatibility with older NumPy
+            trapz = np.trapz
         h = float(trapz(deficit, z)) / 1e6  # MJ m-2
         rows.append({"hour_mst": t, "heat_deficit": h})
     hd = pl.DataFrame(

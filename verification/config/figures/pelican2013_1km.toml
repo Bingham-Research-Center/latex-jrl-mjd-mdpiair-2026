@@ -1,0 +1,61 @@
+# pelican2013_1km — WRF publication-figure case for the coarse 1 km TWO-nest run
+#
+# Separate from cases/pelican2013.toml (three nests to 333 m) and pelican2013_d04.toml
+# (four nests to 111 m).  This run stops at 1 km:
+#   d01 = 3 km / d02 = 1 km  (75 eta levels), NAM ICs, 2013-02-02 00Z -> 02-03 00Z hourly.
+# It anchors the COARSE rung of the resolution ladder (1 km -> 333 m -> 111 m) for the
+# MDPI Air cold-pool paper: same NAM ICs / outer nests as the finer runs, so nest
+# resolution is the clean axis.  Innermost is d02 (1 km); sections/surface/upper-air
+# render on it.  Full diurnal window (00->24Z) covers the 12-18Z comparison hours.
+#
+# Schema + semantics: ../brc-tools/docs/WRF-FIGURE-ENGINE.md
+
+[case]
+slug = "pelican2013_1km"
+label = "Pelican 2013 (1 km 2-nest)"
+archive_dir = "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive"
+run_subdir = "full24h"                      # <archive>/<run.dir>/full24h/run_*/
+annotation = "pelican2013 1km | brc-tools"
+crest_m = 2200.0
+profile_hours = [12]
+sounding_hour = 12
+upper_pressure_hpa = 600.0
+upper_adv_domain = "outer"                  # 600 hPa T-adv on d01 (3 km), clean synoptic
+# Horsepool matches the 333 m / 111 m runs so the focus skew-T / profile / heat-deficit
+# compare directly across the resolution ladder.
+focus_point = { name = "Horsepool", lat = 40.144, lon = -109.467 }
+surface_vars = [
+  { key = "theta2m", style = "theta_2m",       wind = true  },
+  { key = "t2",      style = "temp_2m",         wind = true  },
+  { key = "wspd10",  style = "wind_speed_10m",  wind = true  },
+  { key = "snow",    style = "snow_depth",      wind = false },
+  { key = "pblh",    style = "pblh",            wind = false },
+]
+
+[waypoints]
+Horsepool              = { lat = 40.144,  lon = -109.467 }
+Vernal                 = { lat = 40.455,  lon = -109.530 }
+Roosevelt              = { lat = 40.300,  lon = -109.989 }
+"Pelican Lake"         = { lat = 40.1808, lon = -109.6810 }
+Ouray                  = { lat = 40.0891, lon = -109.6879 }
+"Fort Duchesne"        = { lat = 40.2827, lon = -109.8593 }
+Randlett               = { lat = 40.2402, lon = -109.8038 }
+Bonanza                = { lat = 40.0166, lon = -109.1791 }
+Myton                  = { lat = 40.1938, lon = -110.0630 }
+Duchesne               = { lat = 40.1633, lon = -110.4029 }
+
+[soundings]
+stations = ["KSLC", "KGJT", "KRIW"]
+ic_cases = ["nam_1km"]                      # station skew-Ts for the single NAM run
+
+[runs]
+nam_1km = { dir = "pelican2013_nam_3_1km_75lev", label = "NAM 1 km (2-nest)" }
+
+[style]
+autoscale = false
+
+[map]
+states = true
+roads  = true
+rivers = true
+lakes  = true

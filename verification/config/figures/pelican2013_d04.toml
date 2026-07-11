@@ -1,0 +1,57 @@
+# pelican2013_d04 — WRF publication-figure case for the FOUR-nest 111 m run
+#
+# Separate from cases/pelican2013.toml (whose seven runs share the 3-nest
+# d01=3 km / d02=1 km / d03=333 m grid).  This run adds a fourth nest:
+#   d01=3 km / d02=1 km / d03=333 m / d04=111 m  (50 eta levels), 2013-02-02 12->18 UTC.
+# d03/d04 are written sub-hourly (10 min); d01/d02 hourly.
+#
+# Purpose: compare the 333 m (d03) and 111 m (d04) terrain-following cross-sections.
+# The engine's `section` family renders the innermost nest by default (d04 here);
+# pass `--section-domain d03` (brc-tools scripts/wrf_figures.py) to render d03 too —
+# its filenames gain a `_d03` tag so they coexist with the existing d04 set.
+#
+# Schema + semantics: ../brc-tools/docs/WRF-FIGURE-ENGINE.md
+
+[case]
+slug = "pelican2013_d04"
+label = "Pelican 2013 (4-nest 111 m)"
+archive_dir = "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive"
+run_subdir = "full6h"                       # <archive>/<run.dir>/full6h/run_*/
+annotation = "pelican2013 d04 | brc-tools"
+crest_m = 2200.0                            # basin crest height (upper-air / heat deficit)
+profile_hours = [12]
+sounding_hour = 12
+upper_pressure_hpa = 600.0
+upper_adv_domain = "outer"
+# Focus point matches this run's prior full-figures (skew-T / profile / heat-deficit).
+# Sections run EW/NS through the domain centre and ignore the focus point.
+focus_point = { name = "Vernal", lat = 40.455, lon = -109.530 }
+surface_vars = [
+  { key = "theta2m", style = "theta_2m",       wind = true  },
+  { key = "t2",      style = "temp_2m",         wind = true  },
+  { key = "wspd10",  style = "wind_speed_10m",  wind = true  },
+  { key = "pblh",    style = "pblh",            wind = false },
+]
+
+[waypoints]
+# Basin sites for along-section labels and map markers.
+Horsepool              = { lat = 40.144,  lon = -109.467 }
+Vernal                 = { lat = 40.455,  lon = -109.530 }
+Roosevelt              = { lat = 40.300,  lon = -109.989 }
+"Pelican Lake"         = { lat = 40.1808, lon = -109.6810 }
+Ouray                  = { lat = 40.0891, lon = -109.6879 }
+"Fort Duchesne"        = { lat = 40.2827, lon = -109.8593 }
+Randlett               = { lat = 40.2402, lon = -109.8038 }
+Myton                  = { lat = 40.1938, lon = -110.0630 }
+
+[runs]
+nam_d04_111m = { dir = "pelican2013_nam_d04_111m_50lev_oneway_terrain3s", label = "NAM d04 111 m (4-nest)" }
+
+[style]
+autoscale = false
+
+[map]
+states = true
+roads  = true
+rivers = true
+lakes  = true

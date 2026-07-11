@@ -11,9 +11,9 @@ Private working repository for an MDPI **Air** manuscript about WRF meteorology 
 | Work | Open | Avoid by default |
 |---|---|---|
 | Pick or update work | `tasks/microtasks.md` | Legacy checklists without their disposition map. |
-| Change scientific framing | `notes/narrative-and-hypotheses.md`, then `notes/claim-evidence-ledger.md` | Draft numbers or inherited conclusions. |
-| Verify a run or comparison | `verification/provenance/run-inventory.csv`, `notes/hosts-data-and-figures.md`, then one relevant provenance record | Inferring identity from filenames, folders, or candidate namelists. |
-| Generate/promote a figure | `verification/figures/manifest.csv`, `figures/MANIFEST.md` | Copying candidate images directly into `figures/`. |
+| Change scientific framing or choose figures | `notes/narrative-and-hypotheses.md`, `notes/figure-strategy.md`, then `notes/claim-evidence-ledger.md` | Draft numbers or inherited conclusions. |
+| Verify a run or comparison | `verification/provenance/run-inventory.csv`; for a comparison also open `verification/provenance/comparison-inventory.csv`; then `notes/hosts-data-and-figures.md` and one relevant provenance record | Inferring identity from filenames, folders, or candidate namelists. |
+| Generate/promote a figure | For the external WRF catalogue first read `verification/figures/archive-inventory.md`; then use `verification/figures/manifest.csv` and `figures/MANIFEST.md` | Copying candidate images directly into `figures/`. |
 | Mine literature/history | `notes/resource-map.md`; for cross-paper context use `notes/literature-synthesis-register.md`; then open one named critique, extract, commit, issue, or PR | All of `~/reviews`, raw PDFs, image trees, or the full legacy repo. |
 | Edit manuscript/build | `main.tex`, `paperpile.bib`, `Makefile` | `Definitions/` unless debugging the class/template. |
 
@@ -26,6 +26,9 @@ Private working repository for an MDPI **Air** manuscript about WRF meteorology 
 - Meteorological fidelity is necessary for chemical interpretation; do not claim chemistry or inventories are settled.
 - Include only `promoted` files from `figures/MANIFEST.md`; synthetic tests write only to temporary directories.
 - Record new facts in the run inventory, figure manifest, or claim ledger before drafting prose.
+- The current matched forcing-by-feedback factorial is X6 (GFS two-way), X10
+  (GFS one-way), X5 (NAM two-way), and X3 (NAM one-way); resolve their exact
+  paths through `verification/provenance/run-inventory.csv`, not this router.
 
 ## Hosts
 

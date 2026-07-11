@@ -3,6 +3,35 @@
 Use this map to mine selectively.
 File presence is not evidence quality, and repeated claims across files are not independent corroboration.
 
+## Source-of-truth hierarchy
+
+This repository decides what supports the paper; sibling repositories and external storage retain the machinery and large artifacts.
+When two records disagree, use the authority named below and record the discrepancy rather than silently choosing the more convenient value.
+
+| Question or artifact | Canonical paper-facing record | Technical or external authority | Rule |
+|---|---|---|---|
+| Manuscript claim and status | `notes/claim-evidence-ledger.md` | Exact cited analysis, figure, table, or literature source | Prose in `main.tex` does not validate itself. |
+| Scientific framing and experiment role | `ROADMAP.md` and `notes/narrative-and-hypotheses.md` | Controlled-comparison evidence named in the claim ledger | Separate the frozen result core from context and reviewer reserve. |
+| WRF run identity used by the paper | `verification/provenance/run-inventory.csv` | As-run output headers, namelist fingerprints, and durable archive/control packet | Never infer identity from a directory name or candidate namelist. |
+| Run comparison and manuscript role | `verification/provenance/comparison-inventory.csv` | Member rows in the run inventory plus the named analysis and figure records | Use stable comparison IDs to connect runs to claims; do not promote a reviewer-reserve pair by prose alone. |
+| Runnable WRF case or namelist change | Pointer from the run inventory or provenance record | `../brc-wrf/brc-cases/` and the immutable archived control packet | `brc-wrf` owns execution; this repo records the verified paper-facing identity. |
+| Manuscript-specific analysis or plot | `verification/scripts/` plus its provenance/manifest row | Raw inputs named by that record | Keep one reproducible command and the source commit or hash. |
+| Reusable download, reduction, verification, or plotting behavior | Pointer from this repo | `../brc-tools` code, tests, and documentation | General code changes belong in `brc-tools`, not in a paper-specific wrapper. |
+| Raw WRF, NWP, observation, or cache data | `verification/data/manifest.csv`, then its named provenance record | CHPC archive/scratch or the named data provider | Do not commit bulk data; tracked CSVs are derived evidence, not raw truth. |
+| Candidate or diagnostic image | `verification/figures/manifest.csv` | Generator, inputs, and external archive path recorded in its row | Presence or visual polish alone is not provenance. |
+| Figure admitted to the manuscript | `figures/MANIFEST.md` | Matching verified row in `verification/figures/manifest.csv` | Only `promoted` files may enter `main.tex`. |
+| Bibliographic identity | Complete Paperpile export in `paperpile.bib` | Publisher record or source publication | Do not invent or hand-maintain replacement BibTeX entries. |
+| Literature interpretation or critique | `notes/literature-synthesis-register.md` and the relevant claim-ledger row | Named critique/extract under `~/reviews`, then the underlying publication | Critiques locate risks and passages; cite the underlying source. |
+| Paper-specific full-figure configuration and archive catalogue | `verification/config/figures/` and `verification/figures/archive-inventory.md` | `../brc-tools` figure engine and the external figure archive | The TOMLs define requested products; the catalogue records coverage, gaps, renderer state, and visual checks. |
+
+### Donor deprecation rule
+
+`../wrf-nudge-ozone-air2026` is a read-only deprecation candidate, not an active
+source of manuscript truth.
+Its disposition is recorded in
+`verification/docs/wrf-nudge-donor-disposition.md`; preserve its Git history until
+the final cross-repository pointer audit passes.
+
 ## Highest-value sources
 
 | Resource | What to harvest | Important caution |
@@ -11,7 +40,8 @@ File presence is not evidence quality, and repeated claims across files are not 
 | `verification/provenance/WRF-RUN-TO-REPORT-MAP.md` | Run-lineage contradictions and questions | It contains proposals and unresolved joins, not source truth. |
 | `verification/data/*.csv` and `verification/figures/candidates/` | Existing score/figure longlist and cheap diagnostic leads | Several comparisons are heterogeneous; four synthetic overlay files were removed. Recompute promoted results. |
 | `~/reviews/matichuk-cmaq-ub-2017/critique.md` | Completed critical audit of inventory tuning, WRF/CMAQ albedo decoupling, deposition, and attribution limits | Read before asserting chemistry or inventories are relatively adequate. |
-| `~/reviews/{ahmadov-ubwo-2015-acp,neemann-2015-UB-CAP,tran-2018-fdda}/critique.md` | Experiment-design strengths, confounds, and portable checks | Use `_paper.md` only when the critique points to a specific source passage. |
+| `~/reviews/{ahmadov-ubwo-2015-acp,neemann-2015-UB-CAP}/critique.md` and `notes/literature/tran-2018-fdda/critique.md` | Experiment-design strengths, confounds, and portable checks | Use a publication extraction only when the critique points to a specific source passage. |
+| `verification/provenance/tran-2018-paper-archive-reconciliation.md` | Differences between the published Tran et al. configuration and locally archived WRF candidates | It narrows provenance claims; it does not identify `trang_ref` as the literal published run. |
 | `notes/literature-synthesis-register.md` | Compact register of all four `~/reviews/synth-*` collections, what each critiques, manuscript uses, and citation gaps | Read this before opening an individual synthesis. |
 | `~/reviews/synth-ahmadov+neemann+tran/synthesis.md` | Peer-reviewed 2013 emissions/meteorology/FDDA triad and its missing cross-lever experiments | Shared episode does not make the studies a controlled factorial comparison. |
 | `~/reviews/synth-bingham+saprc+tran/synthesis.md` | BRC 2015--2023 configuration lineage, disclosure gaps, version/snow questions, and lost ice-fog fix | Two members are reports and one is a section extract; bibliography entries are still missing. |

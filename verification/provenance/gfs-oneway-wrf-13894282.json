@@ -1,0 +1,75 @@
+{
+  "study_id": "X10",
+  "run_id": "pelican_gfs_1way_default_ysu_20130202",
+  "case": "pelican2013_gfs_3_1_333m_75lev_oneway",
+  "comparison_parent": "pelican2013_gfs_3_1_333m_75lev",
+  "design": "GFS one-way member of the default-terrain GFS/NAM by one-way/two-way feedback factorial",
+  "paths": {
+    "control": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_gfs_3_1_333m_75lev_oneway/control/run_20260710T234000Z",
+    "archive": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_gfs_3_1_333m_75lev_oneway/full6h/run_20260710T234000Z",
+    "parent_archive": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_gfs_3_1_333m_75lev/full6h/run_20260630T181555Z",
+    "full_figures": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_gfs_3_1_333m_75lev_oneway/full6h/run_20260710T234000Z/full-figures",
+    "cross_case_figures": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_pub_figures/compare"
+  },
+  "jobs": {
+    "preparation": "13894268",
+    "wrf": "13894282",
+    "quicklooks": "13896648",
+    "manuscript_analysis": "13896641",
+    "full_figure_sweep": "13896642",
+    "symmetric_forcing_figures": "13896828",
+    "exact_config_convergence": "13896871"
+  },
+  "forcing": {
+    "source": "GFS analysis product gfsanl_4",
+    "met_em_source": "six verified files reused from X6",
+    "new_download": false,
+    "wps_rerun": false,
+    "num_metgrid_levels": 27,
+    "num_metgrid_soil_levels": 4,
+    "input_manifest_sha256": "912ae1e8bccda076798011ac769ace49b1ea985a61d8a33007aaf43b18b78209"
+  },
+  "configuration": {
+    "wrf_version": "4.8.0",
+    "wrf_commit_recorded_at_runtime": "31fb1628",
+    "init_utc": "2013-02-02T12:00:00Z",
+    "end_utc": "2013-02-02T18:00:00Z",
+    "domains": 3,
+    "dx_m": [3000.0, 1000.0, 333.333],
+    "e_vert": [75, 75, 75],
+    "feedback": 0,
+    "normalized_change_from_x6": "domains.feedback: 1 -> 0 only",
+    "fdda": "none; GRID_FDDA=0",
+    "physics": "Thompson; RRTMG; revised MM5; Noah; YSU"
+  },
+  "wrf_acceptance": {
+    "host": "notch392",
+    "state": "COMPLETED",
+    "exit_code": "0:0",
+    "real_elapsed_seconds": 32,
+    "wrf_elapsed_seconds": 5865,
+    "finished_utc": "2026-07-11T01:20:27Z",
+    "wrfout_count": 21,
+    "success_real": true,
+    "success_wrf": true,
+    "archive_phases_exit_zero": true,
+    "error_marker_scan_bytes": 0
+  },
+  "hashes": {
+    "namelist_input_sha256": "0b4947111d85ba08daed28dedbfe72a8d1417c58ae7db070dc8e9da957480a92",
+    "rsl_out_0000_sha256": "b4c6395758609f728bb3140b94ae0229cc2179b0c033cf580069bc0f48ffa006",
+    "real_rsl_out_0000_sha256": "99b321196cd093b670df499165148ab256e24d40540fde709e8aca65379a7818",
+    "d02_12z_header_sha256": "c06c04a59e9d0315fa028dbf2e5e12d3bf9b323b0a1bd836ae5553beb07f293e",
+    "execution_manifest_sha256": "bf5b10053c7f84e001165ef214e0ad73fb36ca38cd5b29cd407b120db401d724"
+  },
+  "postprocessing": {
+    "quicklook_png_count": 54,
+    "full_figure_png_count": 63,
+    "cross_case_png_count": 247,
+    "final_configured_tasks": 730,
+    "final_convergence_skipped_up_to_date": 730,
+    "case_config_sha256": "58e2b12749983f9525046919694c965624c8b2945aec84cc22caaf5dd1a8f06a",
+    "brc_tools_commit": "89883ceb52988182943d0fb3f9efd0b2dd835c10",
+    "visual_review": "representative surface, section, upper-air, skew-T, profile, heat-deficit, forcing-difference, and feedback-difference products inspected"
+  }
+}

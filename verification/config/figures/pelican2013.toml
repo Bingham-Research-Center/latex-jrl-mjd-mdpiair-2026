@@ -1,0 +1,165 @@
+# pelican2013 — WRF publication-figure case (early-2013 Uinta Basin cold-pool study)
+#
+# Declarative case for the dataset-agnostic figure engine in brc-tools
+# (brc_tools/nwp/wrf_figures.py, driven by scripts/wrf_figures.py --config <this>).
+# This is the ONLY pelican2013-specific artifact; the engine/CLI live in brc-tools.
+# Schema + semantics: ../brc-tools/docs/WRF-FIGURE-ENGINE.md
+#
+# All eight runs share the d01=3 km / d02=1 km / d03=333 m nest (75 eta levels) over
+# the Uinta Basin, 2013-02-02 12->18 UTC hourly.  Run details / findings:
+# experiments/pelican2013-cold-pool-figures.md
+
+[case]
+slug = "pelican2013"
+label = "Pelican 2013"
+# Exact archive path (this repo tracks exact artifact pointers; see EXTERNAL-PATHS.md).
+# BRC_WRF_ARCHIVE overrides this at runtime.
+archive_dir = "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive"
+run_subdir = "full6h"                       # <archive>/<run.dir>/full6h/run_*/
+annotation = "pelican2013 | brc-tools"
+crest_m = 2200.0                            # basin crest height (upper-air / heat deficit)
+profile_hours = [12]                        # hour(s) for the theta(z) profile family
+sounding_hour = 12                          # analysis hour for the station skew-Ts (only RAOB launch)
+upper_pressure_hpa = 600.0                  # synoptic T-advection surface (well above the basin)
+upper_adv_domain = "outer"                  # compute the 600 hPa T-adv on d01 (clean; not 333 m noise)
+focus_point = { name = "Horsepool", lat = 40.144, lon = -109.467 }
+surface_vars = [
+  { key = "theta2m", style = "theta_2m",       wind = true  },
+  { key = "t2",      style = "temp_2m",         wind = true  },
+  { key = "wspd10",  style = "wind_speed_10m",  wind = true  },
+  { key = "snow",    style = "snow_depth",      wind = false },
+  { key = "pblh",    style = "pblh",            wind = false },
+]
+
+[waypoints]
+# Basin sites for map markers and along-section labels.  The d03 EW/NS sections run
+# through the domain centre (lat ~40.25 / lon ~-109.65), so Randlett & Pelican Lake fall
+# on them; the wider sites appear on the d01/d02 surface panels and the 600 hPa map.
+Horsepool              = { lat = 40.144,  lon = -109.467 }
+Vernal                 = { lat = 40.455,  lon = -109.530 }
+Roosevelt              = { lat = 40.300,  lon = -109.989 }
+"Pelican Lake"         = { lat = 40.1808, lon = -109.6810 }
+Ouray                  = { lat = 40.0891, lon = -109.6879 }
+"Fort Duchesne"        = { lat = 40.2827, lon = -109.8593 }
+Randlett               = { lat = 40.2402, lon = -109.8038 }
+Bonanza                = { lat = 40.0166, lon = -109.1791 }
+Myton                  = { lat = 40.1938, lon = -110.0630 }
+Duchesne               = { lat = 40.1633, lon = -110.4029 }
+"Starvation Reservoir" = { lat = 40.1650, lon = -110.4300 }
+
+[soundings]
+# Operational RAOB proxies overlapping the domains (all in d01; the basin has none).
+stations = ["KSLC", "KGJT", "KRIW"]
+# Only the distinct driving analyses need station skew-Ts (the NAM feedback/terrain
+# variants share d01 away from the nest).
+ic_cases = ["gfs", "nam"]
+
+[runs]
+gfs           = { dir = "pelican2013_gfs_3_1_333m_75lev",                  label = "GFS 2-way" }
+gfs_oneway    = { dir = "pelican2013_gfs_3_1_333m_75lev_oneway",           label = "GFS 1-way" }
+nam           = { dir = "pelican2013_nam_3_1_333m_75lev",                  label = "NAM 2-way" }
+nam_oneway    = { dir = "pelican2013_nam_3_1_333m_75lev_oneway",           label = "NAM 1-way" }
+# GEOG terrain source resolution: 5m = 5 arc-MINUTES (~9 km); 3s = 3 arc-SECONDS (~90 m).
+nam_terrain5m = { dir = "pelican2013_nam_3_1_333m_75lev_oneway_terrain5m", label = "NAM 1-way terrain 5 arcmin (~9 km)" }
+nam_terrain3s = { dir = "pelican2013_nam_3_1_333m_75lev_oneway_terrain3s", label = "NAM 1-way terrain 3 arcsec (~90 m)" }
+nam_terrain3s_slope = { dir = "pelican2013_nam_3_1_333m_75lev_oneway_terrain3s_slope", label = "NAM 1-way terrain3s + slope/shading" }
+nam_terrain3s_slope_myj = { dir = "pelican2013_nam_3_1_333m_75lev_oneway_terrain3s_slope_myj", label = "NAM 1-way terrain3s + slope/shading + MYJ" }
+
+# Difference families (case a minus case b).  Each pair shares nesting/ICs so the
+# named axis is the only difference.  `dir` fixes the output subdir for parity with
+# the pre-engine driver.
+[[differences]]
+a = "gfs"
+b = "nam"
+tag = "GFS-NAM"
+dir = "diff_gfs_nam"
+feedback = false
+sections = true      # driving analyses diverge strongly; show EW/NS theta sections too
+
+[[differences]]
+a = "gfs_oneway"
+b = "nam_oneway"
+tag = "GFS-NAM-1way"
+dir = "diff_gfs_nam_oneway"
+feedback = false
+sections = true      # symmetric forcing contrast for the one-way factorial row
+
+[[differences]]
+a = "nam"
+b = "nam_oneway"
+tag = "2way-1way"
+dir = "diff_feedback"
+feedback = true      # small signal -> tighter diff colour limit
+sections = true      # retain vertical-theta feedback diagnostics for the factorial pair
+
+[[differences]]
+a = "gfs"
+b = "gfs_oneway"
+tag = "GFS-2way-1way"
+dir = "diff_feedback_gfs"
+feedback = true
+sections = true      # match the NAM feedback product set
+
+[[differences]]
+a = "nam_oneway"
+b = "nam_terrain5m"
+tag = "terrain-900m-9km"
+dir = "diff_terrain"
+feedback = false
+sections = false
+limit = 4.0          # shared fixed scale across the terrain-resolution diffs
+
+[[differences]]
+a = "nam_oneway"
+b = "nam_terrain3s"
+tag = "terrain-900m-90m"
+dir = "diff_terrain_fine"
+feedback = false
+sections = true      # terrain signal is strongest in the vertical
+limit = 4.0
+
+# Tran-inspired bridge: isolate terrain radiation first, then the MYJ/Eta increment.
+[[differences]]
+a = "nam_terrain3s_slope"
+b = "nam_terrain3s"
+tag = "slope-shading-control"
+dir = "diff_slope_shading"
+feedback = false
+sections = false
+limit = 4.0
+
+[[differences]]
+a = "nam_terrain3s_slope_myj"
+b = "nam_terrain3s_slope"
+tag = "MYJ-Eta-slope"
+dir = "diff_myj_eta"
+feedback = false
+sections = true
+limit = 4.0
+
+# Headline terrain-resolution comparison: fine 3 arcsec (~90 m) minus coarse 5 arcmin
+# (~9 km) GEOG, same ICs/nesting so terrain source is the only axis.  Vertical sections
+# on; fixed +/-4 K so it reads on the same scale as the vs-900m diffs above.
+[[differences]]
+a = "nam_terrain3s"
+b = "nam_terrain5m"
+tag = "terrain-3arcsec-5arcmin"
+dir = "diff_terrain_res"
+feedback = false
+sections = true
+limit = 4.0
+
+[style]
+# Fixed shared colour scales (VAR_STYLES in brc-tools) stay the default so figures
+# across cases/domains/hours compare fairly.  Set autoscale = true or add
+# [style.overrides.<var>] tables to opt a variable out.
+autoscale = false
+
+[map]
+# Natural-Earth reference overlays on the surface / upper-air / domains maps.  Stage the
+# shapefiles once with `python scripts/fetch_basemap.py` (brc-tools) into CARTOPY_DATA_DIR;
+# fail-soft (no data -> figure renders without the overlay, no crash on offline nodes).
+states = true
+roads  = true   # US highways (10m Major/Secondary Highway)
+rivers = true   # incl. the Green River
+lakes  = true

@@ -7,8 +7,24 @@ It does not argue that emissions inventories, deposition, photolysis, or chemica
 Instead, it treats the simulated depth, persistence, and ventilation of the 2 February 2013 Uinta Basin cold-air pool as a prerequisite for interpreting winter ozone.
 The practical target is not a generic WRF ranking: it is whether the meteorological field represents the shallow mixing volume and weak ventilation that a downstream chemistry model actually receives.
 
-The current manuscript is intentionally evidence-light until the CHPC run inventory identifies which experiments form defensible comparisons.
-Candidate hypotheses below are not manuscript results.
+The CHPC inventory and common-AGL analysis now support a narrow first-draft result core.
+The forcing response replicated across both feedback modes is primary, the small source-conditioned feedback interaction is secondary, and the remaining candidate hypotheses stay outside the first-draft Results.
+
+## Plain-language comparison-to-story map
+
+The machine-readable authority is `verification/provenance/comparison-inventory.csv`.
+Use this shorter view when deciding what story a run can support.
+
+| Story role | Comparison IDs | What the evidence can support | What it cannot support |
+|---|---|---|---|
+| Primary result | CMP01 and CMP02 | The GFS-minus-NAM response is coherent under both feedback modes over the matched five-hour d02 sample. | It cannot yet separate initial-condition effects from lateral-boundary effects or establish multi-day persistence. |
+| Secondary bounded result | CMP03, CMP04, and CMP05 | Feedback is nearly null under NAM, small under GFS, and much smaller than the forcing response; the interaction is source conditioned. | It is not general evidence that one-way and two-way nesting are equivalent. |
+| Reviewer reserve | CMP06--CMP11 | Fine-terrain feedback, slope/shading, PBL/surface-layer, and terrain-source pairs are controlled enough to motivate focused follow-up. | They should not enter first-draft Results without their named provenance or analysis gates. |
+| Excluded or context only | CMP12 and CMP13 | The apparent resolution ladder and legacy nudged lineage expose design and provenance limitations. | They cannot support a resolution ranking, a nudging-effect estimate, or attribution to the literal Tran et al. run. |
+
+In practical writing terms, lead with CMP01/CMP02, use CMP03--CMP05 to show that the main result survives a nesting choice, and mention the remaining rows only as limitations, reviewer reserve, or future controlled work.
+Use `notes/figure-strategy.md` to choose the minimum figure spine or one of three
+bounded narrative packages without reopening the full archive.
 
 ## Title candidates
 
@@ -27,7 +43,9 @@ Use extracted Markdown and critiques rather than rereading the PDFs during norma
 - `~/reviews/ahmadov-ubwo-2015-acp/_paper.md` and `critique.md`
 - `~/reviews/matichuk-cmaq-ub-2017/_paper.md` and `critique.md`
 - `~/reviews/neemann-2015-UB-CAP/_paper.md` and `critique.md`
-- `~/reviews/tran-2018-fdda/_paper.md`, `critique.md`, and `wrf-data-paper-contradictions.md`
+- Tran et al. (2018) publication/extraction, the local
+  `notes/literature/tran-2018-fdda/critique.md`, and
+  `verification/provenance/tran-2018-paper-archive-reconciliation.md`
 - `~/reviews/wrf-ozone-studies/seth-notes-on-papers.md` and its targeted `_extracts/*-critique.md`
 
 These paths normally exist on the Akamai/Linode writing host and should not be assumed available on CHPC.
@@ -60,8 +78,8 @@ These constraints strengthen the case for a meteorology-first evaluation while n
 
 | Thread | Constructively critical literature question | Candidate experiment | Candidate hypothesis | Falsifier or limiting result | Air-chemistry consequence | Status |
 |---|---|---|---|---|---|---|
-| 1. Initial and boundary state | Is an apparent WRF physics error inherited from a biased driving analysis or created during forecast evolution? Tran's NAM warm/moist premise was load-bearing but not shown; repeated reinitialization can reset a mature pool. | Same configuration and feedback, GFS versus NAM driving analyses; forecast-age/spin-up variants if present. | Lower-tropospheric differences in the driving analysis produce a first-order difference in cold-pool maintenance over the short forecast. | The common-window temperature and stability differences are negligible or arise only after another configuration diverges. | Initial-state error changes dilution volume before chemistry starts. | GFS/NAM touchstone pair exists; as-run equivalence TBC. |
-| 2. Domain, resolution, and nest feedback | Are the meteorological fields evaluated at the same scale that would drive chemistry? Neemann evaluated a finer nest than the CMAQ-driving domain; the current 333 m nest excludes many bench stations. | NAM one-way versus two-way feedback; domain-size and grid-spacing variants from the CHPC inventory. | Domain design changes basin ventilation or stability enough to matter, while feedback alone may be small over six hours. | Differences are below observational and numerical uncertainty on the matched domain. | A chemistry grid cannot recover cold-pool structure absent from its meteorological driver. | One-/two-way pair exists; wider resolution ladder TBC. |
+| 1. Initial and boundary state | Is an apparent WRF physics error inherited from a biased driving analysis or created during forecast evolution? Tran's NAM warm/moist premise was load-bearing but not shown; repeated reinitialization can reset a mature pool. | X6 versus X5 under two-way feedback and X10 versus X3 under one-way feedback, with matched d02 grid, physics, terrain, initialization time, and valid window. | Lower-tropospheric differences in the driving analysis produce a first-order difference in cold-pool maintenance over the short forecast under both feedback modes. | The common-window temperature, common-AGL stability, and transport-wind differences are negligible, change sign, or vanish under the second feedback mode. | Initial-state error changes dilution volume before chemistry starts. | **Primary result:** the state difference is coherent under both feedback modes; inherited initial versus lateral-boundary contributions remain unresolved. |
+| 2. Domain, resolution, and nest feedback | Are the meteorological fields evaluated at the same scale that would drive chemistry? Neemann evaluated a finer nest than the CMAQ-driving domain; the current 333 m nest excludes many bench stations. | X10 versus X6 under GFS and X3 versus X5 under NAM, with feedback as the only reconciled within-source change. | Feedback is small relative to the forcing response over this six-hour run. | A coherent feedback or forcing-by-feedback response approaches the GFS--NAM response. | A chemistry grid cannot recover cold-pool structure absent from its meteorological driver. | **Secondary bounded interaction:** NAM is nearly null; GFS and the paired interaction are coherent but small on the five-hour d02 sample; no general equivalence claim. |
 | 3. Stable-layer representation | Do vertical levels, model top, PBL treatment, or WRF version resolve and retain the shallow stable layer? Tran showed diagnosed PBL height can silently redefine nudging reach; later evaluations found version effects larger than several other changes. | Level-count, vertical-grid, PBL, and version pairs identified by the inventory. | Enhanced or better-placed lower-tropospheric resolution changes near-surface mixing, inversion strength, and their evolution more than nominal grid refinement alone. | No controlled pair exists, or differences are inseparable from physics/version changes. | Excess mixing dilutes precursors; too little mixing can exaggerate nighttime trapping and titration. | TBC inventory. |
 | 4. Surface, terrain, and cloud physics | Are snow, albedo, terrain, land surface, and cloud phase represented consistently? Neemann bounded snow and cloud effects; Matichuk showed WRF albedo changes need not reach CMAQ photolysis. | Terrain-resolution, snow/land, microphysics, radiation, and surface-scheme variants from the inventory. | Surface and cloud choices materially affect radiative cooling and cold-pool persistence in this case. | The tested choices do not alter process fields, or the experiment changes multiple levers without a control. | Meteorology affects confinement, while chemistry separately needs the correct snow photolysis and deposition treatment. | TBC inventory. |
 | 5. Data assimilation versus a free forecast | Does nudging correct the cold pool or impose the bias of the analysis being assimilated? Verification is not independent when scored observations were also assimilated. | Same-case nudged and un-nudged pairs if recoverable; otherwise literature/context only. | A short free forecast can provide competitive surface meteorology without the stable-layer distortions possible under biased nudging. | No same-case controlled pair exists, or independent observations favor the nudged structure. | Assimilation can improve apparent scores without guaranteeing the transport and mixing fields needed by chemistry. | No clean same-case pair currently established. |
@@ -72,7 +90,7 @@ Every promoted comparison should answer both a conventional performance question
 At minimum, the analysis should show the time evolution of near-surface temperature and wind together with the strongest defensible lower-tropospheric stability or inversion-depth diagnostic available on the matched sample.
 Run differences should be followed through time so inherited initial-state error can be separated from developed mixing or ventilation error.
 
-The currently proposed 14--18 UTC window contains only five hourly samples.
+The frozen 14--18 UTC window contains only five hourly samples.
 It can test short-window structure and evolution, but it cannot demonstrate multi-day cold-pool persistence or reproduce the downstream CAMx failure sequence described in the report literature.
 Window-mean scores therefore cannot stand alone, and any longer-timescale claim requires a longer provenance-checked run and matched observations.
 
@@ -89,10 +107,11 @@ A thread becomes a manuscript hypothesis only when:
 If fewer than five controlled tests exist, the paper must not manufacture five positive findings.
 An unsupported thread remains a literature gap or future experiment.
 
-## Intended manuscript arc
+## Frozen first-draft arc
 
 1. Winter ozone depends on chemistry occurring inside a difficult-to-model cold-air pool.
 2. Downstream chemical applications show the practical failure mode when that pool is diluted or vented, without establishing that meteorology is the only controlling uncertainty.
 3. Prior emissions, chemistry, and meteorology studies expose recurring configuration questions but often mix controls, operating regimes, or validation targets.
-4. The 2 February 2013 experiment matrix tests the subset that the run inventory can defend, using time-resolved retention diagnostics alongside aggregate scores.
-5. The conclusion will answer only the promoted questions, including null or inconclusive answers, within the temporal scope of the verified runs.
+4. The matched GFS and NAM runs test the response to driving analysis under both feedback modes, using time-resolved 50--500 m AGL stability and transport wind alongside surface scores.
+5. The two within-source feedback pairs and their paired interaction provide a bounded secondary result, while terrain, PBL, resolution, and nudging results remain outside the first-draft core.
+6. The conclusion answers only these promoted questions within the five-hour verified window and does not claim multi-day persistence or settled chemistry.

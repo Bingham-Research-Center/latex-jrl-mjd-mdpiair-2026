@@ -18,6 +18,11 @@ config that produced the runs.
   fingerprints. Run it via `CHPC-WRF-INVENTORY-HANDOFF.md`.
 - `namelist_candidates.txt` — the `namelist.input` candidates surfaced from the archive
   (raw config to reconcile against the runs before it enters Methods).
+- `run-inventory.csv` — canonical paper-facing identities and fingerprints for each
+  independently runnable configuration inspected for this manuscript.
+- `comparison-inventory.csv` — controlled-pair and context register linking stable run
+  IDs to the scientific lever, claim IDs, figure IDs, manuscript role, caveats, and
+  next evidence gate.
 - `CHPC-WRF-INVENTORY-RESULTS.md` — summary of running the inventory (checksum, per-tree
   counts, config labels, header coverage) to reconcile against the run lookup table. The
   full report tarball is transferred out-of-band, not committed (raw archive listings /
@@ -33,8 +38,9 @@ Run logs (`*.log`, `*.log.txt`) are gitignored — large raw dumps, not tracked.
 2026-07-01 dumps are preserved on the `jrl/first-edits` branch if ever needed.
 
 ## Status
-Candidate namelists are recovered but **not yet reconciled** against the actual runs — verify
-forcing / scheme / level / `dx` / nudging / window against the run output before citing in
-Methods (flagged in `main.tex`).
-As of 2026-07-09 the full inventory (`CHPC-WRF-INVENTORY-RESULTS.md`) is generated and
-awaiting that reconciliation.
+The four default-terrain runs used by the manuscript factorial are reconciled
+against as-run namelists and output headers in `run-inventory.csv`: X6/X10 GFS
+and X5/X3 NAM.
+Other recovered candidate namelists remain unverified until they are matched to
+their actual outputs; do not extend the Methods matrix from filenames or
+candidate configurations alone.

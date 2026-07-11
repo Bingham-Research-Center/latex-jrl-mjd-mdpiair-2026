@@ -6,22 +6,23 @@ Tasks are deliberately small; completing one should change a named artifact or s
 Status vocabulary: **next**, **blocked**, **later**, **done**, and **retired**.
 Do not mark a scientific task done because prose exists; mark it done only when its evidence gate is met.
 
-## Current tranche: inventory before interpretation
+## Current tranche: draft from the frozen short-window core
 
 - [ ] **INV-01 · next** — Locate the out-of-band July 9 provenance archive and verify SHA-256 `b616ec6b4ff70f3a36048904d5cad7a99a2563ba4a19fd79198fbf923332a958`.
-- [ ] **INV-02 · next** — Map the three JRL touchstone header fingerprints to exact durable archive basenames.
-- [ ] **INV-03 · next** — Add one canonical inventory row each for GFS two-way, NAM two-way, and NAM one-way.
-- [ ] **INV-04 · next** — Attach the exact as-run namelist and SHA-256 to each touchstone row.
-- [ ] **INV-05 · next** — Record WRF version, initialization, valid times, output cadence, grid, vertical levels, physics, forcing, and feedback for each touchstone.
-- [ ] **INV-06 · next** — Prove that the NAM one-/two-way pair differs only in feedback, or list every confound.
-- [ ] **INV-07 · next** — Fingerprint `REF_long` and state its relationship to the OSIP-era report without calling it Tran-2018 NON.
-- [ ] **INV-08 · next** — Mark every observation station assimilated by any comparator so verification independence is visible.
-- [ ] **DES-01 · blocked by INV-03--08** — Freeze the primary experiment matrix and write one predicted diagnostic plus one falsifier per comparison.
-- [ ] **DES-02 · blocked by DES-01** — Freeze the common domain, station sample, 14--18 UTC window, and spin-up exclusion.
-- [ ] **DES-03 · blocked by DES-02** — Pre-register the time-resolved stability/retention diagnostic used across comparisons and state that a five-hour window cannot establish multi-day persistence.
-- [ ] **ANA-01 · blocked by DES-03** — Re-reduce promoted runs from raw output using recorded commands and hashes.
-- [ ] **ANA-02 · blocked by ANA-01** — Recompute per-run deterministic scores and across-run spread.
-- [ ] **ANA-03 · blocked by ANA-02** — Add uncertainty appropriate for a five-hour, autocorrelated sample and record its limitations.
+- [x] **INV-02 · done** — Mapped the three JRL touchstone header fingerprints to exact durable archive basenames.
+- [x] **INV-03 · done** — Added canonical inventory rows for GFS and NAM under both one-way and two-way feedback.
+- [x] **INV-04 · done** — Attached exact as-run namelist hashes to the touchstone rows.
+- [x] **INV-05 · done** — Recorded version, initialization, valid times, cadence, grid, levels, physics, forcing, and feedback.
+- [x] **INV-06 · done** — Proved that the default-terrain NAM one-/two-way pair differs only in feedback.
+- [ ] **INV-07 · later/context** — Fingerprint `REF_long`; it is excluded from the frozen result matrix and must never be called Tran-2018 NON.
+- [ ] **INV-08 · later/context** — Mark assimilated stations before any nudging comparison; no nudged run enters the frozen result matrix.
+- [x] **DES-01 · done** — Froze X6/X10/X5/X3 as a forcing-by-feedback factorial with forcing contrasts, within-source feedback contrasts, and a paired interaction.
+- [x] **DES-02 · done** — Froze d02, the reporting-station sample, 14--18 UTC, and a two-hour spin-up exclusion.
+- [x] **DES-03 · done** — Defined 50--500 m AGL stability and transport wind and stated the five-hour persistence limit.
+- [x] **ANA-01 · done for promoted core** — Re-reduced X3/X5/X6/X10 from exact raw archive paths.
+- [x] **ANA-02 · done for promoted core** — Recomputed matched surface and vertical summaries.
+- [x] **ANA-03 · done for descriptive scope** — Added two-hour circular block sensitivity intervals while explicitly declining formal five-sample inference.
+- [x] **MAN-01--03 · done for first draft** — Drafted Methods and Results from the frozen claims and promoted three-figure spine; coauthor/scientific review is next.
 - [ ] **COA-01 · next** — Ask Michael for the code/input/command/meaning mapping for each Teams plot still under consideration.
 - [ ] **COA-02 · next** — Send the short Trang/Michael run-identity question list only after the machine inventory narrows it.
 
@@ -41,9 +42,9 @@ Do not mark a scientific task done because prose exists; mark it done only when 
 ### Analysis and verification
 
 - [ ] **ANA-04 · blocked** — Describe the observed 2 February cold pool using provenance-checked temperature, potential-temperature, and inversion diagnostics.
-- [ ] **ANA-05 · blocked** — Test the GFS-versus-NAM surface and lower-tropospheric difference on the frozen sample.
-- [ ] **ANA-06 · blocked** — Test the one-way-versus-two-way feedback difference on the frozen sample.
-- [ ] **ANA-07 · blocked** — Diagnose whether differences are inherited at initialization or develop during forecast evolution.
+- [x] **ANA-05 · done** — Tested the GFS-versus-NAM surface, common-AGL stability, and transport-wind differences on the frozen sample.
+- [x] **ANA-06 · done** — Bounded both within-source feedback responses and their paired forcing-by-feedback interaction on the frozen sample.
+- [ ] **ANA-07 · later** — Separate initialization from lateral-boundary and forecast-evolution effects only if the first draft or reviewers require another experiment.
 - [ ] **ANA-08 · blocked** — Quantify d02/d03 representativeness without treating missing bench stations as model skill.
 - [ ] **ANA-09 · later** — Stratify errors by station elevation and variable; avoid basin means that cancel opposing biases.
 - [ ] **ANA-10 · later** — Apply circular statistics to wind direction and state when calm winds make direction uninformative.
@@ -51,7 +52,7 @@ Do not mark a scientific task done because prose exists; mark it done only when 
 - [ ] **ANA-12 · later** — Test sensitivity to the two-hour spin-up decision.
 - [ ] **ANA-13 · later** — Compare a no-signal/null period only if the experiment and data can be made genuinely comparable.
 - [ ] **ANA-14 · later** — Build a reviewer-reserve table of null, contradictory, and secondary results.
-- [ ] **ANA-15 · blocked by ANA-01** — Pair aggregate surface scores with the preregistered time evolution of inversion strength/depth and ventilation over the matched window.
+- [x] **ANA-15 · done** — Paired aggregate surface scores with common-AGL stability, transport wind, and PBLH over the matched window.
 
 ### Literature and narrative
 
@@ -61,31 +62,31 @@ Do not mark a scientific task done because prose exists; mark it done only when 
 - [ ] **LIT-04 · later** — Decide whether report literature belongs in the main article, supplement, or reviewer reserve.
 - [ ] **LIT-05 · next** — Use `notes/literature-synthesis-register.md` to select which report sources genuinely survive narrative freeze.
 - [ ] **LIT-06 · blocked by LIT-05** — Add the selected report sources to Paperpile and replace the register's citation placeholders through a complete export.
-- [ ] **NAR-01 · blocked by DES-01** — Select the primary narrative from the roadmap matrix.
-- [ ] **NAR-02 · blocked by NAR-01** — Select at most two secondary narratives and explicitly reject unsupported angles.
-- [ ] **NAR-03 · next** — Preserve the chemistry caveat: meteorology is necessary but not shown to be uniquely dominant.
+- [x] **NAR-01 · done** — Selected the driving-state response as the primary narrative.
+- [x] **NAR-02 · done** — Selected the small source-conditioned feedback interaction as the bounded secondary result and rejected resolution/nudging from first-draft Results.
+- [x] **NAR-03 · done** — Preserved the chemistry caveat: meteorology is necessary but not shown to be uniquely dominant.
 - [ ] **NAR-04 · later** — Write the air-chemistry bridge in terms of dilution volume, cold-pool retention/ventilation, stability, transport, photolysis, and deposition interfaces.
 - [ ] **NAR-05 · later** — Decide whether the SIP-era and January runs add useful context or merely distract from controlled touchstones.
 - [ ] **NAR-06 · blocked by LIT-05 and DES-01** — Decide whether the downstream CAMx failure lineage is the Introduction's motivating problem or Discussion context after its report sources and the defensible experiment matrix are known.
 
 ### Figures
 
-- [ ] **FIG-01 · blocked by ANA-01** — Regenerate the observation panels from the frozen dataset into a temporary/candidate directory.
-- [ ] **FIG-02 · blocked by ANA-02** — Regenerate real WRF-versus-observation overlays; confirm no synthetic labels or fixtures.
+- [x] **FIG-01 · done** — Regenerated and verified the observation panels from real data.
+- [x] **FIG-02 · done** — Regenerated real WRF-versus-observation overlays with no synthetic inputs.
 - [ ] **FIG-03 · blocked by ANA-07** — Generate initialization/evolution diagnostics that can distinguish inherited from developed error.
 - [ ] **FIG-04 · blocked by ANA-08** — Generate a domain/station-coverage orientation figure.
 - [ ] **FIG-05 · later** — Select cross-section and time-height panels only after the primary narrative is frozen.
 - [ ] **FIG-06 · later** — Select upper-air panels only if they explain a surface/cold-pool result.
-- [ ] **FIG-07 · later** — Apply `wrf-full-figures` on CHPC when available and record the style version/commit.
+- [x] **FIG-07 · done for the factorial** — The named skill was unavailable, so the documented maintained equivalent ran through the `brc-tools` engine at `89883ceb`, the study TOML, and Slurm; X10 has 63 PNGs and exact-config convergence `13896871` skipped all 730 tasks as current.
 - [ ] **FIG-08 · later** — Check print dimensions, fonts, units, color accessibility, captions, and raster resolution.
-- [ ] **FIG-09 · later** — Promote accepted files to `figures/` and complete both manifests in the same commit.
+- [x] **FIG-09 · done for first-draft spine** — Promoted the observed evolution, bulk theta contrast, and common-AGL retention/ventilation PDFs and completed both manifests.
 - [ ] **FIG-10 · later** — Retain reproducible supplementary/reviewer-reserve diagnostics outside `figures/`.
 
 ### Manuscript and submission
 
-- [ ] **MAN-01 · blocked by INV-03--06** — Draft the touchstone Methods configuration from canonical inventory rows.
-- [ ] **MAN-02 · blocked by DES-02** — Draft observations, QC, station sample, domain, window, and score definitions.
-- [ ] **MAN-03 · blocked by ANA-02** — Draft Results one promoted comparison at a time, including null results.
+- [x] **MAN-01 · done for first draft** — Drafted the touchstone configuration from canonical inventory rows.
+- [x] **MAN-02 · done for first draft** — Drafted observations, sample, domain, window, diagnostic, and dependence treatment.
+- [x] **MAN-03 · done for first draft** — Drafted the driving-state result and bounded feedback null from promoted evidence.
 - [ ] **MAN-04 · blocked by NAR-01** — Draft Discussion around the chosen hypotheses, limitations, and air-chemistry interfaces.
 - [ ] **MAN-05 · later** — Draft concise Conclusions that answer promoted questions one-for-one.
 - [ ] **MAN-06 · later** — Write the abstract only after Results and Conclusions stabilize.
