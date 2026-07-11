@@ -24,10 +24,13 @@ When two records disagree, use the authority named below and record the discrepa
 | Literature interpretation or critique | `notes/literature-synthesis-register.md` and the relevant claim-ledger row | Named critique/extract under `~/reviews`, then the underlying publication | Critiques locate risks and passages; cite the underlying source. |
 | Paper-specific full-figure configuration and archive catalogue | `verification/config/figures/` and `verification/figures/archive-inventory.md` | `../brc-tools` figure engine and the external figure archive | The TOMLs define requested products; the catalogue records coverage, gaps, renderer state, and visual checks. |
 
-### Temporary consolidation rule
+### Donor deprecation rule
 
-`../wrf-nudge-ozone-air2026` currently contains a mixture of unique paper-specific assets and duplicated status/routing prose.
-Treat it as read-only donor evidence during consolidation: migrate and verify one coherent concern at a time, update every surviving pointer, and preserve its Git history until the final deprecation check passes.
+`../wrf-nudge-ozone-air2026` is a read-only deprecation candidate, not an active
+source of manuscript truth.
+Its disposition is recorded in
+`verification/docs/wrf-nudge-donor-disposition.md`; preserve its Git history until
+the final cross-repository pointer audit passes.
 
 ## Highest-value sources
 
@@ -37,7 +40,8 @@ Treat it as read-only donor evidence during consolidation: migrate and verify on
 | `verification/provenance/WRF-RUN-TO-REPORT-MAP.md` | Run-lineage contradictions and questions | It contains proposals and unresolved joins, not source truth. |
 | `verification/data/*.csv` and `verification/figures/candidates/` | Existing score/figure longlist and cheap diagnostic leads | Several comparisons are heterogeneous; four synthetic overlay files were removed. Recompute promoted results. |
 | `~/reviews/matichuk-cmaq-ub-2017/critique.md` | Completed critical audit of inventory tuning, WRF/CMAQ albedo decoupling, deposition, and attribution limits | Read before asserting chemistry or inventories are relatively adequate. |
-| `~/reviews/{ahmadov-ubwo-2015-acp,neemann-2015-UB-CAP,tran-2018-fdda}/critique.md` | Experiment-design strengths, confounds, and portable checks | Use `_paper.md` only when the critique points to a specific source passage. |
+| `~/reviews/{ahmadov-ubwo-2015-acp,neemann-2015-UB-CAP}/critique.md` and `notes/literature/tran-2018-fdda/critique.md` | Experiment-design strengths, confounds, and portable checks | Use a publication extraction only when the critique points to a specific source passage. |
+| `verification/provenance/tran-2018-paper-archive-reconciliation.md` | Differences between the published Tran et al. configuration and locally archived WRF candidates | It narrows provenance claims; it does not identify `trang_ref` as the literal published run. |
 | `notes/literature-synthesis-register.md` | Compact register of all four `~/reviews/synth-*` collections, what each critiques, manuscript uses, and citation gaps | Read this before opening an individual synthesis. |
 | `~/reviews/synth-ahmadov+neemann+tran/synthesis.md` | Peer-reviewed 2013 emissions/meteorology/FDDA triad and its missing cross-lever experiments | Shared episode does not make the studies a controlled factorial comparison. |
 | `~/reviews/synth-bingham+saprc+tran/synthesis.md` | BRC 2015--2023 configuration lineage, disclosure gaps, version/snow questions, and lost ice-fog fix | Two members are reports and one is a section extract; bibliography entries are still missing. |

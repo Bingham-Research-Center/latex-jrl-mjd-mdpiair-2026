@@ -28,10 +28,9 @@ dredge it; use the exact paths below.
 The X-codes are a **provisional typing shorthand / lookup only** — not committed labels.
 They can be remapped to hypothesis/weakness labels later by editing the one code column;
 nothing else depends on them. **X0 = control** (best-estimate free-running config); the
-rest are variations. Why X0 is X0 and why the MYJ run is a *treatment* not the control:
-the temporary donor note
-`../wrf-nudge-ozone-air2026/experiments/pelican2013-pbl-scheme-justification.md`;
-that scientific note is scheduled for the next migration batch.
+rest are variations. Why X0 is X0 and why the MYJ run is a *treatment* not the control
+is documented in
+`verification/docs/pelican2013-pbl-scheme-justification.md`.
 
 Physics is shared across all runs — Thompson(8)/RRTMG(4)/Noah(2), YSU PBL(1)+MM5 sfclay(1),
 `cu=0`, 21-cat land — **except X2**, which swaps to MYJ(2)+Eta(2). A complete standard
@@ -48,7 +47,7 @@ valid times 12–18Z).
 | X3 | `pelican2013_nam_3_1_333m_75lev_oneway` | NAM | 1-way · 333 m | 75 | default ~900 m | baseline | 6 h | `full6h/run_20260702T053120Z/full-figures` | ✓ 63 | 07-09 23:34 | standard-terrain 1-way; ref leg of terrain diffs |
 | X4 | `…_oneway_terrain5m` | NAM | 1-way · 333 m | 75 | 5-arcmin coarse (≈9 km) | baseline | 6 h | `full6h/run_20260707T182414Z/full-figures` | ✓ 63 | 07-09 18:58 | `terrain5m` = 5 arc-**min**, coarser than default |
 | X5 | `pelican2013_nam_3_1_333m_75lev` | NAM | **2-way** · 333 m | 75 | default ~900 m | baseline | 6 h | `full6h/run_20260626T163737Z/full-figures` | ✓ 63 | 07-09 23:34 | feedback test vs X3 |
-| X6 | `pelican2013_gfs_3_1_333m_75lev` | **GFS** | 2-way · 333 m | 75 | default ~900 m | baseline | 6 h | `full6h/run_20260630T181555Z/full-figures` | ✓ 63 | 07-09 23:34 | IC test vs X5 (diverges hard) |
+| X6 | `pelican2013_gfs_3_1_333m_75lev` | **GFS** | 2-way · 333 m | 75 | default ~900 m | baseline | 6 h | `full6h/run_20260630T181555Z/full-figures` | ✓ 63 | 07-09 23:34 | driving-state contrast vs X5; IC/LBC contributions unresolved |
 | X7 | `pelican2013_nam_3_1km_75lev` | NAM | 2-way · 2dom/**1 km** | 75 | default | baseline | **24 h** 00→00Z | `full24h/run_20260625T212123Z/full-figures` | ✓ **216** (48/120/48) | 07-10 02:57 | coarse resolution rung; own `verification/config/figures/pelican2013_1km.toml` |
 | X8 | `pelican2013_nam_d04_111m_50lev_oneway_terrain3s` | NAM | 1-way · **4dom/111 m** | 50 | fine | baseline | 6 h (d03/d04 sub-hrly) | `full6h/run_20260709T041225Z_d04only3s_ts12/full-figures` | ~86 **non-std** | 07-10 01:09 | fine rung; nested `nam_d04_111m/{sections28,surface35,upperair7}` + profiles7/skewt7/domains1/heatdeficit1; **upperair crest-only** (no p600); focus=**Vernal**; own `verification/config/figures/pelican2013_d04.toml` |
 | X9 | `pelican2013_nam_3_1_333m_75lev_twoway_terrain3s` | NAM | **2-way** · 333 m | 75 | fine | baseline | 6 h | — | ✗ **none** | quicklooks 07-10 04:5x | **quicklooks only** at `full6h/run_20260710T084413Z/quicklooks`; **not a TOML `[runs]` key yet** — see Table 3 |
@@ -58,9 +57,9 @@ Legacy dirs `feb2013_basin_nam_12_4km`, `jan2013_basin_gefs`, `pelican2013_rap_3
 are **out of scope** (no/near-zero publication figures) and intentionally omitted.
 
 † **Terrain-label caveat:** `terrain3s` = 3 arc-**second** GEOG (~90 m) per
-`verification/config/figures/pelican2013.toml`; the temporary donor experiment
-record (`../wrf-nudge-ozone-air2026/experiments/pelican2013-cold-pool-figures.md`) notes the delivered source
-may be finer (~30 m / 1-arcsec). Reconcile before quoting a resolution. `terrain5m` = 5
+`verification/config/figures/pelican2013.toml`; the delivered source may be finer,
+but that detail is not verified in the current run inventory. Reconcile it before
+quoting another resolution. `terrain5m` = 5
 arc-**minute** (~9 km, coarser than the default ~900 m).
 
 ## Table 2 — Comparison figures (cross-case, under `ARC/pelican2013_pub_figures/compare/`)
@@ -78,7 +77,7 @@ reference leg of every pair — each pair names its own `a`/`b`.
 | X3 − X4 | `terrain-900m-9km` | `diff_terrain` | terrain: default vs coarse | no | 7 | |
 | X3 − X0 | `terrain-900m-90m` | `diff_terrain_fine` | terrain: default vs fine | yes | 42 | count > expected 21 — likely extra/stale; verify before use |
 | X1 − X0 | `slope-shading-control` | `diff_slope_shading` | slope/shading radiation | no | 7 | Tran-bridge step 1 |
-| X2 − X1 | `MYJ-Eta-slope` | `diff_myj_eta` | PBL scheme | yes | 21 | Tran-bridge step 2; small, <~700 m AGL |
+| X2 − X1 | `MYJ-Eta-slope` | `diff_myj_eta` | PBL scheme | yes | 21 | Tran-bridge step 2; coherent low-level response, with PBLH/TKE interpretation pending C19 |
 | X0 − X4 | `terrain-3arcsec-5arcmin` | `diff_terrain_res` | terrain: fine vs coarse (**headline**) | yes | 21 | |
 
 Also under `compare/`: `domains/` (1), `heatdeficit/` (1), `profiles/` (1, Horsepool 12Z),

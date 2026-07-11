@@ -11,7 +11,7 @@ Private working repository for an MDPI **Air** manuscript about WRF meteorology 
 | Work | Open | Avoid by default |
 |---|---|---|
 | Pick or update work | `tasks/microtasks.md` | Legacy checklists without their disposition map. |
-| Change scientific framing | `notes/narrative-and-hypotheses.md`, then `notes/claim-evidence-ledger.md` | Draft numbers or inherited conclusions. |
+| Change scientific framing or choose figures | `notes/narrative-and-hypotheses.md`, `notes/figure-strategy.md`, then `notes/claim-evidence-ledger.md` | Draft numbers or inherited conclusions. |
 | Verify a run or comparison | `verification/provenance/run-inventory.csv`; for a comparison also open `verification/provenance/comparison-inventory.csv`; then `notes/hosts-data-and-figures.md` and one relevant provenance record | Inferring identity from filenames, folders, or candidate namelists. |
 | Generate/promote a figure | For the external WRF catalogue first read `verification/figures/archive-inventory.md`; then use `verification/figures/manifest.csv` and `figures/MANIFEST.md` | Copying candidate images directly into `figures/`. |
 | Mine literature/history | `notes/resource-map.md`; for cross-paper context use `notes/literature-synthesis-register.md`; then open one named critique, extract, commit, issue, or PR | All of `~/reviews`, raw PDFs, image trees, or the full legacy repo. |

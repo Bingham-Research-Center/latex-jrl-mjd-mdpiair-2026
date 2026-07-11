@@ -10,7 +10,7 @@ It must not claim that chemistry, emissions, deposition, or photolysis are alrea
 
 | Narrative | Role if supported | Evidence already present | Gate before promotion |
 |---|---|---|---|
-| Initial and boundary conditions affect a short cold-pool forecast | Primary result | Matched GFS and NAM runs under both one-way and two-way feedback; surface scores; common-AGL retention and ventilation | Keep the claim within 14--18 UTC and distinguish the driving-state response from its unresolved initial-versus-lateral-boundary origin. |
+| Driving-analysis state affects a short cold-pool forecast | Primary result | Matched GFS and NAM runs under both one-way and two-way feedback; surface scores; common-AGL retention and ventilation | Keep the claim within 14--18 UTC and distinguish the driving-state response from its unresolved initial-versus-lateral-boundary origin. |
 | Domain design and nest feedback affect the structure seen by a chemistry grid | Secondary bounded interaction | Matched GFS and NAM one-way/two-way pairs; paired forcing-by-feedback interaction; d02/d03 coverage contrast | Report the small source-conditioned five-hour response without claiming general equivalence or extrapolating to longer integrations. |
 | Stable-layer, surface, snow, terrain, or cloud choices control cold-pool persistence | Experiment-led candidate | Several local run families and literature sensitivities | Inventory must yield controlled pairs; do not infer a physics sensitivity from unrelated configurations. |
 | Nudging can correct or manufacture cold-pool structure | Context or result, depending on recovered runs | Tran critique, SIP-era comparator, January historical evaluation | A same-case controlled nudged/free pair and held-out verification are required for a result. |
@@ -60,6 +60,8 @@ Unresolved heterogeneous lineage, terrain, physics, and resolution records do no
 
 ### Figures and reviewer reserve
 
+- Use `notes/figure-strategy.md` for the deadline-focused longlist, three defensible
+  narrative packages, and the minimum three-figure draft spine.
 - Generate a broad diagnostic longlist on CHPC, then promote only figures that answer a named hypothesis.
 - Keep useful rejected or secondary diagnostics reproducible for supplements and reviewer requests.
 - Do not promote an inherited image solely because it looks publication-ready.

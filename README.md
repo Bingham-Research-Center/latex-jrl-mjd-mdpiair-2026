@@ -15,6 +15,7 @@ It does not duplicate large model output or reusable software.
 | Whether a claim is defensible | `notes/claim-evidence-ledger.md` |
 | Which exact WRF run was inspected | `verification/provenance/run-inventory.csv` |
 | Which run comparison supports which manuscript story | `verification/provenance/comparison-inventory.csv`, then `notes/narrative-and-hypotheses.md` |
+| Which figures support three defensible manuscript stories | `notes/figure-strategy.md` |
 | Whether a dataset is raw, derived, current, superseded, or context only | `verification/data/manifest.csv` |
 | Which data, script, and output produced a candidate figure | `verification/figures/manifest.csv` |
 | Which full-figure sets exist or still need rendering | `verification/figures/archive-inventory.md` |
@@ -28,9 +29,10 @@ The sibling repositories keep narrower technical responsibilities:
 - `../brc-tools` owns reusable download, reduction, verification, and plotting code.
 - Large WRF/NWP/observation files and bulk figure sets remain in CHPC archive or scratch storage; this repo records exact paths, hashes, and commands.
 
-`../wrf-nudge-ozone-air2026` is being treated as a temporary donor/archive while its remaining paper-specific notes are consolidated here in reviewable batches.
-Its accepted figure TOMLs, Slurm wrapper, and compact archive catalogue have moved under `verification/` here.
-Do not add new manuscript-facing truth there, and do not delete or archive it until its unique material and links have been reconciled.
+`../wrf-nudge-ozone-air2026` is now a read-only deprecation candidate.
+Its accepted figure workflow and unique paper-specific experiment and literature notes have been migrated or dispositioned here.
+Its raw paper extraction and FISS experiment remain donor history rather than manuscript evidence.
+Do not add new manuscript-facing truth there; wait for the final cross-repository pointer audit before archiving it.
 
 ## Start here
 
@@ -38,6 +40,7 @@ Do not add new manuscript-facing truth there, and do not delete or archive it un
 - Large-scale plan and narrative gates: [`ROADMAP.md`](ROADMAP.md)
 - Active granular queue and recovered legacy to-dos: [`tasks/microtasks.md`](tasks/microtasks.md)
 - Scientific framing and candidate hypotheses: [`notes/narrative-and-hypotheses.md`](notes/narrative-and-hypotheses.md)
+- Defensive figure longlist and three draft narratives: [`notes/figure-strategy.md`](notes/figure-strategy.md)
 - Claim status and provenance: [`notes/claim-evidence-ledger.md`](notes/claim-evidence-ledger.md)
 - Run-comparison lookup: [`verification/provenance/comparison-inventory.csv`](verification/provenance/comparison-inventory.csv)
 - Dataset lineage and status: [`verification/data/manifest.csv`](verification/data/manifest.csv)
@@ -46,6 +49,7 @@ Do not add new manuscript-facing truth there, and do not delete or archive it un
 - Hosts, data inventory, and figure workflow: [`notes/hosts-data-and-figures.md`](notes/hosts-data-and-figures.md)
 - External full-figure coverage and gaps: [`verification/figures/archive-inventory.md`](verification/figures/archive-inventory.md)
 - Verification pipeline and inherited diagnostics: [`verification/README.md`](verification/README.md)
+- Donor-repository disposition audit: [`verification/docs/wrf-nudge-donor-disposition.md`](verification/docs/wrf-nudge-donor-disposition.md)
 - Publication-promoted figures only: [`figures/MANIFEST.md`](figures/MANIFEST.md)
 
 Do not load `Definitions/`, all candidate figures, or all of `~/reviews` during a normal cold start.

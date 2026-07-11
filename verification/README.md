@@ -13,7 +13,8 @@ It is supporting evidence, not a second manuscript and not part of the MDPI subm
 - `config/figures/` — paper-specific TOMLs consumed by the reusable `brc-tools`
   WRF figure engine.
 - `scripts/` — reduction, scoring, plotting, and smoke tests.
-- `docs/` — reproduction notes and historical evaluations.
+- `docs/` — reproduction notes, historical evaluations, and reviewer-reserve
+  experiment interpretations.
 - `provenance/` — CHPC inventory tools, the canonical run inventory, and the run-to-claim comparison inventory.
 
 ## Evidence tiers
@@ -24,6 +25,9 @@ It is supporting evidence, not a second manuscript and not part of the MDPI subm
 4. Terrain, PBL, slope/shading, and resolution candidates remain outside the first-draft result core.
 
 See `notes/claim-evidence-ledger.md` before moving any result into `main.tex`.
+The migrated PBL and Tran-physics notes under `docs/` remain reviewer reserve;
+`notes/figure-strategy.md` is the deadline-focused decision surface for choosing
+among the promoted spine and optional diagnostics.
 
 ## Local observations
 

@@ -23,6 +23,8 @@ Use this shorter view when deciding what story a run can support.
 | Excluded or context only | CMP12 and CMP13 | The apparent resolution ladder and legacy nudged lineage expose design and provenance limitations. | They cannot support a resolution ranking, a nudging-effect estimate, or attribution to the literal Tran et al. run. |
 
 In practical writing terms, lead with CMP01/CMP02, use CMP03--CMP05 to show that the main result survives a nesting choice, and mention the remaining rows only as limitations, reviewer reserve, or future controlled work.
+Use `notes/figure-strategy.md` to choose the minimum figure spine or one of three
+bounded narrative packages without reopening the full archive.
 
 ## Title candidates
 
@@ -41,7 +43,9 @@ Use extracted Markdown and critiques rather than rereading the PDFs during norma
 - `~/reviews/ahmadov-ubwo-2015-acp/_paper.md` and `critique.md`
 - `~/reviews/matichuk-cmaq-ub-2017/_paper.md` and `critique.md`
 - `~/reviews/neemann-2015-UB-CAP/_paper.md` and `critique.md`
-- `~/reviews/tran-2018-fdda/_paper.md`, `critique.md`, and `wrf-data-paper-contradictions.md`
+- Tran et al. (2018) publication/extraction, the local
+  `notes/literature/tran-2018-fdda/critique.md`, and
+  `verification/provenance/tran-2018-paper-archive-reconciliation.md`
 - `~/reviews/wrf-ozone-studies/seth-notes-on-papers.md` and its targeted `_extracts/*-critique.md`
 
 These paths normally exist on the Akamai/Linode writing host and should not be assumed available on CHPC.

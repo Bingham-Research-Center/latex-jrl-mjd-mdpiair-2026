@@ -16,9 +16,11 @@ meaningful:
 | `pelican2013_d04.toml` | `e2cdd8c0b9c530ab861ca957bbf62454a5ba2f7faf6816c3dfd08376dd2ed42c` | Separate four-domain 111 m case. |
 
 Some comments inside the preserved TOMLs still use their donor-repository paths.
-Use this README, `verification/figures/archive-inventory.md`, and the top-level
-README for current routing; the remaining experiment-note pointers will be
-reconciled in the literature/experiment-note migration batch.
+They remain only because the files are hash-preserved.
+Current equivalents are `verification/figures/archive-inventory.md`,
+`verification/docs/pelican2013-pbl-scheme-justification.md`,
+`verification/docs/pelican2013-tran-physics-bridge.md`, and
+`notes/figure-strategy.md`.
 
 Run the main configuration through `verification/slurm/pelican_figures.slurm`.
 Set `PELICAN_FIGURE_CONFIG` to the absolute path of another TOML when rendering
