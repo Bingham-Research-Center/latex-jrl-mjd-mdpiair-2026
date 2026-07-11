@@ -14,8 +14,8 @@ It is supporting evidence, not a second manuscript and not part of the MDPI subm
 
 ## Evidence tiers
 
-1. X6 GFS two-way versus X5 NAM two-way is the frozen primary driving-analysis comparison; its as-run identities, grids, physics, window, and source-specific metgrid levels are reconciled.
-2. X3 NAM one-way versus X5 NAM two-way is the frozen secondary feedback comparison; feedback is the only as-run namelist change.
+1. X6/X10 GFS and X5/X3 NAM form the frozen default-terrain forcing-by-feedback factorial; their as-run identities, grids, physics, window, and source-specific metgrid levels are reconciled.
+2. X6 versus X10 and X5 versus X3 change only nest feedback within each forcing family, allowing the GFS-minus-NAM response to be checked under both feedback modes.
 3. The SIP-era `trang_ref` and January nudged run are heterogeneous context, not controlled members of the February matrix.
 4. Terrain, PBL, slope/shading, and resolution candidates remain outside the first-draft result core.
 
@@ -48,6 +48,7 @@ The real common-AGL analysis is intentionally off-login and reproducible through
 sbatch verification/slurm/run_retention_analysis.slurm
 ```
 
-The accepted execution was Slurm job `13893307`; its exact archive paths, matched WRF files, station cells, software versions, definitions, and hashes are in `provenance/retention-analysis-13893307.json`.
+The accepted four-run execution was Slurm job `13896641`; its exact archive paths, matched WRF files, station cells, interaction definition, software versions, diagnostics, and hashes are in `provenance/retention-analysis-13896641.json`.
+The earlier three-run execution `13893307` remains as historical provenance and is superseded for the promoted figure and tables.
 
 Before accepting regenerated results, verify the host, run identities, exact 2013 window, common stations/domain, and unchanged Git state outside intended outputs.
