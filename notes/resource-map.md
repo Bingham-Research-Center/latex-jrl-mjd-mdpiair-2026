@@ -3,6 +3,31 @@
 Use this map to mine selectively.
 File presence is not evidence quality, and repeated claims across files are not independent corroboration.
 
+## Source-of-truth hierarchy
+
+This repository decides what supports the paper; sibling repositories and external storage retain the machinery and large artifacts.
+When two records disagree, use the authority named below and record the discrepancy rather than silently choosing the more convenient value.
+
+| Question or artifact | Canonical paper-facing record | Technical or external authority | Rule |
+|---|---|---|---|
+| Manuscript claim and status | `notes/claim-evidence-ledger.md` | Exact cited analysis, figure, table, or literature source | Prose in `main.tex` does not validate itself. |
+| Scientific framing and experiment role | `ROADMAP.md` and `notes/narrative-and-hypotheses.md` | Controlled-comparison evidence named in the claim ledger | Separate the frozen result core from context and reviewer reserve. |
+| WRF run identity used by the paper | `verification/provenance/run-inventory.csv` | As-run output headers, namelist fingerprints, and durable archive/control packet | Never infer identity from a directory name or candidate namelist. |
+| Runnable WRF case or namelist change | Pointer from the run inventory or provenance record | `../brc-wrf/brc-cases/` and the immutable archived control packet | `brc-wrf` owns execution; this repo records the verified paper-facing identity. |
+| Manuscript-specific analysis or plot | `verification/scripts/` plus its provenance/manifest row | Raw inputs named by that record | Keep one reproducible command and the source commit or hash. |
+| Reusable download, reduction, verification, or plotting behavior | Pointer from this repo | `../brc-tools` code, tests, and documentation | General code changes belong in `brc-tools`, not in a paper-specific wrapper. |
+| Raw WRF, NWP, observation, or cache data | Exact path and fingerprint in a provenance or manifest record | CHPC archive/scratch or the named data provider | Do not commit bulk data; tracked CSVs are derived evidence, not raw truth. |
+| Candidate or diagnostic image | `verification/figures/manifest.csv` | Generator, inputs, and external archive path recorded in its row | Presence or visual polish alone is not provenance. |
+| Figure admitted to the manuscript | `figures/MANIFEST.md` | Matching verified row in `verification/figures/manifest.csv` | Only `promoted` files may enter `main.tex`. |
+| Bibliographic identity | Complete Paperpile export in `paperpile.bib` | Publisher record or source publication | Do not invent or hand-maintain replacement BibTeX entries. |
+| Literature interpretation or critique | `notes/literature-synthesis-register.md` and the relevant claim-ledger row | Named critique/extract under `~/reviews`, then the underlying publication | Critiques locate risks and passages; cite the underlying source. |
+| Paper-specific full-figure configuration and archive catalogue | Temporary pointer to `../wrf-nudge-ozone-air2026` during consolidation | `../brc-tools` figure engine and the external figure archive | Migrate the study TOMLs and compact catalogue here before deprecating the donor repo. |
+
+### Temporary consolidation rule
+
+`../wrf-nudge-ozone-air2026` currently contains a mixture of unique paper-specific assets and duplicated status/routing prose.
+Treat it as read-only donor evidence during consolidation: migrate and verify one coherent concern at a time, update every surviving pointer, and preserve its Git history until the final deprecation check passes.
+
 ## Highest-value sources
 
 | Resource | What to harvest | Important caution |

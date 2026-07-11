@@ -3,6 +3,30 @@
 Working repository for a single-file MDPI **Air** manuscript led by John R. Lawson, with Michael J. Davies, Loknath Dhar, and Seth N. Lyman.
 The study evaluates WRF meteorology for the 2 February 2013 Uinta Basin cold-air pool as a prerequisite for later coupled winter-ozone chemistry experiments.
 
+## In plain language: where truth lives
+
+This repository is the paper's coordination home.
+It records what the manuscript claims, which exact runs and data support those claims, and which figures are eligible for the paper.
+It does not duplicate large model output or reusable software.
+
+| If you want to know... | Start here |
+|---|---|
+| What the paper is trying to say | `ROADMAP.md` and `notes/narrative-and-hypotheses.md` |
+| Whether a claim is defensible | `notes/claim-evidence-ledger.md` |
+| Which exact WRF run was inspected | `verification/provenance/run-inventory.csv` |
+| Which data, script, and output produced a candidate figure | `verification/figures/manifest.csv` |
+| Which figures may appear in `main.tex` | `figures/MANIFEST.md` |
+| Where a paper, critique, dataset, namelist, script, or external artifact belongs | `notes/resource-map.md` |
+
+The sibling repositories keep narrower technical responsibilities:
+
+- `../brc-wrf` owns runnable WRF cases, generated control packets, and execution evidence.
+- `../brc-tools` owns reusable download, reduction, verification, and plotting code.
+- Large WRF/NWP/observation files and bulk figure sets remain in CHPC archive or scratch storage; this repo records exact paths, hashes, and commands.
+
+`../wrf-nudge-ozone-air2026` is being treated as a temporary donor/archive while its paper-specific records are consolidated here in reviewable batches.
+Do not add new manuscript-facing truth there, and do not delete or archive it until its unique material and links have been reconciled.
+
 ## Start here
 
 - Manuscript: [`main.tex`](main.tex)
@@ -10,7 +34,7 @@ The study evaluates WRF meteorology for the 2 February 2013 Uinta Basin cold-air
 - Active granular queue and recovered legacy to-dos: [`tasks/microtasks.md`](tasks/microtasks.md)
 - Scientific framing and candidate hypotheses: [`notes/narrative-and-hypotheses.md`](notes/narrative-and-hypotheses.md)
 - Claim status and provenance: [`notes/claim-evidence-ledger.md`](notes/claim-evidence-ledger.md)
-- Selective source-mining map: [`notes/resource-map.md`](notes/resource-map.md)
+- Source-of-truth ownership and selective source-mining map: [`notes/resource-map.md`](notes/resource-map.md)
 - Four-collection literature synthesis register: [`notes/literature-synthesis-register.md`](notes/literature-synthesis-register.md)
 - Hosts, data inventory, and figure workflow: [`notes/hosts-data-and-figures.md`](notes/hosts-data-and-figures.md)
 - Verification pipeline and inherited diagnostics: [`verification/README.md`](verification/README.md)
