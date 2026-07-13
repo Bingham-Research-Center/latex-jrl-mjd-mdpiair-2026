@@ -15,6 +15,14 @@ Use one bounded request per dispatch:
 No mode authorizes a new WRF integration, manuscript edits, or figure promotion.
 Those require a separate writing-host decision.
 
+An executable dispatch must contain one completed task packet.  The templates alone
+are not a plan and authorize no archive scan, analysis, rendering, or write.  When
+John asks for critique plus execution in an already clean CHPC checkout, the critique
+may add the packet on a new topic branch and use the pre-edit `HEAD` as `SOURCE_REF`.
+That planning-only edit does not make the scientific inputs mutable: record both the
+starting commit and the final evidence commit, and stop if any pre-existing dirty file
+overlaps the packet's allowed writes.
+
 ## Before dispatching from the writing host
 
 1. Commit and push every file the CHPC task needs. Give the CHPC session an
@@ -162,10 +170,15 @@ MODE=GATE
 2. Close exactly the gate named in the task packet. If the packet says “next
    gate,” follow the current order in the hybrid handoff; do not copy a priority
    order from this bootstrap.
-3. Use existing immutable output first. Record exact runs, comparison sign,
+3. Before reading bulk data, predeclare the primary metric, masks, units, retained
+   window, sensitivity set, pass test, falsifier, and failed-gate disposition.  A
+   falsified hypothesis is a completed gate result, not a reason to stop before
+   recording it.  Stop only when identity, inputs, or metric validity cannot be
+   established.
+4. Use existing immutable output first. Record exact runs, comparison sign,
    domain, sample, window, inputs, command, numerical result, visual finding,
    falsifier, and small/null result.
-4. Write facts first to the authoritative run/data/claim/figure record. Update
+5. Write facts first to the authoritative run/data/claim/figure record. Update
    rewrite/HYBRID-GATE-REVIEW.md only if ALLOWED_WRITES authorizes it. Do not fill
    a failed slot with a visually suggestive substitute.
 
@@ -230,9 +243,81 @@ MODE: GATE
 SOURCE_REF: <pushed branch plus full commit, or immutable full commit>
 QUESTION: <one C3, C4, C5, C6, or supplement-C2 gate>
 TARGETS: <ANA/CMP IDs, exact run IDs, domain, sample, window, and known artifacts>
+PREDECLARED_TEST: <primary metric, masks, units, retained window, sensitivities,
+  pass rule, and falsifier>
 EXPECTED_OUTPUT: <analysis artifacts and a pass/fail/unresolved evidence record>
 ALLOWED_WRITES: <exact authoritative records and HYBRID-GATE-REVIEW.md, or scratch only>
 COMPUTE: existing-output analysis/render jobs allowed; no WRF integration
 RETURN: <paste report, or commit and push jrl/chpc-REQUEST_ID>
-STOP_IF: <gate-specific falsifier, unresolved identity, or missing immutable input>
+FAIL_DISPOSITION: <main, supplement, reserve, or dropped result if the test fails>
+STOP_IF: <unresolved identity, missing immutable input, invalid metric, unsafe write,
+  or other condition that prevents a valid pass/fail result>
+```
+
+## Current bounded dispatch: 20260713-c4-ana16
+
+This packet was added after critique on CHPC.  It closes only the first gate in the
+frozen order; it does not authorize C3, C5, C6, or supplement C2 work.
+
+```text
+REQUEST_ID: 20260713-c4-ana16
+MODE: GATE
+SOURCE_REF: bf79b507739afeb04499592d8b437e9e028683a1
+QUESTION: Does a basin-integrated, definition-tested heat-deficit trajectory show that
+  both GFS-driven members remain weaker than their feedback-matched NAM members after
+  spin-up, and does it support the stronger claim that GFS loses more cold-pool heat
+  deficit from 14 to 18 UTC?
+TARGETS: ANA-16; CMP01 X6-X5 and CMP02 X10-X3; run IDs
+  pelican_gfs_2way_default_ysu_20130202,
+  pelican_nam_2way_default_ysu_20130202,
+  pelican_gfs_1way_default_ysu_20130202, and
+  pelican_nam_1way_default_ysu_20130202; d02; trajectory 13-18 UTC; retained
+  decision window 14-18 UTC; exact archive paths from run-inventory.csv.
+PREDECLARED_TEST: For each column compute the productized Whiteman-style heat deficit
+  H=(cp/g) integral max(theta_crest-theta,0) dp below an ASL reference surface, in
+  J m-2. The primary horizontal mask is the eight-connected component of d02 cells
+  with HGT below 2200 m that contains Horsepool; weight it by physical cell area
+  DX*DY/MAPFAC_M^2. The connected component must close within d02 rather than
+  intersect a domain edge. Report area-weighted mean H in MJ m-2, horizontal integral in
+  TJ, and area fractions above 0.5, 1.0, and 2.0 MJ m-2. Verify that the four grids
+  and terrain fields match before pairing. Sensitivities are connected masks and
+  vertical reference surfaces at 2100, 2200, and 2300 m plus one-cell erosion and
+  one-cell constrained dilation of the 2200 m mask. The bounded weaker-state test
+  passes only if GFS-minus-NAM mean H is negative at every 14-18 UTC hour for both
+  feedback modes under every definition. The stronger maintenance test passes only
+  if (GFS18-GFS14)-(NAM18-NAM14) is also negative for both pairs under every
+  definition. The 13 UTC value is trajectory context, not retained evidence.
+EXPECTED_OUTPUT: A manuscript-specific tested analysis script and Slurm wrapper;
+  small CSV trajectory, pair-summary, and sensitivity tables; provenance JSON with
+  exact inputs, commands, commits, environment, job, definitions, and hashes; a
+  candidate PNG/PDF trajectory inspected at useful resolution; a claim-ledger fact;
+  a figure-manifest diagnostic row; and a pass/fail row in HYBRID-GATE-REVIEW.md.
+ALLOWED_WRITES: rewrite/CHPC-CODEX-PROMPT.md;
+  verification/scripts/analyze_heat_deficit.py;
+  verification/scripts/smoke_test_heat_deficit.py;
+  verification/slurm/run_heat_deficit_analysis.slurm;
+  verification/data/heat_deficit_trajectory.csv;
+  verification/data/heat_deficit_pair_summary.csv;
+  verification/data/heat_deficit_sensitivity.csv;
+  verification/data/manifest.csv;
+  verification/figures/candidates/wrf_heat_deficit_d02_13to18.png;
+  verification/figures/candidates/wrf_heat_deficit_d02_13to18.pdf;
+  verification/figures/manifest.csv;
+  verification/provenance/heat-deficit-analysis.json;
+  notes/claim-evidence-ledger.md; rewrite/HYBRID-GATE-REVIEW.md. Scratch job logs
+  and task-scoped working output are also allowed; no other repository file is.
+COMPUTE: Existing X6/X5/X10/X3 d02 output analysis on one batch node is allowed;
+  no WRF integration and no complete figure-family rerender.
+RETURN: Commit and push jrl/chpc-20260713-c4-ana16 after terminal job, artifact,
+  visual, provenance, smoke, diff, and repository checks pass.
+FAIL_DISPOSITION: Record any reproducible weaker-state result separately, mark Main C4
+  failed or dropped if the maintenance test fails, and do not promote a maintenance
+  claim or substitute a point-scale figure.
+STOP_IF: Stop before a scientific decision if a run identity is unresolved; an exact
+  13-18 UTC d02 input is absent; grids/terrain are not pairable; MAPFAC_M or required
+  pressure, potential-temperature, or geopotential fields are invalid; the maintained
+  brc-tools heat-deficit implementation is unavailable; a terrain-connected mask
+  intersects the d02 boundary; or an unlisted write, broad
+  scan, destructive action, new integration, or overwrite of an accepted artifact
+  would be required.
 ```
