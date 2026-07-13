@@ -456,7 +456,7 @@ def plot_trajectory(
             label=displays.get(run, default_label),
         )
     ax.set_ylabel("Footprint-mean heat deficit\n(MJ m$^{-2}$)")
-    ax.set_title("a) Area-weighted trajectory; registered combined footprint below 2200 m ASL")
+    ax.set_title("a) Registered-footprint trajectory; 2200 m ASL reference")
     ax.legend(frameon=False, ncol=2, fontsize=8)
     ax.grid(alpha=0.25)
 
@@ -484,7 +484,7 @@ def plot_trajectory(
         ax.plot(difference.index, difference.values, marker="o", color=color, linewidth=1.7, label=label)
     ax.axhline(0.0, color="0.25", linewidth=0.8)
     ax.set_ylabel("GFS minus NAM\n(MJ m$^{-2}$)")
-    ax.set_title("b) Primary difference with five-definition sensitivity envelope")
+    ax.set_title("b) Primary difference with seven-definition sensitivity envelope")
     ax.legend(frameon=False, fontsize=8)
     ax.grid(alpha=0.25)
     ax.xaxis.set_major_locator(mdates.HourLocator())
