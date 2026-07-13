@@ -129,28 +129,44 @@ def surface_fields(path: Path) -> dict[str, object]:
         }
 
 
-def validate_grids(static: dict[str, dict[str, object]]) -> dict[str, object]:
-    reference_key = next(iter(static))
-    reference = static[reference_key]
-    checks: dict[str, object] = {"reference_run": reference_key, "runs": {}}
+def validate_grids(
+    static: dict[str, dict[str, object]],
+    pairs: list[tuple[str, str]],
+    mask_run: str,
+) -> dict[str, object]:
+    reference = static[mask_run]
+    checks: dict[str, object] = {"coordinate_reference_run": mask_run, "runs": {}, "pairs": {}}
     for run, fields in static.items():
         run_checks: dict[str, object] = {}
-        for name in ("lat", "lon", "hgt", "mapfac"):
+        for name in ("lat", "lon", "mapfac"):
             left = np.asarray(reference[name], dtype=float)
             right = np.asarray(fields[name], dtype=float)
             if left.shape != right.shape:
                 raise ValueError(f"grid shape mismatch for {run} {name}: {right.shape} != {left.shape}")
             max_abs = float(np.nanmax(np.abs(left - right)))
             run_checks[f"{name}_max_abs_difference"] = max_abs
-            tolerance = 1.0e-8 if name in {"lat", "lon", "mapfac"} else 1.0e-5
-            if max_abs > tolerance:
+            if max_abs > 1.0e-8:
                 raise ValueError(f"grid mismatch for {run} {name}: max abs {max_abs:g}")
+        reference_hgt = np.asarray(reference["hgt"], dtype=float)
+        run_hgt = np.asarray(fields["hgt"], dtype=float)
+        if reference_hgt.shape != run_hgt.shape:
+            raise ValueError(f"grid shape mismatch for {run} hgt: {run_hgt.shape} != {reference_hgt.shape}")
+        run_checks["hgt_max_abs_difference_from_mask_run_m"] = float(
+            np.nanmax(np.abs(reference_hgt - run_hgt))
+        )
         for name in ("dx", "dy"):
             difference = abs(float(reference[name]) - float(fields[name]))
             run_checks[f"{name}_difference"] = difference
             if difference > 1.0e-6:
                 raise ValueError(f"grid mismatch for {run} {name}: {difference:g}")
         checks["runs"][run] = run_checks
+    for a, b in pairs:
+        left = np.asarray(static[a]["hgt"], dtype=float)
+        right = np.asarray(static[b]["hgt"], dtype=float)
+        max_abs = float(np.nanmax(np.abs(left - right)))
+        checks["pairs"][f"{a}_minus_{b}"] = {"hgt_max_abs_difference_m": max_abs}
+        if max_abs > 1.0e-5:
+            raise ValueError(f"paired terrain mismatch for {a},{b}: max abs {max_abs:g} m")
     return checks
 
 
@@ -229,11 +245,12 @@ def analyze(
     retained_start: pd.Timestamp,
     retained_end: pd.Timestamp,
     hash_inputs: bool,
+    mask_run: str,
 ) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, dict[str, object]]:
     first_paths = {run: input_path(path, domain, times[0]) for run, path in runs.items()}
     static = {run: surface_fields(path) for run, path in first_paths.items()}
-    grid_checks = validate_grids(static)
-    reference = static[next(iter(runs))]
+    grid_checks = validate_grids(static, pairs, mask_run)
+    reference = static[mask_run]
     lat = np.asarray(reference["lat"], dtype=float)
     lon = np.asarray(reference["lon"], dtype=float)
     hgt = np.asarray(reference["hgt"], dtype=float)
@@ -441,6 +458,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--display", action="append", default=[], help="KEY=display label")
     parser.add_argument("--pair", action="append", required=True, help="GFS_KEY,NAM_KEY")
     parser.add_argument("--domain", type=int, default=2)
+    parser.add_argument("--mask-run", required=True, help="run key whose static HGT defines every mask")
     parser.add_argument("--start", default=DEFAULT_START)
     parser.add_argument("--end", default=DEFAULT_END)
     parser.add_argument("--retained-start", default=DEFAULT_RETAINED_START)
@@ -460,6 +478,8 @@ def main() -> None:
     for a, b in pairs:
         if a not in runs or b not in runs:
             raise SystemExit(f"pair {a},{b} references an undefined run")
+    if args.mask_run not in runs:
+        raise SystemExit(f"mask run {args.mask_run!r} is undefined")
     start = pd.Timestamp(args.start)
     end = pd.Timestamp(args.end)
     retained_start = pd.Timestamp(args.retained_start)
@@ -477,6 +497,7 @@ def main() -> None:
         retained_start,
         retained_end,
         args.hash_inputs,
+        args.mask_run,
     )
     paths = {
         "trajectory": args.out_dir / "heat_deficit_trajectory.csv",
@@ -527,6 +548,7 @@ def main() -> None:
             "retained_start": retained_start.isoformat(),
             "retained_end": retained_end.isoformat(),
             "runs": {key: str(value) for key, value in runs.items()},
+            "mask_run": args.mask_run,
             "pairs": [{"a": a, "b": b, "sign": f"{a} minus {b}"} for a, b in pairs],
         },
         "metric": {

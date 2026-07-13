@@ -52,6 +52,7 @@ echo "out=$OUT"
   --display "nam1=NAM one-way" \
   --pair gfs2,nam2 \
   --pair gfs1,nam1 \
+  --mask-run nam1 \
   --domain 2 \
   --start 2013-02-02T13:00:00 \
   --end 2013-02-02T18:00:00 \

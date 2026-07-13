@@ -88,6 +88,7 @@ def main() -> None:
         "--display", "nam1=NAM one-way",
         "--pair", "gfs2,nam2",
         "--pair", "gfs1,nam1",
+        "--mask-run", "nam1",
         "--brc-tools-dir", str(brc_tools),
         "--out-dir", str(out),
         "--no-hash-inputs",
