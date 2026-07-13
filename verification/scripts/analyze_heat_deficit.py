@@ -372,7 +372,8 @@ def analyze(
                     "b_change_14to18_mj_m2": b_change,
                     "difference_in_change_mj_m2": difference_in_change,
                     "weaker_state_pass": bool((differences < 0).all()),
-                    "maintenance_pass": bool(difference_in_change < 0),
+                    "gfs_loss_pass": bool(a_change < 0),
+                    "maintenance_pass": bool(a_change < 0 and difference_in_change < 0),
                 }
             )
     pair_summary = pd.DataFrame(pair_rows).sort_values(["pair", "definition"]).reset_index(drop=True)
@@ -384,6 +385,7 @@ def analyze(
                 "scope": pair,
                 "definitions": len(group),
                 "weaker_state_definitions_pass": int(group["weaker_state_pass"].sum()),
+                "gfs_loss_definitions_pass": int(group["gfs_loss_pass"].sum()),
                 "maintenance_definitions_pass": int(group["maintenance_pass"].sum()),
                 "weaker_state_pass": bool(group["weaker_state_pass"].all()),
                 "maintenance_pass": bool(group["maintenance_pass"].all()),
@@ -398,6 +400,7 @@ def analyze(
         "scope": "both_feedback_modes",
         "definitions": int(pair_sensitivity["definitions"].sum()),
         "weaker_state_definitions_pass": int(pair_sensitivity["weaker_state_definitions_pass"].sum()),
+        "gfs_loss_definitions_pass": int(pair_sensitivity["gfs_loss_definitions_pass"].sum()),
         "maintenance_definitions_pass": int(pair_sensitivity["maintenance_definitions_pass"].sum()),
         "weaker_state_pass": bool(pair_sensitivity["weaker_state_pass"].all()),
         "maintenance_pass": bool(pair_sensitivity["maintenance_pass"].all()),
@@ -608,8 +611,8 @@ def main() -> None:
             "implementation": "brc_tools.nwp.wrf_output.heat_deficit_field",
         },
         "predeclared_decision": {
-            "weaker_state": "both GFS-minus-NAM pairs negative at all 14-18 UTC hours under all five definitions",
-            "maintenance": "both pair differences in 14-18 UTC change negative under all five definitions",
+            "weaker_state": "both GFS-minus-NAM pairs negative at all 14-18 UTC hours under all seven definitions",
+            "maintenance": "both GFS changes and both GFS-minus-NAM differences in 14-18 UTC change negative under all seven definitions",
             "trajectory_context": "13 UTC is excluded from the decision",
         },
         **provenance,

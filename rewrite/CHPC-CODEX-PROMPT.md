@@ -291,8 +291,9 @@ PREDECLARED_TEST: For each column compute the productized Whiteman-style heat de
   mask. The bounded weaker-state test
   passes only if GFS-minus-NAM mean H is negative at every 14-18 UTC hour for both
   feedback modes under every definition. The stronger maintenance test passes only
-  if (GFS18-GFS14)-(NAM18-NAM14) is also negative for both pairs under every
-  definition. The 13 UTC value is trajectory context, not retained evidence.
+  if GFS18-GFS14 is negative and (GFS18-GFS14)-(NAM18-NAM14) is also negative
+  for both pairs under every definition. The 13 UTC value is trajectory context,
+  not retained evidence.
 EXPECTED_OUTPUT: A manuscript-specific tested analysis script and Slurm wrapper;
   small CSV trajectory, pair-summary, and sensitivity tables; provenance JSON with
   exact inputs, commands, commits, environment, job, definitions, and hashes; a
