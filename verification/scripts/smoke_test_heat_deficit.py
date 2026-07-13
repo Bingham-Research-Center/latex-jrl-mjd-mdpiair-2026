@@ -55,6 +55,7 @@ def fake_wrfout(path: Path, valid: pd.Timestamp, stability_per_m: float) -> None
 
 def main() -> None:
     brc_tools = Path(os.environ.get("BRC_TOOLS", Path(__file__).resolve().parents[3] / "brc-tools"))
+    repo = Path(__file__).resolve().parents[2]
     tmp = Path(tempfile.mkdtemp(prefix="heat_deficit_smoke_"))
     mpl = Path(os.environ.get("MPLCONFIGDIR", tmp / "mpl"))
     cache = Path(os.environ.get("XDG_CACHE_HOME", tmp / "cache"))
@@ -89,6 +90,8 @@ def main() -> None:
         "--pair", "gfs2,nam2",
         "--pair", "gfs1,nam1",
         "--mask-run", "nam1",
+        "--stations", str(repo / "verification/data/stations_2013_selection.csv"),
+        "--figure-config", str(repo / "verification/config/figures/pelican2013.toml"),
         "--brc-tools-dir", str(brc_tools),
         "--out-dir", str(out),
         "--no-hash-inputs",
@@ -99,9 +102,9 @@ def main() -> None:
     env["XDG_CACHE_HOME"] = str(cache)
     subprocess.run(cmd, check=True, env=env)
     trajectory = pd.read_csv(out / "heat_deficit_trajectory.csv")
-    assert len(trajectory) == 4 * 5 * 6, len(trajectory)
+    assert len(trajectory) == 4 * 7 * 6, len(trajectory)
     pair_summary = pd.read_csv(out / "heat_deficit_pair_summary.csv")
-    assert len(pair_summary) == 2 * 5, len(pair_summary)
+    assert len(pair_summary) == 2 * 7, len(pair_summary)
     sensitivity = pd.read_csv(out / "heat_deficit_sensitivity.csv")
     overall = sensitivity[sensitivity["scope"] == "both_feedback_modes"]
     assert len(overall) == 1

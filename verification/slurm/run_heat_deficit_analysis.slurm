@@ -53,6 +53,8 @@ echo "out=$OUT"
   --pair gfs2,nam2 \
   --pair gfs1,nam1 \
   --mask-run nam1 \
+  --stations verification/data/stations_2013_selection.csv \
+  --figure-config verification/config/figures/pelican2013.toml \
   --domain 2 \
   --start 2013-02-02T13:00:00 \
   --end 2013-02-02T18:00:00 \

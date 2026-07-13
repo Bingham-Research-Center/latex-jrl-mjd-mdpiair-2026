@@ -263,7 +263,7 @@ frozen order; it does not authorize C3, C5, C6, or supplement C2 work.
 REQUEST_ID: 20260713-c4-ana16
 MODE: GATE
 SOURCE_REF: bf79b507739afeb04499592d8b437e9e028683a1
-QUESTION: Does a basin-integrated, definition-tested heat-deficit trajectory show that
+QUESTION: Does a registered-footprint, definition-tested heat-deficit trajectory show that
   both GFS-driven members remain weaker than their feedback-matched NAM members after
   spin-up, and does it support the stronger claim that GFS loses more cold-pool heat
   deficit from 14 to 18 UTC?
@@ -275,18 +275,20 @@ TARGETS: ANA-16; CMP01 X6-X5 and CMP02 X10-X3; run IDs
   decision window 14-18 UTC; exact archive paths from run-inventory.csv.
 PREDECLARED_TEST: For each column compute the productized Whiteman-style heat deficit
   H=(cp/g) integral max(theta_crest-theta,0) dp below an ASL reference surface, in
-  J m-2. Freeze X3 (NAM one-way) as the mask terrain. The primary horizontal mask
-  is the eight-connected component of its d02 cells with HGT below 2200 m that
-  contains Horsepool; weight it by physical cell area
-  DX*DY/MAPFAC_M^2. The connected component must close within d02 rather than
-  intersect a domain edge. Report area-weighted mean H in MJ m-2, horizontal integral in
+  J m-2. Freeze X3 (NAM one-way) as the mask terrain. The primary horizontal
+  footprint is the convex hull of the 11 in-window reporting stations in
+  verification/data/stations_2013_selection.csv plus the configured basin waypoints
+  in verification/config/figures/pelican2013.toml, intersected with X3 HGT below
+  2200 m. Weight it by physical cell area DX*DY/MAPFAC_M^2. The footprint must close
+  within d02 rather than intersect a domain edge. Report area-weighted mean H in MJ m-2, horizontal integral in
   TJ, and area fractions above 0.5, 1.0, and 2.0 MJ m-2. Verify coordinates within
   1e-5 degree, map factors within 5e-7, and equal spacing across all four runs,
   plus HGT equality within 0.001 m for each
   feedback-matched GFS-NAM pair; record but do not require HGT equality across the
-  one-way/two-way feedback boundary. Sensitivities are connected masks and
-  vertical reference surfaces at 2100, 2200, and 2300 m plus one-cell erosion and
-  one-cell constrained dilation of the 2200 m mask. The bounded weaker-state test
+  one-way/two-way feedback boundary. The seven definitions are the combined
+  footprint at 2100, 2200, and 2300 m; station-only and waypoint-only hulls at
+  2200 m; and one-cell erosion and constrained dilation of the combined 2200 m
+  mask. The bounded weaker-state test
   passes only if GFS-minus-NAM mean H is negative at every 14-18 UTC hour for both
   feedback modes under every definition. The stronger maintenance test passes only
   if (GFS18-GFS14)-(NAM18-NAM14) is also negative for both pairs under every
@@ -320,8 +322,8 @@ FAIL_DISPOSITION: Record any reproducible weaker-state result separately, mark M
 STOP_IF: Stop before a scientific decision if a run identity is unresolved; an exact
   13-18 UTC d02 input is absent; grids/terrain are not pairable; MAPFAC_M or required
   pressure, potential-temperature, or geopotential fields are invalid; the maintained
-  brc-tools heat-deficit implementation is unavailable; a terrain-connected mask
-  intersects the d02 boundary; or an unlisted write, broad
+  brc-tools heat-deficit implementation is unavailable; a registered footprint is
+  malformed or intersects the d02 boundary; or an unlisted write, broad
   scan, destructive action, new integration, or overwrite of an accepted artifact
   would be required.
 ```

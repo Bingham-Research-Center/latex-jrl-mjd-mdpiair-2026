@@ -3,7 +3,7 @@
 
 This manuscript-specific analysis reads exact archived WRF d02 files and uses the
 maintained ``brc_tools.nwp.wrf_output.heat_deficit_field`` implementation.  It
-area-weights the column diagnostic over a terrain-connected Uinta Basin mask,
+area-weights the column diagnostic over a registered d02 evaluation footprint,
 evaluates predeclared crest and boundary sensitivities, and tests two distinct
 questions:
 
@@ -26,16 +26,19 @@ import platform
 import socket
 import subprocess
 import sys
+import tomllib
 
 import matplotlib
 
 matplotlib.use("Agg")
 import matplotlib.dates as mdates
+from matplotlib.path import Path as MplPath
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import scipy
 from scipy import ndimage
+from scipy.spatial import ConvexHull
 import xarray as xr
 
 from brc_tools.nwp import wrf_output as wo
@@ -48,8 +51,6 @@ DEFAULT_RETAINED_END = "2013-02-02T18:00:00"
 PRIMARY_CREST_M = 2200.0
 CREST_SENSITIVITIES_M = (2100.0, 2200.0, 2300.0)
 AREA_THRESHOLDS_MJ_M2 = (0.5, 1.0, 2.0)
-HORSEPOOL_LAT = 40.144
-HORSEPOOL_LON = -109.467
 RUN_STYLES = {
     "gfs2": ("#0072B2", "-", "GFS two-way"),
     "gfs1": ("#56B4E9", "--", "GFS one-way"),
@@ -92,24 +93,51 @@ def git_output(repo: Path, *args: str) -> str:
     return result.stdout.strip()
 
 
-def connected_component(mask: np.ndarray, seed: tuple[int, int]) -> np.ndarray:
-    if not bool(mask[seed]):
-        raise ValueError(f"mask excludes Horsepool seed cell {seed}")
-    labels, _count = ndimage.label(mask, structure=np.ones((3, 3), dtype=int))
-    selected = labels == labels[seed]
-    if not selected.any():
-        raise ValueError("terrain-connected basin mask is empty")
-    return selected
-
-
 def touches_edge(mask: np.ndarray) -> bool:
     return bool(mask[0, :].any() or mask[-1, :].any() or mask[:, 0].any() or mask[:, -1].any())
 
 
-def nearest_cell(lat: np.ndarray, lon: np.ndarray, target_lat: float, target_lon: float) -> tuple[int, int]:
-    scale = np.cos(np.deg2rad(target_lat))
-    distance2 = (lat - target_lat) ** 2 + ((lon - target_lon) * scale) ** 2
-    return tuple(int(index) for index in np.unravel_index(np.nanargmin(distance2), lat.shape))
+def convex_hull_mask(lat: np.ndarray, lon: np.ndarray, points: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+    if points.ndim != 2 or points.shape[0] < 3 or points.shape[1] != 2:
+        raise ValueError(f"convex hull needs at least three lon/lat points, found {points.shape}")
+    hull = ConvexHull(points)
+    vertices = points[hull.vertices]
+    grid = np.column_stack([lon.ravel(), lat.ravel()])
+    closed_vertices = np.vstack([vertices, vertices[0]])
+    mask = MplPath(closed_vertices, closed=True).contains_points(grid, radius=1.0e-10).reshape(lat.shape)
+    if not mask.any():
+        raise ValueError("registered convex-hull footprint contains no d02 cells")
+    return mask, vertices
+
+
+def registered_points(stations_path: Path, figure_config: Path) -> tuple[np.ndarray, np.ndarray, dict[str, object]]:
+    stations = pd.read_csv(stations_path)
+    required = {"stid", "latitude", "longitude", "in_case_window"}
+    missing = required - set(stations.columns)
+    if missing:
+        raise ValueError(f"station file lacks required columns: {sorted(missing)}")
+    selected = stations[stations["in_case_window"].astype(str).str.lower().isin({"true", "1"})]
+    station_points = selected[["longitude", "latitude"]].to_numpy(dtype=float)
+    with figure_config.open("rb") as stream:
+        config = tomllib.load(stream)
+    waypoints = config.get("waypoints", {})
+    waypoint_points = np.array(
+        [[float(value["lon"]), float(value["lat"])] for value in waypoints.values()],
+        dtype=float,
+    )
+    records = {
+        "station_count": len(station_points),
+        "station_ids": selected["stid"].astype(str).tolist(),
+        "waypoint_count": len(waypoint_points),
+        "waypoint_names": list(waypoints),
+        "stations_path": str(stations_path),
+        "stations_sha256": sha256(stations_path),
+        "figure_config_path": str(figure_config),
+        "figure_config_sha256": sha256(figure_config),
+    }
+    if len(station_points) != 11:
+        raise ValueError(f"expected 11 in-window reporting stations, found {len(station_points)}")
+    return station_points, waypoint_points, records
 
 
 def surface_fields(path: Path) -> dict[str, object]:
@@ -171,28 +199,43 @@ def validate_grids(
     return checks
 
 
-def build_definitions(hgt: np.ndarray, seed: tuple[int, int]) -> dict[str, dict[str, object]]:
-    components = {
-        crest: connected_component(np.isfinite(hgt) & (hgt < crest), seed)
-        for crest in CREST_SENSITIVITIES_M
-    }
-    open_components = [crest for crest, mask in components.items() if touches_edge(mask)]
-    if open_components:
-        values = ", ".join(f"{crest:g} m" for crest in open_components)
-        raise ValueError(f"terrain-connected basin mask intersects the d02 boundary at {values}")
-    primary = components[PRIMARY_CREST_M]
+def build_definitions(
+    hgt: np.ndarray,
+    lat: np.ndarray,
+    lon: np.ndarray,
+    stations_path: Path,
+    figure_config: Path,
+) -> tuple[dict[str, dict[str, object]], dict[str, object]]:
+    station_points, waypoint_points, records = registered_points(stations_path, figure_config)
+    combined_points = np.vstack([station_points, waypoint_points])
+    combined_hull, combined_vertices = convex_hull_mask(lat, lon, combined_points)
+    station_hull, station_vertices = convex_hull_mask(lat, lon, station_points)
+    waypoint_hull, waypoint_vertices = convex_hull_mask(lat, lon, waypoint_points)
+    finite = np.isfinite(hgt)
+    primary = combined_hull & finite & (hgt < PRIMARY_CREST_M)
     structure = np.ones((3, 3), dtype=bool)
     eroded = ndimage.binary_erosion(primary, structure=structure, border_value=0)
-    dilated = ndimage.binary_dilation(primary, structure=structure) & components[2300.0]
+    dilated = ndimage.binary_dilation(primary, structure=structure) & finite & (hgt < 2300.0)
     if not eroded.any() or not dilated.any():
         raise ValueError("one-cell boundary sensitivity produced an empty mask")
-    return {
-        "crest2100": {"crest_m": 2100.0, "mask": components[2100.0], "boundary": "connected"},
-        "crest2200": {"crest_m": 2200.0, "mask": primary, "boundary": "connected"},
-        "crest2300": {"crest_m": 2300.0, "mask": components[2300.0], "boundary": "connected"},
+    definitions = {
+        "combined_crest2100": {"crest_m": 2100.0, "mask": combined_hull & finite & (hgt < 2100.0), "boundary": "combined_hull"},
+        "combined_crest2200": {"crest_m": 2200.0, "mask": primary, "boundary": "combined_hull"},
+        "combined_crest2300": {"crest_m": 2300.0, "mask": combined_hull & finite & (hgt < 2300.0), "boundary": "combined_hull"},
+        "stations_crest2200": {"crest_m": 2200.0, "mask": station_hull & finite & (hgt < 2200.0), "boundary": "station_hull"},
+        "waypoints_crest2200": {"crest_m": 2200.0, "mask": waypoint_hull & finite & (hgt < 2200.0), "boundary": "waypoint_hull"},
         "crest2200_eroded1": {"crest_m": 2200.0, "mask": eroded, "boundary": "eroded_one_cell"},
         "crest2200_dilated1": {"crest_m": 2200.0, "mask": dilated, "boundary": "dilated_one_cell_below_2300m"},
     }
+    invalid = [name for name, spec in definitions.items() if not np.asarray(spec["mask"]).any() or touches_edge(np.asarray(spec["mask"]))]
+    if invalid:
+        raise ValueError(f"registered footprints are empty or intersect d02 boundary: {invalid}")
+    records["hulls"] = {
+        "combined_vertices_lon_lat": combined_vertices.tolist(),
+        "station_vertices_lon_lat": station_vertices.tolist(),
+        "waypoint_vertices_lon_lat": waypoint_vertices.tolist(),
+    }
+    return definitions, records
 
 
 def metric_row(
@@ -247,6 +290,8 @@ def analyze(
     retained_end: pd.Timestamp,
     hash_inputs: bool,
     mask_run: str,
+    stations_path: Path,
+    figure_config: Path,
 ) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, dict[str, object]]:
     first_paths = {run: input_path(path, domain, times[0]) for run, path in runs.items()}
     static = {run: surface_fields(path) for run, path in first_paths.items()}
@@ -258,8 +303,7 @@ def analyze(
     mapfac = np.asarray(reference["mapfac"], dtype=float)
     if not np.all(np.isfinite(mapfac)) or np.any(mapfac <= 0):
         raise ValueError("MAPFAC_M contains nonfinite or nonpositive values")
-    seed = nearest_cell(lat, lon, HORSEPOOL_LAT, HORSEPOOL_LON)
-    definitions = build_definitions(hgt, seed)
+    definitions, footprint_records = build_definitions(hgt, lat, lon, stations_path, figure_config)
     cell_area = float(reference["dx"]) * float(reference["dy"]) / np.square(mapfac)
 
     input_records: dict[str, dict[str, object]] = {}
@@ -370,13 +414,7 @@ def analyze(
     }
     provenance = {
         "grid_validation": grid_checks,
-        "horsepool_seed": {
-            "j": seed[0],
-            "i": seed[1],
-            "grid_latitude": float(lat[seed]),
-            "grid_longitude": float(lon[seed]),
-            "terrain_m": float(hgt[seed]),
-        },
+        "registered_footprint": footprint_records,
         "definitions": mask_records,
         "inputs": input_records,
         "decision": overall,
@@ -391,7 +429,7 @@ def plot_trajectory(
     out_png: Path,
     out_pdf: Path,
 ) -> None:
-    primary = trajectory[trajectory["definition"] == "crest2200"].copy()
+    primary = trajectory[trajectory["definition"] == "combined_crest2200"].copy()
     primary["valid_time"] = pd.to_datetime(primary["valid_time"])
     all_times = sorted(primary["valid_time"].unique())
     all_definitions = sorted(trajectory["definition"].unique())
@@ -410,8 +448,8 @@ def plot_trajectory(
             linewidth=1.7,
             label=displays.get(run, default_label),
         )
-    ax.set_ylabel("Basin-mean heat deficit\n(MJ m$^{-2}$)")
-    ax.set_title("a) Area-weighted trajectory; connected terrain mask below 2200 m ASL")
+    ax.set_ylabel("Footprint-mean heat deficit\n(MJ m$^{-2}$)")
+    ax.set_title("a) Area-weighted trajectory; registered combined footprint below 2200 m ASL")
     ax.legend(frameon=False, ncol=2, fontsize=8)
     ax.grid(alpha=0.25)
 
@@ -460,6 +498,8 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--pair", action="append", required=True, help="GFS_KEY,NAM_KEY")
     parser.add_argument("--domain", type=int, default=2)
     parser.add_argument("--mask-run", required=True, help="run key whose static HGT defines every mask")
+    parser.add_argument("--stations", type=Path, required=True)
+    parser.add_argument("--figure-config", type=Path, required=True)
     parser.add_argument("--start", default=DEFAULT_START)
     parser.add_argument("--end", default=DEFAULT_END)
     parser.add_argument("--retained-start", default=DEFAULT_RETAINED_START)
@@ -499,6 +539,8 @@ def main() -> None:
         retained_end,
         args.hash_inputs,
         args.mask_run,
+        args.stations,
+        args.figure_config,
     )
     paths = {
         "trajectory": args.out_dir / "heat_deficit_trajectory.csv",
