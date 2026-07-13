@@ -1,0 +1,493 @@
+{
+  "analysis_id": "ANA-16",
+  "brc_tools": {
+    "commit": "69ddbe07af2e38e5e2d4f12f681bb360ff506a1a",
+    "dirty": false,
+    "heat_deficit_source_sha256": "124ac835619b29e1f6a046574cc29d561bc331f3430f26c566bb01efa652d873",
+    "path": "/uufs/chpc.utah.edu/common/home/u0737349/gits/brc-tools"
+  },
+  "command": [
+    "/uufs/chpc.utah.edu/common/home/u0737349/software/pkg/miniforge3/envs/brc-tools-2026/bin/python",
+    "verification/scripts/analyze_heat_deficit.py",
+    "--run",
+    "gfs2=/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_gfs_3_1_333m_75lev/full6h/run_20260630T181555Z",
+    "--run",
+    "nam2=/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev/full6h/run_20260626T163737Z",
+    "--run",
+    "gfs1=/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_gfs_3_1_333m_75lev_oneway/full6h/run_20260710T234000Z",
+    "--run",
+    "nam1=/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway/full6h/run_20260702T053120Z",
+    "--display",
+    "gfs2=GFS two-way",
+    "--display",
+    "nam2=NAM two-way",
+    "--display",
+    "gfs1=GFS one-way",
+    "--display",
+    "nam1=NAM one-way",
+    "--pair",
+    "gfs2,nam2",
+    "--pair",
+    "gfs1,nam1",
+    "--mask-run",
+    "nam1",
+    "--stations",
+    "verification/data/stations_2013_selection.csv",
+    "--figure-config",
+    "verification/config/figures/pelican2013.toml",
+    "--domain",
+    "2",
+    "--start",
+    "2013-02-02T13:00:00",
+    "--end",
+    "2013-02-02T18:00:00",
+    "--retained-start",
+    "2013-02-02T14:00:00",
+    "--retained-end",
+    "2013-02-02T18:00:00",
+    "--brc-tools-dir",
+    "/uufs/chpc.utah.edu/common/home/u0737349/gits/brc-tools",
+    "--hash-inputs",
+    "--out-dir",
+    "/scratch/general/vast/u0737349/latex_jrl_heatdeficit_13934123"
+  ],
+  "decision": {
+    "definitions": 14,
+    "difference_in_change_max_mj_m2": 0.3192807998492877,
+    "difference_in_change_min_mj_m2": -0.06579429460349973,
+    "gfs_loss_definitions_pass": 0,
+    "maintenance_definitions_pass": 0,
+    "maintenance_pass": false,
+    "retained_hourly_difference_max_mj_m2": -0.7026866853030427,
+    "retained_hourly_difference_min_mj_m2": -1.8045280615631833,
+    "scope": "both_feedback_modes",
+    "weaker_state_definitions_pass": 14,
+    "weaker_state_pass": true
+  },
+  "definitions": {
+    "combined_crest2100": {
+      "area_km2": 5259.582285436382,
+      "boundary": "combined_hull",
+      "crest_m": 2100.0,
+      "n_cells": 4949
+    },
+    "combined_crest2200": {
+      "area_km2": 5276.600377782175,
+      "boundary": "combined_hull",
+      "crest_m": 2200.0,
+      "n_cells": 4965
+    },
+    "combined_crest2300": {
+      "area_km2": 5276.600377782175,
+      "boundary": "combined_hull",
+      "crest_m": 2300.0,
+      "n_cells": 4965
+    },
+    "crest2200_dilated1": {
+      "area_km2": 5661.287411787722,
+      "boundary": "dilated_one_cell_below_2300m",
+      "crest_m": 2200.0,
+      "n_cells": 5327
+    },
+    "crest2200_eroded1": {
+      "area_km2": 4901.475753877627,
+      "boundary": "eroded_one_cell",
+      "crest_m": 2200.0,
+      "n_cells": 4612
+    },
+    "stations_crest2200": {
+      "area_km2": 4233.10328733865,
+      "boundary": "station_hull",
+      "crest_m": 2200.0,
+      "n_cells": 3983
+    },
+    "waypoints_crest2200": {
+      "area_km2": 2343.77406810249,
+      "boundary": "waypoint_hull",
+      "crest_m": 2200.0,
+      "n_cells": 2205
+    }
+  },
+  "environment": {
+    "matplotlib": "3.11.0",
+    "numpy": "2.5.0",
+    "pandas": "3.0.3",
+    "python": "3.12.13",
+    "scipy": "1.18.0",
+    "xarray": "2026.4.0"
+  },
+  "finished_utc": "2026-07-13T08:13:21.998509+00:00",
+  "grid_validation": {
+    "coordinate_reference_run": "nam1",
+    "pairs": {
+      "gfs1_minus_nam1": {
+        "hgt_max_abs_difference_m": 0.0
+      },
+      "gfs2_minus_nam2": {
+        "hgt_max_abs_difference_m": 0.0
+      }
+    },
+    "runs": {
+      "gfs1": {
+        "dx_difference": 0.0,
+        "dy_difference": 0.0,
+        "hgt_max_abs_difference_from_mask_run_m": 0.0,
+        "lat_max_abs_difference": 0.0,
+        "lon_max_abs_difference": 0.0,
+        "mapfac_max_abs_difference": 0.0
+      },
+      "gfs2": {
+        "dx_difference": 0.0,
+        "dy_difference": 0.0,
+        "hgt_max_abs_difference_from_mask_run_m": 23.0760498046875,
+        "lat_max_abs_difference": 0.0,
+        "lon_max_abs_difference": 0.0,
+        "mapfac_max_abs_difference": 2.384185791015625e-07
+      },
+      "nam1": {
+        "dx_difference": 0.0,
+        "dy_difference": 0.0,
+        "hgt_max_abs_difference_from_mask_run_m": 0.0,
+        "lat_max_abs_difference": 0.0,
+        "lon_max_abs_difference": 0.0,
+        "mapfac_max_abs_difference": 0.0
+      },
+      "nam2": {
+        "dx_difference": 0.0,
+        "dy_difference": 0.0,
+        "hgt_max_abs_difference_from_mask_run_m": 23.0760498046875,
+        "lat_max_abs_difference": 0.0,
+        "lon_max_abs_difference": 0.0,
+        "mapfac_max_abs_difference": 2.384185791015625e-07
+      }
+    }
+  },
+  "host": "notch392.ipoib.int.chpc.utah.edu",
+  "inputs": {
+    "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_gfs_3_1_333m_75lev/full6h/run_20260630T181555Z/wrfout_d02_2013-02-02_13:00:00": {
+      "internal_valid_time": "2013-02-02T13:00:00",
+      "mtime_ns": 1782844630770790004,
+      "sha256": "9b5a30f600a0d3c21a53d0c61bfb067392c749281f525d69eab9fefc39ba161a",
+      "size_bytes": 49713548
+    },
+    "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_gfs_3_1_333m_75lev/full6h/run_20260630T181555Z/wrfout_d02_2013-02-02_14:00:00": {
+      "internal_valid_time": "2013-02-02T14:00:00",
+      "mtime_ns": 1782845615502384580,
+      "sha256": "b8de9dcb4ac2a6b26e840b36a1960013bd6c4fe489d61b4353369ef2b466b53f",
+      "size_bytes": 49949850
+    },
+    "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_gfs_3_1_333m_75lev/full6h/run_20260630T181555Z/wrfout_d02_2013-02-02_15:00:00": {
+      "internal_valid_time": "2013-02-02T15:00:00",
+      "mtime_ns": 1782846622356259586,
+      "sha256": "3ecadd5642d88af70e27cfdde32c96a6c3b75105b80e2f50d56768677a8dffb0",
+      "size_bytes": 50953811
+    },
+    "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_gfs_3_1_333m_75lev/full6h/run_20260630T181555Z/wrfout_d02_2013-02-02_16:00:00": {
+      "internal_valid_time": "2013-02-02T16:00:00",
+      "mtime_ns": 1782847640305849913,
+      "sha256": "c9f54e1b97cfcf268674029266924989524c4a755d9a22e0e5365dc6c680fe1b",
+      "size_bytes": 50853182
+    },
+    "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_gfs_3_1_333m_75lev/full6h/run_20260630T181555Z/wrfout_d02_2013-02-02_17:00:00": {
+      "internal_valid_time": "2013-02-02T17:00:00",
+      "mtime_ns": 1782848662136482118,
+      "sha256": "6bd708073ac6a0b04c58aeed6453f1e498268877b13ca4fe9ed0deea9d9dc737",
+      "size_bytes": 50763671
+    },
+    "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_gfs_3_1_333m_75lev/full6h/run_20260630T181555Z/wrfout_d02_2013-02-02_18:00:00": {
+      "internal_valid_time": "2013-02-02T18:00:00",
+      "mtime_ns": 1782849686883578723,
+      "sha256": "6a5b188ba7840a73e32de52c6b1480bb7c85c9b824a65decdde7448d23fd27a9",
+      "size_bytes": 50614930
+    },
+    "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_gfs_3_1_333m_75lev_oneway/full6h/run_20260710T234000Z/wrfout_d02_2013-02-02_13:00:00": {
+      "internal_valid_time": "2013-02-02T13:00:00",
+      "mtime_ns": 1783727918824919722,
+      "sha256": "9bc3cd604252e8b3b575a8a95ac0211ce106ce5b44dcc53ad7c4d5fa7d26e43d",
+      "size_bytes": 49542187
+    },
+    "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_gfs_3_1_333m_75lev_oneway/full6h/run_20260710T234000Z/wrfout_d02_2013-02-02_14:00:00": {
+      "internal_valid_time": "2013-02-02T14:00:00",
+      "mtime_ns": 1783728867207053662,
+      "sha256": "50c18ec3b1cfabafc2f094ec75b6a4808f232f8cb0e6d4072bbdab9dcf885b97",
+      "size_bytes": 49767270
+    },
+    "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_gfs_3_1_333m_75lev_oneway/full6h/run_20260710T234000Z/wrfout_d02_2013-02-02_15:00:00": {
+      "internal_valid_time": "2013-02-02T15:00:00",
+      "mtime_ns": 1783729840490868575,
+      "sha256": "1c53cda947e754faa5d65ebf192b5b40b04e7add9e38fb7cb39ec008826d2be4",
+      "size_bytes": 50780615
+    },
+    "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_gfs_3_1_333m_75lev_oneway/full6h/run_20260710T234000Z/wrfout_d02_2013-02-02_16:00:00": {
+      "internal_valid_time": "2013-02-02T16:00:00",
+      "mtime_ns": 1783730828382691410,
+      "sha256": "ea5c4bb3222032ac864b725f5929f7d3dd5538ae46610f2fa46015b9a677fae5",
+      "size_bytes": 50693958
+    },
+    "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_gfs_3_1_333m_75lev_oneway/full6h/run_20260710T234000Z/wrfout_d02_2013-02-02_17:00:00": {
+      "internal_valid_time": "2013-02-02T17:00:00",
+      "mtime_ns": 1783731815019266258,
+      "sha256": "946f7649df247e1aa2d0fad87ae3e769b3e276855039299ec9241747651d55fe",
+      "size_bytes": 50591248
+    },
+    "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_gfs_3_1_333m_75lev_oneway/full6h/run_20260710T234000Z/wrfout_d02_2013-02-02_18:00:00": {
+      "internal_valid_time": "2013-02-02T18:00:00",
+      "mtime_ns": 1783732801966160788,
+      "sha256": "662ba57f7e8a1f8e24fd0f971609d1f6d37f3c7812681aa1e2bf8f69f3d1ccbf",
+      "size_bytes": 50433763
+    },
+    "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev/full6h/run_20260626T163737Z/wrfout_d02_2013-02-02_13:00:00": {
+      "internal_valid_time": "2013-02-02T13:00:00",
+      "mtime_ns": 1782492951948871944,
+      "sha256": "2c2a3af33c28e13de72648da0804a6190f2f083be73431c3e1048aa5e95d3c81",
+      "size_bytes": 49592260
+    },
+    "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev/full6h/run_20260626T163737Z/wrfout_d02_2013-02-02_14:00:00": {
+      "internal_valid_time": "2013-02-02T14:00:00",
+      "mtime_ns": 1782493977130734887,
+      "sha256": "8b971e7188027f4186bcd230bd85530f8e226bd7794fa647142fde75acfd7c08",
+      "size_bytes": 49888545
+    },
+    "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev/full6h/run_20260626T163737Z/wrfout_d02_2013-02-02_15:00:00": {
+      "internal_valid_time": "2013-02-02T15:00:00",
+      "mtime_ns": 1782495028378085484,
+      "sha256": "1757437c71c63c0bcf3b99abbff920369c3fce078020e59a66b78ebab9484471",
+      "size_bytes": 50997096
+    },
+    "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev/full6h/run_20260626T163737Z/wrfout_d02_2013-02-02_16:00:00": {
+      "internal_valid_time": "2013-02-02T16:00:00",
+      "mtime_ns": 1782496095769227536,
+      "sha256": "7c55a24b175c03720011ae310a0724350f12a21f0dd04a2111954d92263277ea",
+      "size_bytes": 51004051
+    },
+    "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev/full6h/run_20260626T163737Z/wrfout_d02_2013-02-02_17:00:00": {
+      "internal_valid_time": "2013-02-02T17:00:00",
+      "mtime_ns": 1782497166370149358,
+      "sha256": "bdd22498629f0519df9c2debe39e4a131854aea0c0773f24f96131647f5452b3",
+      "size_bytes": 51061065
+    },
+    "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev/full6h/run_20260626T163737Z/wrfout_d02_2013-02-02_18:00:00": {
+      "internal_valid_time": "2013-02-02T18:00:00",
+      "mtime_ns": 1782498232248390959,
+      "sha256": "9b422bcb6bfb277f63493436eab8a92790573fed8173665d2b69535cad933fa2",
+      "size_bytes": 51161324
+    },
+    "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway/full6h/run_20260702T053120Z/wrfout_d02_2013-02-02_13:00:00": {
+      "internal_valid_time": "2013-02-02T13:00:00",
+      "mtime_ns": 1782971738144140369,
+      "sha256": "e76f83d81de00b99b38363072b55dcac83b568c1a46332659de8797f45a2f823",
+      "size_bytes": 49398890
+    },
+    "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway/full6h/run_20260702T053120Z/wrfout_d02_2013-02-02_14:00:00": {
+      "internal_valid_time": "2013-02-02T14:00:00",
+      "mtime_ns": 1782973019544633251,
+      "sha256": "58e7b5bd6ff17c9d593b8468326f54fa59d4c151b53251f9a7d6eced242e3f1f",
+      "size_bytes": 49693364
+    },
+    "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway/full6h/run_20260702T053120Z/wrfout_d02_2013-02-02_15:00:00": {
+      "internal_valid_time": "2013-02-02T15:00:00",
+      "mtime_ns": 1782974327136312648,
+      "sha256": "07cc45d565ff4efdf0c6dc6725f0bc344cfae3da61e88c165ab6a6a7fd73d064",
+      "size_bytes": 50817277
+    },
+    "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway/full6h/run_20260702T053120Z/wrfout_d02_2013-02-02_16:00:00": {
+      "internal_valid_time": "2013-02-02T16:00:00",
+      "mtime_ns": 1782975649019978869,
+      "sha256": "d910a5c9da9e8e863e264332ef0d85e3f45978d33479b4a843c1cbbd414f718a",
+      "size_bytes": 50816943
+    },
+    "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway/full6h/run_20260702T053120Z/wrfout_d02_2013-02-02_17:00:00": {
+      "internal_valid_time": "2013-02-02T17:00:00",
+      "mtime_ns": 1782976973669300788,
+      "sha256": "d7dfc3646d906fc921719035323894efbf0cd257a33a3392d7b31dbca0153736",
+      "size_bytes": 50881286
+    },
+    "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway/full6h/run_20260702T053120Z/wrfout_d02_2013-02-02_18:00:00": {
+      "internal_valid_time": "2013-02-02T18:00:00",
+      "mtime_ns": 1782978296121074064,
+      "sha256": "85ef87afcdb4406d69ea34019dbfc6d73d87710e7368f0445e0b4cded91afe71",
+      "size_bytes": 50973952
+    }
+  },
+  "metric": {
+    "area_fraction_thresholds_mj_m2": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "cell_area": "DX*DY/MAPFAC_M^2",
+    "column_units": "J m-2",
+    "formula": "(cp/g) integral max(theta_crest-theta,0) dp below crest",
+    "horizontal_integral_units": "TJ",
+    "implementation": "brc_tools.nwp.wrf_output.heat_deficit_field",
+    "mean_units": "MJ m-2"
+  },
+  "outputs": {
+    "figure_pdf": {
+      "path": "/scratch/general/vast/u0737349/latex_jrl_heatdeficit_13934123/wrf_heat_deficit_d02_13to18.pdf",
+      "sha256": "87f39f05bc862befb8258f0f7fdf557d7e71163a38c75c387a5e5ae9d6bd69ec"
+    },
+    "figure_png": {
+      "path": "/scratch/general/vast/u0737349/latex_jrl_heatdeficit_13934123/wrf_heat_deficit_d02_13to18.png",
+      "sha256": "e6d49718884f15adf99dcbdbbf8f6e62f3002d01fed11a9a77a698fb6f1c446e"
+    },
+    "pair_summary": {
+      "path": "/scratch/general/vast/u0737349/latex_jrl_heatdeficit_13934123/heat_deficit_pair_summary.csv",
+      "sha256": "74fb548baa4932efc0625993a305479a5b83743441ecab203d5b3e5555fabbdd"
+    },
+    "sensitivity": {
+      "path": "/scratch/general/vast/u0737349/latex_jrl_heatdeficit_13934123/heat_deficit_sensitivity.csv",
+      "sha256": "53e3a327b9792593c6d3561579763ea5cf18f62747b0d7d1ee58e71cfb3f4b48"
+    },
+    "trajectory": {
+      "path": "/scratch/general/vast/u0737349/latex_jrl_heatdeficit_13934123/heat_deficit_trajectory.csv",
+      "sha256": "6c3e67483915b875af6efac71c3f855476392f53705d265bc0af7f2b03a45f36"
+    }
+  },
+  "predeclared_decision": {
+    "maintenance": "both GFS changes and both GFS-minus-NAM differences in 14-18 UTC change negative under all seven definitions",
+    "trajectory_context": "13 UTC is excluded from the decision",
+    "weaker_state": "both GFS-minus-NAM pairs negative at all 14-18 UTC hours under all seven definitions"
+  },
+  "registered_footprint": {
+    "figure_config_path": "verification/config/figures/pelican2013.toml",
+    "figure_config_sha256": "ad9d933854fc7067260f1bb398e25aff2e7c286b9df8135a64c9dfa1cf8d2fd7",
+    "hulls": {
+      "combined_vertices_lon_lat": [
+        [
+          -110.43,
+          40.165
+        ],
+        [
+          -109.546,
+          39.7539
+        ],
+        [
+          -109.1791,
+          40.0166
+        ],
+        [
+          -109.51273,
+          40.44295
+        ],
+        [
+          -109.53,
+          40.455
+        ],
+        [
+          -109.56083,
+          40.46472
+        ],
+        [
+          -110.3821,
+          40.4319
+        ]
+      ],
+      "station_vertices_lon_lat": [
+        [
+          -109.56083,
+          40.46472
+        ],
+        [
+          -110.3821,
+          40.4319
+        ],
+        [
+          -110.151,
+          40.067
+        ],
+        [
+          -109.546,
+          39.7539
+        ],
+        [
+          -109.3454,
+          39.9813
+        ],
+        [
+          -109.51273,
+          40.44295
+        ]
+      ],
+      "waypoint_vertices_lon_lat": [
+        [
+          -110.43,
+          40.165
+        ],
+        [
+          -109.1791,
+          40.0166
+        ],
+        [
+          -109.53,
+          40.455
+        ]
+      ]
+    },
+    "station_count": 11,
+    "station_ids": [
+      "USU07",
+      "USU02",
+      "UUT01",
+      "USU08",
+      "QRS",
+      "KVEL",
+      "USU01",
+      "QV4",
+      "USU05",
+      "USU04",
+      "USU03"
+    ],
+    "stations_path": "verification/data/stations_2013_selection.csv",
+    "stations_sha256": "80bf36f23b02065ae61e606932941190977f016e78842aaf447b3bbbbe60256a",
+    "waypoint_count": 11,
+    "waypoint_names": [
+      "Horsepool",
+      "Vernal",
+      "Roosevelt",
+      "Pelican Lake",
+      "Ouray",
+      "Fort Duchesne",
+      "Randlett",
+      "Bonanza",
+      "Myton",
+      "Duchesne",
+      "Starvation Reservoir"
+    ]
+  },
+  "repository": {
+    "commit": "c103c876b6f6d95107ed86ee1078d274b049d884",
+    "dirty": false,
+    "path": "/uufs/chpc.utah.edu/common/home/u0737349/gits/latex-jrl-mjd-mdpiair-2026",
+    "script_sha256": "93dddf892698587404eafe51dfb5bfbd1096e38bfad4bc0d11a827b20e70a1a6"
+  },
+  "request_id": "20260713-c4-ana16",
+  "scope": {
+    "domain": 2,
+    "mask_run": "nam1",
+    "pairs": [
+      {
+        "a": "gfs2",
+        "b": "nam2",
+        "sign": "gfs2 minus nam2"
+      },
+      {
+        "a": "gfs1",
+        "b": "nam1",
+        "sign": "gfs1 minus nam1"
+      }
+    ],
+    "retained_end": "2013-02-02T18:00:00",
+    "retained_start": "2013-02-02T14:00:00",
+    "runs": {
+      "gfs1": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_gfs_3_1_333m_75lev_oneway/full6h/run_20260710T234000Z",
+      "gfs2": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_gfs_3_1_333m_75lev/full6h/run_20260630T181555Z",
+      "nam1": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway/full6h/run_20260702T053120Z",
+      "nam2": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev/full6h/run_20260626T163737Z"
+    },
+    "trajectory_end": "2013-02-02T18:00:00",
+    "trajectory_start": "2013-02-02T13:00:00"
+  },
+  "slurm_job_id": "13934123",
+  "started_utc": "2026-07-13T08:13:08.174144+00:00"
+}
