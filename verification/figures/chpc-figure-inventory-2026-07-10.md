@@ -236,6 +236,14 @@ Common record for the first six:
 - Each absolute figure currently chooses its own θ range, so color comparisons
   across runs are qualitative only.  The 4,500 m ASL ceiling compresses the
   shallow cold pool.
+- **Update 2026-07-11 (JRL + Opus):** both caveats in the two bullets above are now
+  addressed. `plot_wrf_cross_sections.py` gained `--theta-min/--theta-max`; the
+  GFS/NAM-2way and NAM-1way θ x-sections + QRS time-heights were re-rendered on a
+  **shared 266–306 K scale** (so cross-run color is now quantitative), and all 29
+  previously-unregistered `candidates/` PNGs now carry `manifest.csv` rows
+  (statuses: diagnostic/rejected/superseded/context). Decision-by-decision exhibit
+  map: `evidence-longlist.md`. The frame-zero `wrf_xsect_theta_*_d02.png` remain
+  **rejected** (init artifact); prefer the `_16z` shared-scale versions.
 
 | File | Time/spin-up and question | Rough visual reading | Alternative/limitation | Required rerender | Status |
 |---|---|---|---|---|---|

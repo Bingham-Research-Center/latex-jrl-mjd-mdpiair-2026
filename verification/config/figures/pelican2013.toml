@@ -5,7 +5,7 @@
 # This is the ONLY pelican2013-specific artifact; the engine/CLI live in brc-tools.
 # Schema + semantics: ../brc-tools/docs/WRF-FIGURE-ENGINE.md
 #
-# All eight runs share the d01=3 km / d02=1 km / d03=333 m nest (75 eta levels) over
+# All runs share the d01=3 km / d02=1 km / d03=333 m nest (75 eta levels) over
 # the Uinta Basin, 2013-02-02 12->18 UTC hourly.  Run details / findings:
 # experiments/pelican2013-cold-pool-figures.md
 
@@ -22,6 +22,7 @@ profile_hours = [12]                        # hour(s) for the theta(z) profile f
 sounding_hour = 12                          # analysis hour for the station skew-Ts (only RAOB launch)
 upper_pressure_hpa = 600.0                  # synoptic T-advection surface (well above the basin)
 upper_adv_domain = "outer"                  # compute the 600 hPa T-adv on d01 (clean; not 333 m noise)
+heatdeficit_domain = "d02"                  # heatdeficit_map field on the 1 km nest (spans the whole basin + rim)
 focus_point = { name = "Horsepool", lat = 40.144, lon = -109.467 }
 surface_vars = [
   { key = "theta2m", style = "theta_2m",       wind = true  },
@@ -53,6 +54,9 @@ stations = ["KSLC", "KGJT", "KRIW"]
 # Only the distinct driving analyses need station skew-Ts (the NAM feedback/terrain
 # variants share d01 away from the nest).
 ic_cases = ["gfs", "nam"]
+# thetaz family: model hours (offsets after sounding_hour=12Z) overlaid on the 12Z RAOB
+# to show the first-hour spin-up.  Rendered per selected case, not just ic_cases.
+spinup_leads = [0, 1]
 
 [runs]
 gfs           = { dir = "pelican2013_gfs_3_1_333m_75lev",                  label = "GFS 2-way" }
@@ -64,6 +68,9 @@ nam_terrain5m = { dir = "pelican2013_nam_3_1_333m_75lev_oneway_terrain5m", label
 nam_terrain3s = { dir = "pelican2013_nam_3_1_333m_75lev_oneway_terrain3s", label = "NAM 1-way terrain 3 arcsec (~90 m)" }
 nam_terrain3s_slope = { dir = "pelican2013_nam_3_1_333m_75lev_oneway_terrain3s_slope", label = "NAM 1-way terrain3s + slope/shading" }
 nam_terrain3s_slope_myj = { dir = "pelican2013_nam_3_1_333m_75lev_oneway_terrain3s_slope_myj", label = "NAM 1-way terrain3s + slope/shading + MYJ" }
+# X9: 2-way feedback at the control's own fine (3 arcsec) terrain -> pairs with nam_terrain3s
+# (X0) for a feedback test that isn't confounded by the default terrain of nam/nam_oneway.
+nam_twoway_terrain3s = { dir = "pelican2013_nam_3_1_333m_75lev_twoway_terrain3s", label = "NAM 2-way terrain 3 arcsec (~90 m)" }
 
 # Difference families (case a minus case b).  Each pair shares nesting/ICs so the
 # named axis is the only difference.  `dir` fixes the output subdir for parity with
@@ -75,6 +82,7 @@ tag = "GFS-NAM"
 dir = "diff_gfs_nam"
 feedback = false
 sections = true      # driving analyses diverge strongly; show EW/NS theta sections too
+hd_limit = 2.5       # heatdeficit_map diff scale (MJ m-2): IC erodes the whole floor basin-wide
 
 [[differences]]
 a = "gfs_oneway"
@@ -99,6 +107,17 @@ tag = "GFS-2way-1way"
 dir = "diff_feedback_gfs"
 feedback = true
 sections = true      # match the NAM feedback product set
+
+# X9 - X0: nest feedback at the CONTROL's own fine (3 arcsec) terrain.  Cleaner than the
+# default-terrain diff_feedback pair because IC/nesting/terrain all match the control.
+[[differences]]
+a = "nam_twoway_terrain3s"
+b = "nam_terrain3s"
+tag = "2way-1way-terrain3s"
+dir = "diff_feedback_terrain3s"
+feedback = true
+sections = true
+hd_limit = 0.2       # heatdeficit_map diff scale (MJ m-2): feedback is ~10x smaller (floor speckle ~ noise)
 
 [[differences]]
 a = "nam_oneway"
@@ -148,6 +167,7 @@ dir = "diff_terrain_res"
 feedback = false
 sections = true
 limit = 4.0
+hd_limit = 1.6       # heatdeficit_map diff scale (MJ m-2): terrain signal on the rim/slopes, floor near-neutral
 
 [style]
 # Fixed shared colour scales (VAR_STYLES in brc-tools) stay the default so figures
