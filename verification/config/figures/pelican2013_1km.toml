@@ -21,6 +21,7 @@ profile_hours = [12]
 sounding_hour = 12
 upper_pressure_hpa = 600.0
 upper_adv_domain = "outer"                  # 600 hPa T-adv on d01 (3 km), clean synoptic
+heatdeficit_domain = "d02"                  # heatdeficit_map field on the 1 km inner nest (the basin)
 # Horsepool matches the 333 m / 111 m runs so the focus skew-T / profile / heat-deficit
 # compare directly across the resolution ladder.
 focus_point = { name = "Horsepool", lat = 40.144, lon = -109.467 }

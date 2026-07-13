@@ -23,6 +23,7 @@ profile_hours = [12]
 sounding_hour = 12
 upper_pressure_hpa = 600.0
 upper_adv_domain = "outer"
+heatdeficit_domain = "d02"                  # 1 km nest (innermost d04=111 m is too small to span the basin)
 # Focus point matches this run's prior full-figures (skew-T / profile / heat-deficit).
 # Sections run EW/NS through the domain centre and ignore the focus point.
 focus_point = { name = "Vernal", lat = 40.455, lon = -109.530 }

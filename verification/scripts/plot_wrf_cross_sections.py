@@ -88,7 +88,9 @@ def transect_cells(xlat, xlon, p0, p1, n=N_TRANSECT) -> tuple[list, np.ndarray]:
     return cells, km
 
 
-def fig_xsect(files, cells, km, run, want_times, out_dir, endpoints) -> None:
+def transect_panels(files, cells, want_times) -> list:
+    """[(t, theta_slice, z_slice, terrain)] along the transect for each wanted time.
+    theta/z slices are (nz+1, ncol) with a surface row prepended (see pad_surface)."""
     panels = []
     for f in files:
         ds = xr.open_dataset(f, decode_times=False)
@@ -103,6 +105,21 @@ def fig_xsect(files, cells, km, run, want_times, out_dir, endpoints) -> None:
                 th_s, z_s = pad_surface(th_s, z_s, terr)
                 panels.append((t, th_s, z_s, terr))
         ds.close()
+    return panels
+
+
+def theta_levels(auto_min, auto_max, theta_min, theta_max) -> tuple[np.ndarray, str]:
+    """0.5 K contour levels. With an explicit (theta_min, theta_max) the scale is
+    FIXED so figures from different runs are directly comparable (extend='both'
+    keeps out-of-range θ visible); otherwise each figure auto-scales to its data."""
+    if theta_min is not None and theta_max is not None:
+        return np.arange(theta_min, theta_max + 0.5, 0.5), "both"
+    return np.arange(np.floor(auto_min), np.ceil(auto_max) + 0.5, 0.5), "neither"
+
+
+def fig_xsect(files, cells, km, run, want_times, out_dir, endpoints,
+              theta_min=None, theta_max=None) -> None:
+    panels = transect_panels(files, cells, want_times)
     if not panels:
         raise SystemExit(f"none of the requested times found; got e.g. {want_times[:2]}")
 
@@ -112,10 +129,10 @@ def fig_xsect(files, cells, km, run, want_times, out_dir, endpoints) -> None:
                              sharex=True, sharey=True, squeeze=False)
     vmin = min(p[1][p[2] < Z_TOP].min() for p in panels)
     vmax = max(p[1][p[2] < Z_TOP].max() for p in panels)
-    levels = np.arange(np.floor(vmin), np.ceil(vmax) + 0.5, 0.5)
+    levels, extend = theta_levels(vmin, vmax, theta_min, theta_max)
     km2d = np.broadcast_to(km, panels[0][1].shape)
     for ax, (t, th_s, z_s, terr) in zip(axes.flat, panels):
-        cf = ax.contourf(km2d, z_s, th_s, levels=levels, cmap="turbo")
+        cf = ax.contourf(km2d, z_s, th_s, levels=levels, cmap="turbo", extend=extend)
         ax.contour(km2d, z_s, th_s, levels=levels[::4], colors="k", linewidths=0.3)
         ax.fill_between(km, 0, terr, color="0.15", zorder=3)
         ax.set_ylim(terr.min() - 50, Z_TOP)
@@ -133,7 +150,58 @@ def fig_xsect(files, cells, km, run, want_times, out_dir, endpoints) -> None:
     print(f"wrote {out}")
 
 
-def fig_timeheight(files, cell, run, station, out_dir) -> None:
+def fig_xsect_diff(files_a, files_b, cells, km, run_a, run_b, want_times, out_dir,
+                   endpoints, dtheta_max=None) -> None:
+    """θ(run_a) − θ(run_b) on the transect. Each run's columns are interpolated to a
+    common height grid before differencing, so runs with slightly different level
+    heights (or terrain) difference correctly; below-ground cells are masked."""
+    pa = {t: (th, z, terr) for t, th, z, terr in transect_panels(files_a, cells, want_times)}
+    pb = {t: (th, z, terr) for t, th, z, terr in transect_panels(files_b, cells, want_times)}
+    times = [t for t in want_times if t in pa and t in pb]
+    if not times:
+        raise SystemExit(f"no shared times between runs; a={list(pa)[:2]} b={list(pb)[:2]}")
+    zc = np.arange(min(pa[times[0]][2].min(), pb[times[0]][2].min()), Z_TOP + 1, 25.0)
+    diffs = []
+    for t in times:
+        th_a, z_a, terr_a = pa[t]
+        th_b, z_b, terr_b = pb[t]
+        ground = np.maximum(terr_a, terr_b)
+        d = np.full((zc.size, th_a.shape[1]), np.nan)
+        for c in range(th_a.shape[1]):
+            col = (np.interp(zc, z_a[:, c], th_a[:, c], left=np.nan, right=np.nan)
+                   - np.interp(zc, z_b[:, c], th_b[:, c], left=np.nan, right=np.nan))
+            col[zc < ground[c]] = np.nan
+            d[:, c] = col
+        diffs.append((t, d, ground))
+    amax = float(np.ceil(dtheta_max or np.nanmax(np.abs(np.concatenate(
+        [d.ravel() for _, d, _ in diffs])))))
+    levels = np.linspace(-amax, amax, 25)
+    ncol = min(len(diffs), 2)
+    nrow = -(-len(diffs) // ncol)
+    fig, axes = plt.subplots(nrow, ncol, figsize=(7.5 * ncol, 4.2 * nrow),
+                             sharex=True, sharey=True, squeeze=False)
+    km2d = np.broadcast_to(km, (zc.size, km.size))
+    zc2d = np.repeat(zc[:, None], km.size, axis=1)
+    for ax, (t, d, ground) in zip(axes.flat, diffs):
+        cf = ax.contourf(km2d, zc2d, d, levels=levels, cmap="RdBu_r", extend="both")
+        ax.contour(km2d, zc2d, d, levels=[0], colors="k", linewidths=0.4)
+        ax.fill_between(km, 0, ground, color="0.15", zorder=3)
+        ax.set_ylim(ground.min() - 50, Z_TOP)
+        ax.set_title(f"{run_a} − {run_b} — {t:%d %b %H:%M} UTC", fontsize=10)
+    for ax in axes.flat[len(diffs):]:
+        ax.set_visible(False)
+    for ax in axes[:, 0]:
+        ax.set_ylabel("Height ASL (m)")
+    for ax in axes[-1, :]:
+        ax.set_xlabel(f"Distance along transect (km), {endpoints[0]} → {endpoints[1]}")
+    fig.colorbar(cf, ax=axes, shrink=0.85, label=f"Δθ (K), {run_a} − {run_b}")
+    out = out_dir / f"wrf_xsect_theta_diff_{run_a}_minus_{run_b}.png"
+    fig.savefig(out, dpi=200, bbox_inches="tight")
+    plt.close(fig)
+    print(f"wrote {out}")
+
+
+def fig_timeheight(files, cell, run, station, out_dir, theta_min=None, theta_max=None) -> None:
     j, i = cell
     ts, profs, zs = [], [], []
     for f in files:
@@ -153,8 +221,8 @@ def fig_timeheight(files, cell, run, station, out_dir) -> None:
     t2d = np.broadcast_to(t_arr, th.shape)
 
     fig, ax = plt.subplots(figsize=(9, 4.2))
-    levels = np.arange(np.floor(th[z < Z_TOP].min()), np.ceil(th[z < Z_TOP].max()) + 0.5, 0.5)
-    cf = ax.contourf(t2d, z, th, levels=levels, cmap="turbo")
+    levels, extend = theta_levels(th[z < Z_TOP].min(), th[z < Z_TOP].max(), theta_min, theta_max)
+    cf = ax.contourf(t2d, z, th, levels=levels, cmap="turbo", extend=extend)
     ax.contour(t2d, z, th, levels=levels[::4], colors="k", linewidths=0.3)
     ax.set_ylim(z.min() - 50, Z_TOP)
     ax.set_ylabel("Height ASL (m)")
@@ -181,7 +249,21 @@ def main() -> None:
                     help="wrfout timestamps (UTC, YYYY-MM-DD_HH:MM:SS) for the slice panels")
     ap.add_argument("--out-dir", type=Path, default=None,
                     help="default: <wrf-dir>/figures")
+    ap.add_argument("--theta-min", type=float, default=None,
+                    help="fixed lower θ (K) for a shared color scale across runs; "
+                         "pair with --theta-max (else each figure auto-scales, so "
+                         "cross-run color comparison is only qualitative)")
+    ap.add_argument("--theta-max", type=float, default=None,
+                    help="fixed upper θ (K) for the shared color scale")
+    ap.add_argument("--diff-wrf-dir", default=None,
+                    help="second run's wrfout dir; if set, write θ(run)−θ(diff) on the "
+                         "transect instead of the single-run x-section + time-height")
+    ap.add_argument("--diff-run-label", default=None, help="label for the second (subtracted) run")
+    ap.add_argument("--dtheta-max", type=float, default=None,
+                    help="fixed ±Δθ (K) scale for the difference figure (else symmetric auto)")
     args = ap.parse_args()
+    if (args.theta_min is None) != (args.theta_max is None):
+        raise SystemExit("--theta-min and --theta-max must be given together")
 
     stations = load_stations(args.stations)
     for stid in (*args.transect, args.time_height_station):
@@ -201,10 +283,17 @@ def main() -> None:
 
     cells, km = transect_cells(xlat, xlon, stations[args.transect[0]], stations[args.transect[1]])
     print(f"transect {args.transect[0]} -> {args.transect[1]}: {km[-1]:.1f} km, {len(cells)} columns")
-    fig_xsect(files, cells, km, args.run_label, want, out_dir, args.transect)
-
-    th_cell = nearest_cell(xlat, xlon, *stations[args.time_height_station])
-    fig_timeheight(files, th_cell, args.run_label, args.time_height_station, out_dir)
+    if args.diff_wrf_dir:
+        files_b = open_run(args.diff_wrf_dir, args.glob)
+        fig_xsect_diff(files, files_b, cells, km, args.run_label,
+                       args.diff_run_label or "runB", want, out_dir, args.transect,
+                       dtheta_max=args.dtheta_max)
+    else:
+        fig_xsect(files, cells, km, args.run_label, want, out_dir, args.transect,
+                  theta_min=args.theta_min, theta_max=args.theta_max)
+        th_cell = nearest_cell(xlat, xlon, *stations[args.time_height_station])
+        fig_timeheight(files, th_cell, args.run_label, args.time_height_station, out_dir,
+                       theta_min=args.theta_min, theta_max=args.theta_max)
 
 
 if __name__ == "__main__":

@@ -19,9 +19,21 @@ dredge it; use the exact paths below.
   exact-config convergence `13896871`; counts/mtimes were checked and representative X10,
   direct-feedback, forcing-contrast, profile, heat-deficit, skew-T, section,
   surface, and upper-air images were opened.
-- **Exact renderer state:** brc-tools `89883ceb52988182943d0fb3f9efd0b2dd835c10`;
-  `verification/config/figures/pelican2013.toml` SHA-256
-  `58e2b12749983f9525046919694c965624c8b2945aec84cc22caaf5dd1a8f06a`.
+- **Verified 2026-07-11:** X9 (`nam_twoway_terrain3s`) standard set = **✓ 63** (14/35/14) and
+  the new **X9−X0** feedback pair = **21** are on disk (job `13902813`; the first attempt
+  `13902254` hung mid-15z on a group-storage I/O stall, cancelled + resubmitted with
+  `--skip-existing`). New **`thetaz`** family (θ(z)-with-wind vs RAOB) built into the brc-tools
+  renderer and swept across all 9 cases (job `13902650`: 3 stations × 9 = 27 PNG per run's
+  `full-figures/thetaz/`). Compare `skewt` → 69, compare root → 275.
+- **Verified 2026-07-12:** new **`heatdeficit_map`** family (plan-view Whiteman heat deficit,
+  MJ m⁻²) rendered across the matrix (job `13930807`): per-run `full-figures/heatdeficit_map/`
+  = 7 for all 9 standard cases (63 fields) + `compare/heatdeficit_map/` = 70 (one diff per
+  `[[differences]]` pair × 7 h). The 21 stale mislabeled `terrain-900m-30m` PNGs were deleted
+  from `diff_terrain_fine/` (→ 21, author-authorized). Compare root → 324.
+- **Exact renderer state:** brc-tools `fad70b0` (adds the `heatdeficit_map` family; was
+  `56cd002` = thetaz + sounding `height_m`); `verification/config/figures/pelican2013.toml`
+  SHA-256 `ad9d933854fc7067260f1bb398e25aff2e7c286b9df8135a64c9dfa1cf8d2fd7` (incl.
+  `heatdeficit_domain` + per-pair `hd_limit`).
 - **Never `cat`/open the PNGs to answer "does the set exist"** — count with
   `ls "$ARC/<full-figures-path>/<family>" | wc -l` (see Appendix).
 
@@ -50,11 +62,13 @@ valid times 12–18Z).
 | X6 | `pelican2013_gfs_3_1_333m_75lev` | **GFS** | 2-way · 333 m | 75 | default ~900 m | baseline | 6 h | `full6h/run_20260630T181555Z/full-figures` | ✓ 63 | 07-09 23:34 | driving-state contrast vs X5; IC/LBC contributions unresolved |
 | X7 | `pelican2013_nam_3_1km_75lev` | NAM | 2-way · 2dom/**1 km** | 75 | default | baseline | **24 h** 00→00Z | `full24h/run_20260625T212123Z/full-figures` | ✓ **216** (48/120/48) | 07-10 02:57 | coarse resolution rung; own `verification/config/figures/pelican2013_1km.toml` |
 | X8 | `pelican2013_nam_d04_111m_50lev_oneway_terrain3s` | NAM | 1-way · **4dom/111 m** | 50 | fine | baseline | 6 h (d03/d04 sub-hrly) | `full6h/run_20260709T041225Z_d04only3s_ts12/full-figures` | ~86 **non-std** | 07-10 01:09 | fine rung; nested `nam_d04_111m/{sections28,surface35,upperair7}` + profiles7/skewt7/domains1/heatdeficit1; **upperair crest-only** (no p600); focus=**Vernal**; own `verification/config/figures/pelican2013_d04.toml` |
-| X9 | `pelican2013_nam_3_1_333m_75lev_twoway_terrain3s` | NAM | **2-way** · 333 m | 75 | fine | baseline | 6 h | — | ✗ **none** | quicklooks 07-10 04:5x | **quicklooks only** at `full6h/run_20260710T084413Z/quicklooks`; **not a TOML `[runs]` key yet** — see Table 3 |
+| X9 | `pelican2013_nam_3_1_333m_75lev_twoway_terrain3s` | NAM | **2-way** · 333 m | 75 | fine | baseline | 6 h | `full6h/run_20260710T084413Z/full-figures` | ✓ **63** (+3 thetaz) | 07-11 | TOML `[runs]` key **`nam_twoway_terrain3s`**; job `13902813` (first `13902254` hung mid-15z, resubmitted); fine-terrain analog of X5 |
 | X10 | `pelican2013_gfs_3_1_333m_75lev_oneway` | **GFS** | **1-way** · 333 m | 75 | default ~900 m | baseline | 6 h | `full6h/run_20260710T234000Z/full-figures` | ✓ 63 | 07-10 19:38 | feedback-only companion to X6; preparation `13894268`, WRF `13894282`, quicklooks `13896648` |
 
 Legacy dirs `feb2013_basin_nam_12_4km`, `jan2013_basin_gefs`, `pelican2013_rap_3_1_333m_75lev`
-are **out of scope** (no/near-zero publication figures) and intentionally omitted.
+are **out of scope** (no/near-zero publication figures) and intentionally omitted, as are the
+non-run dirs `pelican2013_nam_gfs_compare` (7 June-era quicklook YAML/TSV, no PNG) and
+`namelist_diff_reports`.
 
 † **Terrain-label caveat:** `terrain3s` = 3 arc-**second** GEOG (~90 m) per
 `verification/config/figures/pelican2013.toml`; the delivered source may be finer,
@@ -75,16 +89,21 @@ reference leg of every pair — each pair names its own `a`/`b`.
 | X5 − X3 | `2way-1way` | `diff_feedback` | NAM nest feedback | yes | 21 | nearly null at basin core; vertical sections now included |
 | X6 − X10 | `GFS-2way-1way` | `diff_feedback_gfs` | GFS nest feedback | yes | 21 | small spatial response relative to either forcing contrast |
 | X3 − X4 | `terrain-900m-9km` | `diff_terrain` | terrain: default vs coarse | no | 7 | |
-| X3 − X0 | `terrain-900m-90m` | `diff_terrain_fine` | terrain: default vs fine | yes | 42 | count > expected 21 — likely extra/stale; verify before use |
+| X3 − X0 | `terrain-900m-90m` | `diff_terrain_fine` | terrain: default vs fine | yes | 21 | stale mislabeled `terrain-900m-30m` set deleted 2026-07-12 |
 | X1 − X0 | `slope-shading-control` | `diff_slope_shading` | slope/shading radiation | no | 7 | Tran-bridge step 1 |
 | X2 − X1 | `MYJ-Eta-slope` | `diff_myj_eta` | PBL scheme | yes | 21 | Tran-bridge step 2; coherent low-level response, with PBLH/TKE interpretation pending C19 |
 | X0 − X4 | `terrain-3arcsec-5arcmin` | `diff_terrain_res` | terrain: fine vs coarse (**headline**) | yes | 21 | |
+| X9 − X0 | `2way-1way-terrain3s` | `diff_feedback_terrain3s` | NAM feedback at **fine** terrain | yes | 21 | cleaner feedback test than X5−X3 (matches the control's fine terrain) |
 
-Also under `compare/`: `domains/` (1), `heatdeficit/` (1), `profiles/` (1, Horsepool 12Z),
-`skewt/` (62 — focus Horsepool per case/time + stations KSLC/KGJT/KRIW at 12Z for gfs+nam).
-The current `pelican2013` compare root contains 247 PNGs.
+Also under `compare/`: `domains/` (1), `heatdeficit/` (1, time series), `profiles/` (1,
+Horsepool 12Z), `skewt/` (69 — focus Horsepool per case/time incl. +7 for X9 + stations
+KSLC/KGJT/KRIW at 12Z for gfs+nam), `diff_feedback_terrain3s/` (21, the X9−X0 pair), and
+`heatdeficit_map/` (70 — one Δ heat-deficit map per pair × 7 h; fixed scales `GFS-NAM` ±2.5,
+`2way-1way-terrain3s` ±0.2, `terrain-3arcsec-5arcmin` ±1.6 MJ m⁻², others adaptive 99th-pct).
+The current `pelican2013` compare root contains 324 PNGs.
 The 1-km rung has its own `pelican2013_1km_pub_figures/compare/` (domains/heatdeficit/
-profiles 1 each, skewt 27). **No `[[differences]]` pair yet involves X8 (d04) or X9.**
+profiles 1 each, skewt 27). The **X9−X0** pair is complete; **no `[[differences]]` pair yet
+involves X8 (d04).**
 
 ## Table 3 — Recommended `/wrf-full-figures` runs to complete the set
 
@@ -94,15 +113,15 @@ python/sbatch directly). Free-form NL args — name the case, run, and selection
 
 | # | `/wrf-full-figures …` | fills / does | status | prerequisite |
 |---|---|---|---|---|
-| 1 | `/wrf-full-figures pelican2013, case nam_twoway_terrain3s, latest run, all figures` | X9 full 63-PNG set (2-way at control terrain) | 🔴 | **first** add a `[runs.nam_twoway_terrain3s]` entry (dir `pelican2013_nam_3_1_333m_75lev_twoway_terrain3s`) to `verification/config/figures/pelican2013.toml` — it is not a run key yet |
+| 1 | `/wrf-full-figures pelican2013, case nam_twoway_terrain3s, latest run, all figures` | X9 full 63-PNG set (2-way at fine terrain) | ✅ **done** (63; job `13902813`) | `[runs.nam_twoway_terrain3s]` key present; first job `13902254` hung mid-15z → resubmitted with `--skip-existing` |
 | 2 | `/wrf-full-figures pelican2013_d04 case, latest run, figures sections surface upperair` | X8 standardized surface/section/upperair (adds p600 advection; flattens the nested `nam_d04_111m/` layout) | 🟡 | uses `verification/config/figures/pelican2013_d04.toml`; focus = Vernal |
-| 3 | `/wrf-full-figures pelican2013, all cases, compare figures only: difference skewt profiles heatdeficit domains, --skip-existing` | regenerate cross-case `compare/` after any run changes; also refreshes `diff_terrain_fine` (over-count) | 🟢 complete for X10 | jobs `13896642` and `13896828`; X9 remains outside the TOML |
-| 4 | `/wrf-full-figures pelican2013, all cases, all figures, --skip-existing` | idempotent sweep — confirms the configured eight-case set complete | 🟢 complete | final exact-config convergence `13896871`: all 730 tasks skipped as up to date |
-| — | *(optional science)* add `X9 − X0` feedback-at-fine-terrain diff pair to `verification/config/figures/pelican2013.toml`, then rerun #3 | cleaner feedback test than X5−X3 (matches the control's fine terrain) | 🟡 | your call — a new `[[differences]]` block |
+| 3 | `/wrf-full-figures pelican2013, all cases, compare figures only: difference skewt profiles heatdeficit domains, --skip-existing` | regenerate cross-case `compare/` after any run changes; also refreshes `diff_terrain_fine` (over-count resolved 2026-07-12) | 🟢 complete for X10 | jobs `13896642` and `13896828`; X9 + the X9−X0 diff are now in the TOML and rendered (job `13902813`) |
+| 4 | `/wrf-full-figures pelican2013, all cases, all figures, --skip-existing` | idempotent sweep — confirms the configured nine-case set complete | 🟢 complete | final exact-config convergence `13896871`: all 730 tasks skipped as up to date |
+| — | ✅ **done** — `X9 − X0` feedback-at-fine-terrain diff pair added; **21 PNG** on disk (job `13902813`) | cleaner feedback test than X5−X3 (matches the control's fine terrain) | ✅ done | (was: your-call `[[differences]]` block) |
 
-The configured X0--X6 and X10 standard sets are **complete** at 63 PNGs each;
-X7 retains its separate 216-PNG 24-hour set. X8 remains non-standard and X9
-remains the only unrendered standard candidate.
+The configured X0--X6, **X9**, and X10 standard sets are **complete** at 63 PNGs each (plus the
+opt-in `thetaz/` = 3 per case); X7 retains its separate 216-PNG 24-hour set. X8 remains the
+only non-standard set — no unrendered standard candidates remain.
 
 ## Appendix — navigation & completeness (for the agent)
 
@@ -110,6 +129,17 @@ remains the only unrendered standard candidate.
 - `sections/` = 14 → `section_{ew,ns}_<case>_{12,13,14,15,16,17,18}z.png`
 - `surface/` = 35 → `{theta2m,t2,wspd10,snow,pblh}_<case>_multidomain_{12..18}z.png`
 - `upperair/` = 14 → `crest2200_<case>_{12..18}z.png` + `p600_advection_<case>_{12..18}z.png`
+
+**Opt-in family (not in the 63):** `thetaz/` = 3 → `thetaz_{KSLC,KGJT,KRIW}_<case>.png` — θ(z)
+model spin-up (12Z + 13Z overlaid) vs the 12Z RAOB, with wind barbs + shaded stability bands
+(a skew-T alternative). Rendered **per selected case** (not restricted to `ic_cases`); needs
+`--figure thetaz` + `--sounding-cache` for the obs overlay. Present for all 9 cases as of
+2026-07-11 (job `13902650`). See brc-tools `docs/WRF-FIGURE-ENGINE.md`.
+
+**Opt-in family (not in the 63):** `heatdeficit_map/` = 7 → `heatdeficit_<case>_{12..18}z.png`
+— plan-view Whiteman heat deficit below the 2200 m crest on d02 (viridis, fixed 0–8 MJ m⁻²;
+the spatial companion to the `heatdeficit` time series). Present for all 9 cases as of
+2026-07-12 (job `13930807`); the per-pair Δ maps live in `compare/heatdeficit_map/`.
 
 `<case>` = the TOML `[runs]` key (e.g. `gfs`, `nam`, `nam_terrain3s`). 24-h run X7 has 3×
 the counts (24 valid times). Cross-case families live under `pelican2013_pub_figures/compare/`,

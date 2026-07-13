@@ -8,8 +8,8 @@ The script is read-only and does not download raw WRF output.
 
 ```bash
 ssh <your-unid>@notchpeak1.chpc.utah.edu
-cd ~/gits/lawson-davies-air-wrf-2026
-git switch jrl/first-draft
+cd ~/gits/latex-jrl-mjd-mdpiair-2026   # active study repo (lawson-davies-air-wrf-2026 is mothballed)
+git switch main
 git pull --ff-only
 module load rclone
 
@@ -36,7 +36,7 @@ S3 prefixes.
 ```bash
 salloc -A lawson-np -p lawson-np -N 1 -n 1 --mem=4G -t 00:30:00
 module load netcdf-c
-cd ~/gits/lawson-davies-air-wrf-2026
+cd ~/gits/latex-jrl-mjd-mdpiair-2026
 bash verification/provenance/chpc_wrf_publication_inventory.sh \
   --headers-only --out "$OUT"
 exit
