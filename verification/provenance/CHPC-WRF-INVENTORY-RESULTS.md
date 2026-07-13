@@ -47,15 +47,20 @@ excluded. Covered: `feb2013_basin_nam_12_4km`, `jan2013_basin_gefs` (×3), the
 `pelican2013` 333 m / 1 km families, and the 111 m d04 runs.
 
 ## Caveat for re-runs — rclone version
+This paragraph records the behavior of the script at commit `f01b129`.
+The current script no longer passes `rclone lsf --time-format`, and its remote
+stage therefore does not require rclone 1.58 solely for that option. Continue to
+record `rclone version` and inspect `status/*.summary` on every rerun.
+
 The script's manifests use `rclone lsf --time-format`, a flag added in rclone
 **1.58**. CHPC's `/usr/bin/rclone` *and* the default `module load rclone` are
 **1.57**, which rejects the flag: every manifest then silently FAILs while the
 `rclone cat` config captures still succeed (so a naive run looks half-done).
 This run used `rclone/1.68.2`
 (`/uufs/chpc.utah.edu/sys/installdir/rclone/1.68.2/bin`).
-Before re-running, load a ≥1.58 module — e.g. `module load rclone/1.68.2` — or
-the manifests come back empty. (The handoff/README's `module load rclone` is
-not sufficient.)
+With the `f01b129` script, a rerun therefore needed a ≥1.58 module such as
+`rclone/1.68.2` or the manifests came back empty. This version constraint is
+historical, not a requirement introduced by the current script.
 
 ## Next
 Reconcile these manifests, config key-values, and header fingerprints against

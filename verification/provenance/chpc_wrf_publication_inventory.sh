@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 # Read-only WRF provenance inventory for CHPC and the group rclone archive.
+#
+# Remote inventory is login-node safe. Shared-filesystem traversal and NetCDF
+# header reads happen only in header mode, which requires a Slurm allocation.
 
 set -uo pipefail
 IFS=$'\n\t'
@@ -24,8 +27,9 @@ Options:
   --header-limit N  Maximum local run directories to fingerprint (default: 12)
   -h, --help        Show this help
 
-Core and extended searches are read-only. Header mode is also read-only but must
-run inside a Slurm allocation because it opens representative wrfout files.
+Core and extended searches query only the rclone remote and are read-only.
+Header mode is also read-only but must run inside a Slurm allocation because it
+traverses the shared archive and opens representative wrfout files.
 EOF
 }
 
@@ -103,7 +107,6 @@ remote_manifest() {
   out="$OUT/manifests/${label}.tsv"
   note "inventory $remote"
   if rclone lsf -R --files-only --format pst --separator $'\t' \
-      --time-format '2006-01-02T15:04:05Z07:00' \
       "${manifest_filters[@]}" "$remote" >"$out" 2>"$out.stderr"; then
     awk -F '\t' '
       {n++; if ($2 ~ /^[0-9]+$/) bytes += $2}
@@ -188,15 +191,6 @@ if ((DO_CORE)); then
   done
 fi
 
-note "inventory local JRL archive"
-if [[ -d $JRL_ARCHIVE ]]; then
-  find "$JRL_ARCHIVE" -maxdepth 2 -type d -name '*333m*' \
-    -printf '%p\t%TY-%Tm-%TdT%TH:%TM:%TS\n' | sort \
-    >"$OUT/jrl-333m-directories.tsv"
-else
-  printf 'MISSING %s\n' "$JRL_ARCHIVE" >"$OUT/status/jrl-archive.summary"
-fi
-
 if ((DO_HEADERS)); then
   [[ -n ${SLURM_JOB_ID:-} ]] || {
     printf 'Header mode requires a Slurm allocation. Use --headers-only inside salloc.\n' >&2
@@ -206,6 +200,15 @@ if ((DO_HEADERS)); then
     printf 'ncdump is required; on CHPC run: module load netcdf-c\n' >&2
     exit 5
   }
+  note "inventory local JRL archive inside Slurm allocation"
+  if [[ -d $JRL_ARCHIVE ]]; then
+    find "$JRL_ARCHIVE" -maxdepth 2 -type d -name '*333m*' \
+      -printf '%p\t%TY-%Tm-%TdT%TH:%TM:%TS\n' | sort \
+      >"$OUT/jrl-333m-directories.tsv"
+  else
+    printf 'MISSING %s\n' "$JRL_ARCHIVE" >"$OUT/status/jrl-archive.summary"
+    exit 6
+  fi
   find "$JRL_ARCHIVE" -maxdepth 6 -type f \
     \( -name 'wrfout_d0[123]_*' -o -name 'wrfrst_d0[123]_*' \
        -o -name 'namelist.input*' -o -name 'namelist.wps*' \) \
@@ -213,7 +216,7 @@ if ((DO_HEADERS)); then
     >"$OUT/jrl-archive-files.tsv"
   [[ -s $OUT/jrl-archive-files.tsv ]] || {
     printf 'No local JRL archive manifest found in %s\n' "$OUT" >&2
-    exit 6
+    exit 7
   }
 
   cut -f1 "$OUT/jrl-archive-files.tsv" | grep '/wrfout_d0[123]_' \

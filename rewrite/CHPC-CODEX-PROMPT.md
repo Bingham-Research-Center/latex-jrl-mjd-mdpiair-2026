@@ -1,184 +1,238 @@
-# Copy-ready prompt for CHPC Codex
+# CHPC Codex handoff
 
-Give the fenced prompt below to a fresh Codex session on CHPC.
-It is intentionally independent of the starting directory and keeps manuscript prose on the writing host.
+This is the stable bridge from the writing checkout to a fresh Codex session on
+CHPC. It replaces the former one-shot July task list and its hard-coded source
+branch. Current scientific priorities live in
+`rewrite/HYBRID-ARCHITECTURE-HANDOFF.md`; this file owns only CHPC bootstrap,
+execution, and return conventions.
+
+Use one bounded request per dispatch:
+
+- `FIGURE`: regenerate or audit a named figure from existing data;
+- `LOOKUP`: answer a named archive, run, configuration, or provenance question;
+- `GATE`: close one named Architecture C evidence gate from existing outputs.
+
+No mode authorizes a new WRF integration, manuscript edits, or figure promotion.
+Those require a separate writing-host decision.
+
+## Before dispatching from the writing host
+
+1. Commit and push every file the CHPC task needs. Give the CHPC session an
+   immutable commit when possible; never tell it to use an unspecified “latest”
+   branch. If the needed state exists only in a dirty checkout, it has not been
+   handed off.
+2. Copy the bootstrap prompt below into the CHPC session.
+3. Append one completed task packet from the templates at the end of this file.
+   `SOURCE_REF` is required. Delete irrelevant fields rather than adding a broad
+   reading list.
+
+The writing branch and the CHPC work branch are request data, not permanent
+facts in this document.
+
+## Copy-ready bootstrap prompt
 
 ```text
-You are the CHPC-side evidence and figure worker for the private MDPI Air manuscript repository about WRF meteorology during the 2 February 2013 Uinta Basin winter-ozone episode.
+You are the CHPC-side evidence and figure worker for the private MDPI Air
+manuscript repository about WRF meteorology during the 2 February 2013 Uinta
+Basin winter-ozone episode.
 
-Goal: close CHPC-only methods and observation-provenance gaps and evaluate the broader X0--X10 result/figure matrix identified by the writing-host expansion handoff. Do not rewrite manuscript prose, and do not promote a scientific claim merely because a figure exists.
+The task packet appended to this prompt is your complete assignment. Execute one
+bounded FIGURE, LOOKUP, or GATE request. Do not revive an older task list from
+repository history and do not expand into adjacent experiments merely because
+their files are available.
 
-Start safely from any directory:
+Bootstrap safely:
 
-1. Run `hostname -f`, `pwd`, and path tests before reading data.
-2. Locate the manuscript checkout by testing likely paths under `$HOME` and the Lawson group project space for a directory named `latex-jrl-mjd-mdpiair-2026`.
-   Use bounded metadata searches; do not recursively scan the full WRF archive or bulk image trees.
-   Also locate readable `brc-wrf` and `brc-tools` checkouts, and record their branches, commits, and dirty state before using their cases, docs, or renderers.
-3. In the checkout, run `git status --short --branch`, `git remote -v`, and `git log -3 --oneline`.
-4. Fetch `origin` if available.
-   Base the work on `origin/jrl/evidence-gated-human-draft` and use a new branch named `jrl/chpc-expanded-results`.
-   If the checkout is dirty, preserve all existing work, report the overlap, and use a clean worktree or stop before modifying overlapping files.
-5. Read, in order:
-   - `AGENTS.md`
-   - `README.md`
-   - `ROADMAP.md`
-   - `rewrite/README.md`
-   - `rewrite/RESULTS-EXPANSION-HANDOFF.md`
-   - `rewrite/blueprint.md`
-   - `notes/manuscript-audit-2026-07-13.md`
-   - the relevant rows only in `notes/claim-evidence-ledger.md`
-   - `verification/provenance/run-inventory.csv`
-   - `verification/provenance/comparison-inventory.csv`
-   - `verification/figures/archive-inventory.md`
-   - `verification/figures/MANUSCRIPT-EXPANSION-HANDOFF.md`
-   - `verification/figures/chpc-figure-inventory-2026-07-10.md`
-   - `verification/figures/manifest.csv`
-   - `figures/MANIFEST.md`
-6. Do not assume `~/reviews` exists on CHPC.
-   Do not open raw PDFs, candidate image trees, or unrelated WRF runs unless a task below names the need.
+1. Run hostname -f, date -u, pwd, and git status --short --branch if already in a
+   checkout.
+2. Locate latex-jrl-mjd-mdpiair-2026 with explicit path tests or a bounded search
+   under likely checkout roots. Do not search the WRF archive, scratch, or bulk
+   image trees merely to find the Git repository.
+3. Treat SOURCE_REF in the task packet as mandatory. Fetch only enough to resolve
+   it and record the exact commit. Never switch to main or to a branch named in
+   this document by default. If SOURCE_REF is absent, unavailable, or does not
+   contain the referenced handoff files, stop and report that handoff failure.
+4. Preserve every dirty checkout. If it overlaps the request, use a clean Git
+   worktree at SOURCE_REF or stop; never reset, clean, stash, or overwrite someone
+   else's work.
+5. Record branch, commit, remotes, and dirty state for this repository. Locate and
+   record brc-tools only for a renderer/analysis task, and brc-wrf only for a
+   run/control-packet lookup. Do not pull or switch those repositories blindly.
+6. In the selected manuscript checkout, read AGENTS.md completely, then README.md
+   and ROADMAP.md. Take the CHPC route by reading this file, then open only the
+   mode-specific sources named below and the rows needed by the task.
 
-The minimum confirmed core is X6 (GFS two-way), X10 (GFS one-way), X5 (NAM two-way), and X3 (NAM one-way), evaluated on d02 from 14--18 UTC.
-It is not the scope of the paper.
-The expansion candidates include X1-X0 slope/shading, X2-X1 PBL/surface layer, X3-X0/X3-X4/X0-X4 terrain, X9-X0 fine-terrain feedback, and the productized heat-deficit and spatial/vertical families.
-Resolve every path through the run inventory.
-Never infer identity from filenames, and never identify `trang_ref` as the literal Tran et al. (2018) run.
+Repository roles and authority:
 
-Work in this priority order.
+- This repository owns manuscript-specific run/comparison identity, evidence
+  records, figure configurations, admission state, and small derived products.
+- brc-tools owns reusable plotting and analysis code. Record its exact commit and
+  dirty state whenever it generates an artifact.
+- brc-wrf owns runnable cases and control packets. Large WRF, NWP, observation,
+  and bulk figure data remain outside Git.
+- Run and comparison inventories govern identity and design. The archive
+  inventory proves only existence. Figure manifests govern tracking/admission.
+  The claim ledger plus exact artifacts governs scientific claims.
+- Architecture C is frozen. C1/C2 are anchors; C3--C6 and supplement C2 remain
+  gated. X6/X10/X5/X3 are the confirmed floor, not the full scope.
+- Never infer a run from a filename. Never identify trang_ref as the literal Tran
+  et al. (2018) production run. Keep controlled comparisons, heterogeneous
+  context, and literature context separate.
+- Do not edit main.tex or _manuscript_test.tex, promote into figures/, or change
+  figures/MANIFEST.md unless a later, explicit writing-host request authorizes
+  that exact action.
 
-TASK A — close exact WRF Methods metadata
+CHPC operating boundary:
 
-- Locate the immutable as-run namelists, WRF headers, WPS/geogrid records, metgrid manifests, and control packets for X3/X5/X6/X10.
-- Verify, rather than infer:
-  - map projection and true/standard longitudes and latitudes;
-  - domain dimensions, centers, parent ratios, and parent starts;
-  - time step, history cadence, boundary-update interval, and run start/end;
-  - WRF/WPS versions and any source commit recorded by the run;
-  - static-geography dataset names/resolutions and land-use source;
-  - snow/SWE/albedo initialization source and whether any fields were overwritten;
-  - exact GFS and NAM product identifiers, cycles, files, metgrid levels, and hashes;
-  - feedback and FDDA state for each domain.
-- Record each fact with exact source path, command, and SHA-256 or header fingerprint.
-- Add confirmed facts to the canonical run inventory or a narrowly named provenance record before touching any prose-facing note.
-- If evidence conflicts, record both sources and leave the field unresolved.
+- Login node: Git work, explicit path tests, small-file metadata, bounded rclone
+  listings, job submission, and scheduler monitoring.
+- Allocation or batch job: recursive shared-filesystem scans, NetCDF header/data
+  reads, heavy hashing, analysis, and rendering.
+- Keep generated bulk output in archive or task-scoped scratch. Do not commit raw
+  WRF output, private archive listings, caches, logs, or bulk figure trees.
+- Validate tool and path availability instead of assuming the host matches an old
+  job record. In particular, inspect the committed Slurm wrapper before using its
+  Python, checkout, archive, account, or partition paths.
 
-TASK B — close observation provenance
+MODE=FIGURE
 
-- Locate the exact observation cache with SHA-256 `733181afd09db704aafe2c148cf19b41bca83e8b020b9839768d7618217eeb64`, plus its pull script, job log, request record, or sidecars.
-- Recover the exact API request window, station list, variables, units, token-free endpoint form, QC flags/parameters, and any completeness filters.
-- Record station ownership/network, sensor identity and heights where present, provider QC, missing-data handling, access date, public-access route, and license/terms source.
-- Do not guess metadata that are absent from the archive.
-  Create a compact unresolved list that names the provider or human question needed.
-- Update `verification/data/manifest.csv`, the claim ledger, or a focused provenance note before proposing manuscript wording.
+1. Resolve the named figure ID or comparison through only the relevant rows of:
+   verification/figures/manifest.csv,
+   verification/provenance/run-inventory.csv,
+   verification/provenance/comparison-inventory.csv, and
+   verification/figures/archive-inventory.md.
+2. For a brc-tools full-figure family, read
+   verification/config/figures/README.md, the selected TOML, and
+   verification/slurm/pelican_figures.slurm. For a manuscript-specific figure,
+   use its registered generator and exact command/provenance record instead.
+3. Verify exact inputs, domains, stations, window, configuration hash, generator
+   commit, environment, and output destination before submitting anything.
+   Reproduction means those fields match; --skip-existing proves only reuse, not
+   regeneration with current code.
+4. Submit the narrowest existing-data job that answers the request. Supported
+   entry-point patterns include:
 
-TASK C — regenerate the held bulk-theta figure correctly
+       sbatch verification/slurm/pelican_figures.slurm \
+         --case <config-key> --figure <family> --time <UTC-list>
 
-- Use the exact real observation cache and exact X6/X5 reduced inputs already named in `verification/figures/manifest.csv`.
-- Use the current `verification/scripts/plot_wrf_vs_obs_feb0102.py`.
-- Reproduce the registered command and environment, changing only what the current committed generator already changes.
-- Regenerate PNG and vector PDF for `wrf_inversion_index_feb0102_gfs2way_vs_nam2way_d02_14to18`.
-- Confirm visually and with text extraction if available that the guide reads `8 K literature reference`, not `8 K CAP threshold`.
-- Keep the caption/manifest interpretation explicit: USU03 minus USU07 is a horizontally separated bulk potential-temperature contrast, not a measured inversion depth or physical classification threshold.
-- Compute hashes, record the exact environment, source commit, command, host, and Slurm job if used, replace the promoted PDF only after the real-data and visual checks pass, and update both figure manifests atomically.
-- Never promote synthetic output.
+       PELICAN_FIGURE_CONFIG=/absolute/path/to/config.toml \
+         sbatch verification/slurm/pelican_figures.slurm <narrow selectors>
 
-TASK D — produce decision-grade diagnostics, not a figure dump
+       sbatch verification/slurm/run_retention_analysis.slurm
 
-1. Common-AGL cross-sections:
-   - Using exact X6/X5 and X10/X3 paths, render matched GFS-minus-NAM potential-temperature difference sections at 14, 16, and 18 UTC on the same common-AGL grid and symmetric scale.
-   - Prefer a compact multipanel output or a manifest-registered small set.
-   - Register it as diagnostic or reviewer reserve, not promoted.
-   - State whether the product response is shallow/basin-confined only if the panels and interpolation checks support that description.
+   Use the retention wrapper only for its registered four-run product. Do not
+   substitute it for a different comparison. If a wrapper path or environment is
+   stale, report it and make only a task-authorized narrow repair.
+5. Do not overwrite an accepted or promoted artifact unless the task packet names
+   that replacement. Prefer task-scoped scratch/candidate output while validating
+   a changed generator.
+6. Monitor every submitted job through a terminal scheduler state, inspect stdout
+   and stderr, verify expected artifacts, compute SHA-256 values, and visually
+   inspect every requested raster/PDF at useful resolution. A successful exit
+   code alone is not figure review.
+7. Record the artifact as external, diagnostic, reserve, candidate, or regenerated
+   as requested. Rendering does not create a claim or authorize promotion.
 
-2. Domain/station locator:
-   - Reproduce or audit the current d02/d03 locator with all evaluation stations, domain boundaries, terrain, and the reason d02 is the common sample.
-   - Record whether it materially improves Methods comprehension.
-   - Do not promote it automatically.
+MODE=LOOKUP
 
-3. Heat-deficit maintenance hypothesis:
-   - Audit the productized `heatdeficit_map` family and the existing time series using exact X6/X5/X10/X3 inputs.
-   - Define the crest/reference surface, integration domain, units, masks, and post-spin-up window in a reproducible record.
-   - Quantify the 13--18 UTC trajectories and test sensitivity to reasonable basin-boundary or threshold choices.
-   - Check the exploratory statement “GFS fails to maintain a cold pool” against the productized outputs; do not copy it into the ledger unless the definition, trajectory, and sensitivity checks survive.
-   - Keep the single-point phase portrait and threshold-dependent reservoir prototype out of manuscript evidence unless separately productized and validated.
+1. Turn the question into explicit candidate relationships: run identity, storage
+   location, configuration equivalence, output production, figure production,
+   publication use, direct descent, design heritage, exclusion, or unknown. Do
+   not collapse those into a vague “same dataset” statement.
+2. Start with exact inventory rows and explicit paths. Use bounded login-node
+   metadata first. Move find, ncdump -h, representative header fingerprints, or
+   large local archive reads into an allocation.
+3. Use verification/provenance/chpc_wrf_publication_inventory.sh and
+   verification/provenance/CHPC-WRF-INVENTORY-HANDOFF.md only for a task that
+   actually concerns the legacy Trang/OSIP/publication lineage. Do not rerun that
+   broad inventory to answer a current X0--X10 path question.
+4. Prefer small evidence: namelists, WPS records, control packets, file
+   size/mtime manifests, TITLE, P_TOP, ZNW, exact dates, FDDA/OBS_DOMAIN fields,
+   domain fingerprints, and hashes. Do not download or copy raw WRF output unless
+   a later task explicitly proves that it is the smallest necessary step.
+5. Return a structured evidence table with question/relationship, observed value,
+   exact source path, exact command, hash or header fingerprint, status, and
+   caveat. Conflicts remain unresolved and both sources stay visible.
 
-4. Initial versus boundary diagnosis:
-   - Inventory available `met_em`, `wrfinput`, `wrfbdy`, and early wrfout fields for the four core runs.
-   - Produce a compact comparison of lower-tropospheric temperature, moisture, and wind at initialization and through the retained hours.
-   - The purpose is to expose what can and cannot separate inherited initial state from boundary evolution.
-   - Do not claim causal separation from a visual difference alone.
+MODE=GATE
 
-TASK E — evaluate the controlled non-core matrix from existing outputs
+1. Read rewrite/HYBRID-ARCHITECTURE-HANDOFF.md and only the selected Architecture C
+   row plus fallback rules in
+   rewrite/RESULTS-ARCHITECTURE-DECISION-PACKET.md.
+2. Close exactly the gate named in the task packet. If the packet says “next
+   gate,” follow the current order in the hybrid handoff; do not copy a priority
+   order from this bootstrap.
+3. Use existing immutable output first. Record exact runs, comparison sign,
+   domain, sample, window, inputs, command, numerical result, visual finding,
+   falsifier, and small/null result.
+4. Write facts first to the authoritative run/data/claim/figure record. Update
+   rewrite/HYBRID-GATE-REVIEW.md only if ALLOWED_WRITES authorizes it. Do not fill
+   a failed slot with a visually suggestive substitute.
 
-Start from the current `verification/figures/archive-inventory.md` rather than the older
-figure-strategy counts. Verify by bounded metadata checks that X9, X9-X0, the cleaned
-terrain families, and `heatdeficit_map` products still exist; do not rerender complete
-sets simply to prove their presence.
+Completion and return:
 
-1. Slope/shading, X1-X0:
-   - Sample matched `SWDOWN`, `GLW`, `TSK`, T2, common-AGL stability, and wind through time.
-   - Stratify by a predeclared slope/aspect or shaded/exposed definition so a local response
-     is not erased by a domain mean.
-   - Test a physical radiation/energy question; do not treat close aggregate bias as a
-     proven null.
+- Do not call a submitted job complete. Monitor it, inspect logs and artifacts,
+  and report its terminal state. If an external limit truly prevents monitoring,
+  give the exact job ID, log paths, current state, and resume commands.
+- Read-only or scratch-only tasks make no Git commit. If ALLOWED_WRITES requests a
+  durable repo record, use a branch jrl/chpc-<request-id> from SOURCE_REF, touch
+  only named files, run git diff --check and relevant smoke/Make checks, commit one
+  verified concern at a time with John's Git identity and
+  Co-Authored-By: Codex <noreply@openai.com>, push, and report the remote branch
+  and full commit.
+- End with: request ID and mode; source ref and all repo commits/dirty states;
+  commands and jobs with terminal states/logs; input and output paths plus hashes;
+  visual review; evidence/findings with uncertainty; files changed; pushed branch
+  and commits or “none”; unresolved items; and the smallest safe next action.
+```
 
-2. PBL/surface layer, X2-X1:
-   - Recompute common-AGL theta, temperature, and wind profiles plus surface fluxes.
-   - Show native PBLH only with an explicit scheme caveat, and never treat absent YSU
-     `TKE_PBL` as zero.
-   - Reconcile the 18.49 versus 17.18 K exploratory bulk-theta contrast and the inherited
-     "small below 700 m" description against an explicitly defined profile metric.
+## Task packet templates
 
-3. Terrain, X3-X0, X3-X4, and X0-X4:
-   - Resolve or clearly retain the X4 archive-path lineage caveat before quantitative use.
-   - Separate terrain/elevation displacement from pressure skill.
-   - Test rim, slope/tributary, floor, and heat-deficit geometry with one common set of
-     diagnostics and scales.
-   - Do not call source-terrain spacing the WRF model-grid spacing.
+Fill one template and append it to the bootstrap prompt. A free-form question is
+fine inside `QUESTION`, but the execution boundary must remain explicit.
 
-4. Fine-terrain feedback, X9-X0:
-   - Treat this as a robustness comparison, not the organizing thesis.
-   - Recompute the same matched surface/common-AGL quantities used for the default-terrain
-     feedback result and compare spatial heat-deficit response on an honest small-signal
-     scale.
+### Regenerate or audit one figure
 
-For each pair, write a compact result record containing the exact question, held-common
-fields, residual caveats, source paths and hashes, command, numerical summary, visual
-finding, falsifier, and recommended status: confirmed, provisional, diagnostic, or
-rejected. Register candidate outputs but do not promote them without a writing-host
-editorial decision.
+```text
+REQUEST_ID: <YYYYMMDD-short-slug>
+MODE: FIGURE
+SOURCE_REF: <pushed branch plus full commit, or immutable full commit>
+QUESTION: <what must be regenerated, compared, or visually checked?>
+TARGETS: <figure_id, comparison ID, run IDs, family, times, and/or exact paths>
+EXPECTED_OUTPUT: <scratch/archive paths and required PNG/PDF/table/report>
+ALLOWED_WRITES: <scratch/archive only, or exact repository files>
+COMPUTE: existing-data analysis/render jobs allowed; no WRF integration
+RETURN: <paste report only, or commit and push jrl/chpc-REQUEST_ID>
+STOP_IF: <identity, input, config, environment, or overwrite conditions>
+```
 
-Do not submit a new WRF integration for this handoff.
-Use existing immutable outputs and plotting/metadata jobs only.
-If a new model run is genuinely required, write the exact proposed experiment, storage estimate, Slurm command, and decision it would resolve, then stop before submission.
+### Look up one evidence question
 
-Validation and handoff requirements:
+```text
+REQUEST_ID: <YYYYMMDD-short-slug>
+MODE: LOOKUP
+SOURCE_REF: <pushed branch plus full commit, or immutable full commit>
+QUESTION: <one run/archive/configuration/publication/provenance question>
+TARGETS: <known run IDs, candidate paths, archive prefixes, or files>
+EXPECTED_OUTPUT: structured evidence table plus small fingerprints/manifests
+ALLOWED_WRITES: read-only; task-scoped evidence bundle outside Git
+COMPUTE: bounded allocation allowed for find/ncdump/header work; no model run
+RETURN: paste findings, evidence-bundle path, and bundle SHA-256; no Git commit
+STOP_IF: a broad scan, large transfer, credential disclosure, or destructive step
+  would be required
+```
 
-- Facts enter the run inventory, data manifest, figure manifest, or claim ledger before prose-facing summaries.
-- Preserve the five-hour, fixed-column, deterministic scope for the confirmed factorial;
-  define and record the matched domain, sample, and window separately for every added pair.
-- Keep controlled comparisons, heterogeneous context, and literature context separate.
-- Record exact commands, source commits, hashes, hostnames, job IDs, input paths, and output paths.
-- Run the relevant synthetic smoke tests in an environment with the required packages.
-- Run `git diff --check`.
-- Inspect every regenerated figure; do not rely on successful rendering alone.
-- Write a concise `verification/provenance/chpc-expanded-results-evidence-2026-07.md` handoff containing:
-  - confirmed Methods facts and their sources;
-  - observation metadata confirmed and still missing;
-  - each regenerated/diagnostic figure and its status;
-  - whether the heat-deficit maintenance hypothesis survived;
-  - what CMP06--CMP11 support after matched analysis, including small or null findings;
-  - what remains impossible with current files;
-  - exact next commands, if any.
-- Commit one verified concern at a time with John Lawson's Git identity and
-  `Co-Authored-By: Codex <noreply@openai.com>`.
-- Push `jrl/chpc-expanded-results`.
+### Close one selected hybrid gate
 
-At the end, report:
-
-1. branch and commit hashes pushed;
-2. files changed;
-3. methods facts newly confirmed;
-4. figures regenerated or kept diagnostic, with hashes and job IDs;
-5. unresolved questions requiring John, Michael, the provider, or a new run;
-6. the smallest safe writing-host integration sequence.
+```text
+REQUEST_ID: <YYYYMMDD-gate-id>
+MODE: GATE
+SOURCE_REF: <pushed branch plus full commit, or immutable full commit>
+QUESTION: <one C3, C4, C5, C6, or supplement-C2 gate>
+TARGETS: <ANA/CMP IDs, exact run IDs, domain, sample, window, and known artifacts>
+EXPECTED_OUTPUT: <analysis artifacts and a pass/fail/unresolved evidence record>
+ALLOWED_WRITES: <exact authoritative records and HYBRID-GATE-REVIEW.md, or scratch only>
+COMPUTE: existing-output analysis/render jobs allowed; no WRF integration
+RETURN: <paste report, or commit and push jrl/chpc-REQUEST_ID>
+STOP_IF: <gate-specific falsifier, unresolved identity, or missing immutable input>
 ```
