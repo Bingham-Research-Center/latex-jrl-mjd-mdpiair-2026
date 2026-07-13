@@ -7,10 +7,11 @@ observed episode. Two figures:
 
 1. wrf_temp_timeseries_feb0102 -- 2 m temperature at the 4 floor->bench stations
    (one panel each): obs in black, one line per run, min-max across runs shaded.
-   The shaded band IS the IC-driven inter-run spread (#24) at each station.
-2. wrf_inversion_index_feb0102 -- bench-minus-floor delta-theta (USU03 - USU07):
-   does each run HOLD the cold pool (stay above the 8 K CAP threshold) or mix it
-   out like the Jan baseline's +4-6 C warm bias implies?
+   The range across supplied runs is descriptive; its interpretation depends on
+   the members included.
+2. wrf_inversion_index_feb0102 -- bench-minus-floor delta-theta (USU03 - USU07).
+   This two-site contrast is a spatial structural index, not a colocated
+   inversion profile or a physical cold-pool classification threshold.
 
 Inputs are the per-station files from reduce_wrf_to_stations.py (WRF units: temp K,
 pressure Pa; converted here). Obs stays local. Candidate figures go to
@@ -132,7 +133,7 @@ def fig_inversion_index(wrf: pl.DataFrame, hourly: pl.DataFrame, runs: list[str]
             ax.plot(d["hour_mst"], d["dtheta"], color=color, lw=1.1, zorder=2, label=run)
     ax.plot(obs_d["hour_mst"], obs_d["dtheta"], color="black", lw=1.5, zorder=3, label="obs")
     ax.axhline(8.0, color="0.4", lw=1.0, ls="--")
-    ax.annotate("8 K CAP threshold", xy=(0.99, 8.0), xycoords=("axes fraction", "data"),
+    ax.annotate("8 K literature reference", xy=(0.99, 8.0), xycoords=("axes fraction", "data"),
                 xytext=(0, 6), textcoords="offset points", fontsize=8, color="0.35",
                 ha="right", va="bottom")
     ax.set_ylabel("Δθ bench − floor (K)")

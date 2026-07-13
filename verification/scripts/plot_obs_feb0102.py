@@ -303,7 +303,7 @@ def fig_inversion_index(hourly: pl.DataFrame, names: dict, out_dir: Path) -> Non
 
     ax1.plot(dth["hour_mst"], dth["dtheta"], color="#00224e", lw=1.3)
     ax1.axhline(8.0, color="0.4", lw=1.0, ls="--")
-    ax1.annotate("8 K CAP threshold", xy=(0.99, 8.0), xycoords=("axes fraction", "data"),
+    ax1.annotate("8 K literature reference", xy=(0.99, 8.0), xycoords=("axes fraction", "data"),
                  xytext=(0, -10), textcoords="offset points", fontsize=8, color="0.35",
                  ha="right")
     ax1.set_ylabel(

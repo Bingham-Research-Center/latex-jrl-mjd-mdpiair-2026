@@ -23,6 +23,7 @@ Do not mark a scientific task done because prose exists; mark it done only when 
 - [x] **ANA-02 · done for promoted core** — Recomputed matched surface and vertical summaries.
 - [x] **ANA-03 · done for descriptive scope** — Added two-hour circular block sensitivity intervals while explicitly declining formal five-sample inference.
 - [x] **MAN-01--03 · done for first draft** — Drafted Methods and Results from the frozen claims and promoted three-figure spine; coauthor/scientific review is next.
+- [ ] **MAN-11 · next** — Close the visible methods placeholders for observation provider/QC/licensing, domain geometry/static inputs, and forcing-product citations before coauthor circulation.
 - [ ] **COA-01 · next** — Ask Michael for the code/input/command/meaning mapping for each Teams plot still under consideration.
 - [ ] **COA-02 · next** — Send the short Trang/Michael run-identity question list only after the machine inventory narrows it.
 
@@ -38,6 +39,7 @@ Do not mark a scientific task done because prose exists; mark it done only when 
 - [ ] **INV-14 · later** — Record the d03 interior station set separately from the d02 common evaluation set.
 - [ ] **INV-15 · next** — Fix legacy issue 3 by making the January observation-pull command reproducible with explicit dates/output and six authoritative stations.
 - [ ] **INV-16 · later** — Decide the public archive/repository for minimal processed data, namelists, commands, and code.
+- [ ] **INV-17 · next** — Record the Synoptic API QC parameters, station/sensor metadata, archive license, and public-access route used for the February cache.
 
 ### Analysis and verification
 
@@ -81,15 +83,16 @@ Do not mark a scientific task done because prose exists; mark it done only when 
 - [ ] **FIG-08 · later** — Check print dimensions, fonts, units, color accessibility, captions, and raster resolution.
 - [x] **FIG-09 · done for first-draft spine** — Promoted the observed evolution, bulk theta contrast, and common-AGL retention/ventilation PDFs and completed both manifests.
 - [ ] **FIG-10 · later** — Retain reproducible supplementary/reviewer-reserve diagnostics outside `figures/`.
+- [ ] **FIG-11 · next** — Regenerate the promoted bulk-theta figure on CHPC with the plotted 8 K line labeled as a literature reference rather than a physical “CAP threshold,” then update both manifests and hashes.
 
 ### Manuscript and submission
 
 - [x] **MAN-01 · done for first draft** — Drafted the touchstone configuration from canonical inventory rows.
 - [x] **MAN-02 · done for first draft** — Drafted observations, sample, domain, window, diagnostic, and dependence treatment.
 - [x] **MAN-03 · done for first draft** — Drafted the driving-state result and bounded feedback null from promoted evidence.
-- [ ] **MAN-04 · blocked by NAR-01** — Draft Discussion around the chosen hypotheses, limitations, and air-chemistry interfaces.
-- [ ] **MAN-05 · later** — Draft concise Conclusions that answer promoted questions one-for-one.
-- [ ] **MAN-06 · later** — Write the abstract only after Results and Conclusions stabilize.
+- [x] **MAN-04 · done for review draft** — Drafted Discussion around the chosen hypotheses, limitations, and air-chemistry interfaces; scientific and coauthor review remains.
+- [x] **MAN-05 · done for review draft** — Drafted concise Conclusions that answer the promoted questions within the five-hour scope.
+- [x] **MAN-06 · done for review draft** — Drafted an evidence-gated abstract after reconciling Results and Conclusions.
 - [ ] **MAN-07 · next** — Have all authors review author order, names, ORCIDs, affiliations, and corresponding-author details.
 - [ ] **MAN-08 · next** — Agree CRediT roles, funding, acknowledgments, conflicts, and data-availability language.
 - [ ] **MAN-09 · later** — Replace `paperpile.bib` with the complete manuscript-specific Paperpile export.
@@ -108,7 +111,7 @@ This mapping prevents useful work from disappearing while refusing unsafe premis
 | Old | Disposition | Current destination |
 |---:|---|---|
 | 1 | done | The aim is in `main.tex`; refine only after narrative freeze. |
-| 2 | blocked | `MAN-06`; principal findings require verified Results. |
+| 2 | done for review draft | `MAN-06`; the abstract now uses only verified Results and exposes remaining limits. |
 | 3 | active | `NAR-03`, plus Loknath/Seth review. |
 | 4 | active | `LIT-03`. |
 | 5 | blocked | `INV-05` and `MAN-01`; recovered candidate configs are not run identities. |
@@ -140,11 +143,11 @@ This mapping prevents useful work from disappearing while refusing unsafe premis
 | 31 | retired | Figures are added only after promotion; no commented template blocks remain. |
 | 32 | later | `FIG-08--09` and Results drafting. |
 | 33 | replaced | `figures/MANIFEST.md` and `verification/figures/manifest.csv`. |
-| 34 | blocked | `MAN-04` after narrative freeze. |
-| 35 | blocked | `NAR-04` and `MAN-04`; avoid “limiting constraint” without evidence. |
-| 36 | later | `MAN-05`. |
-| 37 | later | Limitations are a required spine of `MAN-04`. |
-| 38 | later | `MAN-06`; no placeholder abstract is retained. |
+| 34 | done for review draft | `MAN-04`; the Discussion is drafted with provisional interpretation explicit. |
+| 35 | bounded in review draft | `NAR-04` and `MAN-04`; the draft avoids “limiting constraint” and confines the claim to the tested metrics. |
+| 36 | done for review draft | `MAN-05`; Conclusions answer the verified short-window questions. |
+| 37 | done for review draft | Limitations form the spine of `MAN-04`. |
+| 38 | done for review draft | `MAN-06`; the abstract reports verified contrasts and explicit exclusions. |
 | 39 | drafted | Revisit keywords after narrative freeze. |
 | 40 | active | `MAN-08`. |
 | 41 | active | `INV-16` and `MAN-08`. |

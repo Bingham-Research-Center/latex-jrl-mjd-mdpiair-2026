@@ -1,6 +1,6 @@
 # Manuscript roadmap
 
-Current phase: **review and refine the compact short-window first draft**.
+Current phase: **scientific and coauthor review of an evidence-gated short-window draft**.
 
 The paper's durable claim is that credible cold-pool meteorology is a prerequisite for interpreting winter-ozone chemistry.
 Its air-focused evaluation target is whether WRF retains the shallow, weakly ventilated layer in which precursor and ozone accumulation would occur, not merely which run has the smallest aggregate surface bias.
@@ -32,8 +32,9 @@ Physics, terrain, resolution, and nudging comparisons remain Discussion, supplem
 | 6. Figure and reproducibility freeze | Promoted figures, supplement/reviewer reserve, and public data/code plan | Both manifests are complete; canonical WRF styling reviewed; clean source ZIP compiles independently. |
 | 7. Coauthor review and submission | Reviewed MDPI Air package | Michael reviews provenance/diagnostics; Loknath and Seth review chemistry framing; all authors approve. |
 
-Phases 1--4 are complete for the default-terrain X6/X10/X5/X3 factorial, and Phase 5 is underway with a compiled first draft.
-Unresolved heterogeneous lineage, terrain, physics, and resolution records do not block the first draft because they are excluded from the frozen result core.
+Run identity, experiment design, and derived summaries are complete for the narrow default-terrain X6/X10/X5/X3 factorial.
+Narrative freeze is provisional until observation quality-control and licensing metadata, source-level citation checks, and coauthor interpretation review are complete.
+Unresolved heterogeneous lineage, terrain, physics, and resolution records do not block this draft because they are excluded from the result core.
 
 ## Workstreams
 
