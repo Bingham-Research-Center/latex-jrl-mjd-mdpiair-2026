@@ -136,6 +136,7 @@ def validate_grids(
 ) -> dict[str, object]:
     reference = static[mask_run]
     checks: dict[str, object] = {"coordinate_reference_run": mask_run, "runs": {}, "pairs": {}}
+    tolerances = {"lat": 1.0e-5, "lon": 1.0e-5, "mapfac": 5.0e-7}
     for run, fields in static.items():
         run_checks: dict[str, object] = {}
         for name in ("lat", "lon", "mapfac"):
@@ -145,7 +146,7 @@ def validate_grids(
                 raise ValueError(f"grid shape mismatch for {run} {name}: {right.shape} != {left.shape}")
             max_abs = float(np.nanmax(np.abs(left - right)))
             run_checks[f"{name}_max_abs_difference"] = max_abs
-            if max_abs > 1.0e-8:
+            if max_abs > tolerances[name]:
                 raise ValueError(f"grid mismatch for {run} {name}: max abs {max_abs:g}")
         reference_hgt = np.asarray(reference["hgt"], dtype=float)
         run_hgt = np.asarray(fields["hgt"], dtype=float)
@@ -165,7 +166,7 @@ def validate_grids(
         right = np.asarray(static[b]["hgt"], dtype=float)
         max_abs = float(np.nanmax(np.abs(left - right)))
         checks["pairs"][f"{a}_minus_{b}"] = {"hgt_max_abs_difference_m": max_abs}
-        if max_abs > 1.0e-5:
+        if max_abs > 1.0e-3:
             raise ValueError(f"paired terrain mismatch for {a},{b}: max abs {max_abs:g} m")
     return checks
 

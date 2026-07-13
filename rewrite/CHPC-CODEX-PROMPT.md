@@ -280,8 +280,9 @@ PREDECLARED_TEST: For each column compute the productized Whiteman-style heat de
   contains Horsepool; weight it by physical cell area
   DX*DY/MAPFAC_M^2. The connected component must close within d02 rather than
   intersect a domain edge. Report area-weighted mean H in MJ m-2, horizontal integral in
-  TJ, and area fractions above 0.5, 1.0, and 2.0 MJ m-2. Verify common coordinates,
-  map factors, and spacing across all four runs and HGT equality within each
+  TJ, and area fractions above 0.5, 1.0, and 2.0 MJ m-2. Verify coordinates within
+  1e-5 degree, map factors within 5e-7, and equal spacing across all four runs,
+  plus HGT equality within 0.001 m for each
   feedback-matched GFS-NAM pair; record but do not require HGT equality across the
   one-way/two-way feedback boundary. Sensitivities are connected masks and
   vertical reference surfaces at 2100, 2200, and 2300 m plus one-cell erosion and

@@ -56,10 +56,10 @@ def fake_wrfout(path: Path, valid: pd.Timestamp, stability_per_m: float) -> None
 def main() -> None:
     brc_tools = Path(os.environ.get("BRC_TOOLS", Path(__file__).resolve().parents[3] / "brc-tools"))
     tmp = Path(tempfile.mkdtemp(prefix="heat_deficit_smoke_"))
-    mpl = tmp / "mpl"
-    cache = tmp / "cache"
-    mpl.mkdir()
-    cache.mkdir()
+    mpl = Path(os.environ.get("MPLCONFIGDIR", tmp / "mpl"))
+    cache = Path(os.environ.get("XDG_CACHE_HOME", tmp / "cache"))
+    mpl.mkdir(parents=True, exist_ok=True)
+    cache.mkdir(parents=True, exist_ok=True)
     configs = {
         "gfs2": (0.0080, -0.00055),
         "nam2": (0.0105, -0.00010),
