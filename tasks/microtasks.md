@@ -6,15 +6,17 @@ Tasks are deliberately small; completing one should change a named artifact or s
 Status vocabulary: **next**, **blocked**, **later**, **done**, and **retired**.
 Do not mark a scientific task done because prose exists; mark it done only when its evidence gate is met.
 
-## Current tranche: expanded-results decision packet before more prose
+## Current tranche: selected hybrid gate-closing before more prose
 
-- [ ] **DES-04 · next** — Build the freshness-aware CMP01--CMP13 candidate-result ledger specified in `rewrite/RESULTS-EXPANSION-HANDOFF.md`.
-- [ ] **FIG-13 · next** — Reconcile stale X9, terrain-label, and cross-case-count statements against `verification/figures/archive-inventory.md` without equating rendering with analysis or promotion.
-- [ ] **NAR-07 · next** — Present broad-configuration, maintenance/mechanism, and hybrid paper architectures with main/supplement/reserve figures and one reader decision per figure.
-- [ ] **ANA-16 · next after architecture choice** — Validate the productized heat-deficit post-spin-up trajectory, basin/crest definition, masks, units, and sensitivity before adding a ledger claim.
-- [ ] **ANA-17 · next after architecture choice** — Analyse CMP09--CMP11 with terrain/elevation-aware diagnostics after resolving the X4 path-lineage gate.
-- [ ] **ANA-18 · next after architecture choice** — Analyse CMP07 radiation fields locally and CMP08 on common AGL coordinates with scheme-aware flux/PBLH/TKE treatment.
-- [ ] **MAN-14 · blocked by DES-04/NAR-07** — Restructure `_manuscript_test.tex` only after John chooses the expanded evidence/figure architecture.
+- [x] **DES-04 · done** — Built the freshness-aware CMP01--CMP13 candidate-result ledger in `rewrite/RESULTS-ARCHITECTURE-DECISION-PACKET.md`.
+- [x] **FIG-13 · done** — Reconciled stale X9, terrain-label, and cross-case-count statements against `verification/figures/archive-inventory.md` without equating rendering with analysis or promotion.
+- [x] **NAR-07 · done** — Presented all three packages; John selected Architecture C, the hybrid, on 13 July 2026.
+- [ ] **ANA-16 · next; first priority** — Validate the productized heat-deficit post-spin-up trajectory, basin/crest definition, masks, units, and sensitivity before adding a ledger claim for Main C4.
+- [ ] **ANA-19 · next** — Close Main C3 with a rule-based matched-time spatial/vertical selection, common-AGL support, exact provenance, and a pass/fail promotion decision.
+- [ ] **ANA-17 · next** — Analyse CMP09 first with terrain/elevation-aware diagnostics; analyse CMP10/CMP11 only after resolving the X4 path-lineage gate, then pass, demote, or drop Main C5.
+- [ ] **ANA-18 · next** — Screen both CMP07 radiation fields and CMP08 common-AGL/flux diagnostics before selecting at most one Main C6 result.
+- [ ] **ANA-20 · next** — Recompute CMP06 on matched surface/common-AGL/process definitions and bound it relative to the driving-state result for supplement C2.
+- [ ] **MAN-14 · blocked by ANA-16--ANA-20 and review** — Restructure `_manuscript_test.tex` only after the hybrid gate review and John's figure-spine review.
 
 - [ ] **INV-01 · next** — Locate the out-of-band July 9 provenance archive and verify SHA-256 `b616ec6b4ff70f3a36048904d5cad7a99a2563ba4a19fd79198fbf923332a958`.
 - [x] **INV-02 · done** — Mapped the three JRL touchstone header fingerprints to exact durable archive basenames.

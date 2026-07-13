@@ -12,11 +12,12 @@ It does not duplicate large model output or reusable software.
 | If you want to know... | Start here |
 |---|---|
 | What the paper is trying to say | `ROADMAP.md` and `notes/narrative-and-hypotheses.md` |
+| Which Results architecture is selected and what happens next | `rewrite/HYBRID-ARCHITECTURE-HANDOFF.md`, then Architecture C in `rewrite/RESULTS-ARCHITECTURE-DECISION-PACKET.md` |
 | How the blank-slate rewrite and expanded Results audit differ from the baseline | `rewrite/RESULTS-EXPANSION-HANDOFF.md`, then `rewrite/README.md` and `rewrite/blueprint.md` |
 | Whether a claim is defensible | `notes/claim-evidence-ledger.md` |
 | Which exact WRF run was inspected | `verification/provenance/run-inventory.csv` |
 | Which run comparison supports which manuscript story | `verification/provenance/comparison-inventory.csv`, then `notes/narrative-and-hypotheses.md` |
-| How to expand the Results and figure architecture | `rewrite/RESULTS-EXPANSION-HANDOFF.md`, then `notes/figure-strategy.md` |
+| How to close the selected hybrid Results gates | `rewrite/HYBRID-ARCHITECTURE-HANDOFF.md`, then `rewrite/CHPC-CODEX-PROMPT.md` for CHPC-only work |
 | Whether a dataset is raw, derived, current, superseded, or context only | `verification/data/manifest.csv` |
 | Which data, script, and output produced a candidate figure | `verification/figures/manifest.csv` |
 | Which full-figure sets exist or still need rendering | `verification/figures/archive-inventory.md` |
@@ -38,7 +39,9 @@ Do not add new manuscript-facing truth there; wait for the final cross-repositor
 ## Start here
 
 - Manuscript: [`main.tex`](main.tex)
+- Active Architecture C handoff: [`rewrite/HYBRID-ARCHITECTURE-HANDOFF.md`](rewrite/HYBRID-ARCHITECTURE-HANDOFF.md)
 - Expanded Results/figure handoff: [`rewrite/RESULTS-EXPANSION-HANDOFF.md`](rewrite/RESULTS-EXPANSION-HANDOFF.md)
+- Results architecture decision packet: [`rewrite/RESULTS-ARCHITECTURE-DECISION-PACKET.md`](rewrite/RESULTS-ARCHITECTURE-DECISION-PACKET.md)
 - Experimental blank-slate workbench: [`rewrite/README.md`](rewrite/README.md), then [`_manuscript_test.tex`](_manuscript_test.tex)
 - Large-scale plan and narrative gates: [`ROADMAP.md`](ROADMAP.md)
 - Active granular queue and recovered legacy to-dos: [`tasks/microtasks.md`](tasks/microtasks.md)

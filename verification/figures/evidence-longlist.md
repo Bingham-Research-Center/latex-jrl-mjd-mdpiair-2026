@@ -34,8 +34,8 @@ claim or promoted manuscript figure.
 
 | # | Decision / lever | CMP | Best exhibit that EXISTS | Tier | Gap? | Disposition |
 |---|---|---|---|---|---|---|
-| 1 | **Driving IC: GFS vs NAM (two-way)** | CMP01 | θ x-sections `wrf_xsect_theta_{gfs,nam}_2way_d02_16z` (now shared scale); `wrf_upper_{500,700}hPa_gfs_minus_nam2way`; `wrf_dtheta/t2…gfs2way_vs_nam2way`; `CMP/diff_gfs_nam/` (21) | native+engine | — | 🟩 **primary result** — strongest coverage |
-| 2 | **Driving IC: GFS vs NAM (one-way)** | CMP02 | `wrf_retention_ventilation` (4-run); `CMP/diff_gfs_nam_oneway/` (21) | engine (spatial) | native diff **missing** | 🟩 promote + ⬛ render native X10−X3 diff/x-section |
+| 1 | **Driving state: GFS vs NAM (two-way)** | CMP01 | θ x-sections `wrf_xsect_theta_{gfs,nam}_2way_d02_16z` (now shared scale); `wrf_upper_{500,700}hPa_gfs_minus_nam2way`; `wrf_dtheta/t2…gfs2way_vs_nam2way`; `CMP/diff_gfs_nam/` (21) | native+engine | — | 🟩 **primary result** — strongest coverage; initial versus boundary contributions remain bundled |
+| 2 | **Driving state: GFS vs NAM (one-way)** | CMP02 | `wrf_retention_ventilation` (4-run); `CMP/diff_gfs_nam_oneway/` (21) | engine (spatial) | native diff **missing** | 🟩 promote + ⬛ render native X10−X3 diff/x-section; initial versus boundary contributions remain bundled |
 | 3 | **Nest feedback, NAM (1-way vs 2-way)** | CMP03 | `wrf_{t2,dtheta}…nam1way_vs_nam2way`; `wrf_upper_{500,700}…nam1way_minus_nam2way`; θ x-sect `nam_1way`↔`nam_2way` (shared); `CMP/diff_feedback/` (21) | native+engine | — | 🟦 secondary (near-null) — supplement/Results |
 | 4 | **Nest feedback, GFS (1-way vs 2-way)** | CMP04 | `wrf_retention…`; `gfs-feedback-factorial-2026-07-10.md`; `CMP/diff_feedback_gfs/` (21) | engine (spatial) | native diff **missing** | 🟦 supplement + ⬛ render native X6−X10 |
 | 5 | **Forcing × feedback interaction** | CMP05 | `wrf_retention…`; `retention_interaction_summary.csv` | native | — | 🟦 supplement (descriptive only) |

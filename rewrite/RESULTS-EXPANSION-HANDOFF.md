@@ -2,6 +2,13 @@
 
 **Prepared 13 July 2026 for a fresh writing-host session.**
 
+**Execution update, 13 July 2026:** the requested ledger and three architecture packages
+now live in `rewrite/RESULTS-ARCHITECTURE-DECISION-PACKET.md`.
+John selected Architecture C, the hybrid package, on 13 July 2026.
+This audit is retained as decision history; continue through
+`rewrite/HYBRID-ARCHITECTURE-HANDOFF.md` and do not repeat the audit or resume manuscript
+prose before the selected gates close.
+
 ## The correction that starts the next session
 
 The X6/X10/X5/X3 driving-product-by-feedback factorial is the best-audited
@@ -306,7 +313,10 @@ than the driving-state contrast.
 The first session deliverable should be a decision packet, not new prose and not a dump of
 all 324 external PNGs.
 
-## Copy-ready prompt for the next writing-host session
+## Superseded copy-ready prompt that produced the decision packet
+
+Do not reuse this prompt for current work; use the prompt in
+`rewrite/HYBRID-ARCHITECTURE-HANDOFF.md`.
 
 ```text
 Work in the private MDPI Air manuscript repo about WRF meteorology for the 2 February 2013

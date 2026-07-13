@@ -76,7 +76,7 @@ only a compact cross-reference to the sibling study inventory.
 | X6 | `pelican_gfs_2way_default_ysu_20130202` | GFS driving state; otherwise X5 configuration | 12–18 UTC hourly | High. Difference from X5 is driving data plus the expected 27-versus-40 `num_metgrid_levels` consequence of GFS versus NAM input. |
 | X7 | `pelican_nam_2way_1km_24h_ysu_20130202` | NAM; 3/1 km; two domains; two-way; default terrain; 75 levels | 00 UTC 2 Feb–00 UTC 3 Feb; 25 boundary-inclusive hourly files/domain | Medium. Exact staged forcing manifest unresolved. Not a controlled resolution leg relative to X0 or X8. |
 | X8 | `pelican_nam_1way_111m_50lev_terrain3s_ysu_20130202` | NAM; four domains through 111 m; 50 levels; one-way; 3-arcsecond terrain only on d04; slope/shading on d02–d04 | 12–18 UTC; d01/d02 hourly, d03/d04 10-minute; this pass evaluates its **d02**, not its 111 m d04 | High identity confidence. Domain geometry, vertical levels, radiation cadence, terrain placement, and slope settings confound a resolution comparison. |
-| X9 | `pelican_nam_2way_terrain3s_ysu_20130202` | X0 with two-way nest feedback | 12–18 UTC hourly | High configuration confidence; clean fine-terrain feedback pair, but no archived full-figure set and no archived source-code commit. |
+| X9 | `pelican_nam_2way_terrain3s_ysu_20130202` | X0 with two-way nest feedback | 12–18 UTC hourly | High configuration confidence; clean fine-terrain feedback pair. The standard and X9-minus-X0 render sets are now complete; the archived source-code commit and matched manuscript analysis remain unresolved. |
 
 All ten headers identify WRF 4.8.0 and `GRID_FDDA=0`.  The February Pelican
 runs are unnudged free forecasts.  This does not establish equivalence to the
@@ -101,7 +101,7 @@ formal significance test.
 |---|---|---|---|---|
 | Primary | X6 − X5 | GFS versus NAM driving state | Same d02 grid, physics, feedback, terrain, vertical grid, init/window; only driving product and its metgrid-level count differ | Defensible. Retained surface overlays and 500/700 hPa direct differences. |
 | Secondary | X3 − X5 | NAM one-way minus NAM two-way feedback | As-run WRF namelists differ only by `feedback=0/1`; same default terrain and window | Defensible. Surface response is nearly null; retained pressure-level differences show small basin-interior response and terrain-edge structure. |
-| Secondary/next | X9 − X0 | Feedback at the control's fine terrain | As-run namelists differ only by feedback; same NAM, 3-arcsecond static, physics, and window | Cleaner feedback test than X3/X5, but X9 lacks a full-figure set and a registered study-repo run key. |
+| Secondary/next | X9 − X0 | Feedback at the control's fine terrain | As-run namelists differ only by feedback; same NAM, 3-arcsecond static, physics, and window | Cleaner feedback test than X3/X5; current standard and difference renders are complete, but no matched station/common-AGL result is frozen. |
 | Diagnostic | X1 − X0 | Slope/shading radiation | Only `slope_rad`, `topo_shading`, and `shadlen` differ | Controlled pair; no matched process figure retained yet. |
 | Diagnostic | X2 − X1 | MYJ/Eta versus YSU/MM5 | Only PBL and surface-layer scheme IDs differ | Controlled pair; scheme-aware profiles are still needed. The current surface metric is not uniformly negligible. |
 | Diagnostic | X3 − X0 | Default versus 3-arcsecond terrain | WRF namelist byte-identical; terrain enters through WPS/static input | Controlled at the configuration level; requires terrain-aware station and pressure treatment. |
@@ -143,14 +143,17 @@ No archive image was opened.
 | X0–X6, each | 14 | 35 | 14 | 0 | 63 PNG each; complete standard set |
 | X7 | 48 | 120 | 48 | 0 | 216 PNG; catalogue treats 24 valid times although raw WRF output has 25 boundary-inclusive timestamps |
 | X8 | 28 | 35 | 7 | profiles 7, skew-T 7, domains 1, heat deficit 1 | 86 non-standard PNG; nested layout and crest-only upper air |
-| X9 | 0 | 0 | 0 | 30 quicklook PNG | No `full-figures/` set |
+| X9 | 14 | 35 | 14 | 3 `thetaz`; 7 `heatdeficit_map` | 63 standard PNGs plus optional families; coverage refreshed 11--12 July |
 
-Cross-case catalogue counts are: X6−X5 `diff_gfs_nam` 21; X5−X3
-`diff_feedback` 7; X3−X4 `diff_terrain` 7; X3−X0
-`diff_terrain_fine` 42 (over-counted, likely stale extras); X1−X0
-`diff_slope_shading` 7; X2−X1 `diff_myj_eta` 21; X0−X4
-`diff_terrain_res` 21; plus domains 1, heat deficit 1, profiles 1, and
-skew-T 55.
+Current cross-case catalogue counts are: X6−X5 `diff_gfs_nam` 21; X10−X3
+`diff_gfs_nam_oneway` 21; X5−X3 `diff_feedback` 21; X6−X10
+`diff_feedback_gfs` 21; X9−X0 `diff_feedback_terrain3s` 21; X3−X4
+`diff_terrain` 7; X3−X0 `diff_terrain_fine` 21; X1−X0
+`diff_slope_shading` 7; X2−X1 `diff_myj_eta` 21; and X0−X4
+`diff_terrain_res` 21.
+The other comparison families contain domains 1, heat-deficit time series 1, profiles 1,
+skew-T 69, and `heatdeficit_map` 70, for 324 PNGs at the compare root.
+The earlier 42-file terrain count included 21 stale mislabeled duplicates, now removed.
 
 Those images are readily regenerable, but they are not added to the manuscript
 manifest here.  The exact runtime generator commit for each archived set is not
@@ -424,7 +427,7 @@ current 4,500 m ASL limit compresses the cold pool.
 | 2. Surface fidelity | Which matched WRF driving state follows observed floor/bench evolution? | X6 versus X5 on d02, identical five hours/stations | Observation representativeness or inherited forcing differences rather than developed WRF behavior | Bulk theta-contrast PDF promoted with horizontal-profile caveat. |
 | 3. Retention/inversion response | Does each run retain the shallow stable layer and weak ventilation through the window? | Completed common-AGL stability, layer transport wind, PBLH, T2/U10, and PSFC summaries | Fixed station columns do not measure basin volume; PBLH is scheme dependent | Common-AGL PDF promoted; five-hour scope retained. |
 | 4. Lower-tropospheric origin | Is GFS−NAM disagreement larger near 700 than 500 hPa and connected to the basin layer? | Retained signed 500/700 hPa differences plus future profiles | Pressure-surface terrain/masking and lateral-boundary structure explain the map | Main/supplement candidate; profile support required. |
-| 5. Nest feedback test | Does one-way versus two-way nesting matter over six hours? | X3−X5 now; cleaner X9−X0 next | A defensible null result, or effects limited to d03/longer integration | Supplement/reviewer reserve; main only if the null is central and bounded. |
+| 5. Nest feedback test | Does one-way versus two-way nesting matter over six hours? | X3−X5 is confirmed; the cleaner X9−X0 render is complete but unanalysed | A defensible null result, or effects limited to d03/longer integration | Supplement/reviewer reserve; main only if the null is central and bounded. |
 | 6. Trang/January context | How do heterogeneous lineage runs frame limitations? | January figures and `trang_ref` diagnostics | They are mistaken for controlled members or literal published simulations | Reviewer reserve/supplement only. |
 | 7. Air-chemistry implication | Is the meteorological mixing volume/ventilation credible enough for chemical attribution? | Promoted retention and ventilation diagnostics, not meteorology scores alone | Chemistry, inventory, deposition, snow photolysis, or cloud errors remain material | Carefully scoped discussion implication; no stand-alone chemistry result figure yet. |
 
@@ -439,11 +442,10 @@ current 4,500 m ASL limit compresses the cold pool.
    USU07→USU03 section at 14–18 UTC with identical levels, then X6−X5 and
    X3−X5 difference panels.  Add a 0–1,000 m AGL or shallow-ASL companion and
    test the two hypothesis-led alternatives without choosing by outcome.
-3. **Complete the clean fine-terrain feedback comparison.** Add X9 as a
-   registered run key in the study case file, generate its standard set, and
-   define X9−X0.  The unavailable `wrf-full-figures` skill means styling remains
-   provisional until that workflow is restored or a documented `brc-tools`
-   equivalent is used.
+3. **Analyse the now-complete fine-terrain feedback comparison.** X9 is registered,
+   its standard set is complete, and the X9−X0 render exists. Recompute the matched
+   surface/common-AGL and process summaries before adding a claim-ledger row; do not
+   rerender merely to prove coverage.
 4. **Scheme-aware X2−X1 PBL diagnostic.** Plot common θ/temperature/wind
    profiles, PBLH, surface fluxes, and X2 TKE in a way that does not interpret
    missing YSU `TKE_PBL` as zero.  Reconcile the sibling claim of changes below
@@ -507,10 +509,12 @@ unavailable through `slurmdbd`, so completion was verified from the wrapper's
 terminal `done_utc`, the complete output set, nonempty figure pairs, matching
 generator/station/observation hashes, and the artifact SHA-256 manifest.
 
-This closes the first-draft experiment choice.  X6/X5 is the primary result;
-X3/X5 is a bounded secondary null.  No additional WRF treatment is needed
-before drafting, and the present evidence does not establish multi-day
-persistence or distinguish initial-state from lateral-boundary causation.
+This closed the earlier minimum-scaffold experiment choice: X6/X5 is the primary
+confirmed contrast and X3/X5 is a bounded secondary null.
+The 13 July Results-expansion handoff reopens the wider controlled matrix before more
+drafting; no additional WRF integration is needed to audit it.
+The present evidence still does not establish multi-day persistence or distinguish
+initial-state from lateral-boundary causation.
 
 ## Exact reproduction commands
 
@@ -633,21 +637,19 @@ The observation-only figures were regenerated from commit `041183f` on job
    `...oneway_hires_terrain` path recorded in its summary.
 5. Recover X7's exact forcing manifest and decide whether archive figure counts
    should document 24 intervals or 25 boundary-inclusive WRF timestamps.
-6. Register X9 in the authoritative case TOML and define X9−X0 before treating
-   the clean fine-terrain feedback comparison as figure-complete.
-7. Reconcile the precise staged artifact behind `trang_ref`; continue to call it
+6. Reconcile the precise staged artifact behind `trang_ref`; continue to call it
    SIP-era/context lineage, never the literal Tran et al. (2018) run.
-8. Treat the completed two-hour block resampling as a descriptive sensitivity
+7. Treat the completed two-hour block resampling as a descriptive sensitivity
    interval only; stronger inferential uncertainty would require a longer or
    replicated experiment.
-9. Confirm observation archive metadata/licensing, station pressure/elevation
+8. Confirm observation archive metadata/licensing, station pressure/elevation
    handling, and whether an independent sounding or vertical profile can anchor
    inversion depth.
-10. Restore/read the canonical `wrf-full-figures` skill or perform a documented
-    canonical style review before promotion.
+9. Restore/read the canonical `wrf-full-figures` skill or perform a documented
+   canonical style review before promotion.
 
 Questions for John are principally X4 naming, X1/X2/X9 source commits, X7
-forcing/count semantics, X9 registration, and recovery of the provenance
+forcing/count semantics, the expanded paper architecture, and recovery of the provenance
 tarball.  Questions for Michael are the observation archive/provenance record,
 pressure/elevation treatment, uncertainty plan, and whether the pseudo-profile
 figures should remain main-text candidates or move to the supplement.

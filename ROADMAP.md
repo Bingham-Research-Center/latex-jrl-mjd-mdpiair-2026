@@ -1,11 +1,14 @@
 # Manuscript roadmap
 
-Current phase: **freshness-aware expansion of the Results and figure architecture before the blank-slate rewrite continues**.
+Current phase: **targeted gate-closing for the selected Architecture C hybrid before
+blank-slate prose continues**.
 
 `main.tex` is the audited review baseline.
 `_manuscript_test.tex` and `rewrite/` are the isolated reconstruction workbench; no experimental prose replaces the baseline until its evidence, figure, methods, and coauthor gates close.
 `_manuscript_test.tex` currently demonstrates the minimum verified four-run story; it is not a decision that the final paper has only four experiments or two figures.
-The active handoff is `rewrite/RESULTS-EXPANSION-HANDOFF.md`.
+John selected Architecture C on 13 July 2026.
+The active handoff is `rewrite/HYBRID-ARCHITECTURE-HANDOFF.md`; the completed audit and
+alternative packages remain in `rewrite/RESULTS-ARCHITECTURE-DECISION-PACKET.md`.
 
 The paper's durable claim is that credible cold-pool meteorology is a prerequisite for interpreting winter-ozone chemistry.
 Its air-focused evaluation target is whether WRF retains the shallow, weakly ventilated layer in which precursor and ozone accumulation would occur, not merely which run has the smallest aggregate surface bias.
@@ -35,7 +38,7 @@ The confounded resolution sequence and heterogeneous nudging lineage remain cont
 | 1. Inventory reconciliation | Stable run IDs and fingerprints for every candidate comparison | `verification/provenance/run-inventory.csv` contains exact archive path, version, window, grid, physics, forcing, feedback, FDDA, and evidence hashes for each promoted run. |
 | 2. Experiment design freeze | A classified X0--X10 matrix of controlled, configuration-controlled, confounded, and contextual comparisons | Each row isolates a named lever or lists every confound; each proposed result has its own common domain/sample/window. |
 | 3. Evidence longlist | Recomputed statistics and diagnostic figures from provenance-checked real data | Small and null findings are retained; commands are reproducible; uncertainty and missingness are explicit; synthetic output is absent. |
-| 4. Narrative freeze | A chosen broad, mechanism, or hybrid architecture with main/supplement/reserve figures | Every paragraph-level claim is linked to a ledger row and a table/figure or cited source. |
+| 4. Narrative freeze | Selected Architecture C with an evidence-gated main/supplement/reserve spine | C3--C6 and supplement C2 receive pass/fail dispositions, and every retained paragraph-level claim links to a ledger row and a table/figure or cited source. |
 | 5. Manuscript build | Reconstruct the paper from the chosen evidence spine, critique lessons, and decision-grade figures | The expanded rewrite passes its acceptance tests, methods placeholders close, and coauthors confirm configuration, interpretation, roles, funding, data availability, and attribution. |
 | 6. Figure and reproducibility freeze | Promoted figures, supplement/reviewer reserve, and public data/code plan | Both manifests are complete; canonical WRF styling reviewed; clean source ZIP compiles independently. |
 | 7. Coauthor review and submission | Reviewed MDPI Air package | Michael reviews provenance/diagnostics; Loknath and Seth review chemistry framing; all authors approve. |
@@ -43,8 +46,9 @@ The confounded resolution sequence and heterogeneous nudging lineage remain cont
 Run rows exist for X0--X10, and derived manuscript summaries are complete only for the
 default-terrain X6/X10/X5/X3 factorial.
 Figure coverage is substantially broader than those summaries.
-Narrative freeze is withdrawn until the wider controlled pairs, updated figure catalogue,
-observation metadata, source-level citations, and coauthor interpretation are reconciled.
+The architecture choice is frozen, but prose remains frozen until the selected controlled
+pairs, observation metadata, source-level citations, figure admissions, and coauthor
+interpretation are reconciled.
 
 ## Workstreams
 
@@ -71,9 +75,9 @@ observation metadata, source-level citations, and coauthor interpretation are re
 
 ### Figures and result expansion
 
-- Start with `rewrite/RESULTS-EXPANSION-HANDOFF.md`; use `notes/figure-strategy.md` as the
-  older minimum-draft longlist and `verification/figures/archive-inventory.md` for current
-  external coverage.
+- Start with `rewrite/HYBRID-ARCHITECTURE-HANDOFF.md`; use the Architecture C table in the
+  decision packet for figure roles and `verification/figures/archive-inventory.md` only
+  for current external coverage.
 - Generate a broad diagnostic longlist on CHPC, then promote only figures that answer a named hypothesis.
 - Keep useful rejected or secondary diagnostics reproducible for supplements and reviewer requests.
 - Do not promote an inherited image solely because it looks publication-ready.

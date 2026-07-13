@@ -9,10 +9,12 @@ The experimental manuscript stays at repository root as `_manuscript_test.tex` s
 
 | Need | Open |
 |---|---|
+| Close the selected hybrid Results gates | `rewrite/HYBRID-ARCHITECTURE-HANDOFF.md` |
+| Review the selected package and rejected alternatives | `rewrite/RESULTS-ARCHITECTURE-DECISION-PACKET.md` |
 | Reopen the Results breadth and figure architecture | `rewrite/RESULTS-EXPANSION-HANDOFF.md` |
 | Understand the minimum verified argument and its limits | `rewrite/blueprint.md` |
 | Read or edit the experimental paper | `_manuscript_test.tex` |
-| Send bounded evidence work to CHPC Codex | `rewrite/CHPC-CODEX-PROMPT.md` |
+| Dispatch a bounded CHPC figure, lookup, or gate packet | `rewrite/CHPC-CODEX-PROMPT.md` |
 | Check the source audit that triggered the rewrite | `notes/manuscript-audit-2026-07-13.md` |
 | Verify a claim or run identity | `notes/claim-evidence-ledger.md`, then the exact artifact named there |
 
@@ -23,9 +25,11 @@ Run identity remains in `verification/provenance/run-inventory.csv`, comparison 
 
 The current experimental paper is a deliberately minimal four-run scaffold, not the
 chosen scope of the rewritten paper.
-The active next step is to audit the wider X0--X10 result matrix, smaller findings, and
-figure families through `rewrite/RESULTS-EXPANSION-HANDOFF.md`, then choose a paper
-architecture before adding prose.
+The wider X0--X10 audit is complete in
+`rewrite/RESULTS-ARCHITECTURE-DECISION-PACKET.md`.
+John selected Architecture C, the hybrid package, on 13 July 2026.
+The active next step is the targeted C3--C6 and supplement-C2 gate review in
+`rewrite/HYBRID-ARCHITECTURE-HANDOFF.md`, beginning with ANA-16, before more prose.
 The held two-site bulk-theta PDF is still not a vertical profile and its promoted copy
 still needs the corrected 8 K annotation.
 The existing `main.tex` remains intact as a detailed evidence-audit baseline.

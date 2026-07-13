@@ -2,8 +2,9 @@
 
 **Scope note (13 July 2026):** this records the minimum verified four-run
 scaffold, not the intended breadth of the rewritten paper.
-Use `rewrite/RESULTS-EXPANSION-HANDOFF.md` to audit X0--X10 and choose the active
-Results/figure architecture before extending `_manuscript_test.tex`.
+Architecture C is selected.
+Use `rewrite/HYBRID-ARCHITECTURE-HANDOFF.md` to close its evidence and figure gates
+before extending `_manuscript_test.tex`.
 
 ## Decision in one page
 
@@ -38,8 +39,8 @@ The experiment tests the adequacy of that input state; it does not calculate dil
 |---|---|---|---|---|
 | Primary replication 1 | X6 minus X5; CMP01 | GFS minus NAM under two-way feedback | WRF version, domains, levels, physics, terrain class, initialization time, valid window, output cadence, FDDA off | Product grids, analysis systems, vertical inputs, assimilated observations, initial state, and boundary evolution |
 | Primary replication 2 | X10 minus X3; CMP02 | GFS minus NAM under one-way feedback | Same controls as CMP01 | Same product-level bundle |
-| Secondary bound 1 | X10 minus X6; CMP03 | one-way minus two-way within GFS | Product family and metgrid inputs | Feedback response for one product and five-hour regime |
-| Secondary bound 2 | X3 minus X5; CMP04 | one-way minus two-way within NAM | Product family and configuration apart from feedback | Feedback response for one product and five-hour regime |
+| Secondary bound 1 | X3 minus X5; CMP03 | one-way minus two-way within NAM | Product family and configuration apart from feedback | Feedback response for one product and five-hour regime |
+| Secondary bound 2 | X10 minus X6; CMP04 | one-way minus two-way within GFS | Product family and metgrid inputs | Feedback response for one product and five-hour regime |
 | Interaction | CMP05 | GFS feedback response minus NAM feedback response | paired station, hour, domain, and window | deterministic source-conditioned interaction |
 
 The exact archive paths and hashes live in `verification/provenance/run-inventory.csv`.

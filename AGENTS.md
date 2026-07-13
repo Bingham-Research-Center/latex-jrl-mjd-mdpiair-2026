@@ -1,45 +1,52 @@
 # AI guide
 
-Private working repo for the MDPI *Air* paper on WRF meteorology during the 2 February 2013 Uinta Basin winter-ozone episode.
-Run `hostname -f`, read `README.md` and `ROADMAP.md`, then open one route.
+Private MDPI *Air* repo for WRF meteorology during the 2 February 2013 Uinta
+Basin winter-ozone episode.
+Cold start: run `hostname -f`, read `README.md` and `ROADMAP.md`, then one route.
 
 ## Routes
 
 | Task | Read |
 |---|---|
+| Hybrid gates (active) | `rewrite/HYBRID-ARCHITECTURE-HANDOFF.md`, then Architecture C in `rewrite/RESULTS-ARCHITECTURE-DECISION-PACKET.md` |
 | Plan | `tasks/microtasks.md` |
-| Blank-slate rewrite | `rewrite/RESULTS-EXPANSION-HANDOFF.md`, `rewrite/README.md`, `rewrite/blueprint.md`, `_manuscript_test.tex` |
-| Claims | `notes/claim-evidence-ledger.md`, `notes/narrative-and-hypotheses.md`, `notes/figure-strategy.md` |
-| Runs | `verification/provenance/run-inventory.csv`, `verification/provenance/comparison-inventory.csv`, then one record |
-| Figures | `rewrite/RESULTS-EXPANSION-HANDOFF.md`, `verification/figures/archive-inventory.md`, `verification/figures/manifest.csv`, `figures/MANIFEST.md` |
-| Literature | `notes/resource-map.md`, `notes/literature-synthesis-register.md`, then one critique or source passage |
+| Claims | `notes/claim-evidence-ledger.md`, `notes/narrative-and-hypotheses.md` |
+| Runs | `verification/provenance/run-inventory.csv`, `verification/provenance/comparison-inventory.csv` |
+| Figures | `verification/figures/archive-inventory.md`, `verification/figures/manifest.csv`, `figures/MANIFEST.md` |
+| Rewrite after gates | `rewrite/README.md`, `rewrite/blueprint.md`, `_manuscript_test.tex` |
+| Literature | `notes/resource-map.md`, `notes/literature-synthesis-register.md` |
 | Production | `main.tex`, `paperpile.bib`, `Makefile` |
 | CHPC | `rewrite/CHPC-CODEX-PROMPT.md` |
 
-Avoid broad evidence-tree reads, raw PDFs, bulk image trees, legacy checklists, candidate figures, and `Definitions/` unless the task names the need.
+Open one route only. Avoid broad trees, raw PDFs, bulk images, legacy checklists,
+candidate figures, and `Definitions/` unless required.
 
-## Evidence rules
+## Contract
 
-- Inventories, manifests, the claim ledger, and exact artifacts outrank prose.
-- Separate controlled comparisons, heterogeneous context, and literature context.
-- X6/X10/X5/X3 are the minimum confirmed factorial, not the paper's scope; X0--X10 also contain gated terrain, radiation, PBL/surface-layer, and fine-terrain-feedback questions.
-- Figure existence follows `archive-inventory.md`; comparison meaning follows the comparison inventory; neither makes a figure promoted or a claim confirmed.
-- Each number needs matched run, domain, stations, window, inputs, and command; record facts before prose.
-- `main.tex` is the audited review baseline; `_manuscript_test.tex` is an experimental rewrite, not submission truth.
-- Only `promoted` figures may enter either manuscript; synthetic outputs stay temporary.
-- `trang_ref` is never the literal Tran et al. (2018) run.
-- Chemistry, inventories, basin export, inversion depth, and multi-day persistence are not demonstrated.
+- John selected Architecture C (hybrid) on 13 July 2026. C1/C2 are anchors;
+  C3--C6 and supplement C2 are gated. Do not reopen the choice or edit manuscripts
+  before the gate review.
+- Authority: run/comparison inventories for design, archive inventory for existence,
+  manifests for admission, ledger plus exact artifacts for claims. Separate
+  controlled, heterogeneous, and literature context.
+- X6/X10/X5/X3 are the confirmed floor, not the scope. X0--X10 also contain gated
+  terrain, radiation, PBL/surface-layer, and fine-terrain-feedback questions;
+  X7/X8 and legacy runs remain context.
+- Every number needs matched runs, domain, stations, window, inputs, and command;
+  record facts before prose.
+- `main.tex` is the audited baseline; `_manuscript_test.tex` is experimental. Only
+  dual-promoted figures may enter either; synthetic output is temporary.
+- `trang_ref` is not Tran et al. (2018). Not demonstrated: chemistry, inventories,
+  basin export, inversion depth, multi-day persistence.
 
-## Hosts, edits, and checks
+## Operations
 
-- Akamai/Linode is for writing, Git, LaTeX, and selective `~/reviews`; CHPC is for WRF/data/figures and may lack `~/reviews`.
-- Use `wrf-full-figures` only when readable; otherwise mark styling provisional.
-- Keep both manuscripts single-file, sparse, American English, and one sentence per source line.
-- Never edit `Definitions/`; replace `paperpile.bib` only as a complete export.
-- Run `make check`, `make rewrite-check`, and `make smoke` after analysis changes; inspect changed PDFs.
-- `make submission` packages only the production manuscript.
-
-## Git
-
-- Use `jrl/<topic>` branches and PRs into protected `main`.
-- Commit one verified concern at a time, push substantial batches, and use John’s identity plus `Co-Authored-By: Codex <noreply@openai.com>`.
+- Akamai/Linode = writing/Git/LaTeX; CHPC = WRF/data/figures and may lack
+  `~/reviews`. If `wrf-full-figures` is unreadable, mark style provisional.
+- Manuscripts: single-file, sparse, American English, one sentence per source line.
+  Never edit `Definitions/`; replace `paperpile.bib` only by complete export.
+- After analysis changes: `make check`, `make rewrite-check`, `make smoke`, and PDF
+  inspection. `make submission` packages only `main.tex`.
+- Use `jrl/<topic>` PRs into protected `main`. Commit one verified concern at a time,
+  push substantial batches, and use John's identity plus
+  `Co-Authored-By: Codex <noreply@openai.com>`.
