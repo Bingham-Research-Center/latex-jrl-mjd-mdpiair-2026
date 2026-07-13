@@ -11,7 +11,7 @@ Do not mark a scientific task done because prose exists; mark it done only when 
 - [x] **DES-04 · done** — Built the freshness-aware CMP01--CMP13 candidate-result ledger in `rewrite/RESULTS-ARCHITECTURE-DECISION-PACKET.md`.
 - [x] **FIG-13 · done** — Reconciled stale X9, terrain-label, and cross-case-count statements against `verification/figures/archive-inventory.md` without equating rendering with analysis or promotion.
 - [x] **NAR-07 · done** — Presented all three packages; John selected Architecture C, the hybrid, on 13 July 2026.
-- [ ] **ANA-16 · next; first priority** — Validate the productized heat-deficit post-spin-up trajectory, basin/crest definition, masks, units, and sensitivity before adding a ledger claim for Main C4.
+- [x] **ANA-16 · done** — Validated the productized heat-deficit trajectory, footprint/crest definitions, masks, units, and sensitivity; the weaker-state criterion passed 14/14 and the maintenance criterion failed 0/14, so Main C4 is dropped and only the footprint-scoped weaker-state claim is licensed (C26; `rewrite/HYBRID-GATE-REVIEW.md`).
 - [ ] **ANA-19 · next** — Close Main C3 with a rule-based matched-time spatial/vertical selection, common-AGL support, exact provenance, and a pass/fail promotion decision.
 - [ ] **ANA-17 · next** — Analyse CMP09 first with terrain/elevation-aware diagnostics; analyse CMP10/CMP11 only after resolving the X4 path-lineage gate, then pass, demote, or drop Main C5.
 - [ ] **ANA-18 · next** — Screen both CMP07 radiation fields and CMP08 common-AGL/flux diagnostics before selecting at most one Main C6 result.
@@ -95,7 +95,7 @@ Do not mark a scientific task done because prose exists; mark it done only when 
 - [ ] **FIG-08 · later** — Check print dimensions, fonts, units, color accessibility, captions, and raster resolution.
 - [x] **FIG-09 · done for first-draft spine** — Promoted the observed evolution, bulk theta contrast, and common-AGL retention/ventilation PDFs and completed both manifests.
 - [ ] **FIG-10 · later** — Retain reproducible supplementary/reviewer-reserve diagnostics outside `figures/`.
-- [ ] **FIG-11 · next** — Regenerate the promoted bulk-theta figure on CHPC with the plotted 8 K line labeled as a literature reference rather than a physical “CAP threshold,” then update both manifests and hashes.
+- [x] **FIG-11 · done** — Regenerated the promoted bulk-theta figure on CHPC (2026-07-13) with the 8 K line labeled as a literature reference; a pdftotext diff shows the label as the only text change, and both manifests and hashes are updated.
 - [ ] **FIG-12 · later/conditional** — Build the no-new-WRF L04 factorial effect-size panel only if an expanded architecture gives it a distinct decision beyond Table 2; register and promote it before manuscript use.
 
 ### Manuscript and submission
@@ -112,6 +112,7 @@ Do not mark a scientific task done because prose exists; mark it done only when 
 - [ ] **MAN-10 · later** — Run an unused/missing citation audit after the export stabilizes.
 - [x] **MAN-12 · done for experimental rewrite** — Created the isolated blank-slate manuscript, evidence/argument blueprint, build target, and figure-selection rationale.
 - [ ] **MAN-13 · next** — Reconcile the selected expanded architecture with CHPC-only facts and coauthor review before merging selected prose into `main.tex`.
+- [ ] **MAN-15 · next** — Review `_manuscript_v3.tex`, the synthesis of the baseline and experimental drafts plus the ANA-16 heat-deficit and C27 pressure evidence (built by `make v3-pdf`, guarded by `make v3-check`; rationale in `notes/manuscript-v3-rationale.md`), and decide its relationship to MAN-13/MAN-14 and `main.tex`.
 - [ ] **PUB-01 · later** — Obtain Michael's provenance/diagnostic review and Loknath/Seth's chemistry-framing review.
 - [ ] **PUB-02 · later** — Build and inspect a dated coauthor-review PDF.
 - [ ] **PUB-03 · later** — Compile the allowlisted ZIP in an independent environment with pdfLaTeX, BibTeX, and Ghostscript.
