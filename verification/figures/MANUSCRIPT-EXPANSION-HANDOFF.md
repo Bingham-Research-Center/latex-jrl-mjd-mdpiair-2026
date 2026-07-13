@@ -157,15 +157,14 @@ Grounded in `notes/figure-strategy.md` (L-codes) plus the new `heatdeficit_map` 
    greenlit only if yes.
 
 ## Cleanup / gotchas
-- **21 stale mislabeled PNGs** in `compare/diff_terrain_fine/` (`*terrain-900m-30m*`,
-  superseded by the `terrain-900m-90m` tag). Regenerable; safe to delete but not yet done
-  (needs author authorization — it's the shared archive):
-  `rm <archive>/pelican2013_pub_figures/compare/diff_terrain_fine/*terrain-900m-30m*.png`
+- **Done 2026-07-12** — the 21 stale mislabeled `*terrain-900m-30m*` PNGs were deleted from
+  `compare/diff_terrain_fine/` (author-authorized); the dir now holds exactly the 21
+  `terrain-900m-90m` PNGs and `archive-inventory.md` reflects it (compare root 324).
 - `heatdeficit_map` is also available for the **1 km** and **d04** rungs (their TOMLs now set
   `heatdeficit_domain = "d02"`); render with
   `PELICAN_FIGURE_CONFIG=…/pelican2013_1km.toml sbatch verification/slurm/pelican_figures.slurm --figure heatdeficit_map` if wanted (low priority — resolution ladder is confounded).
 - Engine + how-to: brc-tools `docs/WRF-FIGURE-ENGINE.md`; family list now includes
   `heatdeficit_map` (config keys `heatdeficit_domain`, per-pair `hd_limit`).
-- The brc-tools working tree has **uncommitted** changes from this session (the new family +
-  doc/skill edits) and the study repo has **uncommitted** TOML edits (config knobs). Neither
-  was committed — commit when ready.
+- **Committed 2026-07-12**: brc-tools `fad70b0` (heatdeficit_map family) + `69ddbe0`
+  (frozen-repo pointer sweep, incl. README + CLI docstring). Study repo: the TOML knobs +
+  this brief landed on `main` via the `jrl/consolidate-study-truth` merge (`8dc18bc`).
