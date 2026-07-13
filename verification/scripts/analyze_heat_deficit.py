@@ -275,9 +275,13 @@ def input_path(run_dir: Path, domain: int, valid: pd.Timestamp) -> Path:
 
 def internal_valid_time(ds: xr.Dataset) -> datetime:
     values = np.asarray(ds["Times"].values)
-    if values.ndim != 2 or values.shape[0] != 1:
+    if values.ndim == 2 and values.shape[0] == 1:
+        stamp = b"".join(values[0].tolist()).decode("ascii")
+    elif values.ndim == 1 and values.shape[0] == 1:
+        item = values[0]
+        stamp = item.decode("ascii") if isinstance(item, (bytes, np.bytes_)) else str(item)
+    else:
         raise ValueError(f"expected one WRF Times record, found shape {values.shape}")
-    stamp = b"".join(values[0].tolist()).decode("ascii")
     return datetime.strptime(stamp, "%Y-%m-%d_%H:%M:%S")
 
 

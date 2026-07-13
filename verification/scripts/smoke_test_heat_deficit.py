@@ -33,11 +33,11 @@ def fake_wrfout(path: Path, valid: pd.Timestamp, stability_per_m: float) -> None
     theta = np.broadcast_to(theta, (NZ, NY, NX)).copy()
     pressure = 85000.0 * np.exp(-z_agl_mass[:, None, None] / 8000.0)
     pressure = np.broadcast_to(pressure, (NZ, NY, NX)).copy()
-    stamp = np.array([list(valid.strftime("%Y-%m-%d_%H:%M:%S"))], dtype="S1")
+    stamp = np.array([valid.strftime("%Y-%m-%d_%H:%M:%S")], dtype="S19")
     surface_shape = (1, NY, NX)
     ds = xr.Dataset(
         {
-            "Times": (("Time", "DateStrLen"), stamp),
+            "Times": (("Time",), stamp),
             "XLAT": (("Time", "south_north", "west_east"), np.broadcast_to(xlat, surface_shape)),
             "XLONG": (("Time", "south_north", "west_east"), np.broadcast_to(xlon, surface_shape)),
             "HGT": (("Time", "south_north", "west_east"), np.broadcast_to(hgt, surface_shape)),
