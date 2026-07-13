@@ -1,8 +1,13 @@
 # Evidence-led blueprint for the blank-slate rewrite
 
+**Scope note (13 July 2026):** this records the minimum verified four-run
+scaffold, not the intended breadth of the rewritten paper.
+Use `rewrite/RESULTS-EXPANSION-HANDOFF.md` to audit X0--X10 and choose the active
+Results/figure architecture before extending `_manuscript_test.tex`.
+
 ## Decision in one page
 
-### Research question
+### Minimum-scaffold research question
 
 Across four otherwise matched short WRF integrations, how does the meteorological state relevant to cold-pool retention and dilution respond to the driving-data product, and is that response reproduced under both one-way and two-way nest feedback?
 
@@ -89,6 +94,9 @@ The paper must cite the underlying publication after checking its passage.
 
 ## Figure decisions
 
+These decisions define a safe minimum manuscript, not a figure cap or a decision to
+exclude controlled X0--X10 results after their gates close.
+
 | Slot | Artifact | Decision | Why |
 |---|---|---|---|
 | Figure 1 | `figures/obs_temp_timeseries_feb0102.pdf` | Include | Efficiently establishes multi-day surface context while its caption can state the spatial-profile limitation. |
@@ -100,8 +108,10 @@ The paper must cite the underlying publication after checking its passage.
 | Heat-deficit map/time series | CHPC product plus exploratory narrative | Hypothesis-generating only | The “fails to maintain” reframe requires a reproducible basin definition, post-spin-up trajectory check, and ledger row before prose. |
 | Resolution, nudging, PBL, and terrain families | heterogeneous or gated archive sets | Exclude from core figures | They answer different or not-yet-controlled questions. |
 
-This two-figure core is intentionally smaller than the current three-figure baseline.
-The effect table carries the factorial magnitude; a new figure must add a distinct decision, not duplicate it.
+This two-figure core shows that a defensible paper can be built from the audited minimum.
+It does not establish that two figures are scientifically sufficient.
+Every additional figure must still add a distinct decision rather than duplicate another
+view.
 
 ## Gates
 
@@ -131,6 +141,10 @@ The effect table carries the factorial magnitude; a new figure must add a distin
 - Do not let a missing citation become an invented key.
 
 ## Rewrite acceptance test
+
+The following tests apply to the minimum scaffold.
+An expanded architecture must also expose the comparison, diagnostic, provenance, and
+claim gate for every additional result thread listed in the expansion handoff.
 
 The experimental manuscript is ready to replace the baseline only when a skeptical reader can answer, from the paper alone:
 

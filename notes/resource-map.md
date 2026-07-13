@@ -11,7 +11,7 @@ When two records disagree, use the authority named below and record the discrepa
 | Question or artifact | Canonical paper-facing record | Technical or external authority | Rule |
 |---|---|---|---|
 | Manuscript claim and status | `notes/claim-evidence-ledger.md` | Exact cited analysis, figure, table, or literature source | Prose in `main.tex` does not validate itself. |
-| Scientific framing and experiment role | `ROADMAP.md` and `notes/narrative-and-hypotheses.md` | Controlled-comparison evidence named in the claim ledger | Separate the frozen result core from context and reviewer reserve. |
+| Scientific framing and experiment role | `rewrite/RESULTS-EXPANSION-HANDOFF.md`, `ROADMAP.md`, and `notes/narrative-and-hypotheses.md` | Controlled-comparison evidence named in the claim ledger | Separate the minimum confirmed core, gated candidate Results, confounded context, and reviewer reserve. |
 | WRF run identity used by the paper | `verification/provenance/run-inventory.csv` | As-run output headers, namelist fingerprints, and durable archive/control packet | Never infer identity from a directory name or candidate namelist. |
 | Run comparison and manuscript role | `verification/provenance/comparison-inventory.csv` | Member rows in the run inventory plus the named analysis and figure records | Use stable comparison IDs to connect runs to claims; do not promote a reviewer-reserve pair by prose alone. |
 | Runnable WRF case or namelist change | Pointer from the run inventory or provenance record | `../brc-wrf/brc-cases/` and the immutable archived control packet | `brc-wrf` owns execution; this repo records the verified paper-facing identity. |

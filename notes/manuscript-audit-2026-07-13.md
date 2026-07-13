@@ -1,5 +1,10 @@
 # Manuscript evidence and logic audit — 13 July 2026
 
+**Scope note:** this audit establishes what the then-current four-run manuscript could
+defend; it is not a finding that X0--X10 contain no additional Results.
+Use `rewrite/RESULTS-EXPANSION-HANDOFF.md` for the reopened terrain, radiation,
+PBL/surface-layer, fine-terrain-feedback, spatial, vertical, and heat-deficit audit.
+
 ## Scope and verdict
 
 This audit checked the draft against the claim ledger, the X6/X10/X5/X3 run and comparison inventories, the promoted-figure manifests, the committed derived summaries, the exact retention-analysis record, the three figure generators, and targeted source passages for the five current bibliography entries.

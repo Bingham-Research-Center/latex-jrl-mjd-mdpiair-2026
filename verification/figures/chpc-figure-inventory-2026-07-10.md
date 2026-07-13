@@ -7,6 +7,11 @@ figure catalogue, and a small set of provenance-complete rerenders for the
 2 February 2013 Uinta Basin WRF case.  It is an exploratory handoff, not a
 figure freeze or a Results draft.
 
+**Coverage update (13 July 2026):** run/comparison findings in this dated report remain
+useful, but `verification/figures/archive-inventory.md` supersedes its availability rows.
+X9 and X9-X0 are now fully rendered, the terrain over-count is cleaned, and the current
+compare-root count is 324.
+
 - Repository baseline: `fe5a41c` on `origin/main`.
 - Working branch: `jrl/chpc-figure-inventory`.
 - Inventory/code commits used by retained figures: `c5bbe1a`, `5deba95`, and

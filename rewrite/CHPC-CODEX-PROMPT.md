@@ -6,7 +6,7 @@ It is intentionally independent of the starting directory and keeps manuscript p
 ```text
 You are the CHPC-side evidence and figure worker for the private MDPI Air manuscript repository about WRF meteorology during the 2 February 2013 Uinta Basin winter-ozone episode.
 
-Goal: close the CHPC-only methods, observation-provenance, and figure gaps identified by the blank-slate rewrite, without rewriting manuscript prose or broadening the scientific claims.
+Goal: close CHPC-only methods and observation-provenance gaps and evaluate the broader X0--X10 result/figure matrix identified by the writing-host expansion handoff. Do not rewrite manuscript prose, and do not promote a scientific claim merely because a figure exists.
 
 Start safely from any directory:
 
@@ -16,25 +16,30 @@ Start safely from any directory:
    Also locate readable `brc-wrf` and `brc-tools` checkouts, and record their branches, commits, and dirty state before using their cases, docs, or renderers.
 3. In the checkout, run `git status --short --branch`, `git remote -v`, and `git log -3 --oneline`.
 4. Fetch `origin` if available.
-   Base the work on `origin/jrl/evidence-gated-human-draft` and use a new branch named `jrl/chpc-rewrite-evidence`.
+   Base the work on `origin/jrl/evidence-gated-human-draft` and use a new branch named `jrl/chpc-expanded-results`.
    If the checkout is dirty, preserve all existing work, report the overlap, and use a clean worktree or stop before modifying overlapping files.
 5. Read, in order:
    - `AGENTS.md`
    - `README.md`
    - `ROADMAP.md`
    - `rewrite/README.md`
+   - `rewrite/RESULTS-EXPANSION-HANDOFF.md`
    - `rewrite/blueprint.md`
    - `notes/manuscript-audit-2026-07-13.md`
    - the relevant rows only in `notes/claim-evidence-ledger.md`
    - `verification/provenance/run-inventory.csv`
    - `verification/provenance/comparison-inventory.csv`
+   - `verification/figures/archive-inventory.md`
+   - `verification/figures/MANUSCRIPT-EXPANSION-HANDOFF.md`
    - `verification/figures/chpc-figure-inventory-2026-07-10.md`
    - `verification/figures/manifest.csv`
    - `figures/MANIFEST.md`
 6. Do not assume `~/reviews` exists on CHPC.
    Do not open raw PDFs, candidate image trees, or unrelated WRF runs unless a task below names the need.
 
-The frozen core is X6 (GFS two-way), X10 (GFS one-way), X5 (NAM two-way), and X3 (NAM one-way), evaluated on d02 from 14--18 UTC.
+The minimum confirmed core is X6 (GFS two-way), X10 (GFS one-way), X5 (NAM two-way), and X3 (NAM one-way), evaluated on d02 from 14--18 UTC.
+It is not the scope of the paper.
+The expansion candidates include X1-X0 slope/shading, X2-X1 PBL/surface layer, X3-X0/X3-X4/X0-X4 terrain, X9-X0 fine-terrain feedback, and the productized heat-deficit and spatial/vertical families.
 Resolve every path through the run inventory.
 Never infer identity from filenames, and never identify `trang_ref` as the literal Tran et al. (2018) run.
 
@@ -102,6 +107,46 @@ TASK D — produce decision-grade diagnostics, not a figure dump
    - The purpose is to expose what can and cannot separate inherited initial state from boundary evolution.
    - Do not claim causal separation from a visual difference alone.
 
+TASK E — evaluate the controlled non-core matrix from existing outputs
+
+Start from the current `verification/figures/archive-inventory.md` rather than the older
+figure-strategy counts. Verify by bounded metadata checks that X9, X9-X0, the cleaned
+terrain families, and `heatdeficit_map` products still exist; do not rerender complete
+sets simply to prove their presence.
+
+1. Slope/shading, X1-X0:
+   - Sample matched `SWDOWN`, `GLW`, `TSK`, T2, common-AGL stability, and wind through time.
+   - Stratify by a predeclared slope/aspect or shaded/exposed definition so a local response
+     is not erased by a domain mean.
+   - Test a physical radiation/energy question; do not treat close aggregate bias as a
+     proven null.
+
+2. PBL/surface layer, X2-X1:
+   - Recompute common-AGL theta, temperature, and wind profiles plus surface fluxes.
+   - Show native PBLH only with an explicit scheme caveat, and never treat absent YSU
+     `TKE_PBL` as zero.
+   - Reconcile the 18.49 versus 17.18 K exploratory bulk-theta contrast and the inherited
+     "small below 700 m" description against an explicitly defined profile metric.
+
+3. Terrain, X3-X0, X3-X4, and X0-X4:
+   - Resolve or clearly retain the X4 archive-path lineage caveat before quantitative use.
+   - Separate terrain/elevation displacement from pressure skill.
+   - Test rim, slope/tributary, floor, and heat-deficit geometry with one common set of
+     diagnostics and scales.
+   - Do not call source-terrain spacing the WRF model-grid spacing.
+
+4. Fine-terrain feedback, X9-X0:
+   - Treat this as a robustness comparison, not the organizing thesis.
+   - Recompute the same matched surface/common-AGL quantities used for the default-terrain
+     feedback result and compare spatial heat-deficit response on an honest small-signal
+     scale.
+
+For each pair, write a compact result record containing the exact question, held-common
+fields, residual caveats, source paths and hashes, command, numerical summary, visual
+finding, falsifier, and recommended status: confirmed, provisional, diagnostic, or
+rejected. Register candidate outputs but do not promote them without a writing-host
+editorial decision.
+
 Do not submit a new WRF integration for this handoff.
 Use existing immutable outputs and plotting/metadata jobs only.
 If a new model run is genuinely required, write the exact proposed experiment, storage estimate, Slurm command, and decision it would resolve, then stop before submission.
@@ -109,22 +154,24 @@ If a new model run is genuinely required, write the exact proposed experiment, s
 Validation and handoff requirements:
 
 - Facts enter the run inventory, data manifest, figure manifest, or claim ledger before prose-facing summaries.
-- Preserve the five-hour, fixed-column, deterministic scope.
+- Preserve the five-hour, fixed-column, deterministic scope for the confirmed factorial;
+  define and record the matched domain, sample, and window separately for every added pair.
 - Keep controlled comparisons, heterogeneous context, and literature context separate.
 - Record exact commands, source commits, hashes, hostnames, job IDs, input paths, and output paths.
 - Run the relevant synthetic smoke tests in an environment with the required packages.
 - Run `git diff --check`.
 - Inspect every regenerated figure; do not rely on successful rendering alone.
-- Write a concise `verification/provenance/chpc-rewrite-evidence-2026-07.md` handoff containing:
+- Write a concise `verification/provenance/chpc-expanded-results-evidence-2026-07.md` handoff containing:
   - confirmed Methods facts and their sources;
   - observation metadata confirmed and still missing;
   - each regenerated/diagnostic figure and its status;
   - whether the heat-deficit maintenance hypothesis survived;
+  - what CMP06--CMP11 support after matched analysis, including small or null findings;
   - what remains impossible with current files;
   - exact next commands, if any.
 - Commit one verified concern at a time with John Lawson's Git identity and
   `Co-Authored-By: Codex <noreply@openai.com>`.
-- Push `jrl/chpc-rewrite-evidence`.
+- Push `jrl/chpc-expanded-results`.
 
 At the end, report:
 

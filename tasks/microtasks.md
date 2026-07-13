@@ -6,7 +6,15 @@ Tasks are deliberately small; completing one should change a named artifact or s
 Status vocabulary: **next**, **blocked**, **later**, **done**, and **retired**.
 Do not mark a scientific task done because prose exists; mark it done only when its evidence gate is met.
 
-## Current tranche: draft from the frozen short-window core
+## Current tranche: expanded-results decision packet before more prose
+
+- [ ] **DES-04 · next** — Build the freshness-aware CMP01--CMP13 candidate-result ledger specified in `rewrite/RESULTS-EXPANSION-HANDOFF.md`.
+- [ ] **FIG-13 · next** — Reconcile stale X9, terrain-label, and cross-case-count statements against `verification/figures/archive-inventory.md` without equating rendering with analysis or promotion.
+- [ ] **NAR-07 · next** — Present broad-configuration, maintenance/mechanism, and hybrid paper architectures with main/supplement/reserve figures and one reader decision per figure.
+- [ ] **ANA-16 · next after architecture choice** — Validate the productized heat-deficit post-spin-up trajectory, basin/crest definition, masks, units, and sensitivity before adding a ledger claim.
+- [ ] **ANA-17 · next after architecture choice** — Analyse CMP09--CMP11 with terrain/elevation-aware diagnostics after resolving the X4 path-lineage gate.
+- [ ] **ANA-18 · next after architecture choice** — Analyse CMP07 radiation fields locally and CMP08 on common AGL coordinates with scheme-aware flux/PBLH/TKE treatment.
+- [ ] **MAN-14 · blocked by DES-04/NAR-07** — Restructure `_manuscript_test.tex` only after John chooses the expanded evidence/figure architecture.
 
 - [ ] **INV-01 · next** — Locate the out-of-band July 9 provenance archive and verify SHA-256 `b616ec6b4ff70f3a36048904d5cad7a99a2563ba4a19fd79198fbf923332a958`.
 - [x] **INV-02 · done** — Mapped the three JRL touchstone header fingerprints to exact durable archive basenames.
@@ -25,7 +33,7 @@ Do not mark a scientific task done because prose exists; mark it done only when 
 - [x] **MAN-01--03 · done for first draft** — Drafted Methods and Results from the frozen claims and promoted three-figure spine; coauthor/scientific review is next.
 - [ ] **MAN-11 · next** — Close the visible methods placeholders for observation provider/QC/licensing, domain geometry/static inputs, and forcing-product citations before coauthor circulation.
 - [x] **MAN-12 · done for experimental rewrite** — Built `_manuscript_test.tex` and `rewrite/blueprint.md` from the audited claims, critique lessons, two-figure core, and explicit stop conditions without replacing `main.tex`.
-- [ ] **MAN-13 · next** — Integrate the CHPC evidence handoff, close rewrite gates, obtain scientific/coauthor review, and decide which experimental structure replaces the audited baseline.
+- [ ] **MAN-13 · next** — Integrate CHPC evidence into the expanded-result ledger, close selected gates, obtain scientific/coauthor review, and decide which experimental structure replaces the audited baseline.
 - [ ] **COA-01 · next** — Ask Michael for the code/input/command/meaning mapping for each Teams plot still under consideration.
 - [ ] **COA-02 · next** — Send the short Trang/Michael run-identity question list only after the machine inventory narrows it.
 
@@ -37,7 +45,7 @@ Do not mark a scientific task done because prose exists; mark it done only when 
 - [ ] **INV-10 · next** — Mark candidates with unknown inputs as `provisional` or `rejected`; never infer provenance from filenames.
 - [ ] **INV-11 · later** — Resolve the exact Tran-2018 NON/ONU/ANU/OAN production directories.
 - [ ] **INV-12 · later** — Resolve whether the January `WRF_anlnudge` output is published OAN or a later revision.
-- [ ] **INV-13 · later** — Inventory any controlled PBL, vertical-grid, terrain, snow, microphysics, radiation, or stochastic pairs.
+- [x] **INV-13 · done for the current archive** — Inventoried controlled PBL/surface-layer, slope/shading, and terrain pairs in X0--X10; no clean local vertical-grid, snow, microphysics, cloud, or stochastic pair is established.
 - [ ] **INV-14 · later** — Record the d03 interior station set separately from the d02 common evaluation set.
 - [ ] **INV-15 · next** — Fix legacy issue 3 by making the January observation-pull command reproducible with explicit dates/output and six authoritative stations.
 - [ ] **INV-16 · later** — Decide the public archive/repository for minimal processed data, namelists, commands, and code.
@@ -66,8 +74,8 @@ Do not mark a scientific task done because prose exists; mark it done only when 
 - [ ] **LIT-04 · later** — Decide whether report literature belongs in the main article, supplement, or reviewer reserve.
 - [ ] **LIT-05 · next** — Use `notes/literature-synthesis-register.md` to select which report sources genuinely survive narrative freeze.
 - [ ] **LIT-06 · blocked by LIT-05** — Add the selected report sources to Paperpile and replace the register's citation placeholders through a complete export.
-- [x] **NAR-01 · done** — Selected the driving-state response as the primary narrative.
-- [x] **NAR-02 · done** — Selected the small source-conditioned feedback interaction as the bounded secondary result and rejected resolution/nudging from first-draft Results.
+- [x] **NAR-01 · done for minimum scaffold** — Established the driving-state response as the strongest confirmed anchor; broader narrative selection is reopened in NAR-07.
+- [x] **NAR-02 · done for minimum scaffold** — Bounded the source-conditioned feedback response and rejected resolution/nudging as sensitivity results; controlled terrain/radiation/PBL candidates are reopened.
 - [x] **NAR-03 · done** — Preserved the chemistry caveat: meteorology is necessary but not shown to be uniquely dominant.
 - [ ] **NAR-04 · later** — Write the air-chemistry bridge in terms of dilution volume, cold-pool retention/ventilation, stability, transport, photolysis, and deposition interfaces.
 - [ ] **NAR-05 · later** — Decide whether the SIP-era and January runs add useful context or merely distract from controlled touchstones.
@@ -86,7 +94,7 @@ Do not mark a scientific task done because prose exists; mark it done only when 
 - [x] **FIG-09 · done for first-draft spine** — Promoted the observed evolution, bulk theta contrast, and common-AGL retention/ventilation PDFs and completed both manifests.
 - [ ] **FIG-10 · later** — Retain reproducible supplementary/reviewer-reserve diagnostics outside `figures/`.
 - [ ] **FIG-11 · next** — Regenerate the promoted bulk-theta figure on CHPC with the plotted 8 K line labeled as a literature reference rather than a physical “CAP threshold,” then update both manifests and hashes.
-- [ ] **FIG-12 · next** — Build the no-new-WRF L04 factorial effect-size panel only if it adds a distinct decision beyond Table 2; register and promote it before manuscript use.
+- [ ] **FIG-12 · later/conditional** — Build the no-new-WRF L04 factorial effect-size panel only if an expanded architecture gives it a distinct decision beyond Table 2; register and promote it before manuscript use.
 
 ### Manuscript and submission
 
@@ -101,7 +109,7 @@ Do not mark a scientific task done because prose exists; mark it done only when 
 - [ ] **MAN-09 · later** — Replace `paperpile.bib` with the complete manuscript-specific Paperpile export.
 - [ ] **MAN-10 · later** — Run an unused/missing citation audit after the export stabilizes.
 - [x] **MAN-12 · done for experimental rewrite** — Created the isolated blank-slate manuscript, evidence/argument blueprint, build target, and figure-selection rationale.
-- [ ] **MAN-13 · next** — Reconcile the experimental rewrite with CHPC-only facts and coauthor review before merging selected prose into `main.tex`.
+- [ ] **MAN-13 · next** — Reconcile the selected expanded architecture with CHPC-only facts and coauthor review before merging selected prose into `main.tex`.
 - [ ] **PUB-01 · later** — Obtain Michael's provenance/diagnostic review and Loknath/Seth's chemistry-framing review.
 - [ ] **PUB-02 · later** — Build and inspect a dated coauthor-review PDF.
 - [ ] **PUB-03 · later** — Compile the allowlisted ZIP in an independent environment with pdfLaTeX, BibTeX, and Ghostscript.

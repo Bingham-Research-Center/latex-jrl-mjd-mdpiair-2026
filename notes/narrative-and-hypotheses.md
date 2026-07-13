@@ -7,9 +7,15 @@ It does not argue that emissions inventories, deposition, photolysis, or chemica
 Instead, it treats the simulated depth, persistence, and ventilation of the 2 February 2013 Uinta Basin cold-air pool as a prerequisite for interpreting winter ozone.
 The practical target is not a generic WRF ranking: it is whether the meteorological field represents the shallow mixing volume and weak ventilation that a downstream chemistry model actually receives.
 
-The CHPC inventory and common-AGL analysis now support a narrow first-draft result core.
-The forcing response replicated across both feedback modes is primary, the small source-conditioned feedback interaction is secondary, and the remaining candidate hypotheses stay outside the first-draft Results.
-The blank-slate rewrite in `rewrite/blueprint.md` now leads with that common-AGL result, uses observed station evolution only for context, and holds the two-site bulk-theta panel pending regeneration and a distinct narrative need.
+The CHPC inventory and common-AGL analysis support a minimum four-run result core, but
+that core no longer defines the intended breadth of the paper.
+`rewrite/RESULTS-EXPANSION-HANDOFF.md` reopens the controlled X0--X10 terrain,
+slope/shading, PBL/surface-layer, fine-terrain-feedback, spatial, vertical, and
+heat-deficit threads.
+The forcing response remains the strongest confirmed result; feedback is a bounded
+robustness check rather than the necessary organizing thesis.
+The current blank-slate manuscript remains a minimum scaffold until the expanded
+architecture is chosen.
 
 ## Plain-language comparison-to-story map
 
@@ -20,12 +26,14 @@ Use this shorter view when deciding what story a run can support.
 |---|---|---|---|
 | Primary result | CMP01 and CMP02 | The GFS-minus-NAM response is coherent under both feedback modes over the matched five-hour d02 sample. | It cannot yet separate initial-condition effects from lateral-boundary effects or establish multi-day persistence. |
 | Secondary bounded result | CMP03, CMP04, and CMP05 | Feedback is nearly null under NAM, small under GFS, and much smaller than the forcing response; the interaction is source conditioned. | It is not general evidence that one-way and two-way nesting are equivalent. |
-| Reviewer reserve | CMP06--CMP11 | Fine-terrain feedback, slope/shading, PBL/surface-layer, and terrain-source pairs are controlled enough to motivate focused follow-up. | They should not enter first-draft Results without their named provenance or analysis gates. |
+| Candidate Results | CMP06--CMP11 | Fine-terrain feedback, slope/shading, PBL/surface-layer, and terrain-source pairs are controlled or configuration-controlled and have current external figures. | A render does not close their named quantitative, provenance, interpretation, or claim-ledger gates. |
 | Excluded or context only | CMP12 and CMP13 | The apparent resolution ladder and legacy nudged lineage expose design and provenance limitations. | They cannot support a resolution ranking, a nudging-effect estimate, or attribution to the literal Tran et al. run. |
 
-In practical writing terms, lead with CMP01/CMP02, use CMP03--CMP05 to show that the main result survives a nesting choice, and mention the remaining rows only as limitations, reviewer reserve, or future controlled work.
-Use `notes/figure-strategy.md` to choose the minimum figure spine or one of three
-bounded narrative packages without reopening the full archive.
+In practical planning terms, retain CMP01/CMP02 as the confirmed anchor, use
+CMP03--CMP06 to bound feedback without letting it dominate, and test CMP07--CMP11 as
+real candidate Results through their named gates.
+Use the expansion handoff to choose broad-configuration, maintenance/mechanism, or hybrid
+architecture before returning to manuscript prose.
 
 ## Title candidates
 
@@ -82,8 +90,8 @@ These constraints strengthen the case for a meteorology-first evaluation while n
 |---|---|---|---|---|---|---|
 | 1. Initial and boundary state | Is an apparent WRF physics error inherited from a biased driving analysis or created during forecast evolution? Tran's NAM warm/moist premise was load-bearing but not shown; repeated reinitialization can reset a mature pool. | X6 versus X5 under two-way feedback and X10 versus X3 under one-way feedback, with matched d02 grid, physics, terrain, initialization time, and valid window. | Lower-tropospheric differences in the driving analysis produce a first-order difference in cold-pool maintenance over the short forecast under both feedback modes. | The common-window temperature, common-AGL stability, and transport-wind differences are negligible, change sign, or vanish under the second feedback mode. | Initial-state error changes dilution volume before chemistry starts. | **Primary result:** the state difference is coherent under both feedback modes; inherited initial versus lateral-boundary contributions remain unresolved. |
 | 2. Domain, resolution, and nest feedback | Are the meteorological fields evaluated at the same scale that would drive chemistry? Neemann evaluated a finer nest than the CMAQ-driving domain; the current 333 m nest excludes many bench stations. | X10 versus X6 under GFS and X3 versus X5 under NAM, with feedback as the only reconciled within-source change. | Feedback is small relative to the forcing response over this six-hour run. | A coherent feedback or forcing-by-feedback response approaches the GFS--NAM response. | A chemistry grid cannot recover cold-pool structure absent from its meteorological driver. | **Secondary bounded interaction:** NAM is nearly null; GFS and the paired interaction are coherent but small on the five-hour d02 sample; no general equivalence claim. |
-| 3. Stable-layer representation | Do vertical levels, model top, PBL treatment, or WRF version resolve and retain the shallow stable layer? Tran showed diagnosed PBL height can silently redefine nudging reach; later evaluations found version effects larger than several other changes. | Level-count, vertical-grid, PBL, and version pairs identified by the inventory. | Enhanced or better-placed lower-tropospheric resolution changes near-surface mixing, inversion strength, and their evolution more than nominal grid refinement alone. | No controlled pair exists, or differences are inseparable from physics/version changes. | Excess mixing dilutes precursors; too little mixing can exaggerate nighttime trapping and titration. | TBC inventory. |
-| 4. Surface, terrain, and cloud physics | Are snow, albedo, terrain, land surface, and cloud phase represented consistently? Neemann bounded snow and cloud effects; Matichuk showed WRF albedo changes need not reach CMAQ photolysis. | Terrain-resolution, snow/land, microphysics, radiation, and surface-scheme variants from the inventory. | Surface and cloud choices materially affect radiative cooling and cold-pool persistence in this case. | The tested choices do not alter process fields, or the experiment changes multiple levers without a control. | Meteorology affects confinement, while chemistry separately needs the correct snow photolysis and deposition treatment. | TBC inventory. |
+| 3. Stable-layer representation | Do vertical levels, model top, PBL treatment, or WRF version resolve and retain the shallow stable layer? Tran showed diagnosed PBL height can silently redefine nudging reach; later evaluations found version effects larger than several other changes. | Controlled X2-X1 MYJ/Eta-versus-YSU/MM5 pair; the apparent level/resolution sequence remains confounded. | The scheme pair changes common-AGL mixing, stability, fluxes, and evolution in a physically interpretable way. | The response disappears under scheme-aware common coordinates, or cannot be separated from diagnostic definitions. | Excess mixing dilutes precursors; too little mixing can exaggerate nighttime trapping and titration. | **Analysis-ready:** C19 blocks the inherited small-response claim; common-AGL and scheme-aware turbulence analysis is required. |
+| 4. Surface, terrain, and radiation physics | Are terrain, slope-aware radiation, land-surface energy fields, and related treatments represented consistently? Neemann bounded snow and cloud effects; Matichuk showed WRF albedo changes need not reach CMAQ photolysis. | Controlled X1-X0 slope/shading pair and configuration-controlled X3-X0, X3-X4, and X0-X4 terrain pairs. No clean local snow, microphysics, or cloud pair is currently identified. | Terrain and radiation choices change rim/floor geometry or local energy/stability evolution even when aggregate surface scores are similar. | Process fields show no coherent response, or X4 provenance prevents interpretation. | Meteorology affects confinement, while chemistry separately needs the correct snow photolysis and deposition treatment. | **Analysis-ready:** figures exist; radiation needs a local process diagnostic and terrain needs X4 lineage plus elevation-aware interpretation. |
 | 5. Data assimilation versus a free forecast | Does nudging correct the cold pool or impose the bias of the analysis being assimilated? Verification is not independent when scored observations were also assimilated. | Same-case nudged and un-nudged pairs if recoverable; otherwise literature/context only. | A short free forecast can provide competitive surface meteorology without the stable-layer distortions possible under biased nudging. | No same-case controlled pair exists, or independent observations favor the nudged structure. | Assimilation can improve apparent scores without guaranteeing the transport and mixing fields needed by chemistry. | No clean same-case pair currently established. |
 
 ## Required diagnostic spine

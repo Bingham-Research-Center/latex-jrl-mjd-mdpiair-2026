@@ -9,7 +9,8 @@ The experimental manuscript stays at repository root as `_manuscript_test.tex` s
 
 | Need | Open |
 |---|---|
-| Understand the new argument, evidence limits, and figure choices | `rewrite/blueprint.md` |
+| Reopen the Results breadth and figure architecture | `rewrite/RESULTS-EXPANSION-HANDOFF.md` |
+| Understand the minimum verified argument and its limits | `rewrite/blueprint.md` |
 | Read or edit the experimental paper | `_manuscript_test.tex` |
 | Send bounded evidence work to CHPC Codex | `rewrite/CHPC-CODEX-PROMPT.md` |
 | Check the source audit that triggered the rewrite | `notes/manuscript-audit-2026-07-13.md` |
@@ -18,18 +19,22 @@ The experimental manuscript stays at repository root as `_manuscript_test.tex` s
 The blueprint is a compact editorial control packet, not a new scientific authority.
 Run identity remains in `verification/provenance/run-inventory.csv`, comparison role in `verification/provenance/comparison-inventory.csv`, figure admission in the two manifests, and claim status in the claim ledger.
 
-## Current editorial decision
+## Current work state
 
-The experimental paper leads with the question a chemistry-model user must answer: does the WRF field preserve a shallow, weakly ventilated lower layer?
-It uses the observed multi-day station evolution for case context and the four-run common-AGL panel for the principal result.
-It does not use the current two-site bulk-theta PDF because that proxy is not a vertical profile and its promoted copy still needs the corrected 8 K annotation.
+The current experimental paper is a deliberately minimal four-run scaffold, not the
+chosen scope of the rewritten paper.
+The active next step is to audit the wider X0--X10 result matrix, smaller findings, and
+figure families through `rewrite/RESULTS-EXPANSION-HANDOFF.md`, then choose a paper
+architecture before adding prose.
+The held two-site bulk-theta PDF is still not a vertical profile and its promoted copy
+still needs the corrected 8 K annotation.
 The existing `main.tex` remains intact as a detailed evidence-audit baseline.
 
 ## Working contract
 
 - Write only from confirmed ledger rows or verified underlying literature passages.
 - Keep product attribution at the GFS-versus-NAM bundle level; do not rename it an isolated initial-condition effect.
-- Keep the result at five post-spin-up hours on fixed d02 station columns.
+- State the exact domain, sample, and window for each result; the confirmed factorial uses five post-spin-up hours on fixed d02 station columns, while other threads require their own matched analysis.
 - Treat station medians as one spatial field, not independent replicates.
 - Keep chemistry, ozone, basin export, residence time, inversion depth, and multi-day persistence outside the demonstrated result.
 - Mark missing provider, model, citation, and author metadata visibly rather than guessing.

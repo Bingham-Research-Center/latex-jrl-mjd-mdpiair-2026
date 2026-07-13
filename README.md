@@ -12,11 +12,11 @@ It does not duplicate large model output or reusable software.
 | If you want to know... | Start here |
 |---|---|
 | What the paper is trying to say | `ROADMAP.md` and `notes/narrative-and-hypotheses.md` |
-| How the blank-slate rewrite differs from the audited baseline | `rewrite/README.md` and `rewrite/blueprint.md` |
+| How the blank-slate rewrite and expanded Results audit differ from the baseline | `rewrite/RESULTS-EXPANSION-HANDOFF.md`, then `rewrite/README.md` and `rewrite/blueprint.md` |
 | Whether a claim is defensible | `notes/claim-evidence-ledger.md` |
 | Which exact WRF run was inspected | `verification/provenance/run-inventory.csv` |
 | Which run comparison supports which manuscript story | `verification/provenance/comparison-inventory.csv`, then `notes/narrative-and-hypotheses.md` |
-| Which figures support three defensible manuscript stories | `notes/figure-strategy.md` |
+| How to expand the Results and figure architecture | `rewrite/RESULTS-EXPANSION-HANDOFF.md`, then `notes/figure-strategy.md` |
 | Whether a dataset is raw, derived, current, superseded, or context only | `verification/data/manifest.csv` |
 | Which data, script, and output produced a candidate figure | `verification/figures/manifest.csv` |
 | Which full-figure sets exist or still need rendering | `verification/figures/archive-inventory.md` |
@@ -38,11 +38,12 @@ Do not add new manuscript-facing truth there; wait for the final cross-repositor
 ## Start here
 
 - Manuscript: [`main.tex`](main.tex)
-- Experimental blank-slate rewrite: [`rewrite/README.md`](rewrite/README.md), then [`_manuscript_test.tex`](_manuscript_test.tex)
+- Expanded Results/figure handoff: [`rewrite/RESULTS-EXPANSION-HANDOFF.md`](rewrite/RESULTS-EXPANSION-HANDOFF.md)
+- Experimental blank-slate workbench: [`rewrite/README.md`](rewrite/README.md), then [`_manuscript_test.tex`](_manuscript_test.tex)
 - Large-scale plan and narrative gates: [`ROADMAP.md`](ROADMAP.md)
 - Active granular queue and recovered legacy to-dos: [`tasks/microtasks.md`](tasks/microtasks.md)
 - Scientific framing and candidate hypotheses: [`notes/narrative-and-hypotheses.md`](notes/narrative-and-hypotheses.md)
-- Defensive figure longlist and three draft narratives: [`notes/figure-strategy.md`](notes/figure-strategy.md)
+- Figure longlist and the earlier minimum-draft narratives: [`notes/figure-strategy.md`](notes/figure-strategy.md)
 - Claim status and provenance: [`notes/claim-evidence-ledger.md`](notes/claim-evidence-ledger.md)
 - Run-comparison lookup: [`verification/provenance/comparison-inventory.csv`](verification/provenance/comparison-inventory.csv)
 - Dataset lineage and status: [`verification/data/manifest.csv`](verification/data/manifest.csv)

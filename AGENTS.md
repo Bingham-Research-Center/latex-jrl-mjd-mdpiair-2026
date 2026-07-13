@@ -8,10 +8,10 @@ Run `hostname -f`, read `README.md` and `ROADMAP.md`, then open one route.
 | Task | Read |
 |---|---|
 | Plan | `tasks/microtasks.md` |
-| Blank-slate rewrite | `rewrite/README.md`, `rewrite/blueprint.md`, `_manuscript_test.tex` |
+| Blank-slate rewrite | `rewrite/RESULTS-EXPANSION-HANDOFF.md`, `rewrite/README.md`, `rewrite/blueprint.md`, `_manuscript_test.tex` |
 | Claims | `notes/claim-evidence-ledger.md`, `notes/narrative-and-hypotheses.md`, `notes/figure-strategy.md` |
 | Runs | `verification/provenance/run-inventory.csv`, `verification/provenance/comparison-inventory.csv`, then one record |
-| Figures | `notes/figure-strategy.md`, `verification/figures/manifest.csv`, `figures/MANIFEST.md` |
+| Figures | `rewrite/RESULTS-EXPANSION-HANDOFF.md`, `verification/figures/archive-inventory.md`, `verification/figures/manifest.csv`, `figures/MANIFEST.md` |
 | Literature | `notes/resource-map.md`, `notes/literature-synthesis-register.md`, then one critique or source passage |
 | Production | `main.tex`, `paperpile.bib`, `Makefile` |
 | CHPC | `rewrite/CHPC-CODEX-PROMPT.md` |
@@ -22,7 +22,8 @@ Avoid broad evidence-tree reads, raw PDFs, bulk image trees, legacy checklists, 
 
 - Inventories, manifests, the claim ledger, and exact artifacts outrank prose.
 - Separate controlled comparisons, heterogeneous context, and literature context.
-- Core: X6 (GFS two-way), X10 (GFS one-way), X5 (NAM two-way), X3 (NAM one-way); resolve paths through the run inventory.
+- X6/X10/X5/X3 are the minimum confirmed factorial, not the paper's scope; X0--X10 also contain gated terrain, radiation, PBL/surface-layer, and fine-terrain-feedback questions.
+- Figure existence follows `archive-inventory.md`; comparison meaning follows the comparison inventory; neither makes a figure promoted or a claim confirmed.
 - Each number needs matched run, domain, stations, window, inputs, and command; record facts before prose.
 - `main.tex` is the audited review baseline; `_manuscript_test.tex` is an experimental rewrite, not submission truth.
 - Only `promoted` figures may enter either manuscript; synthetic outputs stay temporary.

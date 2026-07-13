@@ -1,9 +1,11 @@
 # Manuscript roadmap
 
-Current phase: **blank-slate editorial reconstruction of the evidence-gated short-window paper**.
+Current phase: **freshness-aware expansion of the Results and figure architecture before the blank-slate rewrite continues**.
 
 `main.tex` is the audited review baseline.
 `_manuscript_test.tex` and `rewrite/` are the isolated reconstruction workbench; no experimental prose replaces the baseline until its evidence, figure, methods, and coauthor gates close.
+`_manuscript_test.tex` currently demonstrates the minimum verified four-run story; it is not a decision that the final paper has only four experiments or two figures.
+The active handoff is `rewrite/RESULTS-EXPANSION-HANDOFF.md`.
 
 The paper's durable claim is that credible cold-pool meteorology is a prerequisite for interpreting winter-ozone chemistry.
 Its air-focused evaluation target is whether WRF retains the shallow, weakly ventilated layer in which precursor and ozone accumulation would occur, not merely which run has the smallest aggregate surface bias.
@@ -19,8 +21,11 @@ It must not claim that chemistry, emissions, deposition, or photolysis are alrea
 | Nudging can correct or manufacture cold-pool structure | Context or result, depending on recovered runs | Tran critique, SIP-era comparator, January historical evaluation | A same-case controlled nudged/free pair and held-out verification are required for a result. |
 | Meteorological error changes the volume available for ozone chemistry | Air-focused bridge | Literature rationale plus downstream reports of dilution and premature ventilation | Verify and cite the underlying reports; phrase as an implication of evaluated structure, not proof that meteorology dominates inventory or mechanism error. |
 
-The frozen result core supports a compact original-research article led by a driving-state result replicated across feedback modes and a bounded nest-feedback interaction.
-Physics, terrain, resolution, and nudging comparisons remain Discussion, supplement, reviewer reserve, or future work unless a later coauthor decision reopens the matrix.
+The verified four-run result supports a compact fallback article, but the matrix is now
+explicitly reopened for an evidence-gated broader paper.
+Controlled terrain, slope/shading, PBL/surface-layer, and fine-terrain feedback pairs must
+be evaluated as candidate Results rather than excluded by the earlier minimum-draft choice.
+The confounded resolution sequence and heterogeneous nudging lineage remain context only.
 
 ## Phases and exit gates
 
@@ -28,16 +33,18 @@ Physics, terrain, resolution, and nudging comparisons remain Discussion, supplem
 |---|---|---|
 | 0. Repository foundation | Current MDPI template, sparse manuscript, evidence gates, safe submission builder | Complete in commits `3e21a28`--`e84c751`. |
 | 1. Inventory reconciliation | Stable run IDs and fingerprints for every candidate comparison | `verification/provenance/run-inventory.csv` contains exact archive path, version, window, grid, physics, forcing, feedback, FDDA, and evidence hashes for each promoted run. |
-| 2. Experiment design freeze | A short matrix of controlled comparisons and preregistered diagnostics/falsifiers | Each row isolates a named lever or lists every confound; common domain/stations/window selected. |
-| 3. Evidence longlist | Recomputed statistics and diagnostic figures from provenance-checked real data | Commands are reproducible; uncertainty and missingness are explicit; synthetic output is absent. |
-| 4. Narrative freeze | One primary result arc, one or two secondary arcs, and a limitations spine | Every paragraph-level claim is linked to a ledger row and a table/figure or cited source. |
-| 5. Manuscript build | Reconstruct the paper from the verified question, evidence spine, critique lessons, and minimum figures | The experimental rewrite passes its acceptance test, methods placeholders close, and coauthors confirm configuration, interpretation, roles, funding, data availability, and attribution. |
+| 2. Experiment design freeze | A classified X0--X10 matrix of controlled, configuration-controlled, confounded, and contextual comparisons | Each row isolates a named lever or lists every confound; each proposed result has its own common domain/sample/window. |
+| 3. Evidence longlist | Recomputed statistics and diagnostic figures from provenance-checked real data | Small and null findings are retained; commands are reproducible; uncertainty and missingness are explicit; synthetic output is absent. |
+| 4. Narrative freeze | A chosen broad, mechanism, or hybrid architecture with main/supplement/reserve figures | Every paragraph-level claim is linked to a ledger row and a table/figure or cited source. |
+| 5. Manuscript build | Reconstruct the paper from the chosen evidence spine, critique lessons, and decision-grade figures | The expanded rewrite passes its acceptance tests, methods placeholders close, and coauthors confirm configuration, interpretation, roles, funding, data availability, and attribution. |
 | 6. Figure and reproducibility freeze | Promoted figures, supplement/reviewer reserve, and public data/code plan | Both manifests are complete; canonical WRF styling reviewed; clean source ZIP compiles independently. |
 | 7. Coauthor review and submission | Reviewed MDPI Air package | Michael reviews provenance/diagnostics; Loknath and Seth review chemistry framing; all authors approve. |
 
-Run identity, experiment design, and derived summaries are complete for the narrow default-terrain X6/X10/X5/X3 factorial.
-Narrative freeze is provisional until the blank-slate rewrite is reconciled with observation quality-control and licensing metadata, source-level citation checks, and coauthor interpretation review.
-Unresolved heterogeneous lineage, terrain, physics, and resolution records do not block this draft because they are excluded from the result core.
+Run rows exist for X0--X10, and derived manuscript summaries are complete only for the
+default-terrain X6/X10/X5/X3 factorial.
+Figure coverage is substantially broader than those summaries.
+Narrative freeze is withdrawn until the wider controlled pairs, updated figure catalogue,
+observation metadata, source-level citations, and coauthor interpretation are reconciled.
 
 ## Workstreams
 
@@ -49,7 +56,7 @@ Unresolved heterogeneous lineage, terrain, physics, and resolution records do no
 
 ### Analysis and verification
 
-- Use the frozen d02, reporting-station sample, 14--18 UTC window, and two-hour spin-up exclusion for every primary or feedback result.
+- Preserve the frozen d02, reporting-station sample, 14--18 UTC window, and two-hour spin-up exclusion when extending the confirmed factorial; define and justify a matched domain/sample/window separately for each additional result thread.
 - Use the two-hour circular block sensitivity interval across hourly spatial medians as a descriptive dependence check, not a formal confidence interval.
 - Pair aggregate scores with the completed common-AGL stability and transport-wind diagnostic; a five-hour sample cannot support a multi-day persistence claim.
 - Use independent or held-out observations for any nudging claim.
@@ -62,24 +69,27 @@ Unresolved heterogeneous lineage, terrain, physics, and resolution records do no
 - Use `notes/literature-synthesis-register.md` to carry the four synthesis collections' shared challenge to any claim that meteorology is uniquely dominant.
 - Use the downstream CAMx failure set to motivate retention and ventilation diagnostics, while treating its related institutional reports, unresolved run identities, and mixed 2013/2019 episodes as context rather than independent proof.
 
-### Figures and reviewer reserve
+### Figures and result expansion
 
-- Use `notes/figure-strategy.md` for the deadline-focused longlist, three defensible
-  narrative packages, and the minimum three-figure draft spine.
+- Start with `rewrite/RESULTS-EXPANSION-HANDOFF.md`; use `notes/figure-strategy.md` as the
+  older minimum-draft longlist and `verification/figures/archive-inventory.md` for current
+  external coverage.
 - Generate a broad diagnostic longlist on CHPC, then promote only figures that answer a named hypothesis.
 - Keep useful rejected or secondary diagnostics reproducible for supplements and reviewer requests.
 - Do not promote an inherited image solely because it looks publication-ready.
 
-## Frozen first-draft matrix
+## Minimum verified scaffold, not current scope
 
 - **Primary:** GFS versus NAM driving analysis under both two-way (X6 minus X5) and one-way (X10 minus X3) default-terrain configurations.
 - **Secondary:** within-source one-way-versus-two-way feedback (X10 minus X6 and X3 minus X5) plus the paired forcing-by-feedback interaction.
 - **Available promoted figure pool:** observed floor-to-bench evolution, observed/model bulk theta contrast, and four-run common-AGL retention/ventilation.
 - **Experimental rewrite core:** observed evolution plus common-AGL retention/ventilation; hold the bulk-theta panel until CHPC regenerates the corrected annotation and the proxy earns a distinct narrative role.
-- **Excluded from first-draft Results:** the confounded X7/X0/X8 resolution ladder, heterogeneous nudging lineage, and incompletely interpreted terrain/PBL treatments.
+- **Active expansion candidates:** X1-X0 slope/shading, X2-X1 PBL/surface layer, X3-X0/X3-X4/X0-X4 terrain, X9-X0 fine-terrain feedback, spatial/vertical driving-response panels, and productized heat-deficit fields.
+- **Still excluded as sensitivity results:** the confounded X7/X0/X8 resolution ladder and heterogeneous nudging lineage.
 
-No additional WRF integration is needed to write the bounded experimental draft.
-CHPC metadata recovery, the held figure regeneration, and selected diagnostic checks remain gates before coauthor circulation; new integrations require a coauthor or reviewer decision.
+No additional WRF integration is needed to audit the broader existing matrix.
+Use the completed outputs for targeted analysis and figure selection first.
+CHPC metadata recovery, the held figure regeneration, and selected diagnostic checks remain gates before coauthor circulation; propose a new integration only when the existing archive cannot answer a selected question.
 
 The active granular queue is in `tasks/microtasks.md`.
 The source-mining order and legacy to-do location are in `notes/resource-map.md`.
