@@ -1,6 +1,9 @@
 # Manuscript roadmap
 
-Current phase: **scientific and coauthor review of an evidence-gated short-window draft**.
+Current phase: **blank-slate editorial reconstruction of the evidence-gated short-window paper**.
+
+`main.tex` is the audited review baseline.
+`_manuscript_test.tex` and `rewrite/` are the isolated reconstruction workbench; no experimental prose replaces the baseline until its evidence, figure, methods, and coauthor gates close.
 
 The paper's durable claim is that credible cold-pool meteorology is a prerequisite for interpreting winter-ozone chemistry.
 Its air-focused evaluation target is whether WRF retains the shallow, weakly ventilated layer in which precursor and ozone accumulation would occur, not merely which run has the smallest aggregate surface bias.
@@ -16,7 +19,7 @@ It must not claim that chemistry, emissions, deposition, or photolysis are alrea
 | Nudging can correct or manufacture cold-pool structure | Context or result, depending on recovered runs | Tran critique, SIP-era comparator, January historical evaluation | A same-case controlled nudged/free pair and held-out verification are required for a result. |
 | Meteorological error changes the volume available for ozone chemistry | Air-focused bridge | Literature rationale plus downstream reports of dilution and premature ventilation | Verify and cite the underlying reports; phrase as an implication of evaluated structure, not proof that meteorology dominates inventory or mechanism error. |
 
-The frozen paper is a compact original-research article led by a driving-state result replicated across feedback modes and a bounded nest-feedback interaction.
+The frozen result core supports a compact original-research article led by a driving-state result replicated across feedback modes and a bounded nest-feedback interaction.
 Physics, terrain, resolution, and nudging comparisons remain Discussion, supplement, reviewer reserve, or future work unless a later coauthor decision reopens the matrix.
 
 ## Phases and exit gates
@@ -28,12 +31,12 @@ Physics, terrain, resolution, and nudging comparisons remain Discussion, supplem
 | 2. Experiment design freeze | A short matrix of controlled comparisons and preregistered diagnostics/falsifiers | Each row isolates a named lever or lists every confound; common domain/stations/window selected. |
 | 3. Evidence longlist | Recomputed statistics and diagnostic figures from provenance-checked real data | Commands are reproducible; uncertainty and missingness are explicit; synthetic output is absent. |
 | 4. Narrative freeze | One primary result arc, one or two secondary arcs, and a limitations spine | Every paragraph-level claim is linked to a ledger row and a table/figure or cited source. |
-| 5. Manuscript build | Methods, Results, Discussion, abstract, and required MDPI back matter | Coauthors confirm configuration, interpretation, roles, funding, data availability, and attribution. |
+| 5. Manuscript build | Reconstruct the paper from the verified question, evidence spine, critique lessons, and minimum figures | The experimental rewrite passes its acceptance test, methods placeholders close, and coauthors confirm configuration, interpretation, roles, funding, data availability, and attribution. |
 | 6. Figure and reproducibility freeze | Promoted figures, supplement/reviewer reserve, and public data/code plan | Both manifests are complete; canonical WRF styling reviewed; clean source ZIP compiles independently. |
 | 7. Coauthor review and submission | Reviewed MDPI Air package | Michael reviews provenance/diagnostics; Loknath and Seth review chemistry framing; all authors approve. |
 
 Run identity, experiment design, and derived summaries are complete for the narrow default-terrain X6/X10/X5/X3 factorial.
-Narrative freeze is provisional until observation quality-control and licensing metadata, source-level citation checks, and coauthor interpretation review are complete.
+Narrative freeze is provisional until the blank-slate rewrite is reconciled with observation quality-control and licensing metadata, source-level citation checks, and coauthor interpretation review.
 Unresolved heterogeneous lineage, terrain, physics, and resolution records do not block this draft because they are excluded from the result core.
 
 ## Workstreams
@@ -71,11 +74,12 @@ Unresolved heterogeneous lineage, terrain, physics, and resolution records do no
 
 - **Primary:** GFS versus NAM driving analysis under both two-way (X6 minus X5) and one-way (X10 minus X3) default-terrain configurations.
 - **Secondary:** within-source one-way-versus-two-way feedback (X10 minus X6 and X3 minus X5) plus the paired forcing-by-feedback interaction.
-- **Promoted figure spine:** observed floor-to-bench evolution, observed/model bulk theta contrast, and four-run common-AGL retention/ventilation.
+- **Available promoted figure pool:** observed floor-to-bench evolution, observed/model bulk theta contrast, and four-run common-AGL retention/ventilation.
+- **Experimental rewrite core:** observed evolution plus common-AGL retention/ventilation; hold the bulk-theta panel until CHPC regenerates the corrected annotation and the proxy earns a distinct narrative role.
 - **Excluded from first-draft Results:** the confounded X7/X0/X8 resolution ladder, heterogeneous nudging lineage, and incompletely interpreted terrain/PBL treatments.
 
-No additional WRF treatment is needed before the first draft.
-New experiments are reserved for a coauthor decision or a reviewer request after the present evidence is written clearly.
+No additional WRF integration is needed to write the bounded experimental draft.
+CHPC metadata recovery, the held figure regeneration, and selected diagnostic checks remain gates before coauthor circulation; new integrations require a coauthor or reviewer decision.
 
 The active granular queue is in `tasks/microtasks.md`.
 The source-mining order and legacy to-do location are in `notes/resource-map.md`.

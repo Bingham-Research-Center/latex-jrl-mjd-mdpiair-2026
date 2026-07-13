@@ -1,36 +1,42 @@
 # AI guide
 
 Private working repo for the MDPI *Air* paper on WRF meteorology during the 2 February 2013 Uinta Basin winter-ozone episode.
-Read `README.md`, then `ROADMAP.md`; open only the route for the task.
+Run `hostname -f`, read `README.md` and `ROADMAP.md`, then open one route.
 
-## Task index
+## Routes
 
 | Task | Read |
 |---|---|
-| Choose or update work | `tasks/microtasks.md` |
-| Framing or figure selection | `notes/narrative-and-hypotheses.md`, `notes/figure-strategy.md`, `notes/claim-evidence-ledger.md` |
-| Run/comparison verification | `verification/provenance/run-inventory.csv`, `verification/provenance/comparison-inventory.csv`, `notes/hosts-data-and-figures.md`, then one provenance record |
-| Figure generation/promotion | `verification/figures/archive-inventory.md`, `verification/figures/manifest.csv`, `figures/MANIFEST.md` |
-| Literature/history | `notes/resource-map.md`, `notes/literature-synthesis-register.md`, then one named source artifact |
-| Manuscript/build | `main.tex`, `paperpile.bib`, `Makefile` |
+| Plan | `tasks/microtasks.md` |
+| Blank-slate rewrite | `rewrite/README.md`, `rewrite/blueprint.md`, `_manuscript_test.tex` |
+| Claims | `notes/claim-evidence-ledger.md`, `notes/narrative-and-hypotheses.md`, `notes/figure-strategy.md` |
+| Runs | `verification/provenance/run-inventory.csv`, `verification/provenance/comparison-inventory.csv`, then one record |
+| Figures | `notes/figure-strategy.md`, `verification/figures/manifest.csv`, `figures/MANIFEST.md` |
+| Literature | `notes/resource-map.md`, `notes/literature-synthesis-register.md`, then one critique or source passage |
+| Production | `main.tex`, `paperpile.bib`, `Makefile` |
+| CHPC | `rewrite/CHPC-CODEX-PROMPT.md` |
 
-Avoid broad evidence-tree reads, raw PDFs, image trees, legacy checklists, candidate figures, and `Definitions/` unless the task explicitly needs them.
+Avoid broad evidence-tree reads, raw PDFs, bulk image trees, legacy checklists, candidate figures, and `Definitions/` unless the task names the need.
 
-## Key context
+## Evidence rules
 
-- Evidence is not mutually validating: reconcile claims against source artifacts.
+- Inventories, manifests, the claim ledger, and exact artifacts outrank prose.
 - Separate controlled comparisons, heterogeneous context, and literature context.
-- A rendered number requires matched run identity, domain, stations, window, source artifacts, and a reproducible command.
-- The frozen factorial is X6 (GFS two-way), X10 (GFS one-way), X5 (NAM two-way), and X3 (NAM one-way); resolve paths only through the run inventory.
-- Never call `trang_ref` the literal Tran et al. (2018) run. Meteorology is necessary for chemical interpretation; chemistry and inventories are not settled.
-- Add facts to the run inventory, figure manifest, or claim ledger before prose. Only `promoted` figures in `figures/MANIFEST.md` may enter `main.tex`; synthetic tests use temporary directories.
+- Core: X6 (GFS two-way), X10 (GFS one-way), X5 (NAM two-way), X3 (NAM one-way); resolve paths through the run inventory.
+- Each number needs matched run, domain, stations, window, inputs, and command; record facts before prose.
+- `main.tex` is the audited review baseline; `_manuscript_test.tex` is an experimental rewrite, not submission truth.
+- Only `promoted` figures may enter either manuscript; synthetic outputs stay temporary.
+- `trang_ref` is never the literal Tran et al. (2018) run.
+- Chemistry, inventories, basin export, inversion depth, and multi-day persistence are not demonstrated.
 
-## Hosts and edits
+## Hosts, edits, and checks
 
-- Run `hostname -f` and test paths first. Akamai/Linode is for writing, Git, LaTeX, and selective `~/reviews` work; CHPC is for WRF/data/figures and may not have `~/reviews`.
-- Use `wrf-full-figures` only when installed and readable; otherwise mark styling provisional and follow documented `brc-tools` conventions.
-- Keep `main.tex` single-file, sparse, American English, and one sentence per source line. Do not hand-edit `Definitions/`; replace `paperpile.bib` only as a complete export.
-- Use pdfLaTeX + BibTeX (`latexmk -pdf main.tex`); `make check` routinely, `make smoke` after analysis-code changes, inspect the PDF after prose/citation/figure/layout changes, and use `make submission` only for the allowlisted package.
+- Akamai/Linode is for writing, Git, LaTeX, and selective `~/reviews`; CHPC is for WRF/data/figures and may lack `~/reviews`.
+- Use `wrf-full-figures` only when readable; otherwise mark styling provisional.
+- Keep both manuscripts single-file, sparse, American English, and one sentence per source line.
+- Never edit `Definitions/`; replace `paperpile.bib` only as a complete export.
+- Run `make check`, `make rewrite-check`, and `make smoke` after analysis changes; inspect changed PDFs.
+- `make submission` packages only the production manuscript.
 
 ## Git
 

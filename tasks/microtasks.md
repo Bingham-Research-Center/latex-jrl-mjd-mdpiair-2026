@@ -24,6 +24,8 @@ Do not mark a scientific task done because prose exists; mark it done only when 
 - [x] **ANA-03 · done for descriptive scope** — Added two-hour circular block sensitivity intervals while explicitly declining formal five-sample inference.
 - [x] **MAN-01--03 · done for first draft** — Drafted Methods and Results from the frozen claims and promoted three-figure spine; coauthor/scientific review is next.
 - [ ] **MAN-11 · next** — Close the visible methods placeholders for observation provider/QC/licensing, domain geometry/static inputs, and forcing-product citations before coauthor circulation.
+- [x] **MAN-12 · done for experimental rewrite** — Built `_manuscript_test.tex` and `rewrite/blueprint.md` from the audited claims, critique lessons, two-figure core, and explicit stop conditions without replacing `main.tex`.
+- [ ] **MAN-13 · next** — Integrate the CHPC evidence handoff, close rewrite gates, obtain scientific/coauthor review, and decide which experimental structure replaces the audited baseline.
 - [ ] **COA-01 · next** — Ask Michael for the code/input/command/meaning mapping for each Teams plot still under consideration.
 - [ ] **COA-02 · next** — Send the short Trang/Michael run-identity question list only after the machine inventory narrows it.
 
@@ -84,6 +86,7 @@ Do not mark a scientific task done because prose exists; mark it done only when 
 - [x] **FIG-09 · done for first-draft spine** — Promoted the observed evolution, bulk theta contrast, and common-AGL retention/ventilation PDFs and completed both manifests.
 - [ ] **FIG-10 · later** — Retain reproducible supplementary/reviewer-reserve diagnostics outside `figures/`.
 - [ ] **FIG-11 · next** — Regenerate the promoted bulk-theta figure on CHPC with the plotted 8 K line labeled as a literature reference rather than a physical “CAP threshold,” then update both manifests and hashes.
+- [ ] **FIG-12 · next** — Build the no-new-WRF L04 factorial effect-size panel only if it adds a distinct decision beyond Table 2; register and promote it before manuscript use.
 
 ### Manuscript and submission
 
@@ -97,6 +100,8 @@ Do not mark a scientific task done because prose exists; mark it done only when 
 - [ ] **MAN-08 · next** — Agree CRediT roles, funding, acknowledgments, conflicts, and data-availability language.
 - [ ] **MAN-09 · later** — Replace `paperpile.bib` with the complete manuscript-specific Paperpile export.
 - [ ] **MAN-10 · later** — Run an unused/missing citation audit after the export stabilizes.
+- [x] **MAN-12 · done for experimental rewrite** — Created the isolated blank-slate manuscript, evidence/argument blueprint, build target, and figure-selection rationale.
+- [ ] **MAN-13 · next** — Reconcile the experimental rewrite with CHPC-only facts and coauthor review before merging selected prose into `main.tex`.
 - [ ] **PUB-01 · later** — Obtain Michael's provenance/diagnostic review and Loknath/Seth's chemistry-framing review.
 - [ ] **PUB-02 · later** — Build and inspect a dated coauthor-review PDF.
 - [ ] **PUB-03 · later** — Compile the allowlisted ZIP in an independent environment with pdfLaTeX, BibTeX, and Ghostscript.

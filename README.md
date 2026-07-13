@@ -12,6 +12,7 @@ It does not duplicate large model output or reusable software.
 | If you want to know... | Start here |
 |---|---|
 | What the paper is trying to say | `ROADMAP.md` and `notes/narrative-and-hypotheses.md` |
+| How the blank-slate rewrite differs from the audited baseline | `rewrite/README.md` and `rewrite/blueprint.md` |
 | Whether a claim is defensible | `notes/claim-evidence-ledger.md` |
 | Which exact WRF run was inspected | `verification/provenance/run-inventory.csv` |
 | Which run comparison supports which manuscript story | `verification/provenance/comparison-inventory.csv`, then `notes/narrative-and-hypotheses.md` |
@@ -37,6 +38,7 @@ Do not add new manuscript-facing truth there; wait for the final cross-repositor
 ## Start here
 
 - Manuscript: [`main.tex`](main.tex)
+- Experimental blank-slate rewrite: [`rewrite/README.md`](rewrite/README.md), then [`_manuscript_test.tex`](_manuscript_test.tex)
 - Large-scale plan and narrative gates: [`ROADMAP.md`](ROADMAP.md)
 - Active granular queue and recovered legacy to-dos: [`tasks/microtasks.md`](tasks/microtasks.md)
 - Scientific framing and candidate hypotheses: [`notes/narrative-and-hypotheses.md`](notes/narrative-and-hypotheses.md)
@@ -62,7 +64,11 @@ The manuscript uses the official MDPI ACS template dated 23 June 2026 and compil
 ```bash
 make pdf
 make check
+make rewrite-check
 ```
+
+`make rewrite-check` builds the experimental `_manuscript_test.tex`.
+It does not change the `main.tex` submission target.
 
 The supplied archive was `mdpi-template-acs.zip` with SHA-256 `baf827d7d2048a69142232cb422cfb74865adae70bff3eac9f821c6dad823568`.
 Its complete `Definitions/` directory is committed without local edits.
@@ -74,6 +80,7 @@ Replace the complete file with a manuscript-specific Paperpile export when the c
 ## Repository roles
 
 - `main.tex` contains only manuscript material that is expected to survive.
+- `_manuscript_test.tex` and `rewrite/` form a temporary evidence-led workbench for the total rewrite; neither is included by `make submission`.
 - `figures/` contains only figures promoted into the paper.
 - `drafts/` contains selected dated PDFs for coauthor review.
 - `verification/` retains scripts, small derived tables, candidate diagnostics, and provenance inherited from Michael's work.

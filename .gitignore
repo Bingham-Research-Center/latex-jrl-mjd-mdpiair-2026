@@ -1,5 +1,6 @@
 # LaTeX output
 main.pdf
+_manuscript_test.pdf
 *.aux
 *.bbl
 *.bcf

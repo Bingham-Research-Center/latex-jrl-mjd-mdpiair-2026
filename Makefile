@@ -1,24 +1,36 @@
 SHELL := /bin/bash
 
 MAIN := main
+REWRITE_MAIN := _manuscript_test
 STAGE := dist/mdpi-air-submission
 SUBMISSION_FIGURES ?=
 PYTHON ?= python
 BRC_TOOLS_DIR ?= $(HOME)/brc-tools
 MPLCONFIGDIR ?= /tmp/mdpi-air-matplotlib
 
-.PHONY: pdf clean check smoke submission
+.PHONY: pdf rewrite-pdf clean rewrite-clean check rewrite-check smoke submission
 
 pdf:
 	latexmk -pdf -interaction=nonstopmode -halt-on-error $(MAIN).tex
 
+rewrite-pdf:
+	latexmk -pdf -interaction=nonstopmode -halt-on-error $(REWRITE_MAIN).tex
+
 clean:
 	latexmk -c $(MAIN).tex
+
+rewrite-clean:
+	latexmk -c $(REWRITE_MAIN).tex
 
 check: pdf
 	git diff --check -- . ':(exclude)Definitions/**'
 	@test -s $(MAIN).pdf
 	@! rg -n "fake_(cool|warm)|2 February 2026|2--February--2026" $(MAIN).tex figures
+
+rewrite-check: rewrite-pdf
+	git diff --check -- . ':(exclude)Definitions/**'
+	@test -s $(REWRITE_MAIN).pdf
+	@! rg -n "fake_(cool|warm)|2 February 2026|2--February--2026|8 K CAP threshold" $(REWRITE_MAIN).tex
 
 smoke:
 	mkdir -p "$(MPLCONFIGDIR)"

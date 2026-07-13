@@ -9,6 +9,7 @@ The practical target is not a generic WRF ranking: it is whether the meteorologi
 
 The CHPC inventory and common-AGL analysis now support a narrow first-draft result core.
 The forcing response replicated across both feedback modes is primary, the small source-conditioned feedback interaction is secondary, and the remaining candidate hypotheses stay outside the first-draft Results.
+The blank-slate rewrite in `rewrite/blueprint.md` now leads with that common-AGL result, uses observed station evolution only for context, and holds the two-site bulk-theta panel pending regeneration and a distinct narrative need.
 
 ## Plain-language comparison-to-story map
 
@@ -28,8 +29,9 @@ bounded narrative packages without reopening the full archive.
 
 ## Title candidates
 
-The deliberately plain working title in `main.tex` is **Evaluation of WRF Meteorology for a Uinta Basin Winter Ozone Episode**.
-Four nearby alternatives, to revisit once the defensible experiment matrix is known, are:
+The experimental title in `_manuscript_test.tex` is **Short-Window Response of WRF Cold-Pool Retention to Driving Data and Nest Feedback during a Uinta Basin Winter-Ozone Episode**.
+The audited baseline title remains in `main.tex`.
+Four nearby alternatives, to revisit during coauthor review, are:
 
 1. **WRF Simulation of a Uinta Basin Winter Ozone Episode: A Meteorological Evaluation**
 2. **Sensitivity of WRF Meteorology during a Uinta Basin Winter Ozone Episode**

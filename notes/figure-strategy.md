@@ -5,23 +5,26 @@ Use `verification/figures/manifest.csv` for tracked candidate status,
 `figures/MANIFEST.md` for manuscript admission, and
 `verification/figures/archive-inventory.md` for the external full-figure catalogue.
 
-## Recommendation for tonight
+## Recommendation for the blank-slate rewrite
 
-Draft around **Narrative A**, borrow the air-quality motivation from **Narrative B**,
-and keep **Narrative C** as Discussion/reviewer reserve.
-The three already-promoted figures are enough for a defensible first draft.
-Do not wait for another WRF run, X8/X9 cleanup, or a perfect supplemental suite.
+Draft around **Narrative A**, use **Narrative B** to explain why the evaluated layer
+matters to air chemistry, and keep **Narrative C** in Discussion/reviewer reserve.
+The experimental manuscript uses L01 for observed context and L03 as the principal
+result.
+Hold L02 until CHPC regenerates the corrected 8 K annotation and the horizontally
+separated two-site proxy earns a distinct role.
 
-If there is time for exactly one new plot, make L04: a compact effect-size panel from
-the already-tracked pair and interaction summaries.
-It would show the forcing effects and feedback effects on one honest scale without
-requiring new model output.
+If one new plot is justified after the prose is coherent, make L04 from the tracked
+pair and interaction summaries.
+It should replace or materially improve the factorial table rather than duplicate it.
+No new WRF integration, X8/X9 cleanup, or broad supplemental suite is required for the
+bounded rewrite.
 
-| Choice | One-sentence thesis | Figure burden | Deadline risk |
+| Choice | One-sentence thesis | Figure burden | Scope risk |
 |---|---|---|---|
-| **A — driving-state response** | The GFS--NAM meteorological separation recurs under both nest-feedback modes over the matched short window. | L01--L03; optionally L04 | **Low; recommended.** |
-| **B — air-quality-ready meteorology** | Cold-pool depth and ventilation must be evaluated before chemical attribution, because surface agreement alone does not define the volume supplied to chemistry. | L01--L03; optionally L10 or L12 | Low to moderate; keep chemistry claims explicitly out of scope. |
-| **C — sensitivity hierarchy** | Driving-state differences exceed the short-window feedback response, while terrain and PBL treatments remain bounded questions rather than rankings. | L03/L04 plus selected reserve panels | High tonight; use mainly in Discussion. |
+| **A — driving-state response** | The GFS--NAM meteorological separation recurs under both nest-feedback modes over the matched short window. | L01 and L03; optionally L04 | **Low; recommended.** |
+| **B — air-quality-ready meteorology** | Cold-pool depth and ventilation must be evaluated before chemical attribution, because surface agreement alone does not define the volume supplied to chemistry. | L01 and L03; optionally corrected L02 or L10 | Low to moderate; keep chemistry claims explicitly out of scope. |
+| **C — sensitivity hierarchy** | Driving-state differences exceed the short-window feedback response, while terrain and PBL treatments remain bounded questions rather than rankings. | L03/L04 plus selected reserve panels | High; use mainly in Discussion. |
 
 ## What exists now
 
@@ -39,10 +42,10 @@ An archive PNG is not eligible for the paper until it receives a row in
 
 ## Figure longlist
 
-| ID | Figure or family | Availability | Question answered | Narrative fit | Tonight |
+| ID | Figure or family | Availability | Question answered | Narrative fit | Rewrite decision |
 |---|---|---|---|---|---|
 | L01 | Observed floor-to-bench 2 m-temperature evolution | **Promoted** | Did a strong, spatially structured cold-air-pool event occur? | A, B | Keep as Figure 1. |
-| L02 | Observed/model Mountain Home-minus-Pariette Draw bulk theta contrast | **Promoted** | Does each forcing family reproduce the observed floor-to-bench thermal contrast? | A, B | Keep, with the horizontal-contrast caveat. |
+| L02 | Observed/model Mountain Home-minus-Pariette Draw bulk theta contrast | **Promoted but held from the experimental rewrite pending regeneration** | Does each forcing family reproduce the observed floor-to-bench thermal contrast? | A, B | Supporting only; it shows the two-way pair, is not a vertical profile, and needs the corrected 8 K annotation. |
 | L03 | Four-run 50--500 m AGL stability, transport wind, and PBLH | **Promoted** | Does the GFS--NAM response persist under both feedback modes, and is feedback smaller? | A, B, C | Keep as the main Results figure. |
 | L04 | Factorial effect-size summary for stability, transport wind, T2 error, and PBLH | **Not plotted; all inputs verified** in DATA17, DATA19, DATA24, and DATA26 | How large are the two forcing rows, two feedback columns, and their interaction on one comparable display? | A, C | Best optional new plot; no WRF required. |
 | L05 | GFS-minus-NAM two-way 2 m-theta maps (`diff_gfs_nam`) | **21 external PNGs** | Where is the forcing response located under two-way feedback? | A, B | Select one hour only if spatial structure is discussed. |
@@ -55,7 +58,7 @@ An archive PNG is not eligible for the paper until it receives a row in
 | L12 | Multi-run heat-deficit time series | **External existing figure** | How does the modeled energy required to erase the cold pool evolve? | B | Promising Air-oriented supplement; requires provenance/promotion before use. |
 | L13 | Horsepool theta profiles and model/RAOB skew-Ts | **External existing figures** | How different are the vertical driving states at initialization? | A, B | Context only: Horsepool is model-only and operational RAOBs are outside the basin. |
 | L14 | X2-minus-X1 MYJ/Eta response (`diff_myj_eta`) | **21 external difference PNGs plus paired diagnostics** | How does PBL/surface-layer choice change low-level mixing and energy fields? | C | Provisional reviewer reserve; C19 and the PBL note block a simple skill verdict. |
-| L15 | Fine/default/coarse terrain differences | **External figures exist** | Does terrain-source choice materially change the solution on the same WRF grid? | C | Not tonight: X4 provenance and stale `30m`/`90m` labels need cleanup. |
+| L15 | Fine/default/coarse terrain differences | **External figures exist** | Does terrain-source choice materially change the solution on the same WRF grid? | C | Hold: X4 provenance and stale `30m`/`90m` labels need cleanup. |
 | L16 | X9-minus-X0 fine-terrain feedback | **WRF complete; full figures missing** | Is the small feedback result reproduced at the fine-terrain control? | C | No need for the draft; plotting only, not a WRF rerun. |
 | L17 | X7/X0/X8 apparent resolution ladder | **Many figures exist** | Does nominal grid refinement improve the forecast? | None defensibly | Do not use as a sensitivity figure; CMP12 lists the confounds. |
 | L18 | Observed station pseudo-profile/heat-deficit diagnostic | **Diagnostic/provisional tracked candidates** | How does apparent surface thermal structure span floor-to-bench sites? | B | Supplement only; it is not a colocated free-air profile. |
@@ -82,7 +85,8 @@ An archive PNG is not eligible for the paper until it receives a row in
 more strongly ventilated cold-pool environment than NAM, and that separation appears
 under both one-way and two-way nesting. Feedback is smaller and source conditioned.
 
-- Minimum figures: L01, L02, L03.
+- Minimum figures: L01 and L03.
+- Optional supporting figure: corrected L02 only if the surface proxy adds a distinct decision.
 - Best optional figure: L04.
 - Spatial/mechanism supplement: one matched-hour pair from L05/L06 or L07.
 - Defensive limits: five hours; no initial-versus-boundary attribution; no formal
@@ -95,8 +99,8 @@ weakly ventilated meteorological volume. The observed event and model comparison
 that aggregate surface agreement alone is insufficient; stability and layer transport
 must also be evaluated.
 
-- Minimum figures: L01, L02, L03.
-- Best optional figures: L10 and L12; L13 only as synoptic/context support.
+- Minimum figures: L01 and L03.
+- Best optional figures: corrected L02 or L10; L12 requires a validated mechanism role, and L13 remains context only.
 - Defensive limits: meteorology is necessary, not uniquely dominant; no promoted
   chemical concentrations, inventory test, photolysis test, or deposition test exists.
 
@@ -111,15 +115,16 @@ additional controlled questions rather than settled rankings.
 - Defensive limits: do not rank PBL or terrain configurations by skill yet; do not use
   the resolution ladder; several reserve comparisons still have named provenance or
   interpretation gates.
-- Deadline assessment: useful Discussion framing, but too broad for tonight's main
+- Scope assessment: useful Discussion framing, but too broad for the experimental main
   Results narrative.
 
-## Drafting order tonight
+## Blank-slate drafting order
 
-1. Keep the existing three-figure spine and write the Results around CMP01--CMP05.
-2. Use Narrative A as the Results structure and Narrative B as the Introduction/
+1. Write the Results around CMP01--CMP05 with L03 as the only model-result figure.
+2. Use L01 to establish observed surface context without claiming a vertical profile.
+3. Use Narrative A as the Results structure and Narrative B as the Introduction/
    Discussion air-quality motivation.
-3. Mention Narrative C only as bounded sensitivity evidence and future/reviewer reserve.
-4. Add L04 only if the draft is already coherent; do not delay prose for archive-panel
-   curation.
-5. Treat every other longlist row as optional until a paragraph creates a specific need.
+4. Hold L02, and add L04 only if either supplies information not already carried by the
+   effect table.
+5. Mention Narrative C only as bounded future/reviewer reserve.
+6. Treat every other longlist row as optional until a paragraph creates a specific need.
