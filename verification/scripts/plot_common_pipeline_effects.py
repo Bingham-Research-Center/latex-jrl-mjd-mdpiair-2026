@@ -1,21 +1,19 @@
 #!/usr/bin/env python3
-"""Factorial effect-size panel (longlist L04 / FIG-12) from committed summaries.
+"""Common-pipeline contrast panel (longlist L04 / FIG-12) from committed summaries.
 
-Plots the driving-product contrasts, the within-source feedback contrasts, and the
-paired interaction for the frozen X6/X10/X5/X3 factorial as one dot-and-whisker
-display per metric, optionally adding the CMP06 fine-terrain feedback pair.  Inputs
-are the committed derived summaries only; no WRF data are read.
+Plots every controlled contrast evaluated with the frozen station/common-AGL
+pipeline: driving product, PBL/surface-layer scheme, slope-aware radiation, nest
+feedback at two terrain regimes, and the driving-product-by-feedback interaction.
+Inputs are the committed derived summaries only; no WRF data are read.
 
 Whiskers are the descriptive two-hour circular moving-block sensitivity interval
 (2.5--97.5 percentiles) already recorded in the summaries.  They are deliberately
 called sensitivity intervals, not confidence intervals: five hourly medians cannot
 establish a population sampling distribution.
 
-The CMP06 row is stored in ``verification/data/cmp06_*_pair_summary.csv`` with the
-authoritative X9-minus-X0 (two-way minus one-way) orientation from
-``verification/provenance/comparison-inventory.csv``.  For display beside the
-default-terrain feedback rows it is negated into the one-way-minus-two-way
-orientation used by CMP03/CMP04; the row label states this flip explicitly.
+Every row retains the orientation stored in its source table and comparison record.
+CMP03/CMP04 are one-way minus two-way, whereas CMP06 is two-way minus one-way; the
+row labels state that difference rather than silently flipping a sign.
 """
 from __future__ import annotations
 
@@ -34,28 +32,43 @@ DATA = REPO / "verification" / "data"
 DEFAULT_OUT = REPO / "figures-draft"
 
 # Okabe-Ito, matching the repository figure conventions; marker shape is the
-# color-independent secondary encoding for the three effect families.
+# color-independent secondary encoding for the four contrast families.
 FAMILY_STYLE = {
     "driving": ("#0072B2", "o"),
+    "process": ("#CC79A7", "^"),
     "feedback": ("#E69F00", "s"),
     "interaction": ("#009E73", "D"),
 }
 
 # (row label, source table, pair/interaction key, family, sign)
 ROWS = [
-    ("GFS $-$ NAM, two-way", "pair", "gfs2_minus_nam2", "driving", 1.0),
-    ("GFS $-$ NAM, one-way", "pair", "gfs1_minus_nam1", "driving", 1.0),
-    ("Feedback, NAM (one $-$ two)", "pair", "nam1_minus_nam2", "feedback", 1.0),
-    ("Feedback, GFS (one $-$ two)", "pair", "gfs1_minus_gfs2", "feedback", 1.0),
+    ("Driving product, two-way\n(GFS $-$ NAM; CMP01)", "pair", "gfs2_minus_nam2", "driving", 1.0),
+    ("Driving product, one-way\n(GFS $-$ NAM; CMP02)", "pair", "gfs1_minus_nam1", "driving", 1.0),
     (
-        "Feedback, NAM fine terrain\n($-$[X9$-$X0], one $-$ two)",
+        "PBL/surface-layer treatment\n(MYJ/Eta $-$ YSU/MM5; CMP08)",
+        "process",
+        "x2_minus_x1",
+        "process",
+        1.0,
+    ),
+    (
+        "Slope radiation/shading\n(on $-$ off; CMP07)",
+        "process",
+        "x1_minus_x0",
+        "process",
+        1.0,
+    ),
+    ("Feedback, NAM default\n(one $-$ two; CMP03)", "pair", "nam1_minus_nam2", "feedback", 1.0),
+    ("Feedback, GFS default\n(one $-$ two; CMP04)", "pair", "gfs1_minus_gfs2", "feedback", 1.0),
+    (
+        "Feedback, NAM fine terrain\n(two $-$ one; CMP06)",
         "cmp06",
         "x9_minus_x0",
         "feedback",
-        -1.0,
+        1.0,
     ),
     (
-        "Interaction\n(GFS feedback $-$ NAM feedback)",
+        "Product $\\times$ feedback\ninteraction (CMP05)",
         "interaction",
         "gfs1_minus_gfs2__minus__nam1_minus_nam2",
         "interaction",
@@ -66,11 +79,21 @@ ROWS = [
 # (metric key, source family, panel title, x-label)
 PANELS = [
     ("t2_bias_c", "surface", "2 m temperature bias", "$\\Delta$ bias ($^{\\circ}$C)"),
-    ("wind10_bias_ms", "surface", "10 m wind-speed bias", "$\\Delta$ bias (m s$^{-1}$)"),
-    ("psfc_bias_pa", "surface", "Surface-pressure bias", "$\\Delta$ bias (Pa)"),
+    (
+        "wind10_abs_error_ms",
+        "surface",
+        "10 m wind-speed\nabsolute error",
+        "$\\Delta$ absolute error (m s$^{-1}$)",
+    ),
+    (
+        "psfc_abs_error_pa",
+        "surface",
+        "Surface-pressure\nabsolute error",
+        "$\\Delta$ absolute error (Pa)",
+    ),
     ("stability_k", "retention", "50–500 m AGL stability", "$\\Delta\\theta$ contrast (K)"),
     ("transport_wind_ms", "retention", "50–500 m transport wind", "$\\Delta$ (m s$^{-1}$)"),
-    ("pblh_m", "retention", "PBL height (scheme-dep.)", "$\\Delta$ (m)"),
+    ("pblh_m", "retention", "PBL height\n(scheme-dependent)", "$\\Delta$ (m)"),
 ]
 
 
@@ -84,11 +107,13 @@ def load_frames(args: argparse.Namespace) -> dict[str, dict[str, pd.DataFrame]]:
             "pair": read(args.surface_pair, "pair"),
             "interaction": read(args.surface_interaction, "interaction"),
             "cmp06": read(args.cmp06_surface, "pair"),
+            "process": read(args.process_surface, "pair"),
         },
         "retention": {
             "pair": read(args.retention_pair, "pair"),
             "interaction": read(args.retention_interaction, "interaction"),
             "cmp06": read(args.cmp06_retention, "pair"),
+            "process": read(args.process_retention, "pair"),
         },
     }
     return frames
@@ -117,13 +142,23 @@ def main() -> None:
     ap.add_argument(
         "--cmp06-retention", type=Path, default=DATA / "cmp06_retention_pair_summary.csv"
     )
+    ap.add_argument(
+        "--process-surface",
+        type=Path,
+        default=DATA / "process_pairs_surface_skill_pair_summary.csv",
+    )
+    ap.add_argument(
+        "--process-retention",
+        type=Path,
+        default=DATA / "process_pairs_retention_pair_summary.csv",
+    )
     ap.add_argument("--out-dir", type=Path, default=DEFAULT_OUT)
     args = ap.parse_args()
 
     frames = load_frames(args)
 
     fig, axes = plt.subplots(
-        2, 3, figsize=(FULL_W, 4.6), sharey=True, layout="constrained"
+        2, 3, figsize=(FULL_W, 6.2), sharey=True, layout="constrained"
     )
     y_positions = list(range(len(ROWS) - 1, -1, -1))
 
@@ -161,9 +196,9 @@ def main() -> None:
 
     for ax in axes[:, 0]:
         ax.set_yticks(y_positions)
-        ax.set_yticklabels([label for label, *_ in ROWS], fontsize=7.6)
+        ax.set_yticklabels([label for label, *_ in ROWS], fontsize=6.8)
 
-    save(fig, "fig_factorial_effects", out_dir=args.out_dir)
+    save(fig, "fig_common_pipeline_effects", out_dir=args.out_dir)
 
 
 if __name__ == "__main__":

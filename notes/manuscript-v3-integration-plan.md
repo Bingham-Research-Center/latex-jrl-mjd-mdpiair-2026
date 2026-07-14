@@ -2,6 +2,11 @@
 
 Status: active on `jrl/codex-v3-integration` from 14 July 2026.
 
+Active structural and domain review:
+`notes/manuscript-v3-structure-and-domain-review.md`.
+It defines the manuscript-facing experiment vocabulary, evidence-led Results order,
+figure-trim ledger, and the proposed d02-to-d03 transfer gate.
+
 Literature closure now means the discovery pass is closed and controlled manuscript
 integration has begun.
 `_manuscript_v3.tex` remains an over-inclusive working revision, `main.tex` remains the

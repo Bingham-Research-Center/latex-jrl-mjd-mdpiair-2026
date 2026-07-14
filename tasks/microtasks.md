@@ -26,7 +26,7 @@ Do not mark a scientific task done because prose exists; mark it done only when 
 - [x] **INV-06 · done** — Proved that the default-terrain NAM one-/two-way pair differs only in feedback.
 - [ ] **INV-07 · later/context** — Fingerprint `REF_long`; it is excluded from the frozen result matrix and must never be called Tran-2018 NON.
 - [ ] **INV-08 · later/context** — Mark assimilated stations before any nudging comparison; no nudged run enters the frozen result matrix.
-- [x] **DES-01 · done** — Froze X6/X10/X5/X3 as a forcing-by-feedback factorial with forcing contrasts, within-source feedback contrasts, and a paired interaction.
+- [x] **DES-01 · done** — Froze X6/X10/X5/X3 as the default-terrain driving-product/feedback matrix, with product contrasts, within-source feedback contrasts, and a paired interaction.
 - [x] **DES-02 · done** — Froze d02, the reporting-station sample, 14--18 UTC, and a two-hour spin-up exclusion.
 - [x] **DES-03 · done** — Defined 50--500 m AGL stability and transport wind and stated the five-hour persistence limit.
 - [x] **ANA-01 · done for promoted core** — Re-reduced X3/X5/X6/X10 from exact raw archive paths.
@@ -91,12 +91,12 @@ Do not mark a scientific task done because prose exists; mark it done only when 
 - [ ] **FIG-04 · blocked by ANA-08** — Generate a domain/station-coverage orientation figure.
 - [ ] **FIG-05 · later** — Select cross-section and time-height panels only after the primary narrative is frozen.
 - [ ] **FIG-06 · later** — Select upper-air panels only if they explain a surface/cold-pool result.
-- [x] **FIG-07 · done for the factorial** — The named skill was unavailable, so the documented maintained equivalent ran through the `brc-tools` engine at `89883ceb`, the study TOML, and Slurm; X10 has 63 PNGs and exact-config convergence `13896871` skipped all 730 tasks as current.
+- [x] **FIG-07 · done for the default-terrain matrix** — The named skill was unavailable, so the documented maintained equivalent ran through the `brc-tools` engine at `89883ceb`, the study TOML, and Slurm; X10 has 63 PNGs and exact-config convergence `13896871` skipped all 730 tasks as current.
 - [ ] **FIG-08 · later** — Check print dimensions, fonts, units, color accessibility, captions, and raster resolution.
 - [ ] **FIG-09 · reopened narrowly** — Observed evolution and common-AGL retention/ventilation remain promoted; the bulk-theta render is withheld pending the line-free FIG-11 regeneration and reinspection.
 - [ ] **FIG-10 · later** — Retain reproducible supplementary/reviewer-reserve diagnostics outside `figures/`.
 - [ ] **FIG-11 · next CHPC batch** — Pull the Codex integration branch, regenerate the bulk-theta figure from frozen real observations with the updated generator that removes the non-equivalent 8 K line, update both manifests and hashes, inspect the PDF, and only then re-promote it.
-- [x] **FIG-12 · done for working draft** — The L04 factorial effect-size panel is built from the committed summaries (`verification/scripts/plot_factorial_effects.py`, including the CMP06 fine-terrain row) and appears in the maximal working draft with an explicit not-registered status note; register and promote before any submission use.
+- [x] **FIG-12 · done for working draft** — The L04 common-pipeline contrast panel is built from committed default-matrix, CMP06, CMP07, and CMP08 summaries (`verification/scripts/plot_common_pipeline_effects.py`) and appears in the maximal working draft with an explicit not-registered status note; register and promote before any submission use.
 
 ### Manuscript and submission
 

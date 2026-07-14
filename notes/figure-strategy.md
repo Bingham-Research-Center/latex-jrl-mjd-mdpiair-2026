@@ -7,7 +7,8 @@ Use `verification/figures/manifest.csv` for tracked candidate status,
 
 ## Scope correction and freshness note — 13 July 2026
 
-The four-run factorial and its two-figure experimental manuscript are a verified minimum,
+The four-run default-terrain driving-product/feedback matrix and its two-figure
+experimental manuscript are a verified minimum,
 not the chosen scope of the paper.
 The active route is `rewrite/RESULTS-EXPANSION-HANDOFF.md`, which reopens X0--X10,
 smaller findings, and a larger main/supplement figure architecture.
@@ -55,7 +56,7 @@ An archive PNG is not eligible for the paper until it receives a row in
 | L01 | Observed floor-to-bench 2 m-temperature evolution | **Promoted** | Did a strong, spatially structured cold-air-pool event occur? | A, B | Keep as Figure 1. |
 | L02 | Observed/model Mountain Home-minus-Pariette Draw bulk theta contrast | **Withheld pending line-free regeneration** | Does each forcing family reproduce the observed floor-to-bench thermal contrast? | A, B | Supporting only; it shows the two-way pair, is not a vertical profile, and must be regenerated without the non-equivalent 8 K line before re-promotion. |
 | L03 | Four-run 50--500 m AGL stability, transport wind, and PBLH | **Promoted** | Does the GFS--NAM response persist under both feedback modes, and is feedback smaller? | A, B, C | Keep as the main Results figure. |
-| L04 | Factorial effect-size summary for stability, transport wind, T2 error, and PBLH | **Not plotted; all inputs verified** in DATA17, DATA19, DATA24, and DATA26 | How large are the two forcing rows, two feedback columns, and their interaction on one comparable display? | A, C | Best optional new plot; no WRF required. |
+| L04 | Common-pipeline contrast summary for surface and common-AGL metrics | **Plotted for v3 from verified default-matrix, CMP06, CMP07, and CMP08 summaries; not registered or promoted** | How do the controlled driving-product, process-treatment, feedback, and interaction responses compare on one sample and common axes? | A, C | Register only if the cross-comparison hierarchy remains load-bearing after trim; no WRF rerun required. |
 | L05 | GFS-minus-NAM two-way 2 m-theta maps (`diff_gfs_nam`) | **21 external PNGs** | Where is the forcing response located under two-way feedback? | A, B | Select one hour only if spatial structure is discussed. |
 | L06 | GFS-minus-NAM one-way 2 m-theta maps (`diff_gfs_nam_oneway`) | **21 external PNGs** | Does the spatial forcing response survive the feedback change? | A | Pair the same hour with L05; otherwise omit. |
 | L07 | GFS-minus-NAM EW/NS theta sections under both feedback modes | **External and complete** | Is the forcing response shallow and basin-confined or distributed aloft? | A, B | Strong supplement/reviewer option; needs a focused two-panel selection. |

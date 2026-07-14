@@ -57,6 +57,6 @@ with full provenance; status diagnostic/provisional, not promoted):
 
 ## Locally plotted for this draft
 
-`fig_factorial_effects.pdf` — L04/FIG-12 factorial effect-size panel plotted from the
-committed `verification/data/{surface_skill,retention}_{pair,interaction}_summary.csv`
-by `verification/scripts/plot_factorial_effects.py` (no WRF inputs).
+`fig_common_pipeline_effects.pdf` — L04/FIG-12 common-pipeline contrast panel plotted
+from the committed default-matrix, CMP06, CMP07, and CMP08 surface/common-AGL summaries
+by `verification/scripts/plot_common_pipeline_effects.py` (no WRF inputs).
