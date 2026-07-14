@@ -1,0 +1,133 @@
+{
+  "bbox_west_south_east_north": [
+    -111.8,
+    39.2,
+    -108.2,
+    41.5
+  ],
+  "candidate_granules": [
+    {
+      "browse_url": "https://ladsweb.modaps.eosdis.nasa.gov/archive/allData/61/MOBRGB/2013/033/MOBRGB.A2013033.1815.061.2017297075718.jpg",
+      "collection_concept_id": "C1378577630-LAADS",
+      "collection_version": "6.1",
+      "concept_id": "G1497116100-LAADS",
+      "data_url": "https://data.laadsdaac.earthdatacloud.nasa.gov/prod-lads/MOD02HKM/MOD02HKM.A2013033.1815.061.2017294153853.hdf",
+      "day_night_flag": "DAY",
+      "midpoint_offset_seconds_from_target": 1050.0,
+      "midpoint_utc": "2013-02-02T18:17:30Z",
+      "platform": "Terra",
+      "producer_granule_id": "MOD02HKM.A2013033.1815.061.2017294153853.hdf",
+      "short_name": "MOD02HKM",
+      "time_end_utc": "2013-02-02T18:20:00Z",
+      "time_start_utc": "2013-02-02T18:15:00Z"
+    },
+    {
+      "browse_url": "https://ladsweb.modaps.eosdis.nasa.gov/archive/allData/61/MYBRGB/2013/033/MYBRGB.A2013033.1955.061.2018044172016.jpg",
+      "collection_concept_id": "C1379758778-LAADS",
+      "collection_version": "6.1",
+      "concept_id": "G1497120939-LAADS",
+      "data_url": "https://data.laadsdaac.earthdatacloud.nasa.gov/prod-lads/MYD02HKM/MYD02HKM.A2013033.1955.061.2018044031526.hdf",
+      "day_night_flag": "DAY",
+      "midpoint_offset_seconds_from_target": 7050.0,
+      "midpoint_utc": "2013-02-02T19:57:30Z",
+      "platform": "Aqua",
+      "producer_granule_id": "MYD02HKM.A2013033.1955.061.2018044031526.hdf",
+      "short_name": "MYD02HKM",
+      "time_end_utc": "2013-02-02T20:00:00Z",
+      "time_start_utc": "2013-02-02T19:55:00Z"
+    }
+  ],
+  "cmr": {
+    "cache_file": "cmr_granules_4df8f6cd3eef7ae3.json",
+    "endpoint": "https://cmr.earthdata.nasa.gov/search/granules.json",
+    "query_urls": [
+      "https://cmr.earthdata.nasa.gov/search/granules.json?short_name=MOD02HKM&version=6.1&point=-110.000000%2C40.350000&temporal=2013-02-02T06%3A00%3A00Z%2C2013-02-03T06%3A00%3A00Z&page_size=50",
+      "https://cmr.earthdata.nasa.gov/search/granules.json?short_name=MYD02HKM&version=6.1&point=-110.000000%2C40.350000&temporal=2013-02-02T06%3A00%3A00Z%2C2013-02-03T06%3A00%3A00Z&page_size=50"
+    ]
+  },
+  "generated_at_utc": "2026-07-14T23:27:42Z",
+  "gibs": {
+    "endpoint": "https://gibs.earthdata.nasa.gov/wms/epsg4326/best/wms.cgi",
+    "images": [
+      {
+        "cache_file": "gibs_2013-02-02_snow-false-color_91e138d49f069875.png",
+        "date": "2013-02-02",
+        "height_pixels": 1150,
+        "layer": "MODIS_Terra_CorrectedReflectance_Bands721",
+        "product": "snow-false-color",
+        "request_url": "https://gibs.earthdata.nasa.gov/wms/epsg4326/best/wms.cgi?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=MODIS_Terra_CorrectedReflectance_Bands721&STYLES=default&SRS=EPSG%3A4326&BBOX=-111.800000%2C39.200000%2C-108.200000%2C41.500000&WIDTH=1800&HEIGHT=1150&FORMAT=image%2Fpng&TRANSPARENT=false&TIME=2013-02-02",
+        "sha256": "3f3d941162d90de64e98adb567a1c069f0b1e2e798019da9f8cdbece2f182c84",
+        "width_pixels": 1800
+      }
+    ],
+    "time_dimension": "calendar date; not a granule-specific timestamp"
+  },
+  "interpretation": {
+    "bands_7_2_1": "snow and ice usually appear cyan; most liquid cloud appears white; ice cloud can also appear cyan",
+    "true_color": "snow and cloud can both appear white"
+  },
+  "query_point_lon_lat": [
+    -110.0,
+    40.35
+  ],
+  "rendering": {
+    "dpi": 300,
+    "markers": {
+      "Ouray": {
+        "lat": 40.09,
+        "lon": -109.677
+      },
+      "Roosevelt": {
+        "lat": 40.299,
+        "lon": -109.989
+      },
+      "Vernal": {
+        "lat": 40.455,
+        "lon": -109.529
+      }
+    },
+    "module": "brc_tools.satellite.modis",
+    "module_sha256": "011a121f7963a06717983a94bb43ef59e028ddf08b3a2d58c54d2e8891417dee",
+    "outputs": {
+      "modis_uinta_snow_false_color_20130202_near1800.pdf": "9092cfb993faeed931a84e7ac9c553c5b00eccdec683dbf8a3534f68d353e4c8",
+      "modis_uinta_snow_false_color_20130202_near1800.png": "35f5ada9a7a0180c1e88134cf92a361e607ae2ddb70fdb4515b7207aa5ebb8cc"
+    },
+    "requested_height_pixels": null,
+    "requested_width_pixels": 1800,
+    "resolved_height_pixels": 1150,
+    "resolved_width_pixels": 1800,
+    "runtime_versions": {
+      "implementation": "CPython",
+      "matplotlib": "3.10.8",
+      "numpy": "2.4.3",
+      "pillow": "12.1.1",
+      "python": "3.13.12",
+      "requests": "2.32.5",
+      "system": "Linux"
+    },
+    "title": "Uinta Basin snow context near 18:00 UTC, 2 February 2013"
+  },
+  "schema_version": 1,
+  "selected_granule": {
+    "browse_url": "https://ladsweb.modaps.eosdis.nasa.gov/archive/allData/61/MOBRGB/2013/033/MOBRGB.A2013033.1815.061.2017297075718.jpg",
+    "collection_concept_id": "C1378577630-LAADS",
+    "collection_version": "6.1",
+    "concept_id": "G1497116100-LAADS",
+    "data_url": "https://data.laadsdaac.earthdatacloud.nasa.gov/prod-lads/MOD02HKM/MOD02HKM.A2013033.1815.061.2017294153853.hdf",
+    "day_night_flag": "DAY",
+    "midpoint_offset_seconds_from_target": 1050.0,
+    "midpoint_utc": "2013-02-02T18:17:30Z",
+    "platform": "Terra",
+    "producer_granule_id": "MOD02HKM.A2013033.1815.061.2017294153853.hdf",
+    "short_name": "MOD02HKM",
+    "time_end_utc": "2013-02-02T18:20:00Z",
+    "time_start_utc": "2013-02-02T18:15:00Z"
+  },
+  "selection_rule": "minimum absolute difference between target and midpoint of daytime Terra/Aqua MOD02HKM/MYD02HKM v6.1 granules covering bbox center",
+  "source_documentation": [
+    "https://nasa-gibs.github.io/gibs-api-docs/python-usage/",
+    "https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html",
+    "https://doi.org/10.5067/MODIS/MOD02HKM.061"
+  ],
+  "target_utc": "2013-02-02T18:00:00Z"
+}
