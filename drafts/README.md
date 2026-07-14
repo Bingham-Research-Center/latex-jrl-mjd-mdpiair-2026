@@ -10,3 +10,9 @@ cp ../main.pdf main_2026-07-10_initial-review.pdf
 ```
 
 This directory is excluded from the MDPI submission allowlist.
+
+Latest maximal review snapshot:
+
+- `manuscript-v3_2026-07-14_codex-integrated-maximal-draft.pdf` — maximal v3 after
+  the Akamai literature integration at source commit `653a49a`; the non-equivalent
+  8 K render is withheld pending line-free CHPC regeneration.
