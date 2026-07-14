@@ -333,7 +333,29 @@ The observed Mountain Home-minus-Pariette Draw potential-temperature contrast su
 Across the registered footprint, the mean GFS-minus-NAM near-surface response was positive and the vertical response remained concentrated below 500 m AGL under both feedback modes (Table~\ref{tab:v3-spatial-summary}).
 The predeclared spatial gate nevertheless failed because only 0.64--0.67 of the footprint shared the median sign at 14:00--15:00 UTC, just below the two-thirds criterion.
 The result is therefore shallow and mean-coherent, but not spatially uniform throughout the retained window.
-The six-panel map is omitted because it adds substantial space without changing that split verdict; its registered render remains in the reproducible archive.
+Figures~\ref{fig:v3-spatial-agl} and~\ref{fig:v3-spatial-sections} are restored in this review draft because they show the spatial patchiness hidden by the footprint mean and the repeated vertical structure under both feedback settings.
+They do not reverse the failed early-hour coherence gate or promote the unexplained elevated response into a new claim.
+
+\rewritegate{Figures~\ref{fig:v3-spatial-agl} and~\ref{fig:v3-spatial-sections} are registered diagnostics restored for editorial review, not promoted manuscript figures.
+Before coauthor circulation, decide whether each belongs in the main paper, supplement, or reviewer reserve and regenerate any retained version under the current figure-production contract.}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.94\textwidth]{verification/figures/candidates/wrf_spatial_agl50to500_diff_d02.pdf}
+\caption{GFS-minus-NAM 50--500 m AGL potential-temperature response on d02 at 14:00, 16:00, and 18:00 UTC under two-way feedback (top) and one-way feedback (bottom).
+The black outline is the registered evaluation footprint.
+The response becomes more spatially coherent after the two early hours that failed the predeclared sign-share criterion, but the later pattern cannot rescue that failed gate.}
+\label{fig:v3-spatial-agl}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.94\textwidth]{verification/figures/candidates/wrf_spatial_theta_sections_d02_16z.pdf}
+\caption{GFS-minus-NAM potential-temperature difference at 16:00 UTC along the Pariette Draw-to-Mountain Home transect under two-way feedback (left) and one-way feedback (right).
+Both panels show a warmer GFS lower layer beneath a cooler layer and a separate elevated positive response.
+The elevated feature is retained as diagnostic structure and is not assigned a mechanism in this manuscript.}
+\label{fig:v3-spatial-sections}
+\end{figure}
 
 \subsection{Footprint Heat Deficit: A Weaker State without Faster Loss}
 \label{sec:v3-heatdeficit}
@@ -342,7 +364,28 @@ The GFS members carried less footprint-integrated heat deficit at every retained
 The mean GFS-minus-NAM differences were -1.23 and -1.25 MJ m$^{-2}$ under two-way and one-way feedback.
 Heat deficit increased in all four simulations, however, so the predeclared faster-loss criterion failed under every definition.
 This is evidence of a state offset already present at 14:00 UTC, not of different cold-pool evolution during the five-hour window.
-The full trajectories and sensitivity envelopes are moved to Appendix~A (Figure~\ref{fig:v3-heatdeficit-traj}).
+The restored trajectory in Figure~\ref{fig:v3-heatdeficit-traj} makes that distinction visible, while Figure~\ref{fig:v3-heatdeficit-map} shows that the 16:00 UTC offset is spatially structured rather than a uniform basin-wide decrement.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.82\textwidth]{verification/figures/candidates/wrf_heat_deficit_d02_13to18.pdf}
+\caption{Footprint-mean heat-deficit trajectories for the four default-terrain matrix members and seven-definition sensitivity envelopes for the two GFS-minus-NAM pairs.
+The 13:00 UTC values are context only; all criteria use 14:00--18:00 UTC.
+GFS retains a smaller deficit throughout, but the deficit does not decline faster in either GFS member.}
+\label{fig:v3-heatdeficit-traj}
+\end{figure}
+
+\rewritegate{Figure~\ref{fig:v3-heatdeficit-map} is an exploratory external-engine render restored for editorial review.
+Its source family and sign are recorded in \texttt{figures-draft/HARVEST.md}, but it lacks a per-image generator sidecar and must be registered, restyled, and admitted before circulation.}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.72\textwidth]{figures-draft/heatdeficit_GFS-NAM_16z.png}
+\caption{Exploratory plan-view GFS-minus-NAM cold-pool heat-deficit difference on d02 at 16:00 UTC for the two-way pair.
+Negative values across much of the basin floor correspond to the smaller GFS heat deficit summarized in Figure~\ref{fig:v3-heatdeficit-traj}.
+This single snapshot illustrates spatial structure; it cannot establish erosion, persistence, or basin export.}
+\label{fig:v3-heatdeficit-map}
+\end{figure}
 
 \subsection{Process Treatments on the Fine-Terrain Branch}
 \label{sec:v3-process}
@@ -382,6 +425,7 @@ The four-panel terrain figure is omitted because its near-null panels consume mo
 The clearest result is not that one simulation wins a surface-score contest.
 It is that the GFS-driven members supplied a warmer, less stable, and faster-moving 50--500 m layer than the matched NAM members under both feedback settings.
 The footprint heat-deficit calculation supports the same ordering beyond the fixed station columns.
+The mapped and section diagnostics in Figures~\ref{fig:v3-spatial-agl} and~\ref{fig:v3-spatial-sections} show both the repeated lower-layer structure and the spatial qualifications hidden by an aggregate value.
 Replication across feedback makes the product separation robust to that configuration choice within this matrix, while the opposite pressure-error ordering prevents a universal product ranking.
 
 This distinction matters to an air-quality model because meteorology sets the layer in which ozone and its precursors mix and move.
@@ -397,7 +441,7 @@ The present design cannot assign the lower-layer response to one of those compon
 \label{sec:v3-disc-spatial}
 
 The heat-deficit result narrows the interpretation.
-GFS had less deficit than NAM under every feedback and footprint definition, but deficit increased in every simulation during the retained window.
+GFS had less deficit than NAM under every feedback and footprint definition, but deficit increased in every simulation during the retained window (Figure~\ref{fig:v3-heatdeficit-traj}).
 The predeclared faster-loss test therefore failed, and the product separation must be described as a state offset already present by 14:00 UTC.
 A longer integration through at least one complete diurnal cycle is required to test whether the products differ in cold-pool erosion or persistence.
 
@@ -410,6 +454,7 @@ Preserving these failed criteria is more informative than rescuing them with a n
 \label{sec:v3-disc-process}
 
 The process and geometry comparisons are useful chiefly because they delimit the main result.
+The common-pipeline overview in Figure~\ref{fig:v3-effects} makes that response hierarchy explicit on the shared metrics.
 The boundary-layer/surface-layer treatment produced a coherent but smaller response, with temperature error worsening while wind error improved.
 It is a process-treatment contrast, not evidence that one named scheme is generally superior.
 Nest-feedback effects remained small at both default and fine terrain, so feedback protects the product result as a robustness check without becoming a second thesis.
@@ -591,15 +636,6 @@ X4 lineage & As-run namelist matches the controlled family; terrain is materiall
 \bottomrule
 \end{tabularx}
 \end{table}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.82\textwidth]{verification/figures/candidates/wrf_heat_deficit_d02_13to18.pdf}
-\caption{Footprint-mean heat-deficit trajectories for the four default-terrain matrix members and seven-definition sensitivity envelopes for the two GFS-minus-NAM pairs.
-The 13:00 UTC values are context only; all criteria use 14:00--18:00 UTC.
-The figure is retained in the appendix because the table and concise Results text carry the main finding.}
-\label{fig:v3-heatdeficit-traj}
-\end{figure}
 
 \begin{figure}[H]
 \centering

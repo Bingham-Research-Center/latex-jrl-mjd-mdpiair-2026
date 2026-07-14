@@ -13,6 +13,10 @@ This directory is excluded from the MDPI submission allowlist.
 
 Latest review snapshots:
 
+- `manuscript-v3_2026-07-14_figure-recovery-review.pdf` — v3 review build restoring
+  the common-AGL spatial evolution, vertical sections, heat-deficit trajectory,
+  and heat-deficit map as explicitly gated editorial candidates supporting Section 4.
+
 - `manuscript-v3_2026-07-14_contrast-ordered-draft.pdf` — v3 reordered around
   controlled scientific contrasts, with the common-pipeline comparison panel,
   figure trim, and explicit d02/d03 scope at source commit `c43237e`.
