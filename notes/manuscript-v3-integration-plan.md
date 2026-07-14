@@ -35,6 +35,29 @@ Commit and push the CHPC result before Akamai resumes edits to the same files.
 This push/pull baton is the default; separate host branches are preferable if both hosts
 must work concurrently.
 
+## John figure-review additions, 14 July 2026
+
+The next bounded figure pass also carries three review products requested after the
+initial v3 trim:
+
+1. keep Figure 1 as two panels, with the archived d01--d03 nesting on the right;
+2. compare fine versus coarse static terrain (CMP11, X0 minus X4), not fine-terrain
+   nest feedback, using basin-wide d02 and inner-basin d03 top-down heat-deficit
+   fields plus orthogonal d03 sections; and
+3. replace the dense 12 UTC Horsepool profile with X6 and X5 only at 12 and 13 UTC.
+
+The d02 and d03 terrain views answer different spatial questions.
+The d02 panel is required for Browns Park, Split Mountain, and Tavaputs Plateau context;
+d03 does not cover all of those features and is retained for inner-basin detail.
+Use the same 16 UTC time, X0-minus-X4 sign, 2200 m crest, and +/-1.6 MJ m-2 scale in
+both top-down heat-deficit panels.
+
+Exact commands, expected filenames, interpretive limits, and the new bounded d03 config
+are in `notes/manuscript-v3-structure-and-domain-review.md` and
+`verification/config/figures/pelican2013_terrain_d03.toml`.
+These are exploratory review additions only; they do not change the failed CMP09 gate
+or create a post-hoc CMP11 claim.
+
 ## Bibliography boundary
 
 The small curated export is deliberately low priority until Batch C.

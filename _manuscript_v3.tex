@@ -94,7 +94,7 @@ Subhourly reports were averaged within each UTC clock hour.
 The stations span basin-floor, sidewall, and bench locations but are neither spatially uniform nor area weighted.
 Every controlled simulation discussed below archived both the 1 km d02 and the 333 m d03 during this window, so output availability did not determine the evaluation domain.
 The 1 km d02 was selected for the common observation-linked estimand because it contains all eleven stations, whereas seven stations clamp to the boundary of the roughly 50 by 48 km d03 and only four provide usable interior columns there (ledger row C03).
-Figure~\ref{fig:v3-locator} temporarily shows the domain geometry and reporting stations.
+Figure~\ref{fig:v3-locator} combines the reporting-station geometry with the full nested-domain layout.
 This coverage decision does not establish that d02 resolves every process response adequately or that a response measured on d02 has the same magnitude or ordering on d03.
 The present results therefore describe the full-network d02 sample; a d03 analysis would require a separately declared interior footprint or the same four-station subset on both domains and is not a resolution evaluation.
 Four elevation-spanning stations provide surface context from 31 January 00:00 UTC through 4 February 00:00 UTC.
@@ -102,16 +102,26 @@ Observed and modeled surface potential temperature for a two-site structural ind
 Because the two sites are horizontally separated and locally exposed, the index is a spatial surface contrast rather than a colocated free-air inversion strength or depth.
 No sounding, profiler, or remote-sensing profile is used to validate the modeled 50--500 m layer.
 
-\rewritegate{Replace Figure~\ref{fig:v3-locator} with a two-panel orientation figure before coauthor circulation.
-Panel (a) should locate the observation sites against named towns, major roads, rivers, the basin floor, and surrounding mountain ranges; panel (b) should show the common d01--d02--d03 nesting.
-Remove all current and proposed transects because no retained result uses or explains them, and suppress latitude/longitude axes in favor of a north arrow and scale bar.}
+\rewritegate{Figure~\ref{fig:v3-locator} now has the requested two-panel structure and uses the archived nested-domain render as panel (b).
+Before coauthor circulation, regenerate panel (a) against named towns, major roads, rivers, the basin floor, and surrounding mountain ranges; remove all current and proposed transects because no retained result uses them.
+Restyle both panels without latitude/longitude axes and with a north arrow and scale bar.}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.78\textwidth]{verification/figures/candidates/wrf_transect_locator_d02_d03.pdf}
-\caption{Temporary locator showing the reporting stations on d02 and the d03 interior domain.
-The overlaid transects are not used in this manuscript and will be removed when the two-panel geographic and domain locator is regenerated.
-Seven of the eleven reporting stations fall outside the usable d03 interior, which is why d02 supplies the full-network common sample; the choice does not validate d02 against d03 (C03).}
+\begin{minipage}[t]{0.49\textwidth}
+\centering
+\textbf{(a)}\\[-2pt]
+\includegraphics[width=\linewidth]{verification/figures/candidates/wrf_transect_locator_d02_d03.pdf}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.49\textwidth}
+\centering
+\textbf{(b)}\\[-2pt]
+\includegraphics[width=\linewidth]{figures-draft/nested_domains.png}
+\end{minipage}
+\caption{Working two-panel orientation for the evaluation.
+(a) Reporting stations on d02 and the d03 interior; the colored transects are unused legacy overlays and will be removed from the final geographic panel.
+(b) Common d01--d02--d03 nesting, with the basin station cluster shown inside the broader terrain setting.
+Seven of the eleven reporting stations fall outside the usable d03 interior, which is why d02 supplies the full-network common sample; neither panel validates d02 against d03 (C03).}
 \label{fig:v3-locator}
 \end{figure}
 
@@ -279,6 +289,7 @@ It does not determine the cold-pool top, depth, volume, or vertical temperature 
 \includegraphics[width=\textwidth]{figures/obs_temp_timeseries_feb0102.pdf}
 \caption{Observed 2 m-temperature evolution at four elevation-spanning Uinta Basin stations from 31 January through 3 February 2013.
 Shading indicates approximate local night.
+The basin-floor site repeatedly separates from the higher sites, and the ordering evolves through the diurnal cycle.
 The sites establish a recurring spatial surface-temperature pattern but do not constitute a colocated vertical profile.}
 \label{fig:v3-observed}
 \end{figure}
@@ -296,6 +307,8 @@ Pressure and wind error do not reproduce that ordering, so the figure is a respo
 \includegraphics[width=\textwidth]{figures-draft/fig_common_pipeline_effects.pdf}
 \caption{Mean five-hour effects for the controlled comparisons that share the station/common-AGL pipeline.
 Colors and marker shapes identify driving-product, process-treatment, feedback, and interaction contrasts; each row states its differencing direction.
+Driving-product effects are farthest from zero for temperature, fixed-layer stability, and transport wind; the PBL/surface-layer response is smaller, while slope-radiation and feedback effects cluster near zero on those scales.
+The different ordering of pressure and wind error prevents interpreting the panel as an overall configuration ranking.
 Whiskers are descriptive block-sensitivity intervals for five dependent hourly medians, not confidence intervals.
 Working figure drawn from committed summaries; not yet registered or promoted.}
 \label{fig:v3-effects}
@@ -316,7 +329,7 @@ Native PBL-height differences changed sign within both feedback modes and did no
 \includegraphics[width=\textwidth]{figures/wrf_retention_ventilation_d02_14to18.pdf}
 \caption{Station-column medians and interquartile ranges for 50--500 m AGL potential-temperature stability and fixed-layer transport wind over the matched window.
 Solid lines denote two-way feedback and dashed lines denote one-way feedback.
-The lower-layer GFS--NAM separation recurs under both feedback modes.}
+The lower-layer GFS--NAM separation recurs under both feedback modes: GFS is about 3.6 K less stable and 0.8--1.0 m s$^{-1}$ faster in transport wind over the five-hour summary.}
 \label{fig:v3-retention}
 \end{figure}
 
@@ -333,11 +346,13 @@ The observed Mountain Home-minus-Pariette Draw potential-temperature contrast su
 Across the registered footprint, the mean GFS-minus-NAM near-surface response was positive and the vertical response remained concentrated below 500 m AGL under both feedback modes (Table~\ref{tab:v3-spatial-summary}).
 The predeclared spatial gate nevertheless failed because only 0.64--0.67 of the footprint shared the median sign at 14:00--15:00 UTC, just below the two-thirds criterion.
 The result is therefore shallow and mean-coherent, but not spatially uniform throughout the retained window.
-Figures~\ref{fig:v3-spatial-agl} and~\ref{fig:v3-spatial-sections} are restored in this review draft because they show the spatial patchiness hidden by the footprint mean and the repeated vertical structure under both feedback settings.
-They do not reverse the failed early-hour coherence gate or promote the unexplained elevated response into a new claim.
+Figure~\ref{fig:v3-spatial-agl} is restored in this review draft because it shows the spatial patchiness hidden by the footprint mean.
+The previous Figure~6 duplicated the driving-product result along one transect and has been removed.
+Its replacement, Figure~\ref{fig:v3-terrain-sections}, is reserved for orthogonal d03 sections of the controlled fine-minus-coarse terrain contrast, which directly tests whether the large top-down terrain response also has coherent vertical structure.
+Neither figure reverses a failed gate: the d02 driving-product spatial gate remains failed, and no predeclared d03 CMP11 terrain gate has yet been executed.
 
-\rewritegate{Figures~\ref{fig:v3-spatial-agl} and~\ref{fig:v3-spatial-sections} are registered diagnostics restored for editorial review, not promoted manuscript figures.
-Before coauthor circulation, decide whether each belongs in the main paper, supplement, or reviewer reserve and regenerate any retained version under the current figure-production contract.}
+\rewritegate{Figure~\ref{fig:v3-spatial-agl} is a registered diagnostic restored for editorial review, not a promoted manuscript figure.
+Before coauthor circulation, decide whether it belongs in the main paper, supplement, or reviewer reserve.}
 
 \begin{figure}[H]
 \centering
@@ -348,13 +363,48 @@ The response becomes more spatially coherent after the two early hours that fail
 \label{fig:v3-spatial-agl}
 \end{figure}
 
+\rewritegate{Generate and inspect the matched 16:00 UTC d03 north--south and east--west X0-minus-X4 sections from \path{verification/config/figures/pelican2013_terrain_d03.toml}; the figure below is wired for the resulting files.}
+
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.94\textwidth]{verification/figures/candidates/wrf_spatial_theta_sections_d02_16z.pdf}
-\caption{GFS-minus-NAM potential-temperature difference at 16:00 UTC along the Pariette Draw-to-Mountain Home transect under two-way feedback (left) and one-way feedback (right).
-Both panels show a warmer GFS lower layer beneath a cooler layer and a separate elevated positive response.
-The elevated feature is retained as diagnostic structure and is not assigned a mechanism in this manuscript.}
-\label{fig:v3-spatial-sections}
+\textbf{(a)}\\[-2pt]
+\IfFileExists{figures-draft/section_ns_terrain-3arcsec-5arcmin_d03_16z.png}{%
+\includegraphics[width=0.91\textwidth]{figures-draft/section_ns_terrain-3arcsec-5arcmin_d03_16z.png}%
+}{\fbox{\parbox[c][0.16\textheight][c]{0.86\textwidth}{\centering CHPC render pending: d03 north--south X0-minus-X4 potential-temperature section at 16:00 UTC.}}}\\[3pt]
+\textbf{(b)}\\[-2pt]
+\IfFileExists{figures-draft/section_ew_terrain-3arcsec-5arcmin_d03_16z.png}{%
+\includegraphics[width=0.91\textwidth]{figures-draft/section_ew_terrain-3arcsec-5arcmin_d03_16z.png}%
+}{\fbox{\parbox[c][0.16\textheight][c]{0.86\textwidth}{\centering CHPC render pending: d03 west--east X0-minus-X4 potential-temperature section at 16:00 UTC.}}}
+\caption{Exploratory d03 potential-temperature response to the widest controlled static-terrain bracket, X0 minus X4 (fine 3-arc-second minus coarse 5-arc-minute source), at 16:00 UTC.
+(a) North--south and (b) west--east sections use the same $\pm4$ K scale.
+Positive values mean that the fine-terrain member is warmer at the plotted height; negative values mean that the coarse-terrain member is warmer.
+The sections diagnose vertical organization but do not by themselves establish drainage rate, cold-pool volume, waves, or terrain-source superiority.}
+\label{fig:v3-terrain-sections}
+\end{figure}
+
+\rewritegate{Replace the dense all-member Horsepool profile with a two-panel model-only diagnostic containing only X6 (GFS two-way) and X5 (NAM two-way): panel (a) at initialization, 12:00 UTC, and panel (b) after one forecast hour, 13:00 UTC.
+Use identical axes and two curves per panel, state that the 12--13 UTC change combines model adjustment with one hour of boundary evolution, and do not present the model-only profiles as validation of inversion depth.}
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[t]{0.49\textwidth}
+\centering
+\textbf{(a)}\\[-2pt]
+\IfFileExists{figures-draft/theta_profiles_horsepool_gfs_nam_12z.png}{%
+\includegraphics[width=\linewidth]{figures-draft/theta_profiles_horsepool_gfs_nam_12z.png}%
+}{\fbox{\parbox[c][0.28\textheight][c]{0.88\linewidth}{\centering CHPC render pending: X6 and X5 Horsepool profiles at 12:00 UTC.}}}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.49\textwidth}
+\centering
+\textbf{(b)}\\[-2pt]
+\IfFileExists{figures-draft/theta_profiles_horsepool_gfs_nam_13z.png}{%
+\includegraphics[width=\linewidth]{figures-draft/theta_profiles_horsepool_gfs_nam_13z.png}%
+}{\fbox{\parbox[c][0.28\textheight][c]{0.88\linewidth}{\centering CHPC render pending: X6 and X5 Horsepool profiles at 13:00 UTC.}}}
+\end{minipage}
+\caption{Model-only d03 potential-temperature profiles at Horsepool for X6 (GFS two-way) and X5 (NAM two-way).
+(a) The 12:00 UTC initialized states and (b) the 13:00 UTC one-hour forecasts, plotted with identical axes.
+Changes between panels include both early model adjustment and one hour of lateral-boundary evolution; no colocated observed profile validates the modeled layer.}
+\label{fig:v3-spinup-profiles}
 \end{figure}
 
 \subsection{Footprint Heat Deficit: A Weaker State without Faster Loss}
@@ -381,7 +431,7 @@ Its source family and sign are recorded in \texttt{figures-draft/HARVEST.md}, bu
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.72\textwidth]{figures-draft/heatdeficit_GFS-NAM_16z.png}
-\caption{Exploratory plan-view GFS-minus-NAM cold-pool heat-deficit difference on d02 at 16:00 UTC for the two-way pair.
+\caption{Exploratory top-down GFS-minus-NAM cold-pool heat-deficit difference on d02 at 16:00 UTC for the two-way pair.
 Negative values across much of the basin floor correspond to the smaller GFS heat deficit summarized in Figure~\ref{fig:v3-heatdeficit-traj}.
 This single snapshot illustrates spatial structure; it cannot establish erosion, persistence, or basin export.}
 \label{fig:v3-heatdeficit-map}
@@ -414,9 +464,39 @@ Nest feedback therefore serves as a replicated robustness check for this case an
 
 The archive brackets the static terrain source on an otherwise identical NAM one-way configuration: default minus fine (CMP09, X3$-$X0), default minus coarse (CMP10, X3$-$X4), and fine minus coarse (CMP11, X0$-$X4).
 The default-minus-fine terrain change was small on d02, and its 0.07--0.27 K response failed the predeclared terrain-correlation criterion early in the window (Table~\ref{tab:v3-terrain-summary}; C29).
-The coarse-terrain brackets produced larger responses, but no criterion was declared for them before inspection.
-They remain diagnostic rather than evidence for a terrain ranking.
-The four-panel terrain figure is omitted because its near-null panels consume more space than the failed-gate result warrants; the registered render remains archived.
+The coarse-terrain brackets produced larger responses, but no criterion was declared for them before inspection, so they remain diagnostic rather than evidence for a terrain ranking.
+
+The 16:00 UTC d02 top-down heat-deficit difference in Figure~\ref{fig:v3-terrain-hd-d02} is nevertheless physically informative enough to retain for editorial review.
+Blue dominates much of the central basin, meaning that the fine-terrain member has less column-integrated heat deficit there than the coarse-terrain member at this time.
+Localized positive differences appear toward Browns Park, the Split Mountain gap, and deep Tavaputs Plateau canyons, where the fine-terrain member contains more heat deficit.
+Those features motivate an upstream-reservoir and redistribution hypothesis; a single top-down field does not demonstrate cold-air storage, drainage direction, or transfer into the central basin.
+The matched d03 top-down field in Figure~\ref{fig:v3-terrain-hd-d03} is reserved to determine whether the inner-basin structure sharpens or changes sign at 333 m.
+Because d03 does not cover Browns Park or the full Split Mountain/Tavaputs setting, it complements rather than replaces the basin-wide d02 view.
+
+\rewritegate{The d02 CMP11 top-down heat-deficit render is exploratory and has no per-image generator sidecar.
+Retain it in the working draft only; register, restyle, inspect, and admit any final version without changing the failed CMP09 gate or inventing a CMP11 gate.}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.78\textwidth]{figures-draft/heatdeficit_terrain-3arcsec-5arcmin_16z.png}
+\caption{Exploratory d02 top-down column-integrated cold-pool heat-deficit response at 16:00 UTC for CMP11, X0 minus X4 (fine 3-arc-second minus coarse 5-arc-minute static terrain).
+Red means that the fine-terrain member has the larger heat deficit; blue means that the coarse-terrain member has the larger heat deficit.
+The central negative response and localized positive features near Browns Park, the Split Mountain gap, and Tavaputs Plateau canyons show redistribution on a fixed $\pm1.6$ MJ m$^{-2}$ scale, not a demonstrated drainage pathway or basin-volume change.}
+\label{fig:v3-terrain-hd-d02}
+\end{figure}
+
+\rewritegate{Generate and inspect the d03 16:00 UTC X0-minus-X4 top-down heat-deficit field from \path{verification/config/figures/pelican2013_terrain_d03.toml}; the figure below is wired for the resulting file.}
+
+\begin{figure}[H]
+\centering
+\IfFileExists{figures-draft/heatdeficit_terrain-3arcsec-5arcmin_d03_16z.png}{%
+\includegraphics[width=0.78\textwidth]{figures-draft/heatdeficit_terrain-3arcsec-5arcmin_d03_16z.png}%
+}{\fbox{\parbox[c][0.38\textheight][c]{0.72\textwidth}{\centering CHPC render pending: d03 X0-minus-X4 top-down column-integrated cold-pool heat-deficit difference at 16:00 UTC.}}}
+\caption{As in Figure~\ref{fig:v3-terrain-hd-d02}, but calculated and displayed on d03 over the inner basin at 333 m model-grid spacing.
+The time, X0-minus-X4 sign, 2200 m crest reference, and fixed $\pm1.6$ MJ m$^{-2}$ scale are held constant so that the d03 structure can be compared with the basin-wide d02 view.
+This is a domain-specific diagnostic, not a d02--d03 resolution evaluation.}
+\label{fig:v3-terrain-hd-d03}
+\end{figure}
 
 \section{Discussion}
 
@@ -425,7 +505,7 @@ The four-panel terrain figure is omitted because its near-null panels consume mo
 The clearest result is not that one simulation wins a surface-score contest.
 It is that the GFS-driven members supplied a warmer, less stable, and faster-moving 50--500 m layer than the matched NAM members under both feedback settings.
 The footprint heat-deficit calculation supports the same ordering beyond the fixed station columns.
-The mapped and section diagnostics in Figures~\ref{fig:v3-spatial-agl} and~\ref{fig:v3-spatial-sections} show both the repeated lower-layer structure and the spatial qualifications hidden by an aggregate value.
+The mapped diagnostic in Figure~\ref{fig:v3-spatial-agl} shows the spatial qualifications hidden by the footprint aggregate.
 Replication across feedback makes the product separation robust to that configuration choice within this matrix, while the opposite pressure-error ordering prevents a universal product ranking.
 
 This distinction matters to an air-quality model because meteorology sets the layer in which ozone and its precursors mix and move.
@@ -461,8 +541,12 @@ Nest-feedback effects remained small at both default and fine terrain, so feedba
 
 The slope-radiation and fine-terrain screens did not earn main-text figures.
 Slope radiation was nearly invisible at the basin-floor stations, while its sidewall skin-temperature signal could not be tested against a slope-corrected radiative or surface-flux diagnostic.
-The fine-terrain response was small and failed its predeclared correlation criterion; the larger coarse-terrain response had no predeclared gate.
-These outcomes motivate better measurements and future experiment design, but they do not support radiation or terrain rankings.
+The default-minus-fine terrain response was small and failed its predeclared correlation criterion; the much wider fine-minus-coarse bracket is controlled and visually stronger, but it had no predeclared scientific gate.
+The d02 top-down heat-deficit field therefore supports a redistribution hypothesis, not a terrain ranking.
+In particular, the central negative X0-minus-X4 response at 16:00 UTC does not support a simple statement that the smoother basin necessarily drains faster or contains less cold air at that time, while the localized positive features outside the center do not yet prove upstream reservoirs.
+Testing that story requires matched d02 and d03 heat-deficit trajectories, a common-support cold-air volume or mass diagnostic, outlet-normal transport, and time-resolved sections through at least one diurnal cycle.
+Vertical-velocity and turbulence diagnostics at an independently defined cold-pool top would be needed before terrain-following ripples were described as waves; cloud water, precipitation, humidity, and stability diagnostics would be needed before invoking moist convection.
+These outcomes motivate better measurements and future experiment design, but they do not yet support radiation or terrain-source superiority claims.
 The multiply confounded X7/X0/X8 set is excluded for the same reason: nominal grid spacing cannot be isolated from its other configuration changes.
 
 \subsection{Observation and Design Limits Set the Next Experiment}

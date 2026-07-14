@@ -1,0 +1,46 @@
+# pelican2013 fine-minus-coarse terrain review products on d03
+#
+# This bounded configuration complements pelican2013.toml without changing its
+# audited d02 heat-deficit products.  It selects only the controlled CMP11 pair
+# (X0 minus X4), keeps the existing 2200 m crest and display scales, and routes
+# d03 top-down heat-deficit differences to a distinct output tree.
+
+[case]
+slug = "pelican2013_terrain_d03"
+label = "Pelican 2013 fine-minus-coarse terrain"
+archive_dir = "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive"
+run_subdir = "full6h"
+annotation = "pelican2013 | brc-tools | CMP11 d03 review"
+crest_m = 2200.0
+heatdeficit_domain = "d03"
+focus_point = { name = "Horsepool", lat = 40.144, lon = -109.467 }
+
+[waypoints]
+Horsepool       = { lat = 40.144,  lon = -109.467 }
+"Pelican Lake" = { lat = 40.1808, lon = -109.6810 }
+Ouray           = { lat = 40.0891, lon = -109.6879 }
+"Fort Duchesne" = { lat = 40.2827, lon = -109.8593 }
+Randlett        = { lat = 40.2402, lon = -109.8038 }
+
+[runs]
+fine = { dir = "pelican2013_nam_3_1_333m_75lev_oneway_terrain3s", label = "NAM one-way, fine terrain (3 arcsec)" }
+coarse = { dir = "pelican2013_nam_3_1_333m_75lev_oneway_terrain5m", label = "NAM one-way, coarse terrain (5 arcmin)" }
+
+[[differences]]
+a = "fine"
+b = "coarse"
+tag = "terrain-3arcsec-5arcmin"
+dir = "diff_terrain_res"
+feedback = false
+sections = true
+limit = 4.0
+hd_limit = 1.6
+
+[style]
+autoscale = false
+
+[map]
+states = true
+roads = true
+rivers = true
+lakes = true
