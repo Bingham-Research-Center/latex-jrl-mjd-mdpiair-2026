@@ -38,6 +38,7 @@ Heat deficit nevertheless increased in every member, so a predeclared test for f
 Surface-pressure errors ordered the products oppositely, and within-product feedback effects were much smaller throughout.
 A matched recomputation of the feedback contrast at the fine-terrain control pair reproduced that bound: every fine-terrain feedback effect was one to two orders of magnitude below the matched driving-product contrast.
 This working revision additionally surveys the archived controlled comparisons that surround the factorial---spatial and vertical response structure, terrain-source brackets, slope-aware radiation, boundary-layer treatment, and initialization context---with each element labeled by its evidence status rather than withheld.
+All five evidence gates of the selected results architecture have now been executed with predeclared criteria: the fine-terrain feedback bound passed; the spatial-coherence and terrain gates failed narrowly defined criteria and are reported as negatives while their confinement and lineage legs passed; and a coherent boundary-layer-scheme response was selected as the one remaining process candidate.
 The experiment does not separate initial from lateral-boundary forcing, validate inversion depth, establish multi-day persistence, or predict ozone.}
 
 \keyword{winter ozone; WRF; cold-air pool; Uinta Basin; driving data; nest feedback; heat deficit; model evaluation}
@@ -52,8 +53,8 @@ Three status classes appear throughout.
 \emph{Promoted} figures and \emph{confirmed} claims have passed the repository's provenance and admission gates and carry ledger identifiers (C-numbers).
 \emph{Registered candidates} are tracked with full provenance but are not admitted.
 \emph{Exploratory renders} are batch engine figures catalogued in \texttt{figures-draft/HARVEST.md}; they illustrate visual leads only, and no quantitative claim in this draft rests on them.
-Sections carrying open analysis gates name them (ANA-17, ANA-18, ANA-19).
-A submission-ready revision would remove most exploratory material or promote it through the named gates.}
+The analysis gates named in this draft (ANA-17, ANA-18, ANA-19, ANA-20) have all been executed with criteria fixed in committed scripts before any output was read; each section reports its gate's pass or fail outcome, and the complete decision record is \texttt{rewrite/HYBRID-GATE-REVIEW.md}.
+A submission-ready revision would remove most exploratory material or promote registered candidates through the normal admission path.}
 
 Winter ozone in the Uinta Basin develops when photochemistry proceeds within snow-covered, stably stratified air that restricts vertical dilution and horizontal exchange \citep{Ahmadov2015-zm,Neemann2015-ws,Davies2025-wy}.
 Snow increases actinic flux and modifies deposition, while the stable, weakly ventilated air confines ozone and its precursors near the basin floor.
@@ -81,7 +82,7 @@ The design evaluates the meteorological input state that a later chemistry calcu
 
 Beyond those three anchored questions, the archive built for this study contains a larger family of controlled comparisons: the same driving-product contrast under a second terrain regime, a replication of the feedback bound at the fine-terrain control, terrain-source brackets on a fixed grid, a slope-aware radiation pair, a boundary-layer and surface-layer scheme pair, and vertical and upper-air structure diagnostics.
 This working revision presents that family in full, with each comparison labeled by design status, analysis status, and figure status, so that the eventual submission can select from evidence rather than from recollection.
-The fine-terrain feedback recomputation is complete and is reported quantitatively (Section~\ref{sec:v3-cmp06}); the spatial, terrain, and process comparisons remain at diagnostic status behind named analysis gates and contribute visual leads only.
+The fine-terrain feedback recomputation is complete and passed its gate (Section~\ref{sec:v3-cmp06}); the spatial-coherence and terrain gates were executed and failed predeclared criteria, and their outcomes are reported quantitatively as negatives (Sections~\ref{sec:v3-spatial} and~\ref{sec:v3-terrain}); the process screen selected the boundary-layer-scheme comparison as the one remaining candidate result (Section~\ref{sec:v3-process}).
 
 \section{Materials and Methods}
 
@@ -206,17 +207,17 @@ The archive figure engine renders the two default-terrain feedback families in t
 \toprule
 ID & Operation & Isolated lever & Status and gate \\
 \midrule
-CMP01 & X6 $-$ X5 & driving product (two-way) & confirmed (C04, C17, C25); spatial/vertical selection open (ANA-19) \\
-CMP02 & X10 $-$ X3 & driving product (one-way) & confirmed (C04, C17, C25); spatial/vertical selection open (ANA-19) \\
+CMP01 & X6 $-$ X5 & driving product (two-way) & confirmed (C04, C17, C25); spatial gate executed and failed (C30) \\
+CMP02 & X10 $-$ X3 & driving product (one-way) & confirmed (C04, C17, C25); spatial gate executed and failed (C30) \\
 CMP03 & X3 $-$ X5 & feedback, NAM, default terrain & confirmed near-null (C18, C25) \\
 CMP04 & X10 $-$ X6 & feedback, GFS, default terrain & confirmed small (C18, C25) \\
 CMP05 & (X10$-$X6)$-$(X3$-$X5) & feedback-by-product interaction & confirmed small (C18, C25) \\
-CMP06 & X9 $-$ X0 & feedback, NAM, fine terrain & analyzed in this draft (Section~\ref{sec:v3-cmp06}); ledger row pending \\
-CMP07 & X1 $-$ X0 & slope radiation and shading & diagnostic; screen open (ANA-18) \\
-CMP08 & X2 $-$ X1 & PBL and surface-layer scheme & provisional (C19); screen open (ANA-18) \\
-CMP09 & X3 $-$ X0 & terrain source, default vs fine & diagnostic; analysis open (ANA-17) \\
-CMP10 & X3 $-$ X4 & terrain source, default vs coarse & diagnostic; X4 lineage caveat (ANA-17) \\
-CMP11 & X0 $-$ X4 & terrain source, fine vs coarse & diagnostic; X4 lineage caveat (ANA-17) \\
+CMP06 & X9 $-$ X0 & feedback, NAM, fine terrain & gate passed; confirmed bound (C28; Section~\ref{sec:v3-cmp06}) \\
+CMP07 & X1 $-$ X0 & slope radiation and shading & screen executed and failed on a measurement-limited criterion (C31) \\
+CMP08 & X2 $-$ X1 & PBL and surface-layer scheme & confirmed station contrast (C32, refining C19); sole C6 candidate \\
+CMP09 & X3 $-$ X0 & terrain source, default vs fine & gate executed and failed (ANA-17; gate review) \\
+CMP10 & X3 $-$ X4 & terrain source, default vs coarse & controlled after lineage closure (C29); diagnostics committed, no gate declared \\
+CMP11 & X0 $-$ X4 & terrain source, fine vs coarse & controlled after lineage closure (C29); diagnostics committed, no gate declared \\
 CMP12 & X7 / X0 / X8 & none (multiply confounded) & confirmed negative design finding (C16) \\
 \bottomrule
 \end{tabularx}
@@ -259,7 +260,8 @@ Second, a factorial effect-size panel (Figure~\ref{fig:v3-effects}) redraws the 
 Third, plan-view 2 m potential-temperature difference maps, east--west and north--south potential-temperature difference sections, and heat-deficit difference maps exist for every controlled pair as batch renders from the study's figure engine.
 These renders carry batch-level configuration provenance rather than per-image sidecars, are tracked in \texttt{figures-draft/HARVEST.md} for this draft, and have not passed the per-figure registration, inspection, and promotion gates that the promoted figures satisfy.
 They are therefore reproduced here as visual leads only, marked \emph{exploratory render}, and no number in this draft is read from them.
-The matched-time selection rule, common-AGL consistency checks, and promotion decisions for spatial and vertical figures are the subject of the open gate ANA-19; the terrain and process analyses are ANA-17 and ANA-18.
+Fourth, the gate analyses themselves were executed for this revision with committed scripts whose criteria were fixed before any output was read: a spatial/vertical coherence analysis over the registered ANA-16 footprint with fixed display hours (ANA-19; job 13948410), a terrain-geometry analysis with a two-part X4 lineage check, predeclared elevation bands, and terrain-correlation criteria (ANA-17; job 13948411), and a two-leg process screen combining aspect-stratified radiation diagnostics (ANA-18; job 13948412) with the frozen station pipeline applied to both process pairs (job 13948378).
+Their summary tables, criteria verdicts, exact input hashes, and registered diagnostic figures are committed with the draft, and each Results subsection below reports its gate outcome explicitly.
 
 \subsection{Pairing, Aggregation, and Short-Sample Scope}
 
@@ -392,22 +394,32 @@ The plotted 8 K line is a literature reference value, not a case-specific classi
 \subsection{Where the Driving-Product Response Sits: Maps, Sections, and Upper-Air Context}
 \label{sec:v3-spatial}
 
-\diagnosticnote{Everything in this subsection is a visual lead behind the open gate ANA-19.
-The matched-time selection rule, common-AGL interpolation checks, terrain-mask verification, and promotion decisions have not been executed, no ledger claim covers spatial or vertical structure, and no number is quoted from these figures.}
+\diagnosticnote{Gate executed with a negative outcome.
+The ANA-19 spatial-coherence analysis ran with predeclared criteria (job 13948410; \texttt{verification/data/spatial\_response\_criteria.csv}; ledger row C30): the shallow-confinement and fixed-column-consistency criteria passed at all ten pair-hours, but the floor sign-coherence criterion failed at 14:00--15:00 UTC, so the predeclared conjunction fails and no spatial figure is promoted.
+The maps and sections below are registered diagnostic candidates and the engine renders remain exploratory; all numbers come from the committed summary tables, none from the images.}
 
-The plan-view 2 m potential-temperature differences at 16:00 UTC place the GFS-minus-NAM warm anomaly over the basin interior under both feedback modes (Figure~\ref{fig:v3-drivemaps}).
-The visual lead is a spatially coherent, basin-interior response that repeats when the feedback flag changes, consistent with the fixed-column results rather than with a few anomalous stations.
-The east--west potential-temperature difference sections at the same hour suggest the response is concentrated below the surrounding rim elevation and decays with height (Figure~\ref{fig:v3-drivesections}), and the north--south section shows the same shallow structure along the second transect (Figure~\ref{fig:v3-drivesection-ns}).
-If these leads survive the ANA-19 selection and verification rules, they would supply the paper's ``where and how vertically confined'' figures; until then they are illustrations, not results.
+The executed analysis quantifies the visual lead.
+Over the registered evaluation footprint, the cell-area-weighted mean GFS-minus-NAM 2 m potential-temperature difference is positive at every retained hour under both feedback modes, growing from +0.89--+1.16 K at 14:00--15:00 UTC to +2.00--+2.74 K at 16:00--18:00 UTC (Figure~\ref{fig:v3-drivemaps}).
+The footprint fraction sharing the median sign is 0.64--0.67 in the first two retained hours --- below the predeclared two-thirds threshold, which is why the gate fails --- and 0.84--0.93 at 16:00--18:00 UTC.
+Vertical confinement passes at every pair-hour: the footprint mean of the absolute potential-temperature difference averaged over 50--500 m AGL exceeds the same quantity for 1500--2000 m AGL by factors of 1.45 to 3.12, and the ratio grows through the window (Figure~\ref{fig:v3-drivelayer}).
+The footprint-mean 50--500 m stability difference is negative at every pair-hour, from -3.04 to -4.33 K, matching the fixed-column result (C17), and the 1500--2000 m layer-mean difference itself turns weakly negative (-0.16 to -0.42 K) in the last two hours while the shallow layer stays strongly positive.
+The registered transect sections (Figure~\ref{fig:v3-drivesection-ns}) show the strongest warming in the lowest few hundred meters above the floor, a cool band near rim level, and a secondary elevated warm layer near 2500--3200 m MSL that remains an unanalyzed diagnostic lead.
+Because the predeclared floor-coherence criterion failed at the first two retained hours, Main C3 stays empty for this window; the committed summaries nevertheless document mean-sign coherence and shallow confinement explicitly, and the failure margin (0.001--0.025 below threshold) is recorded rather than argued away.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.49\textwidth]{figures-draft/theta2m_GFS-NAM_16z.png}
-\includegraphics[width=0.49\textwidth]{figures-draft/theta2m_GFS-NAM-1way_16z.png}
-\caption{\exploratorymark GFS-minus-NAM 2 m potential-temperature difference at 16:00 UTC under two-way feedback (left, X6$-$X5) and one-way feedback (right, X10$-$X3).
-Batch engine renders; the display hour is the middle of the decision window and was not selected by a verified rule.
-Visual lead for the open gate ANA-19; no quantitative claim rests on these panels.}
+\includegraphics[width=\textwidth]{verification/figures/candidates/wrf_spatial_theta2m_diff_d02.pdf}
+\caption{GFS-minus-NAM 2 m potential-temperature difference at the fixed display hours (14:00, 16:00, 18:00 UTC) under two-way (top, X6$-$X5) and one-way (bottom, X10$-$X3) feedback, with the registered evaluation footprint outlined in black and the 1700/2200 m terrain contours in gray.
+Registered diagnostic candidate from the executed ANA-19 analysis (job 13948410); not promoted because the predeclared floor-coherence criterion failed at 14:00--15:00 UTC (C30).}
 \label{fig:v3-drivemaps}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{verification/figures/candidates/wrf_spatial_agl50to500_diff_d02.pdf}
+\caption{As Figure~\ref{fig:v3-drivemaps}, but for the 50--500 m AGL layer-mean potential-temperature difference, the layer of the promoted fixed-column diagnostics.
+Registered diagnostic candidate (ANA-19, job 13948410); the shallow-confinement criterion computed from this layer passed at all ten pair-hours.}
+\label{fig:v3-drivelayer}
 \end{figure}
 
 \begin{figure}[H]
@@ -415,16 +427,15 @@ Visual lead for the open gate ANA-19; no quantitative claim rests on these panel
 \includegraphics[width=0.49\textwidth]{figures-draft/section_ew_GFS-NAM_16z.png}
 \includegraphics[width=0.49\textwidth]{figures-draft/section_ew_GFS-NAM-1way_16z.png}
 \caption{\exploratorymark East--west potential-temperature difference sections across the basin at 16:00 UTC for the two-way (left) and one-way (right) GFS-minus-NAM pairs.
-Batch engine renders behind gate ANA-19.
-The visual lead is a response concentrated below rim level; the common-AGL interpolation and terrain-mask behavior of these sections have not been verified.}
+Batch engine renders retained for comparison with the registered transect sections of Figure~\ref{fig:v3-drivesection-ns}.}
 \label{fig:v3-drivesections}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.6\textwidth]{figures-draft/section_ns_GFS-NAM_16z.png}
-\caption{\exploratorymark North--south potential-temperature difference section for the two-way GFS-minus-NAM pair at 16:00 UTC.
-Batch engine render behind gate ANA-19.}
+\includegraphics[width=\textwidth]{verification/figures/candidates/wrf_spatial_theta_sections_d02_16z.pdf}
+\caption{Registered diagnostic transect sections (ANA-19, job 13948410): GFS-minus-NAM potential-temperature difference along the USU07-to-USU03 transect at 16:00 UTC, the predeclared middle hour of the decision window, for the two-way (left) and one-way (right) pairs.
+The strongest warming sits in the lowest few hundred meters, with a cool band near rim level and a secondary elevated warm layer near 2500--3200 m MSL that is an unanalyzed lead.}
 \label{fig:v3-drivesection-ns}
 \end{figure}
 
@@ -538,7 +549,7 @@ The block-sensitivity intervals for stability, transport wind, PBL height, and t
 The two metrics with consistent hourly sign are small: 10 m-wind absolute error increased by +0.03 m s$^{-1}$ in all five hours, and surface pressure decreased by -0.77 Pa in bias and absolute error in all five hours on the nine-station sample.
 For comparison at the same terrain and physics, the CMP01 and CMP02 driving-product contrasts move stability by more than 3.6 K and transport wind by 0.8 to 1.0 m s$^{-1}$.
 The bounded-feedback conclusion of Section~\ref{sec:v3-feedback} therefore survives the change of terrain regime.
-This recomputation is committed with full provenance; its claim-ledger row and any figure promotion remain pending, so it is reported here as an analyzed contrast rather than a ledgered claim.
+This recomputation passed its predeclared gate (the ANA-20 falsifier --- a fine-terrain feedback effect approaching the driving-product magnitude --- did not occur) and is recorded as ledger row C28; no figure is promoted, and the engine renders below remain exploratory.
 
 \begin{table}[H]
 \caption{Fine-terrain feedback contrast CMP06 (X9 minus X0, \emph{two-way minus one-way}, the authoritative orientation of the comparison inventory and the reverse of the feedback rows in Table~\ref{tab:v3-effects}).
@@ -578,14 +589,26 @@ Batch engine renders; the quantitative result is Table~\ref{tab:v3-cmp06}.}
 \subsection{Terrain-Source Brackets (CMP09--CMP11)}
 \label{sec:v3-terrain}
 
-\diagnosticnote{The terrain analyses are behind the open gate ANA-17, and the coarse-terrain member X4 additionally carries an unresolved archive-path lineage caveat.
-No quantitative terrain claim is made in this draft, and the aggregate station-mean similarity of the terrain pairs must not be read as a null result for terrain geometry.}
+\diagnosticnote{Gate executed: CMP09 failed its predeclared criteria, and the X4 lineage check passed, closing that standing caveat (job 13948411; \texttt{verification/data/terrain\_response\_criteria.csv}; ledger row C29).
+No terrain slot is promoted; the quantitative values below are committed descriptive diagnostics, not gate-passed claims.}
 
 The archive brackets the static terrain source on an otherwise identical NAM one-way configuration: default minus fine (CMP09, X3$-$X0), default minus coarse (CMP10, X3$-$X4), and fine minus coarse (CMP11, X0$-$X4).
-The 16:00 UTC plan views (Figure~\ref{fig:v3-terrainmaps}) carry a consistent visual lead: the terrain-source response organizes along the basin rim, sidewall slopes, and tributary drainages rather than as a uniform basin-floor offset, and its apparent amplitude grows with the width of the source bracket.
-The east--west section for the fine bracket (Figure~\ref{fig:v3-terrainsection}, left) suggests the same edge-concentrated structure in the vertical.
-A locally generated prototype (Figure~\ref{fig:v3-terrainsection}, right) overlays the widest-bracket heat-deficit difference with the registered footprint; it is threshold-sensitive and unregistered, and is shown only to record the geometry-and-capacity hypothesis that ANA-17 is designed to test: that terrain-source choice changes where the simulated pool can sit, not merely a mean score.
-Station-mean surface scores are close across the terrain family, which demonstrates only that a geometric response can vanish in aggregate skill; the paired, elevation-aware diagnostics that could turn these leads into claims are exactly the content of the open gate.
+The executed analysis first resolves identity: the archived X4 \texttt{namelist.input} hashes byte-identically to the X0/X3 namelist, and its terrain is far smoother than the default member's, so the coarse-terrain member is confirmed as the same configuration family with only the static source changed (C29), and CMP10/CMP11 are controlled comparisons.
+The fine bracket itself is small on this grid: the X3-minus-X0 terrain difference has a root-mean-square of only 7.9 m (range -55 to +60 m), and its 2 m response is correspondingly small, with elevation-band means of 0.07--0.27 K (Figure~\ref{fig:v3-terrainpanel}).
+The response is slope-organized --- the slopes-band mean exceeds the floor band by factors of 1.7--2.4 at every hour, passing the first predeclared criterion --- but its area-weighted correlation with the terrain difference stays below the predeclared 0.3 magnitude at 14:00--16:00 UTC (reaching 0.34--0.36 only late in the window), so the CMP09 gate fails and Main C5 stays empty for this window.
+The coarse brackets are an order of magnitude larger (terrain RMS 91.9 and 93.1 m, ranges to -462/+487 m) and their committed diagnostics are correspondingly stronger: slopes-band responses of 1.2--1.5 K, terrain correlations of 0.50--0.67 at every hour, and station-sample mean responses up to +0.61 K.
+No gate was predeclared for the coarse brackets, so those values carry no claim; declaring and testing one is now unblocked by the lineage closure.
+The 16:00 UTC plan views (Figure~\ref{fig:v3-terrainmaps}) show the same picture visually: the terrain-source response organizes along the basin rim, sidewall slopes, and tributary drainages rather than as a uniform basin-floor offset, and its apparent amplitude grows with the width of the source bracket.
+The east--west section for the fine bracket (Figure~\ref{fig:v3-terrainsection}, left) suggests the same edge-concentrated structure in the vertical, and the unregistered local prototype (Figure~\ref{fig:v3-terrainsection}, right) records the geometry-and-capacity hypothesis a future coarse-bracket gate would test.
+Per-station model-minus-station elevations for all three members are committed (\texttt{verification/data/terrain\_station\_elevation.csv}), making the pressure-artifact mechanism of Section~\ref{sec:v3-disc-terrain} directly checkable.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{verification/figures/candidates/wrf_terrain_response_cmp09_d02.pdf}
+\caption{Registered diagnostic panel for the executed CMP09 analysis (ANA-17, job 13948411): (a) the X3$-$X0 terrain difference; (b) the 2 m potential-temperature response at the fixed 16:00 UTC display hour; (c) elevation-band means of the absolute response by hour; (d) the response-versus-terrain-difference density with the area-weighted correlation.
+The slope-organization criterion passed and the terrain-correlation criterion failed, so no promotion follows (gate review; C29 covers the lineage closure only).}
+\label{fig:v3-terrainpanel}
+\end{figure}
 
 \begin{figure}[H]
 \centering
@@ -593,7 +616,7 @@ Station-mean surface scores are close across the terrain family, which demonstra
 \includegraphics[width=0.32\textwidth]{figures-draft/theta2m_terrain-900m-9km_16z.png}
 \includegraphics[width=0.32\textwidth]{figures-draft/theta2m_terrain-3arcsec-5arcmin_16z.png}
 \caption{\exploratorymark Terrain-source difference fields for 2 m potential temperature at 16:00 UTC: default minus fine (left, CMP09, X3$-$X0), default minus coarse (center, CMP10, X3$-$X4), and fine minus coarse (right, CMP11, X0$-$X4).
-Batch engine renders behind gate ANA-17; the X4-based panels additionally carry the unresolved X4 lineage caveat.}
+Batch engine renders; the X4 lineage is now resolved (C29), so all three are controlled comparisons, but only CMP09 has an executed (and failed) gate.}
 \label{fig:v3-terrainmaps}
 \end{figure}
 
@@ -612,20 +635,32 @@ The heat-deficit counterpart for the widest bracket (Figure~\ref{fig:v3-terrainh
 \centering
 \includegraphics[width=0.6\textwidth]{figures-draft/heatdeficit_terrain-3arcsec-5arcmin_16z.png}
 \caption{\exploratorymark Fine-minus-coarse (CMP11, X0$-$X4) heat-deficit difference at 16:00 UTC on a fixed $\pm$1.6 MJ m$^{-2}$ scale.
-Batch engine render behind gate ANA-17 and the X4 lineage caveat.}
+Batch engine render; controlled after the lineage closure (C29), with no declared gate yet.}
 \label{fig:v3-terrainhd}
 \end{figure}
 
 \subsection{Process Treatments: Slope-Aware Radiation and PBL/Surface-Layer Scheme}
 \label{sec:v3-process}
 
-\diagnosticnote{Both process comparisons are behind the open screening gate ANA-18, and the archived run summaries for X1 and X2 do not expose a source-code commit, which is a recorded provenance caveat.
-The one quantitative statement below is the ledger's provisional claim C19; everything else is a visual lead.}
+\diagnosticnote{Screen executed (jobs 13948412 and 13948378; ledger rows C31 and C32).
+CMP07 failed its predeclared shortwave criterion for a measurement-limited reason recorded below; CMP08 produced a coherent station-sample contrast on the frozen pipeline and is the sole remaining Main C6 candidate.
+The archived run summaries for X1 and X2 still expose no source-code commit, a standing provenance caveat.}
 
 The slope-aware radiation pair (CMP07, X1$-$X0) changes only \texttt{slope\_rad}, \texttt{topo\_shading}, and \texttt{shadlen}, and the members are bitwise identical at initialization.
-Its 2 m potential-temperature differences near sunrise and in late morning (Figure~\ref{fig:v3-slope}) show a small-amplitude, terrain-organized pattern that migrates with the sun angle, concentrated on slopes and shaded aspects rather than the basin floor.
-Station-mean surface scores for X1 and X0 are nearly identical, which cannot distinguish a genuinely small response from a spatially local one that cancels in aggregate; the predeclared ANA-18 diagnostics (downward shortwave and longwave, skin temperature, near-surface stability, and slope/aspect stratification) exist to make that distinction.
-The corresponding heat-deficit difference at 16:00 UTC (Figure~\ref{fig:v3-processhd}, left) is likewise low amplitude and slope-organized.
+The executed aspect-stratified screen found that the archived downward-shortwave field does not respond at all --- region means stay at or below 0.02 W m$^{-2}$ and the south-minus-north facing contrast never exceeds 0.27 W m$^{-2}$ in magnitude --- because \texttt{slope\_rad} modifies the solar flux inside the surface energy budget while the archived SWDOWN diagnostic remains the flat-plane value, and no surface heat fluxes were archived.
+The predeclared shortwave criterion therefore fails on a diagnostic the archive cannot express (C31), and no Main C6 promotion follows from CMP07.
+The surface nevertheless responds exactly where the treatment acts: skin temperature on south-facing steep cells warms relative to north-facing steep cells by +1.08 to +2.23 K at every post-sunrise hour, with the 2 m potential-temperature contrast at +0.16 to +0.90 K, an aspect-organized pattern that paints the sidewalls and the Uinta slopes while leaving the basin floor untouched (Figure~\ref{fig:v3-radiationpanel}).
+At the station columns the pair is essentially null (stability +0.004 K with a +0.001 to +0.007 block interval, transport wind +0.006 m s$^{-1}$, 2 m-temperature bias +0.001~$^{\circ}$C; Table~\ref{tab:v3-process}), confirming that the aggregate similarity reflects station placement on the floor rather than treatment inertness.
+The engine plan views near sunrise and late morning (Figure~\ref{fig:v3-slope}) and the low-amplitude, slope-organized heat-deficit difference (Figure~\ref{fig:v3-processhd}, left) carry the matching visual leads.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{verification/figures/candidates/wrf_radiation_response_cmp07_d02.pdf}
+\caption{Registered diagnostic panel for the executed CMP07 screen (ANA-18, job 13948412): (a) the unresponsive flat-plane $\Delta$SWDOWN field and (b) the aspect-organized $\Delta$TSK field at 16:00 UTC; (c) mean $\Delta$SWDOWN on south- and north-facing steep cells by hour; (d) the south-minus-north facing contrast in skin temperature and 2 m potential temperature.
+Shading marks the pre-/near-sunrise hours excluded from the decision criteria.
+The predeclared shortwave criterion failed for the recorded measurement-limited reason; the skin-temperature response is a committed diagnostic, not a gate-passed claim (C31).}
+\label{fig:v3-radiationpanel}
+\end{figure}
 
 \begin{figure}[H]
 \centering
@@ -638,9 +673,34 @@ The hours differ from the other map figures deliberately: the treatment is sun-a
 \end{figure}
 
 The scheme pair (CMP08, X2$-$X1) changes only the boundary-layer and surface-layer schemes, MYJ/Eta against YSU/MM5, while holding the slope-aware radiation configuration fixed.
-Its 16:00 UTC map and section (Figure~\ref{fig:v3-myj}) show a coherent low-level response over the basin interior, visually larger and more organized than the CMP07 pattern.
-The ledger's provisional claim C19 records a matched two-site bulk potential-temperature contrast of 18.49 K for X2 against 17.18 K for X1 in the evaluation window, so the inherited description of a uniformly small sub-700 m scheme response is not established; scheme-aware common-AGL, flux, and turbulence diagnostics (with X2-only \texttt{TKE\_PBL} treated as one-sided evidence and PBL height treated as scheme-defined) are the open ANA-18 work.
-The MYJ/Eta heat-deficit difference (Figure~\ref{fig:v3-processhd}, right) is visibly stronger than the radiation counterpart, consistent with a process treatment that alters stable-layer mixing directly.
+Recomputed on the frozen station pipeline, the pair produces the most coherent non-driving-product contrast in the archive (Table~\ref{tab:v3-process}; C32): MYJ/Eta warms the 2 m-temperature bias by +0.37~$^{\circ}$C in all five hours, reduces the 10 m-wind absolute error by 0.145 m s$^{-1}$ in all five hours, raises the surface-pressure bias by +6.3 Pa in all five hours, and increases the fixed-layer transport wind by +0.098 m s$^{-1}$ in all five hours with a block interval (+0.069 to +0.126) that excludes zero.
+The stability response is mixed (+0.11 K, three positive hours of five, interval spanning zero), and the PBL-height decrease of 9.2 m is scheme-defined and carries no structural meaning across schemes.
+These magnitudes sit one order below the driving-product contrast and one to two orders above the feedback bounds, and the sign split --- temperature error worsens while wind error improves --- is another in-experiment demonstration that aggregate surface skill is metric-dependent.
+This refines the ledger's provisional C19: the earlier two-site bulk contrast (18.49 K for X2 against 17.18 K for X1) is now backed by matched common-AGL and surface summaries, and the inherited description of a uniformly small sub-700 m scheme response is not supported.
+Its 16:00 UTC map and section (Figure~\ref{fig:v3-myj}) show the matching coherent low-level response, and the MYJ/Eta heat-deficit difference (Figure~\ref{fig:v3-processhd}, right) is visibly stronger than the radiation counterpart, consistent with a process treatment that alters stable-layer mixing directly.
+On coherence and information gain the executed screen therefore selects CMP08 as the sole Main C6 candidate; whether it enters the main text or the supplement is an editorial decision at review, and it is not presented as a scheme skill ranking.
+
+\begin{table}[H]
+\caption{Executed process-pair station contrasts on the frozen pipeline (14:00--18:00 UTC; job 13948378).
+Values are means of five hourly spatial medians; sign counts are positive/negative hours; intervals are the descriptive two-hour circular block resample, not confidence intervals.
+PBL height is scheme-defined across CMP08 and is retained only with that caveat.}
+\label{tab:v3-process}
+\centering
+\footnotesize
+\begin{tabular}{lrrrr}
+\toprule
+Metric & \multicolumn{2}{c}{CMP07 (X1 $-$ X0)} & \multicolumn{2}{c}{CMP08 (X2 $-$ X1)} \\
+ & Mean & Signs & Mean & Signs \\
+\midrule
+T2 bias ($^{\circ}$C) & +0.001 & 3/1 & +0.37 & 5/0 \\
+10 m wind absolute error (m s$^{-1}$) & +0.001 & 2/2 & -0.145 & 0/5 \\
+Surface-pressure bias (Pa) & -0.12 & 0/4 & +6.3 & 5/0 \\
+Stability $S_{50:500}$ (K) & +0.004 & 3/1 & +0.11 & 3/2 \\
+Transport wind $U_{50:500}$ (m s$^{-1}$) & +0.006 & 4/0 & +0.098 & 5/0 \\
+PBL height (m) & +0.01 & 3/1 & -9.2 & 2/3 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \begin{figure}[H]
 \centering
@@ -748,12 +808,13 @@ Testing differential heat-deficit loss at all would require a longer matched int
 \subsection{Where the Driving-Product Response May Live}
 \label{sec:v3-disc-spatial}
 
-The exploratory maps and sections of Section~\ref{sec:v3-spatial} sketch a specific, testable spatial hypothesis: the driving-product response is basin-interior, roughly rim-bounded, and shallow, rather than a domain-wide or free-tropospheric offset.
-The upper-air candidates point the same way, with a more coherent difference at 700 hPa than at 500 hPa at the matched hours.
-If ANA-19 confirms that structure with a predeclared time-selection rule, verified interpolation and masking, and consistency with the fixed-column metrics, the paper gains its ``where and how vertically confined'' figures, and the shallow-confinement reading of the common-AGL result becomes a demonstrated spatial statement.
-If it does not, the fixed-column result stands on its own and the maps are dropped.
-The initialization profiles of Section~\ref{sec:v3-init} add the temporal end of the same hypothesis: the separation appears to be inherited from the driving state at 12:00 UTC rather than developed within the window.
-An experiment that swaps initial and boundary sources between the products is the designed follow-up.
+The executed ANA-19 analysis converts the spatial hypothesis into a split verdict.
+The confinement half is now demonstrated in committed summaries: the response is concentrated in the 50--500 m layer over the footprint at every pair-hour, with confinement ratios growing from about 1.5 to 3.1 through the window, and the footprint-mean signs match the fixed-column result throughout (C30).
+The coherence half failed its predeclared bar: at 14:00--15:00 UTC roughly a third of the footprint area carries the opposite 2 m sign, so the gate's two-thirds criterion fails and no spatial figure is promoted, even though the same criterion passes strongly from 16:00 UTC onward.
+The honest reading is that the driving-product response is real, shallow, and mean-coherent, but not yet spatially unanimous at the start of the retained window under this criterion; a future gate could predeclare a different bar, and this draft does not.
+The sections add an unanalyzed lead --- a secondary elevated warm layer near 2500--3200 m MSL above a rim-level cool band --- and the upper-air candidates point the same way, with a more coherent difference at 700 hPa than at 500 hPa.
+The initialization profiles of Section~\ref{sec:v3-init} add the temporal end of the same picture: the separation appears to be inherited from the driving state at 12:00 UTC rather than developed within the window.
+An experiment that swaps initial and boundary sources between the products remains the designed follow-up.
 
 \subsection{Heat-Deficit Structure as a Mechanism Question}
 \label{sec:v3-disc-mechanism}
@@ -768,23 +829,27 @@ A defensible mechanism analysis therefore needs a longer matched integration and
 \label{sec:v3-disc-terrain}
 
 The terrain bracket is scientifically attractive precisely because its aggregate scores are unremarkable: if terrain-source choice reorganizes the simulated pool along rims and tributaries without moving station means, then station-mean skill is the wrong instrument for terrain decisions in this basin.
-The visual leads support that framing, and the widest bracket additionally shows near-zero mean pressure bias for the coarse member at stations with large terrain displacement --- a reminder that pressure agreement can be a terrain artifact rather than skill.
-The ANA-17 design responds with paired, elevation-aware diagnostics on predeclared floor, rim, and tributary partitions, with CMP09 first because both of its members have clean lineage.
-Until the X4 archive-path caveat is resolved, the coarse-bracket comparisons remain illustrations, and no terrain ranking of any kind is offered.
+The executed ANA-17 analysis sharpens that framing in both directions.
+The fine bracket turns out to be physically small on this grid --- an 8 m root-mean-square terrain change producing a 0.1--0.3 K, slope-organized response --- and it failed the predeclared terrain-correlation criterion early in the window, so no terrain slot is filled from CMP09.
+The coarse brackets are the opposite: an order of magnitude larger in both terrain change and response, strongly terrain-correlated at every hour, and now cleanly controlled because the X4 lineage check closed the archive-path caveat (C29).
+The committed per-station elevation table makes the pressure-artifact mechanism concrete: the coarse member's near-zero mean pressure bias coexists with large station terrain displacement, a reminder that pressure agreement can be a terrain artifact rather than skill.
+A coarse-bracket geometry gate is therefore the natural next predeclaration; until one passes, no terrain ranking of any kind is offered.
 
 \subsection{Process Treatments as Bounded Questions}
 \label{sec:v3-disc-process}
 
-The two process pairs pose different kinds of questions.
-The slope-radiation pair asks whether a spatially local energy-balance treatment matters for a snow-covered stable basin even when station means barely move; its answer requires radiation-field and aspect-stratified diagnostics, not another aggregate score, and a small or null outcome would itself be a useful bounded finding for configuration guidance.
-The scheme pair asks how much the stable-layer structure depends on the turbulence and surface-layer formulation; the provisional C19 contrast and the coherent exploratory fields suggest the response is not negligible, and the honest framing is a process-treatment comparison rather than a scheme skill contest, because PBL height is scheme-defined and only the MYJ member exposes \texttt{TKE\_PBL}.
-The ANA-18 screen selects at most one of these for the eventual main text on coherence and information gain; the other, or a well-bounded null, belongs in supplementary material.
+The two process pairs posed different kinds of questions, and the executed screen answered both.
+The slope-radiation pair delivered a bounded, instructive outcome: the treatment acts exactly where its physics says it should --- an aspect-organized skin-temperature contrast of one to two kelvin on the sidewalls --- while remaining invisible to station means on the basin floor and to the archived flat-plane shortwave diagnostic (C31).
+That is a measurement lesson as much as a physics result: evaluating slope-aware radiation in this archive requires skin-temperature or newly output slope-corrected flux fields, and any future CMP07 gate must be predeclared on instruments the archive can actually express.
+The scheme pair delivered the coherent result the provisional C19 hinted at: consistently signed shifts across temperature, wind error, pressure, and transport wind (C32), one order below the driving-product contrast, with the instructive internal split that temperature error worsens while wind error improves.
+The honest framing remains a process-treatment comparison rather than a scheme skill contest, because PBL height is scheme-defined and only the MYJ member exposes \texttt{TKE\_PBL}.
+The screen therefore selects CMP08 as the sole Main C6 candidate on coherence and information gain, with its main-versus-supplement disposition left to review.
 Neither pair alters the paper's anchor result: both are NAM one-way configurations at fine terrain, inside which the driving-product contrast of the factorial is the larger effect by an order of magnitude on every shared diagnostic.
 
 \subsection{Nest Feedback as a Replicated Robustness Result}
 \label{sec:v3-disc-feedback}
 
-With the CMP06 recomputation, the feedback question now has a consistent answer at two terrain regimes: within-product feedback effects are one to two orders of magnitude smaller than the driving-product contrast at default terrain and at the fine-terrain control, with sensitivity intervals that span zero for the primary lower-layer metrics in both regimes.
+With the CMP06 recomputation (C28), the feedback question now has a consistent answer at two terrain regimes: within-product feedback effects are one to two orders of magnitude smaller than the driving-product contrast at default terrain and at the fine-terrain control, with sensitivity intervals that span zero for the primary lower-layer metrics in both regimes.
 The only consistently signed fine-terrain feedback effects --- slightly larger absolute 10 m wind error and slightly lower surface pressure in the two-way member --- are small enough to carry no configuration recommendation on their own.
 This is the appropriate role for the feedback factor in this study: a replicated robustness check that protects the driving-product conclusion, not a thesis.
 The result is specific to this case, window, domain geometry, and diagnostic set, and it licenses no general claim about nest feedback in other regimes or seasons.
@@ -805,10 +870,10 @@ Four elevation-spanning stations separate repeatedly from 31 January through 3 F
 The d03 interior domain excludes most bench and basin-end stations while d02 retains the full frozen sample (confirmed, C03), which fixes the evaluation grid choice.
 Model-minus-station elevation at the eleven fixed columns is median -2.0 m with range -32.4 to +14.3 m (confirmed, C24), so gross column displacement does not drive the factorial result, though representativeness limits remain.
 Native PBL height does not reproduce the driving-product separation (confirmed, C20), which blocks the most tempting single-variable explanation.
-The GFS-minus-NAM difference appears more coherent at 700 hPa than at 500 hPa at matched hours (diagnostic), a vertical-context lead for ANA-19.
-The slope-radiation pair's aggregate scores are nearly identical despite a controlled local treatment (diagnostic), a warning about aggregate metrics rather than a null result.
-The coarse-terrain member combines near-zero mean pressure bias with large station terrain displacement (diagnostic), demonstrating that pressure skill and terrain geometry must be separated before pressure is used to rank anything.
-Each diagnostic item above is queued behind its named gate and none is load-bearing for the paper's conclusions.
+The GFS-minus-NAM difference appears more coherent at 700 hPa than at 500 hPa at matched hours (diagnostic), a vertical-context lead now joined by the registered sections' elevated warm layer near 2500--3200 m MSL (diagnostic).
+The slope-radiation pair's aggregate null coexists with a one-to-two-kelvin aspect-organized skin-temperature response (C31), converting the earlier warning about aggregate metrics into a demonstrated case.
+The coarse-terrain member combines near-zero mean pressure bias with large station terrain displacement --- now directly checkable in the committed per-station elevation table under the closed X4 lineage (C29) --- demonstrating that pressure skill and terrain geometry must be separated before pressure is used to rank anything.
+Each remaining diagnostic item is queued behind a future predeclared gate and none is load-bearing for the paper's conclusions.
 
 \subsection{Why the Common-AGL Result Leads the Paper}
 
@@ -829,8 +894,8 @@ The observation network creates a second limit.
 Four stations establish surface context and eleven fixed columns support matched comparisons, but neither set observes the modeled vertical layer, and small nearest-cell elevation errors do not remove exposure and representativeness error.
 Independent in-basin vertical observations are required to evaluate inversion depth, layer stability, and the simulated heat deficit directly.
 Observation provenance and the full model-configuration record must also be completed before submission, as marked by the rewrite gates in this draft.
-Of the archived controlled questions that surround the factorial, the fine-terrain feedback recomputation is complete and reported in Section~\ref{sec:v3-cmp06}; three remain open under predeclared gates: the spatial and vertical coherence of the driving-product response (ANA-19), a terrain-geometry comparison (ANA-17), and one slope-shading or boundary-layer process comparison (ANA-18).
-Their sections in this draft carry visual leads and explicit status labels, and each enters a submission revision as a result only if its analysis passes the corresponding gate.
+All five evidence gates of the selected results architecture have now been executed with predeclared criteria (the complete decision record is the hybrid gate review): the fine-terrain feedback bound passed (Section~\ref{sec:v3-cmp06}); the heat-deficit maintenance leg, the spatial-coherence conjunction, and the fine-terrain-bracket geometry criteria failed and are reported as negatives with their margins; and the process screen selected the boundary-layer-scheme contrast as the sole remaining candidate slot, pending editorial review.
+Failed gates were not relaxed after inspection, and any renewed spatial or terrain claim requires a freshly predeclared criterion rather than a rescue of a failed one.
 Only after those steps should selected meteorological states be crossed with emissions and chemical mechanisms in a coupled attribution experiment.
 
 \section{Conclusions}
@@ -840,7 +905,8 @@ Relative to NAM, GFS is warmer at the evaluated surface sites, less stable from 
 Surface-pressure errors order the products in the opposite direction, so aggregate surface skill alone would not identify these lower-layer differences.
 A predeclared faster-loss criterion for the GFS heat deficit failed in all fourteen pair-definition combinations because the deficit increased in every member; the driving-product response is a state offset within this window, not a demonstrated difference in pool evolution.
 The within-product feedback responses are much smaller for all evaluated diagnostics, and a matched recomputation at the fine-terrain control pair reproduces that bound, with every fine-terrain feedback effect one to two orders of magnitude below the matched driving-product contrast and with sensitivity intervals spanning zero for the primary lower-layer metrics.
-The surrounding archive supplies controlled terrain, slope-radiation, and boundary-layer comparisons and spatial, vertical, and initialization diagnostics whose visual leads are catalogued in this working revision behind named analysis gates; they sharpen the questions the next revision can answer without altering the present conclusions.
+All five evidence gates of the selected results architecture were executed for this revision with predeclared criteria: beyond the passing feedback bound, the spatial analysis demonstrated shallow confinement while failing its floor-coherence bar at the first two retained hours, the terrain analysis closed the coarse-member lineage caveat while the fine bracket failed its correlation bar, and the process screen recorded a measurement-limited radiation outcome while selecting a coherent boundary-layer-scheme contrast --- warmer temperature bias, smaller wind error, stronger transport wind, all consistently signed --- as the one remaining candidate result.
+Failed gates are reported as negatives with their margins; nothing was promoted, and the surrounding exploratory material sharpens the questions the next revision can answer without altering the present conclusions.
 The result establishes a short-window difference in the meteorological state available to downstream chemistry; it does not identify the responsible product component, validate inversion depth, demonstrate event-scale persistence, calculate basin export, or predict ozone.
 The next discriminating steps are a longer matched factorial with an independent in-basin vertical reference and a design that separates initial from lateral-boundary contributions.
 
