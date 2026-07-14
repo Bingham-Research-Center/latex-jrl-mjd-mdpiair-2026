@@ -132,10 +132,6 @@ def fig_inversion_index(wrf: pl.DataFrame, hourly: pl.DataFrame, runs: list[str]
         if d.height:
             ax.plot(d["hour_mst"], d["dtheta"], color=color, lw=1.1, zorder=2, label=run)
     ax.plot(obs_d["hour_mst"], obs_d["dtheta"], color="black", lw=1.5, zorder=3, label="obs")
-    ax.axhline(8.0, color="0.4", lw=1.0, ls="--")
-    ax.annotate("8 K literature reference", xy=(0.99, 8.0), xycoords=("axes fraction", "data"),
-                xytext=(0, 6), textcoords="offset points", fontsize=8, color="0.35",
-                ha="right", va="bottom")
     ax.set_ylabel("Δθ bench − floor (K)")
     ax.set_xlabel("Local time (MST); shaded = night")
     ax.set_xlim(t_min, t_max)

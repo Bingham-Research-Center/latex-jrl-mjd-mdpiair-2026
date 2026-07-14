@@ -23,7 +23,7 @@ review of this draft is MAN-15.
 | Decision | Choice | Owner and basis |
 |---|---|---|
 | Title | "WRF Cold-Pool Structure and Evolution during a Uinta Basin Winter Ozone Episode" | John, 13 July 2026, from the candidates in `notes/narrative-and-hypotheses.md`. A reviewed alternative ("Short-Window Response of WRF Cold-Pool Structure to Driving Data and Nest Feedback...") keeps both factor names and the window in the title; revisit at coauthor review if desired. |
-| Bulk-theta figure | Regenerate on CHPC with the corrected annotation and include | John. Regeneration used identical hashed inputs; a pdftotext diff shows the label as the only text change. FIG-11 closed. The 8 K source citation remains a rewrite gate. |
+| Bulk-theta figure | Withhold and regenerate on CHPC without the 8 K line | Codex caretaker audit, 14 July 2026. The verified PCAPS source uses a non-equivalent crest-relative sounding deficit, so relabeling did not resolve the diagnostic mismatch. FIG-11 is reopened. |
 | Heat-deficit treatment | Full: Methods subsection, Results subsection, Table 3 | John. The candidate figure `wrf_heat_deficit_d02_13to18` remains diagnostic and unpromoted; promoting it later could replace or accompany Table 3. |
 | Surface pressure | Report the paired result and add ledger row C27 | John. Shows aggregate surface skill is metric-dependent, guarding against a "GFS generally inferior" over-read. |
 
@@ -61,8 +61,8 @@ New in v3 (in neither parent):
 `main.tex`:
 
 1. The promoted Figure 2 embedded "8 K CAP threshold" while its caption said
-   "literature reference" — a self-contradiction visible to any reader (now fixed
-   at the figure level by FIG-11).
+   "literature reference"; the later label change did not fix the diagnostic mismatch,
+   so the render is now withheld and FIG-11 requires line-free regeneration.
 2. The headline common-AGL result arrived mid-Results after the two-site index;
    the strongest evidence was buried.
 3. Methods promised nine pressure stations that Results never used — an
@@ -107,12 +107,13 @@ inventory; its aggregation is unpaired and disagrees with the committed pipeline
 
 - Abstract at 208 words (MDPI guideline is about 200).
 - The two-site hourly values lack a committed derived CSV (above).
-- Open rewrite gates carried in the draft: Synoptic provenance/QC/license (INV-17);
-  WRF/GFS/NAM citations and full configuration (MAN-11); heat-deficit method
-  citation (Whiteman-style valley heat deficit); the 8 K reference source
-  (PCAPS-era literature is the likely origin — verify before citing); CRediT,
-  funding, acknowledgments, conflicts, data-release (MAN-07/08); Paperpile export
-  (MAN-09).
+- Open rewrite gates carried in the draft: historical Synoptic request/QC/license
+  evidence (INV-17); exact WRF/GFS/NAM inputs and full configuration (MAN-11);
+  Paperpile-generated keys for the verified Whiteman and Adler heat-deficit sources;
+  line-free CHPC regeneration and re-promotion of the bulk-theta figure; CRediT,
+  funding, acknowledgments, conflicts, and data-release (MAN-07/08).
+- John's small curated bibliography export is a deferred input, not a blocker for
+  citation-independent manuscript editing; `paperpile.bib` remains untouched.
 - Literature basis: only the five verified `paperpile.bib` sources are cited.
   The per-paper critiques for Ahmadov/Neemann/Matichuk and the four synthesis
   collections live on the writing host (`~/reviews`) and were not readable on

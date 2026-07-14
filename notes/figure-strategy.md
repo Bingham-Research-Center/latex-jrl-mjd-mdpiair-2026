@@ -21,7 +21,7 @@ why the evaluated layer matters to air chemistry, and kept **Narrative C** in
 Discussion/reviewer reserve.
 The experimental manuscript uses L01 for observed context and L03 as the principal
 result.
-Hold L02 until CHPC regenerates the corrected 8 K annotation and the horizontally
+Hold L02 until CHPC regenerates it without the non-equivalent 8 K line and the horizontally
 separated two-site proxy earns a distinct role.
 
 That was a safe fallback, not a present instruction to add only L04.
@@ -38,8 +38,8 @@ spatial, and vertical figures before choosing the paper architecture.
 
 | Collection | Contents | What it is good for |
 |---|---|---|
-| Manuscript spine | Three promoted PDFs already used by `main.tex` | A complete minimum story: observed event, bulk surface stability, and four-run retention/ventilation. |
-| Tracked candidate manifest | 13 logical figures: 3 promoted, 4 provisional, 6 diagnostic | Provenance-complete alternatives and reviewer-reserve panels. |
+| Manuscript spine | Two promoted PDFs currently used by `main.tex`; one bulk-theta PDF withheld | A safe minimum story while CHPC regenerates the supporting surface-contrast panel. |
+| Tracked candidate manifest | 13 logical figures with the current status recorded in both manifests | Provenance-complete alternatives and reviewer-reserve panels. |
 | Standard external per-run sets | X0--X6, X9, and X10 each have 63 standard PNGs, plus optional `thetaz` and `heatdeficit_map` families | Selecting spatial, vertical, or mechanism examples for every controlled lever. |
 | Other external cases | X7 has 216 standard-family PNGs; X8 has about 86 in a non-standard layout | Longer-run and fine-domain context; neither forms a controlled resolution ladder. |
 | Cross-case external catalogue | 324 PNGs across ten difference pairs plus domain, profile, skew-T, heat-deficit, and heat-deficit-map families | Broad result discovery. The stale 21-file terrain-label duplicate set was removed on 12 July. |
@@ -53,7 +53,7 @@ An archive PNG is not eligible for the paper until it receives a row in
 | ID | Figure or family | Availability | Question answered | Narrative fit | Rewrite decision |
 |---|---|---|---|---|---|
 | L01 | Observed floor-to-bench 2 m-temperature evolution | **Promoted** | Did a strong, spatially structured cold-air-pool event occur? | A, B | Keep as Figure 1. |
-| L02 | Observed/model Mountain Home-minus-Pariette Draw bulk theta contrast | **Promoted but held from the experimental rewrite pending regeneration** | Does each forcing family reproduce the observed floor-to-bench thermal contrast? | A, B | Supporting only; it shows the two-way pair, is not a vertical profile, and needs the corrected 8 K annotation. |
+| L02 | Observed/model Mountain Home-minus-Pariette Draw bulk theta contrast | **Withheld pending line-free regeneration** | Does each forcing family reproduce the observed floor-to-bench thermal contrast? | A, B | Supporting only; it shows the two-way pair, is not a vertical profile, and must be regenerated without the non-equivalent 8 K line before re-promotion. |
 | L03 | Four-run 50--500 m AGL stability, transport wind, and PBLH | **Promoted** | Does the GFS--NAM response persist under both feedback modes, and is feedback smaller? | A, B, C | Keep as the main Results figure. |
 | L04 | Factorial effect-size summary for stability, transport wind, T2 error, and PBLH | **Not plotted; all inputs verified** in DATA17, DATA19, DATA24, and DATA26 | How large are the two forcing rows, two feedback columns, and their interaction on one comparable display? | A, C | Best optional new plot; no WRF required. |
 | L05 | GFS-minus-NAM two-way 2 m-theta maps (`diff_gfs_nam`) | **21 external PNGs** | Where is the forcing response located under two-way feedback? | A, B | Select one hour only if spatial structure is discussed. |

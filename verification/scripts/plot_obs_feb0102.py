@@ -16,7 +16,7 @@ Whiteman & Hoch 2014 (JAMC 53, pseudo-vertical profiles):
    (cividis clamped to [0, 0.6]; CVD- and print-safe, all lines >= 3:1 on white)
    with distinct line styles as secondary encoding. Midnight (MST) ticks.
 3. obs_inversion_index_feb0102.png -- CAP bulk metrics: bench-minus-floor
-   delta-theta (PCAPS 8 K threshold marked) and the valley heat deficit
+   delta-theta and the valley heat deficit
    H = sum rho*cp*(theta_top - theta)*dz integrated over the station pseudo-profile.
 
 Data stays LOCAL: reads the obs parquet from the local cache (never committed; the
@@ -302,10 +302,6 @@ def fig_inversion_index(hourly: pl.DataFrame, names: dict, out_dir: Path) -> Non
         shade_nights(ax, t_min, t_max)
 
     ax1.plot(dth["hour_mst"], dth["dtheta"], color="#00224e", lw=1.3)
-    ax1.axhline(8.0, color="0.4", lw=1.0, ls="--")
-    ax1.annotate("8 K literature reference", xy=(0.99, 8.0), xycoords=("axes fraction", "data"),
-                 xytext=(0, -10), textcoords="offset points", fontsize=8, color="0.35",
-                 ha="right")
     ax1.set_ylabel(
         f"Δθ, {names[top]['name']} ({names[top]['elev_m']:.0f} m)\n"
         f"− {names[floor]['name']} ({names[floor]['elev_m']:.0f} m)  (K)"

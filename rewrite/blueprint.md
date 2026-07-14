@@ -102,7 +102,7 @@ exclude controlled X0--X10 results after their gates close.
 |---|---|---|---|
 | Figure 1 | `figures/obs_temp_timeseries_feb0102.pdf` | Include | Efficiently establishes multi-day surface context while its caption can state the spatial-profile limitation. |
 | Figure 2 | `figures/wrf_retention_ventilation_d02_14to18.pdf` | Include as the main result | Directly shows both factors, the common-AGL metrics, time evolution, station spread, and the scheme-dependent PBLH companion. |
-| Current bulk-theta panel | `figures/wrf_inversion_index_feb0102_gfs2way_vs_nam2way_d02_14to18.pdf` | Hold from the test manuscript | It shows only the two-way pair, uses horizontally separated sites, and the promoted PDF still needs the corrected “8 K literature reference” annotation. |
+| Current bulk-theta panel | `figures/wrf_inversion_index_feb0102_gfs2way_vs_nam2way_d02_14to18.pdf` | Withhold pending CHPC regeneration | It shows only the two-way pair, uses horizontally separated sites, and the stored PDF contains an 8 K line from a non-equivalent vertical sounding diagnostic; regenerate without the line before re-promotion. |
 | L04 effect-size panel | summary CSVs already tracked | Best next local figure | It can summarize all five estimands without new WRF output; promote only after a manuscript-specific script, provenance row, and visual review. |
 | L10 domain/station locator | current candidate | Conditional Methods figure | Add only if readers cannot understand why d02 is the common domain or how the fixed sites are distributed. |
 | Common-AGL GFS-minus-NAM sections | CHPC archive | Reviewer reserve or supplement | They can test whether the response is shallow and basin confined, but need a matched-time selection and manifest promotion. |
@@ -120,7 +120,7 @@ view.
 
 1. Record Synoptic provider citation, access route, API QC flags, station ownership, sensor metadata, completeness rule, uncertainty treatment, and license.
 2. Add WRF, GFS, and NAM citations plus map projection, domain dimensions and centers, time step, boundary interval, static-geography versions, and snow initialization from as-run evidence.
-3. Verify every literature statement against the underlying paper passage and complete the Paperpile export for sources that survive.
+3. Verify every literature statement against the underlying paper passage; insert citation keys later from John's small curated bibliography export without making that export a blocker for citation-independent editing.
 4. Decide whether the two-site bulk-theta panel returns after CHPC regeneration.
 5. Obtain author, CRediT, funding, acknowledgment, conflict, and data-release decisions.
 
