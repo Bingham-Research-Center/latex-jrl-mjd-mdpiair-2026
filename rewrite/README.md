@@ -16,6 +16,7 @@ The experimental manuscript stays at repository root as `_manuscript_test.tex` s
 | Understand the minimum verified argument and its limits | `rewrite/blueprint.md` |
 | Read or edit the experimental paper | `_manuscript_test.tex` |
 | Dispatch a bounded CHPC figure, lookup, or gate packet | `rewrite/CHPC-CODEX-PROMPT.md` |
+| Run the active v3 figure recomputations | `rewrite/CHPC-V3-FIGURE-RECOMPUTE-HANDOFF.md` |
 | Check the source audit that triggered the rewrite | `notes/manuscript-audit-2026-07-13.md` |
 | Verify a claim or run identity | `notes/claim-evidence-ledger.md`, then the exact artifact named there |
 

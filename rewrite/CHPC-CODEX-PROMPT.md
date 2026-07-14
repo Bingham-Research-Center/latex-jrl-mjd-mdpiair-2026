@@ -6,6 +6,12 @@ branch. Current scientific priorities live in
 `rewrite/HYBRID-ARCHITECTURE-HANDOFF.md`; this file owns only CHPC bootstrap,
 execution, and return conventions.
 
+The active multi-product v3 figure dispatch is factored into
+`rewrite/CHPC-V3-FIGURE-RECOMPUTE-HANDOFF.md`.
+Use its immutable source commit and exact boundary after reading this bootstrap.
+The ANA-16 packet retained at the end of this file is a completed historical
+record and must not be copied or rerun.
+
 Use one bounded request per dispatch:
 
 - `FIGURE`: regenerate or audit a named figure from existing data;
@@ -254,10 +260,11 @@ STOP_IF: <unresolved identity, missing immutable input, invalid metric, unsafe w
   or other condition that prevents a valid pass/fail result>
 ```
 
-## Current bounded dispatch: 20260713-c4-ana16
+## Completed dispatch record: 20260713-c4-ana16 (do not rerun)
 
-This packet was added after critique on CHPC.  It closes only the first gate in the
-frozen order; it does not authorize C3, C5, C6, or supplement C2 work.
+This packet was executed and is retained only as provenance for the completed gate.
+Its result is recorded in `rewrite/HYBRID-GATE-REVIEW.md`.
+It authorizes no current computation or repository write.
 
 ```text
 REQUEST_ID: 20260713-c4-ana16

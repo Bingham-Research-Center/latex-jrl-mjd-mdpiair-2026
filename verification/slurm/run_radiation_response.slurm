@@ -14,11 +14,14 @@
 # verification/provenance/run-inventory.csv.
 set -euo pipefail
 
-PY=/uufs/chpc.utah.edu/common/home/u0737349/software/pkg/miniforge3/envs/brc-tools-2026/bin/python
-REPO=/uufs/chpc.utah.edu/common/home/u0737349/gits/latex-jrl-mjd-mdpiair-2026
-ARCHIVE=/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive
-BRC_TOOLS=/uufs/chpc.utah.edu/common/home/u0737349/gits/brc-tools
-OUT=${ANA18R_OUT_DIR:-/scratch/general/vast/u0737349/latex_jrl_ana18r_${SLURM_JOB_ID}}
+# Defaults preserve the established CHPC layout.  Overrides allow the job to run
+# from clean worktrees at the exact manuscript and brc-tools commits named by a
+# dispatch without altering an existing checkout.
+PY="${AIR_PYTHON:-/uufs/chpc.utah.edu/common/home/u0737349/software/pkg/miniforge3/envs/brc-tools-2026/bin/python}"
+REPO="${AIR_REPO:-/uufs/chpc.utah.edu/common/home/u0737349/gits/latex-jrl-mjd-mdpiair-2026}"
+ARCHIVE="${WRF_ARCHIVE_ROOT:-/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive}"
+BRC_TOOLS="${BRC_TOOLS_DIR:-/uufs/chpc.utah.edu/common/home/u0737349/gits/brc-tools}"
+OUT="${ANA18R_OUT_DIR:-/scratch/general/vast/$USER/latex_jrl_ana18r_${SLURM_JOB_ID}}"
 
 X0=${ARCHIVE}/pelican2013_nam_3_1_333m_75lev_oneway_terrain3s/full6h/run_20260708T021809Z
 X1=${ARCHIVE}/pelican2013_nam_3_1_333m_75lev_oneway_terrain3s_slope/full6h/run_20260710T003606Z
@@ -35,6 +38,9 @@ cd "$REPO"
 echo "start_utc=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 echo "host=$(hostname -f)"
 echo "head=$(git rev-parse HEAD)"
+echo "python=$PY"
+echo "brc_tools=$BRC_TOOLS"
+echo "brc_tools_head=$(git -C "$BRC_TOOLS" rev-parse HEAD)"
 echo "out=$OUT"
 
 "$PY" verification/scripts/analyze_radiation_response.py \

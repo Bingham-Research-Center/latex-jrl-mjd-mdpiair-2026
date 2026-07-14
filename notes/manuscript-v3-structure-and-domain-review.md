@@ -224,6 +224,12 @@ annotation, and do not imply that the ozone series validates the modeled layer.
 
 ### Bounded CHPC commands from John's figure review
 
+These commands document the scientific selections made during review.
+The executable source of truth, including preflight hashes, exact output mappings,
+the older line-free overlay baton, locator/radiation rerenders, allowed writes, and
+return protocol, is `rewrite/CHPC-V3-FIGURE-RECOMPUTE-HANDOFF.md`.
+Do not dispatch this subsection separately.
+
 Refresh the d02 CMP11 top-down heat-deficit difference without changing the audited
 default case configuration:
 
@@ -247,15 +253,10 @@ sbatch verification/slurm/pelican_figures.slurm \
   --output-dir /scratch/general/vast/$USER/latex_jrl_cmp11_d03_review
 ```
 
-Generate only the two driving-product profiles at initialization and one hour later:
-
-```bash
-sbatch verification/slurm/pelican_figures.slurm \
-  --case gfs,nam \
-  --figure profile \
-  --lead 0,1 \
-  --output-dir /scratch/general/vast/$USER/latex_jrl_gfs_nam_profiles_review
-```
+Generate only the two driving-product profiles at initialization and one hour later.
+Use the shared-axis manuscript renderer and exact command in
+`rewrite/CHPC-V3-FIGURE-RECOMPUTE-HANDOFF.md`; the generic per-hour profile family
+auto-scales each output independently and is not the final review command.
 
 After visual inspection, copy and rename only the selected files into `figures-draft/`
 using the filenames already wired in `_manuscript_v3.tex`.
@@ -272,7 +273,7 @@ Registration and promotion remain separate decisions.
 | Common-pipeline effects | Driving-product response dominates shared lower-layer metrics; pressure/wind error prevent an overall ranking | Register and restyle the working plot |
 | Retention/ventilation | Caption now carries the approximate 3.6 K and 0.8--1.0 m s-1 separations | Independent vertical observation remains absent |
 | Driving-product map | Early patchiness and the failed sign-share criterion are explicit | Editorial main/supplement/reserve decision |
-| CMP11 d03 sections | Caption will state fine-minus-coarse sign and prohibit drainage/wave inference | CHPC render, inspection, and a declared d03 terrain gate |
+| CMP11 d03 sections | Caption will state fine-minus-coarse sign and prohibit drainage/wave inference | CHPC render and inspection; any quantitative claim would require a separately declared future gate |
 | CMP11 d02/d03 top-down heat deficit | Sign, domain roles, named regional features, common crest/scale, and single-time limitation are explicit | d03 render plus time-resolved/common-support quantification |
 | Horsepool 12/13 UTC profiles | Planned caption distinguishes initialized state from one-hour evolution and states the no-observation limit | CHPC render and actual profile interpretation |
 | Heat-deficit trajectory | State offset versus within-window change is explicit | Longer controlled integrations before persistence claims |
