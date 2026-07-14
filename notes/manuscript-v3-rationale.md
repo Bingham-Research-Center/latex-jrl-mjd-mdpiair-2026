@@ -125,3 +125,35 @@ v3 changes no promoted-figure admission rules and does not replace `main.tex`.
 If John prefers this structure after review, follow `rewrite/README.md`
 promotion conditions and MAN-13: coauthor review first, then merge selected
 prose into `main.tex` on a `jrl/` branch.
+
+## Maximal working revision and gate execution — 13 July 2026 (late session)
+
+At John's direction ("a deliberately too-long manuscript with too many figures,
+because there is nothing to lose on a branch"), `_manuscript_v3.tex` was expanded on
+branch `jrl/chpc-20260713-maximal-draft` from 3 to 23 figures and from 3 to 8 tables.
+The conservative synthesis reviewed earlier remains at commit `efb8af2`.
+
+Editorial mode: over-inclusive with explicit status labels (promoted / registered
+candidate / exploratory render), a `\diagnosticnote{}` macro, and per-figure
+provenance in captions.  Exploratory engine renders are catalogued in
+`figures-draft/HARVEST.md`; no number is read from them.  `make v3-check` still passes.
+
+In the same session all four remaining Architecture C gates were executed with
+criteria fixed in committed scripts before any output was read
+(`rewrite/HYBRID-GATE-REVIEW.md` holds the full record and a proposed final C spine):
+
+| Gate | Outcome | Evidence |
+|---|---|---|
+| ANA-20 / Supp C2 (CMP06) | **Pass** — fine-terrain feedback bound replicates; kept as a table | `verification/data/cmp06_*.csv`; job 13948333; C28 |
+| ANA-19 / Main C3 | **Fail** — P2/P3 passed 10/10, P1 floor sign-share missed 2/3 at 14–15 UTC | `verification/data/spatial_response_*.csv`; job 13948410; C30 |
+| ANA-17 / Main C5 | **CMP09 fail** (terrain correlation); **X4 lineage resolved**, CMP10/11 now controlled | `verification/data/terrain_*.csv`; job 13948411; C29 |
+| ANA-18 / Main C6 | CMP07 screen fail (flat-plane SWDOWN limitation; TSK lead recorded); **CMP08 selected** as sole C6 candidate | `verification/data/radiation_response_*.csv`, `process_pairs_*.csv`; jobs 13948412/13948378; C31/C32 |
+
+New number provenance for the expanded draft: CMP06 values from
+`cmp06_{retention,surface_skill}_pair_summary.csv`; CMP08/CMP07 station values from
+`process_pairs_*_pair_summary.csv`; spatial coherence/confinement values from
+`spatial_response_summary.csv`; terrain lineage and band diagnostics from
+`terrain_response_summary.csv` and `ana17-terrain-response-13948411.json`; radiation
+aspect contrasts from `radiation_response_summary.csv`.  Five new figures are
+registered as diagnostics in `verification/figures/manifest.csv`; nothing was
+promoted, and `figures/MANIFEST.md` is unchanged.

@@ -12,11 +12,11 @@ Do not mark a scientific task done because prose exists; mark it done only when 
 - [x] **FIG-13 · done** — Reconciled stale X9, terrain-label, and cross-case-count statements against `verification/figures/archive-inventory.md` without equating rendering with analysis or promotion.
 - [x] **NAR-07 · done** — Presented all three packages; John selected Architecture C, the hybrid, on 13 July 2026.
 - [x] **ANA-16 · done** — Validated the productized heat-deficit trajectory, footprint/crest definitions, masks, units, and sensitivity; the weaker-state criterion passed 14/14 and the maintenance criterion failed 0/14, so Main C4 is dropped and only the footprint-scoped weaker-state claim is licensed (C26; `rewrite/HYBRID-GATE-REVIEW.md`).
-- [ ] **ANA-19 · next** — Close Main C3 with a rule-based matched-time spatial/vertical selection, common-AGL support, exact provenance, and a pass/fail promotion decision.
-- [ ] **ANA-17 · next** — Analyse CMP09 first with terrain/elevation-aware diagnostics; analyse CMP10/CMP11 only after resolving the X4 path-lineage gate, then pass, demote, or drop Main C5.
-- [ ] **ANA-18 · next** — Screen both CMP07 radiation fields and CMP08 common-AGL/flux diagnostics before selecting at most one Main C6 result.
-- [ ] **ANA-20 · next** — Recompute CMP06 on matched surface/common-AGL/process definitions and bound it relative to the driving-state result for supplement C2.
-- [ ] **MAN-14 · blocked by ANA-16--ANA-20 and review** — Restructure `_manuscript_test.tex` only after the hybrid gate review and John's figure-spine review.
+- [x] **ANA-19 · done (gate failed)** — Predeclared spatial-coherence criteria executed on CMP01/CMP02 (job 13948410): shallow confinement and fixed-column consistency passed 10/10 pair-hours, but the 2/3 floor sign-share criterion failed at 14--15 UTC, so Main C3 is dropped for this window and no spatial figure is promoted (C30; `rewrite/HYBRID-GATE-REVIEW.md`).
+- [x] **ANA-17 · done (CMP09 gate failed; X4 lineage resolved)** — Slope organization passed but the terrain-correlation criterion failed at 14--16 UTC (job 13948411), so Main C5 is dropped on CMP09; the two-part X4 lineage check passed, closing the archive-path caveat and making CMP10/CMP11 controlled (C29; their descriptive diagnostics are committed without a claim).
+- [x] **ANA-18 · done (CMP08 selected)** — CMP07's predeclared SWDOWN criterion failed for a measurement-limited reason while its aspect-organized TSK response was recorded (job 13948412; C31); the CMP08 station leg on the frozen pipeline is coherent and consistently signed (job 13948378; C32) and is the sole Main C6 candidate, disposition at John's review.
+- [x] **ANA-20 · done (pass)** — CMP06 recomputed on the frozen definitions (job 13948333): every fine-terrain feedback effect is one to two orders below the driving-product contrast with sensitivity intervals spanning zero for the primary metrics; kept as the compact Supplement C2 result (C28).
+- [ ] **MAN-14 · blocked by review** — All five gates are now executed (see `rewrite/HYBRID-GATE-REVIEW.md`, including the proposed final C spine); restructure `_manuscript_test.tex` only after John reviews the gate outcomes and figure spine.
 
 - [ ] **INV-01 · next** — Locate the out-of-band July 9 provenance archive and verify SHA-256 `b616ec6b4ff70f3a36048904d5cad7a99a2563ba4a19fd79198fbf923332a958`.
 - [x] **INV-02 · done** — Mapped the three JRL touchstone header fingerprints to exact durable archive basenames.
@@ -96,7 +96,7 @@ Do not mark a scientific task done because prose exists; mark it done only when 
 - [x] **FIG-09 · done for first-draft spine** — Promoted the observed evolution, bulk theta contrast, and common-AGL retention/ventilation PDFs and completed both manifests.
 - [ ] **FIG-10 · later** — Retain reproducible supplementary/reviewer-reserve diagnostics outside `figures/`.
 - [x] **FIG-11 · done** — Regenerated the promoted bulk-theta figure on CHPC (2026-07-13) with the 8 K line labeled as a literature reference; a pdftotext diff shows the label as the only text change, and both manifests and hashes are updated.
-- [ ] **FIG-12 · later/conditional** — Build the no-new-WRF L04 factorial effect-size panel only if an expanded architecture gives it a distinct decision beyond Table 2; register and promote it before manuscript use.
+- [x] **FIG-12 · done for working draft** — The L04 factorial effect-size panel is built from the committed summaries (`verification/scripts/plot_factorial_effects.py`, including the CMP06 fine-terrain row) and appears in the maximal working draft with an explicit not-registered status note; register and promote before any submission use.
 
 ### Manuscript and submission
 
@@ -112,7 +112,7 @@ Do not mark a scientific task done because prose exists; mark it done only when 
 - [ ] **MAN-10 · later** — Run an unused/missing citation audit after the export stabilizes.
 - [x] **MAN-12 · done for experimental rewrite** — Created the isolated blank-slate manuscript, evidence/argument blueprint, build target, and figure-selection rationale.
 - [ ] **MAN-13 · next** — Reconcile the selected expanded architecture with CHPC-only facts and coauthor review before merging selected prose into `main.tex`.
-- [ ] **MAN-15 · next** — Review `_manuscript_v3.tex`, the synthesis of the baseline and experimental drafts plus the ANA-16 heat-deficit and C27 pressure evidence (built by `make v3-pdf`, guarded by `make v3-check`; rationale in `notes/manuscript-v3-rationale.md`), and decide its relationship to MAN-13/MAN-14 and `main.tex`.
+- [ ] **MAN-15 · next** — Review `_manuscript_v3.tex`, now expanded at John's request into the deliberately maximal working draft on branch `jrl/chpc-20260713-maximal-draft` (23 figures, 8 tables, all five gate outcomes incorporated with status labels; built by `make v3-pdf`, guarded by `make v3-check`; rationale in `notes/manuscript-v3-rationale.md`), and decide its relationship to MAN-13/MAN-14 and `main.tex`.
 - [ ] **PUB-01 · later** — Obtain Michael's provenance/diagnostic review and Loknath/Seth's chemistry-framing review.
 - [ ] **PUB-02 · later** — Build and inspect a dated coauthor-review PDF.
 - [ ] **PUB-03 · later** — Compile the allowlisted ZIP in an independent environment with pdfLaTeX, BibTeX, and Ghostscript.

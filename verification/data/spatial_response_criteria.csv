@@ -1,0 +1,5 @@
+criterion,threshold,passed
+P1_floor_coherence,0.6666666666666666,False
+P2_shallow_confinement,low>aloft,True
+P3_fixed_column_consistency,stab<0 and theta2m>0,True
+ANA19_gate,P1 and P2 and P3,False

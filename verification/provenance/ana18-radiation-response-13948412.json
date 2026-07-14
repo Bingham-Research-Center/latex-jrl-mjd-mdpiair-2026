@@ -1,0 +1,135 @@
+{
+  "argv": [
+    "verification/scripts/analyze_radiation_response.py",
+    "--run",
+    "x0=/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway_terrain3s/full6h/run_20260708T021809Z",
+    "--run",
+    "x1=/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway_terrain3s_slope/full6h/run_20260710T003606Z",
+    "--domain",
+    "2",
+    "--start",
+    "2013-02-02T14:00:00",
+    "--end",
+    "2013-02-02T18:00:00",
+    "--out-dir",
+    "/scratch/general/vast/u0737349/latex_jrl_ana18r_13948412"
+  ],
+  "criteria": {
+    "ANA18_cmp07_screen_passed": false,
+    "R1": false,
+    "R1_min_contrast_w_m2": 5.0,
+    "R2": true
+  },
+  "definitions": {
+    "aspect_half_width_deg": 45.0,
+    "context_hours_utc": [
+      14,
+      15
+    ],
+    "context_reason": "local sunrise near 14:40 UTC makes shortwave contrasts degenerate before 16 UTC",
+    "decision_hours_utc": [
+      16,
+      17,
+      18
+    ],
+    "edge_margin_cells": 5,
+    "mask_cell_counts": {
+      "north": 2698,
+      "south": 3195,
+      "steep": 10292
+    },
+    "min_slope_deg": 2.0
+  },
+  "environment": {
+    "SLURM_JOB_ID": "13948412",
+    "SLURM_JOB_NODELIST": "notch137"
+  },
+  "generated_utc": "2026-07-14T04:22:04.604747+00:00",
+  "git_head": "517a19b4d0e3abd10161812f50840c7df887004e",
+  "grid_checks": {
+    "coordinate_reference_run": "x0",
+    "pairs": {
+      "x1_minus_x0": {
+        "hgt_max_abs_difference_m": 0.0
+      }
+    },
+    "runs": {
+      "x0": {
+        "dx_difference": 0.0,
+        "dy_difference": 0.0,
+        "hgt_max_abs_difference_from_mask_run_m": 0.0,
+        "lat_max_abs_difference": 0.0,
+        "lon_max_abs_difference": 0.0,
+        "mapfac_max_abs_difference": 0.0
+      },
+      "x1": {
+        "dx_difference": 0.0,
+        "dy_difference": 0.0,
+        "hgt_max_abs_difference_from_mask_run_m": 0.0,
+        "lat_max_abs_difference": 0.0,
+        "lon_max_abs_difference": 0.0,
+        "mapfac_max_abs_difference": 0.0
+      }
+    }
+  },
+  "host": "notch137.ipoib.int.chpc.utah.edu",
+  "inputs": {
+    "x0:2013-02-02T14:00:00": {
+      "bytes": 49720928,
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway_terrain3s/full6h/run_20260708T021809Z/wrfout_d02_2013-02-02_14:00:00",
+      "sha256": "f106d4fe0e8e7de5dd1f2ea4d91d21bbefde7be530a84279407be0b58c6c5ad1"
+    },
+    "x0:2013-02-02T15:00:00": {
+      "bytes": 50831790,
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway_terrain3s/full6h/run_20260708T021809Z/wrfout_d02_2013-02-02_15:00:00",
+      "sha256": "9d737f6b9385a9e18804f3655713c910250d9d44de741af7418f85be0817761d"
+    },
+    "x0:2013-02-02T16:00:00": {
+      "bytes": 50831045,
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway_terrain3s/full6h/run_20260708T021809Z/wrfout_d02_2013-02-02_16:00:00",
+      "sha256": "ac3b6888b8f363a2218c0444ccc45291b0774ade1781807737f606993e3d27da"
+    },
+    "x0:2013-02-02T17:00:00": {
+      "bytes": 50894760,
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway_terrain3s/full6h/run_20260708T021809Z/wrfout_d02_2013-02-02_17:00:00",
+      "sha256": "6895d80b4471a4ab1ba18927453ed64c638a3995836886715fca654de993bcc9"
+    },
+    "x0:2013-02-02T18:00:00": {
+      "bytes": 50989426,
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway_terrain3s/full6h/run_20260708T021809Z/wrfout_d02_2013-02-02_18:00:00",
+      "sha256": "eb6ec8c7ef8783286e58c9f36b55fa9513eade815317edebc4c2bf305ca55144"
+    },
+    "x1:2013-02-02T14:00:00": {
+      "bytes": 49720928,
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway_terrain3s_slope/full6h/run_20260710T003606Z/wrfout_d02_2013-02-02_14:00:00",
+      "sha256": "f106d4fe0e8e7de5dd1f2ea4d91d21bbefde7be530a84279407be0b58c6c5ad1"
+    },
+    "x1:2013-02-02T15:00:00": {
+      "bytes": 50903472,
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway_terrain3s_slope/full6h/run_20260710T003606Z/wrfout_d02_2013-02-02_15:00:00",
+      "sha256": "529d9d15f6f800e9f07bc388bf29747908a1d52307f742adeba7d3f027293409"
+    },
+    "x1:2013-02-02T16:00:00": {
+      "bytes": 50912245,
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway_terrain3s_slope/full6h/run_20260710T003606Z/wrfout_d02_2013-02-02_16:00:00",
+      "sha256": "6aa6b8dcc4c1db5887f9f955d907804e305a490826a3f2d33f8c9a0d62451c54"
+    },
+    "x1:2013-02-02T17:00:00": {
+      "bytes": 50972963,
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway_terrain3s_slope/full6h/run_20260710T003606Z/wrfout_d02_2013-02-02_17:00:00",
+      "sha256": "eb51c7d4beee62f30dcd2868c691d62df5927ba82b04863ad258f9befaf952ea"
+    },
+    "x1:2013-02-02T18:00:00": {
+      "bytes": 51059025,
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway_terrain3s_slope/full6h/run_20260710T003606Z/wrfout_d02_2013-02-02_18:00:00",
+      "sha256": "7f52e7517123a48046d7e74f64255252fa7042c52bcd7982c5118ae417354412"
+    }
+  },
+  "limits": "archived outputs contain no HFX/LH; TSK and theta2m are the available surface-energy responses",
+  "platform": "Linux-4.18.0-553.89.1.el8_10.x86_64-x86_64-with-glibc2.28",
+  "python": "3.12.13 | packaged by conda-forge | (main, Mar  5 2026, 16:50:00) [GCC 14.3.0]",
+  "runs": {
+    "x0": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway_terrain3s/full6h/run_20260708T021809Z",
+    "x1": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway_terrain3s_slope/full6h/run_20260710T003606Z"
+  }
+}

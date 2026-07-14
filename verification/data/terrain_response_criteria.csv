@@ -1,0 +1,6 @@
+criterion,passed,threshold
+L1_namelist_identity,True,
+L2_terrain_smoothness,True,
+G1_slope_organization,True,1.5
+G2_terrain_correlation,False,0.3
+ANA17_cmp09_gate,False,G1 and G2
