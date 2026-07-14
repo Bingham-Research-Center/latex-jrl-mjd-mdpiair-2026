@@ -1,11 +1,17 @@
 # Architecture C hybrid handoff
 
+**Status update — 14 July 2026:** this gate-closing specification is complete and retained
+as decision history.
+All five gates were executed and frozen in `rewrite/HYBRID-GATE-REVIEW.md`.
+The active route is `notes/manuscript-v3-integration-plan.md`; do not rerun the copy-ready
+prompt below as current work.
+
 **Prepared 13 July 2026 for the next writing-host session.**
 
-**Decision:** John selected Architecture C, the hybrid package in
+**Historical decision:** John selected Architecture C, the hybrid package in
 `rewrite/RESULTS-ARCHITECTURE-DECISION-PACKET.md`.
 Do not reopen the A/B/C choice.
-The next phase is targeted evidence-gate closure, not manuscript drafting.
+The next phase at the time was targeted evidence-gate closure; that phase is now complete.
 
 ## Frozen editorial structure
 

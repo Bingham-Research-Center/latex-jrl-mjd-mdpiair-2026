@@ -8,7 +8,9 @@ Cold start: run `hostname -f`, read `README.md` and `ROADMAP.md`, then one route
 
 | Task | Read |
 |---|---|
-| Akamai literature closure (active) | `WISHLIST-FOR-AKAMAI.md`, then its named `notes/` routes |
+| Codex v3 integration (active) | `notes/manuscript-v3-integration-plan.md`, then `_manuscript_v3.tex` |
+| PDF harvest across hosts | `notes/literature/PDF-HARVEST-WORKFLOW.md` |
+| Literature closure record | `WISHLIST-FOR-AKAMAI.md`, then its named `notes/` routes |
 | Hybrid gate record | `rewrite/HYBRID-GATE-REVIEW.md`, then `rewrite/HYBRID-ARCHITECTURE-HANDOFF.md` |
 | Plan | `tasks/microtasks.md` |
 | Claims | `notes/claim-evidence-ledger.md`, `notes/narrative-and-hypotheses.md` |
@@ -17,7 +19,7 @@ Cold start: run `hostname -f`, read `README.md` and `ROADMAP.md`, then one route
 | Maximal-draft lineage | `notes/manuscript-v3-rationale.md`, then `_manuscript_v3.tex` |
 | Rewrite | `rewrite/README.md`, `rewrite/blueprint.md`, `_manuscript_test.tex` |
 | Literature | `notes/resource-map.md`, `notes/literature-synthesis-register.md` |
-| Production | `main.tex`, `paperpile.bib`, `Makefile` |
+| Production | `main.tex`, `Makefile`; `paperpile.bib` only after John's small export |
 | CHPC | `rewrite/CHPC-CODEX-PROMPT.md` |
 
 Open one route only. Avoid broad trees, raw PDFs, bulk images, legacy checklists,
@@ -40,6 +42,8 @@ candidate figures, and `Definitions/` unless required.
   `_manuscript_v3.tex` was drafted by Claude on CHPC as an over-inclusive working
   revision; Codex is its Akamai caretaker and must audit it independently rather
   than treat AI prose as authority or silently promote it.
+- John will supply a small curated Paperpile export later. It is low priority and
+  does not block citation-independent editing; never hand-edit it or invent keys.
 - Only dual-promoted figures may enter an audited or submission manuscript;
   v3 may inventory gated candidates but cannot promote them. Synthetic output is
   temporary.
@@ -51,7 +55,8 @@ candidate figures, and `Definitions/` unless required.
 - Akamai/Linode = writing/Git/LaTeX; CHPC = WRF/data/figures and may lack
   `~/reviews`. If `wrf-full-figures` is unreadable, mark style provisional.
 - Manuscripts: single-file, sparse, American English, one sentence per source line.
-  Never edit `Definitions/`; replace `paperpile.bib` only by complete export.
+  Never edit `Definitions/`; replace `paperpile.bib` only with John's complete small
+  export.
 - After analysis changes: `make check`, `make rewrite-check`, `make smoke`, and PDF
   inspection. After v3 changes also run `make v3-check`; `make submission` packages
   only `main.tex`.

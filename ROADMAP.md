@@ -1,14 +1,17 @@
 # Manuscript roadmap
 
-Current phase: **targeted gate-closing for the selected Architecture C hybrid before
-blank-slate prose continues**.
+Current phase: **controlled Codex caretaker integration after closure of the selected
+Architecture C gates**.
 
 `main.tex` is the audited review baseline.
-`_manuscript_test.tex` and `rewrite/` are the isolated reconstruction workbench; no experimental prose replaces the baseline until its evidence, figure, methods, and coauthor gates close.
+`_manuscript_test.tex` and `rewrite/` are the isolated reconstruction workbench;
+`_manuscript_v3.tex` is the over-inclusive synthesis now being audited and pruned.
 `_manuscript_test.tex` currently demonstrates the minimum verified four-run story; it is not a decision that the final paper has only four experiments or two figures.
 John selected Architecture C on 13 July 2026.
-The active handoff is `rewrite/HYBRID-ARCHITECTURE-HANDOFF.md`; the completed audit and
-alternative packages remain in `rewrite/RESULTS-ARCHITECTURE-DECISION-PACKET.md`.
+All five gates have executed, with pass/fail dispositions in
+`rewrite/HYBRID-GATE-REVIEW.md`.
+The active handoff is `notes/manuscript-v3-integration-plan.md`; the alternatives remain
+in `rewrite/RESULTS-ARCHITECTURE-DECISION-PACKET.md` as decision history.
 
 The paper's durable claim is that credible cold-pool meteorology is a prerequisite for interpreting winter-ozone chemistry.
 Its air-focused evaluation target is whether WRF retains the shallow, weakly ventilated layer in which precursor and ozone accumulation would occur, not merely which run has the smallest aggregate surface bias.
@@ -46,9 +49,11 @@ The confounded resolution sequence and heterogeneous nudging lineage remain cont
 Run rows exist for X0--X10, and derived manuscript summaries are complete only for the
 default-terrain X6/X10/X5/X3 factorial.
 Figure coverage is substantially broader than those summaries.
-The architecture choice is frozen, but prose remains frozen until the selected controlled
-pairs, observation metadata, source-level citations, figure admissions, and coauthor
-interpretation are reconciled.
+The architecture choice and failed gates are frozen.
+Codex may now make citation-independent caretaker edits in v3 and safe corrections in the
+audited baseline, but no unresolved claim or withheld figure may be promoted while
+observation metadata, citations, figure admissions, and coauthor interpretation remain
+open.
 
 ## Workstreams
 
@@ -86,8 +91,8 @@ interpretation are reconciled.
 
 - **Primary:** GFS versus NAM driving analysis under both two-way (X6 minus X5) and one-way (X10 minus X3) default-terrain configurations.
 - **Secondary:** within-source one-way-versus-two-way feedback (X10 minus X6 and X3 minus X5) plus the paired forcing-by-feedback interaction.
-- **Available promoted figure pool:** observed floor-to-bench evolution, observed/model bulk theta contrast, and four-run common-AGL retention/ventilation.
-- **Experimental rewrite core:** observed evolution plus common-AGL retention/ventilation; hold the bulk-theta panel until CHPC regenerates the corrected annotation and the proxy earns a distinct narrative role.
+- **Current figure pool:** observed floor-to-bench evolution and four-run common-AGL retention/ventilation are promoted; the observed/model bulk-theta contrast is withheld pending line-free CHPC regeneration.
+- **Experimental rewrite core:** observed evolution plus common-AGL retention/ventilation; hold the bulk-theta panel until CHPC regenerates it without the non-equivalent 8 K line and the proxy earns a distinct narrative role.
 - **Active expansion candidates:** X1-X0 slope/shading, X2-X1 PBL/surface layer, X3-X0/X3-X4/X0-X4 terrain, X9-X0 fine-terrain feedback, spatial/vertical driving-response panels, and productized heat-deficit fields.
 - **Still excluded as sensitivity results:** the confounded X7/X0/X8 resolution ladder and heterogeneous nudging lineage.
 

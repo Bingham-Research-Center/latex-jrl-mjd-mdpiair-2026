@@ -1,5 +1,17 @@
 # Wishlist for the Akamai/Linode writing-host session
 
+## Closure handoff — 14 July 2026
+
+The literature-discovery pass is closed and Codex has taken caretaker ownership of the
+integration stage on `jrl/codex-v3-integration`.
+The active route is `notes/manuscript-v3-integration-plan.md`.
+Citation-independent corrections proceed now; CHPC receives one bounded line-free figure
+regeneration task; new PDFs use `notes/literature/PDF-HARVEST-WORKFLOW.md`.
+
+`paperpile.bib` work is deliberately downgraded.
+John will provide a small curated Paperpile export later, so agents must not spend time
+repairing or expanding the current file and must not treat it as a blocker.
+
 ## Codex caretaker execution record — 14 July 2026
 
 Host check returned `localhost`, not a CHPC hostname, and work is on `jrl/akamai-lit-closure`.
@@ -11,7 +23,7 @@ Host check returned `localhost`, not a CHPC hostname, and work is on `jrl/akamai
 - [x] **5 — LIT-02:** The ten-source design comparison and passage routes are complete (`notes/literature/comparison-table.md`).
 - [x] **6 — LIT-05:** Four reports survive for Discussion context, four are dropped from narrative, and none is needed in the Introduction (`notes/literature/report-source-decisions.md`).
 - [x] **7 — contradiction sweep:** Eleven source-specific flags are recorded; the direct manuscript correction is removal of the non-equivalent 8 K reference (`notes/literature/contradiction-flags.md`).
-- [ ] **8 — MAN-09, partial:** The exact one-pass Paperpile item list is staged, but no browser export was available, so `paperpile.bib` remains correctly untouched (`notes/literature/paperpile-export-list.md`).
+- [ ] **8 — MAN-09, deferred / low priority:** The checklist is retained, but John will provide a small curated Paperpile export instead of expanding the current bibliography; `paperpile.bib` remains correctly untouched (`notes/literature/paperpile-export-list.md`).
 
 The original copy-ready prompt is retained below as the task specification and audit trail.
 

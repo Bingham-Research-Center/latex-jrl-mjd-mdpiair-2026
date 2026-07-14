@@ -28,6 +28,6 @@ No report is promoted as an independent replication, and no report is needed for
 
 ## Freeze consequence
 
-Of the reports, only UBAQR 2019, the 2021 OSIP WRF MPE report, Ramboll 2023, and the 2024 top-down report belong in the one-pass Paperpile staging list.
+Of the reports, only UBAQR 2019, the 2021 OSIP WRF MPE report, Ramboll 2023, and the 2024 top-down report remain eligible for later Paperpile staging, and only if edited manuscript prose actually cites them.
 
 Their eventual prose must remain in Discussion, and each sentence must carry the report-specific design limitation in the same paragraph.

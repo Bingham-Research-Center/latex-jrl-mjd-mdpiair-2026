@@ -12,12 +12,13 @@ It does not duplicate large model output or reusable software.
 | If you want to know... | Start here |
 |---|---|
 | What the paper is trying to say | `ROADMAP.md` and `notes/narrative-and-hypotheses.md` |
-| Which Results architecture is selected and what happens next | `rewrite/HYBRID-ARCHITECTURE-HANDOFF.md`, then Architecture C in `rewrite/RESULTS-ARCHITECTURE-DECISION-PACKET.md` |
+| Which Results architecture is selected and what happens next | `notes/manuscript-v3-integration-plan.md`, then `rewrite/HYBRID-GATE-REVIEW.md` |
 | How the blank-slate rewrite and expanded Results audit differ from the baseline | `rewrite/RESULTS-EXPANSION-HANDOFF.md`, then `rewrite/README.md` and `rewrite/blueprint.md` |
 | Whether a claim is defensible | `notes/claim-evidence-ledger.md` |
 | Which exact WRF run was inspected | `verification/provenance/run-inventory.csv` |
 | Which run comparison supports which manuscript story | `verification/provenance/comparison-inventory.csv`, then `notes/narrative-and-hypotheses.md` |
-| How to close the selected hybrid Results gates | `rewrite/HYBRID-ARCHITECTURE-HANDOFF.md`, then `rewrite/CHPC-CODEX-PROMPT.md` for CHPC-only work |
+| How the selected hybrid Results gates closed | `rewrite/HYBRID-GATE-REVIEW.md`, with the historical specification in `rewrite/HYBRID-ARCHITECTURE-HANDOFF.md` |
+| How to harvest a new PDF across Akamai and CHPC | `notes/literature/PDF-HARVEST-WORKFLOW.md` |
 | Whether a dataset is raw, derived, current, superseded, or context only | `verification/data/manifest.csv` |
 | Which data, script, and output produced a candidate figure | `verification/figures/manifest.csv` |
 | Which full-figure sets exist or still need rendering | `verification/figures/archive-inventory.md` |
@@ -39,7 +40,8 @@ Do not add new manuscript-facing truth there; wait for the final cross-repositor
 ## Start here
 
 - Manuscript: [`main.tex`](main.tex)
-- Active Architecture C handoff: [`rewrite/HYBRID-ARCHITECTURE-HANDOFF.md`](rewrite/HYBRID-ARCHITECTURE-HANDOFF.md)
+- Active Codex caretaker handoff: [`notes/manuscript-v3-integration-plan.md`](notes/manuscript-v3-integration-plan.md)
+- Completed Architecture C gate record: [`rewrite/HYBRID-GATE-REVIEW.md`](rewrite/HYBRID-GATE-REVIEW.md)
 - Expanded Results/figure handoff: [`rewrite/RESULTS-EXPANSION-HANDOFF.md`](rewrite/RESULTS-EXPANSION-HANDOFF.md)
 - Results architecture decision packet: [`rewrite/RESULTS-ARCHITECTURE-DECISION-PACKET.md`](rewrite/RESULTS-ARCHITECTURE-DECISION-PACKET.md)
 - Experimental blank-slate workbench: [`rewrite/README.md`](rewrite/README.md), then [`_manuscript_test.tex`](_manuscript_test.tex)
@@ -79,7 +81,8 @@ Its complete `Definitions/` directory is committed without local edits.
 Ghostscript is required to convert MDPI's EPS logo during a clean local build; Overleaf and CHPC are acceptable final-build environments.
 
 `paperpile.bib` currently contains a five-paper seed bibliography.
-Replace the complete file with a manuscript-specific Paperpile export when the collection is ready; do not hand-edit later exports.
+John will replace it later with a small curated Paperpile export; this does not block
+citation-independent editing, and agents must not hand-edit the current or exported file.
 
 ## Repository roles
 

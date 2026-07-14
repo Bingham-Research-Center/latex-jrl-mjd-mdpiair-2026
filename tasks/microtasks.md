@@ -70,12 +70,12 @@ Do not mark a scientific task done because prose exists; mark it done only when 
 
 ### Literature and narrative
 
-- [ ] **LIT-01 · next** — Convert the completed Matichuk critique into a claim/evidence/caveat row set for the introduction and discussion.
-- [ ] **LIT-02 · next** — Build a compact comparison table for Ahmadov, Neemann, Matichuk, Tran, UBAQR-2019/2020, OSIP-2021, Ramboll-2023, the top-down inventory report, and the Rocky Mountain Power report: case, model, meteorological lever, chemistry lever, observations, and principal confounds.
-- [ ] **LIT-03 · later** — Verify every manuscript citation against the extracted paper passage or source PDF.
-- [ ] **LIT-04 · later** — Decide whether report literature belongs in the main article, supplement, or reviewer reserve.
-- [ ] **LIT-05 · next** — Use `notes/literature-synthesis-register.md` to select which report sources genuinely survive narrative freeze.
-- [ ] **LIT-06 · blocked by LIT-05** — Add the selected report sources to Paperpile and replace the register's citation placeholders through a complete export.
+- [x] **LIT-01 · done** — Recorded the Matichuk claim/evidence/caveat rows in `notes/literature/matichuk-claim-rows.md`.
+- [x] **LIT-02 · done** — Recorded the ten-source design and confound comparison in `notes/literature/comparison-table.md`.
+- [x] **LIT-03 · done for the current five citations** — Verified the underlying passages used by the current manuscripts; repeat only for sources added after John's small export.
+- [x] **LIT-04 · done for current report set** — Recorded use/qualify/drop decisions in `notes/literature/report-source-decisions.md`.
+- [x] **LIT-05 · done** — Completed the synthesis-register narrative freeze and retained four reports as Discussion-only candidates.
+- [ ] **LIT-06 · later / optional** — Add a selected report source to John's small Paperpile export only if the edited manuscript actually cites it; report staging does not block current integration.
 - [x] **NAR-01 · done for minimum scaffold** — Established the driving-state response as the strongest confirmed anchor; broader narrative selection is reopened in NAR-07.
 - [x] **NAR-02 · done for minimum scaffold** — Bounded the source-conditioned feedback response and rejected resolution/nudging as sensitivity results; controlled terrain/radiation/PBL candidates are reopened.
 - [x] **NAR-03 · done** — Preserved the chemistry caveat: meteorology is necessary but not shown to be uniquely dominant.
@@ -93,9 +93,9 @@ Do not mark a scientific task done because prose exists; mark it done only when 
 - [ ] **FIG-06 · later** — Select upper-air panels only if they explain a surface/cold-pool result.
 - [x] **FIG-07 · done for the factorial** — The named skill was unavailable, so the documented maintained equivalent ran through the `brc-tools` engine at `89883ceb`, the study TOML, and Slurm; X10 has 63 PNGs and exact-config convergence `13896871` skipped all 730 tasks as current.
 - [ ] **FIG-08 · later** — Check print dimensions, fonts, units, color accessibility, captions, and raster resolution.
-- [x] **FIG-09 · done for first-draft spine** — Promoted the observed evolution, bulk theta contrast, and common-AGL retention/ventilation PDFs and completed both manifests.
+- [ ] **FIG-09 · reopened narrowly** — Observed evolution and common-AGL retention/ventilation remain promoted; the bulk-theta render is withheld pending the line-free FIG-11 regeneration and reinspection.
 - [ ] **FIG-10 · later** — Retain reproducible supplementary/reviewer-reserve diagnostics outside `figures/`.
-- [x] **FIG-11 · done** — Regenerated the promoted bulk-theta figure on CHPC (2026-07-13) with the 8 K line labeled as a literature reference; a pdftotext diff shows the label as the only text change, and both manifests and hashes are updated.
+- [ ] **FIG-11 · next CHPC batch** — Pull the Codex integration branch, regenerate the bulk-theta figure from frozen real observations with the updated generator that removes the non-equivalent 8 K line, update both manifests and hashes, inspect the PDF, and only then re-promote it.
 - [x] **FIG-12 · done for working draft** — The L04 factorial effect-size panel is built from the committed summaries (`verification/scripts/plot_factorial_effects.py`, including the CMP06 fine-terrain row) and appears in the maximal working draft with an explicit not-registered status note; register and promote before any submission use.
 
 ### Manuscript and submission
@@ -108,11 +108,11 @@ Do not mark a scientific task done because prose exists; mark it done only when 
 - [x] **MAN-06 · done for review draft** — Drafted an evidence-gated abstract after reconciling Results and Conclusions.
 - [ ] **MAN-07 · next** — Have all authors review author order, names, ORCIDs, affiliations, and corresponding-author details.
 - [ ] **MAN-08 · next** — Agree CRediT roles, funding, acknowledgments, conflicts, and data-availability language.
-- [ ] **MAN-09 · later** — Replace `paperpile.bib` with the complete manuscript-specific Paperpile export.
-- [ ] **MAN-10 · later** — Run an unused/missing citation audit after the export stabilizes.
+- [ ] **MAN-09 · deferred / low priority** — When John supplies the small curated Paperpile export, replace `paperpile.bib` wholesale and record its generated keys; do not repair the current file.
+- [ ] **MAN-10 · after MAN-09** — Run an unused/missing citation audit after the small export stabilizes.
 - [x] **MAN-12 · done for experimental rewrite** — Created the isolated blank-slate manuscript, evidence/argument blueprint, build target, and figure-selection rationale.
 - [ ] **MAN-13 · next** — Reconcile the selected expanded architecture with CHPC-only facts and coauthor review before merging selected prose into `main.tex`.
-- [ ] **MAN-15 · next** — Review `_manuscript_v3.tex`, now expanded at John's request into the deliberately maximal working draft on branch `jrl/chpc-20260713-maximal-draft` (23 figures, 8 tables, all five gate outcomes incorporated with status labels; built by `make v3-pdf`, guarded by `make v3-check`; rationale in `notes/manuscript-v3-rationale.md`), and decide its relationship to MAN-13/MAN-14 and `main.tex`.
+- [ ] **MAN-15 · in progress** — Codex has caretaker ownership of the deliberately maximal `_manuscript_v3.tex` on `jrl/codex-v3-integration`; apply the batches in `notes/manuscript-v3-integration-plan.md`, then decide which audited material advances through MAN-13 into `main.tex`.
 - [ ] **PUB-01 · later** — Obtain Michael's provenance/diagnostic review and Loknath/Seth's chemistry-framing review.
 - [ ] **PUB-02 · later** — Build and inspect a dated coauthor-review PDF.
 - [ ] **PUB-03 · later** — Compile the allowlisted ZIP in an independent environment with pdfLaTeX, BibTeX, and Ghostscript.
