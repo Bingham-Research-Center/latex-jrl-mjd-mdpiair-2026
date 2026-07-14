@@ -1,5 +1,20 @@
 # Wishlist for the Akamai/Linode writing-host session
 
+## Codex caretaker execution record — 14 July 2026
+
+Host check returned `localhost`, not a CHPC hostname, and work is on `jrl/akamai-lit-closure`.
+
+- [x] **1 — 8 K source:** Lareau et al. (2013) was verified, but its crest-relative sounding deficit is not equivalent to the two-site surface contrast; remove the plotted reference rather than use it as validation (`notes/literature/verified-citations.md`).
+- [x] **2 — heat deficit:** Whiteman et al. (1999) and the closest column variant in Adler et al. (2023) were verified, with the present method's departures recorded (`notes/literature/verified-citations.md`).
+- [ ] **3 — model/products, partial:** WRF, GFS, NAM, Synoptic wording, current defaults, access terms, and the frozen cache hash are recorded, but exact input hashes, historical Synoptic request/QC, and network reuse rights remain open (`notes/literature/verified-citations.md`).
+- [x] **4 — LIT-01:** Matichuk claim, evidence, and caveat rows are complete (`notes/literature/matichuk-claim-rows.md`).
+- [x] **5 — LIT-02:** The ten-source design comparison and passage routes are complete (`notes/literature/comparison-table.md`).
+- [x] **6 — LIT-05:** Four reports survive for Discussion context, four are dropped from narrative, and none is needed in the Introduction (`notes/literature/report-source-decisions.md`).
+- [x] **7 — contradiction sweep:** Eleven source-specific flags are recorded; the direct manuscript correction is removal of the non-equivalent 8 K reference (`notes/literature/contradiction-flags.md`).
+- [ ] **8 — MAN-09, partial:** The exact one-pass Paperpile item list is staged, but no browser export was available, so `paperpile.bib` remains correctly untouched (`notes/literature/paperpile-export-list.md`).
+
+The original copy-ready prompt is retained below as the task specification and audit trail.
+
 Copy-ready prompt. Run Claude in this repo's clone on the writing host and paste
 everything below the rule.
 

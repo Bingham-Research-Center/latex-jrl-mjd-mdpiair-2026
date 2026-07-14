@@ -8,12 +8,14 @@ Cold start: run `hostname -f`, read `README.md` and `ROADMAP.md`, then one route
 
 | Task | Read |
 |---|---|
-| Hybrid gates (active) | `rewrite/HYBRID-ARCHITECTURE-HANDOFF.md`, then Architecture C in `rewrite/RESULTS-ARCHITECTURE-DECISION-PACKET.md` |
+| Akamai literature closure (active) | `WISHLIST-FOR-AKAMAI.md`, then its named `notes/` routes |
+| Hybrid gate record | `rewrite/HYBRID-GATE-REVIEW.md`, then `rewrite/HYBRID-ARCHITECTURE-HANDOFF.md` |
 | Plan | `tasks/microtasks.md` |
 | Claims | `notes/claim-evidence-ledger.md`, `notes/narrative-and-hypotheses.md` |
 | Runs | `verification/provenance/run-inventory.csv`, `verification/provenance/comparison-inventory.csv` |
 | Figures | `verification/figures/archive-inventory.md`, `verification/figures/manifest.csv`, `figures/MANIFEST.md` |
-| Rewrite after gates | `rewrite/README.md`, `rewrite/blueprint.md`, `_manuscript_test.tex` |
+| Maximal-draft lineage | `notes/manuscript-v3-rationale.md`, then `_manuscript_v3.tex` |
+| Rewrite | `rewrite/README.md`, `rewrite/blueprint.md`, `_manuscript_test.tex` |
 | Literature | `notes/resource-map.md`, `notes/literature-synthesis-register.md` |
 | Production | `main.tex`, `paperpile.bib`, `Makefile` |
 | CHPC | `rewrite/CHPC-CODEX-PROMPT.md` |
@@ -23,9 +25,9 @@ candidate figures, and `Definitions/` unless required.
 
 ## Contract
 
-- John selected Architecture C (hybrid) on 13 July 2026. C1/C2 are anchors;
-  C3--C6 and supplement C2 are gated. Do not reopen the choice or edit manuscripts
-  before the gate review.
+- John selected Architecture C (hybrid) on 13 July 2026, and all five evidence
+  gates have been executed. Preserve failed gates as failed and do not promote
+  gated material without new evidence; see `rewrite/HYBRID-GATE-REVIEW.md`.
 - Authority: run/comparison inventories for design, archive inventory for existence,
   manifests for admission, ledger plus exact artifacts for claims. Separate
   controlled, heterogeneous, and literature context.
@@ -34,8 +36,13 @@ candidate figures, and `Definitions/` unless required.
   X7/X8 and legacy runs remain context.
 - Every number needs matched runs, domain, stations, window, inputs, and command;
   record facts before prose.
-- `main.tex` is the audited baseline; `_manuscript_test.tex` is experimental. Only
-  dual-promoted figures may enter either; synthetic output is temporary.
+- `main.tex` is the audited baseline; `_manuscript_test.tex` is experimental.
+  `_manuscript_v3.tex` was drafted by Claude on CHPC as an over-inclusive working
+  revision; Codex is its Akamai caretaker and must audit it independently rather
+  than treat AI prose as authority or silently promote it.
+- Only dual-promoted figures may enter an audited or submission manuscript;
+  v3 may inventory gated candidates but cannot promote them. Synthetic output is
+  temporary.
 - `trang_ref` is not Tran et al. (2018). Not demonstrated: chemistry, inventories,
   basin export, inversion depth, multi-day persistence.
 
@@ -46,7 +53,8 @@ candidate figures, and `Definitions/` unless required.
 - Manuscripts: single-file, sparse, American English, one sentence per source line.
   Never edit `Definitions/`; replace `paperpile.bib` only by complete export.
 - After analysis changes: `make check`, `make rewrite-check`, `make smoke`, and PDF
-  inspection. `make submission` packages only `main.tex`.
+  inspection. After v3 changes also run `make v3-check`; `make submission` packages
+  only `main.tex`.
 - Use `jrl/<topic>` PRs into protected `main`. Commit one verified concern at a time,
   push substantial batches, and use John's identity plus
   `Co-Authored-By: Codex <noreply@openai.com>`.
