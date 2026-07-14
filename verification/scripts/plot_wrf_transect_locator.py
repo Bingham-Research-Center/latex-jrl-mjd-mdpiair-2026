@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
-"""Plot the d02/d03 terrain context for current and proposed WRF transects.
-
-The current diagonal is USU07 (Pariette Draw) to USU03 (Mountain Home).
-Two hypothesis-led alternatives are shown without selecting them from model results:
-USU07 to USU04 samples the southern bench, and UUT01 to USU08 follows the
-west-to-east basin floor with nearly matched endpoint elevations.
+"""Plot the d02/d03 terrain and reporting-station context.
 
 Run on a CHPC compute node because the script opens WRF output. It reads only the
 static latitude, longitude, and terrain fields from one d02 and one d03 file.
+
+Transects were removed from the manuscript locator on 14 July 2026 because no
+retained result uses or explains them.  A later two-panel orientation figure will
+add geographic context and the full d01--d03 nesting without restoring those lines.
 """
 from __future__ import annotations
 
@@ -19,19 +18,12 @@ import matplotlib
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from matplotlib.ticker import FuncFormatter
 import numpy as np
 import pandas as pd
 import xarray as xr
 
-from reduce_wrf_to_stations import DEFAULT_STATIONS_CSV, nearest_cell
-
-
-TRANSECTS = (
-    ("Current: floor to northwest bench", "USU07", "USU03", "#D55E00", "-"),
-    ("Proposed: floor to southern bench", "USU07", "USU04", "#0072B2", "--"),
-    ("Proposed: west-east basin floor", "UUT01", "USU08", "#009E73", "-."),
-)
+from plot_obs_feb0102 import FULL_W, save
+from reduce_wrf_to_stations import DEFAULT_STATIONS_CSV
 
 
 def first_file(run_dir: Path, pattern: str) -> Path:
@@ -56,34 +48,6 @@ def perimeter(lat: np.ndarray, lon: np.ndarray) -> tuple[np.ndarray, np.ndarray]
     return plat, plon
 
 
-def distance_km(lats: np.ndarray, lons: np.ndarray) -> np.ndarray:
-    km = np.zeros(len(lats))
-    km[1:] = np.cumsum(
-        np.hypot(
-            np.diff(lats) * 111.32,
-            np.diff(lons) * 111.32 * np.cos(np.deg2rad(lats[:-1])),
-        )
-    )
-    return km
-
-
-def terrain_profile(
-    lat: np.ndarray,
-    lon: np.ndarray,
-    hgt: np.ndarray,
-    p0: tuple[float, float],
-    p1: tuple[float, float],
-    n: int = 240,
-) -> tuple[np.ndarray, np.ndarray]:
-    lats = np.linspace(p0[0], p1[0], n)
-    lons = np.linspace(p0[1], p1[1], n)
-    terrain = np.empty(n)
-    for k, (sample_lat, sample_lon) in enumerate(zip(lats, lons)):
-        j, i = nearest_cell(lat, lon, sample_lat, sample_lon)
-        terrain[k] = hgt[j, i]
-    return distance_km(lats, lons), terrain
-
-
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--wrf-dir", required=True, type=Path)
@@ -100,7 +64,7 @@ def main() -> None:
     stations = pd.read_csv(args.stations)
     stations = stations[stations["in_case_window"]].set_index("stid")
 
-    fig, ax = plt.subplots(figsize=(8.2, 6.8), layout="constrained")
+    fig, ax = plt.subplots(figsize=(FULL_W, 5.1), layout="constrained")
     mesh = ax.pcolormesh(
         lon2,
         lat2,
@@ -127,33 +91,12 @@ def main() -> None:
         ax.annotate(stid, (row.longitude, row.latitude), xytext=(3, 3),
                     textcoords="offset points", fontsize=6.5, color="0.1", zorder=7)
 
-    for label, start, end, color, linestyle in TRANSECTS:
-        p0 = stations.loc[start]
-        p1 = stations.loc[end]
-        ax.plot([p0.longitude, p1.longitude], [p0.latitude, p1.latitude],
-                color=color, ls=linestyle, lw=2.2, label=label, zorder=5)
-        km, terrain = terrain_profile(
-            lat2,
-            lon2,
-            hgt2,
-            (p0.latitude, p0.longitude),
-            (p1.latitude, p1.longitude),
-        )
-        print(
-            f"{start}->{end}: "
-            f"start={p0.latitude:.4f},{p0.longitude:.4f},{p0.elev_m:.0f}m; "
-            f"end={p1.latitude:.4f},{p1.longitude:.4f},{p1.elev_m:.0f}m; "
-            f"length_km={km[-1]:.1f}; d02_terrain_min_max_m={terrain.min():.0f},{terrain.max():.0f}"
-        )
-
     mean_lat = float(np.mean(lat2))
     ax.set_aspect(1.0 / np.cos(np.deg2rad(mean_lat)))
     ax.set_xlim(float(lon2.min()), float(lon2.max()))
     ax.set_ylim(float(lat2.min()), float(lat2.max()))
-    ax.xaxis.set_major_formatter(FuncFormatter(lambda x, _: f"{abs(x):.1f}°W"))
-    ax.yaxis.set_major_formatter(FuncFormatter(lambda y, _: f"{y:.1f}°N"))
-    ax.set_xlabel("Longitude")
-    ax.set_ylabel("Latitude")
+    ax.set_xticks([])
+    ax.set_yticks([])
 
     scale_lat = float(lat2.min() + 0.06 * (lat2.max() - lat2.min()))
     scale_lon = float(lon2.min() + 0.06 * (lon2.max() - lon2.min()))
@@ -170,12 +113,7 @@ def main() -> None:
     cbar = fig.colorbar(mesh, ax=ax, pad=0.02, shrink=0.86)
     cbar.set_label("WRF terrain elevation (m MSL)")
 
-    args.out_dir.mkdir(parents=True, exist_ok=True)
-    stem = args.out_dir / "wrf_transect_locator_d02_d03"
-    fig.savefig(stem.with_suffix(".png"), dpi=300, bbox_inches="tight")
-    fig.savefig(stem.with_suffix(".pdf"), bbox_inches="tight")
-    plt.close(fig)
-    print(f"wrote {stem}.png + .pdf")
+    save(fig, "wrf_transect_locator_d02_d03", out_dir=args.out_dir)
     print(f"d02_source={d02_file}")
     print(f"d03_source={d03_file}")
 

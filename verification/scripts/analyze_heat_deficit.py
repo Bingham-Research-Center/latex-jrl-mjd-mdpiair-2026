@@ -42,6 +42,7 @@ from scipy.spatial import ConvexHull
 import xarray as xr
 
 from brc_tools.nwp import wrf_output as wo
+from plot_obs_feb0102 import FULL_W, panel_letter, style_axes
 
 
 DEFAULT_START = "2013-02-02T13:00:00"
@@ -440,7 +441,7 @@ def plot_trajectory(
     primary["valid_time"] = pd.to_datetime(primary["valid_time"])
     all_times = sorted(primary["valid_time"].unique())
     all_definitions = sorted(trajectory["definition"].unique())
-    fig, axes = plt.subplots(2, 1, figsize=(7.2, 7.0), sharex=True, constrained_layout=True)
+    fig, axes = plt.subplots(2, 1, figsize=(FULL_W, 4.5), sharex=True, layout="constrained")
 
     ax = axes[0]
     for run in sorted(primary["run"].unique()):
@@ -456,9 +457,9 @@ def plot_trajectory(
             label=displays.get(run, default_label),
         )
     ax.set_ylabel("Footprint-mean heat deficit\n(MJ m$^{-2}$)")
-    ax.set_title("a) Registered-footprint trajectory; 2200 m ASL reference")
-    ax.legend(frameon=False, ncol=2, fontsize=8)
-    ax.grid(alpha=0.25)
+    ax.legend(ncols=2)
+    style_axes(ax)
+    panel_letter(ax, "a")
 
     ax = axes[1]
     pair_colors = ["#6A3D9A", "#009E73"]
@@ -484,17 +485,16 @@ def plot_trajectory(
         ax.plot(difference.index, difference.values, marker="o", color=color, linewidth=1.7, label=label)
     ax.axhline(0.0, color="0.25", linewidth=0.8)
     ax.set_ylabel("GFS minus NAM\n(MJ m$^{-2}$)")
-    ax.set_title("b) Primary difference with seven-definition sensitivity envelope")
-    ax.legend(frameon=False, fontsize=8)
-    ax.grid(alpha=0.25)
+    ax.legend()
+    style_axes(ax)
+    panel_letter(ax, "b")
     ax.xaxis.set_major_locator(mdates.HourLocator())
     ax.xaxis.set_major_formatter(mdates.DateFormatter("%HZ"))
     axes[0].axvline(pd.Timestamp(DEFAULT_RETAINED_START), color="0.35", linestyle=":", linewidth=1.0)
     axes[1].axvline(pd.Timestamp(DEFAULT_RETAINED_START), color="0.35", linestyle=":", linewidth=1.0)
-    fig.suptitle("WRF cold-pool heat-deficit gate, d02, 2 February 2013\n13 UTC is trajectory context; decision window is 14--18 UTC")
     out_png.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(out_png, dpi=220)
-    fig.savefig(out_pdf)
+    fig.savefig(out_png, dpi=600, bbox_inches="tight")
+    fig.savefig(out_pdf, bbox_inches="tight")
     plt.close(fig)
 
 

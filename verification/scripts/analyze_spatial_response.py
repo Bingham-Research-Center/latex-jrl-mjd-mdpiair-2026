@@ -286,7 +286,8 @@ def main() -> None:
                 if c == 0:
                     ax.set_ylabel(pair_titles[f"{a}_minus_{b}"], fontsize=8.5)
                 ax.set_aspect(1.0 / np.cos(np.deg2rad(float(lat.mean()))))
-                ax.tick_params(labelsize=6.5)
+                ax.set_xticks([])
+                ax.set_yticks([])
                 panel_letter(ax, "abcdefghijkl"[r * len(display) + c])
         fig.colorbar(mesh, ax=axes, shrink=0.85, label=cbar_label)
         save(fig, stem, out_dir=args.out_dir)

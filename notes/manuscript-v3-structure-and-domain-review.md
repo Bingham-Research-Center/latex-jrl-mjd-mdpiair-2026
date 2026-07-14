@@ -127,36 +127,79 @@ This is a nest/domain-transfer analysis, not an independent grid-spacing experim
 
 | Material | Current decision | Reason / next action |
 |---|---|---|
-| Observed four-station evolution | keep | Only promoted observed event-context panel; do not call it a vertical profile. |
-| Station pseudo-profiles | supplement or remove | Visually tempting but horizontally displaced and not an observed inversion. |
-| Common-pipeline contrast panel | keep in maximal draft; register before circulation | Now includes CMP01--CMP08 rows that share the frozen pipeline instead of privileging the default-terrain matrix. |
-| Common-AGL retention/ventilation | keep | Load-bearing Air-relevant result and promoted. |
-| Two-site bulk-theta panel | withheld | Restore only after line-free CHPC regeneration, hash update, inspection, and a distinct role. |
-| Driving spatial maps/sections | keep one registered map panel; reserve the section | ANA-19 failed its conjunction; the retained map displays the failed floor-coherence criterion and its margin is explicit. |
-| Upper-air panels | remove unless they explain a retained lower-layer result | Diagnostic context currently exceeds its evidential role. |
-| Heat-deficit trajectory | conditional keep | Supports the weaker-state and failed faster-loss criteria; it is the defensible heat-deficit figure. |
-| Engine heat-deficit map/time series | remove from coauthor draft | Different or unaudited reductions duplicate the registered trajectory. |
-| CMP08 table; map/section removed | keep the quantitative item only | Strongest coherent non-driving result; the exploratory render is unreadable at manuscript scale and has no predeclared spatial criterion. |
-| CMP07 registered aspect panel | keep as diagnostic | Shows why the station null is not treatment inertness and documents the measurement-limited gate. |
-| CMP07 sunrise/late-morning and heat-deficit renders | removed from manuscript | Redundant once the registered aspect panel is present. |
-| Default/fine feedback maps | remove from coauthor draft | Quantitative bounds are sufficient; near-null maps add pages more than information. |
-| CMP09 registered terrain panel | conditional diagnostic keep | It records a failed predeclared gate honestly. |
-| Terrain engine map/section/heat-deficit gallery | remove from coauthor draft | No gate-passed claim; retain reproducibly outside the manuscript. |
-| Initialization profiles/skew-Ts | removed from manuscript | Model-only, no colocated sounding, and cannot separate initial from boundary influence. |
-| Resolution-confound table | Methods, supplement, or one Discussion paragraph | Useful design refusal, but not a Results experiment. |
+| New Figure 1 locator | replace current render | Two panels: basin geography and observation sites; d01--d03 nesting. Remove all unused transects and latitude/longitude axes. |
+| New episode-context figure | add after locator | Pair a verified 1--3 February MODIS snow/true-color view with January--February observed ozone and a marked 2 February line. |
+| Observed four-station evolution | keep | Required surface-weather context; do not call it a vertical profile. |
+| Station pseudo-profiles | remove | Horizontally displaced sites do not form an observed inversion profile. |
+| Common-pipeline contrast panel | keep, with shorter explanation | It shows the response hierarchy on one common pipeline without declaring a winner. |
+| Common-AGL retention/ventilation | keep two panels; regenerated | Stability and transport wind are load bearing; the scheme-dependent PBL-height panel was removed on 14 July. |
+| Two-site bulk-theta panel | appendix option only | The surface index survives in Appendix A data; restore a line-free image only if it adds information beyond the table. |
+| Driving spatial maps/sections | omit from manuscript | The gate failed and the six maps duplicate a split verdict carried more clearly by Appendix Table A5. |
+| Heat-deficit trajectory | Appendix A; regenerated | Scientifically useful support, but too secondary for the main sequence; compact shared-style render inspected on 14 July. |
+| CMP08 table; map/section removed | Appendix A table | Main text retains the direct metric tradeoff; unreadable maps stay archived. |
+| CMP07 registered aspect panel | Appendix A figure | Interesting measurement-limited null; no main-text figure. |
+| Default/fine feedback maps | omit from manuscript | Quantitative bounds are sufficient; near-null maps add pages more than information. |
+| CMP09 terrain panel | omit from manuscript | Failed gate and two near-null panels. If revived, regenerate only terrain difference and elevation-band response as a compact appendix figure. |
+| Terrain engine gallery | archive | No gate-passed claim requires it. |
+| Initialization profiles/skew-Ts | archive | Model only, no colocated sounding, and cannot separate initial from boundary influence. |
+| Resolution-confound table | keep in Methods for now | It is a compact design refusal, not a Results experiment. |
 
-## Next structural trim
+## John review pass, 14 July 2026
 
-Completed in this pass: combined the two feedback sections, removed their map
-gallery, reduced terrain to the registered failed-gate panel, removed redundant
-CMP07/heat-deficit/spatial galleries, and removed model-only initialization and
-station pseudo-profile figures; moved the resolution-confound table into Methods;
-deleted the catch-all small-findings queue after routing its supported points; and
-moved the threshold-sensitive heat-deficit mechanism hypotheses out of manuscript
-prose until a longer, predeclared analysis exists.
+Completed in `_manuscript_v3.tex`:
 
-1. Reassess the domain locator after the prose is stable; keep it only if readers
-   still need the d02/d03 geometry to understand the estimand.
+- shortened the abstract from an audit inventory to six manuscript-level sentences;
+- removed Methods 2.7 and 2.8;
+- combined the old Results 3.4 and 3.5 into a short surface/spatial corroboration section;
+- moved old Tables 4--6 first into Appendix A, followed by surface, spatial, feedback, and terrain audit tables;
+- moved the heat-deficit and slope-radiation figures to Appendix A;
+- removed the six-panel spatial map and four-panel terrain figure from the manuscript;
+- reduced number-heavy Results subsections to direct findings with Appendix pointers; and
+- replaced eleven Discussion subsections with four: lower-layer state, state offset, bounded secondary experiments, and next-experiment limits.
+
+## Figure-production contract
+
+All regenerated figures use the shared manuscript style in
+`verification/scripts/plot_obs_feb0102.py`: 6.3-inch full width, sans-serif 9 pt
+base text, editable TrueType PDF text, no in-panel manuscript titles, consistent
+Okabe--Ito colors, and 600 dpi PNG companions.
+
+Maps suppress latitude/longitude labels and ticks.
+They retain a north arrow, scale bar, named geographic features where needed, and
+one shared color bar per comparable panel group.
+Map limits and display hours remain fixed before rerendering.
+
+Figure 1 requires a paper-specific CHPC render after the geographic source files
+are fixed.
+The present `plot_wrf_transect_locator.py` has already been changed to remove the
+unused transects and coordinate axes; it remains an interim one-panel generator.
+The replacement must add a separate d01--d03 domain panel and a geographic panel
+with observation sites, named towns, major roads, rivers, basin floor, and mountain
+ranges.
+
+For the snow panel, prefer MODIS Terra Collection 6.1 data covering 1--3 February
+2013.
+Use `MOD09GA.061` for a reproducible surface-reflectance true-color composite or
+`MOD10A1.061` for an explicit daily 500 m snow product, select the least-cloudy
+date before final layout, and record granule IDs and QA handling.
+The reusable download, crop, QA, and RGB/snow rendering code belongs in `brc-tools`;
+this repository should retain only the paper configuration, exact command, hashes,
+and admitted output.
+
+For ozone, first inventory the 2013 Horsepool/UBWOS archive and EPA AQS coverage.
+The candidate regulatory series is parameter 44201 at verified Uinta Basin sites,
+but no site should enter the figure until the monitor identity, units, standard,
+quality flags, local/UTC handling, missingness, and averaging rule are fixed.
+Plot January--February 2013 in ppb, mark 2 February with a red line and short
+annotation, and do not imply that the ozone series validates the modeled layer.
+
+## Remaining bounded work
+
+1. Generate and inspect the two-panel locator on CHPC.
+2. Harvest the least-cloudy 1--3 February MODIS candidate and record its granule provenance.
+3. Reconcile Horsepool/UBWOS and AQS ozone coverage before choosing sites or aggregation.
+4. Rerender the Appendix A slope-radiation diagnostic without coordinate axes.
+5. Update the remaining candidate hashes only after CHPC visual inspection.
 
 Failed gates remain failed throughout these trims.
 No d03 result should be added until the common support and sample are declared.

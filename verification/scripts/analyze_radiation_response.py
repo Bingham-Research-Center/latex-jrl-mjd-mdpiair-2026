@@ -189,6 +189,8 @@ def main() -> None:
         )
         ax.contour(lon, lat, hgt, levels=[1700.0, 2200.0], colors="0.35", linewidths=0.5)
         ax.set_aspect(aspect_ratio)
+        ax.set_xticks([])
+        ax.set_yticks([])
         ax.set_title(f"{label}, {display:%H:%M} UTC", fontsize=9)
         fig.colorbar(mesh, ax=ax, shrink=0.85)
         panel_letter(ax, letter)

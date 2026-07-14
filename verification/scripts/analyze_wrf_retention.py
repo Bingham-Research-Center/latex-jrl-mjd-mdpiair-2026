@@ -70,6 +70,13 @@ PROFILE_METRICS = {
     "pblh_m": ("PBL height (m)", "m"),
 }
 
+# PBL height remains in the committed tables but is omitted from the manuscript
+# figure because it is scheme dependent and did not reproduce the common-layer
+# response.  The two load-bearing geometric diagnostics form the compact figure.
+FIGURE_METRICS = {
+    key: value for key, value in PROFILE_METRICS.items() if key != "pblh_m"
+}
+
 SURFACE_SKILL_METRICS = {
     "t2_bias_c": "degC",
     "t2_abs_error_c": "degC",
@@ -531,8 +538,8 @@ def plot_retention(
     bottom: float,
     top: float,
 ) -> None:
-    fig, axes = plt.subplots(3, 1, figsize=(FULL_W, 6.1), sharex=True, layout="constrained")
-    for ax, (metric, (ylabel, _units)), letter in zip(axes, PROFILE_METRICS.items(), "abc"):
+    fig, axes = plt.subplots(2, 1, figsize=(FULL_W, 4.3), sharex=True, layout="constrained")
+    for ax, (metric, (ylabel, _units)), letter in zip(axes, FIGURE_METRICS.items(), "ab"):
         for index, run in enumerate(run_order):
             part = hourly[(hourly["run"] == run) & (hourly["metric"] == metric)].sort_values("valid_time")
             color, linestyle = RUN_STYLES.get(
@@ -567,8 +574,19 @@ def plot_retention(
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--run", action="append", required=True, metavar="KEY=DIR")
+    ap.add_argument("--run", action="append", default=[], metavar="KEY=DIR")
     ap.add_argument("--display", action="append", default=[], metavar="KEY=LABEL")
+    ap.add_argument(
+        "--plot-hourly-summary",
+        type=Path,
+        help="plot a committed retention_hourly_summary.csv without reopening WRF output",
+    )
+    ap.add_argument(
+        "--run-order",
+        nargs="+",
+        default=["gfs2", "gfs1", "nam2", "nam1"],
+        help="display order for --plot-hourly-summary",
+    )
     ap.add_argument("--pair", action="append", default=[], type=parse_pair, metavar="A,B")
     ap.add_argument(
         "--interaction",
@@ -592,11 +610,31 @@ def main() -> None:
     ap.add_argument("--out-dir", type=Path, required=True)
     args = ap.parse_args()
 
+    display = dict(parse_key_value(item, "display") for item in args.display)
+    if args.plot_hourly_summary is not None:
+        hourly = pd.read_csv(args.plot_hourly_summary, parse_dates=["valid_time"])
+        available = set(hourly["run"].unique())
+        missing = set(args.run_order) - available
+        if missing:
+            raise SystemExit(f"--run-order missing from hourly summary: {sorted(missing)}")
+        args.out_dir.mkdir(parents=True, exist_ok=True)
+        plot_retention(
+            hourly,
+            args.run_order,
+            display,
+            args.out_dir,
+            args.agl_bottom,
+            args.agl_top,
+        )
+        return
+
+    if not args.run:
+        ap.error("provide at least one --run, or use --plot-hourly-summary")
+
     run_items = [parse_key_value(item, "run") for item in args.run]
     runs = dict(run_items)
     if len(runs) != len(run_items):
         raise SystemExit("duplicate --run key")
-    display = dict(parse_key_value(item, "display") for item in args.display)
     unknown = (
         set(display)
         | {member for pair in args.pair for member in pair}
