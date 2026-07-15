@@ -22,7 +22,7 @@ umask 002
 : "${BRC_TOOLS_DIR:?set BRC_TOOLS_DIR to the clean pinned brc-tools checkout}"
 : "${BRC_TOOLS_REF:?set BRC_TOOLS_REF to its exact commit}"
 
-EXPECTED_BRC_TOOLS_REF=11e4a14f753bd2313defe98dd7253cd1bb1e6a81
+EXPECTED_BRC_TOOLS_REF=548fee49aaa2376f7212ca6646f561d7c31ad8a2
 PY="${AIR_PYTHON:-$HOME/software/pkg/miniforge3/envs/brc-tools-2026/bin/python}"
 X8_RUN=/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12
 ROOT="${X8_DEFICIT_ROOT:-$X8_RUN/analysis/x8-deficit-transport/job_${SLURM_JOB_ID}}"
