@@ -1,0 +1,4 @@
+source_type,series_id,display_label,bench_station,floor_station,first_valid_time_utc,last_valid_time_utc,n_hours,minimum_dtheta_k,maximum_dtheta_k,mean_dtheta_k
+model,gfs_2way_d02,GFS two-way,USU03,USU07,2013-02-02T14:00:00.000000,2013-02-02T18:00:00.000000,5,7.348282489115377,11.743877550999855,9.950085994102073
+model,nam_2way_d02,NAM two-way,USU03,USU07,2013-02-02T14:00:00.000000,2013-02-02T18:00:00.000000,5,16.441207423970013,18.065783374974956,17.027206154357668
+observation,observations,Observations,USU03,USU07,2013-02-02T14:00:00.000000,2013-02-02T18:00:00.000000,5,12.63365843576895,20.21374459656795,16.94163395310111
