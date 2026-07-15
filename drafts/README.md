@@ -17,6 +17,11 @@ Latest review snapshots:
   promoted to `main.tex`; it contains only contract-listed figures and
   citation keys and is the starting point for the final author draft.
 
+- `jrl-manuscript_2026-07-15_last-codex-draft.pdf` — direct 26-page build of
+  ignored `jrl_manuscript.tex` immediately before the PR #6 merge decision.
+  Its source is byte-identical to `_manuscript_v3.tex`; job-name PDF metadata
+  makes its binary hash different from the v3 build.
+
 - `manuscript-v3_2026-07-15_last-codex-draft.pdf` — over-inclusive 26-page
   caretaker snapshot preserving diagnostic, terrain, radiation, and X8 review
   material without promoting those gated claims to `main.tex`.
