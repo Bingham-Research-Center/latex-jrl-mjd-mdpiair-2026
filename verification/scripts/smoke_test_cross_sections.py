@@ -69,6 +69,7 @@ def fake_wrfout(path: Path, stamps: list[str], inv_strength: float) -> None:
 
 def main() -> None:
     tmp = Path(tempfile.mkdtemp(prefix="wrf_xsect_smoke_"))
+    fake_wrfout(tmp / "wrfout_d01_2013-02-01_12:00:00", ["2013-02-01_12:00:00"], 12.0)
     fake_wrfout(tmp / "wrfout_d02_2013-02-01_12:00:00", ["2013-02-01_12:00:00"], 12.0)
     fake_wrfout(tmp / "wrfout_d03_2013-02-01_12:00:00", ["2013-02-01_12:00:00"], 12.0)
     fake_wrfout(tmp / "wrfout_d03_2013-02-02_12:00:00", ["2013-02-02_12:00:00"], 8.0)
@@ -89,7 +90,7 @@ def main() -> None:
     print(f"$ {' '.join(locator_cmd)}")
     subprocess.run(locator_cmd, check=True)
     for ext in ("png", "pdf"):
-        f = locator_dir / f"wrf_transect_locator_d02_d03.{ext}"
+        f = locator_dir / f"wrf_geographic_locator_d01_d03.{ext}"
         assert f.exists() and f.stat().st_size > 10_000, f"missing/empty {f}"
 
     profile_runs = {"gfs": tmp / "profile_gfs", "nam": tmp / "profile_nam"}

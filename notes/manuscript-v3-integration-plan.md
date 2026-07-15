@@ -12,7 +12,8 @@ Executed CHPC Batch B record:
 Its return commit was integrated without alteration as `28eb502` on
 `jrl/codex-v3-integration`; `verification/provenance/v3-figure-review-20260714.json`
 is the immutable execution record.
-The next CHPC dispatch will be a separate finishing-pass handoff prepared on Akamai.
+The next CHPC dispatch is the separate, single-job finishing pass in
+`rewrite/CHPC-V3-FINISHING-PASS.md`.
 
 Literature closure now means the discovery pass is closed and controlled manuscript
 integration has begun.
@@ -26,7 +27,7 @@ audited baseline, and Codex is the caretaker for selecting and verifying what su
 | A | Akamai / Codex | Apply citation-independent literature corrections; remove the non-equivalent 8 K comparison from code and manuscripts; withhold its stored renders; clarify the heat-deficit method and literature caveats. | Builds and repository checks pass; no manuscript includes a withheld figure. |
 | B | CHPC / bounded figure task | Execute `rewrite/CHPC-V3-FIGURE-RECOMPUTE-HANDOFF.md`: finish the line-free overlay baton, then the terrain, profile, locator, and radiation-restyle products from existing output. | Every submitted job reaches a terminal state; selected artifacts are inspected, hashed, provenance-recorded, committed, and pushed; no excluded experiment or post-hoc claim is added. |
 | C | Akamai / John plus Codex | John replaces `paperpile.bib` with a small curated Paperpile export; Codex records its generated keys and inserts only citations that already have verified source passages. | Every retained citation resolves; no key is guessed or hand-edited. |
-| D | Akamai / Codex, then coauthors | Restore the re-promoted panel if it earns a role; prune v3 to an evidence-led coauthor draft; move only accepted material into `main.tex`. | All rewrite gates are closed or explicitly deferred, figures are admitted, and the resulting PDF is visually reviewed. |
+| D | Akamai / Codex, then coauthors | Admit only candidates whose exact data and visual review pass; prune v3 to an evidence-led coauthor draft; move only accepted material into `main.tex`. | All rewrite gates are closed or explicitly deferred, figures are admitted, and the resulting PDF is visually reviewed. |
 
 ## Cross-server finishing track
 
@@ -39,8 +40,8 @@ before running or editing anything.
 | Phase | Host | State | Work and handoff condition |
 |---|---|---|---|
 | F0 | Akamai | complete | Review and integrate the bounded CHPC return as immutable commit `28eb502`; keep `main.tex` unchanged. |
-| F1 | Akamai | active | Add auditable bulk-theta CSV emission; restore its status to candidate; prepare the final locator, terrain-composite, profile, and manuscript-wiring contracts; run synthetic and LaTeX checks. |
-| F2 | CHPC | waiting | Starting only from the pushed F1 commit, run the one bundled data-dependent pass; return exact CSVs, final renders, hashes, job records, and a clean commit. |
+| F1 | Akamai | complete | Auditable bulk-theta and profile CSV emission, offline locator context, the terrain composite, manuscript wiring, and the single-job CHPC handoff are tested and committed. |
+| F2 | CHPC | ready | Starting only from the pushed F1 commit, run `verification/slurm/run_v3_finishing_pass.slurm`; return exact CSVs, final candidates, hashes, job records, and one clean commit. |
 | F3 | Akamai | waiting | Inspect at manuscript scale; update the claim ledger and both manifests; promote only admitted figures; close or explicitly defer every affected rewrite gate. |
 | F4 | Akamai | waiting | Run `make check`, `make rewrite-check`, `make v3-check`, `make smoke`, PDF inspection, and `git diff --check`; then push and open the integration PR. |
 
@@ -66,7 +67,8 @@ Do not rerun the old handoff or edit its provenance JSON to describe later work.
 The next bounded figure pass also carries three review products requested after the
 initial v3 trim:
 
-1. keep Figure 1 as two panels, with the archived d01--d03 nesting on the right;
+1. replace the mismatched two-panel Figure 1 with one sourced geographic locator and
+   a compact d01--d03 nesting inset;
 2. compare fine versus coarse static terrain (CMP11, X0 minus X4), not fine-terrain
    nest feedback, using basin-wide d02 and inner-basin d03 top-down heat-deficit
    fields plus orthogonal d03 sections; and
@@ -78,9 +80,11 @@ d03 does not cover all of those features and is retained for inner-basin detail.
 Use the same 16 UTC time, X0-minus-X4 sign, 2200 m crest, and +/-1.6 MJ m-2 scale in
 both top-down heat-deficit panels.
 
-Exact commands, expected filenames, interpretive limits, and the new bounded d03 config
-are in `notes/manuscript-v3-structure-and-domain-review.md` and
-`verification/config/figures/pelican2013_terrain_d03.toml`.
+The original raw-render commands remain historical context in
+`notes/manuscript-v3-structure-and-domain-review.md`.
+The authoritative finishing commands, expected filenames, and return contract are now
+in `rewrite/CHPC-V3-FINISHING-PASS.md` and
+`verification/slurm/run_v3_finishing_pass.slurm`.
 These are exploratory review additions only; they do not change the failed CMP09 gate
 or create a post-hoc CMP11 claim.
 

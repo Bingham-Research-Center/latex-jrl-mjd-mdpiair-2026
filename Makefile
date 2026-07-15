@@ -45,6 +45,7 @@ v3-check: v3-pdf
 	@! rg -n "fake_(cool|warm)|2 February 2026|2--February--2026|8 K CAP threshold|fail(s|ed|ure)? to maintain|maintenance failure|basin volume" $(V3_MAIN).tex
 
 smoke:
+	bash -n verification/slurm/run_v3_finishing_pass.slurm
 	mkdir -p "$(MPLCONFIGDIR)"
 	env MPLCONFIGDIR="$(MPLCONFIGDIR)" PYTHONPATH="$(BRC_TOOLS_DIR)" $(PYTHON) verification/scripts/smoke_test_runs_feb0102.py
 	env MPLCONFIGDIR="$(MPLCONFIGDIR)" $(PYTHON) verification/scripts/smoke_test_locator.py
