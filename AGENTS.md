@@ -16,6 +16,7 @@ Cold start: run `hostname -f`, read `README.md` and `ROADMAP.md`, then one route
 | Claims | `notes/claim-evidence-ledger.md`, `notes/narrative-and-hypotheses.md` |
 | Runs | `verification/provenance/run-inventory.csv`, `verification/provenance/comparison-inventory.csv` |
 | Figures | `verification/figures/archive-inventory.md`, `verification/figures/manifest.csv`, `figures/MANIFEST.md` |
+| X8 deficit transport (review only) | `NOTES-CHPC-111m-JUL26.md`, then `verification/provenance/x8-deficit-transport-13971080.json` |
 | Maximal-draft lineage | `notes/manuscript-v3-rationale.md`, then `_manuscript_v3.tex` |
 | Rewrite | `rewrite/README.md`, `rewrite/blueprint.md`, `_manuscript_test.tex` |
 | Literature | `notes/resource-map.md`, `notes/literature-synthesis-register.md` |
@@ -35,7 +36,8 @@ candidate figures, and `Definitions/` unless required.
   controlled, heterogeneous, and literature context.
 - X6/X10/X5/X3 are the confirmed floor, not the scope. X0--X10 also contain gated
   terrain, radiation, PBL/surface-layer, and fine-terrain-feedback questions;
-  X7/X8 and legacy runs remain context.
+  X7/X8 and legacy runs remain context. The within-X8 deficit-transport packet is
+  review-only process context, not comparative or basin-export evidence.
 - Every number needs matched runs, domain, stations, window, inputs, and command;
   record facts before prose.
 - `main.tex` is the audited baseline; `_manuscript_test.tex` is experimental.

@@ -15,3 +15,18 @@ Candidate and diagnostic outputs belong under `verification/figures/candidates/`
 
 Promotion requires a real-data check, matched evaluation window, complete provenance, visual inspection, and canonical WRF styling review.
 Synthetic or smoke-test output is never eligible.
+
+## Review-only v3 Appendix B candidates
+
+These X8 files are deliberately **not promoted** and therefore may not enter
+`main.tex`. They are grouped in the temporary in-manuscript ``Supplementary
+Material'' section of `_manuscript_v3.tex` only for review; exact status and hashes
+live in `verification/figures/manifest.csv`.
+
+| Candidate basename | Status | Scientific boundary |
+|---|---|---|
+| `x8_deficit_transport_map_15z` | diagnostic | Within-run redistribution; no basin boundary or resolution contrast. |
+| `x8_deficit_transport_gates_12to18` | diagnostic | Signed model-terrain transects with neutral names; no basin export. |
+| `x8_deficit_convergence_15z` | diagnostic | Horizontal convergence contribution only; not total advection. |
+| `x8_deficit_bulk_15z` | diagnostic | Exploratory layer and bulk proxy; no hydraulic-control diagnosis. |
+| `x8_deficit_budget_12to18` | diagnostic | Unresolved storage difference; no closed or uniquely diabatic budget. |
