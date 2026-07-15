@@ -1,4 +1,8 @@
-# Wishlist for the Akamai/Linode writing-host session
+# Akamai literature-closure record — 14 July 2026
+
+Status: completed/archived.
+This file preserves the executed request and its audit trail; it is not an active
+queue. Current work is routed through `tasks/final-draft-100.md`.
 
 ## Closure handoff — 14 July 2026
 
@@ -99,7 +103,7 @@ Deliverables, in priority order:
 
 Do not: guess a citation from memory without a verified passage; touch
 `Definitions/`; rename existing bib keys; start any new analysis; edit
-`WISHLIST-FOR-AKAMAI.md` except to check items off with a one-line result note.
+this closure record except to preserve the historical result notes.
 
 When done: push the branch and summarize per-item status (done / partial / not
 found on this host) at the top of your final message so John can relay it to the

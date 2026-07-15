@@ -28,7 +28,14 @@ config that produced the runs.
   full report tarball is transferred out-of-band, not committed (raw archive listings /
   namelist contents kept out of this public repo).
 
-## Running (on CHPC)
+## Historical first-pass commands
+
+The two early probes below are retained for archaeology and should not be the
+starting point for final-draft verification. In particular, `chpc_pathcheck.sh`
+contains a guessed `brc-wrf` path that is not a current authority.
+Use the canonical inventories and a new bounded CHPC lookup packet for any open
+question.
+
 ```sh
 module load rclone netcdf-c          # or: module load nco
 bash chpc_pathcheck.sh      2>&1 | tee chpc_pathcheck_$(date +%F).log

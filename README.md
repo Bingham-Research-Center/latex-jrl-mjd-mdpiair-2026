@@ -11,8 +11,10 @@ It does not duplicate large model output or reusable software.
 
 | If you want to know... | Start here |
 |---|---|
+| Whether the repo is ready for a final author draft | `notes/final-draft-readiness-2026-07-15.md` |
+| What must happen next, and what is merely optional | `tasks/final-draft-100.md` |
 | What the paper is trying to say | `ROADMAP.md` and `notes/narrative-and-hypotheses.md` |
-| Which Results architecture is selected and what happens next | `notes/manuscript-v3-integration-plan.md`, then `rewrite/HYBRID-GATE-REVIEW.md` |
+| Which Results architecture was selected and how its gates closed | `rewrite/HYBRID-GATE-REVIEW.md`, then `notes/manuscript-v3-integration-plan.md` |
 | How the blank-slate rewrite and expanded Results audit differ from the baseline | `rewrite/RESULTS-EXPANSION-HANDOFF.md`, then `rewrite/README.md` and `rewrite/blueprint.md` |
 | Whether a claim is defensible | `notes/claim-evidence-ledger.md` |
 | Which exact WRF run was inspected | `verification/provenance/run-inventory.csv` |
@@ -26,27 +28,30 @@ It does not duplicate large model output or reusable software.
 | Which figures may appear in `main.tex` | `figures/MANIFEST.md` |
 | Where a paper, critique, dataset, namelist, script, or external artifact belongs | `notes/resource-map.md` |
 
-The sibling repositories keep narrower technical responsibilities:
+Other repositories keep narrower technical responsibilities:
 
-- `../brc-wrf` owns runnable WRF cases, generated control packets, and execution evidence.
 - `../brc-tools` owns reusable download, reduction, verification, and plotting code.
+- No sibling WRF checkout overrides the run/comparison inventories, WRF headers,
+  namelist fingerprints, or immutable CHPC control packets recorded here.
 - Large WRF/NWP/observation files and bulk figure sets remain in CHPC archive or scratch storage; this repo records exact paths, hashes, and commands.
 
-`../wrf-nudge-ozone-air2026` is now a read-only deprecation candidate.
-Its accepted figure workflow and unique paper-specific experiment and literature notes have been migrated or dispositioned here.
-Its raw paper extraction and FISS experiment remain donor history rather than manuscript evidence.
-Do not add new manuscript-facing truth there; wait for the final cross-repository pointer audit before archiving it.
+`../lawson-davies-air-wrf-2026` is the read-only legacy manuscript donor.
+Its accepted material has been migrated or dispositioned here; its raw extraction,
+old checklist, and FISS experiment remain donor history rather than evidence.
+Do not edit it or add new manuscript-facing truth there.
 
 ## Start here
 
-- Manuscript: [`main.tex`](main.tex)
-- Active Codex caretaker handoff: [`notes/manuscript-v3-integration-plan.md`](notes/manuscript-v3-integration-plan.md)
+- Final-draft starting point: [`main.tex`](main.tex)
+- Readiness and branch/repo audit: [`notes/final-draft-readiness-2026-07-15.md`](notes/final-draft-readiness-2026-07-15.md)
+- Ordered required and optional register: [`tasks/final-draft-100.md`](tasks/final-draft-100.md)
+- Completed Codex caretaker record: [`notes/manuscript-v3-integration-plan.md`](notes/manuscript-v3-integration-plan.md)
+- Maximal caretaker snapshot: [`_manuscript_v3.tex`](_manuscript_v3.tex)
 - Completed Architecture C gate record: [`rewrite/HYBRID-GATE-REVIEW.md`](rewrite/HYBRID-GATE-REVIEW.md)
 - Expanded Results/figure handoff: [`rewrite/RESULTS-EXPANSION-HANDOFF.md`](rewrite/RESULTS-EXPANSION-HANDOFF.md)
 - Results architecture decision packet: [`rewrite/RESULTS-ARCHITECTURE-DECISION-PACKET.md`](rewrite/RESULTS-ARCHITECTURE-DECISION-PACKET.md)
 - Experimental blank-slate workbench: [`rewrite/README.md`](rewrite/README.md), then [`_manuscript_test.tex`](_manuscript_test.tex)
 - Large-scale plan and narrative gates: [`ROADMAP.md`](ROADMAP.md)
-- Active granular queue and recovered legacy to-dos: [`tasks/microtasks.md`](tasks/microtasks.md)
 - Scientific framing and candidate hypotheses: [`notes/narrative-and-hypotheses.md`](notes/narrative-and-hypotheses.md)
 - Figure longlist and the earlier minimum-draft narratives: [`notes/figure-strategy.md`](notes/figure-strategy.md)
 - Claim status and provenance: [`notes/claim-evidence-ledger.md`](notes/claim-evidence-ledger.md)
@@ -68,17 +73,21 @@ Open only the source needed for the current claim, experiment, or figure.
 The manuscript uses the official MDPI ACS template dated 23 June 2026 and compiles with **pdfLaTeX + BibTeX**:
 
 ```bash
-make pdf
-make check
-make rewrite-check
+make final-draft-check
+make submission-check
 ```
 
-`make rewrite-check` builds the experimental `_manuscript_test.tex`.
-It does not change the `main.tex` submission target.
+The first command builds and checks `main.tex`, `_manuscript_test.tex`, and
+`_manuscript_v3.tex`, runs the `brc-tools` smoke check, enforces the manuscript
+contract, and checks the diff.
+The second command assembles and independently checks the allowlisted submission.
 
 The supplied archive was `mdpi-template-acs.zip` with SHA-256 `baf827d7d2048a69142232cb422cfb74865adae70bff3eac9f821c6dad823568`.
 Its complete `Definitions/` directory is committed without local edits.
-Ghostscript is required to convert MDPI's EPS logo during a clean local build; Overleaf and CHPC are acceptable final-build environments.
+Ghostscript converts MDPI's EPS logo when available.
+The staging-tree check may use the committed cached conversion when Ghostscript is
+absent, while the ZIP itself remains source-clean; the independent final build must
+record which path it used.
 
 `paperpile.bib` currently contains a five-paper seed bibliography.
 John will replace it later with a small curated Paperpile export; this does not block
@@ -86,14 +95,17 @@ citation-independent editing, and agents must not hand-edit the current or expor
 
 ## Repository roles
 
-- `main.tex` contains only manuscript material that is expected to survive.
+- `main.tex` is the audited 17-page final-draft starting point and submission target.
+- `_manuscript_v3.tex` is the over-inclusive 26-page caretaker snapshot; its
+  diagnostic figures and Appendix B review layout are not submission admissions.
 - `_manuscript_test.tex` and `rewrite/` form a temporary evidence-led workbench for the total rewrite; neither is included by `make submission`.
 - `figures/` contains only figures promoted into the paper.
 - `drafts/` contains selected dated PDFs for coauthor review.
 - `verification/` retains scripts, small derived tables, candidate diagnostics, and provenance inherited from Michael's work.
 - `notes/` carries the compact reasoning that must not be mistaken for manuscript evidence.
 
-Routine `main.pdf` builds, bulk observations, WRF output, and raw provenance archives remain local.
+Routine PDFs, ignored `jrl_manuscript.*`, bulk observations, WRF output, and raw
+provenance archives remain local.
 
 ## Hosts
 

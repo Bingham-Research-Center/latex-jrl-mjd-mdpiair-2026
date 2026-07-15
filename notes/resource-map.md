@@ -11,10 +11,10 @@ When two records disagree, use the authority named below and record the discrepa
 | Question or artifact | Canonical paper-facing record | Technical or external authority | Rule |
 |---|---|---|---|
 | Manuscript claim and status | `notes/claim-evidence-ledger.md` | Exact cited analysis, figure, table, or literature source | Prose in `main.tex` does not validate itself. |
-| Scientific framing and experiment role | `rewrite/RESULTS-EXPANSION-HANDOFF.md`, `ROADMAP.md`, and `notes/narrative-and-hypotheses.md` | Controlled-comparison evidence named in the claim ledger | Separate the minimum confirmed core, gated candidate Results, confounded context, and reviewer reserve. |
+| Scientific framing and experiment role | `notes/final-draft-readiness-2026-07-15.md`, `ROADMAP.md`, and `notes/narrative-and-hypotheses.md` | Controlled-comparison evidence named in the claim ledger | Separate the promoted core, failed/gated candidates, confounded context, and reviewer reserve. |
 | WRF run identity used by the paper | `verification/provenance/run-inventory.csv` | As-run output headers, namelist fingerprints, and durable archive/control packet | Never infer identity from a directory name or candidate namelist. |
 | Run comparison and manuscript role | `verification/provenance/comparison-inventory.csv` | Member rows in the run inventory plus the named analysis and figure records | Use stable comparison IDs to connect runs to claims; do not promote a reviewer-reserve pair by prose alone. |
-| Runnable WRF case or namelist change | Pointer from the run inventory or provenance record | `../brc-wrf/brc-cases/` and the immutable archived control packet | `brc-wrf` owns execution; this repo records the verified paper-facing identity. |
+| Runnable WRF case or namelist change | Pointer from the run inventory or provenance record | Immutable archived control packet and as-run WRF/namelist fingerprints | No live sibling checkout overrides paper-facing identity; historical repo commit labels remain provenance only. |
 | Manuscript-specific analysis or plot | `verification/scripts/` plus its provenance/manifest row | Raw inputs named by that record | Keep one reproducible command and the source commit or hash. |
 | Reusable download, reduction, verification, or plotting behavior | Pointer from this repo | `../brc-tools` code, tests, and documentation | General code changes belong in `brc-tools`, not in a paper-specific wrapper. |
 | Raw WRF, NWP, observation, or cache data | `verification/data/manifest.csv`, then its named provenance record | CHPC archive/scratch or the named data provider | Do not commit bulk data; tracked CSVs are derived evidence, not raw truth. |
@@ -26,7 +26,7 @@ When two records disagree, use the authority named below and record the discrepa
 
 ### Donor deprecation rule
 
-`../wrf-nudge-ozone-air2026` is a read-only deprecation candidate, not an active
+`../lawson-davies-air-wrf-2026` is the read-only legacy donor, not an active
 source of manuscript truth.
 Its disposition is recorded in
 `verification/docs/wrf-nudge-donor-disposition.md`; preserve its Git history until
@@ -72,7 +72,9 @@ git log --all -- verification/
 ```
 
 The 50-item list mainly indexed placeholders in the scaffolded legacy manuscript.
-Its safe tasks have been re-expressed in `tasks/microtasks.md`; its draft numbers, blind figure-copy tasks, literal Tran attribution, inline-bibliography decision, and old PR step are explicitly retired or gated there.
+Its surviving work has been reconsidered in `tasks/final-draft-100.md`; stale draft
+numbers, blind figure-copy tasks, literal Tran attribution, inline-bibliography
+decision, and old PR step remain retired.
 
 The legacy GitHub repository adds another planning layer:
 
@@ -84,7 +86,8 @@ Treat PR prose as a claim index and use the current ledger before reusing a resu
 
 ## Lower-cost mining order
 
-1. Read `ROADMAP.md`, then the relevant ledger/task row.
+1. Read `notes/final-draft-readiness-2026-07-15.md`, then the relevant row in
+   `tasks/final-draft-100.md`.
 2. Open the critique or provenance summary named by that row.
 3. Inspect the exact CSV, script, extracted paper passage, or inventory fingerprint.
 4. Open a PDF, raw WRF output, bulk image tree, or full review corpus only when the preceding source leaves a named gap.
@@ -94,9 +97,9 @@ This order prevents repeated whole-corpus ingestion while keeping every importan
 
 ## Useful resources still to obtain
 
-- John's CHPC inventory export in the canonical CSV schema, including exact run basenames and as-run namelist hashes.
-- Michael's mapping from each Teams figure to code, input run, command, and intended interpretation.
-- The exact production identities of Tran's NON/ONU/ANU/OAN runs and the SIP `REF_long` configuration.
-- A decision on held-out observations for any nudging comparison.
+- Michael's final review of the promoted four-run identities, diagnostics, and
+  intended interpretation.
+- Historical Synoptic request/QC/sensor metadata and defensible data-reuse wording,
+  or an explicit statement that part of that history cannot be recovered.
 - Coauthor-confirmed CRediT roles, funding, acknowledgments, data-release constraints, and final author metadata.
-- A manuscript-specific Paperpile export after the narrative and citation set stabilize.
+- John's complete small Paperpile export after the final citation set stabilizes.

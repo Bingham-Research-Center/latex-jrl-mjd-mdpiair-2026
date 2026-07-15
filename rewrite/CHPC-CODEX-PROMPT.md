@@ -6,11 +6,10 @@ branch. Current scientific priorities live in
 `rewrite/HYBRID-ARCHITECTURE-HANDOFF.md`; this file owns only CHPC bootstrap,
 execution, and return conventions.
 
-The active multi-product v3 figure dispatch is factored into
-`rewrite/CHPC-V3-FIGURE-RECOMPUTE-HANDOFF.md`.
-Use its immutable source commit and exact boundary after reading this bootstrap.
-The ANA-16 packet retained at the end of this file is a completed historical
-record and must not be copied or rerun.
+The v3 figure dispatches in `rewrite/CHPC-V3-FIGURE-RECOMPUTE-HANDOFF.md` and
+`rewrite/CHPC-V3-FINISHING-PASS.md` are completed historical records.
+Do not copy or rerun them or the retained ANA-16 packet.
+A future CHPC request needs a new bounded task packet and immutable source ref.
 
 Use one bounded request per dispatch:
 
@@ -70,8 +69,9 @@ Bootstrap safely:
    worktree at SOURCE_REF or stop; never reset, clean, stash, or overwrite someone
    else's work.
 5. Record branch, commit, remotes, and dirty state for this repository. Locate and
-   record brc-tools only for a renderer/analysis task, and brc-wrf only for a
-   run/control-packet lookup. Do not pull or switch those repositories blindly.
+   record brc-tools only for a renderer/analysis task. For a run/control-packet
+   lookup, begin with the paper inventories and named immutable archive packet;
+   do not assume a sibling WRF-case repository exists or is authoritative.
 6. In the selected manuscript checkout, read AGENTS.md completely, then README.md
    and ROADMAP.md. Take the CHPC route by reading this file, then open only the
    mode-specific sources named below and the rows needed by the task.
@@ -82,13 +82,15 @@ Repository roles and authority:
   records, figure configurations, admission state, and small derived products.
 - brc-tools owns reusable plotting and analysis code. Record its exact commit and
   dirty state whenever it generates an artifact.
-- brc-wrf owns runnable cases and control packets. Large WRF, NWP, observation,
-  and bulk figure data remain outside Git.
+- Large WRF, NWP, observation, and bulk figure data remain outside Git. Historical
+  WRF-repo commit labels are provenance notes; as-run headers, namelist
+  fingerprints, inventories, and immutable control packets govern paper identity.
 - Run and comparison inventories govern identity and design. The archive
   inventory proves only existence. Figure manifests govern tracking/admission.
   The claim ledger plus exact artifacts governs scientific claims.
-- Architecture C is frozen. C1/C2 are anchors; C3--C6 and supplement C2 remain
-  gated. X6/X10/X5/X3 are the confirmed floor, not the full scope.
+- Architecture C is frozen and every gate has a recorded outcome. C1/C2 remain
+  anchors; preserve failed gates and bounded reserve dispositions exactly as
+  recorded. X6/X10/X5/X3 are the confirmed floor, not the full archive.
 - Never infer a run from a filename. Never identify trang_ref as the literal Tran
   et al. (2018) production run. Keep controlled comparisons, heterogeneous
   context, and literature context separate.

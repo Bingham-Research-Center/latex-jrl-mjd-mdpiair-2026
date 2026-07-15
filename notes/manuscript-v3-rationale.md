@@ -1,12 +1,13 @@
 # Manuscript v3 rationale and critique — 13 July 2026
 
-`_manuscript_v3.tex` is an experimental synthesis draft created at John's request on
-13 July 2026, after the ANA-16 gate closed.
-It sits beside `main.tex` (audited baseline, submission target) and
-`_manuscript_test.tex` (minimum blank-slate scaffold); it replaces neither.
+`_manuscript_v3.tex` began as an experimental synthesis draft at John's request on
+13 July 2026 and is now the frozen maximal caretaker snapshot.
+Selected audited material was promoted to `main.tex` on 15 July 2026;
+`_manuscript_test.tex` remains the minimum blank-slate scaffold.
 Build with `make v3-pdf`; guard with `make v3-check`.
-MAN-14 (restructuring `_manuscript_test.tex`) remains blocked and untouched;
-review of this draft is MAN-15.
+The chronology below deliberately preserves decisions as they were made; later
+sections and `notes/final-draft-readiness-2026-07-15.md` supersede old live-status
+language.
 
 ## Relationship to Architecture C
 
@@ -15,16 +16,16 @@ review of this draft is MAN-15.
   footprint-scoped weaker-state result plus an explicitly reported failed
   faster-loss criterion.
   Main C4 stays empty; the draft contains no maintenance, erosion, or collapse claim.
-- C3/C5/C6/Supplement C2 (ANA-19/17/18/20) remain unrun and appear only as named
-  future analyses in Discussion 4.5, with zero result content.
+- At the initial-v3 snapshot, C3/C5/C6/Supplement C2 (ANA-19/17/18/20) were
+  unrun; their later pass/fail execution is recorded below and in the gate review.
 
 ## Decision log
 
 | Decision | Choice | Owner and basis |
 |---|---|---|
 | Title | "WRF Cold-Pool Structure and Evolution during a Uinta Basin Winter Ozone Episode" | John, 13 July 2026, from the candidates in `notes/narrative-and-hypotheses.md`. A reviewed alternative ("Short-Window Response of WRF Cold-Pool Structure to Driving Data and Nest Feedback...") keeps both factor names and the window in the title; revisit at coauthor review if desired. |
-| Bulk-theta figure | Withhold and regenerate on CHPC without the 8 K line | Codex caretaker audit, 14 July 2026. The verified PCAPS source uses a non-equivalent crest-relative sounding deficit, so relabeling did not resolve the diagnostic mismatch. FIG-11 is reopened. |
-| Heat-deficit treatment | Full: Methods subsection, Results subsection, Table 3 | John. The candidate figure `wrf_heat_deficit_d02_13to18` remains diagnostic and unpromoted; promoting it later could replace or accompany Table 3. |
+| Bulk-theta figure | Withhold and regenerate on CHPC without the 8 K line | Codex caretaker audit, 14 July 2026. Resolved 15 July: the line-free artifact was inspected, registered, and promoted for a narrow corroboration role. |
+| Heat-deficit treatment | Full Methods/Results treatment with table and promoted trajectory | John. The figure passed later provenance/visual review and now accompanies the exact values in `main.tex`. |
 | Surface pressure | Report the paired result and add ledger row C27 | John. Shows aggregate surface skill is metric-dependent, guarding against a "GFS generally inferior" over-read. |
 
 ## What v3 keeps from each parent
@@ -62,7 +63,7 @@ New in v3 (in neither parent):
 
 1. The promoted Figure 2 embedded "8 K CAP threshold" while its caption said
    "literature reference"; the later label change did not fix the diagnostic mismatch,
-   so the render is now withheld and FIG-11 requires line-free regeneration.
+   so the render was withheld; the later line-free regeneration resolved this item.
 2. The headline common-AGL result arrived mid-Results after the two-site index;
    the strongest evidence was buried.
 3. Methods promised nine pressure stations that Results never used — an
@@ -103,15 +104,13 @@ Every numeric claim in v3 was machine-checked against the committed artifacts
 Do not source numbers from the exploratory ALLX-style table in the figure
 inventory; its aggregation is unpaired and disagrees with the committed pipeline.
 
-## Known weaknesses and open gates
+## Final-draft items that survived the v3 audit
 
-- Abstract at 208 words (MDPI guideline is about 200).
+- Confirm the current journal abstract limit during the final author pass.
 - The two-site hourly values lack a committed derived CSV (above).
-- Open rewrite gates carried in the draft: historical Synoptic request/QC/license
-  evidence (INV-17); exact WRF/GFS/NAM inputs and full configuration (MAN-11);
-  Paperpile-generated keys for the verified Whiteman and Adler heat-deficit sources;
-  line-free CHPC regeneration and re-promotion of the bulk-theta figure; CRediT,
-  funding, acknowledgments, conflicts, and data-release (MAN-07/08).
+- Remaining closure work is historical Synoptic request/QC/license evidence, final
+  review of exact WRF/GFS/NAM inputs and configuration, Paperpile-generated keys,
+  CRediT, funding, acknowledgments, conflicts, and data release.
 - John's small curated bibliography export is a deferred input, not a blocker for
   citation-independent manuscript editing; `paperpile.bib` remains untouched.
 - Literature basis: only the five verified `paperpile.bib` sources are cited.
@@ -120,12 +119,12 @@ inventory; its aggregation is unpaired and disagrees with the committed pipeline
   CHPC; their distilled lessons entered via `rewrite/blueprint.md`, the local
   Tran critique, and the claim ledger.
 
-## Promotion path
+## Promotion outcome
 
-v3 changes no promoted-figure admission rules and does not replace `main.tex`.
-If John prefers this structure after review, follow `rewrite/README.md`
-promotion conditions and MAN-13: coauthor review first, then merge selected
-prose into `main.tex` on a `jrl/` branch.
+v3 never changed promoted-figure admission rules.
+On 15 July 2026, its audited core was promoted to `main.tex`; diagnostic terrain,
+radiation, and X8 material remained in v3 as reviewer context.
+Further work follows `tasks/final-draft-100.md`, not the superseded MAN-13/MAN-15 queue.
 
 ## Maximal working revision and gate execution — 13 July 2026 (late session)
 

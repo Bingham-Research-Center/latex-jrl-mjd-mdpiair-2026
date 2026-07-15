@@ -5,6 +5,7 @@
   "generated_at_utc": "2026-07-15T22:16:43Z",
   "generator": {
     "path": "verification/scripts/plot_episode_context.py",
+    "commit": "59fa4a0",
     "sha256": "52902175194863776e2cbd25dcc8866bde9c58b36b61f7c3ea4bb792fc248e12",
     "command": "env MPLCONFIGDIR=/tmp/mdpi-air-matplotlib conda run --no-capture-output -n brc-tools python verification/scripts/plot_episode_context.py --ozone-csv verification/data/aqs_ozone_daily_janfeb2013_selected.csv --modis-png verification/figures/candidates/modis_uinta_snow_false_color_20130202_near1800.png --output verification/figures/candidates/episode_context_snow_ozone_janfeb2013",
     "environment": "brc-tools conda environment",

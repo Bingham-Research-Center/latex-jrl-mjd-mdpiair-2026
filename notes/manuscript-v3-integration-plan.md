@@ -1,6 +1,8 @@
-# Codex caretaker plan for manuscript v3
+# Completed Codex caretaker plan for manuscript v3
 
-Status: active on `jrl/codex-v3-integration` from 14 July 2026.
+Status: completed on `jrl/codex-v3-integration` on 15 July 2026.
+The current handoff is `notes/final-draft-readiness-2026-07-15.md`; required work
+is in `tasks/final-draft-100.md`.
 
 Active structural and domain review:
 `notes/manuscript-v3-structure-and-domain-review.md`.
@@ -12,13 +14,12 @@ Executed CHPC Batch B record:
 Its return commit was integrated without alteration as `28eb502` on
 `jrl/codex-v3-integration`; `verification/provenance/v3-figure-review-20260714.json`
 is the immutable execution record.
-The next CHPC dispatch is the separate, single-job finishing pass in
-`rewrite/CHPC-V3-FINISHING-PASS.md`.
+The separate single-job finishing pass in `rewrite/CHPC-V3-FINISHING-PASS.md`
+also completed and remains an execution record, not a live dispatch.
 
-Literature closure now means the discovery pass is closed and controlled manuscript
-integration has begun.
-`_manuscript_v3.tex` remains an over-inclusive working revision, `main.tex` remains the
-audited baseline, and Codex is the caretaker for selecting and verifying what survives.
+Literature discovery and controlled manuscript integration are closed.
+`_manuscript_v3.tex` is the archived over-inclusive caretaker revision and
+`main.tex` is the audited final-draft starting point.
 
 ## Batch order
 
@@ -26,8 +27,8 @@ audited baseline, and Codex is the caretaker for selecting and verifying what su
 |---|---|---|---|
 | A | Akamai / Codex | Apply citation-independent literature corrections; remove the non-equivalent 8 K comparison from code and manuscripts; withhold its stored renders; clarify the heat-deficit method and literature caveats. | Builds and repository checks pass; no manuscript includes a withheld figure. |
 | B | CHPC / bounded figure task | Execute `rewrite/CHPC-V3-FIGURE-RECOMPUTE-HANDOFF.md`: finish the line-free overlay baton, then the terrain, profile, locator, and radiation-restyle products from existing output. | Every submitted job reaches a terminal state; selected artifacts are inspected, hashed, provenance-recorded, committed, and pushed; no excluded experiment or post-hoc claim is added. |
-| C | Akamai / John plus Codex | John replaces `paperpile.bib` with a small curated Paperpile export; Codex records its generated keys and inserts only citations that already have verified source passages. | Every retained citation resolves; no key is guessed or hand-edited. |
-| D | Akamai / Codex, then coauthors | Admit only candidates whose exact data and visual review pass; prune v3 to an evidence-led coauthor draft; move only accepted material into `main.tex`. | All rewrite gates are closed or explicitly deferred, figures are admitted, and the resulting PDF is visually reviewed. |
+| C | Akamai / John plus Codex | Deferred final-author input: John replaces `paperpile.bib` with one small complete Paperpile export; Codex records generated keys and adds only passage-verified citations. | Tracked in the final-draft register; it did not block citation-independent integration. |
+| D | Akamai / Codex, then coauthors | Complete: admitted only verified candidates, preserved failed gates, promoted the evidence-led candidate to `main.tex`, and froze v3 as the maximal donor. | Main and v3 build and pass visual/contract review; coauthor review remains final-draft work. |
 
 ## Cross-server finishing track
 
@@ -65,8 +66,8 @@ Do not rerun the old handoff or edit its provenance JSON to describe later work.
 
 ## John figure-review additions, 14 July 2026
 
-The next bounded figure pass also carries three review products requested after the
-initial v3 trim:
+The completed bounded figure pass also carried three review products requested
+after the initial v3 trim:
 
 1. replace the mismatched two-panel Figure 1 with one sourced geographic locator and
    a compact d01--d03 nesting inset;

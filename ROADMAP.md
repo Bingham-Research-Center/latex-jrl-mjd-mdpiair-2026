@@ -1,20 +1,23 @@
 # Manuscript roadmap
 
-Current phase: **controlled Codex caretaker integration after closure of the selected
-Architecture C gates**.
+Current phase: **final author draft and coauthor closure after audited Architecture C
+promotion**.
 
-`main.tex` is the audited review baseline.
+`main.tex` is the audited 17-page final-draft starting point.
 `_manuscript_test.tex` and `rewrite/` are the isolated reconstruction workbench;
-`_manuscript_v3.tex` is the over-inclusive synthesis now being audited and pruned.
+`_manuscript_v3.tex` is the frozen 26-page over-inclusive caretaker snapshot.
 `_manuscript_test.tex` currently demonstrates the minimum verified four-run story; it is not a decision that the final paper has only four experiments or two figures.
 John selected Architecture C on 13 July 2026.
 All five gates have executed, with pass/fail dispositions in
 `rewrite/HYBRID-GATE-REVIEW.md`.
-The active handoff is `notes/manuscript-v3-integration-plan.md`; the alternatives remain
-in `rewrite/RESULTS-ARCHITECTURE-DECISION-PACKET.md` as decision history.
+The active handoff is `notes/final-draft-readiness-2026-07-15.md` and the ordered
+register is `tasks/final-draft-100.md`.
+The v3 integration plan and architecture alternatives remain decision history.
 
-The paper's durable claim is that credible cold-pool meteorology is a prerequisite for interpreting winter-ozone chemistry.
-Its air-focused evaluation target is whether WRF retains the shallow, weakly ventilated layer in which precursor and ozone accumulation would occur, not merely which run has the smallest aggregate surface bias.
+The paper's durable result is that the supplied driving analysis produces a repeatable
+short-window offset in WRF cold-pool state under both nest-feedback settings.
+Its air-focused bridge is that credible cold-pool meteorology is a prerequisite for
+interpreting winter-ozone chemistry, not merely a ranking by aggregate surface bias.
 It must not claim that chemistry, emissions, deposition, or photolysis are already settled.
 
 ## Candidate large-scale narratives
@@ -27,48 +30,47 @@ It must not claim that chemistry, emissions, deposition, or photolysis are alrea
 | Nudging can correct or manufacture cold-pool structure | Context or result, depending on recovered runs | Tran critique, SIP-era comparator, January historical evaluation | A same-case controlled nudged/free pair and held-out verification are required for a result. |
 | Meteorological error changes the volume available for ozone chemistry | Air-focused bridge | Literature rationale plus downstream reports of dilution and premature ventilation | Verify and cite the underlying reports; phrase as an implication of evaluated structure, not proof that meteorology dominates inventory or mechanism error. |
 
-The verified four-run result supports a compact fallback article, but the matrix is now
-explicitly reopened for an evidence-gated broader paper.
-Controlled terrain, slope/shading, PBL/surface-layer, and fine-terrain feedback pairs must
-be evaluated as candidate Results rather than excluded by the earlier minimum-draft choice.
+The verified four-run result is the final-draft core.
+Terrain, slope/shading, PBL/surface-layer, fine-terrain feedback, nudging, and longer
+windows are optional future opportunities, not final-draft blockers.
 The confounded resolution sequence and heterogeneous nudging lineage remain context only.
 
 ## Phases and exit gates
 
 | Phase | Outcome | Exit gate |
 |---|---|---|
-| 0. Repository foundation | Current MDPI template, sparse manuscript, evidence gates, safe submission builder | Complete in commits `3e21a28`--`e84c751`. |
-| 1. Inventory reconciliation | Stable run IDs and fingerprints for every candidate comparison | `verification/provenance/run-inventory.csv` contains exact archive path, version, window, grid, physics, forcing, feedback, FDDA, and evidence hashes for each promoted run. |
-| 2. Experiment design freeze | A classified X0--X10 matrix of controlled, configuration-controlled, confounded, and contextual comparisons | Each row isolates a named lever or lists every confound; each proposed result has its own common domain/sample/window. |
-| 3. Evidence longlist | Recomputed statistics and diagnostic figures from provenance-checked real data | Small and null findings are retained; commands are reproducible; uncertainty and missingness are explicit; synthetic output is absent. |
-| 4. Narrative freeze | Selected Architecture C with an evidence-gated main/supplement/reserve spine | C3--C6 and supplement C2 receive pass/fail dispositions, and every retained paragraph-level claim links to a ledger row and a table/figure or cited source. |
-| 5. Manuscript build | Reconstruct the paper from the chosen evidence spine, critique lessons, and decision-grade figures | The expanded rewrite passes its acceptance tests, methods placeholders close, and coauthors confirm configuration, interpretation, roles, funding, data availability, and attribution. |
-| 6. Figure and reproducibility freeze | Promoted figures, supplement/reviewer reserve, and public data/code plan | Both manifests are complete; canonical WRF styling reviewed; clean source ZIP compiles independently. |
-| 7. Coauthor review and submission | Reviewed MDPI Air package | Michael reviews provenance/diagnostics; Loknath and Seth review chemistry framing; all authors approve. |
+| 0. Repository foundation — complete | Current MDPI template, sparse manuscript, evidence gates, safe submission builder | Completed in commits `3e21a28`--`e84c751`; build contract hardened in `234ec7c`. |
+| 1. Inventory reconciliation — complete for promoted core | Stable run IDs and fingerprints for every promoted comparison | Exact archive path, version, window, grid, physics, forcing, feedback, FDDA, and evidence hashes exist for the four core runs. |
+| 2. Experiment design freeze — complete | Classified X0--X10 matrix of controlled, configuration-controlled, confounded, and contextual comparisons | Each comparison isolates a lever or lists its confounds. |
+| 3. Evidence longlist — complete | Recomputed statistics and registered diagnostics from provenance-checked real data | Small/null findings retained, commands reproducible, uncertainty/missingness explicit, synthetic output excluded. |
+| 4. Narrative freeze — complete | Selected Architecture C with main/supplement/reserve dispositions | Every gate has a pass/fail record; failed gates remain failed. |
+| 5. Manuscript build — in final-author pass | Audited main candidate plus maximal donor snapshot | Close required evidence/citation/front-matter rows and obtain configuration/interpretation review. |
+| 6. Figure and reproducibility freeze — next | Promoted figures, supplement decision, and public data/code plan | Freeze both manifests; inspect print layout; compile the clean source ZIP independently. |
+| 7. Coauthor review and submission — later | Reviewed MDPI Air package | Michael reviews provenance/diagnostics; Loknath and Seth review chemistry framing; all authors approve. |
 
-Run rows exist for X0--X10, and derived manuscript summaries are complete only for the
-default-terrain X6/X10/X5/X3 factorial.
-Figure coverage is substantially broader than those summaries.
-The architecture choice and failed gates are frozen.
-Codex may now make citation-independent caretaker edits in v3 and safe corrections in the
-audited baseline, but no unresolved claim or withheld figure may be promoted while
-observation metadata, citations, figure admissions, and coauthor interpretation remain
-open.
+Run rows exist for X0--X10, but the promoted quantitative argument remains the
+default-terrain X6/X10/X5/X3 factorial plus bounded observational context.
+Figure coverage is broader than the admitted paper, and that is intentional.
+The architecture choice, failed gates, and maximal-v3 lineage are frozen.
+Final-draft work should verify or remove unresolved statements in `main.tex`, not
+mine v3 for additional breadth by default.
 
 ## Workstreams
 
-### Run and data truth
+### Required evidence closure
 
-- Reconcile the July 9 CHPC inventory archive with the canonical run-inventory CSV.
-- Fingerprint the three JRL touchstones first, then the SIP-era comparator and any controlled sensitivity pairs.
-- Preserve the January nudged evaluation as historical context unless a same-case design makes it relevant.
+- Obtain Michael's review of the four promoted run identities, configurations, and
+  diagnostic meanings.
+- Close or explicitly bound observation QC/licensing and product/model citation gaps.
+- Recheck every number and mathematical definition against exact registered artifacts.
 
-### Analysis and verification
+### Final prose and review
 
-- Preserve the frozen d02, reporting-station sample, 14--18 UTC window, and two-hour spin-up exclusion when extending the confirmed factorial; define and justify a matched domain/sample/window separately for each additional result thread.
-- Use the two-hour circular block sensitivity interval across hourly spatial medians as a descriptive dependence check, not a formal confidence interval.
-- Pair aggregate scores with the completed common-AGL stability and transport-wind diagnostic; a five-hour sample cannot support a multi-day persistence claim.
-- Use independent or held-out observations for any nudging claim.
+- Keep the thesis on a deterministic 14--18 UTC supplied-state response.
+- Separate absolute run states, matched contrasts, small feedback effects, and
+  literature implications.
+- Add citations only from John's complete Paperpile export and verified passages.
+- Close author metadata, CRediT, funding, declarations, availability, and approvals.
 
 ### Literature and argument
 
@@ -78,27 +80,32 @@ open.
 - Use `notes/literature-synthesis-register.md` to carry the four synthesis collections' shared challenge to any claim that meteorology is uniquely dominant.
 - Use the downstream CAMx failure set to motivate retention and ventilation diagnostics, while treating its related institutional reports, unresolved run identities, and mixed 2013/2019 episodes as context rather than independent proof.
 
-### Figures and result expansion
+### Figures and package
 
-- Start with `rewrite/HYBRID-ARCHITECTURE-HANDOFF.md`; use the Architecture C table in the
-  decision packet for figure roles and `verification/figures/archive-inventory.md` only
-  for current external coverage.
-- Generate a broad diagnostic longlist on CHPC, then promote only figures that answer a named hypothesis.
-- Keep useful rejected or secondary diagnostics reproducible for supplements and reviewer requests.
-- Do not promote an inherited image solely because it looks publication-ready.
+- Freeze the nine allowlisted main figures after print, accessibility, hash, and
+  permission review.
+- Decide whether any separate supplement survives; v3's review-layout Appendix B
+  is not a submission supplement.
+- Build and inspect the allowlisted package in an independent clean environment.
 
-## Minimum verified scaffold, not current scope
+## Selected final-draft scope
 
 - **Primary:** GFS versus NAM driving analysis under both two-way (X6 minus X5) and one-way (X10 minus X3) default-terrain configurations.
 - **Secondary:** within-source one-way-versus-two-way feedback (X10 minus X6 and X3 minus X5) plus the paired forcing-by-feedback interaction.
-- **Current figure pool:** observed floor-to-bench evolution and four-run common-AGL retention/ventilation are promoted; the observed/model bulk-theta contrast is withheld pending line-free CHPC regeneration.
-- **Experimental rewrite core:** observed evolution plus common-AGL retention/ventilation; hold the bulk-theta panel until CHPC regenerates it without the non-equivalent 8 K line and the proxy earns a distinct narrative role.
-- **Active expansion candidates:** X1-X0 slope/shading, X2-X1 PBL/surface layer, X3-X0/X3-X4/X0-X4 terrain, X9-X0 fine-terrain feedback, spatial/vertical driving-response panels, and productized heat-deficit fields.
+- **Promoted figure spine:** locator, bounded AQS/MODIS episode context, observed
+  temperature evolution, common-pipeline effects, common-AGL retention/ventilation,
+  line-free bulk theta, heat deficit, and two Horsepool supplied-state profiles.
+- **Maximal-v3 reserve:** terrain, radiation, and X8 panels remain diagnostic/review
+  material and do not enter `main.tex`.
+- **Optional expansion:** new controlled terrain, radiation, PBL, snow, nudging,
+  attribution, or longer-window work appears only in the optional register.
 - **Still excluded as sensitivity results:** the confounded X7/X0/X8 resolution ladder and heterogeneous nudging lineage.
 
 No additional WRF integration is needed to audit the broader existing matrix.
 Use the completed outputs for targeted analysis and figure selection first.
-CHPC metadata recovery, the held figure regeneration, and selected diagnostic checks remain gates before coauthor circulation; propose a new integration only when the existing archive cannot answer a selected question.
+The held bulk-theta regeneration and current diagnostic checks are complete.
+No additional WRF integration is required to begin or complete the author prose pass.
 
-The active granular queue is in `tasks/microtasks.md`.
-The source-mining order and legacy to-do location are in `notes/resource-map.md`.
+The current ordered queue is `tasks/final-draft-100.md`.
+The readiness evidence is `notes/final-draft-readiness-2026-07-15.md`; selective
+source-mining order remains in `notes/resource-map.md`.

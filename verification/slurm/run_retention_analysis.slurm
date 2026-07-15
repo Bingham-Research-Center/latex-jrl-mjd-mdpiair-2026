@@ -9,9 +9,9 @@
 #SBATCH --output=/scratch/general/vast/%u/latex_jrl_retention_%j.out
 #SBATCH --error=/scratch/general/vast/%u/latex_jrl_retention_%j.err
 
-# Manuscript-specific analysis wrapper.  WRF execution stays in brc-wrf and the
-# reusable figure engine stays in brc-tools; this job reads four accepted archive
-# runs and writes a small review packet to scratch.
+# Manuscript-specific analysis wrapper. WRF identity and execution stay in the
+# registered archive and immutable control packets; reusable analysis stays in
+# brc-tools. This job reads four accepted runs and writes a small review packet.
 set -euo pipefail
 
 PY=/uufs/chpc.utah.edu/common/home/u0737349/software/pkg/miniforge3/envs/brc-tools-2026/bin/python
