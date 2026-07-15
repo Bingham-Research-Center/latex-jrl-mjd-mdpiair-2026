@@ -42,6 +42,14 @@ dredge it; use the exact paths below.
   SHA-256 `8b02e9119177782cc5b7885152ec397fcff2a49a25265940679b9b7158bac6d0`.
   Exact commands, scratch/reserve hashes, copied-file mappings, logs, and visual
   findings are in `verification/provenance/v3-figure-review-20260714.json`.
+- **Verified 2026-07-15 v3 finishing pass:** manuscript source `92d96b1` and
+  brc-tools `69ddbe07` produced the exact bulk-theta values, sourced locator,
+  two-time Horsepool profiles, and bounded CMP11 composite in job `13968404`.
+  The hash-verified 15-file return is commit `010e833`; its immutable record is
+  `verification/provenance/v3-finishing-pass-13968404.json`.
+  Manuscript-scale PDF and raster review promoted the locator, bulk-theta curve,
+  and profile pair, while the terrain composite remains diagnostic because CMP11
+  had no predeclared gate and its d02, d03, and section summaries are support dependent.
 - **Exact renderer state:** brc-tools `fad70b0` (adds the `heatdeficit_map` family; was
   `56cd002` = thetaz + sounding `height_m`); `verification/config/figures/pelican2013.toml`
   SHA-256 `ad9d933854fc7067260f1bb398e25aff2e7c286b9df8135a64c9dfa1cf8d2fd7` (incl.

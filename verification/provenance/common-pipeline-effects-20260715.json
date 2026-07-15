@@ -1,0 +1,40 @@
+{
+  "request_id": "20260715-common-pipeline-effects-admission",
+  "created_utc": "2026-07-15T16:55:48Z",
+  "host": "notchpeak1.int.chpc.utah.edu",
+  "source_commit": "010e833048f53d75fe0244364df37407963d59d8",
+  "generator": {
+    "path": "verification/scripts/plot_common_pipeline_effects.py",
+    "last_change_commit": "c43237e90816fdfcd682de3734ec0a7d76afc3b1",
+    "sha256": "3e21eb2d548b45607562cdaa2f0e268e1086851258879f33fa7f243ba946e99f"
+  },
+  "environment": {
+    "python": "/uufs/chpc.utah.edu/common/home/u0737349/software/pkg/miniforge3/envs/brc-tools-2026/bin/python",
+    "python_version": "3.12.13",
+    "matplotlib_version": "3.11.0",
+    "pandas_version": "3.0.3",
+    "pythonpath": "/uufs/chpc.utah.edu/common/home/u0737349/gits/brc-tools"
+  },
+  "command": "env MPLCONFIGDIR=/tmp/v3-effects-mpl PYTHONPATH=/uufs/chpc.utah.edu/common/home/u0737349/gits/brc-tools /uufs/chpc.utah.edu/common/home/u0737349/software/pkg/miniforge3/envs/brc-tools-2026/bin/python verification/scripts/plot_common_pipeline_effects.py --out-dir verification/figures/candidates",
+  "inputs": [
+    {"path": "verification/data/surface_skill_pair_summary.csv", "sha256": "c45f8d9f30bed6be4cd689f9aa4a174fafbe2563d13f0da4a7e360ae769b31b3"},
+    {"path": "verification/data/surface_skill_interaction_summary.csv", "sha256": "75d937fa127c9673e93573b96dfa6cc41f12c45216b5a93d90ef0a71aaf15030"},
+    {"path": "verification/data/retention_pair_summary.csv", "sha256": "996c8d5fa531a00549517f12f2b6bd917dc3527f5d653cbe7075d2c2686eed2d"},
+    {"path": "verification/data/retention_interaction_summary.csv", "sha256": "7013183079db3ebc11720aff90ef02a2a4f808afd00b07fc0c786685fd46f599"},
+    {"path": "verification/data/cmp06_surface_skill_pair_summary.csv", "sha256": "e6313cc562642c2770967bb80280e16e573377fa144ae3010dc74a15a9d1615c"},
+    {"path": "verification/data/cmp06_retention_pair_summary.csv", "sha256": "e4410f881b7157f9e9f2739c8e427e1ae42d4d73a6a8a617c2c896ee2e9ba114"},
+    {"path": "verification/data/process_pairs_surface_skill_pair_summary.csv", "sha256": "a61d50895a9b23001d164a3ac06c28ca8f1e33aa13c9984c1d69e117d4c2f688"},
+    {"path": "verification/data/process_pairs_retention_pair_summary.csv", "sha256": "c4bbbbff8632be971edd46e92e5983eb64d176805e3ab2ad37ac892e2f125ee9"}
+  ],
+  "outputs": [
+    {"path": "verification/figures/candidates/fig_common_pipeline_effects.png", "sha256": "06f7a66b3e9fb43a71142545917ccc27892b5d2f7c64206542d53736f9df30d4"},
+    {"path": "verification/figures/candidates/fig_common_pipeline_effects.pdf", "sha256": "6c450304f31bf94e2d6cf8bc2727aabe0820d590253d20804050f5536dd8f5ab"},
+    {"path": "figures/fig_common_pipeline_effects.pdf", "sha256": "6c450304f31bf94e2d6cf8bc2727aabe0820d590253d20804050f5536dd8f5ab"}
+  ],
+  "review": {
+    "visual_status": "passed",
+    "reviewed_utc": "2026-07-15T16:55:48Z",
+    "scope": "manuscript-scale PDF raster, labels, sign orientation, zero references, and descriptive interval wording",
+    "interpretation": "Response hierarchy only; not an overall configuration ranking or inferential uncertainty display."
+  }
+}

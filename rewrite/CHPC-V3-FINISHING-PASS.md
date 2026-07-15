@@ -66,6 +66,17 @@ The wrapper now warms that cache explicitly and records only the initialization
 notice in `command_trace.log`; later plotting stderr remains a strict failure signal.
 Do not package or cite the scratch return from job `13968359`.
 
+Final job `13968404` ran the corrected source `92d96b1ea630b429a71666de4fad7b6511e2109d`
+on `notch392` from 16:37:51 to 16:38:32 UTC.
+The wrapper recorded `exit_code=0`, scheduler stderr was empty, the command trace was
+nonempty, both raw and return SHA-256 manifests verified, and the CSV line counts were
+16, 4, 297, and 5.
+Slurm accounting was temporarily unavailable after completion, so `MaxRSS` and a
+post-hoc `sacct` state could not be recovered; the job had left `squeue`, and the
+complete wrapper metadata records the terminal result and node.
+The exact 15-file return was committed as `010e833048f53d75fe0244364df37407963d59d8`
+and pushed on `jrl/chpc-20260715-v3-finishing-return`.
+
 ## Fixed scope
 
 The job produces only these scientific products:
