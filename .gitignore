@@ -2,6 +2,8 @@
 main.pdf
 _manuscript_test.pdf
 _manuscript_v3.pdf
+jrl_manuscript.tex
+jrl_manuscript.pdf
 *.aux
 *.bbl
 *.bcf

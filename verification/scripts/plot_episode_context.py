@@ -53,10 +53,10 @@ def render(ozone_csv: Path, modis_png: Path, output: Path) -> None:
 
     plt.rcParams.update(
         {
-            "font.size": 9,
-            "axes.titlesize": 10,
-            "axes.labelsize": 9,
-            "legend.fontsize": 7.5,
+            "font.size": 13,
+            "axes.titlesize": 14,
+            "axes.labelsize": 13,
+            "legend.fontsize": 9.5,
             "savefig.bbox": "tight",
         }
     )
@@ -74,13 +74,13 @@ def render(ozone_csv: Path, modis_png: Path, output: Path) -> None:
         dates = [item[0] for item in values]
         ozone = [item[1] for item in values]
         coverage = [item[2] for item in values]
-        ozone_ax.plot(dates, ozone, color=color, lw=1.25, label=name, zorder=2)
+        ozone_ax.plot(dates, ozone, color=color, lw=1.6, label=name, zorder=2)
         full = [i for i, value in enumerate(coverage) if value >= 75.0]
         low = [i for i, value in enumerate(coverage) if value < 75.0]
         ozone_ax.scatter(
             [dates[i] for i in full],
             [ozone[i] for i in full],
-            s=13,
+            s=24,
             marker=marker,
             facecolor=color,
             edgecolor="white",
@@ -92,7 +92,7 @@ def render(ozone_csv: Path, modis_png: Path, output: Path) -> None:
             ozone_ax.scatter(
                 [dates[i] for i in low],
                 [ozone[i] for i in low],
-                s=20,
+                s=32,
                 marker=marker,
                 facecolor="white",
                 edgecolor=color,
@@ -109,7 +109,7 @@ def render(ozone_csv: Path, modis_png: Path, output: Path) -> None:
         ha="right",
         va="top",
         rotation=90,
-        fontsize=7.5,
+        fontsize=10.5,
         transform=ozone_ax.transData,
     )
     ozone_ax.set_xlim(datetime(2013, 1, 1), datetime(2013, 2, 28))
@@ -134,13 +134,13 @@ def render(ozone_csv: Path, modis_png: Path, output: Path) -> None:
             )
         )
         labels.append("within-day coverage <75%")
-    ozone_ax.legend(handles, labels, loc="upper left", ncol=2, frameon=True)
+    ozone_ax.legend(handles, labels, loc="upper left", ncol=3, frameon=True)
     ozone_ax.text(
         0.01,
         0.015,
         "AQS Date Local; values plotted as reported; no threshold shown.",
         transform=ozone_ax.transAxes,
-        fontsize=7.3,
+        fontsize=10,
         va="bottom",
         bbox={"facecolor": "white", "edgecolor": "none", "alpha": 0.82},
     )

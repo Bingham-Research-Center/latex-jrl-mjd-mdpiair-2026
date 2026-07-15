@@ -14,7 +14,7 @@
 \dateaccepted{ }
 \datepublished{ }
 
-\Title{WRF Cold-Pool Structure and Evolution during a Uinta Basin Winter Ozone Episode}
+\Title{Short-Window Sensitivity of WRF Cold-Pool State to Driving Data during a Uinta Basin Winter Ozone Episode}
 
 \newcommand{\orcidauthorA}{0000-0003-0305-4090}
 \newcommand{\orcidauthorB}{0009-0009-9083-6568}
@@ -30,12 +30,12 @@ $^{2}$ \quad Department of Mathematics and Statistics, Utah State University, Lo
 $^{3}$ \quad Department of Chemistry and Biochemistry, Utah State University, Logan, UT 84322, USA}
 \corres{Correspondence: john.lawson@usu.edu}
 
-\abstract{Cold-pool structure controls the mixing volume and transport available to winter-ozone chemistry, but surface skill alone does not establish that structure.
-We evaluated Weather Research and Forecasting simulations of the 2 February 2013 Uinta Basin episode, anchored by four runs that crossed GFS and NAM driving products with one-way and two-way nest feedback.
-Across five post-spin-up hours, the GFS members were warmer at the surface, about 3.6 K less stable from 50 to 500 m above ground, and 0.8--1.0 m s$^{-1}$ faster in fixed-layer transport wind than the matched NAM members.
-They also had less footprint-integrated heat deficit, but every simulation gained heat deficit during the window; the product separation was a state offset, not faster GFS cold-pool loss.
-Nest-feedback effects were much smaller, and the boundary-layer/surface-layer treatment produced a smaller, metric-dependent response.
-The design does not isolate initial from lateral-boundary forcing, validate inversion depth or event-scale persistence, or predict ozone.}
+\abstract{Cold-pool structure controls the mixing environment available to winter-ozone chemistry, but aggregate surface skill alone does not establish that structure.
+We evaluated deterministic sensitivity in Weather Research and Forecasting simulations of the 2 February 2013 Uinta Basin episode, anchored by four runs that crossed GFS and NAM driving products with one-way and two-way nest feedback.
+Across five post-spin-up hours, the GFS members were warmer at the surface, about 3.6 K less stable from 50 to 500 m above ground, and 0.8--1.0 m s$^{-1}$ faster in fixed-layer transport wind than the feedback-matched NAM members.
+They also had about 1.2 MJ m$^{-2}$ less footprint-mean heat deficit, but every simulation gained heat deficit during the window, identifying a state offset rather than faster GFS cold-pool loss.
+Nest-feedback effects were much smaller, and a controlled boundary-layer/surface-layer treatment produced a smaller, metric-dependent response.
+The design does not isolate initial from lateral-boundary forcing, validate inversion depth or event-scale persistence, calculate basin export, or predict ozone.}
 
 \keyword{winter ozone; WRF; cold-air pool; Uinta Basin; driving data; nest feedback; heat deficit; model evaluation}
 
@@ -43,14 +43,15 @@ The design does not isolate initial from lateral-boundary forcing, validate inve
 
 \section{Introduction}
 
-\diagnosticnote{Working-draft mode.
-This revision is deliberately broad but selective: it carries every archived controlled comparison and each candidate result thread with a scoped evidential role, while leaving redundant or unreadable figure galleries in the reproducible harvest.
+\diagnosticnote{Maximal review-draft mode.
+This revision carries every archived controlled comparison and each candidate result thread with a scoped evidential role, while leaving redundant or unreadable figure galleries in the reproducible harvest.
 Three status classes appear throughout.
 \emph{Promoted} figures and \emph{confirmed} claims have passed the repository's provenance and admission gates and carry ledger identifiers (C-numbers).
 \emph{Registered candidates} are tracked with full provenance but are not admitted.
 \emph{Exploratory renders} are batch engine figures catalogued in \texttt{figures-draft/HARVEST.md}; they illustrate visual leads only, and no quantitative claim in this draft rests on them.
-The analysis gates named in this draft (ANA-17, ANA-18, ANA-19, ANA-20) have all been executed with criteria fixed in committed scripts before any output was read; each section reports its gate's pass or fail outcome, and the complete decision record is \texttt{rewrite/HYBRID-GATE-REVIEW.md}.
-A submission-ready revision would remove the remaining diagnostic scaffolding and admit only figures that pass the normal promotion path.}
+The analysis gates named in this draft (ANA-16--ANA-20) have all been executed with criteria fixed in committed scripts before any output was read; each section reports its gate's pass or fail outcome, and the complete decision record is \texttt{rewrite/HYBRID-GATE-REVIEW.md}.
+The ozone--snow episode-context panel is now independently reproduced and promoted; its role remains contextual rather than chemical or meteorological validation.
+A submission revision must remove this diagnostic scaffolding and retain only admitted material.}
 
 Winter ozone in the Uinta Basin develops when photochemistry proceeds within snow-covered, stably stratified air that restricts vertical dilution and horizontal exchange \citep{Ahmadov2015-zm,Neemann2015-ws,Davies2025-wy}.
 Snow increases actinic flux and modifies deposition, while the stable, weakly ventilated air confines ozone and its precursors near the basin floor.
@@ -102,6 +103,13 @@ Observed and modeled surface potential temperature for a two-site structural ind
 Because the two sites are horizontally separated and locally exposed, the index is a spatial surface contrast rather than a colocated free-air inversion strength or depth.
 No sounding, profiler, or remote-sensing profile is used to validate the modeled 50--500 m layer.
 
+Episode-scale ozone context came from the current EPA Air Quality System (AQS) AirData daily archive for 1 January--28 February 2013.
+We retained the EPA-reported ``Ozone 8-hour 2015'' daily-summary row at Ouray, Redwash, Roosevelt, Vernal, and Little Mountain and converted its first maximum value from parts per million to parts per billion without recomputing an eight-hour statistic.
+All five sites contained one daily row on each of the 59 local calendar dates; within-day observation coverage ranged from 47\% to 100\% and is marked explicitly in the figure.
+The satellite panel uses the NASA Global Imagery Browse Services Terra MODIS corrected-reflectance bands 7-2-1 layer for 2 February 2013.
+That layer is a calendar-day browse image rather than a quantitative snow retrieval or a crop of the selected 18:15--18:20 UTC granule.
+These observations establish chemical and snow context only and do not validate the WRF layer or attribute ozone to the simulated meteorology.
+
 \begin{figure}[H]
 \centering
 \IfFileExists{figures/wrf_geographic_locator_d01_d03.pdf}{%
@@ -115,7 +123,8 @@ Seven of the eleven reporting stations fall outside the usable d03 interior, whi
 \end{figure}
 
 \rewritegate{Synoptic citation wording, the current API defaults, access conditions, and the frozen-cache hash are documented.
-Before circulation, archive or regenerate the historical request with explicit quality-control parameters, station and network ownership, sensor metadata, completeness screening, uncertainty treatment, request URL, and provider-specific reuse permission.}
+Before circulation, archive or regenerate the historical request with explicit quality-control parameters, station and network ownership, sensor metadata, completeness screening, uncertainty treatment, request URL, and provider-specific reuse permission.
+Add the authoritative EPA AQS AirData and NASA GIBS/MODIS dataset citations from John's curated bibliography export; exact URLs, retrieval vintage, hashes, site operators, daily coverage, and image provenance are already registered.}
 
 \subsection{WRF Configuration and Archived Simulation Family}
 \label{sec:v3-family}
@@ -246,16 +255,29 @@ The transport-wind proxy was $U_{50:500}=\{\bar{u}^{2}+\bar{v}^{2}\}^{1/2}$, whe
 This wind metric is not flow through the basin boundary, pollutant residence time, cold-pool volume, or a chemistry-model ventilation coefficient.
 Native WRF planetary-boundary-layer (PBL) height was retained only as a scheme-dependent companion diagnostic.
 
+\subsection{Pairing, Aggregation, and Short-Sample Sensitivity}
+
+Run differences were paired by station and valid hour before spatial aggregation.
+The driving-product-by-feedback interaction was defined as $[\mathrm{GFS}_{1\mathrm{w}}-\mathrm{GFS}_{2\mathrm{w}}]-[\mathrm{NAM}_{1\mathrm{w}}-\mathrm{NAM}_{2\mathrm{w}}]$ at each station and hour.
+Each fixed station field was reduced to one unweighted spatial median per hour, and the reported five-hour effect is the mean of those five dependent hourly medians.
+The stations therefore define one sampled spatial field and are not treated as independent replicates.
+Hourly ranges, sign counts, and leave-one-hour summaries accompany the means.
+A descriptive circular moving-block calculation drew 20,000 resamples of the five hourly medians with two-hour blocks and reports the 2.5th and 97.5th percentiles as a sensitivity interval.
+Those percentiles are not confidence intervals, hypothesis tests, or estimates of forcing, observation, or structural uncertainty.
+No formal population inference is attempted from four deterministic integrations of one case, and the fixed two-hour spin-up exclusion has not itself been subjected to a start-time sensitivity test.
+
 \subsection{Footprint-Integrated Heat Deficit}
 \label{sec:v3-heatdeficit-methods}
 
 The original basin-volume heat deficit of Whiteman et al. represents the sensible heat required to remove a basin inversion, and Adler et al. provide the closest published column implementation to the present diagnostic.
 \rewritegate{Insert the Paperpile-generated keys for Whiteman et al. (1999) and Adler et al. (2023) after John's small curated export; do not invent or hand-edit keys.}
-The present area-normalized atmospheric heat-deficit proxy was defined as $H=(c_{p}/g)\int\max\{\theta_{\mathrm{crest}}-\theta,0\}\,dp$, integrated from the surface to a fixed crest reference height, where $\theta_{\mathrm{crest}}$ is the potential temperature interpolated to that height in each modeled column.
+Let $p_{s}$ and $p_{c}$ denote the pressures at the surface and fixed crest reference, respectively, with $p_{c}<p_{s}$.
+The present area-normalized atmospheric heat-deficit proxy was defined as $H=(c_{p}/g)\int_{p_{c}}^{p_{s}}\max\{\theta_{\mathrm{crest}}-\theta(p),0\}\,dp$, where $\theta_{\mathrm{crest}}$ is the potential temperature interpolated to the crest height in each modeled column.
 $H$ is reported as a cell-area-weighted mean over an evaluation footprint in MJ m$^{-2}$.
 The footprint is the convex hull of the eleven evaluation stations and eleven registered basin waypoints, intersected with model terrain below the crest reference.
 The primary definition uses a 2200 m crest and the combined hull, covering 4965 d02 cells and 5277 km$^{2}$.
 Six alternate definitions vary the crest to 2100 and 2300 m, dilate or erode the boundary by one cell, or restrict the hull to the stations or waypoints alone.
+The 2200 m value is the central predeclared reference in that 2100--2300 m bracket, not an observed cold-pool top or a claim that one crest height encloses a hydrologic basin.
 Because two-way feedback modifies the d02 terrain field by up to 23.1 m relative to the static one-way field, differences were formed within feedback mode, X6 minus X5 and X10 minus X3, on a common mask fixed from the one-way NAM terrain; the members of each pair share identical grids.
 Hourly values at 13:00 UTC provide trajectory context only, and all decisions use 14:00--18:00 UTC.
 Two criteria were fixed before inspection: a weaker-state criterion requiring both GFS-minus-NAM pairs to be negative at every retained hour under all seven definitions, and a faster-loss criterion requiring both GFS 14:00-to-18:00 UTC changes to be negative and more negative than the matched NAM changes under all seven definitions.
@@ -267,7 +289,7 @@ The footprint is an evaluation region rather than a hydrologic basin boundary, a
 
 The single X8 context run archived d04 output every 10 min from 12:00 to 18:00 UTC on a nominal 111.111 m grid with 50 vertical levels.
 It is multiply confounded relative to the controlled family and is used only to demonstrate a within-run process diagnostic, not a resolution response or configuration ranking.
-The horizontal heat-deficit transport was defined as $\mathbf{F}=(c_{p}/g)\int\max\{\theta_{\mathrm{crest}}-\theta,0\}\mathbf{u}_{h}\,dp$, using the same local 2200 m MSL crest reference and nonnegative kernel as $H$.
+The horizontal heat-deficit transport was defined as $\mathbf{F}=(c_{p}/g)\int_{p_{c}}^{p_{s}}\max\{\theta_{\mathrm{crest}}-\theta(p),0\}\mathbf{u}_{h}(p)\,dp$, using the same local 2200 m MSL crest reference and nonnegative kernel as $H$.
 $\mathbf{F}$ has units of W m$^{-1}$, and $-\nabla_{h}\!\cdot\mathbf{F}$ is reported only as the horizontal flux-convergence contribution to the tendency of $H$.
 Storage was differenced over each 10 min interval, horizontal convergence was averaged at the interval endpoints, and both were area weighted after a symmetric 15-cell edge crop from d04.
 Their difference is called the unresolved tendency because diabatic physics, the time-varying local crest reference, clipped-layer movement, vertical and boundary terms, and numerical error can all contribute.
@@ -278,11 +300,26 @@ As in the controlled analyses, 12:00--14:00 UTC is shown as spin-up context and 
 
 \section{Results}
 
-\subsection{Observed Surface Context}
+\subsection{Observed Episode Context}
 
-\rewritegate{The satellite half of an early two-panel episode-context figure now exists as a verified diagnostic candidate: Terra MODIS bands 7-2-1 for 2 February 2013, with the nearest center-covering granule acquired at 18:15--18:20 UTC.
-Do not include it until figure admission and the companion panel of quality-controlled observed ozone for January--February 2013 are complete.
-The final caption must state the satellite product, GIBS daily-layer limitation, overpass time, processing level, ozone sites, averaging rule, units, missingness, and data access provenance; use the figure as chemical and snow context, not as validation of modeled vertical structure.}
+The MODIS browse layer shows extensive snow or ice across the basin and surrounding terrain on 2 February, while the AQS series places the modeled day within a sequence of changing daily ozone maxima (Figure~\ref{fig:v3-episode-context}).
+On 2 February, the reported daily maximum eight-hour values were 56 ppb at Little Mountain, 65 ppb at Vernal, 72 ppb at Roosevelt, 81 ppb at Redwash, and 95 ppb at Ouray.
+Each selected monitor reported higher daily values on at least one other date in January or February, so the modeled date is episode context rather than a claim to have sampled the two-month maximum.
+Neither panel attributes the observed ozone to WRF meteorology.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures/episode_context_snow_ozone_janfeb2013.pdf}
+\caption{Observed context for the 2 February 2013 simulation date.
+(a) NASA GIBS Terra MODIS corrected reflectance, bands 7-2-1, for the 2 February calendar day; snow and ice generally appear cyan, most liquid cloud appears white, and ice cloud may also appear cyan.
+The browse layer is not a raw-granule crop or quantitative snow retrieval; the nearest center-covering Terra granule was acquired at 18:15--18:20 UTC.
+(b) EPA AQS first maximum value from the ``Ozone 8-hour 2015'' daily-summary row at Ouray, Redwash, Roosevelt, Vernal, and Little Mountain, converted from ppm to ppb and plotted by AQS local date without recomputation.
+All five sites have 59 daily rows; hollow markers identify the seven site-days with less than 75\% within-day observation coverage.
+No regulatory threshold is shown, and the panel is episode context rather than chemistry evaluation or meteorology--ozone attribution.}
+\label{fig:v3-episode-context}
+\end{figure}
+
+\subsection{Observed Surface-Temperature Context}
 
 The basin-floor station at Pariette Draw repeatedly cooled below the higher sites from 31 January through 3 February, while the magnitude and ordering of the station temperatures changed through the diurnal cycle (Figure~\ref{fig:v3-observed}).
 The recurring floor-to-bench separation is consistent with cold-pool conditions around the modeled period.
@@ -322,9 +359,11 @@ All values come from the registered common station and common-AGL summaries.}
 
 The common-AGL diagnostics separated the driving products under both feedback settings (Figure~\ref{fig:v3-retention}).
 GFS minus NAM reduced 50--500 m potential-temperature stability by 3.63 K under two-way feedback and 3.65 K under one-way feedback (Table~\ref{tab:v3-effects}).
+The corresponding run-level five-hour means were 7.50 and 7.38 K for GFS two-way and one-way, compared with 10.82 K for both NAM members.
 The five hourly spatial-median differences ranged from -5.58 to -1.13 K and from -5.36 to -0.90 K, respectively.
 All ten product-by-hour stability contrasts therefore retained the same sign.
 GFS minus NAM increased fixed-layer transport wind by 0.79 m s$^{-1}$ under two-way feedback and 0.99 m s$^{-1}$ under one-way feedback.
+The run-level means were 2.01 and 2.06 m s$^{-1}$ for the GFS members, compared with 1.12 and 1.08 m s$^{-1}$ for the NAM members.
 The hourly differences ranged from +0.37 to +1.18 m s$^{-1}$ and from +0.61 to +1.50 m s$^{-1}$, with the same sign in every hour.
 Native PBL-height differences changed sign within both feedback modes and did not reproduce the stability and wind separation.
 
@@ -369,6 +408,7 @@ The registered maps remain reviewer-reserve diagnostics because later spatial co
 
 The GFS members carried less footprint-integrated heat deficit at every retained hour under every tested footprint definition (Table~\ref{tab:v3-heatdeficit}).
 The mean GFS-minus-NAM differences were -1.23 and -1.25 MJ m$^{-2}$ under two-way and one-way feedback.
+Under the primary definition, five-hour means were 3.00 and 2.97 MJ m$^{-2}$ for GFS two-way and one-way, compared with 4.23 and 4.22 MJ m$^{-2}$ for NAM two-way and one-way.
 Heat deficit increased in all four simulations, however, so the predeclared faster-loss criterion failed under every definition.
 This is evidence of a state offset already present at 14:00 UTC, not of different cold-pool evolution during the five-hour window.
 The trajectory in Figure~\ref{fig:v3-heatdeficit-traj} makes that distinction visible.
@@ -475,7 +515,7 @@ Because X8 has no matched control and the line is not a basin boundary, this is 
 The common-AGL result leads because it applies one geometric layer, station sample, time window, and aggregation to all four anchor simulations.
 Native PBL height cannot replace it because PBL height is scheme dependent and its product contrasts changed sign.
 The observed floor-to-bench temperature contrast is valuable surface corroboration, but horizontally separated stations do not validate inversion depth, layer stability, or modeled heat deficit.
-Observed ozone and satellite snow cover will strengthen the episode context, not supply that missing vertical validation or establish a meteorology--ozone causal response.
+The admitted ozone and satellite panels strengthen episode context, but they do not supply that missing vertical validation or establish a meteorology--ozone causal response.
 
 The d02 choice is likewise a sampling decision rather than a resolution result.
 It retains all eleven stations, whereas d03 retains only four usable interior columns, but it may smooth slope, tributary, and terrain-edge responses.
@@ -766,7 +806,7 @@ The scatter's time coloring shows temporal association within one model run and 
 \funding{\rewritegate{Insert verified funders and grant numbers.}}
 \institutionalreview{Not applicable.}
 \informedconsent{Not applicable.}
-\dataavailability{The analysis scripts, derived hourly and paired summaries, heat-deficit tables, run and comparison inventories, provenance records, and promoted figures used for this draft are retained in the private working repository.
+\dataavailability{The analysis scripts, derived hourly and paired summaries, heat-deficit tables, selected EPA AQS daily records, run and comparison inventories, provenance records, and promoted figures used for this draft are retained in the private working repository.
 The review-only X8 packet includes the exact 10-min transport and tendency tables plus hashes for all 37 d04 inputs in \path{verification/provenance/x8-deficit-transport-13971080.json}.
 The other exploratory renders reproduced in this working revision are catalogued with source paths and status in \path{figures-draft/HARVEST.md}.
 \rewritegate{Add a public repository or DOI, licenses and access conditions for raw WRF and Synoptic data, and the exact release commit before submission.}}

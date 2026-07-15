@@ -13,6 +13,14 @@ This directory is excluded from the MDPI submission allowlist.
 
 Latest review snapshots:
 
+- `manuscript-main_2026-07-15_final-draft-start.pdf` — audited 17-page candidate
+  promoted to `main.tex`; it contains only contract-listed figures and
+  citation keys and is the starting point for the final author draft.
+
+- `manuscript-v3_2026-07-15_last-codex-draft.pdf` — over-inclusive 26-page
+  caretaker snapshot preserving diagnostic, terrain, radiation, and X8 review
+  material without promoting those gated claims to `main.tex`.
+
 - `manuscript-v3_2026-07-14_figure-recovery-review.pdf` — v3 review build restoring
   the common-AGL spatial evolution, vertical sections, heat-deficit trajectory,
   and heat-deficit map as explicitly gated editorial candidates supporting Section 4.
