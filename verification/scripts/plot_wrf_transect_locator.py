@@ -254,7 +254,9 @@ def main() -> None:
     cbar = fig.colorbar(mesh, ax=ax, pad=0.02, shrink=0.86)
     cbar.set_label("WRF terrain elevation (m MSL)")
 
-    save(fig, "wrf_transect_locator_d02_d03", out_dir=args.out_dir)
+    # Use a new stem so an older terrain-and-stations-only candidate cannot be
+    # mistaken for this sourced geographic-context version.
+    save(fig, "wrf_geographic_locator_d01_d03", out_dir=args.out_dir)
     print(f"d01_source={d01_file}")
     print(f"d02_source={d02_file}")
     print(f"d03_source={d03_file}")

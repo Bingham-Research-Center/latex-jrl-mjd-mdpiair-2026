@@ -45,7 +45,7 @@ def main() -> None:
     print(f"$ {' '.join(cmd)}")
     subprocess.run(cmd, check=True)
     for extension in ("png", "pdf"):
-        path = out / f"wrf_transect_locator_d02_d03.{extension}"
+        path = out / f"wrf_geographic_locator_d01_d03.{extension}"
         assert path.exists() and path.stat().st_size > 10_000, f"missing/empty {path}"
     print(f"OK: offline locator with geographic context and d01--d03 inset -> {out}")
 

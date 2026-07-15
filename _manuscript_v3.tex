@@ -102,26 +102,18 @@ Observed and modeled surface potential temperature for a two-site structural ind
 Because the two sites are horizontally separated and locally exposed, the index is a spatial surface contrast rather than a colocated free-air inversion strength or depth.
 No sounding, profiler, or remote-sensing profile is used to validate the modeled 50--500 m layer.
 
-\rewritegate{Figure~\ref{fig:v3-locator} now has the requested two-panel structure and uses the archived nested-domain render as panel (b).
-Before coauthor circulation, regenerate panel (a) against named towns, major roads, rivers, the basin floor, and surrounding mountain ranges; remove all current and proposed transects because no retained result uses them.
-Restyle both panels without latitude/longitude axes and with a north arrow and scale bar.}
+\rewritegate{Akamai now provides an offline, source-recorded geographic-context layer and one locator generator with a d01--d03 nesting inset.
+Render the locator from the archived static WRF fields on CHPC, inspect the returned vector file on Akamai, and admit it only after its provenance row and hashes are complete.}
 
 \begin{figure}[H]
 \centering
-\begin{minipage}[t]{0.49\textwidth}
-\centering
-\textbf{(a)}\\[-2pt]
-\includegraphics[width=\linewidth]{verification/figures/candidates/wrf_transect_locator_d02_d03.pdf}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.49\textwidth}
-\centering
-\textbf{(b)}\\[-2pt]
-\includegraphics[width=\linewidth]{figures-draft/nested_domains.png}
-\end{minipage}
-\caption{Working two-panel orientation for the evaluation.
-(a) Reporting stations on d02 and the d03 interior; the colored transects are unused legacy overlays and will be removed from the final geographic panel.
-(b) Common d01--d02--d03 nesting, with the basin station cluster shown inside the broader terrain setting.
-Seven of the eleven reporting stations fall outside the usable d03 interior, which is why d02 supplies the full-network common sample; neither panel validates d02 against d03 (C03).}
+\IfFileExists{verification/figures/candidates/wrf_geographic_locator_d01_d03.pdf}{%
+\includegraphics[width=0.96\textwidth]{verification/figures/candidates/wrf_geographic_locator_d01_d03.pdf}%
+}{\fbox{\parbox[c][0.42\textheight][c]{0.90\textwidth}{\centering CHPC render pending: sourced geographic locator with d02 terrain and stations, d03 footprint, and a d01--d03 nesting inset.}}}
+\caption{Geographic and sampling orientation for the evaluation.
+The main map places the d02 terrain, d03 interior, reporting stations, major roads, rivers, towns, and regional labels on one common geographic frame.
+The inset shows the d01--d02--d03 nesting without duplicating the station panel.
+Seven of the eleven reporting stations fall outside the usable d03 interior, which is why d02 supplies the full-network common sample; the domain outlines do not constitute a d02--d03 resolution evaluation (C03).}
 \label{fig:v3-locator}
 \end{figure}
 
@@ -337,19 +329,31 @@ The lower-layer GFS--NAM separation recurs under both feedback modes: GFS is abo
 \label{sec:v3-surface}
 
 The paired surface-temperature result had the same product ordering as the layer diagnostics.
-\label{sec:v3-spatial}
 
 The paired GFS-minus-NAM temperature-bias contrasts were +1.79 and +1.76~$^{\circ}$C, but surface-pressure absolute error changed in the opposite direction and hourly wind-error differences changed sign (Table~\ref{tab:v3-surface-summary}).
 No single surface score therefore ranks the products.
 The observed Mountain Home-minus-Pariette Draw potential-temperature contrast supplies useful surface context, but the two stations are horizontally separated and do not measure free-air inversion depth.
+Figure~\ref{fig:v3-bulk-theta} shows that surface contrast directly for the observations and the matched two-way anchor simulations.
+
+\rewritegate{The line-free bulk-theta overlay is a visually reviewed candidate, but the exact plotted-value and grouped-summary CSV files still require the bundled CHPC finishing pass.
+Retain candidate status until those tables, a placement decision, and an Akamai admission review are committed.}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.94\textwidth]{verification/figures/candidates/wrf_inversion_index_feb0102_gfs2way_vs_nam2way_d02_14to18.pdf}
+\caption{Observed and modeled Mountain Home-minus-Pariette Draw surface potential-temperature contrast from 14:00 to 18:00 UTC on 2 February 2013.
+The modeled series are X6 (GFS two-way) and X5 (NAM two-way) sampled on d02, and all three series contain the same five retained hourly values after the first two forecast hours were excluded.
+The quantity is a horizontally separated bench-minus-floor surface contrast, not inversion depth, a colocated vertical stability measure, or a cold-pool classification threshold.
+The inapplicable 8 K sounding-based reference line used in an earlier draft has been removed.}
+\label{fig:v3-bulk-theta}
+\end{figure}
 
 Across the registered footprint, the mean GFS-minus-NAM near-surface response was positive and the vertical response remained concentrated below 500 m AGL under both feedback modes (Table~\ref{tab:v3-spatial-summary}).
 The predeclared spatial gate nevertheless failed because only 0.64--0.67 of the footprint shared the median sign at 14:00--15:00 UTC, just below the two-thirds criterion.
 The result is therefore shallow and mean-coherent, but not spatially uniform throughout the retained window.
 Figure~\ref{fig:v3-spatial-agl} is restored in this review draft because it shows the spatial patchiness hidden by the footprint mean.
 The previous Figure~6 duplicated the driving-product result along one transect and has been removed.
-Its replacement, Figure~\ref{fig:v3-terrain-sections}, is reserved for orthogonal d03 sections of the controlled fine-minus-coarse terrain contrast, which directly tests whether the large top-down terrain response also has coherent vertical structure.
-Neither figure reverses a failed gate: the d02 driving-product spatial gate remains failed, and no predeclared d03 CMP11 terrain gate has yet been executed.
+The d02 driving-product spatial gate remains failed, and no new threshold is inferred from the later maps.
 
 \rewritegate{Figure~\ref{fig:v3-spatial-agl} is a registered diagnostic restored for editorial review, not a promoted manuscript figure.
 Before coauthor circulation, decide whether it belongs in the main paper, supplement, or reviewer reserve.}
@@ -361,50 +365,6 @@ Before coauthor circulation, decide whether it belongs in the main paper, supple
 The black outline is the registered evaluation footprint.
 The response becomes more spatially coherent after the two early hours that failed the predeclared sign-share criterion, but the later pattern cannot rescue that failed gate.}
 \label{fig:v3-spatial-agl}
-\end{figure}
-
-\rewritegate{Generate and inspect the matched 16:00 UTC d03 north--south and east--west X0-minus-X4 sections from \path{verification/config/figures/pelican2013_terrain_d03.toml}; the figure below is wired for the resulting files.}
-
-\begin{figure}[H]
-\centering
-\textbf{(a)}\\[-2pt]
-\IfFileExists{figures-draft/section_ns_terrain-3arcsec-5arcmin_d03_16z.png}{%
-\includegraphics[width=0.91\textwidth]{figures-draft/section_ns_terrain-3arcsec-5arcmin_d03_16z.png}%
-}{\fbox{\parbox[c][0.16\textheight][c]{0.86\textwidth}{\centering CHPC render pending: d03 north--south X0-minus-X4 potential-temperature section at 16:00 UTC.}}}\\[3pt]
-\textbf{(b)}\\[-2pt]
-\IfFileExists{figures-draft/section_ew_terrain-3arcsec-5arcmin_d03_16z.png}{%
-\includegraphics[width=0.91\textwidth]{figures-draft/section_ew_terrain-3arcsec-5arcmin_d03_16z.png}%
-}{\fbox{\parbox[c][0.16\textheight][c]{0.86\textwidth}{\centering CHPC render pending: d03 west--east X0-minus-X4 potential-temperature section at 16:00 UTC.}}}
-\caption{Exploratory d03 potential-temperature response to the widest controlled static-terrain bracket, X0 minus X4 (fine 3-arc-second minus coarse 5-arc-minute source), at 16:00 UTC.
-(a) North--south and (b) west--east sections use the same $\pm4$ K scale.
-Positive values mean that the fine-terrain member is warmer at the plotted height; negative values mean that the coarse-terrain member is warmer.
-The sections diagnose vertical organization but do not by themselves establish drainage rate, cold-pool volume, waves, or terrain-source superiority.}
-\label{fig:v3-terrain-sections}
-\end{figure}
-
-\rewritegate{Replace the dense all-member Horsepool profile with a two-panel model-only diagnostic containing only X6 (GFS two-way) and X5 (NAM two-way): panel (a) at initialization, 12:00 UTC, and panel (b) after one forecast hour, 13:00 UTC.
-Use identical axes and two curves per panel, state that the 12--13 UTC change combines model adjustment with one hour of boundary evolution, and do not present the model-only profiles as validation of inversion depth.}
-
-\begin{figure}[H]
-\centering
-\begin{minipage}[t]{0.49\textwidth}
-\centering
-\textbf{(a)}\\[-2pt]
-\IfFileExists{figures-draft/theta_profiles_horsepool_gfs_nam_12z.png}{%
-\includegraphics[width=\linewidth]{figures-draft/theta_profiles_horsepool_gfs_nam_12z.png}%
-}{\fbox{\parbox[c][0.28\textheight][c]{0.88\linewidth}{\centering CHPC render pending: X6 and X5 Horsepool profiles at 12:00 UTC.}}}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.49\textwidth}
-\centering
-\textbf{(b)}\\[-2pt]
-\IfFileExists{figures-draft/theta_profiles_horsepool_gfs_nam_13z.png}{%
-\includegraphics[width=\linewidth]{figures-draft/theta_profiles_horsepool_gfs_nam_13z.png}%
-}{\fbox{\parbox[c][0.28\textheight][c]{0.88\linewidth}{\centering CHPC render pending: X6 and X5 Horsepool profiles at 13:00 UTC.}}}
-\end{minipage}
-\caption{Model-only d03 potential-temperature profiles at Horsepool for X6 (GFS two-way) and X5 (NAM two-way).
-(a) The 12:00 UTC initialized states and (b) the 13:00 UTC one-hour forecasts, plotted with identical axes.
-Changes between panels include both early model adjustment and one hour of lateral-boundary evolution; no colocated observed profile validates the modeled layer.}
-\label{fig:v3-spinup-profiles}
 \end{figure}
 
 \subsection{Footprint Heat Deficit: A Weaker State without Faster Loss}
@@ -466,37 +426,12 @@ The archive brackets the static terrain source on an otherwise identical NAM one
 The default-minus-fine terrain change was small on d02, and its 0.07--0.27 K response failed the predeclared terrain-correlation criterion early in the window (Table~\ref{tab:v3-terrain-summary}; C29).
 The coarse-terrain brackets produced larger responses, but no criterion was declared for them before inspection, so they remain diagnostic rather than evidence for a terrain ranking.
 
-The 16:00 UTC d02 top-down heat-deficit difference in Figure~\ref{fig:v3-terrain-hd-d02} is nevertheless physically informative enough to retain for editorial review.
-Blue dominates much of the central basin, meaning that the fine-terrain member has less column-integrated heat deficit there than the coarse-terrain member at this time.
-Localized positive differences appear toward Browns Park, the Split Mountain gap, and deep Tavaputs Plateau canyons, where the fine-terrain member contains more heat deficit.
-Those features motivate an upstream-reservoir and redistribution hypothesis; a single top-down field does not demonstrate cold-air storage, drainage direction, or transfer into the central basin.
-The matched d03 top-down field in Figure~\ref{fig:v3-terrain-hd-d03} is reserved to determine whether the inner-basin structure sharpens or changes sign at 333 m.
-Because d03 does not cover Browns Park or the full Split Mountain/Tavaputs setting, it complements rather than replaces the basin-wide d02 view.
+Appendix Figure~\ref{fig:v3-terrain-cmp11-supplement} is reserved for one matched 16:00 UTC composite of the X0-minus-X4 heat-deficit maps and lower-atmosphere sections.
+The d02 and d03 panels retain their distinct geographic support, so they provide complementary basin-wide and inner-basin views rather than a resolution comparison.
+The maps and sections are diagnostic only: they execute no new gate, rank no terrain source, and establish neither a drainage pathway nor a change in basin cold-air volume.
 
-\rewritegate{The d02 CMP11 top-down heat-deficit render is exploratory and has no per-image generator sidecar.
-Retain it in the working draft only; register, restyle, inspect, and admit any final version without changing the failed CMP09 gate or inventing a CMP11 gate.}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.78\textwidth]{figures-draft/heatdeficit_terrain-3arcsec-5arcmin_16z.png}
-\caption{Exploratory d02 top-down column-integrated cold-pool heat-deficit response at 16:00 UTC for CMP11, X0 minus X4 (fine 3-arc-second minus coarse 5-arc-minute static terrain).
-Red means that the fine-terrain member has the larger heat deficit; blue means that the coarse-terrain member has the larger heat deficit.
-The central negative response and localized positive features near Browns Park, the Split Mountain gap, and Tavaputs Plateau canyons show redistribution on a fixed $\pm1.6$ MJ m$^{-2}$ scale, not a demonstrated drainage pathway or basin-volume change.}
-\label{fig:v3-terrain-hd-d02}
-\end{figure}
-
-\rewritegate{Generate and inspect the d03 16:00 UTC X0-minus-X4 top-down heat-deficit field from \path{verification/config/figures/pelican2013_terrain_d03.toml}; the figure below is wired for the resulting file.}
-
-\begin{figure}[H]
-\centering
-\IfFileExists{figures-draft/heatdeficit_terrain-3arcsec-5arcmin_d03_16z.png}{%
-\includegraphics[width=0.78\textwidth]{figures-draft/heatdeficit_terrain-3arcsec-5arcmin_d03_16z.png}%
-}{\fbox{\parbox[c][0.38\textheight][c]{0.72\textwidth}{\centering CHPC render pending: d03 X0-minus-X4 top-down column-integrated cold-pool heat-deficit difference at 16:00 UTC.}}}
-\caption{As in Figure~\ref{fig:v3-terrain-hd-d02}, but calculated and displayed on d03 over the inner basin at 333 m model-grid spacing.
-The time, X0-minus-X4 sign, 2200 m crest reference, and fixed $\pm1.6$ MJ m$^{-2}$ scale are held constant so that the d03 structure can be compared with the basin-wide d02 view.
-This is a domain-specific diagnostic, not a d02--d03 resolution evaluation.}
-\label{fig:v3-terrain-hd-d03}
-\end{figure}
+\rewritegate{Run, inspect, and register the four-panel CMP11 supplement composite and its committed four-row summary table during the bundled CHPC finishing pass.
+Any admission decision must preserve the failed CMP09 gate and the absence of a predeclared CMP11 criterion.}
 
 \section{Discussion}
 
@@ -514,6 +449,7 @@ No chemical species were simulated, so the result identifies a meteorological pr
 That boundary is necessary because emissions, snow and cloud treatment, deposition, chemical mechanism, and meteorological confinement can compensate for one another in coupled simulations \citep{Ahmadov2015-zm,Neemann2015-ws,Matichuk2017-bq}.
 
 The driving-product treatment also bundles the 12:00 UTC initial state with later boundary updates.
+The model-only d03 Horsepool profiles at 12:00 and 13:00 UTC (Figure~\ref{fig:v3-spinup-profiles}) expose those supplied states but neither separate early adjustment from boundary evolution nor validate inversion depth.
 The present design cannot assign the lower-layer response to one of those components.
 ``Driving-product response'' is therefore warranted; ``initial-condition effect'' is not.
 
@@ -720,6 +656,47 @@ X4 lineage & As-run namelist matches the controlled family; terrain is materiall
 \bottomrule
 \end{tabularx}
 \end{table}
+
+\rewritegate{Rerender the two Horsepool panels and emit the exact long-form profile CSV during the bundled CHPC finishing pass.
+Inspect the returned plots and table together before changing their candidate status.}
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[t]{0.49\textwidth}
+\centering
+\textbf{(a)}\\[-2pt]
+\IfFileExists{figures-draft/theta_profiles_horsepool_gfs_nam_12z.png}{%
+\includegraphics[width=\linewidth]{figures-draft/theta_profiles_horsepool_gfs_nam_12z.png}%
+}{\fbox{\parbox[c][0.28\textheight][c]{0.88\linewidth}{\centering CHPC render pending: X6 and X5 Horsepool profiles at 12:00 UTC.}}}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.49\textwidth}
+\centering
+\textbf{(b)}\\[-2pt]
+\IfFileExists{figures-draft/theta_profiles_horsepool_gfs_nam_13z.png}{%
+\includegraphics[width=\linewidth]{figures-draft/theta_profiles_horsepool_gfs_nam_13z.png}%
+}{\fbox{\parbox[c][0.28\textheight][c]{0.88\linewidth}{\centering CHPC render pending: X6 and X5 Horsepool profiles at 13:00 UTC.}}}
+\end{minipage}
+\caption{Model-only d03 potential-temperature profiles at Horsepool for X6 (GFS two-way) and X5 (NAM two-way).
+(a) The 12:00 UTC initialized states and (b) the 13:00 UTC one-hour forecasts use identical axes.
+Gray shading marks levels below the local model terrain, and the dashed 2200 m line is the fixed heat-deficit crest reference rather than an observed cold-pool top.
+Changes between panels include both early model adjustment and one hour of lateral-boundary evolution; no colocated observed profile validates the modeled layer.}
+\label{fig:v3-spinup-profiles}
+\end{figure}
+
+\rewritegate{Render the CMP11 supplemental composite and exact summary CSV from matched X0 and X4 output during the bundled CHPC finishing pass.
+Keep the placeholder below until the vector artifact, summary values, run paths, command, hashes, and Akamai inspection are recorded.}
+
+\begin{figure}[H]
+\centering
+\IfFileExists{verification/figures/candidates/wrf_terrain_cmp11_d02_d03_16z.pdf}{%
+\includegraphics[width=0.96\textwidth]{verification/figures/candidates/wrf_terrain_cmp11_d02_d03_16z.pdf}%
+}{\fbox{\parbox[c][0.52\textheight][c]{0.90\textwidth}{\centering CHPC render pending: one CMP11 supplemental composite containing d02 and d03 top-down heat-deficit maps and orthogonal d03 potential-temperature sections at 16:00 UTC.}}}
+\caption{Diagnostic response to the widest controlled static-terrain bracket at 16:00 UTC, calculated as X0 minus X4 (fine 3-arc-second minus coarse 5-arc-minute source).
+(a) The basin-wide d02 and (b) inner-basin d03 top-down heat-deficit maps share a fixed $\pm1.6$ MJ m$^{-2}$ scale.
+(c) The north--south and (d) west--east d03 lower-atmosphere potential-temperature sections share a fixed $\pm4$ K scale and the 2200 m crest reference.
+The domain-specific panels diagnose spatial and vertical organization but execute no gate, rank no terrain source, and establish neither drainage direction nor basin cold-air-volume change.}
+\label{fig:v3-terrain-cmp11-supplement}
+\end{figure}
 
 \begin{figure}[H]
 \centering
