@@ -7,11 +7,12 @@ Active structural and domain review:
 It defines the manuscript-facing experiment vocabulary, evidence-led Results order,
 figure-trim ledger, and the proposed d02-to-d03 transfer gate.
 
-Active CHPC execution record:
+Executed CHPC Batch B record:
 `rewrite/CHPC-V3-FIGURE-RECOMPUTE-HANDOFF.md`.
-It is the single source of truth for pending recomputations; the older Batch B text
-and the standalone commands in the structural review are rationale, not independent
-dispatches.
+Its return commit was integrated without alteration as `28eb502` on
+`jrl/codex-v3-integration`; `verification/provenance/v3-figure-review-20260714.json`
+is the immutable execution record.
+The next CHPC dispatch will be a separate finishing-pass handoff prepared on Akamai.
 
 Literature closure now means the discovery pass is closed and controlled manuscript
 integration has begun.
@@ -27,16 +28,38 @@ audited baseline, and Codex is the caretaker for selecting and verifying what su
 | C | Akamai / John plus Codex | John replaces `paperpile.bib` with a small curated Paperpile export; Codex records its generated keys and inserts only citations that already have verified source passages. | Every retained citation resolves; no key is guessed or hand-edited. |
 | D | Akamai / Codex, then coauthors | Restore the re-promoted panel if it earns a role; prune v3 to an evidence-led coauthor draft; move only accepted material into `main.tex`. | All rewrite gates are closed or explicitly deferred, figures are admitted, and the resulting PDF is visually reviewed. |
 
-## CHPC Batch B baton
+## Cross-server finishing track
 
-Batch A is pushed.
-The remaining line-free overlay work and John's 14 July additions are now factored
-into `rewrite/CHPC-V3-FIGURE-RECOMPUTE-HANDOFF.md` with exact hashes, commands,
-scratch destinations, copy mappings, allowed writes, stop conditions, and return
-branch.
-Do not execute the legacy commands independently or regenerate from Akamai's
-synthetic smoke-test caches.
-CHPC must commit and push the result before Akamai resumes edits to the same files.
+Keep one branch, one active owner, and one explicit transition at a time.
+Do not edit the integration branch concurrently on Akamai and CHPC.
+At each transition, push the branch, record the exact commit in the handoff, and make
+the receiving host verify `hostname -f`, branch, HEAD, upstream, and clean status
+before running or editing anything.
+
+| Phase | Host | State | Work and handoff condition |
+|---|---|---|---|
+| F0 | Akamai | complete | Review and integrate the bounded CHPC return as immutable commit `28eb502`; keep `main.tex` unchanged. |
+| F1 | Akamai | active | Add auditable bulk-theta CSV emission; restore its status to candidate; prepare the final locator, terrain-composite, profile, and manuscript-wiring contracts; run synthetic and LaTeX checks. |
+| F2 | CHPC | waiting | Starting only from the pushed F1 commit, run the one bundled data-dependent pass; return exact CSVs, final renders, hashes, job records, and a clean commit. |
+| F3 | Akamai | waiting | Inspect at manuscript scale; update the claim ledger and both manifests; promote only admitted figures; close or explicitly defer every affected rewrite gate. |
+| F4 | Akamai | waiting | Run `make check`, `make rewrite-check`, `make v3-check`, `make smoke`, PDF inspection, and `git diff --check`; then push and open the integration PR. |
+
+Current editorial destinations are fixed unless John changes them:
+
+- bulk-theta X6/X5 overlay: main-paper candidate, promotion pending the committed
+  point-value CSV, explicit slot, and Akamai admission review;
+- locator: main-paper candidate, rebuilt as one coherent map with a nesting inset;
+- X6/X5 Horsepool profiles: supplement candidate cited from the supplied-state text;
+- CMP11 terrain maps and sections: one bounded improvement pass toward a supplemental
+  composite, without inventing or reversing an evidence gate;
+- ANA-18 radiation diagnostic: appendix diagnostic with its failed gate preserved.
+
+## CHPC Batch B record
+
+Batch B completed on CHPC and returned as `6946fd8`; Akamai integrated that exact tree
+as `28eb502` after independent branch, provenance, hash, build, and PDF review.
+The returned images remain evidence artifacts, not automatic manuscript admissions.
+Do not rerun the old handoff or edit its provenance JSON to describe later work.
 
 ## John figure-review additions, 14 July 2026
 
