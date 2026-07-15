@@ -466,6 +466,8 @@ The CMP11 distributions change with domain support and diagnostic, so the compos
 A future terrain test requires a predeclared common-support metric, time-resolved heat-deficit and transport diagnostics, and independent vertical structure.
 These outcomes motivate better measurements and future experiment design, but they do not yet support radiation or terrain-source superiority claims.
 The multiply confounded X7/X0/X8 set is excluded for the same reason: nominal grid spacing cannot be isolated from its other configuration changes.
+Within X8 alone, the 10-min diagnostic resolves a strong modeled morning northward pulse across the northern reference line followed by relaxation (Appendix~B).
+Because X8 has no matched control and the line is not a basin boundary, this is process context rather than evidence of basin export, resolution sensitivity, or model skill.
 
 \subsection{Observation and Design Limits Set the Next Experiment}
 \label{sec:v3-disc-domains}
@@ -715,7 +717,8 @@ This single-run field illustrates modeled redistribution only.}
 }{\fbox{\parbox[c][0.34\textheight][c]{0.90\textwidth}{\centering CHPC render pending: X8 signed deficit transport across four transects at 10 min cadence.}}}
 \caption{Signed X8 d04 deficit transport at 10 min cadence across three terrain-incision gates and the northern reference transect.
 Every line runs west to east, so positive values indicate southward transport and negative values northward transport.
-The shaded 12:00--14:00 UTC interval is spin-up context, and the retained 14:00--18:00 UTC variation describes a modeled morning reversal within X8 rather than observed canyon drainage or basin export.}
+The shaded 12:00--14:00 UTC interval is spin-up context, and the retained 14:00--18:00 UTC variation describes a modeled morning reversal within X8 rather than observed canyon drainage or basin export.
+Within the retained window, the northern reference minimum was $-81.61$~GW at 14:40 UTC and its maximum was $+9.69$~GW at 17:50 UTC.}
 \label{fig:v3-x8-gates}
 \end{figure}
 
@@ -738,6 +741,7 @@ This term is one contribution to storage, not total advection or a closed thermo
 }{\fbox{\parbox[c][0.34\textheight][c]{0.92\textwidth}{\centering CHPC render pending: X8 active-layer depth, deficit-weighted speed, and exploratory bulk Froude proxy at 15:00 UTC.}}}
 \caption{Exploratory X8 d04 bulk diagnostics at 15:00 UTC.
 The panels show the top of the layer exceeding a 0.25 K crest-relative deficit, deficit-weighted speed $|\mathbf{F}|/H$ after masking $H<0.1$ MJ m$^{-2}$, and a reduced-gravity bulk Froude proxy using the diagnosed depth and mean deficit.
+Interior medians (90th percentiles) were 434 (634) m AGL for diagnosed depth, 1.27 (1.78) m s$^{-1}$ for deficit-weighted speed, and 0.126 (0.194) for the bulk proxy.
 The layer can be disconnected and its reference varies by column, so the third panel does not diagnose hydraulic control.}
 \label{fig:v3-x8-bulk}
 \end{figure}
@@ -750,7 +754,9 @@ The layer can be disconnected and its reference varies by column, so the third p
 \caption{X8 d04 interior heat-deficit tendency diagnostic from 12:00 to 18:00 UTC.
 The spatial mean excludes 15 cells, nominally 1.67 km, from each d04 edge.
 Ten-minute finite-difference storage is compared with endpoint-mean horizontal convergence, and their difference is retained as unresolved rather than attributed uniquely to diabatic heating.
-The scatter and its statistics use the retained 14:00--18:00 UTC intervals; its time coloring shows temporal association within one model run and is not an independent validation or a resolution comparison.}
+Across retained intervals, storage and horizontal convergence had $r=0.92$ and the unresolved-tendency RMSE was 0.21 MJ m$^{-2}$ h$^{-1}$.
+Their hourly means were $+0.251/+0.202$ MJ m$^{-2}$ h$^{-1}$ during 15:00--16:00 UTC and $-0.466/-0.312$ MJ m$^{-2}$ h$^{-1}$ during 16:00--17:00 UTC, respectively.
+The scatter's time coloring shows temporal association within one model run and does not establish budget closure, independent validation, or a resolution response.}
 \label{fig:v3-x8-budget}
 \end{figure}
 
@@ -761,7 +767,8 @@ The scatter and its statistics use the retained 14:00--18:00 UTC intervals; its 
 \institutionalreview{Not applicable.}
 \informedconsent{Not applicable.}
 \dataavailability{The analysis scripts, derived hourly and paired summaries, heat-deficit tables, run and comparison inventories, provenance records, and promoted figures used for this draft are retained in the private working repository.
-The exploratory renders reproduced in this working revision are catalogued with source paths and status in \texttt{figures-draft/HARVEST.md}.
+The review-only X8 packet includes the exact 10-min transport and tendency tables plus hashes for all 37 d04 inputs in \path{verification/provenance/x8-deficit-transport-13971080.json}.
+The other exploratory renders reproduced in this working revision are catalogued with source paths and status in \path{figures-draft/HARVEST.md}.
 \rewritegate{Add a public repository or DOI, licenses and access conditions for raw WRF and Synoptic data, and the exact release commit before submission.}}
 \acknowledgments{\rewritegate{Identify computational facilities, data providers, and contributors who do not meet the authorship criteria.}}
 \conflictsofinterest{\rewritegate{All authors must confirm the conflicts-of-interest statement.}}

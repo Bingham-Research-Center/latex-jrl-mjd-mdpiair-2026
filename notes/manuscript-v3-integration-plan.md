@@ -44,6 +44,8 @@ before running or editing anything.
 | F2 | CHPC | complete | Job `13968404` returned exact CSVs and final candidates from source `92d96b1`; the verified 15-file return is commit `010e833` on `jrl/chpc-20260715-v3-finishing-return`. |
 | F3 | Akamai / Codex admission review | complete | PDF and raster inspection, exact-value review, claim-ledger registration, dual manifests, bounded promotions, rewrite-gate closure, and main-figure pruning are complete; CMP11 remains diagnostic. |
 | F4 | Akamai / Codex | complete | `make check`, `make rewrite-check`, `make v3-check`, `make smoke`, PDF inspection, and `git diff --check` passed on 15 July 2026; the audited integration is ready to push and open as a PR. |
+| F5 | CHPC / Codex | complete | Reusable X8 deficit-transport, horizontal-convergence, bulk, transect, and budget products were added to `brc-tools`; the 26-task generalized archive render is job 13970596 and the final budget refresh is job 13971081. |
+| F6 | CHPC / Codex review return | complete | Job 13971080 returned a verified 14-file manuscript packet from manuscript `5a51486` and `brc-tools` `548fee4`; commit `05996b9` preserves the byte-identical return; registries, C36, review-only Appendix B, repository checks, pages 22--24, and `drafts/manuscript-v3_2026-07-15_x8-deficit-transport-review.pdf` were closed on 15 July 2026. |
 
 Current editorial destinations are fixed unless John changes them:
 
