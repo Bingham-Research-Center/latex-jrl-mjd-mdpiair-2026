@@ -20,6 +20,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.patheffects as path_effects
+from matplotlib.lines import Line2D
 import numpy as np
 import pandas as pd
 import xarray as xr
@@ -36,8 +37,8 @@ REGION_LABELS = (
     ("Tavaputs Plateau", -109.62, 39.74),
 )
 PLACE_OFFSETS = {
-    "Vernal": (4, 7),
-    "Roosevelt": (-36, -10),
+    "Vernal": (8, 8),
+    "Roosevelt": (-45, 6),
     "Duchesne": (4, 4),
     "Myton": (4, -10),
     "Fort Duchesne": (4, 4),
@@ -136,7 +137,7 @@ def plot_places(ax, path: Path, max_priority: int, extent: tuple[float, float, f
     for row in places.itertuples(index=False):
         offset = PLACE_OFFSETS.get(row.name, (4, 4))
         annotation = ax.annotate(row.name, (row.longitude, row.latitude), xytext=offset,
-                                 textcoords="offset points", fontsize=6.5, fontweight="semibold",
+                                 textcoords="offset points", fontsize=6.5, fontweight="bold",
                                  color="0.12", zorder=6)
         annotation.set_path_effects([
             path_effects.withStroke(linewidth=2.0, foreground="white")
@@ -227,8 +228,18 @@ def main() -> None:
     ax.scatter(stations["longitude"], stations["latitude"], s=20, c="white",
                edgecolor="black", linewidth=0.7, zorder=6)
     for stid, row in stations.iterrows():
-        ax.annotate(stid, (row.longitude, row.latitude), xytext=STATION_OFFSETS.get(stid, (3, 3)),
-                    textcoords="offset points", fontsize=6.5, color="0.1", zorder=7)
+        annotation = ax.annotate(
+            stid,
+            (row.longitude, row.latitude),
+            xytext=STATION_OFFSETS.get(stid, (3, 3)),
+            textcoords="offset points",
+            fontsize=6.5,
+            color="0.1",
+            zorder=7,
+        )
+        annotation.set_path_effects([
+            path_effects.withStroke(linewidth=1.5, foreground="white", alpha=0.9)
+        ])
 
     mean_lat = float(np.mean(lat2))
     ax.set_aspect(1.0 / np.cos(np.deg2rad(mean_lat)))
@@ -250,7 +261,19 @@ def main() -> None:
 
     add_nesting_inset(ax, (("d01", lat1, lon1), ("d02", lat2, lon2), ("d03", lat3, lon3)))
 
-    ax.legend(loc="upper left", fontsize=7.5, framealpha=0.92)
+    legend_handles = [
+        Line2D([], [], color="black", lw=1.6, label="d02 (1 km)"),
+        Line2D([], [], color="#6A3D9A", lw=1.8, label="d03 (333 m)"),
+        Line2D([], [], marker="o", ls="", ms=4.2, markerfacecolor="white",
+               markeredgecolor="black", label="reporting station"),
+        Line2D([], [], marker="s", ls="", ms=4.0, markerfacecolor="#F2C14E",
+               markeredgecolor="0.15", label="town or city"),
+        Line2D([], [], color="#6B4C3B", lw=1.0, label="major road"),
+        Line2D([], [], color="#2B83BA", lw=1.1, label="river"),
+    ]
+    ax.legend(handles=legend_handles, loc="upper left", fontsize=6.2, ncols=2,
+              framealpha=0.92, columnspacing=0.8, handlelength=1.8,
+              handletextpad=0.45, borderpad=0.35)
     cbar = fig.colorbar(mesh, ax=ax, pad=0.02, shrink=0.86)
     cbar.set_label("WRF terrain elevation (m MSL)")
 

@@ -39,6 +39,7 @@ def main() -> None:
     assert len(written) == 12
     assert path.name == "theta_profiles_horsepool_gfs_nam_12z_13z.csv"
     assert written[0]["valid_time_utc"] == "2013-02-02T12:00:00"
+    assert b"\r\n" not in path.read_bytes(), "profile table must be Git-clean LF text"
     print(f"OK: exact profile table contract -> {path}")
 
 

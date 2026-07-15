@@ -34,6 +34,13 @@ def keyed_path(value: str) -> tuple[str, Path]:
     return key.strip(), Path(raw_path).expanduser()
 
 
+def keyed_label(value: str) -> tuple[str, str]:
+    key, sep, label = value.partition("=")
+    if not sep or not key.strip() or not label.strip():
+        raise argparse.ArgumentTypeError("expected CASE=display label")
+    return key.strip(), label.strip()
+
+
 def valid_time(value: str) -> datetime:
     try:
         return datetime.fromisoformat(value)
@@ -67,7 +74,7 @@ def write_profile_table(rows: list[dict], out_dir: Path, focus_name: str,
         row["valid_time_utc"], row["case_id"], row["level_index"]
     ))
     with path.open("w", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
+        writer = csv.DictWriter(handle, fieldnames=list(rows[0]), lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
     print(f"wrote {path}")
@@ -78,6 +85,8 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--config", required=True, type=Path)
     ap.add_argument("--run", action="append", required=True, type=keyed_path)
+    ap.add_argument("--label", action="append", default=[], type=keyed_label,
+                    help="optional CASE=display label override for manuscript wording")
     ap.add_argument("--valid", nargs="+", required=True, type=valid_time)
     ap.add_argument("--out-dir", required=True, type=Path)
     ap.add_argument("--data-out-dir", type=Path, default=None,
@@ -92,6 +101,14 @@ def main() -> None:
     unknown = sorted(set(runs) - set(cfg.runs))
     if unknown:
         raise SystemExit(f"unknown config cases: {unknown}")
+    labels = dict(args.label)
+    unknown_labels = sorted(set(labels) - set(runs))
+    if unknown_labels:
+        raise SystemExit(f"labels supplied for cases not in --run: {unknown_labels}")
+    display_labels = {
+        case: labels.get(case, cfg.runs[case].label)
+        for case in runs
+    }
     if len(set(args.valid)) != len(args.valid):
         raise SystemExit("--valid times must be unique")
 
@@ -116,14 +133,14 @@ def main() -> None:
                     cfg.focus_point.lon,
                     label=cfg.runs[case].label,
                 )
-            at_time[cfg.runs[case].label] = column
+            at_time[display_labels[case]] = column
             terrain_values.append(float(column.terrain_m))
             sources.append(source)
             for level_index, (height, theta) in enumerate(zip(column.height_asl, column.theta)):
                 profile_rows.append({
                     "valid_time_utc": when.isoformat(),
                     "case_id": case,
-                    "display_label": cfg.runs[case].label,
+                    "display_label": display_labels[case],
                     "domain": f"d{domain:02d}",
                     "source_path": str(source),
                     "focus_name": cfg.focus_point.name,

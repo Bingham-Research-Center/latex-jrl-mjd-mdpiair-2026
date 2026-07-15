@@ -27,7 +27,7 @@ No CHPC action promotes a figure or edits manuscript prose.
 | Stage | Host | Owner action | Exit condition |
 |---|---|---|---|
 | A | Akamai | Test code, fix editorial role, push one exact source commit | Remote source hash is reported and the worktree is clean |
-| B | CHPC | Run `verification/slurm/run_v3_finishing_pass.slurm` once from clean detached worktrees | Slurm state is `COMPLETED`, exit is `0:0`, stderr is empty, and the return bundle verifies |
+| B | CHPC | Run `verification/slurm/run_v3_finishing_pass.slurm` from clean detached worktrees | Slurm state is `COMPLETED`, exit is `0:0`, stderr is empty, the separate command trace is nonempty, and the return bundle verifies |
 | C | CHPC | Copy only the repo-shaped return bundle to a new return branch and push it | One return commit, based directly on the source hash, is visible on origin |
 | D | Akamai | Verify branch ancestry, inspect every image and CSV, then register or reject candidates | Manifests, prose wiring, PDF inspection, and all checks agree |
 
@@ -45,6 +45,19 @@ Use separate jobs only if this bundled job fails for a resource-specific reason.
 
 Keeping all returns as candidates adds one deliberate Akamai review step.
 The benefit is that compute success cannot silently become scientific or editorial admission.
+
+## Corrective rerun record
+
+Job `13968061` completed every plotting command, but the CHPC return audit rejected its
+bundle before any commit.
+The original wrapper sent its own `set -x` trace to stderr while simultaneously
+requiring empty stderr, two Python CSV writers emitted CRLF files that failed
+`git diff --check`, and the terrain display smoother did not reapply the original
+shared-support mask.
+The corrected source sends xtrace to `command_trace.log`, emits Git-clean LF tables,
+keeps smoothed section colors on the original finite mask, and computes section
+summaries from unsmoothed shared-support values.
+Do not package or cite the scratch return from job `13968061`.
 
 ## Fixed scope
 
@@ -73,7 +86,7 @@ Stop before submission if any of the following is true:
 - the pinned observation cache is absent or fails its recorded SHA-256;
 - any named WRF file is absent;
 - a script/input hash check fails; or
-- the wrapper hash is not `19ab9167421f556bb6d42c756b5e679fe1948fee31bf087cefd587de12bb22e4`.
+- the wrapper hash is not `0c6e840e726b56cf1888c50a54de0a04505bd698d68a2a2f618f79c2b4360557`.
 
 Stop after submission if Slurm does not report `COMPLETED` and `0:0`, stderr is nonempty, any required return file is empty, or the return hashes fail.
 Do not substitute a current observation download, another run directory, synthetic data, or an older locator/profile render.
@@ -148,6 +161,7 @@ After completion:
 ```bash
 test -s "/scratch/general/vast/$USER/latex_jrl_v3_finish_${JOB_ID}.out"
 test ! -s "/scratch/general/vast/$USER/latex_jrl_v3_finish_${JOB_ID}.err"
+test -s "$RESULT_ROOT/command_trace.log"
 test -s "$RESULT_ROOT/return_output_sha256.txt"
 sha256sum --check "$RESULT_ROOT/return_output_sha256.txt"
 test -s "$RESULT_ROOT/return/verification/provenance/v3-finishing-pass-${JOB_ID}.json"
@@ -234,7 +248,7 @@ The minimum visual checks are:
 - bulk theta: no 8 K line, five hourly points per series, correct X6/X5 labels, and no free-air-inversion wording;
 - locator: legible station/town labels, correct roads and rivers, no transects or coordinate ticks, and a coherent d01--d03 inset;
 - profiles: identical axes, only X6/X5, correct 12/13 UTC labels, gray below-terrain region, and `2200 m crest reference` wording; and
-- terrain: one clean 2-by-2 composite, fixed map and section scales, correct X0-minus-X4 sign, no engine watermark, and no drainage/ranking claim.
+- terrain: one clean 2-by-2 composite, fixed map and section scales, correct X0-minus-X4 sign, section tracks shown on the d03 map, summaries restricted to unsmoothed shared above-terrain support, no engine watermark, and no drainage/ranking claim.
 
 Cross-check the bulk-theta and terrain summary values against their plots and inspect the profile CSV for the two cases, two times, d03 sources, finite heights, and finite potential temperatures.
 

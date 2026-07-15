@@ -43,7 +43,10 @@ def main() -> None:
         "--out-dir", str(out),
     ]
     print(f"$ {' '.join(cmd)}")
-    subprocess.run(cmd, check=True)
+    result = subprocess.run(cmd, check=True, capture_output=True, text=True)
+    if result.stdout:
+        print(result.stdout, end="")
+    assert not result.stderr.strip(), f"locator emitted stderr: {result.stderr}"
     for extension in ("png", "pdf"):
         path = out / f"wrf_geographic_locator_d01_d03.{extension}"
         assert path.exists() and path.stat().st_size > 10_000, f"missing/empty {path}"

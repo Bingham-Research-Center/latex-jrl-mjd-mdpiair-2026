@@ -84,18 +84,19 @@ test -z "$(git -C "$BRC_TOOLS_DIR" status --porcelain=v1 --untracked-files=all)"
     printf 'x6_run=%s\n' "$X6_RUN"
     printf 'x5_run=%s\n' "$X5_RUN"
     printf 'result_root=%s\n' "$ROOT"
+    printf 'command_trace=%s\n' "$ROOT/command_trace.log"
     printf 'wrapper_sha256=%s\n' "$(sha256sum "$MANUSCRIPT_DIR/verification/slurm/run_v3_finishing_pass.slurm" | cut -d' ' -f1)"
 } >> "$METADATA"
 
 cd "$MANUSCRIPT_DIR"
 
 sha256sum --check <<'SHA256_INPUTS'
-15da185ede907e4277a497c51d0e671a3f9956c167110aa52aea867a998f69d0  verification/scripts/plot_wrf_vs_obs_feb0102.py
+9969572b98f511f9a5096b9387df157a531f6763a95b7ff67f9e5bc695b20362  verification/scripts/plot_wrf_vs_obs_feb0102.py
 8a2a84b650a47f12a026c4ba64769023c6a7962b236414f3a8d7a36441f24068  verification/scripts/plot_obs_feb0102.py
 4c5e76eedf4c3f13a4504da488bba8ac19e999502f157d8f0bf26bda79eaf868  verification/scripts/verify_runs_feb0102.py
-83632cd9c8383d06c0282dc751563fde0e99f2dc1f38369dba92f95b112c52c4  verification/scripts/plot_wrf_profile_spinup.py
-a11cbee72b1fda1bbc3bbbe99b1ef7300f10a4a30ae31a0b49a25a8cd1304ddc  verification/scripts/plot_wrf_transect_locator.py
-78066cc5aa9a214f562f23f88f2a8da2d3b301e96b70b8069d74353ade6c45cc  verification/scripts/plot_terrain_cmp11_supplement.py
+bd0b018390762b3b554cf5f0306f6f7e355ddeb9981e5bd878fa7fd14e1775a7  verification/scripts/plot_wrf_profile_spinup.py
+80446ef8644ee0663ccbf04bb6d3d37830597aace539b338c9de7a8b53ba9605  verification/scripts/plot_wrf_transect_locator.py
+bd7e264556a3df58505be1f1d047e3ea2293e21e56907708b5fedcab17f1ff5d  verification/scripts/plot_terrain_cmp11_supplement.py
 fefff6a5b55ee8ef64265920d1f783d1fa1e469a2b79fd3ff9c8cc473142dfe7  verification/data/wrf_gfs_2way_d02_per_station.csv
 2d5ae81963e8d0b17f5b4ec464af5cd3db8af30a34625d529d529f214201fb53  verification/data/wrf_nam_2way_d02_per_station.csv
 80bf36f23b02065ae61e606932941190977f016e78842aaf447b3bbbbe60256a  verification/data/stations_2013_selection.csv
@@ -132,6 +133,9 @@ export PYTHONUNBUFFERED=1
 export OMP_NUM_THREADS=1
 mkdir -p "$MPLCONFIGDIR"
 
+TRACE="$ROOT/command_trace.log"
+exec 3>>"$TRACE"
+export BASH_XTRACEFD=3
 PS4='+ $(date -u +%Y-%m-%dT%H:%M:%SZ) ${BASH_SOURCE}:${LINENO}: '
 set -x
 
@@ -157,6 +161,8 @@ set -x
     --config verification/config/figures/pelican2013.toml \
     --run "gfs=$X6_RUN" \
     --run "nam=$X5_RUN" \
+    --label 'gfs=GFS two-way' \
+    --label 'nam=NAM two-way' \
     --valid 2013-02-02T12:00:00 2013-02-02T13:00:00 \
     --out-dir "$RAW/profiles" \
     --data-out-dir "$RAW/data"
@@ -169,6 +175,7 @@ set -x
     --data-out-dir "$RAW/data"
 
 set +x
+exec 3>&-
 
 RETURN_MANIFEST="$ROOT/return_manifest.tsv"
 {
@@ -253,6 +260,7 @@ record = {
     },
     "command_authority": "verification/slurm/run_v3_finishing_pass.slurm at manuscript_source_ref",
     "raw_wrf_input_stats": str(root / "wrf_input_stats.tsv"),
+    "command_trace": str(root / "command_trace.log"),
     "returned_files": returned,
     "admission_note": "Akamai must inspect and register every returned figure before any status change; failed gates remain failed.",
 }

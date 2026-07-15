@@ -15,6 +15,7 @@ from plot_terrain_cmp11_supplement import (
     DEFAULT_WAYPOINTS_CONFIG,
     MapProduct,
     SectionProduct,
+    _nan_gaussian,
     load_waypoints,
     plot_composite,
     write_summary,
@@ -36,6 +37,7 @@ def synthetic_section(orientation: str) -> SectionProduct:
     distance = np.linspace(0.0, 50.0, 70)
     heights = np.arange(1350.0, 2401.0, 25.0)
     terrain = 1475.0 + 90.0 * np.sin(distance / 8.0) ** 2
+    coarse_terrain = terrain + 25.0 * np.cos(distance / 6.0)
     z, x = np.meshgrid(heights, distance, indexing="ij")
     difference = 1.2 * np.exp(-((z - 1780.0) / 180.0) ** 2) * np.cos(x / 9.0)
     difference[z < terrain[None, :]] = np.nan
@@ -48,7 +50,16 @@ def synthetic_section(orientation: str) -> SectionProduct:
         lat_line = np.full(distance.size, 40.25)
         termini = ("A", "B")
     return SectionProduct(
-        orientation, distance, lon_line, lat_line, terrain, heights, difference, termini
+        orientation=orientation,
+        distance_km=distance,
+        lon_line=lon_line,
+        lat_line=lat_line,
+        fine_terrain_m=terrain,
+        coarse_terrain_m=coarse_terrain,
+        heights_msl=heights,
+        difference_k=difference,
+        summary_difference_k=difference.copy(),
+        termini=termini,
     )
 
 
@@ -73,6 +84,12 @@ def main() -> None:
         rows = list(csv.DictReader(handle))
     assert len(rows) == 4, f"expected four summary rows, got {len(rows)}"
     assert {row["domain"] for row in rows} == {"d02", "d03"}
+    assert b"\r\n" not in summary.read_bytes(), "summary must be Git-clean LF text"
+    masked = np.array([[np.nan, 1.0, 2.0], [3.0, np.nan, 5.0]])
+    smoothed = _nan_gaussian(masked, 1.0)
+    assert np.array_equal(np.isnan(smoothed), np.isnan(masked)), (
+        "display smoothing must preserve the original shared-support mask"
+    )
     print(f"OK: CMP11 composite and four-row summary -> {tmp}")
 
 

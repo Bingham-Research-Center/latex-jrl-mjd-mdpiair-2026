@@ -207,9 +207,14 @@ def fig_inversion_index(table: pl.DataFrame, runs: list[str],
             (pl.col("source_type") == "model") & (pl.col("display_label") == run)
         )
         if d.height:
-            ax.plot(d["hour_mst"], d["dtheta_k"], color=color, lw=1.1, zorder=2, label=run)
-    ax.plot(obs_d["hour_mst"], obs_d["dtheta_k"], color="black", lw=1.5, zorder=3,
-            label="obs")
+            ax.plot(
+                d["hour_mst"], d["dtheta_k"], color=color, lw=1.1,
+                marker="o", ms=3.2, zorder=2, label=run,
+            )
+    ax.plot(
+        obs_d["hour_mst"], obs_d["dtheta_k"], color="black", lw=1.5,
+        marker="o", ms=3.2, zorder=3, label="Observations",
+    )
     ax.set_ylabel("Δθ bench − floor (K)")
     ax.set_xlabel("Local time (MST); shaded = night")
     ax.set_xlim(t_min, t_max)
