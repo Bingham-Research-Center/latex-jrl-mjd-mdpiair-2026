@@ -10,6 +10,7 @@ spin-up.
 from __future__ import annotations
 
 import argparse
+import csv
 from datetime import datetime
 from pathlib import Path
 
@@ -56,12 +57,31 @@ def open_wrfout(path: Path):
         return xr.open_dataset(path, decode_times=False)
 
 
+def write_profile_table(rows: list[dict], out_dir: Path, focus_name: str,
+                        case_slug: str, valid_times: list[datetime]) -> Path:
+    """Write the exact model levels used in every rendered profile panel."""
+    hours = "_".join(f"{when:%H}z" for when in sorted(valid_times))
+    path = out_dir / f"theta_profiles_{focus_slug(focus_name)}_{case_slug}_{hours}.csv"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    rows = sorted(rows, key=lambda row: (
+        row["valid_time_utc"], row["case_id"], row["level_index"]
+    ))
+    with path.open("w", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
+        writer.writeheader()
+        writer.writerows(rows)
+    print(f"wrote {path}")
+    return path
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--config", required=True, type=Path)
     ap.add_argument("--run", action="append", required=True, type=keyed_path)
     ap.add_argument("--valid", nargs="+", required=True, type=valid_time)
     ap.add_argument("--out-dir", required=True, type=Path)
+    ap.add_argument("--data-out-dir", type=Path, default=None,
+                    help="optional directory for the exact plotted model-level CSV")
     ap.add_argument("--top-m", type=float, default=3300.0)
     args = ap.parse_args()
 
@@ -78,6 +98,7 @@ def main() -> None:
     columns: dict[datetime, dict[str, object]] = {}
     sources: list[Path] = []
     terrain_values: list[float] = []
+    profile_rows: list[dict] = []
     for when in sorted(args.valid):
         at_time: dict[str, object] = {}
         for case, run_dir in runs.items():
@@ -98,6 +119,21 @@ def main() -> None:
             at_time[cfg.runs[case].label] = column
             terrain_values.append(float(column.terrain_m))
             sources.append(source)
+            for level_index, (height, theta) in enumerate(zip(column.height_asl, column.theta)):
+                profile_rows.append({
+                    "valid_time_utc": when.isoformat(),
+                    "case_id": case,
+                    "display_label": cfg.runs[case].label,
+                    "domain": f"d{domain:02d}",
+                    "source_path": str(source),
+                    "focus_name": cfg.focus_point.name,
+                    "focus_latitude": cfg.focus_point.lat,
+                    "focus_longitude": cfg.focus_point.lon,
+                    "level_index": level_index,
+                    "height_msl_m": float(height),
+                    "potential_temperature_k": float(theta),
+                    "terrain_msl_m": float(column.terrain_m),
+                })
         columns[when] = at_time
 
     if max(terrain_values) - min(terrain_values) > 0.5:
@@ -120,6 +156,9 @@ def main() -> None:
     ylim = (terrain_m - 100.0, args.top_m)
 
     case_slug = "_".join(runs)
+    if args.data_out_dir is not None:
+        write_profile_table(profile_rows, args.data_out_dir, cfg.focus_point.name,
+                            case_slug, args.valid)
     for when, at_time in sorted(columns.items()):
         fig, ax = plt.subplots(figsize=(3.05, 4.9), layout="constrained")
         for index, (label, column) in enumerate(at_time.items()):
@@ -134,7 +173,8 @@ def main() -> None:
         ax.axhline(terrain_m, color="0.4", lw=0.8, ls=":")
         ax.fill_between(xlim, ylim[0], terrain_m, color="0.7", alpha=0.6, zorder=0)
         ax.axhline(cfg.crest_m, color="black", lw=0.7, ls="--")
-        ax.text(xlim[1], cfg.crest_m, " crest", fontsize=7, va="bottom", ha="right")
+        ax.text(xlim[1], cfg.crest_m, f" {cfg.crest_m:.0f} m crest reference",
+                fontsize=6.5, va="bottom", ha="right")
         ax.text(0.97, 0.97, f"{when:%H} UTC", transform=ax.transAxes,
                 ha="right", va="top", fontsize=8)
         ax.set_xlabel(r"potential temperature $\theta$ (K)")
