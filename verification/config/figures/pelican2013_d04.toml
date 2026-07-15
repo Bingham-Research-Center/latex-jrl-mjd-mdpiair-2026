@@ -24,6 +24,8 @@ sounding_hour = 12
 upper_pressure_hpa = 600.0
 upper_adv_domain = "outer"
 heatdeficit_domain = "d02"                  # 1 km nest (innermost d04=111 m is too small to span the basin)
+deficitflux_domain = "inner"                # deficitflux_* families on d04 (111 m) — the canyon-gate scale
+surface_single_domains = ["inner"]          # free-standing d04-only surface figures beside the 4-nest panel
 # Focus point matches this run's prior full-figures (skew-T / profile / heat-deficit).
 # Sections run EW/NS through the domain centre and ignore the focus point.
 focus_point = { name = "Vernal", lat = 40.455, lon = -109.530 }
@@ -47,6 +49,43 @@ Myton                  = { lat = 40.1938, lon = -110.0630 }
 
 [runs]
 nam_d04_111m = { dir = "pelican2013_nam_d04_111m_50lev_oneway_terrain3s", label = "NAM d04 111 m (4-nest)" }
+
+# Canyon-gate transects for the deficitflux_transect family (cold-pool deficit export
+# Phi(t), GW).  Gates were located from the d04 model terrain (latitude-row incisions
+# >=130 m below their flanks along the northern escarpment); creek names are the
+# best-guess geographic attribution.  All lines run west->east, so the rightward
+# normal points SOUTH: positive Phi = down-canyon export into the basin.
+[[transects]]
+name = "ashley_gate"
+label = "Ashley/Dry Fork canyon gate (40.54N)"
+lat_a = 40.536
+lon_a = -109.625
+lat_b = 40.536
+lon_b = -109.589
+
+[[transects]]
+name = "steinaker_gate"
+label = "Steinaker/US-191 gap (40.54N)"
+lat_a = 40.536
+lon_a = -109.540
+lat_b = 40.536
+lon_b = -109.504
+
+[[transects]]
+name = "brush_gate"
+label = "Brush Creek canyon gate (40.54N)"
+lat_a = 40.536
+lon_a = -109.412
+lat_b = 40.536
+lon_b = -109.376
+
+[[transects]]
+name = "escarpment_base"
+label = "escarpment base, full width (40.47N)"
+lat_a = 40.470
+lon_a = -109.660
+lat_b = 40.470
+lon_b = -109.360
 
 [style]
 autoscale = false
