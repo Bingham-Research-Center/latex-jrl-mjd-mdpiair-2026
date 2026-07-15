@@ -134,6 +134,10 @@ export OMP_NUM_THREADS=1
 mkdir -p "$MPLCONFIGDIR"
 
 TRACE="$ROOT/command_trace.log"
+# A fresh per-job Matplotlib cache logs one expected initialization line to
+# stderr.  Warm it explicitly and preserve that line in the command trace so
+# later plotting stderr remains a strict failure signal.
+"$PY" -c 'import matplotlib.font_manager' 2>>"$TRACE"
 exec 3>>"$TRACE"
 export BASH_XTRACEFD=3
 PS4='+ $(date -u +%Y-%m-%dT%H:%M:%SZ) ${BASH_SOURCE}:${LINENO}: '

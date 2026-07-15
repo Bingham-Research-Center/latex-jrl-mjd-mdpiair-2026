@@ -59,6 +59,13 @@ keeps smoothed section colors on the original finite mask, and computes section
 summaries from unsmoothed shared-support values.
 Do not package or cite the scratch return from job `13968061`.
 
+Corrective job `13968359` passed the numerical and rendering commands but was also
+rejected before packaging because its fresh per-job Matplotlib cache emitted one
+expected initialization notice to stderr.
+The wrapper now warms that cache explicitly and records only the initialization
+notice in `command_trace.log`; later plotting stderr remains a strict failure signal.
+Do not package or cite the scratch return from job `13968359`.
+
 ## Fixed scope
 
 The job produces only these scientific products:
@@ -86,7 +93,7 @@ Stop before submission if any of the following is true:
 - the pinned observation cache is absent or fails its recorded SHA-256;
 - any named WRF file is absent;
 - a script/input hash check fails; or
-- the wrapper hash is not `0c6e840e726b56cf1888c50a54de0a04505bd698d68a2a2f618f79c2b4360557`.
+- the wrapper hash is not `db984c0b26c8fde49d7284df1a1cf14ecf5bbf0b55f420f144099f93f234c676`.
 
 Stop after submission if Slurm does not report `COMPLETED` and `0:0`, stderr is nonempty, any required return file is empty, or the return hashes fail.
 Do not substitute a current observation download, another run directory, synthetic data, or an older locator/profile render.
