@@ -41,18 +41,17 @@ before running or editing anything.
 |---|---|---|---|
 | F0 | Akamai | complete | Review and integrate the bounded CHPC return as immutable commit `28eb502`; keep `main.tex` unchanged. |
 | F1 | Akamai | complete | Auditable bulk-theta and profile CSV emission, offline locator context, the terrain composite, manuscript wiring, and the single-job CHPC handoff are tested and committed. |
-| F2 | CHPC | ready | Starting only from the pushed F1 commit, run `verification/slurm/run_v3_finishing_pass.slurm`; return exact CSVs, final candidates, hashes, job records, and one clean commit. |
-| F3 | Akamai | waiting | Inspect at manuscript scale; update the claim ledger and both manifests; promote only admitted figures; close or explicitly defer every affected rewrite gate. |
-| F4 | Akamai | waiting | Run `make check`, `make rewrite-check`, `make v3-check`, `make smoke`, PDF inspection, and `git diff --check`; then push and open the integration PR. |
+| F2 | CHPC | complete | Job `13968404` returned exact CSVs and final candidates from source `92d96b1`; the verified 15-file return is commit `010e833` on `jrl/chpc-20260715-v3-finishing-return`. |
+| F3 | Akamai / Codex admission review | complete | PDF and raster inspection, exact-value review, claim-ledger registration, dual manifests, bounded promotions, rewrite-gate closure, and main-figure pruning are complete; CMP11 remains diagnostic. |
+| F4 | Akamai / Codex | complete | `make check`, `make rewrite-check`, `make v3-check`, `make smoke`, PDF inspection, and `git diff --check` passed on 15 July 2026; the audited integration is ready to push and open as a PR. |
 
 Current editorial destinations are fixed unless John changes them:
 
-- bulk-theta X6/X5 overlay: main-paper candidate, promotion pending the committed
-  point-value CSV, explicit slot, and Akamai admission review;
-- locator: main-paper candidate, rebuilt as one coherent map with a nesting inset;
-- X6/X5 Horsepool profiles: supplement candidate cited from the supplied-state text;
-- CMP11 terrain maps and sections: one bounded improvement pass toward a supplemental
-  composite, without inventing or reversing an evidence gate;
+- bulk-theta X6/X5 overlay: promoted for a narrow main-text surface-corroboration role;
+- locator: promoted as one coherent geographic map with a nesting inset;
+- X6/X5 Horsepool profiles: promoted for appendix supplied-state context only;
+- CMP11 terrain maps and sections: registered as one appendix diagnostic, without
+  inventing or reversing an evidence gate;
 - ANA-18 radiation diagnostic: appendix diagnostic with its failed gate preserved.
 
 ## CHPC Batch B record
