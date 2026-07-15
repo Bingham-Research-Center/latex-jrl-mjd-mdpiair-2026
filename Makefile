@@ -47,6 +47,7 @@ v3-check: v3-pdf
 smoke:
 	mkdir -p "$(MPLCONFIGDIR)"
 	env MPLCONFIGDIR="$(MPLCONFIGDIR)" PYTHONPATH="$(BRC_TOOLS_DIR)" $(PYTHON) verification/scripts/smoke_test_runs_feb0102.py
+	env MPLCONFIGDIR="$(MPLCONFIGDIR)" $(PYTHON) verification/scripts/smoke_test_locator.py
 	env MPLCONFIGDIR="$(MPLCONFIGDIR)" $(PYTHON) verification/scripts/smoke_test_cross_sections.py
 	env MPLCONFIGDIR="$(MPLCONFIGDIR)" $(PYTHON) verification/scripts/smoke_test_upper_air.py
 	env MPLCONFIGDIR="$(MPLCONFIGDIR)" $(PYTHON) verification/scripts/smoke_test_retention.py

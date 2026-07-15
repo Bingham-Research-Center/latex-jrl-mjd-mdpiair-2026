@@ -1,0 +1,8 @@
+name,place_type,latitude,longitude,geoid,label_priority
+Vernal,city,40.451701,-109.538007,4980090,1
+Roosevelt,city,40.287727,-109.987983,4964670,1
+Duchesne,city,40.175296,-110.394146,4920340,1
+Myton,city,40.193265,-110.062512,4953340,2
+Fort Duchesne,CDP,40.281802,-109.877241,4926610,2
+Naples,city,40.431749,-109.491273,4953560,3
+Ballard,town,40.294914,-109.949353,4903345,3
