@@ -1,16 +1,42 @@
-# figures-draft harvest record — 13 July 2026
+# figures-draft harvest record — 14 July 2026
 
-Working figures for the deliberately maximal draft of `_manuscript_v3.tex` on branch
-`jrl/chpc-20260713-maximal-draft`. **Nothing here is promoted.** Every file below is an
-external engine render (status `exploratory` in the sense of `figures/MANIFEST.md`:
-tracked nowhere, admitted nowhere) unless noted. Provenance: batch renders from the
-`brc-tools` figure engine recorded in `verification/figures/archive-inventory.md`
-(engine jobs 13896642/13896828/13902813 and predecessors); per-PNG generator sidecars do
-not exist. Signs below are the authoritative operations from
+Working figures for the deliberately maximal draft of `_manuscript_v3.tex` began on
+`jrl/chpc-20260713-maximal-draft` and received the bounded v3 recomputations below on
+`jrl/chpc-20260714-v3-figure-review`. **Nothing in `figures-draft/` is promoted.** The
+original table is an external-engine harvest (status `exploratory` in the sense of
+`figures/MANIFEST.md`: tracked nowhere, admitted nowhere); the v3 table records the
+selected task-scoped replacements and additions. Provenance for the original batch
+renders is in `verification/figures/archive-inventory.md` (engine jobs
+13896642/13896828/13902813 and predecessors). Signs below are the authoritative
+operations from
 `verification/provenance/comparison-inventory.csv` and the archive inventory — note the
 two feedback families whose engine sign is the **reverse** of the CMP row.
 
-Source root: `ARC = /uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_pub_figures/compare`
+Original harvest root: `ARC = /uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_pub_figures/compare`
+
+## CHPC v3 selected recomputations — 14 July 2026
+
+The recomputation used manuscript source
+`29854aac5fe4a2acbcecb705591c064197b3a8c3`, brc-tools
+`69ddbe07af2e38e5e2d4f12f681bb360ff506a1a`, and task root
+`/scratch/general/vast/u0737349/latex_jrl_20260714_v3_figure_review`.
+Jobs `13952694` (d02), `13952692` (d03), and `13952705` (profiles) completed
+with exit code `0:0`. Every selected PNG was inspected before copying.
+
+| File | Source | Bounded content | SHA-256 |
+|---|---|---|---|
+| `heatdeficit_terrain-3arcsec-5arcmin_16z.png` | job `13952694`; d02 `heatdeficit_map` | CMP11 X0−X4 at 16 UTC; 2200 m crest; fixed ±1.6 MJ m⁻² | `cd4b78803e261db20b5d9f9cfc71189f219c06be816205398347ed4f1123bbed` |
+| `heatdeficit_terrain-3arcsec-5arcmin_d03_16z.png` | job `13952692`; d03 `heatdeficit_map` | CMP11 X0−X4 at 16 UTC; 2200 m crest; fixed ±1.6 MJ m⁻² | `a91bb32c8b7650e6306ddb7ab8220abdd41c44d2fa5a403ccf0a83ae16f85378` |
+| `section_ns_terrain-3arcsec-5arcmin_d03_16z.png` | job `13952692`; d03 `diff_terrain_res` | CMP11 north--south potential-temperature difference; fixed ±4 K | `99405289757ebfdec70d354136fd9011712a37a9503a284a987127439b329d21` |
+| `section_ew_terrain-3arcsec-5arcmin_d03_16z.png` | job `13952692`; d03 `diff_terrain_res` | CMP11 east--west potential-temperature difference; fixed ±4 K | `dd3726cf1b362c414acf1c9bd064e41a19518afdcdb5af58e8b3c3aaf09266df` |
+| `theta_profiles_horsepool_gfs_nam_12z.png` | job `13952705`; manuscript profile script | X6 and X5 at Horsepool; pooled shared axes with the 13 UTC panel | `2df028ad6bbf1da293d90c96fc36554c67e14c225c95ae0bcd60bb6902e13895` |
+| `theta_profiles_horsepool_gfs_nam_13z.png` | job `13952705`; manuscript profile script | X6 and X5 at Horsepool; pooled shared axes with the 12 UTC panel | `8a73e8dcdfd2d4f1db5aea6dc8ac9f19bce45f1e7c595a9a3a6c16a4e68da544` |
+
+The profile pair shares x limits 271.188538--301.680206 K and y limits
+1463.333252--3300 m MSL. Temperature-series companions, profile PDFs, per-run
+heat-deficit maps, and the d03 2 m-theta difference remain inspected reserves in
+scratch. Their hashes and dispositions are in
+`verification/provenance/v3-figure-review-20260714.json`.
 
 | File | Source family | Renders | CMP row (authoritative op) | Sign note |
 |---|---|---|---|---|

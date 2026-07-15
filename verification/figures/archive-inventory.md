@@ -10,7 +10,7 @@ dredge it; use the exact paths below.
   (all paths below are relative to `ARC`). Group storage, not a repo; no cross-machine paths.
 - **Event:** Uinta Basin cold-air pool, init **2013-02-02**; main case 12→18 UTC hourly.
 - **Authoritative figure defs:**
-  `verification/config/figures/{pelican2013,pelican2013_1km,pelican2013_d04}.toml`.
+  `verification/config/figures/{pelican2013,pelican2013_terrain_d03,pelican2013_1km,pelican2013_d04}.toml`.
   Figure engine: sibling `../brc-tools/docs/WRF-FIGURE-ENGINE.md`.
 - **Run and narrative authority:** use `verification/provenance/run-inventory.csv`
   for run identity and `verification/provenance/comparison-inventory.csv` for what
@@ -30,6 +30,18 @@ dredge it; use the exact paths below.
   = 7 for all 9 standard cases (63 fields) + `compare/heatdeficit_map/` = 70 (one diff per
   `[[differences]]` pair × 7 h). The 21 stale mislabeled `terrain-900m-30m` PNGs were deleted
   from `diff_terrain_fine/` (→ 21, author-authorized). Compare root → 324.
+- **Verified 2026-07-14 CHPC v3 review:** immutable manuscript
+  `29854aac5fe4a2acbcecb705591c064197b3a8c3` and brc-tools
+  `69ddbe07af2e38e5e2d4f12f681bb360ff506a1a` produced task-scoped d02 CMP11
+  heat-deficit output (job `13952694`), d03 CMP11 heat-deficit/section output
+  (job `13952692`), the unchanged-number ANA-18 restyle (job `13952693`), and
+  line-free overlays, shared-axis profiles, and the clean d02/d03 locator (job
+  `13952705`). All jobs completed `0:0`; selected files were copied into the repo
+  only after raster/PDF inspection. The locator candidate now has PNG SHA-256
+  `29d71605591fc7e3608c96216a9771273e75c5c21ce00422a8912db6c8ed706e` and PDF
+  SHA-256 `8b02e9119177782cc5b7885152ec397fcff2a49a25265940679b9b7158bac6d0`.
+  Exact commands, scratch/reserve hashes, copied-file mappings, logs, and visual
+  findings are in `verification/provenance/v3-figure-review-20260714.json`.
 - **Exact renderer state:** brc-tools `fad70b0` (adds the `heatdeficit_map` family; was
   `56cd002` = thetaz + sounding `height_m`); `verification/config/figures/pelican2013.toml`
   SHA-256 `ad9d933854fc7067260f1bb398e25aff2e7c286b9df8135a64c9dfa1cf8d2fd7` (incl.
