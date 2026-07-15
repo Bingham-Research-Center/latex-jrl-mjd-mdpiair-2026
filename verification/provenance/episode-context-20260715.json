@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "figure_id": "episode_context_snow_ozone_janfeb2013",
+  "status": "verified_candidate_pending_manifest_admission",
+  "generated_at_utc": "2026-07-15T21:58:00Z",
+  "generator": {
+    "path": "verification/scripts/plot_episode_context.py",
+    "sha256": "fed45c3fe782638c26a0546d0c2d3b2d6fb8f3865131f20cfe6a2638767f7640",
+    "command": "env MPLCONFIGDIR=/tmp/mdpi-air-matplotlib conda run --no-capture-output -n brc-tools python verification/scripts/plot_episode_context.py --ozone-csv verification/data/aqs_ozone_daily_janfeb2013_selected.csv --modis-png verification/figures/candidates/modis_uinta_snow_false_color_20130202_near1800.png --output verification/figures/candidates/episode_context_snow_ozone_janfeb2013",
+    "environment": "brc-tools conda environment",
+    "deterministic_pdf_metadata": true
+  },
+  "ozone_input": {
+    "path": "verification/data/aqs_ozone_daily_janfeb2013_selected.csv",
+    "sha256": "ac11265751a912ab62536b8b8f31542655b580d8ecf1c03d11b983afa7bb1a43",
+    "provenance": "verification/provenance/aqs-ozone-context-20260715.json",
+    "provenance_sha256": "271dceb617dc407616f8826ed498156b6f0c2e6a5d378109db06426ba041eafe",
+    "record_count": 295,
+    "time_convention": "AQS Date Local",
+    "daily_value": "EPA-reported 1st Max Value for Ozone 8-hour 2015, converted from ppm to ppb",
+    "coverage_display": "markers are hollow when AQS Observation Percent is below 75"
+  },
+  "satellite_input": {
+    "path": "verification/figures/candidates/modis_uinta_snow_false_color_20130202_near1800.png",
+    "sha256": "35f5ada9a7a0180c1e88134cf92a361e607ae2ddb70fdb4515b7207aa5ebb8cc",
+    "provenance": "verification/figures/candidates/modis_uinta_snow_false_color_20130202_near1800.provenance.json",
+    "provenance_sha256": "207fcf9bc819730f4829599413dd1e0e855eac5b0aca8ffc982bf72511263395",
+    "role": "cropped registered NASA GIBS daily browse render; qualitative snow/cloud context only"
+  },
+  "outputs": {
+    "verification/figures/candidates/episode_context_snow_ozone_janfeb2013.png": "9d13378645179d0d02295ee17afd66da5e8ae28a96aa55961068402399399634",
+    "verification/figures/candidates/episode_context_snow_ozone_janfeb2013.pdf": "b2d2009da52bbfe4983db41ed8c51d86e6896540763bdc140abf492ba799bae2",
+    "figures/episode_context_snow_ozone_janfeb2013.pdf": "b2d2009da52bbfe4983db41ed8c51d86e6896540763bdc140abf492ba799bae2"
+  },
+  "visual_inspection": {
+    "date": "2026-07-15",
+    "result": "pass",
+    "checks": [
+      "five site series, units, case-date marker, and low-coverage markers are legible",
+      "satellite crop retains the three location labels and qualitative snow/cloud field",
+      "no regulatory threshold, chemistry result, or WRF-validation claim appears"
+    ]
+  },
+  "interpretation_limits": [
+    "The NASA GIBS image is a calendar-day browse layer, not a raw selected-granule crop or quantitative snow retrieval.",
+    "The AQS values are reported local-date daily summaries; within-day observation coverage varies.",
+    "The figure establishes episode context only and does not evaluate chemistry, attainment, emissions, or meteorological causation."
+  ]
+}

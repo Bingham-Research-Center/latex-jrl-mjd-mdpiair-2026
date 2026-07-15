@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "dataset": "EPA AQS reported daily maximum 8-hour ozone context",
+  "source_url": "https://aqs.epa.gov/aqsweb/airdata/daily_44201_2013.zip",
+  "source_http_last_modified": "2026-07-13T15:47:42Z",
+  "retrieved_at_utc": "2026-07-15T21:47:35Z",
+  "source_archive_sha256": "5b26571693fb00b752873657a0a8dc2680ee222b0d03c6028553ebd3e17632ba",
+  "filtered_parquet_sha256": "b153511f6c4fdf03eebae84dd90b485c2c698f78797d866dd57aa705b7b07407",
+  "tracked_csv": "verification/data/aqs_ozone_daily_janfeb2013_selected.csv",
+  "tracked_csv_sha256": "ac11265751a912ab62536b8b8f31542655b580d8ecf1c03d11b983afa7bb1a43",
+  "date_window_local_inclusive": [
+    "2013-01-01",
+    "2013-02-28"
+  ],
+  "daily_record_count": 295,
+  "pollutant_standard_row": "Ozone 8-hour 2015",
+  "source_units": "Parts per million",
+  "plotted_units": "parts per billion",
+  "time_convention": "AQS Date Local; daily rows, not UTC timestamps",
+  "missingness": {
+    "missing_site_dates": 0,
+    "note": "All five sites have 59 daily rows; within-day observation coverage varies and is retained explicitly."
+  },
+  "site_completeness": [
+    {
+      "aqs_id": "49-013-0002",
+      "site_name": "Roosevelt",
+      "operator": "Utah DEQ",
+      "daily_rows": 59,
+      "minimum_observation_percent": 100.0,
+      "maximum_observation_percent": 100.0,
+      "days_below_75_percent": 0,
+      "maximum_reported_ppb": 110.0
+    },
+    {
+      "aqs_id": "49-047-0014",
+      "site_name": "Little Mountain",
+      "operator": "USFS",
+      "daily_rows": 59,
+      "minimum_observation_percent": 65.0,
+      "maximum_observation_percent": 100.0,
+      "days_below_75_percent": 1,
+      "maximum_reported_ppb": 61.0
+    },
+    {
+      "aqs_id": "49-047-1003",
+      "site_name": "Vernal",
+      "operator": "Utah DEQ",
+      "daily_rows": 59,
+      "minimum_observation_percent": 65.0,
+      "maximum_observation_percent": 100.0,
+      "days_below_75_percent": 1,
+      "maximum_reported_ppb": 114.0
+    },
+    {
+      "aqs_id": "49-047-2002",
+      "site_name": "Redwash",
+      "operator": "Ute Indian Tribe",
+      "daily_rows": 59,
+      "minimum_observation_percent": 59.0,
+      "maximum_observation_percent": 100.0,
+      "days_below_75_percent": 4,
+      "maximum_reported_ppb": 120.0
+    },
+    {
+      "aqs_id": "49-047-2003",
+      "site_name": "Ouray",
+      "operator": "Ute Indian Tribe",
+      "daily_rows": 59,
+      "minimum_observation_percent": 47.0,
+      "maximum_observation_percent": 100.0,
+      "days_below_75_percent": 1,
+      "maximum_reported_ppb": 137.0
+    }
+  ],
+  "selection": {
+    "site_ids": [
+      "49-013-0002",
+      "49-047-0014",
+      "49-047-1003",
+      "49-047-2002",
+      "49-047-2003"
+    ],
+    "reason": "four basin-floor, bench, or population-center monitors plus one north-rim context monitor"
+  },
+  "generator": "verification/scripts/prepare_aqs_ozone_context.py",
+  "brc_tools_commit": "2e1f84ba0b7c38c97932b0a87fff74451720fdf5",
+  "fetch_command": "env BRC_TOOLS_AQS_CACHE=/tmp/brc-tools-aqs-cache PYTHONPATH=../brc-tools conda run --no-capture-output -n brc-tools python ../brc-tools/scripts/fetch_aqs_airdata.py --param ozone --kind daily --years 2013 --sites 49-047-2003 49-047-2002 49-013-0002 49-047-1003 49-047-0014 --start 2013-01-01 --end 2013-02-28 --out /tmp/aqs_ozone_daily_janfeb2013_selected.parquet",
+  "interpretation_limits": [
+    "Values are EPA AQS daily summaries as reported; MDA8 was not recomputed.",
+    "The figure shows no regulatory threshold and makes no attainment determination.",
+    "The ozone record supplies episode context, not WRF chemistry validation or causal attribution."
+  ]
+}
