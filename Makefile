@@ -46,7 +46,10 @@ v3-check: v3-pdf
 
 smoke:
 	bash -n verification/slurm/run_v3_finishing_pass.slurm
+	bash -n verification/slurm/run_x8_deficit_transport.slurm
+	bash -n verification/slurm/pelican_figures.slurm
 	mkdir -p "$(MPLCONFIGDIR)"
+	env MPLCONFIGDIR="$(MPLCONFIGDIR)" XDG_CACHE_HOME="$(MPLCONFIGDIR)" PYTHONPATH="$(BRC_TOOLS_DIR)" $(PYTHON) verification/scripts/analyze_x8_deficit_transport.py --help >/dev/null
 	env MPLCONFIGDIR="$(MPLCONFIGDIR)" PYTHONPATH="$(BRC_TOOLS_DIR)" $(PYTHON) verification/scripts/smoke_test_runs_feb0102.py
 	env MPLCONFIGDIR="$(MPLCONFIGDIR)" $(PYTHON) verification/scripts/smoke_test_locator.py
 	env MPLCONFIGDIR="$(MPLCONFIGDIR)" PYTHONPATH="$(BRC_TOOLS_DIR)" $(PYTHON) verification/scripts/smoke_test_terrain_cmp11_supplement.py
