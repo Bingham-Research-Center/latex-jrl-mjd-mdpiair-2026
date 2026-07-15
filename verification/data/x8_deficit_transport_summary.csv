@@ -1,0 +1,24 @@
+metric,value,units,window,interpretation
+domain_nominal_dx,111.111115,m,X8 d04,nominal grid spacing
+edge_margin,15,grid cells,all spatial means,symmetric crop
+edge_margin_distance,1666.66672,m,all spatial means,nominal one-sided crop
+active_deficit_threshold,0.25,K,bulk fields,diagnostic definition
+minimum_heat_threshold,0.1,MJ m-2,F/H fields,diagnostic mask
+retained_storage_convergence_correlation,0.922171784,1,14:00-18:00 UTC,temporal interval association
+retained_unresolved_rmse,0.205618041,MJ m-2 h-1,14:00-18:00 UTC,not uniquely diabatic
+storage_15to16,0.250711493,MJ m-2 h-1,15:00-16:00 UTC,one-hour H change
+horizontal_convergence_15to16,0.201929995,MJ m-2 h-1,15:00-16:00 UTC,10-min trapezoidal mean
+unresolved_15to16,0.0487814986,MJ m-2 h-1,15:00-16:00 UTC,storage minus horizontal convergence
+storage_16to17,-0.465569954,MJ m-2 h-1,16:00-17:00 UTC,one-hour H change
+horizontal_convergence_16to17,-0.311845027,MJ m-2 h-1,16:00-17:00 UTC,10-min trapezoidal mean
+unresolved_16to17,-0.153724927,MJ m-2 h-1,16:00-17:00 UTC,storage minus horizontal convergence
+median_depth_m_agl_15z,433.723328,m AGL,2013-02-02 15:00 UTC,interior spatial percentile
+p90_depth_m_agl_15z,633.670435,m AGL,2013-02-02 15:00 UTC,interior spatial percentile
+median_deficit_speed_m_s_15z,1.2748623,m s-1,2013-02-02 15:00 UTC,interior spatial percentile
+p90_deficit_speed_m_s_15z,1.77940466,m s-1,2013-02-02 15:00 UTC,interior spatial percentile
+median_bulk_froude_15z,0.125708249,1,2013-02-02 15:00 UTC,interior spatial percentile
+p90_bulk_froude_15z,0.193683906,1,2013-02-02 15:00 UTC,interior spatial percentile
+northern_reference_min,-81.6104616,GW,14:00-18:00 UTC,negative is northward
+northern_reference_min_time,2013-02-02T14:40:00,UTC,14:00-18:00 UTC,valid time
+northern_reference_max,9.69227189,GW,14:00-18:00 UTC,positive is southward
+northern_reference_max_time,2013-02-02T17:50:00,UTC,14:00-18:00 UTC,valid time
