@@ -351,4 +351,45 @@ items, and the smallest safe next action.
 
 ## Return record
 
-Pending CHPC execution.
+Completed on CHPC for `REQUEST_ID=20260714-v3-figure-review` from
+`SOURCE_REF=29854aac5fe4a2acbcecb705591c064197b3a8c3` with
+`BRC_TOOLS_REF=69ddbe07af2e38e5e2d4f12f681bb360ff506a1a`.
+The return branch is `jrl/chpc-20260714-v3-figure-review`.
+
+All four jobs completed with `ExitCode=0:0` on `notch392`:
+
+- `13952692`, d03 CMP11 maps and sections:
+  `/scratch/general/vast/u0737349/pelican_figures_13952692.{out,err}`;
+- `13952693`, ANA-18 radiation style rerender:
+  `/scratch/general/vast/u0737349/latex_jrl_ana18r_13952693.{out,err}`;
+- `13952694`, d02 CMP11 heat-deficit maps:
+  `/scratch/general/vast/u0737349/pelican_figures_13952694.{out,err}`; and
+- `13952705`, overlays, profiles, and locator:
+  `/scratch/general/vast/u0737349/latex_jrl_v3_aux_13952705.{out,err}`.
+
+All stderr files are empty.
+The 30-output scratch manifest is
+`/scratch/general/vast/u0737349/latex_jrl_20260714_v3_figure_review/scratch_output_sha256.txt`
+with SHA-256
+`5bfd3175e1e73ee2624b4567f8f2e2a2d5e10fc460030575fedbf194e29a3543`.
+Exact selected-copy and reserve-output hashes, job-log hashes, commands, run inputs,
+and per-file visual findings are recorded in
+`verification/provenance/v3-figure-review-20260714.json`.
+
+The line-free X6/X5 bulk-theta overlay passed conditional re-promotion; its PDF hash
+is `1a8d5c45953ed08d0db5b9d9c024cf46035a4db09252f0ef888f0809d2ce5c31`.
+The X3/X5 overlay remains a candidate.
+Temperature companions, per-run maps, and profile PDF companions passed visual
+review but remain scratch reserves; no numerical product was rejected.
+The ANA-18 summary and criteria CSVs were byte-identical to the committed records,
+so its failed-gate disposition remains unchanged.
+
+`git diff --check`, `make check`, `make rewrite-check`, `make v3-check`, `make smoke`,
+and `make v3-pdf` passed in the documented CHPC environment.
+Pages 3, 12, 13, 16, 17, and 22 of the rebuilt 23-page `_manuscript_v3.pdf` passed
+150-dpi inspection.
+No manuscript source, bibliography, run/comparison inventory, claim/gate record,
+build product, task script, or log is included in the return batch.
+There are no unresolved items within this bounded packet.
+The smallest safe next action is writing-host review of the pushed return branch
+before merge or manuscript promotion.
