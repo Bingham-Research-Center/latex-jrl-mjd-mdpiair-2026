@@ -209,6 +209,7 @@ That ladder would be false, and this is a confirmed design finding (C16): the th
 No grid-spacing response can be attributed within this set, and nominal fine spacing is not evidence of a better cold-pool simulation.
 A controlled resolution experiment would require a new matched family; X7 and X8 therefore do not enter the Results comparison hierarchy.
 Legacy nudged and SIP-era simulations are likewise heterogeneous in episode, model version, and assimilation state and remain context only.
+Appendix~B applies the within-X8 diagnostic in Section~\ref{sec:v3-x8-methods} to illustrate the subhourly transport structure available in that archive without converting X8 into comparative evidence.
 
 \begin{table}[H]
 \caption{Why X7/X0/X8 is not a resolution experiment: dimensions on which the members of the apparent ladder differ simultaneously (C16).
@@ -260,6 +261,20 @@ Hourly values at 13:00 UTC provide trajectory context only, and all decisions us
 Two criteria were fixed before inspection: a weaker-state criterion requiring both GFS-minus-NAM pairs to be negative at every retained hour under all seven definitions, and a faster-loss criterion requiring both GFS 14:00-to-18:00 UTC changes to be negative and more negative than the matched NAM changes under all seven definitions.
 The fixed 2200 m crest, nonnegative clipping, convex-hull footprint, and modeled profiles depart from the published definitions.
 The footprint is an evaluation region rather than a hydrologic basin boundary, and the proxy is neither a direct reproduction of the published diagnostics nor an observed cold-pool measurement.
+
+\subsection{Exploratory X8 Deficit-Transport Diagnostic}
+\label{sec:v3-x8-methods}
+
+The single X8 context run archived d04 output every 10 min from 12:00 to 18:00 UTC on a nominal 111.111 m grid with 50 vertical levels.
+It is multiply confounded relative to the controlled family and is used only to demonstrate a within-run process diagnostic, not a resolution response or configuration ranking.
+The horizontal heat-deficit transport was defined as $\mathbf{F}=(c_{p}/g)\int\max\{\theta_{\mathrm{crest}}-\theta,0\}\mathbf{u}_{h}\,dp$, using the same local 2200 m MSL crest reference and nonnegative kernel as $H$.
+$\mathbf{F}$ has units of W m$^{-1}$, and $-\nabla_{h}\!\cdot\mathbf{F}$ is reported only as the horizontal flux-convergence contribution to the tendency of $H$.
+Storage was differenced over each 10 min interval, horizontal convergence was averaged at the interval endpoints, and both were area weighted after a symmetric 15-cell edge crop from d04.
+Their difference is called the unresolved tendency because diabatic physics, the time-varying local crest reference, clipped-layer movement, vertical and boundary terms, and numerical error can all contribute.
+The deficit-weighted velocity $\mathbf{U}_{D}=\mathbf{F}/H$ was masked where $H<0.1$ MJ m$^{-2}$.
+An active-layer depth used a 0.25 K minimum crest-relative deficit, and the displayed reduced-gravity Froude number is an exploratory bulk proxy rather than a hydraulic-control diagnosis.
+Three short west-to-east transects cross model-terrain incisions and one longer west-to-east line provides a northern reference; positive signed transport is southward, and none of these lines is a basin boundary.
+As in the controlled analyses, 12:00--14:00 UTC is shown as spin-up context and only 14:00--18:00 UTC is retained for interpretation.
 
 \section{Results}
 
@@ -667,6 +682,76 @@ The domain-specific panels display spatial and vertical response patterns but ex
 The archived flat-plane shortwave field did not express the treatment, while skin temperature showed an aspect-organized response on steep terrain.
 The predeclared screen failed for this measurement-limited reason, and the figure supports no configuration ranking.}
 \label{fig:v3-radiationpanel}
+\end{figure}
+
+\clearpage
+% REVIEW-LAYOUT ONLY: this Appendix B is temporarily titled Supplementary Material.
+% Split it into the journal's separate supplementary file before submission or promotion.
+\section{Supplementary Material}
+\label{sec:v3-review-supplement}
+
+\diagnosticnote{Review-layout convention: Appendix B is temporarily titled ``Supplementary Material'' so the X8 diagnostic images can be reviewed together inside this draft.
+It must be separated into the journal's supplementary file before submission or promotion to \texttt{main.tex}.}
+
+The figures below are descriptive products from one multiply confounded context run.
+They support no resolution, validation, basin-export, event-persistence, or hydraulic-control claim.
+
+\begin{figure}[H]
+\centering
+\IfFileExists{verification/figures/candidates/x8_deficit_transport_map_15z.pdf}{%
+\includegraphics[width=0.82\textwidth]{verification/figures/candidates/x8_deficit_transport_map_15z.pdf}%
+}{\fbox{\parbox[c][0.42\textheight][c]{0.88\textwidth}{\centering CHPC render pending: X8 d04 heat deficit and horizontal deficit transport at 15:00 UTC.}}}
+\caption{Crest-referenced heat deficit $H$ and horizontal deficit transport $\mathbf{F}$ in X8 d04 at 15:00 UTC.
+The nominal grid spacing is 111.111 m, the column reference is the local potential temperature at 2200 m MSL, colors show $H$, and arrows show $\mathbf{F}$.
+The three short lines are neutral model-terrain-incision gates, and the longer line is a northern reference transect rather than a basin boundary.
+This single-run field illustrates modeled redistribution only.}
+\label{fig:v3-x8-transport-map}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\IfFileExists{verification/figures/candidates/x8_deficit_transport_gates_12to18.pdf}{%
+\includegraphics[width=0.96\textwidth]{verification/figures/candidates/x8_deficit_transport_gates_12to18.pdf}%
+}{\fbox{\parbox[c][0.34\textheight][c]{0.90\textwidth}{\centering CHPC render pending: X8 signed deficit transport across four transects at 10 min cadence.}}}
+\caption{Signed X8 d04 deficit transport at 10 min cadence across three terrain-incision gates and the northern reference transect.
+Every line runs west to east, so positive values indicate southward transport and negative values northward transport.
+The shaded 12:00--14:00 UTC interval is spin-up context, and the retained 14:00--18:00 UTC variation describes a modeled morning reversal within X8 rather than observed canyon drainage or basin export.}
+\label{fig:v3-x8-gates}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\IfFileExists{verification/figures/candidates/x8_deficit_convergence_15z.pdf}{%
+\includegraphics[width=0.82\textwidth]{verification/figures/candidates/x8_deficit_convergence_15z.pdf}%
+}{\fbox{\parbox[c][0.42\textheight][c]{0.88\textwidth}{\centering CHPC render pending: X8 d04 horizontal heat-deficit flux convergence at 15:00 UTC.}}}
+\caption{Horizontal heat-deficit flux convergence $-\nabla_{h}\!\cdot\mathbf{F}$ in X8 d04 at 15:00 UTC.
+Red indicates horizontal convergence increasing $H$, and blue indicates divergence decreasing $H$.
+The plotted field uses 1 km display-only Gaussian smoothing, whereas the committed budget values use the unsmoothed field.
+This term is one contribution to storage, not total advection or a closed thermodynamic budget.}
+\label{fig:v3-x8-convergence}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\IfFileExists{verification/figures/candidates/x8_deficit_bulk_15z.pdf}{%
+\includegraphics[width=0.98\textwidth]{verification/figures/candidates/x8_deficit_bulk_15z.pdf}%
+}{\fbox{\parbox[c][0.34\textheight][c]{0.92\textwidth}{\centering CHPC render pending: X8 active-layer depth, deficit-weighted speed, and exploratory bulk Froude proxy at 15:00 UTC.}}}
+\caption{Exploratory X8 d04 bulk diagnostics at 15:00 UTC.
+The panels show the top of the layer exceeding a 0.25 K crest-relative deficit, deficit-weighted speed $|\mathbf{F}|/H$ after masking $H<0.1$ MJ m$^{-2}$, and a reduced-gravity bulk Froude proxy using the diagnosed depth and mean deficit.
+The layer can be disconnected and its reference varies by column, so the third panel does not diagnose hydraulic control.}
+\label{fig:v3-x8-bulk}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\IfFileExists{verification/figures/candidates/x8_deficit_budget_12to18.pdf}{%
+\includegraphics[width=0.96\textwidth]{verification/figures/candidates/x8_deficit_budget_12to18.pdf}%
+}{\fbox{\parbox[c][0.42\textheight][c]{0.90\textwidth}{\centering CHPC render pending: X8 d04 storage, horizontal convergence, and unresolved tendency at 10 min cadence.}}}
+\caption{X8 d04 interior heat-deficit tendency diagnostic from 12:00 to 18:00 UTC.
+The spatial mean excludes 15 cells, nominally 1.67 km, from each d04 edge.
+Ten-minute finite-difference storage is compared with endpoint-mean horizontal convergence, and their difference is retained as unresolved rather than attributed uniquely to diabatic heating.
+The scatter and its statistics use the retained 14:00--18:00 UTC intervals; its time coloring shows temporal association within one model run and is not an independent validation or a resolution comparison.}
+\label{fig:v3-x8-budget}
 \end{figure}
 
 \vspace{6pt}

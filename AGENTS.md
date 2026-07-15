@@ -60,6 +60,9 @@ candidate figures, and `Definitions/` unless required.
 - After analysis changes: `make check`, `make rewrite-check`, `make smoke`, and PDF
   inspection. After v3 changes also run `make v3-check`; `make submission` packages
   only `main.tex`.
+- Review-layout convention: `_manuscript_v3.tex` temporarily compiles Appendix B as
+  ``Supplementary Material'' so provisional figures can be reviewed together; split
+  it into the journal's separate supplement before submission or promotion to `main.tex`.
 - Use `jrl/<topic>` PRs into protected `main`. Commit one verified concern at a time,
   push substantial batches, and use John's identity plus
   `Co-Authored-By: Codex <noreply@openai.com>`.

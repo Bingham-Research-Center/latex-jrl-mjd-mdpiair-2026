@@ -351,6 +351,7 @@ def main() -> None:
             waypoints=cfg.waypoints,
             overlays=cfg.map_overlays,
             transects=cfg.transects,
+            quiver_target=18,
             dpi=args.dpi,
         )
 
