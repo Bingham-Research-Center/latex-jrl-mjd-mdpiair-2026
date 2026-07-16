@@ -66,7 +66,7 @@ Following preliminary experiments and review of the archived simulation family, 
 \end{enumerate}
 
 Terrain-source contrasts require area-weighted geometry diagnostics because a station-only summary can miss a rim- or slope-confined response.
-The archived simulations are labelled X0--X10, and their registered pairwise contrasts are labelled CMP01--CMP12 for lookup rather than evidentiary rank.
+The archived simulations use the compact X0--X10 identifiers, which link configurations in the text and tables to the run inventory.
 The present paper evaluates the meteorological state that a later chemistry calculation would receive; it contains no chemistry calculation and makes no ozone prediction.
 
 \section{Materials and Methods}
@@ -99,12 +99,24 @@ The satellite panel in Figure~\ref{fig:v3-episode-context} uses the National Aer
 
 \begin{figure}[H]
 \centering
-\IfFileExists{figures/wrf_geographic_locator_d01_d03.pdf}{%
-\includegraphics[width=0.96\textwidth]{figures/wrf_geographic_locator_d01_d03.pdf}%
-}{\fbox{\parbox[c][0.42\textheight][c]{0.90\textwidth}{\centering CHPC render pending: sourced geographic locator with d02 terrain and stations, d03 footprint, and a d01--d03 nesting inset.}}}
+\begin{minipage}[t]{0.49\textwidth}
+\centering
+\textbf{(a)}\\[-2pt]
+\IfFileExists{verification/figures/candidates/wrf_geographic_locator_d02_d03.pdf}{%
+\includegraphics[width=\linewidth]{verification/figures/candidates/wrf_geographic_locator_d02_d03.pdf}%
+}{\fbox{\parbox[c][0.42\textheight][c]{0.90\linewidth}{\centering Geographic locator unavailable.}}}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.49\textwidth}
+\centering
+\textbf{(b)}\\[-2pt]
+\IfFileExists{verification/figures/candidates/wrf_nested_domains_d01_d03.png}{%
+\includegraphics[width=\linewidth]{verification/figures/candidates/wrf_nested_domains_d01_d03.png}%
+}{\fbox{\parbox[c][0.42\textheight][c]{0.90\linewidth}{\centering Three-domain WRF grid layout unavailable.}}}
+\end{minipage}
 \caption{Geographic and sampling orientation for the evaluation.
-The main map places the d02 terrain, d03 interior, reporting stations, major roads, rivers, towns, and regional labels on one common geographic frame.
-The inset locates the d01--d03 nests within Utah.}
+(a) The d02 terrain, reporting stations, and d03 interior define the common evaluation setting.
+(b) The d01--d02--d03 WRF grid layout places that setting within the full three-domain configuration.
+Seven of the eleven reporting stations fall outside the usable d03 interior, which is why d02 supplies the full-network sample; neither panel constitutes a resolution evaluation.}
 \label{fig:v3-locator}
 \end{figure}
 
@@ -131,7 +143,6 @@ The X7 and X8 configurations differ from the controlled family in several dimens
 \begin{table}[H]
 \caption{The archived simulation family.
 Every run uses WRF 4.8.0, three nests at 3/1/0.333\,km with 75 levels, Thompson microphysics, RRTMG radiation, and Noah land surface unless stated.
-Comparisons are denoted CMP and experiments are denoted X.
 ``Fine terrain'' is the custom 3-arc-second source, ``default terrain'' is 30-arc-second class, and ``coarse terrain'' is the 5-arc-minute GMTED2010 source; static-source spacing is not model-grid spacing.}
 \label{tab:v3-family}
 \centering
@@ -141,16 +152,16 @@ Comparisons are denoted CMP and experiments are denoted X.
 Code & Product, feedback & Configuration and role \\
 \midrule
 X0  & NAM, one-way & fine-terrain YSU/MM5 control for X1, X3, X4, and X9 \\
-X1  & NAM, one-way & X0 plus slope radiation and shading (CMP07) \\
-X2  & NAM, one-way & X1 with MYJ/Eta instead of YSU/MM5 (CMP08) \\
-X3  & NAM, one-way & default-terrain reference configuration (CMP02, CMP03, CMP09, and CMP10) \\
-X4  & NAM, one-way & deliberately coarse 5-arc-minute terrain (CMP10 and CMP11) \\
-X5  & NAM, two-way & default terrain (CMP01 and CMP03) \\
-X6  & GFS, two-way & default terrain (CMP01 and CMP04) \\
+X1  & NAM, one-way & X0 plus slope radiation and shading \\
+X2  & NAM, one-way & X1 with MYJ/Eta instead of YSU/MM5 \\
+X3  & NAM, one-way & default-terrain reference configuration \\
+X4  & NAM, one-way & deliberately coarse 5-arc-minute terrain \\
+X5  & NAM, two-way & default terrain \\
+X6  & GFS, two-way & default terrain \\
 X7  & NAM, two-way & 1 km inner grid and 24 h integration; design context only \\
-X8  & NAM, one-way & four domains to 111 m and 50 levels; within-run process context only \\
-X9  & NAM, two-way & X0 with two-way feedback (CMP06) \\
-X10 & GFS, one-way & default terrain (CMP02 and CMP04) \\
+X8  & NAM, one-way & four domains to 111 m and 50 levels; design context only \\
+X9  & NAM, two-way & X0 with two-way feedback \\
+X10 & GFS, one-way & default terrain \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -165,26 +176,25 @@ Native GFS and NAM data provides 27 and 40 metgrid levels, respectively.
 (The remaining controlled contrasts enter on their own design and evidence: the X2-minus-X1 scheme treatment, X1-minus-X0 slope-radiation treatment, X9-minus-X0 fine-terrain feedback treatment, and the pairwise X3/X0/X4 terrain-source brackets.)
 
 \begin{table}[H]
-\caption{Comparisons referenced in this study, their differencing orientation, and their scientific use.}
+\caption{Controlled contrasts referenced in this study, their differencing orientation, and their scientific use.}
 \label{tab:v3-comparisons}
 \centering
 \small
-\begin{tabularx}{\textwidth}{lllL}
+\begin{tabularx}{\textwidth}{lLL}
 \toprule
-ID & Operation & Isolated lever & Use in this study \\
+Operation & Isolated lever & Use in this study \\
 \midrule
-CMP01 & X6 $-$ X5 & driving product (two-way) & primary controlled contrast \\
-CMP02 & X10 $-$ X3 & driving product (one-way) & primary controlled contrast \\
-CMP08 & X2 $-$ X1 & PBL and surface-layer scheme & secondary controlled contrast \\
-CMP07 & X1 $-$ X0 & slope radiation and shading & spatial diagnostic with an archive limitation \\
-CMP03 & X3 $-$ X5 & feedback, NAM, default terrain & secondary robustness contrast \\
-CMP04 & X10 $-$ X6 & feedback, GFS, default terrain & secondary robustness contrast \\
-CMP06 & X9 $-$ X0 & feedback, NAM, fine terrain & secondary robustness contrast \\
-CMP05 & (X10$-$X6)$-$(X3$-$X5) & driving-product-by-feedback interaction & secondary interaction contrast \\
-CMP09 & X3 $-$ X0 & terrain source, default vs fine & bounded terrain response; no source ranking \\
-CMP10 & X3 $-$ X4 & terrain source, default vs coarse & bounded terrain response; no source ranking \\
-CMP11 & X0 $-$ X4 & terrain source, fine vs coarse & bounded terrain response; no source ranking \\
-CMP12 & X7 / X0 / X8 & none (multiply confounded) & design context, not a sensitivity comparison \\
+X6 $-$ X5 & driving product (two-way) & primary controlled contrast \\
+X10 $-$ X3 & driving product (one-way) & primary controlled contrast \\
+X2 $-$ X1 & PBL and surface-layer scheme & secondary controlled contrast \\
+X1 $-$ X0 & slope radiation and shading & spatial diagnostic with an archive limitation \\
+X3 $-$ X5 & feedback, NAM, default terrain & secondary robustness contrast \\
+X10 $-$ X6 & feedback, GFS, default terrain & secondary robustness contrast \\
+X9 $-$ X0 & feedback, NAM, fine terrain & secondary robustness contrast \\
+(X10$-$X6)$-$(X3$-$X5) & driving-product-by-feedback interaction & secondary interaction contrast \\
+X3 $-$ X0 & terrain source, default vs fine & bounded terrain response; no source ranking \\
+X3 $-$ X4 & terrain source, default vs coarse & bounded terrain response; no source ranking \\
+X0 $-$ X4 & terrain source, fine vs coarse & bounded terrain response; no source ranking \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -193,7 +203,7 @@ CMP12 & X7 / X0 / X8 & none (multiply confounded) & design context, not a sensit
 \label{sec:v3-resolution}
 
 X7, X0, and X8 do not form a controlled resolution sequence because their integrations differ in forecast age, domain geometry, feedback, vertical levels, terrain placement, radiation settings, and output cadence.
-X8 is therefore used only for the within-run process diagnostic in Section~\ref{sec:v3-x8-methods} and the separate Supplementary Material.
+They are retained only to document the exclusion; no X8 diagnostic is reported in this paper.
 
 \subsection{Surface and Common-AGL Diagnostics}
 \label{sec:v3-common-agl}
@@ -247,27 +257,6 @@ The weaker-state criterion required the GFS-minus-NAM difference to remain negat
 The faster-loss criterion required both a negative GFS change from 1400 to 1800 UTC and a more negative change than in NAM under all seven definitions.
 Both criteria were fixed before output inspection, and 1300 UTC was retained only as trajectory context.
 The footprint is an evaluation region rather than a hydrologic basin boundary, and the proxy is neither a measured basin-volume heat deficit nor an observed cold-pool quantity.
-
-\subsection{Within-X8 d04 Heat-Deficit Transport Diagnostic}
-\label{sec:v3-x8-methods}
-
-X8 is a single context run with a fourth d04 nest at 111.111\,m nominal grid spacing, 50 vertical levels, and 10\,min output from 1200 to 1800 UTC.
-Because X8 differs from the controlled family in several dimensions, this diagnostic tests a calculable process within X8 rather than resolution sensitivity or numerical viability.
-The horizontal heat-deficit transport was defined as
-
-\begin{equation}
-\mathbf{F}=(c_{p}/g)\int_{p_{c}}^{p_{s}}\max\{\theta_{\mathrm{crest}}-\theta(p),0\}\mathbf{u}_{h}(p)\,dp
-\end{equation}
-
-using the same 2200\,m crest reference.
-The transport $\mathbf{F}$ has units of W\,m$^{-1}$, and $-\nabla_{h}\!\cdot\mathbf{F}$ is reported only as the resolved horizontal flux-convergence contribution to the tendency of $H$.
-Storage was differenced over each 10\,min interval, horizontal convergence was averaged at the interval endpoints, and both were area weighted after a symmetric 15-cell crop from each d04 edge.
-Their difference was retained as an unresolved tendency rather than attributed to diabatic heating.
-Diabatic physics, the time-varying local crest reference, clipped-layer movement, vertical and boundary terms, and numerical error can all contribute to that residual.
-Three short west-to-east transects cross model-terrain incisions; one longer west-to-east line provides a northern view.
-Positive transport denotes southward movement and negative transport denotes northward movement.
-The 1200--1400 UTC interval is shown only as spin-up context, whereas 1400--1800 UTC is retained for interpretation.
-The diagnostic establishes neither a closed thermodynamic budget nor basin export because the plotted transects do not form a closed control volume.
 
 \section{Results}
 \label{sec:v3-results}
@@ -345,7 +334,7 @@ This divergence is consistent with the scheme dependence of native PBL-height di
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{figures/wrf_retention_ventilation_d02_14to18.pdf}
+\includegraphics[width=0.82\textwidth]{figures/wrf_retention_ventilation_d02_14to18.pdf}
 \caption{Station-column medians and interquartile ranges for 50--500 m AGL potential-temperature stability and fixed-layer transport wind over the matched window.
 Solid lines denote two-way feedback and dashed lines denote one-way feedback.
 The lower-layer GFS--NAM separation recurs under both feedback modes: GFS is about 3.6 K less stable and 0.8--1.0 m s$^{-1}$ faster in transport wind over the five-hour summary.}
@@ -363,7 +352,7 @@ Figure~\ref{fig:v3-bulk-theta} gives a separate two-site surface-structure compa
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.94\textwidth]{figures/wrf_inversion_index_feb0102_gfs2way_vs_nam2way_d02_14to18.pdf}
+\includegraphics[width=0.82\textwidth]{figures/wrf_inversion_index_feb0102_gfs2way_vs_nam2way_d02_14to18.pdf}
 \caption{Observed and modelled Mountain Home-minus-Pariette Draw surface potential-temperature contrast from 1400 to 1800 UTC on 2 February 2013.
 The modelled series are X6 (GFS two-way) and X5 (NAM two-way) sampled on d02, and all three series contain the same five retained hourly values after the first two forecast hours were excluded.
 The quantity is a horizontally separated bench-minus-floor surface contrast, not inversion depth, a colocated vertical stability measure, or a cold-pool classification threshold.}
@@ -399,7 +388,7 @@ GFS retains a smaller deficit throughout, but the deficit does not decline faste
 \subsection{Process Treatments on the Fine-Terrain Branch}
 \label{sec:v3-process}
 
-The CMP08 scheme pair changes only the PBL and surface-layer schemes, comparing Mellor--Yamada--Janji\'c (MYJ)/Eta with YSU/revised MM5 while holding the fine terrain and slope-aware-radiation configuration fixed.
+The MYJ/Eta versus YSU/revised-MM5 scheme pair changes only the PBL and surface-layer schemes while holding the fine terrain and slope-aware-radiation configuration fixed.
 MYJ/Eta increased 2\,m-temperature bias by 0.37\,$^{\circ}$C, reduced 10\,m-wind absolute error by 0.145\,m\,s$^{-1}$, and increased fixed-layer transport wind by 0.098\,m\,s$^{-1}$, with the same sign in all five hours (Supplementary Table~S1).
 These changes are smaller than the driving-product response on the shared lower-layer metrics.
 The opposing temperature- and wind-error changes do not support an overall scheme-skill ranking.
@@ -417,20 +406,20 @@ The fine-terrain NAM pair reproduced that character: two-way minus one-way feedb
 The descriptive block-sensitivity intervals defined in Section~\ref{sec:v3-aggregation} spanned zero for both metrics.
 The consistently signed 10\,m-wind and surface-pressure changes were also small and do not support a feedback recommendation beyond this five-hour case.
 
-\subsection{Terrain-Source Brackets (CMP09--CMP11)}
+\subsection{Terrain-Source Brackets}
 \label{sec:v3-terrain}
 
 The terrain-source branch holds NAM forcing, one-way feedback, WRF grid spacing, and the YSU/MM5 physics configuration fixed while changing only the static-terrain source.
-CMP09 is default minus fine, CMP10 is default minus coarse, and CMP11 is fine minus coarse.
+The three brackets are default minus fine, default minus coarse, and fine minus coarse.
 The default-minus-fine response was small on d02 and failed its predeclared terrain-response test.
 The wider coarse brackets produced larger spatial responses, but the summary changes with domain support and diagnostic (Supplementary Table~S2).
-The controlled CMP11 composite in Figure~\ref{fig:v3-terrain-cmp11-supplement} therefore shows a reproducible model response without establishing a preferred terrain source, drainage pathway, upstream reservoir, or basin cold-air-volume change.
+The controlled fine-minus-coarse composite in Figure~\ref{fig:v3-terrain-cmp11-supplement} therefore shows a reproducible model response without establishing a preferred terrain source, drainage pathway, upstream reservoir, or basin cold-air-volume change.
 
 \begin{figure}[H]
 \centering
 \IfFileExists{verification/figures/candidates/wrf_terrain_cmp11_d02_d03_16z.pdf}{%
 \includegraphics[width=0.96\textwidth]{verification/figures/candidates/wrf_terrain_cmp11_d02_d03_16z.pdf}%
-}{\fbox{\parbox[c][0.52\textheight][c]{0.90\textwidth}{\centering CMP11 composite unavailable: d02 and d03 top-down heat-deficit maps and orthogonal d03 potential-temperature sections at 1600 UTC.}}}
+}{\fbox{\parbox[c][0.52\textheight][c]{0.90\textwidth}{\centering Fine-minus-coarse terrain composite unavailable: d02 and d03 top-down heat-deficit maps and orthogonal d03 potential-temperature sections at 1600 UTC.}}}
 \caption{Diagnostic response to the widest controlled static-terrain bracket at 1600 UTC, calculated as X0 minus X4 (fine 3-arc-second minus coarse 5-arc-minute source).
 (a) The basin-wide d02 and (b) inner-basin d03 top-down heat-deficit maps share a fixed $\pm1.6$ MJ m$^{-2}$ scale.
 (c) The north--south and (d) west--east d03 lower-atmosphere potential-temperature sections share a fixed $\pm4$ K scale and the 2200 m crest reference.
@@ -509,13 +498,6 @@ The secondary comparisons delimit the driving-product result rather than expandi
   \item The controlled terrain brackets show domain- and diagnostic-dependent responses but establish neither a terrain-source ranking nor a drainage or cold-air-volume mechanism.
 \end{itemize}
 
-\subsection{Within-X8 Process Context}
-\label{sec:v3-disc-x8}
-
-Within X8 alone, the 10\,min diagnostic resolves a strong modelled northward pulse across the northern reference line followed by relaxation during the retained morning window.
-Supplementary Figure~S2 places that transect series beside the heat-deficit transport map and the storage, horizontal-convergence, and unresolved-tendency comparison.
-These panels demonstrate temporally resolved redistribution within X8, not a 111\,m resolution effect, observed canyon drainage, numerical viability, or basin export.
-
 \subsection{Observation and Design Limits Set the Next Experiment}
 \label{sec:v3-disc-domains}
 
@@ -537,7 +519,7 @@ Nest-feedback effects are much smaller, the PBL/surface-layer response is smalle
 The next experiment requires a longer matched matrix, independent vertical observations, a common-support d02--d03 transfer test, and a design that separates initial from lateral-boundary forcing.
 The present result does not identify the responsible product component, validate inversion depth, establish event-scale persistence, calculate basin export, or predict ozone.
 Within those bounds, the driving-product treatment produced the largest repeated separation in the lower-basin meteorological state supplied to downstream chemistry during the five-hour window.
-The numerical summaries supporting the concise Results narrative are retained in Appendix~\ref{app:v3-data}; Supplementary Tables~S1--S2 and Figures~S1--S2 retain the bounded secondary comparisons, terrain summary, slope-aware-radiation response, and X8 diagnostic.
+The numerical summaries supporting the concise Results narrative are retained in Appendix~\ref{app:v3-data}; Supplementary Tables~S1--S2 and Figure~S1 retain the bounded secondary comparisons, terrain summary, and slope-aware-radiation response.
 
 \appendixtitles{yes}
 \appendixstart
@@ -615,7 +597,6 @@ Difference in change (primary) & +0.17 & +0.17 \\
 \institutionalreview{Not applicable.}
 \informedconsent{Not applicable.}
 \dataavailability{The analysis scripts, derived hourly and paired summaries, heat-deficit tables, selected EPA AQS daily records, run and comparison inventories, provenance records, and promoted figures used for this draft are retained in the private working repository.
-The separate author-draft supplement uses the exact 10\,min X8 transport and tendency tables plus registered hashes for all d04 inputs.
 \textbf{[Author input required: add a public repository or DOI, licences and access conditions for raw WRF and Synoptic data, and the exact release commit before submission.]}}
 \acknowledgments{\textbf{[Author input required: identify computational facilities, data providers, and contributors who do not meet the authorship criteria.]}}
 \conflictsofinterest{\textbf{[Author input required: all authors must confirm the conflicts-of-interest statement.]}}
