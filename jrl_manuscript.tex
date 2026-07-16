@@ -73,8 +73,8 @@ The present paper evaluates the meteorological state that a later chemistry calc
 \subsection{Case, Observations, and Evaluation Domains}
 
 The case is 2 February 2013 within a broader January--February period of snow cover, cold-pool conditions, and elevated ozone in the Uinta Basin \citep{Neemann2015-ws,Ahmadov2015-zm,Tran2018-ax}.
-The WRF integrations cover 12:00--18:00 Coordinated Universal Time (UTC), corresponding to 05:00--11:00 Mountain Standard Time (MST; UTC$-7$).
-The retained analysis window covers 14:00--18:00 UTC, or 07:00--11:00 MST, and excludes both the 12:00 UTC initialised output and the 13:00 UTC first-hour forecast.
+The WRF integrations cover 1200--1800 Coordinated Universal Time (UTC), corresponding to 05:00--11:00 Mountain Standard Time (MST; UTC$-7$).
+The retained analysis window covers 1400--1800 UTC, or 07:00--11:00 MST, and excludes both the 1200 UTC initialised output and the 1300 UTC first-hour forecast.
 This leaves five hourly samples for every common-window contrast.
 Surface observations were obtained from Synoptic Data for 2\,m temperature at 11 sites, 10\,m wind speed at 10 sites, and surface pressure at 9 sites.
 \textbf{[Citation required: Synoptic Data service and archive.]}
@@ -83,7 +83,7 @@ The stations span basin-floor, sidewall, and bench locations but are neither spa
 The 1\,km d02 domain was selected for the common observation comparisons because seven stations fall outside the usable d03 interior, leaving four usable d03 station columns.
 Figure~\ref{fig:v3-locator} combines the reporting-station geometry with the full nested-domain layout.
 Use of d02 does not establish that d02 and d03 produce the same response, and a common-support transfer test remains future work.
-Four stations spanning the basin floor and benches provide surface context from 31 January 00:00 UTC to 4 February 00:00 UTC in Figure~\ref{fig:v3-observed}.
+Four stations spanning the basin floor and benches provide surface context from 31 January 0000 UTC to 4 February 0000 UTC in Figure~\ref{fig:v3-observed}.
 Observed and modelled surface potential temperature for a two-site structural index was calculated as $\theta=T(1000/p)^{0.2854}$, with $T$ in kelvin and $p$ in hPa.
 The index is Mountain Home on the north-west bench minus Pariette Draw on the basin floor, with both locations labelled in Figure~\ref{fig:v3-locator}.
 Their horizontal separation requires treating the index as a surface contrast rather than free-air inversion strength or cold-pool depth.
@@ -108,7 +108,7 @@ The inset locates the d01--d03 nests within Utah.}
 \subsection{WRF Configuration and Archived Simulation Family}
 \label{sec:v3-family}
 
-The controlled six-hour simulations used WRF version 4.8.0, initialised at 12:00 UTC with either Global Forecast System (GFS) or North American Model (NAM) analyses and supplied with source-specific lateral boundary conditions through 18:00 UTC on 2 February 2013.
+The controlled six-hour simulations used WRF version 4.8.0, initialised at 1200 UTC with either Global Forecast System (GFS) or North American Model (NAM) analyses and supplied with source-specific lateral boundary conditions through 1800 UTC on 2 February 2013.
 These are retrospective simulations driven by analyses rather than six-hour operational forecasts.
 The design does not separate the initialised state from the subsequent lateral-boundary contribution.
 We used three nested computational domains, d01--d03, with horizontal grid spacings of 3\,km, 1\,km, and 333.333\,m.
@@ -240,14 +240,14 @@ It contains 4,965 d02 cells and covers 5,277\,km$^{2}$.
 The seven predeclared definitions were the combined station-and-waypoint hull at crest references of 2100, 2200, and 2300\,m; the 2200\,m combined hull dilated or eroded by one cell; and separate station-only and waypoint-only hulls at 2200\,m.
 Each feedback-matched GFS--NAM pair used a common terrain mask.
 The weaker-state criterion required the GFS-minus-NAM difference to remain negative at every retained hour under all seven definitions.
-The faster-loss criterion required both a negative GFS change from 14:00 to 18:00 UTC and a more negative change than in NAM under all seven definitions.
-Both criteria were fixed before output inspection, and 13:00 UTC was retained only as trajectory context.
+The faster-loss criterion required both a negative GFS change from 1400 to 1800 UTC and a more negative change than in NAM under all seven definitions.
+Both criteria were fixed before output inspection, and 1300 UTC was retained only as trajectory context.
 The footprint is an evaluation region rather than a hydrologic basin boundary, and the proxy is neither a measured basin-volume heat deficit nor an observed cold-pool quantity.
 
 \subsection{Within-X8 d04 Heat-Deficit Transport Diagnostic}
 \label{sec:v3-x8-methods}
 
-X8 is a single context run with a fourth d04 nest at 111.111\,m nominal grid spacing, 50 vertical levels, and 10\,min output from 12:00 to 18:00 UTC.
+X8 is a single context run with a fourth d04 nest at 111.111\,m nominal grid spacing, 50 vertical levels, and 10\,min output from 1200 to 1800 UTC.
 Because X8 differs from the controlled family in several dimensions, this diagnostic tests a calculable process within X8 rather than resolution sensitivity or numerical viability.
 The horizontal heat-deficit transport was defined as
 
@@ -262,7 +262,7 @@ Their difference was retained as an unresolved tendency rather than attributed t
 Diabatic physics, the time-varying local crest reference, clipped-layer movement, vertical and boundary terms, and numerical error can all contribute to that residual.
 Three short west-to-east transects cross model-terrain incisions; one longer west-to-east line provides a northern view.
 Positive transport denotes southward movement and negative transport denotes northward movement.
-The 12:00--14:00 UTC interval is shown only as spin-up context, whereas 14:00--18:00 UTC is retained for interpretation.
+The 1200--1400 UTC interval is shown only as spin-up context, whereas 1400--1800 UTC is retained for interpretation.
 The diagnostic establishes neither a closed thermodynamic budget nor basin export because the plotted transects do not form a closed control volume.
 
 \section{Results}
@@ -279,7 +279,7 @@ These observations provide episode context and do not establish meteorology--ozo
 \includegraphics[width=\textwidth]{figures/episode_context_snow_ozone_janfeb2013.pdf}
 \caption{Observed context for the 2 February 2013 simulation date.
 (a) NASA GIBS Terra MODIS corrected reflectance, bands 7-2-1, for the 2 February calendar day; snow and ice generally appear cyan, most liquid cloud appears white, and ice cloud may also appear cyan.
-The browse layer is not a raw-granule crop or quantitative snow retrieval; the nearest centre-covering Terra granule was acquired at 18:15--18:20 UTC.
+The browse layer is not a raw-granule crop or quantitative snow retrieval; the nearest centre-covering Terra granule was acquired at 1815--1820 UTC.
 (b) EPA AQS first maximum value from the ``Ozone 8-hour 2015'' daily-summary row at Ouray, Redwash, Roosevelt, Vernal, and Little Mountain, converted from ppm to ppb and plotted by AQS local date without recomputation.
 All five sites have 59 daily rows; hollow markers identify the seven site-days with less than 75\% within-day observation coverage.
 No regulatory threshold is shown, and the panel is episode context rather than chemistry evaluation or meteorology--ozone attribution.}
@@ -356,7 +356,7 @@ Figure~\ref{fig:v3-bulk-theta} gives a separate two-site surface-structure compa
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.94\textwidth]{figures/wrf_inversion_index_feb0102_gfs2way_vs_nam2way_d02_14to18.pdf}
-\caption{Observed and modelled Mountain Home-minus-Pariette Draw surface potential-temperature contrast from 14:00 to 18:00 UTC on 2 February 2013.
+\caption{Observed and modelled Mountain Home-minus-Pariette Draw surface potential-temperature contrast from 1400 to 1800 UTC on 2 February 2013.
 The modelled series are X6 (GFS two-way) and X5 (NAM two-way) sampled on d02, and all three series contain the same five retained hourly values after the first two forecast hours were excluded.
 The quantity is a horizontally separated bench-minus-floor surface contrast, not inversion depth, a colocated vertical stability measure, or a cold-pool classification threshold.}
 \label{fig:v3-bulk-theta}
@@ -365,7 +365,7 @@ The quantity is a horizontally separated bench-minus-floor surface contrast, not
 The five-hour mean surface potential-temperature contrast between Mountain Home and Pariette Draw was 16.94\,K in the observations, 17.03\,K in NAM two-way, and 9.95\,K in GFS two-way.
 The close NAM value corroborates only this horizontally separated surface index; it does not validate modelled inversion depth, vertical structure, or overall surface skill.
 Across the registered footprint, the mean GFS-minus-NAM near-surface response was positive and the vertical response remained concentrated below 500 m AGL under both feedback modes (Table~\ref{tab:v3-spatial-summary}).
-The predeclared spatial-coherence test nevertheless failed because only 64--67\% of footprint cells had the expected sign at 14:00--15:00 UTC, below the required two-thirds share at every retained hour.
+The predeclared spatial-coherence test nevertheless failed because only 64--67\% of footprint cells had the expected sign at 1400--1500 UTC, below the required two-thirds share at every retained hour.
 The result is therefore shallow and mean-coherent, but not spatially uniform throughout the retained window.
 Later hours were more coherent, but changing an every-hour rule after inspecting those maps would be post hoc.
 The maps remain useful descriptive diagnostics without converting the failed test into a passed one.
@@ -376,14 +376,14 @@ The maps remain useful descriptive diagnostics without converting the failed tes
 The GFS runs retained less footprint-mean, vertically integrated heat deficit at every retained hour under all seven definitions (Section~\ref{sec:v3-heatdeficit-methods}; Table~\ref{tab:v3-heatdeficit}).
 Mean GFS-minus-NAM differences were $-1.23$\,MJ\,m$^{-2}$ with two-way feedback and $-1.25$\,MJ\,m$^{-2}$ with one-way feedback.
 Primary-definition five-hour means were approximately 3.0\,MJ\,m$^{-2}$ for both GFS runs and approximately 4.2\,MJ\,m$^{-2}$ for both NAM runs.
-Every run gained heat deficit from 14:00 to 18:00 UTC, so the weaker GFS state did not result from demonstrated faster heat-deficit loss during the retained window.
+Every run gained heat deficit from 1400 to 1800 UTC, so the weaker GFS state did not result from demonstrated faster heat-deficit loss during the retained window.
 Figure~\ref{fig:v3-heatdeficit-traj} shows the four increasing trajectories and the persistent separation between the two GFS and two NAM members.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.82\textwidth]{figures/wrf_heat_deficit_d02_13to18.pdf}
 \caption{Footprint-mean heat-deficit trajectories for the four default-terrain matrix members and seven-definition sensitivity envelopes for the two GFS-minus-NAM pairs.
-The 13:00 UTC values orient the trajectories but are excluded from every reported criterion and effect.
+The 1300 UTC values orient the trajectories but are excluded from every reported criterion and effect.
 GFS retains a smaller deficit throughout, but the deficit does not decline faster in either GFS member.}
 \label{fig:v3-heatdeficit-traj}
 \end{figure}
@@ -435,7 +435,7 @@ The GFS state is more consistent with weaker confinement than the analogous NAM 
 This distinction matters because errors in confinement, emissions, snow and cloud processes, photolysis, deposition, and chemical mechanism can compensate for one another in coupled simulations \citep{Ahmadov2015-zm,Neemann2015-ws,Matichuk2017-bq}.
 A practical future ensemble should therefore vary the treatments that show the largest phenomenon-relevant response, but the present single case cannot prescribe a universal ensemble design.
 
-The model-only d03 Horsepool profiles at 12:00 and 13:00 UTC (Figure~\ref{fig:v3-spinup-profiles}) expose the source-specific supplied states and their first-hour evolution.
+The model-only d03 Horsepool profiles at 1200 and 1300 UTC (Figure~\ref{fig:v3-spinup-profiles}) expose the source-specific supplied states and their first-hour evolution.
 They do not separate early model adjustment from lateral-boundary evolution and do not validate inversion depth.
 
 \subsection{The Difference Is a State Offset, Not Demonstrated Cold-Pool Loss}
@@ -443,11 +443,11 @@ They do not separate early model adjustment from lateral-boundary evolution and 
 
 The heat-deficit result narrows the interpretation.
 GFS had less deficit than NAM under every feedback and footprint definition, but deficit increased in every simulation during the retained window (Figure~\ref{fig:v3-heatdeficit-traj}).
-The predeclared faster-loss test therefore failed, and the product separation must be described as a state offset already present by 14:00 UTC.
+The predeclared faster-loss test therefore failed, and the product separation must be described as a state offset already present by 1400 UTC.
 A longer integration through at least one complete diurnal cycle is required to test whether the products differ in cold-pool erosion or persistence.
 
 The spatial analysis gives a similarly bounded result.
-The product response was strongest below 500 m AGL and had the expected footprint-mean sign at every hour, but the two-thirds sign-coherence criterion failed at 14:00--15:00 UTC.
+The product response was strongest below 500 m AGL and had the expected footprint-mean sign at every hour, but the two-thirds sign-coherence criterion failed at 1400--1500 UTC.
 The response is shallow and mean-coherent on d02, not spatially uniform throughout the window.
 Preserving these failed criteria is more informative than rescuing them with a new threshold after inspection.
 
@@ -519,7 +519,7 @@ Feedback interaction & +0.04 & -0.10 & +0.10 \\
 \end{table}
 
 \begin{table}[H]
-\caption{Footprint-mean, vertically integrated heat-deficit contrasts over the 14:00--18:00 UTC decision window.
+\caption{Footprint-mean, vertically integrated heat-deficit contrasts over the 1400--1800 UTC decision window.
 The primary definition uses the combined station-and-waypoint hull with a 2200 m crest (4965 cells, 5277 km$^{2}$); envelopes span all seven footprint definitions.
 The values are deterministic descriptive contrasts in MJ m$^{-2}$.}
 \label{tab:v3-heatdeficit}
@@ -531,8 +531,8 @@ GFS $-$ NAM quantity & Two-way pair & One-way pair \\
 Mean difference (primary) & -1.23 & -1.25 \\
 Hourly range (primary) & -1.50 to -0.97 & -1.53 to -0.99 \\
 Hourly envelope (seven definitions) & -1.77 to -0.70 & -1.80 to -0.71 \\
-GFS change, 14:00--18:00 UTC & +0.32 & +0.30 \\
-NAM change, 14:00--18:00 UTC & +0.15 & +0.13 \\
+GFS change, 1400--1800 UTC & +0.32 & +0.30 \\
+NAM change, 1400--1800 UTC & +0.15 & +0.13 \\
 Difference in change (primary) & +0.17 & +0.17 \\
 Weaker-state criterion passed & 7/7 & 7/7 \\
 Faster-loss criterion passed & 0/7 & 0/7 \\
@@ -541,7 +541,7 @@ Faster-loss criterion passed & 0/7 & 0/7 \\
 \end{table}
 
 \begin{table}[H]
-\caption{Process-pair station contrasts on the common pipeline for 14:00--18:00 UTC.
+\caption{Process-pair station contrasts on the common pipeline for 1400--1800 UTC.
 Values are means of five hourly spatial medians; sign counts are positive/negative hours with exact zeros omitted.
 PBL height is scheme defined across CMP08 and is retained only with that caveat.}
 \label{tab:v3-process}
@@ -589,8 +589,8 @@ Two-site surface index & Observed 12.63--20.21 K; NAM 16.44--18.07 K; GFS 7.35--
 \toprule
 Quantity & Committed range & Criterion and outcome \\
 \midrule
-Mean 2 m potential-temperature difference & +0.89 to +1.16 K at 14:00--15:00 UTC; +2.00 to +2.74 K at 16:00--18:00 UTC & Positive at all ten pair-hours \\
-Footprint sign share & 0.64--0.67 at 14:00--15:00 UTC; 0.84--0.93 later & Two-thirds criterion failed at the first two hours \\
+Mean 2 m potential-temperature difference & +0.89 to +1.16 K at 1400--1500 UTC; +2.00 to +2.74 K at 1600--1800 UTC & Positive at all ten pair-hours \\
+Footprint sign share & 0.64--0.67 at 1400--1500 UTC; 0.84--0.93 later & Two-thirds criterion failed at the first two hours \\
 Low-to-aloft absolute-response ratio & 1.45--3.12 & Greater than one at all ten pair-hours \\
 50--500 m stability difference & -4.33 to -3.04 K & Negative at all ten pair-hours \\
 Gate conjunction & Two of three component criteria passed throughout & Failed because early floor sign coherence missed its threshold \\
@@ -630,7 +630,7 @@ Surface-pressure absolute error (Pa) & -0.77 & -1.23 to -0.42 & 0/5 & -1.01 to -
 \toprule
 Contrast & Terrain difference & 2 m response & Status \\
 \midrule
-CMP09, default minus fine & 7.9 m RMS; -55 to +60 m range & Elevation-band means 0.07--0.27 K; terrain correlation below 0.3 at 14:00--16:00 UTC & Predeclared conjunction failed \\
+CMP09, default minus fine & 7.9 m RMS; -55 to +60 m range & Elevation-band means 0.07--0.27 K; terrain correlation below 0.3 at 1400--1600 UTC & Predeclared conjunction failed \\
 CMP10/CMP11, coarse brackets & 91.9/93.1 m RMS; extrema to -462/+487 m & Slope-band means 1.2--1.5 K; terrain correlation 0.50--0.67 & Descriptive only; no predeclared gate \\
 X4 lineage & As-run namelist matches the controlled family; terrain is materially smoother & Configuration caveat closed & Supports controlled-bracket status, not a terrain ranking \\
 \bottomrule
@@ -644,17 +644,17 @@ X4 lineage & As-run namelist matches the controlled family; terrain is materiall
 \textbf{(a)}\\[-2pt]
 \IfFileExists{figures/theta_profiles_horsepool_gfs_nam_12z.pdf}{%
 \includegraphics[width=\linewidth]{figures/theta_profiles_horsepool_gfs_nam_12z.pdf}%
-}{\fbox{\parbox[c][0.28\textheight][c]{0.88\linewidth}{\centering CHPC render pending: X6 and X5 Horsepool profiles at 12:00 UTC.}}}
+}{\fbox{\parbox[c][0.28\textheight][c]{0.88\linewidth}{\centering CHPC render pending: X6 and X5 Horsepool profiles at 1200 UTC.}}}
 \end{minipage}\hfill
 \begin{minipage}[t]{0.49\textwidth}
 \centering
 \textbf{(b)}\\[-2pt]
 \IfFileExists{figures/theta_profiles_horsepool_gfs_nam_13z.pdf}{%
 \includegraphics[width=\linewidth]{figures/theta_profiles_horsepool_gfs_nam_13z.pdf}%
-}{\fbox{\parbox[c][0.28\textheight][c]{0.88\linewidth}{\centering CHPC render pending: X6 and X5 Horsepool profiles at 13:00 UTC.}}}
+}{\fbox{\parbox[c][0.28\textheight][c]{0.88\linewidth}{\centering CHPC render pending: X6 and X5 Horsepool profiles at 1300 UTC.}}}
 \end{minipage}
 \caption{Model-only d03 potential-temperature profiles at Horsepool for X6 (GFS two-way) and X5 (NAM two-way).
-(a) The 12:00 UTC initialised states and (b) the 13:00 UTC one-hour forecasts use identical axes.
+(a) The 1200 UTC initialised states and (b) the 1300 UTC one-hour forecasts use identical axes.
 Grey shading marks levels below the local model terrain, and the dashed 2200 m line is the fixed heat-deficit crest reference rather than an observed cold-pool top.
 Changes between panels include both early model adjustment and one hour of lateral-boundary evolution; no colocated observed profile validates the modelled layer.}
 \label{fig:v3-spinup-profiles}
@@ -664,8 +664,8 @@ Changes between panels include both early model adjustment and one hour of later
 \centering
 \IfFileExists{verification/figures/candidates/wrf_terrain_cmp11_d02_d03_16z.pdf}{%
 \includegraphics[width=0.96\textwidth]{verification/figures/candidates/wrf_terrain_cmp11_d02_d03_16z.pdf}%
-}{\fbox{\parbox[c][0.52\textheight][c]{0.90\textwidth}{\centering CMP11 Appendix composite unavailable: d02 and d03 top-down heat-deficit maps and orthogonal d03 potential-temperature sections at 16:00 UTC.}}}
-\caption{Diagnostic response to the widest controlled static-terrain bracket at 16:00 UTC, calculated as X0 minus X4 (fine 3-arc-second minus coarse 5-arc-minute source).
+}{\fbox{\parbox[c][0.52\textheight][c]{0.90\textwidth}{\centering CMP11 Appendix composite unavailable: d02 and d03 top-down heat-deficit maps and orthogonal d03 potential-temperature sections at 1600 UTC.}}}
+\caption{Diagnostic response to the widest controlled static-terrain bracket at 1600 UTC, calculated as X0 minus X4 (fine 3-arc-second minus coarse 5-arc-minute source).
 (a) The basin-wide d02 and (b) inner-basin d03 top-down heat-deficit maps share a fixed $\pm1.6$ MJ m$^{-2}$ scale.
 (c) The north--south and (d) west--east d03 lower-atmosphere potential-temperature sections share a fixed $\pm4$ K scale and the 2200 m crest reference.
 The domain-specific panels display spatial and vertical response patterns but execute no gate, rank no terrain source, and establish neither drainage direction nor basin cold-air-volume change.}

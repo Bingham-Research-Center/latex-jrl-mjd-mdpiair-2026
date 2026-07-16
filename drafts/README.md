@@ -13,6 +13,13 @@ This directory is excluded from the MDPI submission allowlist.
 
 Latest review snapshots:
 
+- `jrl-manuscript_2026-07-16_compact-utc-draft.pdf` — 19-page build of the
+  tracked John author draft using compact UTC time notation (for example,
+  `1400 UTC`).
+
+- `jrl-supplement_2026-07-16_compact-utc-draft.pdf` — 3-page separate
+  supplementary-material build paired with the 16 July author draft.
+
 - `manuscript-main_2026-07-15_final-draft-start.pdf` — audited 17-page candidate
   promoted to `main.tex`; it contains only contract-listed figures and
   citation keys and is the starting point for the final author draft.
