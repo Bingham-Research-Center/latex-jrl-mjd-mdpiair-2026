@@ -79,8 +79,7 @@ The case is 2 February 2013 within a broader January--February period of snow co
 The WRF integrations cover 1200--1800 Coordinated Universal Time (UTC), corresponding to 0500--1100 Mountain Standard Time (MST; UTC$-7$).
 The retained analysis window covers 1400--1800 UTC, or 0700--1100 MST, and excludes both the 1200 UTC initialised output and the 1300 UTC first-hour forecast.
 This leaves five hourly samples for every common-window contrast.
-Surface observations were obtained from Synoptic Data for 2\,m temperature at 11 sites, 10\,m wind speed at 10 sites, and surface pressure at 9 sites.
-\textbf{[Citation required: Synoptic Data service and archive.]}
+Surface observations were obtained through the Synoptic Data PBC Mesonet API for 2\,m temperature at 11 sites, 10\,m wind speed at 10 sites, and surface pressure at 9 sites.\footnote{Synoptic Data PBC Mesonet API Time Series service: \url{https://docs.synopticdata.com/services/time-series}.}
 Subhourly reports were mean-averaged within each UTC clock hour.
 The stations span basin-floor, sidewall, and bench locations but are neither spatially uniform nor area weighted; as the focus herein is not verification against observations, we leave further evaluation to future studies.
 The 1\,km d02 domain was selected for the common observation comparisons because seven stations fall outside the usable d03 interior, leaving four usable d03 station columns.
@@ -94,16 +93,15 @@ Their horizontal separation requires treating the index as a surface contrast ra
 Episode-scale ozone context came from the US Environmental Protection Agency (EPA) Air Quality System (AQS) AirData daily archive for 1 January--28 February 2013.
 We retained the EPA-reported ``Ozone 8-hour 2015'' daily-summary row at Ouray, Redwash, Roosevelt, Vernal, and Little Mountain. 
 All five sites contained one daily row on each of the 59 local calendar dates; within-day observation coverage ranged from 47\% to 100\% and is marked explicitly in the figure.
-The satellite panel in Figure~\ref{fig:v3-episode-context} uses the National Aeronautics and Space Administration (NASA) Global Imagery Browse Services (GIBS) Terra Moderate Resolution Imaging Spectroradiometer (MODIS) corrected-reflectance 7-2-1 layer for 2 February 2013.
-\textbf{[Citation required: NASA GIBS MODIS corrected-reflectance product.]}
+The satellite panel in Figure~\ref{fig:v3-episode-context} uses the National Aeronautics and Space Administration (NASA) Global Imagery Browse Services (GIBS) Terra Moderate Resolution Imaging Spectroradiometer (MODIS) corrected-reflectance 7-2-1 layer for 2 February 2013.\footnote{NASA Worldview and GIBS: \url{https://worldview.earthdata.nasa.gov/}.}
 
 \begin{figure}[H]
 \centering
 \begin{minipage}[t]{0.49\textwidth}
 \centering
 \textbf{(a)}\\[-2pt]
-\IfFileExists{verification/figures/candidates/wrf_geographic_locator_d02_d03.pdf}{%
-\includegraphics[width=\linewidth]{verification/figures/candidates/wrf_geographic_locator_d02_d03.pdf}%
+\IfFileExists{figures/wrf_geographic_locator_d01_d03.pdf}{%
+\includegraphics[width=\linewidth]{figures/wrf_geographic_locator_d01_d03.pdf}%
 }{\fbox{\parbox[c][0.42\textheight][c]{0.90\linewidth}{\centering Geographic locator unavailable.}}}
 \end{minipage}\hfill
 \begin{minipage}[t]{0.49\textwidth}
@@ -128,8 +126,8 @@ These are retrospective simulations driven by analyses rather than six-hour oper
 The design does not separate the initialised state from the subsequent lateral-boundary contribution.
 We used three nested computational domains, d01--d03, with horizontal grid spacings of 3\,km, 1\,km, and 333.333\,m.
 The controlled family used 75 eta levels concentrated near the surface, with approximately 20\,m separation among the lowest mass levels, and a 50\,hPa model top.
-The reference physics suite used Thompson microphysics, Rapid Radiative Transfer Model for General Circulation Models (RRTMG) longwave and shortwave radiation, the revised fifth-generation Pennsylvania State University--National Center for Atmospheric Research Mesoscale Model (MM5) similarity surface layer, the Noah land-surface model, and the Yonsei University (YSU) planetary boundary layer (PBL) scheme.
-\textbf{[Citations required: WRF and reference physics schemes.]}
+The Advanced Research WRF Model Version 4 is cited following Skamarock et al. (2019, NCAR/TN-556+STR).\footnote{\url{https://doi.org/10.5065/1dfh-6p97}}
+The reference physics suite used Thompson microphysics, Rapid Radiative Transfer Model for General Circulation Models (RRTMG) longwave and shortwave radiation, the revised fifth-generation Pennsylvania State University--National Center for Atmospheric Research Mesoscale Model (MM5) similarity surface layer, the Noah land-surface model, and the Yonsei University (YSU) planetary boundary layer (PBL) scheme.\footnote{The WRF physics-reference register identifies Thompson et al. (2008), Iacono et al. (2008), Jim\'enez et al. (2012), Tewari et al. (2004), and Hong et al. (2006) for these options: \url{https://www2.mmm.ucar.edu/wrf/users/physics/phys_references.html}.}
 Grid and observation four-dimensional data assimilation were disabled.
 Departures from that reference configuration are listed by simulation in Table~\ref{tab:v3-family}.
 
@@ -244,8 +242,7 @@ The block ranges are descriptive dependence checks rather than confidence interv
 \subsection{Footprint-Integrated Heat Deficit}
 \label{sec:v3-heatdeficit-methods}
 
-We calculated a Whiteman-style atmospheric heat-deficit proxy representing the column sensible heating required to remove a modelled temperature deficit relative to a fixed crest reference.
-\textbf{[Citations required: Whiteman and Adler heat-deficit definitions.]}
+We calculated a crest-referenced atmospheric heat-deficit proxy following the basin-volume formulation of Whiteman et al. (1999) and the closest column implementation of Adler et al. (2023).\footnote{Whiteman, Bian, and Zhong (1999), \emph{Journal of Applied Meteorology}, 38, 1103--1117, \url{https://doi.org/10.1175/1520-0450(1999)038<1103:WEOTTI>2.0.CO;2}; Adler et al. (2023), \emph{Geoscientific Model Development}, 16, 597--619, \url{https://doi.org/10.5194/gmd-16-597-2023}.}
 Let $p_{s}$ and $p_{c}$ denote the pressures at the surface and fixed crest reference, respectively, with $p_{c}<p_{s}$.
 The present area-normalised atmospheric heat-deficit proxy was defined as $H=(c_{p}/g)\int_{p_{c}}^{p_{s}}\max\{\theta_{\mathrm{crest}}-\theta(p),0\}\,dp$, where $\theta_{\mathrm{crest}}$ is the potential temperature interpolated to the crest height in each modelled column.
 $H$ is reported as the cell-area-weighted, footprint-mean, vertically integrated heat deficit in MJ\,m$^{-2}$.
@@ -477,13 +474,12 @@ Changes between panels include both early model adjustment and one hour of later
 
 The heat-deficit result narrows the interpretation.
 GFS had less deficit than NAM under every feedback and footprint definition, but deficit increased in every simulation during the retained window (Figure~\ref{fig:v3-heatdeficit-traj}).
-The predeclared faster-loss test therefore failed, and the product separation must be described as a state offset already present by 1400 UTC.
+This sheds doubt that it is erosion of the cold pool ("heat-deficit loss") that yields a weaker cold pool after spin-up.
 A longer integration through at least one complete diurnal cycle is required to test whether the products differ in cold-pool erosion or persistence.
 
 The spatial analysis gives a similarly bounded result.
 The product response was strongest below 500 m AGL and had the expected footprint-mean sign at every hour, but the sign-coherent share fell below two thirds at 1400--1500 UTC.
 The response is shallow and mean-coherent on d02, not spatially uniform throughout the window.
-Preserving these failed criteria is more informative than rescuing them with a new threshold after inspection.
 
 \subsection{Secondary Experiments Narrow Rather than Expand the Claim}
 \label{sec:v3-disc-process}
@@ -491,7 +487,7 @@ Preserving these failed criteria is more informative than rescuing them with a n
 The secondary comparisons delimit the driving-product result rather than expanding it into a configuration ranking:
 
 \begin{itemize}
-  \item Figure~\ref{fig:v3-effects} shows that the driving-product contrasts are farthest from zero on the common temperature, stability, and transport-wind metrics.
+  \item Figure~\ref{fig:v3-effects} shows that the driving-product contrasts are furthest from zero on the common temperature, stability, and transport-wind metrics.
   \item The boundary-layer/surface-layer treatment produced a coherent but smaller response: temperature bias increased while wind absolute error decreased.
   \item Nest-feedback effects remained small on both default- and fine-terrain branches, providing a five-hour robustness check rather than evidence that feedback is generally unimportant.
   \item The slope-radiation response was negligible at the station columns, while the supplementary sidewall diagnostic shows a spatially organised response that the station metric missed.
@@ -597,8 +593,10 @@ Difference in change (primary) & +0.17 & +0.17 \\
 \institutionalreview{Not applicable.}
 \informedconsent{Not applicable.}
 \dataavailability{The analysis scripts, derived hourly and paired summaries, heat-deficit tables, selected EPA AQS daily records, run and comparison inventories, provenance records, and promoted figures used for this draft are retained in the private working repository.
-\textbf{[Author input required: add a public repository or DOI, licences and access conditions for raw WRF and Synoptic data, and the exact release commit before submission.]}}
-\acknowledgments{\textbf{[Author input required: identify computational facilities, data providers, and contributors who do not meet the authorship criteria.]}}
+Raw WRF inputs and Synoptic observations remain subject to the respective providers' access and reuse terms.}
+\acknowledgments{We acknowledge the University of Utah Center for High Performance Computing for computational resources.
+We acknowledge Synoptic Data PBC for access to Mesonet API observations.
+We thank Brian K. Blaylock for the Herbie and SynopticPy packages, which supported source-data retrieval and Synoptic API access, respectively.\footnote{Herbie: \url{https://doi.org/10.5281/zenodo.4567540}; SynopticPy: \url{https://doi.org/10.5281/zenodo.4567546}.}}
 \conflictsofinterest{\textbf{[Author input required: all authors must confirm the conflicts-of-interest statement.]}}
 \useofartificialintelligence{Generative artificial intelligence tools, including Anthropic Claude and OpenAI Codex, were used during manuscript preparation to assist with literature synthesis, provenance and analysis-code review, and drafting and editing.
 The authors reviewed and edited the resulting material and take responsibility for the content.}

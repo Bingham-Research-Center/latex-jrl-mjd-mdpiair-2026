@@ -1,9 +1,11 @@
 SHELL := /bin/bash
 
 MAIN := main
+SUPPLEMENT := supplement
 REWRITE_MAIN := _manuscript_test
 V3_MAIN := _manuscript_v3
 STAGE := dist/mdpi-air-submission
+SUPPLEMENT_STAGE := dist/mdpi-air-supplement
 PYTHON ?= python
 BRC_TOOLS_DIR ?= $(abspath ../brc-tools)
 BRC_TOOLS_ENV ?= brc-tools
@@ -12,12 +14,16 @@ BRC_TOOLS_REQUIRED_REF ?= 548fee4
 SMOKE_PYTHON ?= $(CONDA) run --no-capture-output -n $(BRC_TOOLS_ENV) python
 MPLCONFIGDIR ?= /tmp/mdpi-air-matplotlib
 SUBMISSION_FIGURE_LIST ?= figures/submission-files.txt
+SUPPLEMENT_FIGURE_LIST ?= figures/supplement-files.txt
 
-.PHONY: pdf rewrite-pdf v3-pdf clean rewrite-clean v3-clean check rewrite-check v3-check \
-	smoke-preflight smoke manuscript-contract-check final-draft-check submission submission-check
+.PHONY: pdf supplement-pdf rewrite-pdf v3-pdf clean rewrite-clean v3-clean check rewrite-check v3-check \
+	smoke-preflight smoke manuscript-contract-check final-draft-check submission submission-check supplement supplement-check submission-draft-check
 
 pdf:
 	latexmk -pdf -interaction=nonstopmode -halt-on-error $(MAIN).tex
+
+supplement-pdf:
+	latexmk -pdf -interaction=nonstopmode -halt-on-error $(SUPPLEMENT).tex
 
 rewrite-pdf:
 	latexmk -pdf -interaction=nonstopmode -halt-on-error $(REWRITE_MAIN).tex
@@ -115,3 +121,29 @@ submission-check: submission
 		-name '*.sh' \
 	\) | grep -q .
 	@echo "Independent submission build: OK"
+
+supplement: supplement-pdf
+	rm -rf $(SUPPLEMENT_STAGE)
+	mkdir -p $(SUPPLEMENT_STAGE)
+	cp $(SUPPLEMENT).tex $(SUPPLEMENT).pdf $(SUPPLEMENT_STAGE)/
+	@while IFS= read -r figure; do \
+		[[ -z "$$figure" || "$$figure" == \#* ]] && continue; \
+		mkdir -p "$(SUPPLEMENT_STAGE)/$$(dirname "$$figure")"; \
+		cp "$$figure" "$(SUPPLEMENT_STAGE)/$$figure"; \
+	done < $(SUPPLEMENT_FIGURE_LIST)
+	cd dist && zip -qr mdpi-air-supplement.zip mdpi-air-supplement
+	@echo "Wrote dist/mdpi-air-supplement.zip"
+
+supplement-check: supplement
+	cd $(SUPPLEMENT_STAGE) && latexmk -pdf -interaction=nonstopmode -halt-on-error $(SUPPLEMENT).tex
+	@test -s $(SUPPLEMENT_STAGE)/$(SUPPLEMENT).pdf
+	@! find $(SUPPLEMENT_STAGE) -type f \( \
+		-path '*/verification/*' -o \
+		-path '*/drafts/*' -o \
+		-name 'AGENTS.md' -o \
+		-name '*.py' -o \
+		-name '*.sh' \
+	\) | grep -q .
+	@echo "Independent supplement build: OK"
+
+submission-draft-check: final-draft-check submission-check supplement-check

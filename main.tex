@@ -14,7 +14,7 @@
 \dateaccepted{ }
 \datepublished{ }
 
-\Title{Short-Window Sensitivity of WRF Cold-Pool State to Driving Data during a Uinta Basin Winter Ozone Episode}
+\Title{WRF Cold-Pool Sensitivities Relevant to Winter-Ozone Modelling in the Uinta Basin}
 
 \newcommand{\orcidauthorA}{0000-0003-0305-4090}
 \newcommand{\orcidauthorB}{0009-0009-9083-6568}
@@ -27,286 +27,483 @@ $^{2}$ \quad Department of Mathematics and Statistics, Utah State University, Lo
 $^{3}$ \quad Department of Chemistry and Biochemistry, Utah State University, Logan, UT 84322, USA}
 \corres{Correspondence: john.lawson@usu.edu}
 
-\abstract{Cold-pool structure controls the mixing environment available to winter-ozone chemistry, but aggregate surface skill alone does not establish that structure.
-We evaluated deterministic sensitivity in Weather Research and Forecasting simulations of the 2 February 2013 Uinta Basin episode, anchored by four runs that crossed GFS and NAM driving products with one-way and two-way nest feedback.
-Across five post-spin-up hours, the GFS members were warmer at the surface, about 3.6 K less stable from 50 to 500 m above ground, and 0.8--1.0 m s$^{-1}$ faster in fixed-layer transport wind than the feedback-matched NAM members.
-They also had about 1.2 MJ m$^{-2}$ less footprint-mean heat deficit, but every simulation gained heat deficit during the window, identifying a state offset rather than faster GFS cold-pool loss.
-Nest-feedback effects were much smaller, and a controlled boundary-layer/surface-layer treatment produced a smaller, metric-dependent response.
-The design does not isolate initial from lateral-boundary forcing, validate inversion depth or event-scale persistence, calculate basin export, or predict ozone.}
+\abstract{Cold-pool structure controls the confinement and transport environment relevant to surface wintertime ozone in the mountainous Uinta Basin, Utah, USA, but point surface values alone do not establish that structure.
+We evaluated deterministic responses in Weather Research and Forecasting (WRF) simulations of the 2 February 2013 episode to the supplied Global Forecast System (GFS) or North American Model (NAM) driving analysis, nest feedback, boundary-layer and surface-layer treatment, slope-aware radiation, and static-terrain source.
+Across a common five-hour sample, GFS-driven members were warmer at the evaluated surface sites, approximately 3.6\,K less stable through 50--500\,m above ground level, and 0.8--1.0\,m\,s$^{-1}$ faster in fixed-layer transport wind than feedback-matched NAM members.
+GFS-driven members also retained a smaller footprint-mean, vertically integrated heat deficit under all seven definitions, although every simulation gained heat deficit over the retained window.
+The repeated separation is therefore a driving-product state response rather than demonstrated faster cold-pool loss.
+Controlled feedback and physics responses were smaller and metric dependent, while bounded terrain and fine-grid process diagnostics showed spatial structure that the station sample could miss without establishing terrain superiority, resolution benefit, basin export, or inversion depth.
+The study provides a meteorological result with implications for subsequent air-chemistry modelling; it does not contain a chemistry calculation or identify the initial-versus-lateral-boundary contribution to the driving-product response.}
 
-\keyword{winter ozone; WRF; cold-air pool; Uinta Basin; driving data; nest feedback; heat deficit; model evaluation}
+\keyword{ozone; WRF; meteorology; modelling; cold-air pool; complex terrain; model resolution}
 
 \begin{document}
 
 \section{Introduction}
+\label{sec:v3-introduction}
 
-Winter ozone in the Uinta Basin develops when photochemistry proceeds within snow-covered, stably stratified air that restricts vertical dilution and horizontal exchange \citep{Ahmadov2015-zm,Neemann2015-ws,Davies2025-wy}.
-Snow increases actinic flux and modifies deposition, while the stable, weakly ventilated air confines ozone and its precursors near the basin floor.
-For a coupled model, the meteorological question is therefore not only whether 2 m temperature has a small mean error.
-It is whether the atmosphere delivered to the chemistry grid contains a credible shallow mixing environment and weak transport during the accumulation period.
+Surface wintertime ozone in the Uinta Basin develops within a snow-covered, persistently stable boundary layer in which weak mixing and transport can confine precursors near the surface \citep{Ahmadov2015-zm,Neemann2015-ws,Davies2025-wy}.
+For a coupled weather--chemistry calculation, the relevant meteorological information therefore extends beyond 2\,m temperature error to the simulated depth, stability, heat storage, and transport of the lower atmosphere.
+Point observations remain indispensable, but a horizontally separated surface network does not by itself validate inversion depth or the three-dimensional mixing volume supplied to chemistry.
 
-Published concentration agreement does not provide a clean ranking of the relevant uncertainties.
-Ahmadov et al. obtained a much stronger ozone simulation after applying an aircraft-derived, Horsepool-centered emissions scaling while holding the meteorological simulation fixed, and they conditioned the resulting inventory interpretation on adequate meteorology \citep{Ahmadov2015-zm}.
-Matichuk et al. evaluated a cumulative ladder that changed volatile-organic-compound emissions, leaf area, and deposition together, while improved WRF temperature profiles did not consistently improve ozone profiles \citep{Matichuk2017-bq}.
-These outcomes are consistent with compensating error among confinement, emissions, photolysis, deposition, and chemical mechanism.
-They make meteorological evaluation necessary for chemical attribution without making meteorology the uniquely dominant error source.
+Meteorological, emissions, photolysis, deposition, and chemical-mechanism errors can compensate for one another in coupled simulations.
+For example, holding meteorology fixed while changing emissions can alter ozone agreement without identifying a unique inventory error \citep{Ahmadov2015-zm}.
+Cumulative changes in emissions, leaf area, deposition, and meteorology likewise complicate attribution, and improved modelled temperature profiles need not translate directly into improved ozone profiles \citep{Matichuk2017-bq}.
+Credible meteorology is thus a prerequisite for chemical attribution rather than proof that meteorology is the dominant or only uncertainty.
 
-The meteorological literature also warns against reducing an experiment to a configuration label.
-Neemann et al. showed strong case-specific responses from bundled snow, albedo, and cloud-microphysics choices, but their ice-retention modification was a bounding treatment and the 1.33 km grid evaluated most closely was finer than the 4 km meteorology supplied to the chemistry model \citep{Neemann2015-ws}.
-Tran et al. showed that the meteorological response to four-dimensional data assimilation depended on the nudged variables, input data, and diagnosed boundary-layer depth; their disclosed artificial formaldehyde limits quantitative chemical inference \citep{Tran2018-ax}.
-Thus, labels such as ``NAM driven,'' ``nudged,'' or ``high resolution'' do not by themselves identify a controlled cause, and aggregate scores can conceal a failure to retain the layer of interest.
+Previous WRF studies also show why the experimental design must remain explicit.
+Bundled snow, microphysics, and grid choices can produce large case-specific responses, while evaluation and chemistry grids need not sample the same structure \citep{Neemann2015-ws}.
+Four-dimensional data-assimilation responses can depend on the nudged variables, input data, and scheme-dependent boundary-layer diagnosis \citep{Tran2018-ax}.
+The present study therefore treats controlled contrasts, failed tests, and within-run diagnostics as distinct kinds of evidence.
 
-We therefore treat the archived runs as a graph of controlled contrasts rather than a chronological configuration ladder.
-Our first question is whether the short-window lower-layer state responds reproducibly to the GFS-versus-NAM driving-data product under both nest-feedback modes.
-Our second is whether the product separation appears in a footprint-integrated heat-deficit measure and represents a state offset or different within-window evolution.
-Our third is how that repeated response compares with controlled boundary-layer/surface-layer, slope-radiation, feedback, and static-terrain treatments already present in the archive.
-The analysis evaluates the meteorological state supplied to a later chemistry calculation; it does not simulate chemistry, determine a generally superior product, establish event-scale persistence, or infer basin export.
+Following preliminary experiments and review of the archived simulation family, we ask:
+
+\begin{enumerate}
+  \item Does the lower-layer response to the supplied GFS or NAM driving analysis recur under both one-way and two-way nest feedback?
+  \item How large are the controlled nest-feedback, boundary-layer and surface-layer, and slope-aware-radiation responses relative to the driving-product response on common diagnostics?
+  \item What reproducible atmospheric response appears across controlled static-terrain-source brackets on the same WRF grid, and which interpretations remain unsupported?
+  \item What do surface, common-height, and footprint heat-deficit diagnostics reveal together that any single station metric can miss?
+\end{enumerate}
+
+Terrain-source contrasts require area-weighted geometry diagnostics because a station-only summary can miss a rim- or slope-confined response.
+The archived simulations use the compact X0--X10 identifiers, which link configurations in the text and tables to the run inventory.
+The present paper evaluates the meteorological state that a later chemistry calculation would receive; it contains no chemistry calculation and makes no ozone prediction.
 
 \section{Materials and Methods}
-\label{sec:methods}
+\label{sec:v3-methods}
 
-\subsection{Case, Observations, and Evaluation Sample}
+\subsection{Case, Observations, and Evaluation Domains}
+\label{sec:v3-case}
 
-The target is the snow-covered Uinta Basin cold-air pool on 2 February 2013 within the episode examined by prior meteorological and chemical studies \citep{Neemann2015-ws,Ahmadov2015-zm}.
-All model comparisons use 14:00--18:00 UTC, or 07:00--11:00 mountain standard time.
-The first two forecast hours were excluded as spin-up, leaving five common hourly samples.
-The sensitivity of the result to that two-hour choice has not yet been evaluated.
+The case is 2 February 2013 within a broader January--February period of snow cover, cold-pool conditions, and elevated ozone in the Uinta Basin \citep{Neemann2015-ws,Ahmadov2015-zm,Tran2018-ax}.
+The WRF integrations cover 1200--1800 Coordinated Universal Time (UTC), corresponding to 0500--1100 Mountain Standard Time (MST; UTC$-7$).
+The retained analysis window covers 1400--1800 UTC, or 0700--1100 MST, and excludes both the 1200 UTC initialised output and the 1300 UTC first-hour forecast.
+This leaves five hourly samples for every common-window contrast.
+Surface observations were obtained through the Synoptic Data PBC Mesonet API for 2\,m temperature at 11 sites, 10\,m wind speed at 10 sites, and surface pressure at 9 sites.\footnote{Synoptic Data PBC Mesonet API Time Series service: \url{https://docs.synopticdata.com/services/time-series}.}
+Subhourly reports were mean-averaged within each UTC clock hour.
+The stations span basin-floor, sidewall, and bench locations but are neither spatially uniform nor area weighted; as the focus herein is not verification against observations, we leave further evaluation to future studies.
+The 1\,km d02 domain was selected for the common observation comparisons because seven stations fall outside the usable d03 interior, leaving four usable d03 station columns.
+Figure~\ref{fig:v3-locator} combines the reporting-station geometry with the full nested-domain layout.
+Use of d02 does not establish that d02 and d03 produce the same response, and a common-support transfer test remains future work.
+Four stations spanning the basin floor and benches provide surface context from 31 January 0000 UTC to 4 February 0000 UTC.
+Observed and modelled surface potential temperature for a two-site structural index was calculated as $\theta=T(1000/p)^{0.2854}$, with $T$ in kelvin and $p$ in hPa.
+The index is Mountain Home on the north-west bench minus Pariette Draw on the basin floor, with both locations labelled in Figure~\ref{fig:v3-locator}.
+Their horizontal separation requires treating the index as a surface contrast rather than free-air inversion strength or cold-pool depth.
 
-Surface observations were extracted from the Synoptic archive for eleven stations reporting 2 m temperature, ten reporting 10 m wind speed, and nine reporting surface pressure during every retained hour.
-Subhourly reports were averaged within each UTC clock hour.
-The fixed sample includes basin-floor, sidewall, and bench locations, but it is neither spatially uniform nor area weighted.
-Every controlled simulation archived both the 1 km d02 and the 333 m d03 during this window, so output availability did not determine the evaluation domain.
-The d02 was selected because it contains all eleven stations, whereas seven stations clamp to the boundary of the roughly 50 by 48 km d03 and only four provide usable interior columns.
-The result therefore describes the full-network d02 sample and is not a d02--d03 resolution comparison.
-Observed temperature from 31 January 00:00 UTC through 4 February 00:00 UTC provides multi-day context around the modeled window.
-
-Observed and modeled surface potential temperature was calculated as $\theta=T(1000/p)^{0.2854}$, with $T$ in kelvin and $p$ in hPa.
-The elevation-spanning contrast was defined as Mountain Home on the northwest bench minus Pariette Draw on the basin floor.
-Because the stations are horizontally separated and locally exposed surface sites, this difference is a structural index rather than a colocated free-air inversion strength or depth.
-No sounding, profiler, or remote-sensing profile is used to validate the modeled 50--500 m layer.
-
-Episode-scale ozone context came from the current EPA Air Quality System (AQS) AirData daily archive for 1 January--28 February 2013.
-We retained the EPA-reported ``Ozone 8-hour 2015'' daily-summary row at Ouray, Redwash, Roosevelt, Vernal, and Little Mountain and converted its first maximum value from parts per million to parts per billion without recomputing an eight-hour statistic.
+Episode-scale ozone context came from the US Environmental Protection Agency (EPA) Air Quality System (AQS) AirData daily archive for 1 January--28 February 2013.
+We retained the EPA-reported ``Ozone 8-hour 2015'' daily-summary row at Ouray, Redwash, Roosevelt, Vernal, and Little Mountain.
 All five sites contained one daily row on each of the 59 local calendar dates; within-day observation coverage ranged from 47\% to 100\% and is marked explicitly in the figure.
-The satellite panel uses the NASA Global Imagery Browse Services Terra MODIS corrected-reflectance bands 7-2-1 layer for 2 February 2013.
-That layer is a calendar-day browse image rather than a quantitative snow retrieval or a crop of the selected 18:15--18:20 UTC granule.
-These observations establish chemical and snow context only and do not validate the WRF layer or attribute ozone to the simulated meteorology.
+The satellite panel in Figure~\ref{fig:v3-episode-context} uses the National Aeronautics and Space Administration (NASA) Global Imagery Browse Services (GIBS) Terra Moderate Resolution Imaging Spectroradiometer (MODIS) corrected-reflectance 7-2-1 layer for 2 February 2013.\footnote{NASA Worldview and GIBS: \url{https://worldview.earthdata.nasa.gov/}.}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.96\textwidth]{figures/wrf_geographic_locator_d01_d03.pdf}
 \caption{Geographic and sampling orientation for the evaluation.
-The main map places the d02 terrain, d03 interior, reporting stations, major roads, rivers, towns, and regional labels on one geographic frame.
-The inset shows the d01--d02--d03 nesting without duplicating the station panel.
-Seven of the eleven reporting stations fall outside the usable d03 interior, which is why d02 supplies the full-network common sample; the domain outlines do not constitute a resolution evaluation.}
-\label{fig:locator}
+The d02 terrain, reporting stations, and d03 interior define the common evaluation setting, while the inset places the d01--d03 nests within the full three-domain configuration.
+Seven of the eleven reporting stations fall outside the usable d03 interior, which is why d02 supplies the full-network sample; the figure does not constitute a resolution evaluation.}
+\label{fig:v3-locator}
 \end{figure}
 
-\textbf{[Data-methods completion item: add the curated Synoptic, EPA AQS, NASA GIBS, and MODIS dataset citations; complete Synoptic quality-control parameters, station ownership and sensor heights, observation uncertainty, and reuse terms before coauthor circulation.]}
+\subsection{WRF Configuration and Archived Simulation Family}
+\label{sec:v3-family}
 
-\subsection{WRF Experiment Matrix}
+The controlled six-hour simulations used WRF version 4.8.0, initialised at 1200 UTC with either Global Forecast System (GFS) or North American Model (NAM) analyses and supplied with source-specific lateral boundary conditions through 1800 UTC on 2 February 2013.
+These are retrospective simulations driven by analyses rather than six-hour operational forecasts.
+The design does not separate the initialised state from the subsequent lateral-boundary contribution.
+We used three nested computational domains, d01--d03, with horizontal grid spacings of 3\,km, 1\,km, and 333.333\,m.
+The controlled family used 75 eta levels concentrated near the surface, with approximately 20\,m separation among the lowest mass levels, and a 50\,hPa model top.
+The Advanced Research WRF Model Version 4 is cited following Skamarock et al. (2019, NCAR/TN-556+STR).\footnote{\url{https://doi.org/10.5065/1dfh-6p97}}
+The reference physics suite used Thompson microphysics, Rapid Radiative Transfer Model for General Circulation Models (RRTMG) longwave and shortwave radiation, the revised fifth-generation Pennsylvania State University--National Center for Atmospheric Research Mesoscale Model (MM5) similarity surface layer, the Noah land-surface model, and the Yonsei University (YSU) planetary boundary layer (PBL) scheme.\footnote{The WRF physics-reference register identifies Thompson et al. (2008), Iacono et al. (2008), Jim\'enez et al. (2012), Tewari et al. (2004), and Hong et al. (2006) for these options: \url{https://www2.mmm.ucar.edu/wrf/users/physics/phys_references.html}.}
+Grid and observation four-dimensional data assimilation were disabled.
+Departures from that reference configuration are listed by simulation in Table~\ref{tab:v3-family}.
 
-The four simulations used WRF version 4.8.0 and ran from 12:00 to 18:00 UTC on 2 February 2013.
-Three nested domains had horizontal grid spacing of 3, 1, and 0.333 km, 75 eta levels, and a 50 hPa model top.
-The physics suite comprised Thompson microphysics, RRTMG longwave and shortwave radiation, the revised MM5 surface layer, the Noah land-surface model, and the YSU planetary-boundary-layer scheme.
-All simulations were free forecasts with grid and observation FDDA disabled.
-They used the same domain geometry, default 30-arc-second-class terrain field, physics, initialization time, output cadence, and valid window.
-
-The factorial crossed the archived GFS analysis product \texttt{gfsanl\_4} with the NAM analysis product \texttt{namanl\_218}, and crossed one-way (\texttt{feedback=0}) with two-way (\texttt{feedback=1}) nest feedback (Table~\ref{tab:matrix}).
-The products supplied zero-hour analyses at 12:00 and 18:00 UTC and had 27 and 40 metgrid levels for GFS and NAM, respectively.
-Thus, the driving-data contrast is a product-level treatment that includes the analyses' native horizontal and vertical information; it is not an isolated perturbation of one atmospheric variable.
-Within each product family, normalized as-run namelists differed only in the feedback flag.
-The GFS one-way run reused the six verified metgrid files from the GFS two-way run before rerunning \texttt{real.exe} and \texttt{wrf.exe}.
-
-\begin{table}[H]
-\caption{Frozen driving-product by nest-feedback experiment matrix.
-Stable study codes link each member to the run and comparison inventories.}
-\label{tab:matrix}
-\centering
-\begin{tabular}{llll}
-\toprule
-Study code & Analysis product & Nest feedback & Manuscript label \\
-\midrule
-X6  & GFS & two-way & GFS two-way \\
-X10 & GFS & one-way & GFS one-way \\
-X5  & NAM & two-way & NAM two-way \\
-X3  & NAM & one-way & NAM one-way \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\subsection{Secondary Controlled Contrasts and Design Exclusions}
-
-The four anchor simulations are part of a larger reconciled archive in which additional pairs isolate one treatment at a time.
-The controlled secondary contrasts change the boundary-layer/surface-layer schemes, slope-aware radiation and shading, nest feedback at fine terrain, or static-terrain source (Table~\ref{tab:secondary-contrasts}).
-Each pair retains its registered differencing direction and its predeclared gate outcome.
-The archived X7, X0, and X8 configurations cannot form a resolution ladder because they differ simultaneously in initialization and forecast age, domain count and placement, feedback, vertical levels, terrain treatment, radiation options, and output cadence.
-X7 and X8 therefore remain design or within-run process context and do not enter the comparative Results.
+Static terrain entered through the WRF Preprocessing System and was held fixed within each controlled pair.
+The custom fine source used 3-arc-second terrain, the default source was 30-arc-second class, and the deliberately coarse source used the 5-arc-minute GMTED2010 product.
+At approximately $40^{\circ}$N their nominal north--south spacings are about 90\,m, 900\,m, and 9\,km, respectively, and these static-source spacings are distinct from WRF horizontal grid spacing.
+Land-surface initial fields, including snow, entered through the source-specific meteorological preprocessing, so the GFS--NAM treatment does not isolate a snow-field contribution.
+Our experiment configurations split into four scientific branches: driving-data product, boundary-layer and radiation treatments, nest feedback, and static-terrain source.
+The X7 and X8 configurations differ from the controlled family in several dimensions at once and enter only as design context (Section~\ref{sec:v3-resolution}) --- again, interpretation must be careful when changes in output may result from confounding effects.
 
 \begin{table}[H]
-\caption{Secondary controlled contrasts carried into the response hierarchy.
-``Failed'' preserves the predeclared outcome; ``diagnostic'' means no criterion was declared before inspection.}
-\label{tab:secondary-contrasts}
+\caption{The archived simulation family.
+Every run uses WRF 4.8.0, three nests at 3/1/0.333\,km with 75 levels, Thompson microphysics, RRTMG radiation, and Noah land surface unless stated.
+``Fine terrain'' is the custom 3-arc-second source, ``default terrain'' is 30-arc-second class, and ``coarse terrain'' is the 5-arc-minute GMTED2010 source; static-source spacing is not model-grid spacing.}
+\label{tab:v3-family}
 \centering
 \small
-\begin{tabularx}{\textwidth}{llLL}
+\begin{tabularx}{\textwidth}{llL}
 \toprule
-Contrast & Operation & Isolated treatment & Evidential role \\
+Code & Product, feedback & Configuration and role \\
 \midrule
-CMP08 & X2 $-$ X1 & MYJ/Eta versus YSU/MM5 & confirmed station response; no scheme ranking \\
-CMP07 & X1 $-$ X0 & slope radiation and shading & screen failed on a measurement-limited criterion \\
-CMP06 & X9 $-$ X0 & two-way versus one-way feedback at fine terrain & confirmed bounded feedback response \\
-CMP09 & X3 $-$ X0 & default versus fine static terrain & predeclared geometry gate failed \\
-CMP10/CMP11 & X3/X0 $-$ X4 & default/fine versus coarse static terrain & controlled diagnostic; no predeclared gate \\
+X0  & NAM, one-way & fine-terrain YSU/MM5 control for X1, X3, X4, and X9 \\
+X1  & NAM, one-way & X0 plus slope radiation and shading \\
+X2  & NAM, one-way & X1 with MYJ/Eta instead of YSU/MM5 \\
+X3  & NAM, one-way & default-terrain reference configuration \\
+X4  & NAM, one-way & deliberately coarse 5-arc-minute terrain \\
+X5  & NAM, two-way & default terrain \\
+X6  & GFS, two-way & default terrain \\
+X7  & NAM, two-way & 1 km inner grid and 24 h integration; design context only \\
+X8  & NAM, one-way & four domains to 111 m and 50 levels; design context only \\
+X9  & NAM, two-way & X0 with two-way feedback \\
+X10 & GFS, one-way & default terrain \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-\textbf{[Model-methods completion item: add the WRF and exact GFS/NAM product citations, map projection, domain dimensions and centers, boundary interval, time step, static-geography versions, and snow-field initialization from the archived as-run records.]}
+\subsection{Controlled Contrasts and Estimands}
+\label{sec:v3-contrasts}
 
-\subsection{Surface, Retention, and Ventilation Diagnostics}
+We contrast simulations, identifying the dominant lever on the simulation's sensitivity, and its magnitude (Table~\ref{tab:v3-comparisons}).  The table is ordered by scientific role.
+The four default-terrain simulations X3, X5, X6, and X10 form a fundamental two-by-two matrix that buttresses our analyses.
+Native GFS and NAM data provides 27 and 40 metgrid levels, respectively.
 
-Surface temperature, earth-relative 10 m wind, and surface pressure were sampled at the nearest d02 cell to each station.
-Across the 11 cells, model terrain minus station elevation had a median of -2.0 m and a range of -32.4 to +14.3 m.
-This close elevation match reduces one source of representativeness error but does not account for local exposure or unresolved terrain.
+(The remaining controlled contrasts enter on their own design and evidence: the X2-minus-X1 scheme treatment, X1-minus-X0 slope-radiation treatment, X9-minus-X0 fine-terrain feedback treatment, and the pairwise X3/X0/X4 terrain-source brackets.)
 
-Mass-level height above ground was calculated from perturbation and base-state geopotential and the local WRF terrain height.
+\begin{table}[H]
+\caption{Controlled contrasts referenced in this study, their differencing orientation, and their scientific use.}
+\label{tab:v3-comparisons}
+\centering
+\small
+\begin{tabularx}{\textwidth}{lLL}
+\toprule
+Operation & Isolated lever & Use in this study \\
+\midrule
+X6 $-$ X5 & driving product (two-way) & primary controlled contrast \\
+X10 $-$ X3 & driving product (one-way) & primary controlled contrast \\
+X2 $-$ X1 & PBL and surface-layer scheme & secondary controlled contrast \\
+X1 $-$ X0 & slope radiation and shading & spatial diagnostic with an archive limitation \\
+X3 $-$ X5 & feedback, NAM, default terrain & secondary robustness contrast \\
+X10 $-$ X6 & feedback, GFS, default terrain & secondary robustness contrast \\
+X9 $-$ X0 & feedback, NAM, fine terrain & secondary robustness contrast \\
+(X10$-$X6)$-$(X3$-$X5) & driving-product-by-feedback interaction & secondary interaction contrast \\
+X3 $-$ X0 & terrain source, default vs fine & bounded terrain response; no source ranking \\
+X3 $-$ X4 & terrain source, default vs coarse & bounded terrain response; no source ranking \\
+X0 $-$ X4 & terrain source, fine vs coarse & bounded terrain response; no source ranking \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Design Exclusions: Resolution and Legacy Context}
+\label{sec:v3-resolution}
+
+X7, X0, and X8 do not form a controlled resolution sequence because their integrations differ in forecast age, domain geometry, feedback, vertical levels, terrain placement, radiation settings, and output cadence.
+They are retained only to document the exclusion; no X8 diagnostic is reported in this paper.
+
+\subsection{Surface and Common-AGL Diagnostics}
+\label{sec:v3-common-agl}
+
+Modelled 2\,m dry-bulb temperature, 10\,m wind, and surface pressure were sampled at the nearest d02 cell to each station.
+None of the selected cells lay on steep terrain or an obviously unrepresentative model location.
+Across the eleven fixed columns, model terrain offset from reported station elevation spanned -32\,m to 14\,m.
+While this justifies the nearest-neighbour approach, the pairing of WRF output to observation value does not remove (wind, solar) exposure, slope angle, land-cover use, or network-coverage deficiency.
+Mass-level height above ground level (AGL) was calculated from perturbation plus base geopotential relative to local WRF terrain height.
 Grid-relative winds were destaggered and rotated to earth-relative components.
-Potential temperature and both wind components were then linearly interpolated every 25 m from 50 to 500 m above ground level (AGL) at each station column.
-Fixed-layer stability was defined as $S_{50:500}=\theta(500\,\mathrm{m})-\theta(50\,\mathrm{m})$.
-The transport-wind proxy was $U_{50:500}=\{\bar{u}^{2}+\bar{v}^{2}\}^{1/2}$, where the bars denote height means from 50 to 500 m AGL.
-This proxy represents the mean wind available for horizontal transport within a fixed lower layer.
-It is not a calculation of flow across the basin boundary, pollutant residence time, cold-pool volume, or a chemistry-model ventilation coefficient.
-Native WRF PBL height was retained as a scheme-dependent companion diagnostic rather than interpreted as an observed layer depth.
+Model-level potential temperature $\theta$ and horizontal wind components were interpolated linearly at 25\,m increments from 50 to 500\,m AGL at each station column.
+Fixed-layer stability was defined as
 
-\subsection{Aggregation and Short-Sample Interpretation}
+\begin{equation}
+S_{50:500}=\theta(500\,\mathrm{m})-\theta(50\,\mathrm{m})
+\end{equation}
+
+The transport-wind proxy was defined as
+
+\begin{equation}
+U_{50:500}=\left(\bar{u}^{2}+\bar{v}^{2}\right)^{1/2}.
+\end{equation}
+
+where the bars denote height means from 50 to 500 m AGL.
+This wind-derived quantity is a fixed-layer transport proxy and does not sample flow through a basin boundary, pollutant residence time, cold-pool volume, or a chemistry-model ventilation coefficient.
+Native WRF PBL height was retained only as a scheme-dependent companion diagnostic, consistent with the diagnostic cautions discussed by \citet{Tran2018-ax}.
+
+\subsection{Pairing, Aggregation, and Short-Sample Sensitivity}
+\label{sec:v3-aggregation}
 
 Run differences were paired by station and valid hour before spatial aggregation.
-The driving-product-by-feedback interaction was defined as \([\mathrm{GFS}_{1\mathrm{w}}-\mathrm{GFS}_{2\mathrm{w}}]-[\mathrm{NAM}_{1\mathrm{w}}-\mathrm{NAM}_{2\mathrm{w}}]\) and was likewise evaluated at each station and hour before spatial aggregation.
-The fixed station field was reduced to one unweighted spatial median per hour, and the five hourly medians were then averaged for each effect summary.
-The stations were therefore kept together as one spatial field rather than treated as independent replicates.
-Hourly ranges, sign counts, and leave-one-hour summaries accompany the means.
-
-A two-hour circular moving-block resample of the five hourly medians was also repeated 20,000 times as a descriptive sensitivity calculation.
-Those ranges are retained in the reproducibility record but are not confidence intervals, hypothesis tests, or estimates of observation, forcing, or structural model uncertainty.
-No formal population inference is attempted from four deterministic integrations of one case.
-The fixed two-hour spin-up exclusion has not itself been subjected to a start-time sensitivity test.
+Each fixed station field was reduced to a single unweighted spatial median per hour; the five-hour value is thus a mean of those five medians.
+The stations therefore define one sampled spatial field and are not treated as independent replicates.
+A descriptive circular moving-block calculation drew 20,000 resamples of the five hourly medians with two-hour blocks and reports the 2.5th and 97.5th percentiles as a sensitivity interval.
+Because this is one deterministic case, interpretation emphasises practical effect size rather than population inference.
+The block ranges are descriptive dependence checks rather than confidence intervals.
 
 \subsection{Footprint-Integrated Heat Deficit}
+\label{sec:v3-heatdeficit-methods}
 
+We calculated a crest-referenced atmospheric heat-deficit proxy following the basin-volume formulation of Whiteman et al. (1999) and the closest column implementation of Adler et al. (2023).\footnote{Whiteman, Bian, and Zhong (1999), \emph{Journal of Applied Meteorology}, 38, 1103--1117, \url{https://doi.org/10.1175/1520-0450(1999)038<1103:WEOTTI>2.0.CO;2}; Adler et al. (2023), \emph{Geoscientific Model Development}, 16, 597--619, \url{https://doi.org/10.5194/gmd-16-597-2023}.}
 Let $p_{s}$ and $p_{c}$ denote the pressures at the surface and fixed crest reference, respectively, with $p_{c}<p_{s}$.
-The area-normalized atmospheric heat-deficit proxy was defined as $H=(c_{p}/g)\int_{p_{c}}^{p_{s}}\max\{\theta_{\mathrm{crest}}-\theta(p),0\}\,dp$, where $\theta_{\mathrm{crest}}$ is potential temperature interpolated to the crest height in each modeled column.
-$H$ is reported as a cell-area-weighted mean over an evaluation footprint in MJ m$^{-2}$.
-The footprint is the convex hull of the eleven evaluation stations and eleven registered basin waypoints, intersected with model terrain below the crest reference.
-The primary definition uses a 2200 m crest and the combined hull, covering 4965 d02 cells and 5277 km$^{2}$.
-Six alternate definitions vary the crest to 2100 and 2300 m, dilate or erode the boundary by one cell, or restrict the hull to the stations or waypoints alone.
-The 2200 m value is the central predeclared reference in that bracket, not an observed cold-pool top or a hydrologic-basin boundary.
-Because two-way feedback modifies the d02 terrain field by up to 23.1 m relative to the static one-way field, each feedback-matched GFS-minus-NAM pair used a common mask fixed from the one-way NAM terrain.
-The 13:00 UTC values provide trajectory context only, and all decisions use 14:00--18:00 UTC.
-A weaker-state criterion required both GFS-minus-NAM pairs to be negative at every retained hour under all seven definitions.
-A faster-loss criterion required both GFS changes to be negative and more negative than the feedback-matched NAM changes under all seven definitions.
-The fixed crest, nonnegative clipping, convex-hull footprint, and modeled profiles make this a bounded proxy rather than an observed cold-pool volume or a direct reproduction of a published basin diagnostic.
+The present area-normalised atmospheric heat-deficit proxy was defined as $H=(c_{p}/g)\int_{p_{c}}^{p_{s}}\max\{\theta_{\mathrm{crest}}-\theta(p),0\}\,dp$, where $\theta_{\mathrm{crest}}$ is the potential temperature interpolated to the crest height in each modelled column.
+$H$ is reported as the cell-area-weighted, footprint-mean, vertically integrated heat deficit in MJ\,m$^{-2}$.
+The primary footprint is the convex hull of eleven evaluation stations and eleven registered basin waypoints intersected with model terrain below the 2200\,m crest reference.
+It contains 4,965 d02 cells and covers 5,277\,km$^{2}$.
+The seven predeclared definitions were the combined station-and-waypoint hull at crest references of 2100, 2200, and 2300\,m; the 2200\,m combined hull dilated or eroded by one cell; and separate station-only and waypoint-only hulls at 2200\,m.
+Each feedback-matched GFS--NAM pair used a common terrain mask.
+The weaker-state criterion required the GFS-minus-NAM difference to remain negative at every retained hour under all seven definitions.
+The faster-loss criterion required both a negative GFS change from 1400 to 1800 UTC and a more negative change than in NAM under all seven definitions.
+Both criteria were fixed before output inspection, and 1300 UTC was retained only as trajectory context.
+The footprint is an evaluation region rather than a hydrologic basin boundary, and the proxy is neither a measured basin-volume heat deficit nor an observed cold-pool quantity.
 
 \section{Results}
+\label{sec:v3-results}
 
 \subsection{Observed Episode Context}
+\label{sec:v3-episode-context}
 
-The MODIS browse layer shows extensive snow or ice across the basin and surrounding terrain on 2 February, while the AQS series places the modeled day within a sequence of changing daily ozone maxima (Figure~\ref{fig:episode-context}).
-On 2 February, the reported daily maximum eight-hour values were 56 ppb at Little Mountain, 65 ppb at Vernal, 72 ppb at Roosevelt, 81 ppb at Redwash, and 95 ppb at Ouray.
-Each selected monitor reported higher daily values on at least one other date in January or February, so the modeled date is episode context rather than a claim to have sampled the two-month maximum.
-Neither panel attributes the observed ozone to WRF meteorology.
+The MODIS browse image shows extensive snow and ice across the Uinta Basin and surrounding terrain on 2 February (Figure~\ref{fig:v3-episode-context}a).
+The AQS series places the simulation date within a broader period of elevated daily ozone maxima (Figure~\ref{fig:v3-episode-context}b).
+On 2 February, the reported daily maximum eight-hour values were 56\,ppb at Little Mountain, 65--70\,ppb at Vernal and Roosevelt, 81\,ppb at Redwash, and 95\,ppb at Ouray.
+These observations provide episode context and do not establish meteorology--ozone attribution.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{figures/episode_context_snow_ozone_janfeb2013.pdf}
 \caption{Observed context for the 2 February 2013 simulation date.
 (a) NASA GIBS Terra MODIS corrected reflectance, bands 7-2-1, for the 2 February calendar day; snow and ice generally appear cyan, most liquid cloud appears white, and ice cloud may also appear cyan.
-The browse layer is not a raw-granule crop or quantitative snow retrieval; the nearest center-covering Terra granule was acquired at 18:15--18:20 UTC.
+The browse layer is not a raw-granule crop or quantitative snow retrieval; the nearest centre-covering Terra granule was acquired at 1815--1820 UTC.
 (b) EPA AQS first maximum value from the ``Ozone 8-hour 2015'' daily-summary row at Ouray, Redwash, Roosevelt, Vernal, and Little Mountain, converted from ppm to ppb and plotted by AQS local date without recomputation.
 All five sites have 59 daily rows; hollow markers identify the seven site-days with less than 75\% within-day observation coverage.
 No regulatory threshold is shown, and the panel is episode context rather than chemistry evaluation or meteorology--ozone attribution.}
-\label{fig:episode-context}
+\label{fig:v3-episode-context}
 \end{figure}
 
 \subsection{Observed Surface-Temperature Context}
+\label{sec:v3-observed-context}
 
-Pariette Draw on the basin floor repeatedly cooled below the higher sites, while the magnitude and ordering of the station temperatures changed through the diurnal cycle (Figure~\ref{fig:observed-evolution}).
-This recurring spatial separation is consistent with cold-pool conditions during the modeled episode.
-It does not by itself establish the depth, volume, or vertical temperature structure of the cold pool.
+The basin-floor station repeatedly separated from the higher sites between 31 January and 3 February, while the magnitude and ordering of station temperatures evolved through the diurnal cycle (Figure~\ref{fig:v3-observed}).
+The recurring floor-to-bench separation is consistent with a cold-pool surface pattern.
+Because the stations are horizontally separated, however, the time series do not determine the cold-pool top, depth, volume, or vertical temperature structure.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{figures/obs_temp_timeseries_feb0102.pdf}
 \caption{Observed 2 m-temperature evolution at four elevation-spanning Uinta Basin stations from 31 January through 3 February 2013.
-The shaded intervals indicate approximate local night.
-The sites provide spatial context but do not form a colocated vertical profile or measure the basin volume.}
-\label{fig:observed-evolution}
+Shading indicates approximate local night.
+The basin-floor site repeatedly separates from the higher sites, and the ordering evolves through the diurnal cycle.
+The sites establish a recurring spatial surface-temperature pattern but do not constitute a closely colocated vertical profile.}
+\label{fig:v3-observed}
 \end{figure}
 
-\subsection{Controlled Responses on a Common Pipeline}
+\subsection{Common-Pipeline Contrasts at a Glance}
+\label{sec:v3-effects-panel}
 
-Figure~\ref{fig:common-effects} compares every controlled contrast that shares the station and common-AGL pipeline.
-The driving-product contrasts are farthest from zero for 2 m-temperature bias, fixed-layer stability, and transport wind.
-The boundary-layer/surface-layer treatment is smaller but detectable, whereas the slope-radiation, nest-feedback, and interaction effects cluster near zero on those scales.
-Pressure and wind error do not reproduce that ordering, so this is a response hierarchy rather than a ranking of the best configuration.
+Figure~\ref{fig:v3-effects} compares every controlled contrast evaluated through the common station and common-AGL pipeline.
+The two driving-product contrasts are farthest from zero for temperature, fixed-layer stability, and transport wind.
+The PBL/surface-layer treatment is smaller, while slope radiation, nest feedback, and the driving-product-by-feedback interaction cluster near zero on those same scales.
+Pressure and wind-error metrics follow different orderings, so the panel is a response hierarchy rather than an overall configuration ranking.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{figures/fig_common_pipeline_effects.pdf}
-\caption{Mean five-hour effects for controlled comparisons that share the station and common-AGL pipeline.
-Colors and marker shapes identify driving-product, process-treatment, feedback, and interaction contrasts; each row states its differencing direction.
-Whiskers are descriptive two-hour block-sensitivity intervals for five dependent hourly medians, not confidence intervals.
-The different ordering of pressure and wind error prevents interpreting the panel as an overall configuration ranking.}
-\label{fig:common-effects}
+\caption{Mean five-hour effects for the controlled comparisons that share the station/common-AGL pipeline.
+Colours and marker shapes identify driving-product, process-treatment, feedback, and interaction contrasts; each row states its differencing direction.
+Driving-product effects are farthest from zero for temperature, fixed-layer stability, and transport wind; the PBL/surface-layer response is smaller, while slope-radiation and feedback effects cluster near zero on those scales.
+The different ordering of pressure and wind error prevents interpreting the panel as an overall configuration ranking.
+Whiskers are descriptive block-sensitivity intervals for five dependent hourly medians, not confidence intervals.
+All values come from the registered common station and common-AGL summaries.}
+\label{fig:v3-effects}
 \end{figure}
 
-\subsection{Response to the Driving-Data Product}
+\subsection{Driving-Product Response in the Common Lower Layer}
+\label{sec:v3-driving-response}
 
-Under two-way feedback, the GFS-driven run had a smaller Mountain Home-minus-Pariette Draw potential-temperature contrast than the matched NAM-driven run in every retained hour.
-The observed spatial contrast ranged from 12.63 to 20.21 K, the NAM run from 16.44 to 18.07 K, and the GFS run from 7.35 to 11.74 K.
-These two-site values are not interpreted as free-air inversion depths.
+The two-by-two matrix in Figure~\ref{fig:v3-retention} separates the GFS-versus-NAM driving-product response under one-way and two-way feedback.
+Relative to GFS, NAM was 3.63\,K more stable with two-way feedback and 3.65\,K more stable with one-way feedback through the 50--500\,m layer (Table~\ref{tab:v3-effects}).
+The five-hour means of hourly spatial-median stability were 7.50 and 7.38\,K for the two GFS runs, compared with 10.82\,K for both NAM members.
+The hourly GFS-minus-NAM differences ranged from $-5.58$ to $-1.13$\,K with two-way feedback and from $-5.36$ to $-0.90$\,K with one-way feedback.
+All ten product-by-hour stability contrasts therefore retained the same sign.
+GFS also increased fixed-layer transport wind by 0.79\,m\,s$^{-1}$ with two-way feedback and 0.99\,m\,s$^{-1}$ with one-way feedback.
+The corresponding five-hour means of hourly spatial-median transport wind were approximately 2.0\,m\,s$^{-1}$ for both GFS members and approximately 1.1\,m\,s$^{-1}$ for both NAM members.
+The hourly differences ranged from 0.37 to 1.18\,m\,s$^{-1}$ with two-way feedback and from 0.61 to 1.50\,m\,s$^{-1}$ with one-way feedback, with the same sign in every hour.
+Native PBL-height differences changed sign within both feedback modes and did not reproduce the stability and wind separation.
+This divergence is consistent with the scheme dependence of native PBL-height diagnosis discussed by \citet{Tran2018-ax}.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.94\textwidth]{figures/wrf_inversion_index_feb0102_gfs2way_vs_nam2way_d02_14to18.pdf}
-\caption{Observed and modeled Mountain Home-minus-Pariette Draw surface potential-temperature contrast from 14:00 to 18:00 UTC on 2 February 2013.
-The modeled series are GFS two-way and NAM two-way sampled on d02, and all three series contain the same five retained hourly values.
-The quantity is a horizontally separated bench-minus-floor surface contrast, not inversion depth, a colocated vertical stability measure, or a cold-pool classification threshold.}
-\label{fig:bulk-theta}
-\end{figure}
-
-The five-hour means were 16.94 K for the observations, 17.03 K for NAM two-way, and 9.95 K for GFS two-way.
-The close NAM value is corroboration for this one surface index, not validation of modeled vertical structure or an overall surface-skill ranking.
-
-The surface evaluation showed the same product ordering under both feedback settings.
-The mean hourly station-median 2 m-temperature biases were +2.09 and +2.51~$^{\circ}$C for the two GFS members, compared with +0.40 and +0.60~$^{\circ}$C for the corresponding NAM members.
-After pairing by station and hour, GFS minus NAM increased the temperature-bias contrast by +1.79~$^{\circ}$C under two-way feedback and +1.76~$^{\circ}$C under one-way feedback (Table~\ref{tab:effects}).
-The paired absolute-temperature-error differences were +1.41 and +1.50~$^{\circ}$C, respectively.
-GFS minus NAM also increased 10 m-wind bias by +0.91 and +0.96 m s$^{-1}$, although the hourly difference in absolute wind error changed sign.
-
-The common-AGL profiles separated the products more directly (Figure~\ref{fig:retention-ventilation}).
-Mean GFS-minus-NAM 50--500 m stability was -3.63 K under two-way feedback and -3.65 K under one-way feedback.
-The corresponding run-level five-hour means were 7.50 and 7.38 K for GFS two-way and one-way, compared with 10.82 K for both NAM members.
-The respective hourly spatial-median differences ranged from -5.58 to -1.13 K and from -5.36 to -0.90 K, retaining the same sign in all five hours.
-Mean GFS-minus-NAM transport-wind differences were +0.79 and +0.99 m s$^{-1}$.
-The run-level means were 2.01 and 2.06 m s$^{-1}$ for the GFS members, compared with 1.12 and 1.08 m s$^{-1}$ for the NAM members.
-Their hourly values ranged from +0.37 to +1.18 m s$^{-1}$ and from +0.61 to +1.50 m s$^{-1}$, again with the same sign in all five hours.
-In contrast, GFS-minus-NAM PBL-height differences changed sign within both feedback settings.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{figures/wrf_retention_ventilation_d02_14to18.pdf}
-\caption{Time evolution of station-column medians and interquartile ranges for 50--500 m AGL potential-temperature stability and fixed-layer transport wind.
+\includegraphics[width=0.82\textwidth]{figures/wrf_retention_ventilation_d02_14to18.pdf}
+\caption{Station-column medians and interquartile ranges for 50--500 m AGL potential-temperature stability and fixed-layer transport wind over the matched window.
 Solid lines denote two-way feedback and dashed lines denote one-way feedback.
-The lower-layer GFS--NAM separation recurs under both feedback modes, whereas the within-product feedback response is much smaller.}
-\label{fig:retention-ventilation}
+The lower-layer GFS--NAM separation recurs under both feedback modes: GFS is about 3.6 K less stable and 0.8--1.0 m s$^{-1}$ faster in transport wind over the five-hour summary.}
+\label{fig:v3-retention}
 \end{figure}
+
+\subsection{Surface and Spatial Corroboration}
+\label{sec:v3-surface}
+
+The surface-temperature contrasts had the same product ordering as the common-layer diagnostics.
+GFS-minus-NAM 2\,m temperature-bias contrasts were +1.79\,$^{\circ}$C with two-way feedback and +1.76\,$^{\circ}$C with one-way feedback (Table~\ref{tab:v3-surface-summary}).
+Surface-pressure absolute-error contrasts changed in the opposite direction, at $-13.6$ and $-10.9$\,Pa, while hourly wind absolute-error differences changed sign.
+No single surface score therefore provides a general product ranking.
+Figure~\ref{fig:v3-bulk-theta} gives a separate two-site surface-structure comparison for the observations and two-way anchor simulations.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.82\textwidth]{figures/wrf_inversion_index_feb0102_gfs2way_vs_nam2way_d02_14to18.pdf}
+\caption{Observed and modelled Mountain Home-minus-Pariette Draw surface potential-temperature contrast from 1400 to 1800 UTC on 2 February 2013.
+The modelled series are X6 (GFS two-way) and X5 (NAM two-way) sampled on d02, and all three series contain the same five retained hourly values after the first two forecast hours were excluded.
+The quantity is a horizontally separated bench-minus-floor surface contrast, not inversion depth, a colocated vertical stability measure, or a cold-pool classification threshold.}
+\label{fig:v3-bulk-theta}
+\end{figure}
+
+The five-hour mean surface potential-temperature contrast between Mountain Home and Pariette Draw was 16.94\,K in the observations, 17.03\,K in NAM two-way, and 9.95\,K in GFS two-way.
+The close NAM value corroborates only this horizontally separated surface index; it does not validate modelled inversion depth, vertical structure, or overall surface skill.
+Across the registered footprint, the mean GFS-minus-NAM near-surface response was positive and the vertical response remained concentrated below 500 m AGL under both feedback modes (Table~\ref{tab:v3-surface-summary}).
+The predeclared spatial-coherence test nevertheless failed because only 64--67\% of footprint cells had the expected sign at 1400--1500 UTC, below the required two-thirds share at every retained hour.
+The result is therefore shallow and mean-coherent, but not spatially uniform throughout the retained window.
+Later hours were more coherent, but changing an every-hour rule after inspecting those maps would be post hoc.
+The maps remain useful descriptive diagnostics without converting the failed test into a passed one.
+
+\subsection{Footprint Heat Deficit: A Weaker State without Faster Loss}
+\label{sec:v3-heatdeficit}
+
+The GFS runs retained less footprint-mean, vertically integrated heat deficit at every retained hour under all seven definitions (Section~\ref{sec:v3-heatdeficit-methods}; Table~\ref{tab:v3-heatdeficit}).
+Mean GFS-minus-NAM differences were $-1.23$\,MJ\,m$^{-2}$ with two-way feedback and $-1.25$\,MJ\,m$^{-2}$ with one-way feedback.
+Primary-definition five-hour means were approximately 3.0\,MJ\,m$^{-2}$ for both GFS runs and approximately 4.2\,MJ\,m$^{-2}$ for both NAM runs.
+Every run gained heat deficit from 1400 to 1800 UTC, so the weaker GFS state did not result from demonstrated faster heat-deficit loss during the retained window.
+Figure~\ref{fig:v3-heatdeficit-traj} shows the four increasing trajectories and the persistent separation between the two GFS and two NAM members.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.82\textwidth]{figures/wrf_heat_deficit_d02_13to18.pdf}
+\caption{Footprint-mean heat-deficit trajectories for the four default-terrain matrix members and seven-definition sensitivity envelopes for the two GFS-minus-NAM pairs.
+The 1300 UTC values orient the trajectories but are excluded from every reported criterion and effect.
+GFS retains a smaller deficit throughout, but the deficit does not decline faster in either GFS member.}
+\label{fig:v3-heatdeficit-traj}
+\end{figure}
+
+\subsection{Process Treatments on the Fine-Terrain Branch}
+\label{sec:v3-process}
+
+The MYJ/Eta versus YSU/revised-MM5 scheme pair changes only the PBL and surface-layer schemes while holding the fine terrain and slope-aware-radiation configuration fixed.
+MYJ/Eta increased 2\,m-temperature bias by 0.37\,$^{\circ}$C, reduced 10\,m-wind absolute error by 0.145\,m\,s$^{-1}$, and increased fixed-layer transport wind by 0.098\,m\,s$^{-1}$, with the same sign in all five hours (Supplementary Table~S1).
+These changes are smaller than the driving-product response on the shared lower-layer metrics.
+The opposing temperature- and wind-error changes do not support an overall scheme-skill ranking.
+
+The slope-radiation addition produced negligible response at the basin-floor station columns.
+A spatially organised skin-temperature response appeared on the sidewalls, but the archived flat-plane shortwave field and missing surface heat fluxes could not test the mechanism directly.
+The diagnostic is retained in Supplementary Figure~S1 and does not show that slope-aware radiation improved or degraded the cold pool.
+
+\subsection{Nest-Feedback Robustness across Two Terrain Regimes}
+\label{sec:v3-feedback}
+
+\label{sec:v3-cmp06}
+Within-product feedback effects were small for both GFS and NAM on the default-terrain branch.
+The fine-terrain NAM pair reproduced that character: two-way minus one-way feedback increased stability by 0.04\,K and reduced transport wind by 0.01\,m\,s$^{-1}$.
+The descriptive block-sensitivity intervals defined in Section~\ref{sec:v3-aggregation} spanned zero for both metrics.
+The consistently signed 10\,m-wind and surface-pressure changes were also small and do not support a feedback recommendation beyond this five-hour case.
+
+\subsection{Terrain-Source Brackets}
+\label{sec:v3-terrain}
+
+The terrain-source branch holds NAM forcing, one-way feedback, WRF grid spacing, and the YSU/MM5 physics configuration fixed while changing only the static-terrain source.
+The three brackets are default minus fine, default minus coarse, and fine minus coarse.
+The default-minus-fine response was small on d02 and failed its predeclared terrain-response test.
+The wider coarse brackets produced larger spatial responses, but the summary changes with domain support and diagnostic (Supplementary Table~S2).
+The registered terrain summaries therefore describe a reproducible model response without establishing a preferred terrain source, drainage pathway, upstream reservoir, or basin cold-air-volume change.
+
+\section{Discussion}
+\label{sec:v3-discussion}
+
+\subsection{The Main Result Is a Difference in the Supplied Lower-Layer State}
+\label{sec:v3-disc-supplied-state}
+
+The present study does not seek a universal product or configuration ranking.
+Its principal result is a repeated difference in the lower-layer state supplied by the two driving products under both feedback modes.
+
+\begin{itemize}
+  \item The GFS-driven runs supplied a warmer, less stable, and faster-moving 50--500\,m layer than feedback-matched NAM members.
+  \item The heat-deficit calculation reproduced the same ordering under every registered footprint definition.
+  \item Surface pressure and wind error followed different orderings, preventing the response hierarchy from becoming a general skill ranking.
+\end{itemize}
+
+The GFS state is more consistent with weaker confinement than the analogous NAM state, but the transport-wind proxy and heat-deficit values are not substitutes for measured mixing volume or basin export.
+This distinction matters because errors in confinement, emissions, snow and cloud processes, photolysis, deposition, and chemical mechanism can compensate for one another in coupled simulations \citep{Ahmadov2015-zm,Neemann2015-ws,Matichuk2017-bq}.
+A practical future ensemble should therefore vary the treatments that show the largest phenomenon-relevant response, but the present single case cannot prescribe a universal ensemble design.
+
+The model-only d03 Horsepool profiles at 1200 and 1300 UTC (Figure~\ref{fig:v3-spinup-profiles}) expose the source-specific supplied states and their first-hour evolution.
+They do not separate early model adjustment from lateral-boundary evolution and do not validate inversion depth.
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[t]{0.49\textwidth}
+\centering
+\textbf{(a)}\\[-2pt]
+\IfFileExists{figures/theta_profiles_horsepool_gfs_nam_12z.pdf}{%
+\includegraphics[width=\linewidth]{figures/theta_profiles_horsepool_gfs_nam_12z.pdf}%
+}{\fbox{\parbox[c][0.28\textheight][c]{0.88\linewidth}{\centering CHPC render pending: X6 and X5 Horsepool profiles at 1200 UTC.}}}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.49\textwidth}
+\centering
+\textbf{(b)}\\[-2pt]
+\IfFileExists{figures/theta_profiles_horsepool_gfs_nam_13z.pdf}{%
+\includegraphics[width=\linewidth]{figures/theta_profiles_horsepool_gfs_nam_13z.pdf}%
+}{\fbox{\parbox[c][0.28\textheight][c]{0.88\linewidth}{\centering CHPC render pending: X6 and X5 Horsepool profiles at 1300 UTC.}}}
+\end{minipage}
+\caption{Model-only d03 potential-temperature profiles at Horsepool for X6 (GFS two-way) and X5 (NAM two-way).
+(a) The 1200 UTC initialised states and (b) the 1300 UTC one-hour forecasts use identical axes.
+Grey shading marks levels below the local model terrain, and the dashed 2200 m line is the fixed heat-deficit crest reference rather than an observed cold-pool top.
+Changes between panels include both early model adjustment and one hour of lateral-boundary evolution; no colocated observed profile validates the modelled layer.}
+\label{fig:v3-spinup-profiles}
+\end{figure}
+
+\subsection{The Difference Is a State Offset, Not Demonstrated Cold-Pool Loss}
+\label{sec:v3-disc-spatial}
+
+The heat-deficit result narrows the interpretation.
+GFS had less deficit than NAM under every feedback and footprint definition, but deficit increased in every simulation during the retained window (Figure~\ref{fig:v3-heatdeficit-traj}).
+This sheds doubt that it is erosion of the cold pool ("heat-deficit loss") that yields a weaker cold pool after spin-up.
+A longer integration through at least one complete diurnal cycle is required to test whether the products differ in cold-pool erosion or persistence.
+
+The spatial analysis gives a similarly bounded result.
+The product response was strongest below 500 m AGL and had the expected footprint-mean sign at every hour, but the sign-coherent share fell below two thirds at 1400--1500 UTC.
+The response is shallow and mean-coherent on d02, not spatially uniform throughout the window.
+
+\subsection{Secondary Experiments Narrow Rather than Expand the Claim}
+\label{sec:v3-disc-process}
+
+The secondary comparisons delimit the driving-product result rather than expanding it into a configuration ranking:
+
+\begin{itemize}
+  \item Figure~\ref{fig:v3-effects} shows that the driving-product contrasts are furthest from zero on the common temperature, stability, and transport-wind metrics.
+  \item The boundary-layer/surface-layer treatment produced a coherent but smaller response: temperature bias increased while wind absolute error decreased.
+  \item Nest-feedback effects remained small on both default- and fine-terrain branches, providing a five-hour robustness check rather than evidence that feedback is generally unimportant.
+  \item The slope-radiation response was negligible at the station columns, while the supplementary sidewall diagnostic shows a spatially organised response that the station metric missed.
+  \item The controlled terrain brackets show domain- and diagnostic-dependent responses but establish neither a terrain-source ranking nor a drainage or cold-air-volume mechanism.
+\end{itemize}
+
+\subsection{Observation and Design Limits Set the Next Experiment}
+\label{sec:v3-disc-domains}
+
+These outcomes motivate better measurements and future experiment design, but they do not support radiation or terrain-source superiority claims.
+The strongest result is the two-by-two GFS-versus-NAM matrix under one-way and two-way feedback.
+Two limitations are especially important for the next experiment:
+\begin{itemize}
+  \item \textbf{Native PBL height is scheme dependent.} MYJ and YSU need not diagnose the layer top in the same way, so common-height stability and transport remain the more comparable quantities.
+  \item \textbf{The floor-to-bench temperature contrast is not vertical validation.} Independent profiles are required to evaluate inversion depth, layer stability, and modelled heat deficit.
+\end{itemize}
+
+\section{Conclusions}
+\label{sec:v3-conclusions}
+
+The largest repeated response in the controlled archive is the GFS-versus-NAM driving-product contrast on the common d02 evaluation sample.
+Relative to NAM, GFS is warmer at the evaluated surface sites, about 3.6 K less stable from 50 to 500 m AGL, 0.8--1.0 m s$^{-1}$ faster in fixed-layer transport wind, and lower in footprint-mean, vertically integrated heat deficit under both feedback modes.
+The heat-deficit separation is a state offset, not demonstrated faster loss, and the surface metrics do not support a universal product ranking.
+Nest-feedback effects are much smaller, the PBL/surface-layer response is smaller and metric dependent, and the slope-radiation and fine-terrain responses do not support configuration-superiority claims.
+The next experiment requires a longer matched matrix, independent vertical observations, a common-support d02--d03 transfer test, and a design that separates initial from lateral-boundary forcing.
+The present result does not identify the responsible product component, validate inversion depth, establish event-scale persistence, calculate basin export, or predict ozone.
+Within those bounds, the driving-product treatment produced the largest repeated separation in the lower-basin meteorological state supplied to downstream chemistry during the five-hour window.
+The numerical summaries supporting the concise Results narrative are retained in Appendix~\ref{app:v3-data}; Supplementary Tables~S1--S2 and Figure~S1 retain the bounded secondary comparisons, terrain summary, and slope-aware-radiation response.
+
+\appendixtitles{yes}
+\appendixstart
+\appendix
+\section{Data Tables and Secondary Diagnostics}
+\label{app:v3-data}
+
+This appendix retains the core numerical detail supporting the concise Results narrative.
 
 \begin{table}[H]
-\caption{Paired factorial effects averaged over the five hourly spatial medians.
+\caption{Paired effects for the default-terrain driving-product/feedback matrix, averaged over the five hourly spatial medians.
 Positive temperature values indicate a warmer model-minus-observation bias, positive stability values indicate a more stable fixed layer, and positive transport-wind values indicate a larger layer-mean wind.
 The effects are deterministic descriptive contrasts rather than inferential estimates.}
-\label{tab:effects}
+\label{tab:v3-effects}
 \centering
 \begin{tabular}{lrrr}
 \toprule
@@ -321,272 +518,60 @@ Feedback interaction & +0.04 & -0.10 & +0.10 \\
 \end{tabular}
 \end{table}
 
-\subsection{Footprint Heat Deficit: A Weaker State without Faster Loss}
-
-The GFS members carried less footprint-mean heat deficit at every retained hour under every tested definition (Figure~\ref{fig:heat-deficit}; Table~\ref{tab:heat-deficit}).
-The mean GFS-minus-NAM differences were -1.23 and -1.25 MJ m$^{-2}$ under two-way and one-way feedback.
-Under the primary definition, five-hour means were 3.00 and 2.97 MJ m$^{-2}$ for GFS two-way and one-way, compared with 4.23 and 4.22 MJ m$^{-2}$ for NAM two-way and one-way.
-Heat deficit increased in all four simulations, however, so the predeclared faster-loss criterion failed under every definition.
-The product separation is therefore a state offset already present at 14:00 UTC, not evidence of faster GFS cold-pool loss during the five-hour window.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.82\textwidth]{figures/wrf_heat_deficit_d02_13to18.pdf}
-\caption{Footprint-mean heat-deficit trajectories for the four default-terrain matrix members and seven-definition sensitivity envelopes for the two GFS-minus-NAM pairs.
-The 13:00 UTC values are context only; all criteria use 14:00--18:00 UTC.
-GFS retains a smaller deficit throughout, but the deficit does not decline faster in either GFS member.}
-\label{fig:heat-deficit}
-\end{figure}
-
-\subsection{Response to Nest Feedback}
-
-The within-product feedback responses were much smaller than the GFS-minus-NAM contrasts, but they were not identical between products (Table~\ref{tab:effects}).
-For NAM, one-way minus two-way averaged +0.002 K for stability and +0.006 m s$^{-1}$ for transport wind.
-The NAM hourly effects changed sign and remained within -0.042 to +0.088 K and -0.035 to +0.033 m s$^{-1}$.
-
-For GFS, one-way minus two-way averaged -0.066 K for stability and +0.104 m s$^{-1}$ for transport wind.
-The stability effect ranged from -0.198 to +0.067 K and was negative in four of five hours, while the transport-wind effect ranged from +0.025 to +0.197 m s$^{-1}$ and was positive in all five hours.
-The paired feedback interaction averaged -0.103 K for stability and +0.097 m s$^{-1}$ for transport wind.
-The interaction stability changed sign once, while its transport-wind component remained positive in all five hours.
-The 2 m-temperature-bias interaction was +0.041~$^{\circ}$C, and the PBL-height interaction also changed sign.
-
-The evidence therefore bounds a small, product-conditioned feedback response on the present d02 sample.
-It does not establish that one-way and two-way nesting are generally equivalent.
-
-\subsection{Secondary Process and Terrain Treatments}
-
-The boundary-layer/surface-layer pair changed only MYJ/Eta versus YSU/MM5 while holding fine terrain and slope-aware radiation fixed.
-MYJ/Eta increased 2 m-temperature bias by 0.37~$^{\circ}$C, reduced 10 m-wind absolute error by 0.145 m s$^{-1}$, and increased fixed-layer transport wind by 0.098 m s$^{-1}$, with the same sign in all five hours for those metrics (Table~\ref{tab:process-effects}).
-These changes were smaller than the driving-product response on the shared lower-layer metrics, and the opposing temperature- and wind-error changes do not support a scheme ranking.
-
-The slope-radiation treatment produced essentially no change at the basin-floor station columns.
-An aspect-organized skin-temperature response appeared on the sidewalls, but the archived flat-plane shortwave field and missing surface heat fluxes could not test the mechanism directly.
-The predeclared screen therefore failed for a measurement-limited reason and supports no improvement or degradation claim.
-
-The fine-terrain feedback pair reproduced the small feedback bound: stability changed by +0.04 K and transport wind by -0.01 m s$^{-1}$, while both descriptive sensitivity intervals spanned zero (Table~\ref{tab:fine-feedback}).
-The default-minus-fine static-terrain contrast was small on d02 and failed its predeclared terrain-correlation criterion early in the window.
-The controlled coarse-terrain brackets produced larger diagnostic responses, but no criterion was declared before inspection, so they do not support a terrain-source ranking, drainage pathway, or cold-pool-volume claim.
-
-\section{Discussion}
-
-\subsection{The Main Result Is a Difference in the Supplied Lower-Layer State}
-
-The clearest result is not that one simulation wins a surface-score contest.
-It is that the GFS-driven members supplied a warmer, less stable, and faster-moving 50--500 m layer than the feedback-matched NAM members.
-The footprint heat-deficit calculation supports the same ordering beyond the fixed station columns.
-Replication across feedback makes the product separation robust to that configuration choice within this matrix, while the opposite pressure-error ordering prevents a universal product ranking.
-
-This distinction matters to an air-quality model because meteorology sets the layer in which ozone and its precursors mix and move.
-The GFS state is more consistent with dilution than the matched NAM state, but the transport-wind proxy is not basin export and the heat-deficit footprint is not an observed mixing volume.
-No chemical species were simulated, so the result identifies a meteorological precondition for attribution rather than an ozone response.
-That boundary is necessary because emissions, snow and cloud treatment, deposition, chemical mechanism, and meteorological confinement can compensate for one another in coupled simulations \citep{Ahmadov2015-zm,Neemann2015-ws,Matichuk2017-bq}.
-
-The driving-product treatment bundles each analysis system's native grid, vertical information, assimilated observations, initial state, and lateral-boundary evolution.
-The model-only Horsepool profiles at 12:00 and 13:00 UTC expose the supplied states (Figure~\ref{fig:spinup-profiles}) but neither separate early adjustment from boundary evolution nor validate inversion depth.
-``Driving-product response'' is therefore warranted; ``initial-condition effect'' is not.
-
-\subsection{The Difference Is a State Offset, Not Demonstrated Cold-Pool Loss}
-
-GFS had less footprint-mean heat deficit than NAM under every feedback and footprint definition, but deficit increased in every simulation during the retained window.
-The predeclared faster-loss test therefore failed, and the product separation must be described as a state offset already present by 14:00 UTC.
-A longer integration through at least one complete diurnal cycle is required to test whether the products differ in cold-pool erosion or persistence.
-
-The registered spatial analysis gives a similarly bounded result.
-The product response was strongest below 500 m AGL and had the expected footprint-mean sign at every hour, but the two-thirds sign-coherence criterion failed at 14:00--15:00 UTC.
-The response is shallow and mean-coherent on d02, not spatially uniform throughout the window.
-Preserving that failed criterion is more informative than relaxing it after inspection.
-
-\subsection{Secondary Experiments Narrow Rather than Expand the Claim}
-
-The common-pipeline overview makes the response hierarchy explicit on shared metrics.
-The boundary-layer/surface-layer treatment produced a coherent but smaller response, with temperature error worsening while wind error improved.
-It is a process-treatment contrast, not evidence that one named scheme is generally superior.
-Nest-feedback effects remained small at both default and fine terrain, so feedback protects the product result as a robustness check without becoming a second thesis.
-
-The slope-radiation and fine-terrain screens did not earn figures in the audited manuscript.
-Slope radiation was nearly invisible at basin-floor stations, while its sidewall skin-temperature signal could not be tested against a slope-corrected radiative or surface-flux diagnostic.
-The default-minus-fine terrain response was small and failed its predeclared correlation criterion; the wider fine-minus-coarse bracket is controlled and visually stronger, but it had no predeclared scientific gate.
-The result therefore supports no radiation or terrain-source superiority claim.
-The multiply confounded apparent resolution ladder is excluded for the same reason: nominal grid spacing cannot be isolated from its other configuration changes.
-
-\subsection{Observation and Design Limits Set the Next Experiment}
-
-The common-AGL result leads because it applies one geometric layer, station sample, time window, and aggregation to all four anchor simulations.
-Native PBL height cannot replace it because PBL height is scheme dependent and its product contrasts changed sign.
-The observed floor-to-bench temperature contrast is useful surface corroboration, but horizontally separated stations do not validate inversion depth, layer stability, or modeled heat deficit.
-The admitted ozone and satellite panels strengthen episode context without supplying that missing vertical validation or establishing a meteorology--ozone causal response.
-
-The d02 choice is a sampling decision rather than a resolution result.
-It retains all eleven stations, whereas d03 retains only four usable interior columns, but it may smooth slope, tributary, and terrain-edge responses.
-A predeclared transfer test must compare d02 and d03 over the same geographic support and station sample before the present hierarchy is assumed to hold at 333 m.
-
-The five-hour window, fixed two-hour spin-up exclusion, dependent hourly summaries, and incomplete Synoptic metadata limit every conclusion.
-The next discriminating experiment should combine a longer matched product/feedback matrix with an independent in-basin vertical reference and a design that separates initial from lateral-boundary forcing.
-Only then should selected meteorological states be crossed with emissions and chemical mechanisms to test an ozone response.
-All failed gates in the present archive remain failed until new evidence is generated under a newly declared criterion.
-
-\section{Conclusions}
-
-The largest repeated response in the controlled archive is the GFS-versus-NAM driving-product contrast on the common d02 evaluation sample.
-Relative to NAM, GFS is warmer at the evaluated surface sites, about 3.6 K less stable from 50 to 500 m AGL, 0.8--1.0 m s$^{-1}$ faster in fixed-layer transport wind, and about 1.2 MJ m$^{-2}$ lower in footprint-mean heat deficit under both feedback modes.
-The heat-deficit separation is a state offset, not demonstrated faster loss, and the surface metrics do not support a universal product ranking.
-Nest-feedback effects are much smaller, the boundary-layer/surface-layer response is smaller and metric dependent, and the slope-radiation and fine-terrain screens do not pass their declared gates.
-The present result does not identify the responsible product component, validate inversion depth, establish event-scale persistence, calculate basin export, or predict ozone.
-Within those bounds, the driving-product treatment produced the largest repeated separation in the lower-basin meteorological state supplied to downstream chemistry during the five-hour window.
-
-\clearpage
-\appendixtitles{yes}
-\appendixstart
-\appendix
-\section{Evidence Tables and Supplied-State Profiles}
-
-This appendix retains numerical detail needed to audit the concise Results narrative without admitting failed-gate or review-only figures.
-
 \begin{table}[H]
-\caption{Footprint-mean heat-deficit contrasts over the 14:00--18:00 UTC decision window.
-The primary definition uses the combined station-and-waypoint hull with a 2200 m crest; envelopes span all seven registered definitions.
-Values are deterministic descriptive contrasts in MJ m$^{-2}$.}
-\label{tab:heat-deficit}
-\centering
-\begin{tabular}{lrr}
-\toprule
-GFS $-$ NAM quantity & Two-way pair & One-way pair \\
-\midrule
-Mean difference, primary definition & -1.23 & -1.25 \\
-Hourly range, primary definition & -1.50 to -0.97 & -1.53 to -0.99 \\
-Hourly envelope, seven definitions & -1.77 to -0.70 & -1.80 to -0.71 \\
-GFS change, 14:00--18:00 UTC & +0.32 & +0.30 \\
-NAM change, 14:00--18:00 UTC & +0.15 & +0.13 \\
-Difference in change, primary definition & +0.17 & +0.17 \\
-Weaker-state definitions passed & 7/7 & 7/7 \\
-Faster-loss definitions passed & 0/7 & 0/7 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\begin{table}[H]
-\caption{Controlled process-treatment effects on the frozen station/common-AGL pipeline.
-Values are means of five hourly spatial medians; signs are positive/negative hours with exact zeros omitted.
-PBL height is scheme defined across the boundary-layer/surface-layer treatment.}
-\label{tab:process-effects}
-\centering
-\footnotesize
-\begin{tabular}{lrrrr}
-\toprule
-Metric & \multicolumn{2}{c}{Slope radiation (X1 $-$ X0)} & \multicolumn{2}{c}{MYJ/Eta (X2 $-$ X1)} \\
- & Mean & Signs & Mean & Signs \\
-\midrule
-T2 bias ($^{\circ}$C) & +0.001 & 3/1 & +0.37 & 5/0 \\
-10 m wind absolute error (m s$^{-1}$) & +0.001 & 2/2 & -0.145 & 0/5 \\
-Surface-pressure bias (Pa) & -0.12 & 0/4 & +6.3 & 5/0 \\
-Stability $S_{50:500}$ (K) & +0.004 & 3/1 & +0.11 & 3/2 \\
-Transport wind $U_{50:500}$ (m s$^{-1}$) & +0.006 & 4/0 & +0.098 & 5/0 \\
-PBL height (m) & +0.01 & 3/1 & -9.2 & 2/3 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\begin{table}[H]
-\caption{Surface corroboration for the driving-product contrasts.
-Every value uses the matched station and hour samples described in Section~\ref{sec:methods}.}
-\label{tab:surface-summary}
+\caption{Surface, spatial, and vertical corroboration for the two GFS-minus-NAM driving-product contrasts.
+Every value uses the matched station and hour samples described in Section~\ref{sec:v3-surface}.}
+\label{tab:v3-surface-summary}
 \centering
 \small
 \begin{tabularx}{\textwidth}{lLL}
 \toprule
-Evidence & Result & Interpretation limit \\
+Diagnostic & Result & Scope \\
 \midrule
 2 m temperature & GFS-minus-NAM bias contrast +1.79~$^{\circ}$C two-way and +1.76~$^{\circ}$C one-way; absolute-error differences +1.41 and +1.50~$^{\circ}$C & Same ordering as common-AGL stability \\
 10 m wind & Bias contrast +0.91 and +0.96 m s$^{-1}$; hourly absolute-error differences change sign & No stable wind-skill ordering \\
 Surface pressure & Absolute-error contrast -13.6 Pa two-way and -10.9 Pa one-way; negative in every hour & Opposite ordering from temperature, with small absolute differences \\
 Two-site surface index & Observed 12.63--20.21 K; NAM 16.44--18.07 K; GFS 7.35--11.74 K under two-way feedback & Horizontally separated surface contrast, not inversion strength or depth \\
-\bottomrule
-\end{tabularx}
-\end{table}
-
-\begin{table}[H]
-\caption{Registered spatial and vertical checks for the two GFS-minus-NAM contrasts over the d02 footprint.}
-\label{tab:spatial-summary}
-\centering
-\small
-\begin{tabularx}{\textwidth}{lLL}
-\toprule
-Quantity & Committed range & Criterion and outcome \\
-\midrule
-Mean 2 m potential-temperature difference & +0.89 to +1.16 K at 14:00--15:00 UTC; +2.00 to +2.74 K at 16:00--18:00 UTC & Positive at all ten pair-hours \\
-Footprint sign share & 0.64--0.67 at 14:00--15:00 UTC; 0.84--0.93 later & Two-thirds criterion failed at the first two hours \\
-Low-to-aloft absolute-response ratio & 1.45--3.12 & Greater than one at all ten pair-hours \\
+Mean 2 m potential-temperature difference & +0.89 to +1.16 K at 1400--1500 UTC; +2.00 to +2.74 K at 1600--1800 UTC & Positive at all ten pair-hours \\
+Footprint sign share & 0.64--0.67 at 1400--1500 UTC; 0.84--0.93 later & Early response is not spatially uniform \\
+Low-to-aloft absolute-response ratio & 1.45--3.12 & Response concentrated in the lower atmosphere \\
 50--500 m stability difference & -4.33 to -3.04 K & Negative at all ten pair-hours \\
-Gate conjunction & Two of three component criteria passed throughout & Failed because early floor sign coherence missed its threshold \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
 \begin{table}[H]
-\caption{Fine-terrain feedback contrast X9 minus X0, or two-way minus one-way.
-Values are means of five hourly spatial medians; sensitivity intervals are descriptive rather than inferential.}
-\label{tab:fine-feedback}
+\caption{Footprint-mean, vertically integrated heat-deficit contrasts over the 1400--1800 UTC decision window.
+The primary definition uses the combined station-and-waypoint hull with a 2200 m crest (4965 cells, 5277 km$^{2}$); envelopes span all seven footprint definitions.
+The values are deterministic descriptive contrasts in MJ m$^{-2}$.}
+\label{tab:v3-heatdeficit}
 \centering
-\footnotesize
-\begin{tabular}{lrrrr}
+\begin{tabular}{lrr}
 \toprule
-Metric & Mean & Hourly range & Signs ($+$/$-$) & Sensitivity interval \\
+GFS $-$ NAM quantity & Two-way pair & One-way pair \\
 \midrule
-Stability $S_{50:500}$ (K) & +0.04 & -0.09 to +0.14 & 4/1 & -0.03 to +0.10 \\
-Transport wind $U_{50:500}$ (m s$^{-1}$) & -0.01 & -0.07 to +0.03 & 3/2 & -0.03 to +0.01 \\
-PBL height (m) & +0.05 & -0.67 to +0.78 & 3/2 & -0.38 to +0.47 \\
-T2 bias ($^{\circ}$C) & -0.004 & -0.09 to +0.04 & 3/2 & -0.05 to +0.03 \\
-10 m wind absolute error (m s$^{-1}$) & +0.03 & +0.001 to +0.06 & 5/0 & +0.01 to +0.06 \\
-Surface-pressure bias (Pa) & -0.77 & -1.23 to -0.35 & 0/5 & -1.06 to -0.50 \\
+Mean difference (primary) & -1.23 & -1.25 \\
+Hourly range (primary) & -1.50 to -0.97 & -1.53 to -0.99 \\
+Hourly envelope (seven definitions) & -1.77 to -0.70 & -1.80 to -0.71 \\
+GFS change, 1400--1800 UTC & +0.32 & +0.30 \\
+NAM change, 1400--1800 UTC & +0.15 & +0.13 \\
+Difference in change (primary) & +0.17 & +0.17 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\begin{table}[H]
-\caption{Static-terrain diagnostics retained after the failed default-minus-fine gate and the closed coarse-member lineage check.}
-\label{tab:terrain-summary}
-\centering
-\small
-\begin{tabularx}{\textwidth}{lLLL}
-\toprule
-Contrast & Terrain difference & 2 m response & Status \\
-\midrule
-Default minus fine & 7.9 m RMS; -55 to +60 m range & Elevation-band means 0.07--0.27 K; terrain correlation below 0.3 at 14:00--16:00 UTC & Predeclared conjunction failed \\
-Coarse brackets & 91.9/93.1 m RMS; extrema to -462/+487 m & Slope-band means 1.2--1.5 K; terrain correlation 0.50--0.67 & Descriptive only; no predeclared gate \\
-Coarse-member lineage & As-run namelist matches the controlled family; terrain is materially smoother & Configuration caveat closed & Supports controlled-bracket status, not a terrain ranking \\
-\bottomrule
-\end{tabularx}
-\end{table}
-
-\begin{figure}[H]
-\centering
-\begin{minipage}[t]{0.49\textwidth}
-\centering
-\textbf{(a)}\\[-2pt]
-\includegraphics[width=\linewidth]{figures/theta_profiles_horsepool_gfs_nam_12z.pdf}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.49\textwidth}
-\centering
-\textbf{(b)}\\[-2pt]
-\includegraphics[width=\linewidth]{figures/theta_profiles_horsepool_gfs_nam_13z.pdf}
-\end{minipage}
-\caption{Model-only d03 potential-temperature profiles at Horsepool for GFS two-way and NAM two-way.
-(a) The 12:00 UTC supplied states and (b) the 13:00 UTC one-hour forecasts use identical axes.
-Gray shading marks levels below local model terrain, and the dashed 2200 m line is the fixed heat-deficit reference rather than an observed cold-pool top.
-Changes between panels include both early model adjustment and one hour of lateral-boundary evolution; no colocated observed profile validates the modeled layer.}
-\label{fig:spinup-profiles}
-\end{figure}
-
 \vspace{6pt}
 
-\authorcontributions{\textbf{[Coauthor completion item: assign and approve CRediT roles for all authors.]}}
-\funding{\textbf{[Coauthor completion item: insert verified funders and grant numbers.]}}
+\authorcontributions{\textbf{[Author input required: assign and approve CRediT roles for all authors.]}}
+\funding{\textbf{[Author input required: insert verified funders and grant numbers.]}}
 \institutionalreview{Not applicable.}
 \informedconsent{Not applicable.}
-\dataavailability{The analysis scripts, derived summaries, selected EPA AQS daily records, run and comparison inventories, provenance records, and promoted figures used for this draft are retained in the private working repository.
-\textbf{[Before submission: add a public repository or DOI, licenses and access conditions for raw WRF, Synoptic, EPA AQS, and NASA browse data, and the exact release commit.]}}
-\acknowledgments{\textbf{[Coauthor completion item: identify computational facilities, data providers, and contributors who do not meet the authorship criteria.]}}
-\conflictsofinterest{\textbf{[All authors must confirm the conflicts-of-interest statement.]}}
+\dataavailability{The analysis scripts, derived hourly and paired summaries, heat-deficit tables, selected EPA AQS daily records, run and comparison inventories, provenance records, and promoted figures used for this draft are retained in the private working repository.
+Raw WRF inputs and Synoptic observations remain subject to the respective providers' access and reuse terms.}
+\acknowledgments{We acknowledge the University of Utah Center for High Performance Computing for computational resources.
+We acknowledge Synoptic Data PBC for access to Mesonet API observations.
+We thank Brian K. Blaylock for the Herbie and SynopticPy packages, which supported source-data retrieval and Synoptic API access, respectively.\footnote{Herbie: \url{https://doi.org/10.5281/zenodo.4567540}; SynopticPy: \url{https://doi.org/10.5281/zenodo.4567546}.}}
+\conflictsofinterest{\textbf{[Author input required: all authors must confirm the conflicts-of-interest statement.]}}
 \useofartificialintelligence{Generative artificial intelligence tools, including Anthropic Claude and OpenAI Codex, were used during manuscript preparation to assist with literature synthesis, provenance and analysis-code review, and drafting and editing.
 The authors reviewed and edited the resulting material and take responsibility for the content.}
 
