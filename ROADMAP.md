@@ -62,7 +62,7 @@ mine v3 for additional breadth by default.
 - Obtain Michael's review of the four promoted run identities, configurations, and
   diagnostic meanings.
 - Close or explicitly bound observation QC/licensing and product/model citation gaps.
-- Recheck every number and mathematical definition against exact registered artifacts.
+- Recheck every number and mathematical definition against exact registered artefacts.
 
 ### Final prose and review
 

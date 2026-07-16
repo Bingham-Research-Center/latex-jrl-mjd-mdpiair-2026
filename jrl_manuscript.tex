@@ -84,7 +84,7 @@ The domains are shown in Fig XX. The 1-km d02 was selected for some observation 
 Figure~\ref{fig:v3-locator} combines the reporting-station geometry with the full nested-domain layout.
 The use of 1-km instead of innermost 333-m grids does not ensure both domains generate a similar response, and again, deeper analysis is outside scope of this study. 
 Four weather stations spanning the foothills' altitude difference provide surface context from 31 January 0000 UTC to 4 February 0000 UTC (Fig. XX).
-Observed and modeled surface potential temperature for a two-site structural index was calculated as $\theta=T(1000/p)^{0.2854}$, with $T$ in kelvin and $p$ in hPa, and the index was defined as Mountain Home on the northwest bench minus Pariette Draw on the basin floor (locations labelled in Fig. XX).
+Observed and modelled surface potential temperature for a two-site structural index was calculated as $\theta=T(1000/p)^{0.2854}$, with $T$ in kelvin and $p$ in hPa, and the index was defined as Mountain Home on the northwest bench minus Pariette Draw on the basin floor (locations labelled in Fig. XX).
 A caveat is the horizontal separation between the two sites, requiring scepticism of the index as a near-surface contrast, rather than free-air inversion strength, depth of cold air, etc.
 
 Episode-scale ozone context came from the current EPA Air Quality System (AQS) AirData daily archive for 1 January--28 February 2013.
@@ -156,7 +156,7 @@ Native GFS and NAM data provides 27 and 40 metgrid levels, respectively.
 
 \begin{table}[H]
 \caption{Controlled comparisons referenced in this draft, their authoritative differencing orientation, and current status.
-``Confirmed'' means a ledgered claim supports scoped prose now; ``analyzed'' means the matched recomputation is complete and committed; ``diagnostic'' means figures exist but no gate-passed quantitative claim; ``context'' means the comparison is not controlled.}
+``Confirmed'' means a ledgered claim supports scoped prose now; ``analysed'' means the matched recomputation is complete and committed; ``diagnostic'' means figures exist but no gate-passed quantitative claim; ``context'' means the comparison is not controlled.}
 \label{tab:v3-comparisons}
 \centering
 \small
@@ -223,7 +223,7 @@ Due to the single case and high sensitivity to multiple factors, the authors foc
 We estimate basin-volume heat deficit following Whiteman et al. (REF), whose value $\Delta H$ represents the sensible heat required to remove a basin temperature inversion.
 A close implementation of the column diagnostic is found in Adler et al. (REF).
 Let $p_{s}$ and $p_{c}$ denote the pressures at the surface and fixed crest reference, respectively, with $p_{c}<p_{s}$.
-The present area-normalized atmospheric heat-deficit proxy was defined as $H=(c_{p}/g)\int_{p_{c}}^{p_{s}}\max\{\theta_{\mathrm{crest}}-\theta(p),0\}\,dp$, where $\theta_{\mathrm{crest}}$ is the potential temperature interpolated to the crest height in each modeled column.
+The present area-normalised atmospheric heat-deficit proxy was defined as $H=(c_{p}/g)\int_{p_{c}}^{p_{s}}\max\{\theta_{\mathrm{crest}}-\theta(p),0\}\,dp$, where $\theta_{\mathrm{crest}}$ is the potential temperature interpolated to the crest height in each modelled column.
 $H$ is reported as a cell-area-weighted mean over an evaluation footprint in MJ\,m$^{-2}$.
 The footprint is the convex hull of the eleven evaluation stations (registered basin waypoints), intersected with model terrain below the crest reference height.
 The definition of Whiteman's $H$ herein prescribed a 2200\,m crest; with the convex hull, the sampling area covers \approx5000 cells and \approx5300\,km$^{2}$.
@@ -271,7 +271,7 @@ The date chosen lies near the median of case severity for this two-month period,
 \includegraphics[width=\textwidth]{figures/episode_context_snow_ozone_janfeb2013.pdf}
 \caption{Observed context for the 2 February 2013 simulation date.
 (a) NASA GIBS Terra MODIS corrected reflectance, bands 7-2-1, for the 2 February calendar day; snow and ice generally appear cyan, most liquid cloud appears white, and ice cloud may also appear cyan.
-The browse layer is not a raw-granule crop or quantitative snow retrieval; the nearest center-covering Terra granule was acquired at 18:15--18:20 UTC.
+The browse layer is not a raw-granule crop or quantitative snow retrieval; the nearest centre-covering Terra granule was acquired at 18:15--18:20 UTC.
 (b) EPA AQS first maximum value from the ``Ozone 8-hour 2015'' daily-summary row at Ouray, Redwash, Roosevelt, Vernal, and Little Mountain, converted from ppm to ppb and plotted by AQS local date without recomputation.
 All five sites have 59 daily rows; hollow markers identify the seven site-days with less than 75\% within-day observation coverage.
 No regulatory threshold is shown, and the panel is episode context rather than chemistry evaluation or meteorology--ozone attribution.}
@@ -305,7 +305,7 @@ The PBL/surface-layer treatment is smaller but detectable, whereas the slope-rad
 \centering
 \includegraphics[width=\textwidth]{figures/fig_common_pipeline_effects.pdf}
 \caption{Mean five-hour effects for the controlled comparisons that share the station/common-AGL pipeline.
-Colors and marker shapes identify driving-product, process-treatment, feedback, and interaction contrasts; each row states its differencing direction.
+Colours and marker shapes identify driving-product, process-treatment, feedback, and interaction contrasts; each row states its differencing direction.
 Driving-product effects are farthest from zero for temperature, fixed-layer stability, and transport wind; the PBL/surface-layer response is smaller, while slope-radiation and feedback effects cluster near zero on those scales.
 The different ordering of pressure and wind error prevents interpreting the panel as an overall configuration ranking.
 Whiskers are descriptive block-sensitivity intervals for five dependent hourly medians, not confidence intervals.
@@ -347,15 +347,15 @@ Hence, no single surface score therefore ranks the products, showing benefit of 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.94\textwidth]{figures/wrf_inversion_index_feb0102_gfs2way_vs_nam2way_d02_14to18.pdf}
-\caption{Observed and modeled Mountain Home-minus-Pariette Draw surface potential-temperature contrast from 14:00 to 18:00 UTC on 2 February 2013.
-The modeled series are X6 (GFS two-way) and X5 (NAM two-way) sampled on d02, and all three series contain the same five retained hourly values after the first two forecast hours were excluded.
+\caption{Observed and modelled Mountain Home-minus-Pariette Draw surface potential-temperature contrast from 14:00 to 18:00 UTC on 2 February 2013.
+The modelled series are X6 (GFS two-way) and X5 (NAM two-way) sampled on d02, and all three series contain the same five retained hourly values after the first two forecast hours were excluded.
 The quantity is a horizontally separated bench-minus-floor surface contrast, not inversion depth, a colocated vertical stability measure, or a cold-pool classification threshold.}
 \label{fig:v3-bulk-theta}
 \end{figure}
 
 (This paragraph is confusing and needs a total plain rewrite.)
 The five-hour means (OF WHAT?) were 16.94 K for the observations, 17.03 K for NAM two-way, and 9.95 K for GFS two-way.
-The close NAM value is corroboration for this one surface index, not validation of modeled vertical structure or an overall surface-skill ranking. (WHAT?)
+The close NAM value is corroboration for this one surface index, not validation of modelled vertical structure or an overall surface-skill ranking. (WHAT?)
 Across the registered footprint, the mean GFS-minus-NAM near-surface response was positive and the vertical response remained concentrated below 500 m AGL under both feedback modes (Table~\ref{tab:v3-spatial-summary}).
 The predeclared spatial gate nevertheless failed because only 0.64--0.67 of the footprint shared the median sign at 14:00--15:00 UTC, just below the two-thirds criterion. (WHAT?)
 The result is therefore shallow and mean-coherent, but not spatially uniform throughout the retained window.
@@ -420,7 +420,7 @@ The present study does not seek a ranking of performance in this case, but rathe
 
 The GFS state is more consistent with dilution than the analogous NAM run, but the transport-wind proxy and heat-deficit values are not full substitutes for basin export and observed mixing volume.
 This distinction is necessary due to the inextricable snowballing of error in emissions, snow and cloud mechanisms, chemical deposition, chemical-reaction mechanisms, and meteorological "air-mass boundaries" can compensate for one another in coupled simulations \citep{Ahmadov2015-zm,Neemann2015-ws,Matichuk2017-bq}.
-Ultimately, a search conducted under a mentality of "one true model" is risky due to low predictability of WRF simulations in complex terrain and sub-kilometer grid-spacing (inherent property of flow; Lorenz), and researchers are encouraged to run Monte Carlo (ensemble) simulation systems that vary dials shown most sensitive to the phenomenon of interest.
+Ultimately, a search conducted under a mentality of "one true model" is risky due to low predictability of WRF simulations in complex terrain and sub-kilometre grid-spacing (inherent property of flow; Lorenz), and researchers are encouraged to run Monte Carlo (ensemble) simulation systems that vary dials shown most sensitive to the phenomenon of interest.
 
 The model-only d03 Horsepool profiles at 12:00 and 13:00 UTC (Figure~\ref{fig:v3-spinup-profiles}) expose those supplied states but neither separate early adjustment from boundary evolution nor validate inversion depth. (DO WE NOT SEE A SPIN UP? FIGURE HERE?)
 
@@ -454,7 +454,7 @@ The PBL parameterisation and terrain-detail comparisons delimit the main finding
 
 
 \subsection{Viability of $\Delta x$ = 111\,m for diagnostics}
-Within X8 alone, the 10-min diagnostic resolves a strong modeled morning northward pulse across the northern reference line followed by relaxation (Appendix~B).
+Within X8 alone, the 10-min diagnostic resolves a strong modelled morning northward pulse across the northern reference line followed by relaxation (Appendix~B).
 (More here? Flux estimatation? Appendix/Supplementary?)
 
 \subsection{Observation and Design Limits Set the Next Experiment}
@@ -640,9 +640,9 @@ X4 lineage & As-run namelist matches the controlled family; terrain is materiall
 }{\fbox{\parbox[c][0.28\textheight][c]{0.88\linewidth}{\centering CHPC render pending: X6 and X5 Horsepool profiles at 13:00 UTC.}}}
 \end{minipage}
 \caption{Model-only d03 potential-temperature profiles at Horsepool for X6 (GFS two-way) and X5 (NAM two-way).
-(a) The 12:00 UTC initialized states and (b) the 13:00 UTC one-hour forecasts use identical axes.
-Gray shading marks levels below the local model terrain, and the dashed 2200 m line is the fixed heat-deficit crest reference rather than an observed cold-pool top.
-Changes between panels include both early model adjustment and one hour of lateral-boundary evolution; no colocated observed profile validates the modeled layer.}
+(a) The 12:00 UTC initialised states and (b) the 13:00 UTC one-hour forecasts use identical axes.
+Grey shading marks levels below the local model terrain, and the dashed 2200 m line is the fixed heat-deficit crest reference rather than an observed cold-pool top.
+Changes between panels include both early model adjustment and one hour of lateral-boundary evolution; no colocated observed profile validates the modelled layer.}
 \label{fig:v3-spinup-profiles}
 \end{figure}
 
@@ -662,7 +662,7 @@ The domain-specific panels display spatial and vertical response patterns but ex
 \centering
 \includegraphics[width=0.88\textwidth]{verification/figures/candidates/wrf_radiation_response_cmp07_d02.pdf}
 \caption{Diagnostic for the slope-radiation screen (ANA-18; C31).
-The archived flat-plane shortwave field did not express the treatment, while skin temperature showed an aspect-organized response on steep terrain.
+The archived flat-plane shortwave field did not express the treatment, while skin temperature showed an aspect-organised response on steep terrain.
 The predeclared screen failed for this measurement-limited reason, and the figure supports no configuration ranking.}
 \label{fig:v3-radiationpanel}
 \end{figure}
@@ -685,9 +685,9 @@ They support no resolution, validation, basin-export, event-persistence, or hydr
 \includegraphics[width=0.82\textwidth]{verification/figures/candidates/x8_deficit_transport_map_15z.pdf}%
 }{\fbox{\parbox[c][0.42\textheight][c]{0.88\textwidth}{\centering CHPC render pending: X8 d04 heat deficit and horizontal deficit transport at 15:00 UTC.}}}
 \caption{Crest-referenced heat deficit $H$ and horizontal deficit transport $\mathbf{F}$ in X8 d04 at 15:00 UTC.
-The nominal grid spacing is 111.111 m, the column reference is the local potential temperature at 2200 m MSL, colors show $H$, and arrows show $\mathbf{F}$.
+The nominal grid spacing is 111.111 m, the column reference is the local potential temperature at 2200 m MSL, colours show $H$, and arrows show $\mathbf{F}$.
 The three short lines are neutral model-terrain-incision gates, and the longer line is a northern reference transect rather than a basin boundary.
-This single-run field illustrates modeled redistribution only.}
+This single-run field illustrates modelled redistribution only.}
 \label{fig:v3-x8-transport-map}
 \end{figure}
 
@@ -698,7 +698,7 @@ This single-run field illustrates modeled redistribution only.}
 }{\fbox{\parbox[c][0.34\textheight][c]{0.90\textwidth}{\centering CHPC render pending: X8 signed deficit transport across four transects at 10 min cadence.}}}
 \caption{Signed X8 d04 deficit transport at 10 min cadence across three terrain-incision gates and the northern reference transect.
 Every line runs west to east, so positive values indicate southward transport and negative values northward transport.
-The shaded 12:00--14:00 UTC interval is spin-up context, and the retained 14:00--18:00 UTC variation describes a modeled morning reversal within X8 rather than observed canyon drainage or basin export.
+The shaded 12:00--14:00 UTC interval is spin-up context, and the retained 14:00--18:00 UTC variation describes a modelled morning reversal within X8 rather than observed canyon drainage or basin export.
 Within the retained window, the northern reference minimum was $-81.61$~GW at 14:40 UTC and its maximum was $+9.69$~GW at 17:50 UTC.}
 \label{fig:v3-x8-gates}
 \end{figure}
@@ -737,7 +737,7 @@ The spatial mean excludes 15 cells, nominally 1.67 km, from each d04 edge.
 Ten-minute finite-difference storage is compared with endpoint-mean horizontal convergence, and their difference is retained as unresolved rather than attributed uniquely to diabatic heating.
 Across retained intervals, storage and horizontal convergence had $r=0.92$ and the unresolved-tendency RMSE was 0.21 MJ m$^{-2}$ h$^{-1}$.
 Their hourly means were $+0.251/+0.202$ MJ m$^{-2}$ h$^{-1}$ during 15:00--16:00 UTC and $-0.466/-0.312$ MJ m$^{-2}$ h$^{-1}$ during 16:00--17:00 UTC, respectively.
-The scatter's time coloring shows temporal association within one model run and does not establish budget closure, independent validation, or a resolution response.}
+The scatter's time colouring shows temporal association within one model run and does not establish budget closure, independent validation, or a resolution response.}
 \label{fig:v3-x8-budget}
 \end{figure}
 
@@ -750,7 +750,7 @@ The scatter's time coloring shows temporal association within one model run and 
 \dataavailability{The analysis scripts, derived hourly and paired summaries, heat-deficit tables, selected EPA AQS daily records, run and comparison inventories, provenance records, and promoted figures used for this draft are retained in the private working repository.
 The review-only X8 packet includes the exact 10-min transport and tendency tables plus hashes for all 37 d04 inputs in \path{verification/provenance/x8-deficit-transport-13971080.json}.
 The other exploratory renders reproduced in this working revision are catalogued with source paths and status in \path{figures-draft/HARVEST.md}.
-\rewritegate{Add a public repository or DOI, licenses and access conditions for raw WRF and Synoptic data, and the exact release commit before submission.}}
+\rewritegate{Add a public repository or DOI, licences and access conditions for raw WRF and Synoptic data, and the exact release commit before submission.}}
 \acknowledgments{\rewritegate{Identify computational facilities, data providers, and contributors who do not meet the authorship criteria.}}
 \conflictsofinterest{\rewritegate{All authors must confirm the conflicts-of-interest statement.}}
 \useofartificialintelligence{Generative artificial intelligence tools, including Anthropic Claude and OpenAI Codex, were used during manuscript preparation to assist with literature synthesis, provenance and analysis-code review, and drafting and editing.

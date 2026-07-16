@@ -26,7 +26,7 @@ It does not duplicate large model output or reusable software.
 | Which full-figure sets exist or still need rendering | `verification/figures/archive-inventory.md` |
 | Which paper-specific full-figure configuration and Slurm wrapper to use | `verification/config/figures/` and `verification/slurm/pelican_figures.slurm` |
 | Which figures may appear in `main.tex` | `figures/MANIFEST.md` |
-| Where a paper, critique, dataset, namelist, script, or external artifact belongs | `notes/resource-map.md` |
+| Where a paper, critique, dataset, namelist, script, or external artefact belongs | `notes/resource-map.md` |
 
 Other repositories keep narrower technical responsibilities:
 
@@ -43,6 +43,8 @@ Do not edit it or add new manuscript-facing truth there.
 ## Start here
 
 - Final-draft starting point: [`main.tex`](main.tex)
+- John's tracked author draft: [`jrl_manuscript.tex`](jrl_manuscript.tex), with
+  the dated review in [`notes/jrl-manuscript-review-2026-07-16.md`](notes/jrl-manuscript-review-2026-07-16.md)
 - Readiness and branch/repo audit: [`notes/final-draft-readiness-2026-07-15.md`](notes/final-draft-readiness-2026-07-15.md)
 - Ordered required and optional register: [`tasks/final-draft-100.md`](tasks/final-draft-100.md)
 - Completed Codex caretaker record: [`notes/manuscript-v3-integration-plan.md`](notes/manuscript-v3-integration-plan.md)
@@ -96,6 +98,9 @@ citation-independent editing, and agents must not hand-edit the current or expor
 ## Repository roles
 
 - `main.tex` is the audited 17-page final-draft starting point and submission target.
+- `jrl_manuscript.tex` is John's tracked author draft based on the maximal-v3
+  donor; accepted material must be integrated deliberately before it replaces
+  `main.tex` as the submission target.
 - `_manuscript_v3.tex` is the over-inclusive 26-page caretaker snapshot; its
   diagnostic figures and Appendix B review layout are not submission admissions.
 - `_manuscript_test.tex` and `rewrite/` form a temporary evidence-led workbench for the total rewrite; neither is included by `make submission`.
@@ -104,7 +109,7 @@ citation-independent editing, and agents must not hand-edit the current or expor
 - `verification/` retains scripts, small derived tables, candidate diagnostics, and provenance inherited from Michael's work.
 - `notes/` carries the compact reasoning that must not be mistaken for manuscript evidence.
 
-Routine PDFs, ignored `jrl_manuscript.*`, bulk observations, WRF output, and raw
+Routine PDFs, ignored `jrl_manuscript.pdf`, bulk observations, WRF output, and raw
 provenance archives remain local.
 
 ## Hosts

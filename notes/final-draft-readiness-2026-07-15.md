@@ -1,5 +1,13 @@
 # Final-draft readiness review — 15 July 2026
 
+## Author-draft update — 16 July 2026
+
+John's formerly ignored v3 copy is now the tracked `jrl_manuscript.tex` author
+draft, beginning with sole-author commit `f9028dd`.
+The audit below records the 15 July pre-edit state; `main.tex` remains the audited
+submission starting point until accepted author changes are integrated.
+The current author-draft review is `notes/jrl-manuscript-review-2026-07-16.md`.
+
 ## Verdict
 
 `jrl/codex-v3-integration` is the best branch from which to start the final
@@ -15,8 +23,9 @@ The manuscript lineages are now deliberately different:
   evidence tables, and only dual-promoted figures.
 - `_manuscript_v3.tex` is the 26-page maximal caretaker record: it preserves
   diagnostic terrain, radiation, and X8 material without promoting those claims.
-- ignored `jrl_manuscript.tex` is an exact local copy of v3 for John's last-Codex
-  review and is not part of Git or the submission package.
+- at this 15 July snapshot, ignored `jrl_manuscript.tex` was an exact local copy
+  of v3 for John's last-Codex review and was not part of Git or the submission
+  package; the 16 July update above supersedes that working-copy description.
 - `_manuscript_test.tex` remains the experimental blank-slate scaffold.
 
 The manuscript audit anchor is `59fa4a0`.
@@ -43,7 +52,7 @@ closed far enough for coauthor review.
 
 | Repository | Current evidence | Rule for this paper |
 |---|---|---|
-| `../brc-tools` | Clean `main` at `2e1f84b`; contains X8 work from PR #37 and the AQS client from PR #38. The manuscript accepts `548fee4` or newer. Targeted verification previously passed 47 tests; the final AQS rerun passed 6 tests. | Reusable download, reduction, verification, and plotting code lives here. Record the exact commit for every generated artifact. |
+| `../brc-tools` | Clean `main` at `2e1f84b`; contains X8 work from PR #37 and the AQS client from PR #38. The manuscript accepts `548fee4` or newer. Targeted verification previously passed 47 tests; the final AQS rerun passed 6 tests. | Reusable download, reduction, verification, and plotting code lives here. Record the exact commit for every generated artefact. |
 | `../lawson-davies-air-wrf-2026` | Legacy donor at `7009711` on `jrl/first-draft`, with John's existing change to `FIRST-50-MICROTASKS.md`. | Leave untouched. This repository supersedes its manuscript and checklist; mine history only through explicit evidence routes. |
 | Historical `brc-wrf` references | No current sibling checkout is present on this writing host. Old run rows retain commit labels from execution time. | Those labels are provenance notes, not a live source of truth. Run identity comes from the paper inventories, WRF headers, namelist fingerprints, and immutable CHPC packets. |
 | Any `wrf-chpc` checkout on another host | Build/toolchain context may differ from the paper's as-run WRF 4.8.0 cases. | Never use a build-repo version or default as production-run evidence. |
@@ -68,7 +77,7 @@ The promoted heat deficit now uses
 with `p_c < p_s`, a fixed registered footprint, and a predeclared central
 2200 m crest value within a 2100--2300 m sensitivity bracket.
 The paper reports a state offset; the faster-loss gate failed and remains failed.
-The two-hour circular-block intervals are labeled descriptive dependence checks,
+The two-hour circular-block intervals are labelled descriptive dependence checks,
 not confidence intervals from five independent hours.
 
 The AQS panel reproduces 295 EPA-reported daily summaries for five selected sites.
