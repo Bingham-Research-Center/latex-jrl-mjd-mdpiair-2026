@@ -33,3 +33,14 @@ The reviewed manuscript and supplement were built from source commit
   `Definitions/` files, and the nine admitted main figures.
 - The supplement archive contains only `supplement.tex`, `supplement.pdf`, and
   admitted Figure S1.
+
+## Cover-letter attachment PDFs
+
+The following PDFs were freshly compiled from the byte-identical staging sources
+under `dist/` after the source-package check. They are the attachment copies for
+the cover letter, not additional MDPI upload files:
+
+| Artefact | Repository path | SHA-256 |
+|---|---|---|
+| Main manuscript attachment PDF | `drafts/manuscript-main_2026-07-16_final-submission_a0a1c30.pdf` | `fe54b1a8db572d79f535e994acf4d53127ed304ce16c2679cd287aaf53c0bf36` |
+| Supplement attachment PDF | `drafts/jrl-supplement_2026-07-16_final-submission_a0a1c30.pdf` | `aa092d46ab3f343d3d5848d2d0abde408db0e0edf389e04b4ff647470117e454` |
