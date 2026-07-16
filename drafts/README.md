@@ -13,9 +13,9 @@ This directory is excluded from the MDPI submission allowlist.
 
 Latest review snapshots:
 
-- `jrl-manuscript_2026-07-16_compact-utc-draft.pdf` — 19-page build of the
-  tracked John author draft using compact UTC time notation (for example,
-  `1400 UTC`).
+- `jrl-manuscript_2026-07-16_compact-utc-draft.pdf` — 18-page build of the
+  tracked John author draft using compact civil-time notation in every time
+  zone (for example, `1400 UTC` and `0700 MST`).
 
 - `jrl-supplement_2026-07-16_compact-utc-draft.pdf` — 3-page separate
   supplementary-material build paired with the 16 July author draft.
