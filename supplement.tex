@@ -1,20 +1,41 @@
-\documentclass[a4paper,11pt]{article}
+\documentclass[air,article,submit,moreauthors]{Definitions/mdpi}
 
-\usepackage[margin=1in]{geometry}
-\usepackage{booktabs}
-\usepackage{float}
-\usepackage{graphicx}
-\usepackage{tabularx}
-
+% Supplementary materials: S-prefixed table and figure numbering.
 \renewcommand{\thetable}{S\arabic{table}}
 \renewcommand{\thefigure}{S\arabic{figure}}
+\usepackage{tabularx}
 
-\title{Supplementary Materials for ``WRF Cold-Pool Sensitivities Relevant to Winter-Ozone Modelling in the Uinta Basin''}
-\author{John R. Lawson, Michael J. Davies, Loknath Dhar, and Seth N. Lyman}
-\date{16 July 2026}
+\firstpage{1}
+\makeatletter
+\setcounter{page}{\@firstpage}
+\makeatother
+\pubvolume{1}
+\issuenum{1}
+\articlenumber{0}
+\pubyear{2026}
+\copyrightyear{2026}
+\datereceived{ }
+\daterevised{ }
+\dateaccepted{ }
+\datepublished{ }
+
+\Title{Supplementary Materials: WRF Cold-Pool Sensitivities Relevant to Winter-Ozone Modelling in the Uinta Basin}
+
+\newcommand{\orcidauthorA}{0000-0003-0305-4090}
+\newcommand{\orcidauthorB}{0009-0009-9083-6568}
+\Author{John R. Lawson $^{1,2,}$*\orcidA{}, Michael J. Davies $^{1}$\orcidB{}, Loknath Dhar $^{1,3}$ and Seth N. Lyman $^{1,3}$}
+\AuthorNames{John R. Lawson, Michael J. Davies, Loknath Dhar and Seth N. Lyman}
+
+\address{%
+$^{1}$ \quad Bingham Research Center, Utah State University, Vernal, UT 84078, USA;\\
+$^{2}$ \quad Department of Mathematics and Statistics, Utah State University, Logan, UT 84322, USA;\\
+$^{3}$ \quad Department of Chemistry and Biochemistry, Utah State University, Logan, UT 84322, USA}
+\corres{Correspondence: john.lawson@usu.edu}
+
+\abstract{This document collects bounded secondary diagnostics that support the main article.
+It does not change the controlled driving-product result or the status of any predeclared gate.}
 
 \begin{document}
-\maketitle
 
 These supplementary materials retain bounded secondary diagnostics from the 2 February 2013 Uinta Basin WRF case.
 They do not change the article's controlled driving-product result or the status of its failed gates.
@@ -50,7 +71,7 @@ PBL height (m) & +0.01 & 3/1 & -9.2 & 2/3 \\
 \toprule
 Contrast & Terrain difference & 2 m response & Status \\
 \midrule
-Default minus fine & 7.9 m RMS; -55 to +60 m range & Elevation-band means 0.07--0.27 K; terrain correlation below 0.3 at 14:00--16:00 UTC & Predeclared conjunction failed \\
+Default minus fine & 7.9 m RMS; -55 to +60 m range & Elevation-band means 0.07--0.27 K; terrain correlation below 0.3 at 1400--1600 UTC & Predeclared conjunction failed \\
 Coarse brackets & 91.9/93.1 m RMS; extrema to -462/+487 m & Slope-band means 1.2--1.5 K; terrain correlation 0.50--0.67 & Descriptive only; no predeclared gate \\
 Coarse-member lineage & As-run namelist matches the controlled family; terrain is materially smoother & Configuration caveat closed & Supports controlled-bracket status, not a terrain ranking \\
 \bottomrule

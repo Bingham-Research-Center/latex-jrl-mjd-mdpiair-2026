@@ -1,0 +1,32 @@
+\begin{thebibliography}{999}
+
+\bibitem[Ahmadov et~al.(2015)Ahmadov, McKeen, Trainer, Banta, Brewer, Brown, Edwards, De~Gouw, Frost, Gilman, and {Others}]{Ahmadov2015-zm}
+Ahmadov, R.; McKeen, S.; Trainer, M.; Banta, R.; Brewer, A.; Brown, S.; Edwards, P.M.; De~Gouw, J.A.; Frost, G.J.; Gilman, J.;  et~al.
+\newblock Understanding high wintertime ozone pollution events in an oil-and natural gas-producing region of the western {US}.
+\newblock {\em Atmos. Chem. Phys.} {\bf 2015}, {\em 15},~411--429.
+
+\bibitem[Neemann et~al.(2015)Neemann, Crosman, Horel, and Avey]{Neemann2015-ws}
+Neemann, E.M.; Crosman, E.T.; Horel, J.D.; Avey, L.
+\newblock Simulations of a cold-air pool associated with elevated wintertime ozone in the Uintah Basin, Utah.
+\newblock {\em Atmos. Chem. Phys.} {\bf 2015}, {\em 15},~135--151.
+\newblock {\url{https://doi.org/10.5194/acp-15-135-2015}}.
+
+\bibitem[Davies et~al.(2025)Davies, Lawson, O'Neil, Lyman, Zager, and Coxson]{Davies2025-wy}
+Davies, M.J.; Lawson, J.R.; O'Neil, T.; Lyman, S.N.; Zager, K.; Coxson, T.D.
+\newblock Uinta Basin snow shadow: Impact of snow-depth variation on winter ozone formation.
+\newblock {\em Air (Basel)} {\bf 2025}, {\em 3},~22.
+\newblock {\url{https://doi.org/10.3390/air3030022}}.
+
+\bibitem[Matichuk et~al.(2017)Matichuk, Tonnesen, Luecken, Gilliam, Napelenok, Baker, Schwede, Murphy, Helmig, Lyman, and Roselle]{Matichuk2017-bq}
+Matichuk, R.; Tonnesen, G.; Luecken, D.; Gilliam, R.; Napelenok, S.L.; Baker, K.R.; Schwede, D.; Murphy, B.; Helmig, D.; Lyman, S.N.;  et~al.
+\newblock Evaluation of the Community Multiscale Air Quality Model for Simulating Winter Ozone Formation in the Uinta Basin.
+\newblock {\em J. Geophys. Res. D: Atmos.} {\bf 2017}, {\em 122},~13545--13572.
+\newblock {\url{https://doi.org/10.1002/2017JD027057}}.
+
+\bibitem[Tran et~al.(2018)Tran, Tran, Mansfield, Lyman, and Crosman]{Tran2018-ax}
+Tran, T.; Tran, H.; Mansfield, M.; Lyman, S.; Crosman, E.
+\newblock Four dimensional data assimilation ({FDDA}) impacts on {WRF} performance in simulating inversion layer structure and distributions of {CMAQ}-simulated winter ozone concentrations in Uintah Basin.
+\newblock {\em Atmos. Environ. (1994)} {\bf 2018}, {\em 177},~75--92.
+\newblock {\url{https://doi.org/10.1016/j.atmosenv.2018.01.012}}.
+
+\end{thebibliography}

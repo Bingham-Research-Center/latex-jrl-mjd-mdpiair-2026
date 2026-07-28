@@ -6,6 +6,7 @@ REWRITE_MAIN := _manuscript_test
 V3_MAIN := _manuscript_v3
 STAGE := dist/mdpi-air-submission
 SUPPLEMENT_STAGE := dist/mdpi-air-supplement
+PACKAGE_DIR := submission-package
 PYTHON ?= python
 BRC_TOOLS_DIR ?= $(abspath ../brc-tools)
 BRC_TOOLS_ENV ?= brc-tools
@@ -17,7 +18,7 @@ SUBMISSION_FIGURE_LIST ?= figures/submission-files.txt
 SUPPLEMENT_FIGURE_LIST ?= figures/supplement-files.txt
 
 .PHONY: pdf supplement-pdf rewrite-pdf v3-pdf clean rewrite-clean v3-clean check rewrite-check v3-check \
-	smoke-preflight smoke manuscript-contract-check final-draft-check submission submission-check supplement supplement-check submission-draft-check
+	smoke-preflight smoke manuscript-contract-check final-draft-check submission submission-check supplement supplement-check submission-draft-check package
 
 pdf:
 	latexmk -pdf -interaction=nonstopmode -halt-on-error $(MAIN).tex
@@ -124,8 +125,9 @@ submission-check: submission
 
 supplement: supplement-pdf
 	rm -rf $(SUPPLEMENT_STAGE)
-	mkdir -p $(SUPPLEMENT_STAGE)
+	mkdir -p $(SUPPLEMENT_STAGE)/Definitions
 	cp $(SUPPLEMENT).tex $(SUPPLEMENT).pdf $(SUPPLEMENT_STAGE)/
+	@while IFS= read -r file; do cp "$$file" "$(SUPPLEMENT_STAGE)/$$file"; done < <(git ls-files Definitions)
 	@while IFS= read -r figure; do \
 		[[ -z "$$figure" || "$$figure" == \#* ]] && continue; \
 		mkdir -p "$(SUPPLEMENT_STAGE)/$$(dirname "$$figure")"; \
@@ -135,6 +137,14 @@ supplement: supplement-pdf
 	@echo "Wrote dist/mdpi-air-supplement.zip"
 
 supplement-check: supplement
+	@if ! command -v gs >/dev/null 2>&1; then \
+		test -s Definitions/logo-mdpi-eps-converted-to.pdf || { \
+			echo "Ghostscript is unavailable and no cached MDPI logo conversion exists" >&2; \
+			exit 1; \
+		}; \
+		cp Definitions/logo-mdpi-eps-converted-to.pdf $(SUPPLEMENT_STAGE)/Definitions/; \
+		echo "Using cached logo conversion for local staging-tree check; ZIP remains source-clean"; \
+	fi
 	cd $(SUPPLEMENT_STAGE) && latexmk -pdf -interaction=nonstopmode -halt-on-error $(SUPPLEMENT).tex
 	@test -s $(SUPPLEMENT_STAGE)/$(SUPPLEMENT).pdf
 	@! find $(SUPPLEMENT_STAGE) -type f \( \
@@ -147,3 +157,20 @@ supplement-check: supplement
 	@echo "Independent supplement build: OK"
 
 submission-draft-check: final-draft-check submission-check supplement-check
+
+# Ring-fenced, self-contained package for co-author review AND journal submission:
+# main + supplement sources, the MDPI class, all figures, and both compiled PDFs,
+# assembled into a tracked folder so the whole thing can be downloaded from the branch.
+package: submission-check supplement-check
+	rm -rf $(PACKAGE_DIR)
+	mkdir -p $(PACKAGE_DIR)/Definitions
+	cp $(MAIN).tex $(SUPPLEMENT).tex paperpile.bib $(MAIN).bbl $(PACKAGE_DIR)/
+	cp $(MAIN).pdf $(SUPPLEMENT).pdf $(PACKAGE_DIR)/
+	cp -R Definitions/. $(PACKAGE_DIR)/Definitions/
+	@while IFS= read -r figure; do \
+		[[ -z "$$figure" || "$$figure" == \#* ]] && continue; \
+		mkdir -p "$(PACKAGE_DIR)/$$(dirname "$$figure")"; \
+		cp "$$figure" "$(PACKAGE_DIR)/$$figure"; \
+	done < <(cat $(SUBMISSION_FIGURE_LIST) $(SUPPLEMENT_FIGURE_LIST))
+	cp packaging/README-package.md $(PACKAGE_DIR)/README.md
+	@echo "Assembled $(PACKAGE_DIR)/ (main + supplement sources, figures, both PDFs, README)"

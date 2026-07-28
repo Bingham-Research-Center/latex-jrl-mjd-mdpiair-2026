@@ -97,10 +97,20 @@ The satellite panel in Figure~\ref{fig:v3-episode-context} uses the National Aer
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.96\textwidth]{figures/wrf_geographic_locator_d01_d03.pdf}
+\begin{minipage}[t]{0.49\textwidth}
+\centering
+\textbf{(a)}\\[-2pt]
+\includegraphics[width=\linewidth]{figures/wrf_geographic_locator_d01_d03.pdf}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.49\textwidth}
+\centering
+\textbf{(b)}\\[-2pt]
+\includegraphics[width=\linewidth]{figures/wrf_nested_domains_d01_d03.png}
+\end{minipage}
 \caption{Geographic and sampling orientation for the evaluation.
-The d02 terrain, reporting stations, and d03 interior define the common evaluation setting, while the inset places the d01--d03 nests within the full three-domain configuration.
-Seven of the eleven reporting stations fall outside the usable d03 interior, which is why d02 supplies the full-network sample; the figure does not constitute a resolution evaluation.}
+(a) The d02 terrain, reporting stations, and d03 interior define the common evaluation setting.
+(b) The d01--d02--d03 WRF grid layout places that setting within the full three-domain configuration.
+Seven of the eleven reporting stations fall outside the usable d03 interior, which is why d02 supplies the full-network sample; neither panel constitutes a resolution evaluation.}
 \label{fig:v3-locator}
 \end{figure}
 
@@ -396,7 +406,17 @@ The terrain-source branch holds NAM forcing, one-way feedback, WRF grid spacing,
 The three brackets are default minus fine, default minus coarse, and fine minus coarse.
 The default-minus-fine response was small on d02 and failed its predeclared terrain-response test.
 The wider coarse brackets produced larger spatial responses, but the summary changes with domain support and diagnostic (Supplementary Table~S2).
-The registered terrain summaries therefore describe a reproducible model response without establishing a preferred terrain source, drainage pathway, upstream reservoir, or basin cold-air-volume change.
+The controlled fine-minus-coarse composite in Figure~\ref{fig:v3-terrain-cmp11} therefore shows a reproducible model response without establishing a preferred terrain source, drainage pathway, upstream reservoir, or basin cold-air-volume change.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.96\textwidth]{figures/wrf_terrain_cmp11_d02_d03_16z.pdf}
+\caption{Diagnostic response to the widest controlled static-terrain bracket at 1600 UTC, calculated as X0 minus X4 (fine 3-arc-second minus coarse 5-arc-minute source).
+(a) The basin-wide d02 and (b) inner-basin d03 top-down heat-deficit maps share a fixed $\pm1.6$ MJ m$^{-2}$ scale.
+(c) The north--south and (d) west--east d03 lower-atmosphere potential-temperature sections share a fixed $\pm4$ K scale and the 2200 m crest reference.
+The domain-specific panels display spatial and vertical response patterns but rank no terrain source and establish neither drainage direction nor basin cold-air-volume change.}
+\label{fig:v3-terrain-cmp11}
+\end{figure}
 
 \section{Discussion}
 \label{sec:v3-discussion}
