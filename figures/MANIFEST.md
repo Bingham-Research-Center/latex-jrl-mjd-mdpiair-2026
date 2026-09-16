@@ -19,14 +19,14 @@ Candidate and diagnostic outputs belong under `verification/figures/candidates/`
 Promotion requires a real-data check, matched evaluation window, complete provenance, visual inspection, and canonical WRF styling review.
 Synthetic or smoke-test output is never eligible.
 
-## Supplement-admitted figure
+## Retired supplement figure
 
-This file is admitted only to `supplement.tex`; it must not enter `main.tex` or
-the manuscript source package.
+This historical file is retained for provenance but is excluded from the active
+main-article package.
 
 | Figure file | Status | Script and commit | Run/data IDs | Valid window | Style check | Notes |
 |---|---|---|---|---|---|---|
-| `wrf_radiation_response_cmp07_d02.pdf` | supplement-admitted | `verification/scripts/analyze_radiation_response.py`, `29854aa` | X1; X0; archived d02 WRF output | 2 February 2013, 14--18 UTC; display at 16 UTC | manuscript-native vector; visually inspected 14 July 2026 | A descriptive aspect-organised skin-temperature response. The predeclared station-based screen remains failed because the archived flat-plane shortwave field cannot test the mechanism. PDF SHA-256 `56c5015210d98731e2bee061ad11922b526c99bcad94160cc4fb090b1c2a0ac2`. |
+| `wrf_radiation_response_cmp07_d02.pdf` | retired-supplement | `verification/scripts/analyze_radiation_response.py`, `29854aa` | X1; X0; archived d02 WRF output | 2 February 2013, 14--18 UTC; display at 16 UTC | manuscript-native vector; visually inspected 14 July 2026 | A descriptive aspect-organised skin-temperature response. The predeclared station-based screen remains failed because the archived flat-plane shortwave field cannot test the mechanism. PDF SHA-256 `56c5015210d98731e2bee061ad11922b526c99bcad94160cc4fb090b1c2a0ac2`. |
 
 ## Review-only v3 Appendix B candidates
 
