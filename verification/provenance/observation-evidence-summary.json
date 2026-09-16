@@ -1,0 +1,225 @@
+{
+  "roosevelt_sounding": {
+    "source_url": "https://www.inscc.utah.edu/~u0198116/UINTAH_TEMP_DIRECTORY/Roosevelt_02022013_1802UTC.txt",
+    "sha256": "b1d201cfdd3d3545353dac344bd8526c8530881acc91390491fc8635c43252bd",
+    "instrument": "University of Utah Graw Rawinsonde Station; probe 201085; exact sonde model not stated",
+    "launch_utc": "2013-02-02T18:01:54+00:00",
+    "last_row_utc": "2013-02-02T19:07:49+00:00",
+    "launch_delay_after_window_seconds": 114.0,
+    "initial_position_degrees": {
+      "latitude": 40.2656,
+      "longitude": -110.0412
+    },
+    "groundstation_altitude_m_header": 1561.5,
+    "sample_count": 3956,
+    "sample_interval_seconds": [
+      1.0
+    ],
+    "height_above_launch_range_m": [
+      0.0,
+      13266.9
+    ],
+    "first_sample_at_or_above_level_utc": {
+      "50": "2013-02-02T18:02:17+00:00",
+      "100": "2013-02-02T18:02:26+00:00",
+      "250": "2013-02-02T18:03:07+00:00",
+      "500": "2013-02-02T18:04:28+00:00"
+    },
+    "variables": [
+      "pressure_hPa",
+      "temperature_C",
+      "relative_humidity_percent",
+      "wind_speed_ms",
+      "wind_direction_degrees",
+      "longitude_degrees",
+      "latitude_degrees",
+      "height_above_launch_m",
+      "geopotential_height_m",
+      "dewpoint_C"
+    ],
+    "qc": "Provider explicitly labels all data provisional and not quality controlled; no scientific QC performed here",
+    "disposition": "verified out-of-window context; no samples inside 1400-1800 UTC"
+  },
+  "USU04": {
+    "latitude": 39.7539,
+    "longitude": -109.546,
+    "provider_elevation_ft": 6343.0,
+    "converted_elevation_m": 1933.3464000000001,
+    "period_of_record": {
+      "start": "2013-01-01T00:00:00Z",
+      "end": "2013-03-11T23:15:00Z"
+    },
+    "station_timezone": "America/Denver",
+    "response_timezone": "UTC (explicit request; Z timestamps)",
+    "siting": [],
+    "sensor_positions": {
+      "pressure": {
+        "pressure_1": null
+      },
+      "air_temp": {
+        "air_temp_1": null
+      },
+      "relative_humidity": {
+        "relative_humidity_1": null
+      },
+      "wind_speed": {
+        "wind_speed_1": null
+      },
+      "wind_direction": {
+        "wind_direction_1": null
+      },
+      "wind_gust": {
+        "wind_gust_1": null
+      },
+      "precip_accum_fifteen_minute": {
+        "precip_accum_fifteen_minute_1": null
+      }
+    },
+    "first_utc": "2013-01-31T00:00:00Z",
+    "last_utc": "2013-02-03T23:45:00Z",
+    "timestamps": 384,
+    "case_window_timestamps": 17,
+    "variable_coverage": {
+      "air_temp_set_1": {
+        "nonnull_full_window": 383,
+        "nonnull_case_window": 17,
+        "missing_utc": [
+          "2013-02-02T06:00:00Z"
+        ]
+      },
+      "relative_humidity_set_1": {
+        "nonnull_full_window": 383,
+        "nonnull_case_window": 17,
+        "missing_utc": [
+          "2013-02-02T06:00:00Z"
+        ]
+      },
+      "wind_speed_set_1": {
+        "nonnull_full_window": 383,
+        "nonnull_case_window": 17,
+        "missing_utc": [
+          "2013-02-02T06:00:00Z"
+        ]
+      },
+      "wind_direction_set_1": {
+        "nonnull_full_window": 355,
+        "nonnull_case_window": 17,
+        "missing_utc": [
+          "2013-01-31T13:00:00Z",
+          "2013-02-01T08:15:00Z",
+          "2013-02-01T09:30:00Z",
+          "2013-02-01T10:30:00Z",
+          "2013-02-01T10:45:00Z",
+          "2013-02-01T11:00:00Z",
+          "2013-02-01T11:15:00Z",
+          "2013-02-01T15:00:00Z",
+          "2013-02-01T19:15:00Z",
+          "2013-02-01T21:30:00Z",
+          "2013-02-01T21:45:00Z",
+          "2013-02-01T23:30:00Z",
+          "2013-02-01T23:45:00Z",
+          "2013-02-02T00:00:00Z",
+          "2013-02-02T00:15:00Z",
+          "2013-02-02T00:30:00Z",
+          "2013-02-02T01:30:00Z",
+          "2013-02-02T02:45:00Z",
+          "2013-02-02T06:00:00Z",
+          "2013-02-02T06:15:00Z",
+          "2013-02-02T22:30:00Z",
+          "2013-02-03T00:00:00Z",
+          "2013-02-03T01:30:00Z",
+          "2013-02-03T01:45:00Z",
+          "2013-02-03T04:15:00Z",
+          "2013-02-03T04:30:00Z",
+          "2013-02-03T04:45:00Z",
+          "2013-02-03T10:45:00Z",
+          "2013-02-03T11:15:00Z"
+        ]
+      }
+    },
+    "qc_flagged": false,
+    "qc_summary": {
+      "QC_CHECKS_APPLIED": [
+        "ma_accprecip_24hrprecip_check",
+        "ma_accprecip_snowdepth_check",
+        "ma_accprecip_snowfall_check",
+        "ma_airtemp_SST_check",
+        "ma_airtemp_dwpt_check",
+        "ma_airtemp_mmtemp_check",
+        "ma_fcst_cons_check",
+        "ma_hcldtype_layercldtype_check",
+        "ma_hcldtype_lmcldtype_layercldtype",
+        "ma_hcldtype_totcldcov_check",
+        "ma_hvis_preswx_check",
+        "ma_int_cons_check",
+        "ma_kal_filter_check",
+        "ma_layercldbase_hcldtype_layercldtype_check",
+        "ma_layercldbase_layercldtype_check",
+        "ma_layercldbase_lmhcldcov_check",
+        "ma_layercldbase_lmhcldtype_check",
+        "ma_layercldcov_cldlayerreps_check",
+        "ma_layercldcov_lmhcldcov_check",
+        "ma_layercldcov_lmhcldtype_check",
+        "ma_layercldtype_lmhcldcov_layercldcov_check",
+        "ma_layercldtype_lmhcldtype_check",
+        "ma_lcldtype_hcldtype_totcldcov_lmcldcov_check",
+        "ma_lcldtype_layercldtype_check",
+        "ma_lcldtype_lmcldcov_check",
+        "ma_lcldtype_mhcldtype_check",
+        "ma_lmcldcov_layercldtype_check",
+        "ma_lmcldcov_lmhcldtype_check",
+        "ma_lmcldtype_lmcldcov_check",
+        "ma_maxgust_max_windspd_check",
+        "ma_maxgust_peak_windspd_check",
+        "ma_mcldtype_hcldtype_check",
+        "ma_mcldtype_hcldtype_totcldcov_lmcldcov_check",
+        "ma_mcldtype_layercldtype_check",
+        "ma_mcldtype_lcldtype_layercldtype_check",
+        "ma_pastwx_accprecip_check",
+        "ma_peak_windspd_preswx_check",
+        "ma_position_check",
+        "ma_pres_chng_stn_pres_check",
+        "ma_preswx_accprecip_check",
+        "ma_preswx_airtemp_check",
+        "ma_preswx_airtemp_windspd_dwpt_check",
+        "ma_preswx_lmcldcov_check",
+        "ma_preswx_totcldcov_check",
+        "ma_range_check",
+        "ma_slp_stnpres_check",
+        "ma_snowdepth_swe_check",
+        "ma_stat_cons_check",
+        "ma_stat_model_cons_check",
+        "ma_stat_spatial_cons_check",
+        "ma_temp_cons_check",
+        "ma_tocldcov_preswx_check",
+        "ma_totcldcov_layer_cldcov_check",
+        "ma_totcldcov_lmcldcov_check",
+        "ma_totcldcov_lmcldcov_lmhcldtype_check",
+        "ma_totcldcov_lmhcldtype_check",
+        "ma_totcldcov_vis_check",
+        "ma_winddir10m_windspd10m_check",
+        "ma_winddir20m_windspd20m_check",
+        "ma_winddir_windspd_check",
+        "ma_windspd_max_windspd_check",
+        "ma_windspd_maxgust_check",
+        "ma_windspd_peak_windspd_check",
+        "ma_windspd_preswx_check",
+        "mw_24h_wind_persistence_check",
+        "mw_multvariate_lin_reg_check",
+        "mw_uu2dvar_rejection",
+        "sl_pers_check",
+        "sl_range_check",
+        "sl_rate_check",
+        "sl_secondary_pers_check",
+        "sl_secondary_range_check",
+        "sl_sensor_status_signal_check",
+        "sl_soil_moisture_freeze_check",
+        "sl_wind_gust_factor_check",
+        "sl_windspd_maxgust_check"
+      ],
+      "TOTAL_OBSERVATIONS_FLAGGED": 0,
+      "PERCENT_OF_TOTAL_OBSERVATIONS_FLAGGED": 0.0
+    },
+    "interpretation": "No flags returned by this request; no independent sensor/exposure validation or causal explanation"
+  }
+}

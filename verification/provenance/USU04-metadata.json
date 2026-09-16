@@ -1,0 +1,131 @@
+{
+  "STATION": [
+    {
+      "ID": "39901",
+      "STID": "USU04",
+      "NAME": "Seep Ridge (Utah State Univ.)",
+      "ELEVATION": "6343.0",
+      "LATITUDE": "39.75390",
+      "LONGITUDE": "-109.54600",
+      "STATUS": "INACTIVE",
+      "MNET_ID": "1009",
+      "STATE": "UT",
+      "COUNTRY": "US",
+      "TIMEZONE": "America/Denver",
+      "ELEV_DEM": "6466.5",
+      "NWSZONE": "UT025",
+      "NWSFIREZONE": "GJT487",
+      "GACC": "GBCC",
+      "SHORTNAME": "UBOS",
+      "LONGNAME": "Uintah Basin Ozone Study 2012-2013",
+      "URL": null,
+      "PROGRAM": null,
+      "CITATION": null,
+      "SGID": "GB29",
+      "COUNTY": "Uintah",
+      "WIMS_ID": null,
+      "CWA": "GJT",
+      "PERIOD_OF_RECORD": {
+        "start": "2013-01-01T00:00:00Z",
+        "end": "2013-03-11T23:15:00Z"
+      },
+      "PROVIDERS": [],
+      "SITING": [],
+      "SENSOR_VARIABLES": {
+        "pressure": {
+          "pressure_1": {
+            "position": null,
+            "dimension": {},
+            "summary": "pressure",
+            "PERIOD_OF_RECORD": {
+              "start": "2013-01-01T00:00:00Z",
+              "end": "2013-03-11T23:15:00Z"
+            }
+          }
+        },
+        "air_temp": {
+          "air_temp_1": {
+            "position": null,
+            "dimension": {},
+            "summary": "air_temp",
+            "PERIOD_OF_RECORD": {
+              "start": "2013-01-01T00:00:00Z",
+              "end": "2013-03-11T23:15:00Z"
+            }
+          }
+        },
+        "relative_humidity": {
+          "relative_humidity_1": {
+            "position": null,
+            "dimension": {},
+            "summary": "relative_humidity",
+            "PERIOD_OF_RECORD": {
+              "start": "2013-01-01T00:00:00Z",
+              "end": "2013-03-11T23:15:00Z"
+            }
+          }
+        },
+        "wind_speed": {
+          "wind_speed_1": {
+            "position": null,
+            "dimension": {},
+            "summary": "wind_speed",
+            "PERIOD_OF_RECORD": {
+              "start": "2013-01-01T00:00:00Z",
+              "end": "2013-03-11T23:15:00Z"
+            }
+          }
+        },
+        "wind_direction": {
+          "wind_direction_1": {
+            "position": null,
+            "dimension": {},
+            "summary": "wind_direction",
+            "PERIOD_OF_RECORD": {
+              "start": "2013-01-01T00:00:00Z",
+              "end": "2013-03-11T23:15:00Z"
+            }
+          }
+        },
+        "wind_gust": {
+          "wind_gust_1": {
+            "position": null,
+            "dimension": {},
+            "summary": "wind_gust",
+            "PERIOD_OF_RECORD": {
+              "start": "2013-01-01T00:00:00Z",
+              "end": "2013-03-11T23:15:00Z"
+            }
+          }
+        },
+        "precip_accum_fifteen_minute": {
+          "precip_accum_fifteen_minute_1": {
+            "position": null,
+            "dimension": {},
+            "summary": "precip_accum_fifteen_minute",
+            "PERIOD_OF_RECORD": {
+              "start": "2013-01-01T00:00:00Z",
+              "end": "2013-03-11T23:15:00Z"
+            }
+          }
+        }
+      },
+      "UNITS": {
+        "position": "m",
+        "elevation": "ft"
+      },
+      "RESTRICTED": false,
+      "RESTRICTED_METADATA": false
+    }
+  ],
+  "SUMMARY": {
+    "NUMBER_OF_OBJECTS": 1,
+    "RESPONSE_CODE": 1,
+    "RESPONSE_MESSAGE": "OK",
+    "METADATA_QUERY_TIME": "3.9 ms",
+    "METADATA_PARSE_TIME": "0.5 ms",
+    "TOTAL_METADATA_TIME": "4.4 ms",
+    "TOTAL_TIME": "4.4 ms",
+    "VERSION": "v2.39.5"
+  }
+}
