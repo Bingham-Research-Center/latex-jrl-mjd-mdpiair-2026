@@ -225,7 +225,11 @@ Nor do they remove differences in wind or solar exposure, slope, land cover, or 
 Mass-level height above ground level (AGL) was calculated from perturbation plus base geopotential relative to local WRF terrain height.
 Grid-relative winds were destaggered and rotated to earth-relative components.
 Potential temperature $\theta$ was interpolated directly at the layer endpoints.
-Horizontal wind components were linearly interpolated at 25\,m increments from 50 to 500\,m AGL for height integration; 10, 25, and 50\,m increments and alternative 50--250 and 100--500\,m layers form the reviewer-requested sensitivity check.
+Horizontal wind components were linearly interpolated at 25\,m increments from 50 to 500\,m AGL for height integration.
+We repeated the diagnostics for the 50--500, 50--250, and 100--500\,m layers at wind integration increments of 10, 25, and 50\,m, holding the four runs, eleven station columns, and five retained hours fixed.
+The 50--500\,m bounds provide a common shallow-layer comparison rather than an observed inversion boundary; the alternative bounds test how that choice affects the result.
+Changing the integration increment tests numerical sampling of the same linearly interpolated winds, not sensitivity to native WRF vertical resolution or to the interpolation method.
+The potential-temperature endpoints are evaluated directly and therefore do not depend on that increment.
 The finite-layer potential-temperature endpoint difference was defined as
 
 \begin{equation}
@@ -298,6 +302,8 @@ No regulatory threshold is shown, and the panel is episode context rather than c
 The basin-floor station repeatedly separated from the higher sites between 31 January and 3 February, while the magnitude and ordering of station temperatures evolved through the diurnal cycle (Figure~\ref{fig:v3-observed}).
 Seep Ridge (USU04; 1933\,m) shows a distinct diurnal trace, but its nearest d02 cell is only 133\,m away and the default-terrain elevation offset is +2.9\,m, so elevation mismatch alone does not explain that behaviour.
 Local exposure, slope flow, and representativeness remain possible explanations, but the registered metadata do not distinguish among them and no mechanism is assigned here.
+A fresh provider retrieval returned all 17 quarter-hour samples for temperature, humidity, wind speed, and wind direction during the retained window without provider QC flags, but supplied no sensor-position or exposure history.
+These provider checks do not independently validate the measurements or reproduce the processing of the historical observation cache used in Figure~\ref{fig:v3-observed}.
 The recurring floor-to-bench separation is consistent with a cold-pool surface pattern.
 Because the stations are horizontally separated, however, the time series do not determine the cold-pool top, depth, volume, or vertical temperature structure.
 
@@ -345,6 +351,10 @@ The hourly differences ranged from 0.37 to 1.18\,m\,s$^{-1}$ with two-way feedba
 The paired GFS-minus-NAM layer-mean scalar-speed differences were similarly +0.78 and +1.01\,m\,s$^{-1}$ for two-way and one-way feedback, respectively (Appendix Table~\ref{tab:v3-wind-cancellation}).
 The corresponding vector-to-scalar alignment-ratio differences were only +0.063 and +0.053 on average and changed sign in two of five hours in each pair.
 Directional cancellation therefore does not create the primary speed ordering, but neither wind metric establishes transport or ventilation.
+Both paired GFS-minus-NAM endpoint differences remain negative, and both scalar- and vector-speed differences positive, at every retained hour in all nine layer/increment configurations.
+The endpoint-difference magnitude nevertheless depends on the bounds: at the primary 25\,m increment, the two-way and one-way contrasts are $-2.22$ and $-2.08$\,K for 50--250\,m and $-3.38$ and $-3.42$\,K for 100--500\,m (Appendix Table~\ref{tab:v3-layer-sensitivity}).
+At fixed bounds, the range of five-hour paired mean wind effects across the three integration increments is less than 0.02\,m\,s$^{-1}$ for both scalar and vector metrics.
+Thus the ordering survives these checks, while its magnitude remains specific to the chosen layer.
 Native PBL-height differences changed sign within both feedback modes and did not reproduce the endpoint-difference and wind separation.
 This divergence is consistent with the scheme dependence of native PBL-height diagnosis discussed by \citet{Tran2018-ax}.
 
@@ -521,6 +531,9 @@ Two limitations are especially important for the next experiment:
   \item \textbf{Native PBL height is scheme dependent.} MYJ and YSU need not diagnose the layer top in the same way, so the common endpoint-difference and wind-vector metrics remain more comparable between runs.
   \item \textbf{The floor-to-bench temperature contrast is not vertical validation.} Independent profiles are required to evaluate inversion depth, layer stability, and modelled heat deficit.
 \end{itemize}
+A bounded search of accessible observation holdings recovered no measured in-basin profile within the exact retained window.
+The University of Utah's provisional Roosevelt sounding launched at 1801:54 UTC, just after that window, and was not quality controlled or compared with WRF here.\footnote{University of Utah UBOS observation index: \url{https://www.inscc.utah.edu/~u0198116/ubos/obs.html}; raw sounding: \url{https://www.inscc.utah.edu/~u0198116/UINTAH_TEMP_DIRECTORY/Roosevelt_02022013_1802UTC.txt}.}
+Its availability does not close the vertical-validation gap; using it would require an explicit time tolerance, observation QC, and a separate matched analysis.
 
 \section{Conclusions}
 \label{sec:v3-conclusions}
@@ -574,6 +587,26 @@ Feedback & $\Delta$ vector magnitude (m s$^{-1}$) & $\Delta$ scalar speed (m s$^
 \midrule
 Two-way & +0.79 & +0.78 & +0.063 \\
 One-way & +0.99 & +1.01 & +0.053 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\caption{Layer-bound sensitivity of the GFS-minus-NAM contrasts at the primary 25 m wind integration increment.
+Each value is the mean of five hourly paired-station medians on d02 over the same eleven columns.
+$\Delta S$ is the potential-temperature endpoint-difference contrast; $\Delta U$ and $\Delta V$ are the layer-mean vector-magnitude and scalar-speed contrasts, respectively.
+All three layer choices also retain the hourly signs at 10 and 50 m integration increments.}
+\label{tab:v3-layer-sensitivity}
+\centering
+\small
+\begin{tabular}{lrrrrrr}
+\toprule
+& \multicolumn{2}{c}{$\Delta S$ (K)} & \multicolumn{2}{c}{$\Delta U$ (m s$^{-1}$)} & \multicolumn{2}{c}{$\Delta V$ (m s$^{-1}$)} \\
+Layer (m AGL) & Two-way & One-way & Two-way & One-way & Two-way & One-way \\
+\midrule
+50--500 & -3.63 & -3.65 & +0.79 & +0.99 & +0.78 & +1.01 \\
+50--250 & -2.22 & -2.08 & +0.67 & +0.85 & +0.70 & +0.83 \\
+100--500 & -3.38 & -3.42 & +0.77 & +1.02 & +0.79 & +1.02 \\
 \bottomrule
 \end{tabular}
 \end{table}

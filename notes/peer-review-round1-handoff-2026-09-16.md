@@ -1,5 +1,9 @@
 # CHPC follow-up: first-round review
 
+Completed on 16 September 2026: [CHPC closure](peer-review-round1-chpc-closure-15610800.md).
+Both return archives are verified locally and the numerical results are imported; see the [current return record](peer-review-round1-return.md).
+The instructions below are retained as the completed request, not a new dispatch.
+
 The layer calculation is complete; this replaces the earlier launch instructions.
 Finish the four checks below using existing files, then return one short report.
 No new WRF integration or repeat of job 15610800 is needed.

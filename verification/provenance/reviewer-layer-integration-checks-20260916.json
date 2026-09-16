@@ -1,0 +1,45 @@
+{
+  "date_utc": "2026-09-16",
+  "commands": {
+    "make final-draft-check": "passed",
+    "make submission-check": "passed",
+    "unzip -t dist/mdpi-air-submission.zip": "passed",
+    "git diff --check": "passed"
+  },
+  "main_pdf_pages": 20,
+  "pdf_inspection": {
+    "overview": "all 20 manuscript pages inspected",
+    "detail_pages": [
+      6,
+      8,
+      11,
+      16,
+      17
+    ],
+    "new_material": "no clipping, overlap or broken references observed in added text/table",
+    "retained_issue": "Figures 4 and 5 retain legacy transport-wind labels; R3-C016 remains pending-figure-label-update"
+  },
+  "build_log_findings": "No overfull/underfull boxes or undefined references in main.log; existing hyperref PDF-string and fancyhdr headheight warnings remain.",
+  "staged_pdf_text": "byte-identical pdftotext -layout output to main.pdf",
+  "checksums": {
+    "main.tex": "aca840610e5a2d6bff99dc0531cc210630523f379c0e88f531f3a5ac0d1f33ac",
+    "main.pdf": "e50bdc5764fd40f9c8494b3956a387a59911f49b6c1365f5b3b5c2ea776f1265",
+    "dist/mdpi-air-submission.zip": "a5f5620499012d209cd894265eb9407ec201171921273968ec8ddd18ca786d79",
+    "dist/mdpi-air-submission/main.pdf": "4950c44e2d5dcba35c091bc94c1aac7f93a8375e60aa445fd9718c161fefb470",
+    "/home/johnrobertlawson/reviews/lawson-ozone-wrf-mdpiair-2026/response-to-reviewers.md": "e8dbc077d5d5062b4e4c1a09832534394b51847d8375e04d63e9fb3ffd08db3a",
+    "/home/johnrobertlawson/reviews/lawson-ozone-wrf-mdpiair-2026/peer-review-decisions.md": "6b694efee9db2c9ae4cc79666bc9ade583f9e92ac142730a41e1942faaac2319"
+  },
+  "responses": {
+    "comment_count": 45,
+    "author_stances_and_agreed_actions": "unchanged",
+    "analysis_dependencies": "four completed",
+    "remaining_implementation_state": "R3-C016 pending figure label update",
+    "status": "draft; author review required"
+  },
+  "remaining": [
+    "Figures 4 and 5 label-only rerender",
+    "Nine CHPC diagnostic label repairs if needed for review",
+    "Independent vertical validation and Seep Ridge exposure history remain scientific limitations",
+    "John final wording review"
+  ]
+}
