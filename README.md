@@ -3,6 +3,9 @@
 Working repository for a single-file MDPI **Air** manuscript led by John R. Lawson, with Michael J. Davies, Loknath Dhar, and Seth N. Lyman.
 The study evaluates WRF meteorology for the 2 February 2013 Uinta Basin cold-air pool as a prerequisite for later coupled winter-ozone chemistry experiments.
 
+Current first-round review: [CHPC follow-up](notes/peer-review-round1-handoff-2026-09-16.md) and [received results / remaining work](notes/peer-review-round1-return.md).
+Job `15610800` is complete; use that follow-up instead of the older launch instructions.
+
 ## In plain language: where truth lives
 
 This repository is the paper's coordination home.
