@@ -156,21 +156,20 @@ supplement-check: supplement
 	\) | grep -q .
 	@echo "Independent supplement build: OK"
 
-submission-draft-check: final-draft-check submission-check supplement-check
+submission-draft-check: final-draft-check submission-check
 
-# Ring-fenced, self-contained package for co-author review AND journal submission:
-# main + supplement sources, the MDPI class, all figures, and both compiled PDFs,
-# assembled into a tracked folder so the whole thing can be downloaded from the branch.
-package: submission-check supplement-check
+# Ring-fenced, self-contained main-article package for co-author review and journal submission.
+# The former separate supplement is retained as history but excluded from the active package.
+package: submission-check
 	rm -rf $(PACKAGE_DIR)
 	mkdir -p $(PACKAGE_DIR)/Definitions
-	cp $(MAIN).tex $(SUPPLEMENT).tex paperpile.bib $(MAIN).bbl $(PACKAGE_DIR)/
-	cp $(MAIN).pdf $(SUPPLEMENT).pdf $(PACKAGE_DIR)/
+	cp $(MAIN).tex paperpile.bib $(MAIN).bbl $(PACKAGE_DIR)/
+	cp $(MAIN).pdf $(PACKAGE_DIR)/
 	cp -R Definitions/. $(PACKAGE_DIR)/Definitions/
 	@while IFS= read -r figure; do \
 		[[ -z "$$figure" || "$$figure" == \#* ]] && continue; \
 		mkdir -p "$(PACKAGE_DIR)/$$(dirname "$$figure")"; \
 		cp "$$figure" "$(PACKAGE_DIR)/$$figure"; \
-	done < <(cat $(SUBMISSION_FIGURE_LIST) $(SUPPLEMENT_FIGURE_LIST))
+	done < $(SUBMISSION_FIGURE_LIST)
 	cp packaging/README-package.md $(PACKAGE_DIR)/README.md
-	@echo "Assembled $(PACKAGE_DIR)/ (main + supplement sources, figures, both PDFs, README)"
+	@echo "Assembled $(PACKAGE_DIR)/ (main article source, figures, and PDF)"

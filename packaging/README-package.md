@@ -13,13 +13,11 @@ submission — the contents are identical, prepared as a peer-review submission.
 | File | What it is |
 |---|---|
 | `main.tex` | Main article (MDPI `air` class). |
-| `supplement.tex` | Supplementary materials, in the same MDPI template. |
 | `main.pdf` | Compiled main article. |
-| `supplement.pdf` | Compiled supplementary materials. |
 | `paperpile.bib` | Bibliography database. |
 | `main.bbl` | Pre-built bibliography (lets `main.tex` compile without re-running BibTeX). |
 | `Definitions/` | The MDPI class and support files needed to compile. |
-| `figures/` | Every figure referenced by the two documents. |
+| `figures/` | Every figure referenced by the main article. |
 
 ## Compiling
 
@@ -28,14 +26,11 @@ From inside this folder:
 
 ```
 latexmk -pdf main.tex
-latexmk -pdf supplement.tex
 ```
 
 - `main.tex` uses BibTeX (apacite). Because `main.bbl` is included, a plain
   `pdflatex main` also resolves the references if BibTeX is unavailable.
-- `supplement.tex` has no citations.
-
-The compiled `main.pdf` and `supplement.pdf` are already included, so reviewers can
-read the PDFs directly without compiling.
+The compiled `main.pdf` is already included, so reviewers can read it directly without compiling.
+The former separate supplement is retired; material required for review is integrated into the main article or appendix.
 
 *Regenerate this folder from the repository root with `make package`.*
