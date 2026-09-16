@@ -1,0 +1,7 @@
+layer_m,vertical_step_m,feedback,contrast,metric,units,mean_of_hourly_paired_station_medians,hourly_minimum,hourly_maximum,positive_hours,negative_hours
+50-500,25,two-way,gfs2_minus_nam2,transport_wind_ms,m s-1,0.786006296,0.372815916,1.181096768,5,0
+50-500,25,two-way,gfs2_minus_nam2,layer_mean_speed_ms,m s-1,0.777815778,0.395152256,1.724389616,5,0
+50-500,25,two-way,gfs2_minus_nam2,alignment_ratio,1,0.063014527,-0.172578050,0.272927591,3,2
+50-500,25,one-way,gfs1_minus_nam1,transport_wind_ms,m s-1,0.994922601,0.607998251,1.502603590,5,0
+50-500,25,one-way,gfs1_minus_nam1,layer_mean_speed_ms,m s-1,1.010738267,0.573557064,1.782564508,5,0
+50-500,25,one-way,gfs1_minus_nam1,alignment_ratio,1,0.053145360,-0.156641397,0.243460609,3,2

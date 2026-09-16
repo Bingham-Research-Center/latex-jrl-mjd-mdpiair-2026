@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Common-AGL cold-pool retention and ventilation diagnostics for matched WRF runs.
+"""Common-AGL cold-pool retention and lower-layer wind diagnostics for matched WRF runs.
 
 The manuscript's short-window comparison needs a vertical diagnostic that is not tied
 to native model-level numbers or to scheme-dependent PBL height alone.  For every
@@ -7,9 +7,11 @@ reporting station on a shared WRF domain, this script therefore interpolates eac
 to common height-above-ground coordinates and computes:
 
 * ``stability_k``: theta(500 m AGL) minus theta(50 m AGL);
-* ``transport_wind_ms``: magnitude of the height-weighted mean earth-relative wind
-  vector from 50 to 500 m AGL; this is a fixed-layer ventilation proxy, not basin
-  export or a chemistry-model ventilation coefficient;
+* ``transport_wind_ms``: legacy column name for the magnitude of the height-weighted
+  mean earth-relative wind vector from 50 to 500 m AGL;
+* ``layer_mean_speed_ms``: height-weighted mean horizontal wind speed over that layer;
+* ``alignment_ratio``: vector-mean magnitude divided by scalar-mean speed, used only
+  to quantify loss from vertical directional cancellation;
 * ``pblh_m``: WRF PBLH, retained as a scheme-dependent companion diagnostic; and
 * conventional T2, 10 m wind, and surface-pressure values at the same columns.
 
@@ -66,16 +68,16 @@ RUN_STYLES = {
 
 PROFILE_METRICS = {
     "stability_k": ("Δθ, 50–500 m AGL (K)", "K"),
-    "transport_wind_ms": ("50–500 m transport wind (m s$^{-1}$)", "m s-1"),
+    "transport_wind_ms": ("50–500 m layer-mean vector magnitude (m s$^{-1}$)", "m s-1"),
+    "layer_mean_speed_ms": ("50–500 m layer-mean scalar speed (m s$^{-1}$)", "m s-1"),
+    "alignment_ratio": ("50–500 m vector/scalar alignment ratio", "1"),
     "pblh_m": ("PBL height (m)", "m"),
 }
 
 # PBL height remains in the committed tables but is omitted from the manuscript
 # figure because it is scheme dependent and did not reproduce the common-layer
 # response.  The two load-bearing geometric diagnostics form the compact figure.
-FIGURE_METRICS = {
-    key: value for key, value in PROFILE_METRICS.items() if key != "pblh_m"
-}
+FIGURE_METRICS = {key: PROFILE_METRICS[key] for key in ("stability_k", "transport_wind_ms")}
 
 SURFACE_SKILL_METRICS = {
     "t2_bias_c": "degC",
@@ -190,6 +192,8 @@ def extract_column(
     v_i = interp_profile(agl, v, levels)
     layer_u = layer_mean(u_i, levels)
     layer_v = layer_mean(v_i, levels)
+    layer_mean_speed = layer_mean(np.hypot(u_i, v_i), levels)
+    vector_magnitude = float(np.hypot(layer_u, layer_v))
 
     u10_grid = _surface_value(ds, "U10", it, j, i)
     v10_grid = _surface_value(ds, "V10", it, j, i)
@@ -205,8 +209,9 @@ def extract_column(
         "stability_k": float(theta_i[-1] - theta_i[0]),
         "layer_u_ms": layer_u,
         "layer_v_ms": layer_v,
-        "transport_wind_ms": float(np.hypot(layer_u, layer_v)),
-        "layer_mean_speed_ms": layer_mean(np.hypot(u_i, v_i), levels),
+        "transport_wind_ms": vector_magnitude,
+        "layer_mean_speed_ms": layer_mean_speed,
+        "alignment_ratio": vector_magnitude / layer_mean_speed if layer_mean_speed else np.nan,
         "pblh_m": _surface_value(ds, "PBLH", it, j, i),
         "t2_c": _surface_value(ds, "T2", it, j, i) - 273.15,
         "u10_ms": u10,
@@ -755,6 +760,14 @@ def main() -> None:
             "transport_wind_ms": (
                 f"magnitude of height-weighted mean earth-relative U/V over "
                 f"{args.agl_bottom:g}-{args.agl_top:g} m AGL"
+            ),
+            "layer_mean_speed_ms": (
+                f"height-weighted mean earth-relative horizontal wind speed over "
+                f"{args.agl_bottom:g}-{args.agl_top:g} m AGL"
+            ),
+            "alignment_ratio": (
+                "transport_wind_ms / layer_mean_speed_ms; 1 indicates no loss from "
+                "vertical directional cancellation"
             ),
             "pblh_m": "native WRF PBLH; scheme-dependent companion diagnostic",
             "uncertainty": (

@@ -1,0 +1,23 @@
+{
+  "generated_utc": "2026-09-16T00:00:00Z",
+  "purpose": "Reviewer-requested primary-layer comparison of vector-mean magnitude, scalar-mean speed, and directional-alignment ratio.",
+  "input": {
+    "path": "verification/data/retention_station_timeseries.csv",
+    "sha256": "5fca0f9a6f490c7a60cc8212f141f5c79590937b4488b15c564e03824adfc137"
+  },
+  "station_input": {
+    "path": "verification/data/stations_2013_selection.csv",
+    "sha256": "80bf36f23b02065ae61e606932941190977f016e78842aaf447b3bbbbe60256a"
+  },
+  "definitions": {
+    "transport_wind_ms": "magnitude of the height-weighted mean earth-relative horizontal wind vector from 50 to 500 m AGL",
+    "layer_mean_speed_ms": "height-weighted mean of horizontal wind speed from 50 to 500 m AGL",
+    "alignment_ratio": "transport_wind_ms / layer_mean_speed_ms; 1 indicates no loss from directional cancellation",
+    "summary": "For each valid hour, compute GFS minus NAM at each matched station, take the station median, then average the five hourly medians."
+  },
+  "limits": [
+    "One deterministic case.",
+    "Primary 50-500 m layer only.",
+    "Alternative layers and interpolation increments require archived WRF output on CHPC."
+  ]
+}

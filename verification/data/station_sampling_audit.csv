@@ -1,0 +1,12 @@
+stid,name,latitude,longitude,station_elevation_m,grid_latitude,grid_longitude,station_to_cell_m,x3_model_terrain_m,x3_model_minus_station_m,observation_source
+KVEL,Vernal Airport,40.44295,-109.51273,1604.0,40.44006,-109.50983,404.6,1604.0,0.0,Synoptic Data PBC Mesonet API
+QRS,Roosevelt,40.29430,-110.00900,1588.0,40.29113,-110.00870,353.8,1555.6,-32.4,Synoptic Data PBC Mesonet API
+QV4,Vernal,40.46472,-109.56083,1666.0,40.46794,-109.55853,407.5,1664.0,-2.0,Synoptic Data PBC Mesonet API
+USU01,Seven Sisters (Utah State Univ.),39.98130,-109.34540,1615.0,39.98529,-109.34149,555.1,1612.0,-3.0,Synoptic Data PBC Mesonet API
+USU02,Gusher (Utah State Univ.),40.29350,-109.65750,1550.0,40.29174,-109.65607,230.3,1545.0,-5.0,Synoptic Data PBC Mesonet API
+USU03,Mountain Home (Utah State Univ.),40.43190,-110.38210,2228.0,40.42830,-110.38728,594.3,2222.2,-5.8,Synoptic Data PBC Mesonet API
+USU04,Seep Ridge (Utah State Univ.),39.75390,-109.54600,1933.0,39.75400,-109.54755,132.7,1935.9,2.9,Synoptic Data PBC Mesonet API
+USU05,Wells Draw (Utah State Univ.),40.06700,-110.15100,1759.0,40.06799,-110.15277,186.6,1769.1,10.1,Synoptic Data PBC Mesonet API
+USU07,Pariette Draw (Utah State Univ.),40.03460,-109.83010,1465.0,40.03196,-109.82556,485.0,1464.9,-0.1,Synoptic Data PBC Mesonet API
+USU08,Utah State Univ. Research Trailer,40.14370,-109.46718,1570.0,40.14320,-109.46198,445.9,1565.8,-4.2,Synoptic Data PBC Mesonet API
+UUT01,Uintah Basin Research Trailer,40.26560,-110.04120,1561.0,40.26318,-110.04498,419.1,1575.3,14.3,Synoptic Data PBC Mesonet API
