@@ -25,17 +25,10 @@
 set -euo pipefail
 
 # Login env does NOT carry into batch jobs; call the env python directly.
-# The overrides let a dispatch use clean worktrees at immutable commits without
-# touching an existing dirty checkout.  Defaults preserve the established CHPC
-# layout.
-PY="${PELICAN_PYTHON:-$HOME/software/pkg/miniforge3/envs/brc-tools-2026/bin/python}"
-BRC_TOOLS="${BRC_TOOLS_DIR:-$HOME/gits/brc-tools}"
-MANUSCRIPT="${MANUSCRIPT_DIR:-$HOME/gits/latex-jrl-mjd-mdpiair-2026}"
+PY=~/software/pkg/miniforge3/envs/brc-tools-2026/bin/python
+BRC_TOOLS=~/gits/brc-tools
+MANUSCRIPT=~/gits/latex-jrl-mjd-mdpiair-2026
 CASE="${PELICAN_FIGURE_CONFIG:-$MANUSCRIPT/verification/config/figures/pelican2013.toml}"
-
-for path in "$PY" "$BRC_TOOLS" "$MANUSCRIPT" "$CASE"; do
-  test -r "$path"
-done
 
 # Writable matplotlib cache (else every run rebuilds it / errors) + pre-populated
 # cartopy Natural-Earth data (compute nodes may lack outbound network).
@@ -53,12 +46,6 @@ export PYTHONPATH="$BRC_TOOLS:${PYTHONPATH:-}"
 
 cd "$BRC_TOOLS"
 echo "=== pelican_figures start $(date -u +%Y-%m-%dT%H:%M:%SZ) on $(hostname) ==="
-echo "python=$PY"
-echo "config=$CASE"
-echo "manuscript=$MANUSCRIPT"
-echo "manuscript_head=$(git -C "$MANUSCRIPT" rev-parse HEAD)"
-echo "brc_tools=$BRC_TOOLS"
-echo "brc_tools_head=$(git -C "$BRC_TOOLS" rev-parse HEAD)"
 
 # Soundings need a network node: run brc-tools scripts/fetch_soundings.py on a
 # login/DTN node first, then add: --sounding-cache /scratch/general/vast/$USER/soundings_*.parquet
