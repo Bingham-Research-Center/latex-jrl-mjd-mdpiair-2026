@@ -1,0 +1,2 @@
+# One supplement.tex figure path per line.
+figures/wrf_radiation_response_cmp07_d02.pdf

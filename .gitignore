@@ -1,5 +1,10 @@
 # LaTeX output
 main.pdf
+supplement.pdf
+_manuscript_test.pdf
+_manuscript_v3.pdf
+jrl_manuscript.pdf
+jrl_supplement.pdf
 *.aux
 *.bbl
 *.bcf
@@ -30,3 +35,8 @@ __pycache__/
 # Editor and OS files
 *.swp
 .DS_Store
+
+# Ring-fenced submission package: track its full contents even though the global
+# rules above ignore *.pdf/*.bbl/*-eps-converted-to.pdf by name elsewhere.
+!submission-package/
+!submission-package/**

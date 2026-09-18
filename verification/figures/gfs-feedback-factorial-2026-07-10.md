@@ -1,5 +1,11 @@
 # GFS/NAM by Nest-Feedback Factorial — 10 July 2026
 
+**Coverage refresh, 13 July 2026.** The factorial design and five-hour analysis below
+remain current.
+The 247-PNG comparison count was the 10 July checkpoint; the authoritative archive
+inventory now records 324 comparison PNGs after X9/X9-minus-X0 rendering,
+`heatdeficit_map` production, and removal of 21 stale terrain-label duplicates.
+
 ## Design
 
 | Study ID | Driving analysis | Feedback | Exact archive |
@@ -34,7 +40,8 @@ maintained workflow was run directly through the documented `brc-tools` engine,
 ## Figure Inventory and Visual Review
 
 - X10 standard set: 63 PNGs = 14 sections + 35 surface + 14 upper-air.
-- Cross-case compare root: 247 PNGs.
+- Cross-case compare root: 247 PNGs at this 10 July checkpoint; 324 PNGs in the current
+  archive record.
 - Direct 21-panel families exist for X6-X5, X10-X3, X5-X3, and X6-X10.
 - Representative X10 surface, EW section, crest-level, and skew-T products were opened.
 - Representative GFS feedback and one-way GFS-NAM surface/section differences were opened.

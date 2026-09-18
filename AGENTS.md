@@ -1,38 +1,42 @@
 # AI guide
 
-Private working repo for the MDPI *Air* paper on WRF meteorology during the 2 February 2013 Uinta Basin winter-ozone episode.
-Read `README.md`, then `ROADMAP.md`; open only the route for the task.
+Private MDPI *Air* manuscript: WRF meteorology for the 2 February 2013 Uinta Basin episode.
+Cold start: `hostname -f`, `README.md`, then one task route below.
+Current phase and next steps: `ROADMAP.md`; current evidence/revision state: `notes/peer-review-round1-return.md`.
 
-## Task index
+## Routes
 
 | Task | Read |
 |---|---|
-| Choose or update work | `tasks/microtasks.md` |
-| Framing or figure selection | `notes/narrative-and-hypotheses.md`, `notes/figure-strategy.md`, `notes/claim-evidence-ledger.md` |
-| Run/comparison verification | `verification/provenance/run-inventory.csv`, `verification/provenance/comparison-inventory.csv`, `notes/hosts-data-and-figures.md`, then one provenance record |
-| Figure generation/promotion | `verification/figures/archive-inventory.md`, `verification/figures/manifest.csv`, `figures/MANIFEST.md` |
-| Literature/history | `notes/resource-map.md`, `notes/literature-synthesis-register.md`, then one named source artifact |
-| Manuscript/build | `main.tex`, `paperpile.bib`, `Makefile` |
+| Manuscript/revision | `notes/peer-review-round1-return.md` → `main.tex` |
+| Reviewer decisions/replies | `~/reviews/lawson-ozone-wrf-mdpiair-2026/peer-review-decisions.md` → `response-to-reviewers.md`; saved author decisions govern |
+| Claims | `notes/claim-evidence-ledger.md` → exact registered artefact |
+| Runs/comparisons | `verification/provenance/run-inventory.csv`, `verification/provenance/comparison-inventory.csv` |
+| Figures | `verification/figures/manifest.csv` → `figures/MANIFEST.md`; archive existence: `verification/figures/archive-inventory.md` |
+| Literature/bibliography | `notes/resource-map.md`, `notes/literature-synthesis-register.md`, `notes/literature/paperpile-export-list.md` |
+| Build/package | `Makefile`, `figures/submission-files.txt`, `packaging/README-package.md` |
+| CHPC dispatch | `rewrite/CHPC-CODEX-PROMPT.md`; new bounded packet and immutable source ref required |
+| History/gates | `rewrite/README.md` → `rewrite/HYBRID-GATE-REVIEW.md`; July task register is historical |
 
-Avoid broad evidence-tree reads, raw PDFs, image trees, legacy checklists, candidate figures, and `Definitions/` unless the task explicitly needs them.
+Open only the route needed. Avoid broad trees, bulk figures, raw PDFs, legacy checklists and `Definitions/` unless required.
+`main.tex` is the audited submission target. `drafts/jrl_manuscript.tex` is the superseded author draft;
+`_manuscript_v3.tex` is the over-inclusive caretaker snapshot and `_manuscript_test.tex` is experimental.
 
-## Key context
+## Evidence contract
 
-- Evidence is not mutually validating: reconcile claims against source artifacts.
-- Separate controlled comparisons, heterogeneous context, and literature context.
-- A rendered number requires matched run identity, domain, stations, window, source artifacts, and a reproducible command.
-- The frozen factorial is X6 (GFS two-way), X10 (GFS one-way), X5 (NAM two-way), and X3 (NAM one-way); resolve paths only through the run inventory.
-- Never call `trang_ref` the literal Tran et al. (2018) run. Meteorology is necessary for chemical interpretation; chemistry and inventories are not settled.
-- Add facts to the run inventory, figure manifest, or claim ledger before prose. Only `promoted` figures in `figures/MANIFEST.md` may enter `main.tex`; synthetic tests use temporary directories.
+- Architecture C is frozen; all five gates ran. Failed gates stay failed without new predeclared evidence.
+- Inventories govern design, archive records govern existence, both manifests govern figure admission, and the ledger plus exact artefacts govern claims.
+- X6/X10/X5/X3 are the confirmed floor. Other X0–X10 results require their recorded admission and limits; X8 is within-run context, never comparative or basin-export evidence.
+- Every number needs matched runs, domain, stations/footprint, window, inputs and command. Separate controlled, heterogeneous, observational and literature evidence.
+- Chemistry, emissions-inventory adequacy, basin export, inversion depth and multi-day persistence are not demonstrated. Do not separate initial from lateral forcing by wording.
+- Preserve reviewer quotations and author decisions. Colleague advice remains advisory unless explicitly confirmed; do not confuse implementation with author approval.
 
-## Hosts and edits
+## Operations
 
-- Run `hostname -f` and test paths first. Akamai/Linode is for writing, Git, LaTeX, and selective `~/reviews` work; CHPC is for WRF/data/figures and may not have `~/reviews`.
-- Use `wrf-full-figures` only when installed and readable; otherwise mark styling provisional and follow documented `brc-tools` conventions.
-- Keep `main.tex` single-file, sparse, American English, and one sentence per source line. Do not hand-edit `Definitions/`; replace `paperpile.bib` only as a complete export.
-- Use pdfLaTeX + BibTeX (`latexmk -pdf main.tex`); `make check` routinely, `make smoke` after analysis-code changes, inspect the PDF after prose/citation/figure/layout changes, and use `make submission` only for the allowlisted package.
-
-## Git
-
-- Use `jrl/<topic>` branches and PRs into protected `main`.
-- Commit one verified concern at a time, push substantial batches, and use John’s identity plus `Co-Authored-By: Codex <noreply@openai.com>`.
+- Akamai/Linode owns writing, Git and LaTeX; CHPC owns WRF/data work. Label-only plotting from committed summaries may run locally; reusable analysis belongs in `../brc-tools`.
+- No sibling WRF checkout overrides the paper inventories or immutable CHPC packets.
+- Keep manuscripts single-file, sparse, British English, one sentence per source line. Preserve official names, identifiers, bibliographic titles and direct quotations verbatim.
+- Never edit `Definitions/` or hand-edit `paperpile.bib`. John supplies one complete Paperpile replacement; `trang_ref` is not Tran et al. (2018).
+- After analysis/manuscript changes run `make final-draft-check`, `make submission-check`, and inspect PDFs; refresh the delivery folder with `make package`.
+- Production uses only dual-promoted, allowlisted figures. Keep original evidence and transfer inputs; no synthetic output may be promoted.
+- Use `jrl/<topic>` PRs into protected `main`; preserve unrelated dirt. Commit one verified concern at a time with John's identity and `Co-Authored-By: Codex <noreply@openai.com>`.

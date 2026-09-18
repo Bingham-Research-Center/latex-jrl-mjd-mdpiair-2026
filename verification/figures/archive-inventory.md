@@ -10,7 +10,7 @@ dredge it; use the exact paths below.
   (all paths below are relative to `ARC`). Group storage, not a repo; no cross-machine paths.
 - **Event:** Uinta Basin cold-air pool, init **2013-02-02**; main case 12→18 UTC hourly.
 - **Authoritative figure defs:**
-  `verification/config/figures/{pelican2013,pelican2013_1km,pelican2013_d04}.toml`.
+  `verification/config/figures/{pelican2013,pelican2013_terrain_d03,pelican2013_1km,pelican2013_d04}.toml`.
   Figure engine: sibling `../brc-tools/docs/WRF-FIGURE-ENGINE.md`.
 - **Run and narrative authority:** use `verification/provenance/run-inventory.csv`
   for run identity and `verification/provenance/comparison-inventory.csv` for what
@@ -30,6 +30,26 @@ dredge it; use the exact paths below.
   = 7 for all 9 standard cases (63 fields) + `compare/heatdeficit_map/` = 70 (one diff per
   `[[differences]]` pair × 7 h). The 21 stale mislabeled `terrain-900m-30m` PNGs were deleted
   from `diff_terrain_fine/` (→ 21, author-authorized). Compare root → 324.
+- **Verified 2026-07-14 CHPC v3 review:** immutable manuscript
+  `29854aac5fe4a2acbcecb705591c064197b3a8c3` and brc-tools
+  `69ddbe07af2e38e5e2d4f12f681bb360ff506a1a` produced task-scoped d02 CMP11
+  heat-deficit output (job `13952694`), d03 CMP11 heat-deficit/section output
+  (job `13952692`), the unchanged-number ANA-18 restyle (job `13952693`), and
+  line-free overlays, shared-axis profiles, and the clean d02/d03 locator (job
+  `13952705`). All jobs completed `0:0`; selected files were copied into the repo
+  only after raster/PDF inspection. The locator candidate now has PNG SHA-256
+  `29d71605591fc7e3608c96216a9771273e75c5c21ce00422a8912db6c8ed706e` and PDF
+  SHA-256 `8b02e9119177782cc5b7885152ec397fcff2a49a25265940679b9b7158bac6d0`.
+  Exact commands, scratch/reserve hashes, copied-file mappings, logs, and visual
+  findings are in `verification/provenance/v3-figure-review-20260714.json`.
+- **Verified 2026-07-15 v3 finishing pass:** manuscript source `92d96b1` and
+  brc-tools `69ddbe07` produced the exact bulk-theta values, sourced locator,
+  two-time Horsepool profiles, and bounded CMP11 composite in job `13968404`.
+  The hash-verified 15-file return is commit `010e833`; its immutable record is
+  `verification/provenance/v3-finishing-pass-13968404.json`.
+  Manuscript-scale PDF and raster review promoted the locator, bulk-theta curve,
+  and profile pair, while the terrain composite remains diagnostic because CMP11
+  had no predeclared gate and its d02, d03, and section summaries are support dependent.
 - **Exact renderer state:** brc-tools `fad70b0` (adds the `heatdeficit_map` family; was
   `56cd002` = thetaz + sounding `height_m`); `verification/config/figures/pelican2013.toml`
   SHA-256 `ad9d933854fc7067260f1bb398e25aff2e7c286b9df8135a64c9dfa1cf8d2fd7` (incl.
@@ -61,7 +81,7 @@ valid times 12–18Z).
 | X5 | `pelican2013_nam_3_1_333m_75lev` | NAM | **2-way** · 333 m | 75 | default ~900 m | baseline | 6 h | `full6h/run_20260626T163737Z/full-figures` | ✓ 63 | 07-09 23:34 | feedback test vs X3 |
 | X6 | `pelican2013_gfs_3_1_333m_75lev` | **GFS** | 2-way · 333 m | 75 | default ~900 m | baseline | 6 h | `full6h/run_20260630T181555Z/full-figures` | ✓ 63 | 07-09 23:34 | driving-state contrast vs X5; IC/LBC contributions unresolved |
 | X7 | `pelican2013_nam_3_1km_75lev` | NAM | 2-way · 2dom/**1 km** | 75 | default | baseline | **24 h** 00→00Z | `full24h/run_20260625T212123Z/full-figures` | ✓ **216** (48/120/48) | 07-10 02:57 | coarse resolution rung; own `verification/config/figures/pelican2013_1km.toml` |
-| X8 | `pelican2013_nam_d04_111m_50lev_oneway_terrain3s` | NAM | 1-way · **4dom/111 m** | 50 | fine | baseline | 6 h (d03/d04 sub-hrly) | `full6h/run_20260709T041225Z_d04only3s_ts12/full-figures` | ~86 **non-std** | 07-10 01:09 | fine rung; nested `nam_d04_111m/{sections28,surface35,upperair7}` + profiles7/skewt7/domains1/heatdeficit1; **upperair crest-only** (no p600); focus=**Vernal**; own `verification/config/figures/pelican2013_d04.toml` |
+| X8 | `pelican2013_nam_d04_111m_50lev_oneway_terrain3s` | NAM | 1-way · **4dom/111 m** | 50 | fine | baseline | 6 h (d03/d04 10-min) | `full6h/run_20260709T041225Z_d04only3s_ts12/full-figures` | 200 **non-std** | 07-15 13:15 | context run; current generalized additions are hourly `deficitflux_map` (7), `deficitflux_div` (7), `deficitbulk_map` (7), and `deficit_budget` PNG+CSV (2), produced in the 26-task job 13970596 with final budget refresh 13971081; four neutral current transect PNGs are under `pelican2013_d04_pub_figures/compare/deficitflux_transect/` beside four superseded historically named files; manuscript packet job 13971080 is under `analysis/x8-deficit-transport/`; **not a resolution or basin-export experiment** |
 | X9 | `pelican2013_nam_3_1_333m_75lev_twoway_terrain3s` | NAM | **2-way** · 333 m | 75 | fine | baseline | 6 h | `full6h/run_20260710T084413Z/full-figures` | ✓ **63** (+3 thetaz) | 07-11 | TOML `[runs]` key **`nam_twoway_terrain3s`**; job `13902813` (first `13902254` hung mid-15z, resubmitted); fine-terrain analog of X5 |
 | X10 | `pelican2013_gfs_3_1_333m_75lev_oneway` | **GFS** | **1-way** · 333 m | 75 | default ~900 m | baseline | 6 h | `full6h/run_20260710T234000Z/full-figures` | ✓ 63 | 07-10 19:38 | feedback-only companion to X6; preparation `13894268`, WRF `13894282`, quicklooks `13896648` |
 

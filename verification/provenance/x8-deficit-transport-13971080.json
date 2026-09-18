@@ -1,0 +1,320 @@
+{
+  "request_id": "20260715-x8-deficit-transport",
+  "created_utc": "2026-07-15T19:16:20.702396+00:00",
+  "compute_status": "commands_completed",
+  "promotion_performed": false,
+  "slurm_job_id": "13971080",
+  "host": "notch137",
+  "manuscript_source_ref": "5a51486efafdd820d7e56f640bcd8a674b2dc948",
+  "brc_tools_ref": "548fee49aaa2376f7212ca6646f561d7c31ad8a2",
+  "x8_run": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12",
+  "domain": "d04",
+  "window": "2013-02-02 12:00-18:00 UTC; 12:00-14:00 spin-up context; 14:00-18:00 retained",
+  "definitions": {
+    "crest_m_msl": 2200.0,
+    "active_deficit_min_k": 0.25,
+    "minimum_heat_deficit_mj_m2": 0.1,
+    "edge_margin_cells": 15,
+    "map_valid_utc": "2013-02-02T15:00:00",
+    "horizontal_convergence": "-div_h(F)",
+    "unresolved": "finite-difference storage minus endpoint-mean horizontal convergence",
+    "transect_sign": "west-to-east lines; positive is southward"
+  },
+  "wrf_inputs": [
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12/wrfout_d04_2013-02-02_12:00:00",
+      "sha256": "0ed8c7e0d5e389bb96262497a847ff3f1db1a96c1807200e2b0dcb39dad5ad9e",
+      "bytes": 75006829
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12/wrfout_d04_2013-02-02_12:10:00",
+      "sha256": "898549ff37ada7528e7d9ccaf21644dfcb3c5d7d0ae434be1af6cd3bdf6a8526",
+      "bytes": 82510667
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12/wrfout_d04_2013-02-02_12:20:00",
+      "sha256": "7e85e7deb23dc2c0cc2a824568b156734e54b9f1e417b542d300ecebf62acb45",
+      "bytes": 82324470
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12/wrfout_d04_2013-02-02_12:30:00",
+      "sha256": "d3a7134324bb71ae295476dc80f7a9a87c173144c438d5734aea06c7577bf917",
+      "bytes": 82459943
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12/wrfout_d04_2013-02-02_12:40:00",
+      "sha256": "554c71910e9d37cd19716d85db460a9ac340bcd8a8b903f671816aa3f9a7be13",
+      "bytes": 82672702
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12/wrfout_d04_2013-02-02_12:50:00",
+      "sha256": "c2bb1595cac13536bc06e6f56f93a3708593717b5a5f42963110880af138f0ab",
+      "bytes": 82854270
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12/wrfout_d04_2013-02-02_13:00:00",
+      "sha256": "2f7153b4b84ad625de12f41f15681bbc158811aa79ff75cb4601c9b2027f22f3",
+      "bytes": 83117371
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12/wrfout_d04_2013-02-02_13:10:00",
+      "sha256": "f890a15b62d28f5ff7dff9da1751892ef86501073a2026e4147109c6fbff61d1",
+      "bytes": 83391922
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12/wrfout_d04_2013-02-02_13:20:00",
+      "sha256": "00bd0c167d3ab364c8b23850963027313ce8e8a1069ce1c47a35b1a9a239f777",
+      "bytes": 83548916
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12/wrfout_d04_2013-02-02_13:30:00",
+      "sha256": "1ecae2206e62d4d8347443921099462986be43c475c47e8c30fb99f6ba3f3b1d",
+      "bytes": 83740410
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12/wrfout_d04_2013-02-02_13:40:00",
+      "sha256": "692e2e2754c5c30f686e06a6d074bf23a4566dacd08846d8ecf771e592cb94a4",
+      "bytes": 83881521
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12/wrfout_d04_2013-02-02_13:50:00",
+      "sha256": "98216b75711b4979f18d6277eabfcac39ca3f262b7908e6043270a466c04c3de",
+      "bytes": 84070655
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12/wrfout_d04_2013-02-02_14:00:00",
+      "sha256": "389ed835c08a626e9285fce3bd3bb606cf568f28b0d1509eeba665866daeb4ed",
+      "bytes": 84157789
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12/wrfout_d04_2013-02-02_14:10:00",
+      "sha256": "0a149e961e858b58f1ff3fcef9dd7dac07bb80e2343e3f01995637726d1512d3",
+      "bytes": 84317764
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12/wrfout_d04_2013-02-02_14:20:00",
+      "sha256": "531ec984c95bea39f1fe6fb146e455cedb613c152c626aa81bac890e3319fb51",
+      "bytes": 84448356
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12/wrfout_d04_2013-02-02_14:30:00",
+      "sha256": "46fae02b3cc60abe6cb3d1c09ec518684ad1b9faf836557d7ccd881bfabe791f",
+      "bytes": 84573601
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12/wrfout_d04_2013-02-02_14:40:00",
+      "sha256": "1d6309ccc6ccb451a2a9820ae4930a3ad5e976efb5fc7f4665f012ec0dc61d0f",
+      "bytes": 87071157
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12/wrfout_d04_2013-02-02_14:50:00",
+      "sha256": "fa088af615ad993192dde6bff4477bb2e2a9e7fe97f7c7375822f02ecfa05ba1",
+      "bytes": 87105574
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12/wrfout_d04_2013-02-02_15:00:00",
+      "sha256": "b987cdc7cacd3a60e8b17ac573c40b6541ff8c087be1d32c49faa78bde69c370",
+      "bytes": 87189483
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12/wrfout_d04_2013-02-02_15:10:00",
+      "sha256": "a2f1240ab922b8ae4a7f016bc1835a410445c6124fb5c7db5e9ac68d568495bc",
+      "bytes": 87285735
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12/wrfout_d04_2013-02-02_15:20:00",
+      "sha256": "0d212e63805a7c1d125abbc8a9325d8d07be29687b6706657bd93289b1ba3443",
+      "bytes": 87375058
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12/wrfout_d04_2013-02-02_15:30:00",
+      "sha256": "a8f24ec3887f8846089971fe4bf883ca036f2088553a788d8ad513990799b2be",
+      "bytes": 87472767
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12/wrfout_d04_2013-02-02_15:40:00",
+      "sha256": "9938fd2a963e396b84f7180dee03a46a3db65eae06a532937d384c5e4e547732",
+      "bytes": 87514730
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12/wrfout_d04_2013-02-02_15:50:00",
+      "sha256": "aae05d9808ce67ded9dd54666aaee6d4a128bc84fff4f58b0ab4995ddc6632c5",
+      "bytes": 87519819
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12/wrfout_d04_2013-02-02_16:00:00",
+      "sha256": "a70f35fde0d9e48f607712ab6ca24072169f5587690f10949ca85c28899eb128",
+      "bytes": 87473009
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12/wrfout_d04_2013-02-02_16:10:00",
+      "sha256": "f009397b1375b97ca87eb26dbf7f8fa17824750865102b8ae7194bfa1d47ab88",
+      "bytes": 87444640
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12/wrfout_d04_2013-02-02_16:20:00",
+      "sha256": "a8a63d9a0566c4ad5e38aadc5de8a559153b8c1ae3466dd6067b6a41e6581100",
+      "bytes": 87391699
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12/wrfout_d04_2013-02-02_16:30:00",
+      "sha256": "4110d9244c5317c29bf17721e954bc3b2253090eb475c09f30760adf4a4addee",
+      "bytes": 87295919
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12/wrfout_d04_2013-02-02_16:40:00",
+      "sha256": "e4498fc8afa057708bd9b64fa7edec065b76a322090c1ae45f95d2d09134e83a",
+      "bytes": 87219588
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12/wrfout_d04_2013-02-02_16:50:00",
+      "sha256": "b2b6e4cce442849e354225ed603cc9839f803e895a05fdea1c9f50e80e70b463",
+      "bytes": 87153512
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12/wrfout_d04_2013-02-02_17:00:00",
+      "sha256": "fb568939054b3713f5b39761cd2b4f95c28bc2305877cdd55d324f4cdd319b7c",
+      "bytes": 87156346
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12/wrfout_d04_2013-02-02_17:10:00",
+      "sha256": "a05c8767ea5fbadc50b03efc17963eee055b977de4a5ecb948a6f0043fb7f315",
+      "bytes": 87148105
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12/wrfout_d04_2013-02-02_17:20:00",
+      "sha256": "445149c7394c11c2bf5042855328e0230fd60a9b677a3021cec0f34910eb20db",
+      "bytes": 87113682
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12/wrfout_d04_2013-02-02_17:30:00",
+      "sha256": "d29cd76e7dcf3a29b41e6b6f9143d86c2b26271918bf204e1fa8cd9d7234f207",
+      "bytes": 87096091
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12/wrfout_d04_2013-02-02_17:40:00",
+      "sha256": "cf33ca13fc9538517c8f58275718b0aef44d0e957baafe755e20bfbed3e41b65",
+      "bytes": 87073111
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12/wrfout_d04_2013-02-02_17:50:00",
+      "sha256": "9c67d2bc0e77f903c770f9db5ffeebe24fb301faf865532dfc89c220904c5d0b",
+      "bytes": 87032540
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12/wrfout_d04_2013-02-02_18:00:00",
+      "sha256": "04e8f09ac86339569fce0af206abfb606dbc1dfc6e4ca473c767b94e8c6253fc",
+      "bytes": 86655273
+    }
+  ],
+  "command_authority": "verification/slurm/run_x8_deficit_transport.slurm at manuscript_source_ref",
+  "command_trace": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12/analysis/x8-deficit-transport/job_13971080/command_trace.log",
+  "job_metadata": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_d04_111m_50lev_oneway_terrain3s/full6h/run_20260709T041225Z_d04only3s_ts12/analysis/x8-deficit-transport/job_13971080/job_metadata.txt",
+  "returned_files": [
+    {
+      "source": "raw/figures/x8_deficit_transport_map_15z.png",
+      "destination": "verification/figures/candidates/x8_deficit_transport_map_15z.png",
+      "role": "review-supplement-render",
+      "sha256": "81d106d1143e688e2f380625bca7c042b6e634fc321b060507679e0fc4784bf0",
+      "bytes": 947938,
+      "review_status": "candidate_unreviewed"
+    },
+    {
+      "source": "raw/figures/x8_deficit_transport_map_15z.pdf",
+      "destination": "verification/figures/candidates/x8_deficit_transport_map_15z.pdf",
+      "role": "review-supplement-vector",
+      "sha256": "ac9b3dad340dd855a021ad0aeaaa71a9f0c0339910c2f7fb2003915b16c6f1db",
+      "bytes": 2053622,
+      "review_status": "candidate_unreviewed"
+    },
+    {
+      "source": "raw/figures/x8_deficit_transport_gates_12to18.png",
+      "destination": "verification/figures/candidates/x8_deficit_transport_gates_12to18.png",
+      "role": "review-supplement-render",
+      "sha256": "8486cd75463830d7a436ce1546328a66a82019c83eeee433718e6cad688d7ccd",
+      "bytes": 265528,
+      "review_status": "candidate_unreviewed"
+    },
+    {
+      "source": "raw/figures/x8_deficit_transport_gates_12to18.pdf",
+      "destination": "verification/figures/candidates/x8_deficit_transport_gates_12to18.pdf",
+      "role": "review-supplement-vector",
+      "sha256": "5da769a31c4d6e3c4453418494ba7f4ea206b65fb5e0ca7c7a40c176d17b2e7a",
+      "bytes": 25632,
+      "review_status": "candidate_unreviewed"
+    },
+    {
+      "source": "raw/figures/x8_deficit_convergence_15z.png",
+      "destination": "verification/figures/candidates/x8_deficit_convergence_15z.png",
+      "role": "review-supplement-render",
+      "sha256": "f48c6957439387a7cbaba4772beaaa033641f30784b38937ed9e7098f1e718b2",
+      "bytes": 310343,
+      "review_status": "candidate_unreviewed"
+    },
+    {
+      "source": "raw/figures/x8_deficit_convergence_15z.pdf",
+      "destination": "verification/figures/candidates/x8_deficit_convergence_15z.pdf",
+      "role": "review-supplement-vector",
+      "sha256": "e01469cb7f89aaa1dc1c705f3c1701a3c7ea954e1c127debf601643ad2bd41ab",
+      "bytes": 2070844,
+      "review_status": "candidate_unreviewed"
+    },
+    {
+      "source": "raw/figures/x8_deficit_bulk_15z.png",
+      "destination": "verification/figures/candidates/x8_deficit_bulk_15z.png",
+      "role": "review-supplement-render",
+      "sha256": "2ce9524a8982123801303dde2513e2726c6fec98ba98c07750829ca6fa0df5cf",
+      "bytes": 561595,
+      "review_status": "candidate_unreviewed"
+    },
+    {
+      "source": "raw/figures/x8_deficit_bulk_15z.pdf",
+      "destination": "verification/figures/candidates/x8_deficit_bulk_15z.pdf",
+      "role": "review-supplement-vector",
+      "sha256": "8a239cc371523063e0442d7525637f7396c606649780d3b5c192f6f0b7e2a9ee",
+      "bytes": 4638589,
+      "review_status": "candidate_unreviewed"
+    },
+    {
+      "source": "raw/figures/x8_deficit_budget_12to18.png",
+      "destination": "verification/figures/candidates/x8_deficit_budget_12to18.png",
+      "role": "review-supplement-render",
+      "sha256": "eb427ee355991b90459fb1b100e1f0e31b396162a74bc5c5ab93419fbc7267c1",
+      "bytes": 411432,
+      "review_status": "candidate_unreviewed"
+    },
+    {
+      "source": "raw/figures/x8_deficit_budget_12to18.pdf",
+      "destination": "verification/figures/candidates/x8_deficit_budget_12to18.pdf",
+      "role": "review-supplement-vector",
+      "sha256": "190a5b1d351f3b7204af7f42713e10d59eec41f136e259bf89df8795a22fa58c",
+      "bytes": 52251,
+      "review_status": "candidate_unreviewed"
+    },
+    {
+      "source": "raw/data/x8_deficit_transport_timeseries.csv",
+      "destination": "verification/data/x8_deficit_transport_timeseries.csv",
+      "role": "exact-10-minute-state-and-transect-values",
+      "sha256": "537ab81996db00666172b2f6675278c90e41e056719c551d6eba6c9a37f6c9d2",
+      "bytes": 6667,
+      "review_status": "candidate_unreviewed"
+    },
+    {
+      "source": "raw/data/x8_deficit_budget_intervals.csv",
+      "destination": "verification/data/x8_deficit_budget_intervals.csv",
+      "role": "exact-10-minute-tendency-values",
+      "sha256": "64ee0637a85c3fba0e01cbb7e280407ac4eedd00a75f0c98365518071a852256",
+      "bytes": 3908,
+      "review_status": "candidate_unreviewed"
+    },
+    {
+      "source": "raw/data/x8_deficit_transport_summary.csv",
+      "destination": "verification/data/x8_deficit_transport_summary.csv",
+      "role": "bounded-summary-values",
+      "sha256": "374773f6363f5bab23e7579ea90d1806724f8a730f7809f14fda8af02a0b4e89",
+      "bytes": 1933,
+      "review_status": "candidate_unreviewed"
+    }
+  ],
+  "admission_note": "X8 is multiply confounded context. Akamai must inspect and register every figure; no resolution, validation, basin-export, or closed-budget claim follows."
+}

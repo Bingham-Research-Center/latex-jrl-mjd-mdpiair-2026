@@ -1,0 +1,428 @@
+{
+  "block_length_hours": 2,
+  "bootstrap_resamples": 20000,
+  "command": [
+    "verification/scripts/analyze_wrf_retention.py",
+    "--run",
+    "gfs2=/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_gfs_3_1_333m_75lev/full6h/run_20260630T181555Z",
+    "--run",
+    "gfs1=/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_gfs_3_1_333m_75lev_oneway/full6h/run_20260710T234000Z",
+    "--run",
+    "nam2=/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev/full6h/run_20260626T163737Z",
+    "--run",
+    "nam1=/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway/full6h/run_20260702T053120Z",
+    "--display",
+    "gfs2=GFS two-way",
+    "--display",
+    "gfs1=GFS one-way",
+    "--display",
+    "nam2=NAM two-way",
+    "--display",
+    "nam1=NAM one-way",
+    "--pair",
+    "gfs2,nam2",
+    "--pair",
+    "gfs1,nam1",
+    "--glob",
+    "wrfout_d02_2013-02-02_*",
+    "--stations",
+    "verification/data/stations_2013_selection.csv",
+    "--start",
+    "2013-02-02T14:00:00",
+    "--end",
+    "2013-02-02T18:00:00",
+    "--agl-bottom",
+    "50",
+    "--agl-top",
+    "250",
+    "--agl-step",
+    "10",
+    "--block-length",
+    "2",
+    "--bootstrap-resamples",
+    "20000",
+    "--seed",
+    "20130202",
+    "--out-dir",
+    "/scratch/general/vast/u0737349/latex_jrl_review_layers/15610800/raw/50-250_step-10"
+  ],
+  "common_agl_m": [
+    50.0,
+    60.0,
+    70.0,
+    80.0,
+    90.0,
+    100.0,
+    110.0,
+    120.0,
+    130.0,
+    140.0,
+    150.0,
+    160.0,
+    170.0,
+    180.0,
+    190.0,
+    200.0,
+    210.0,
+    220.0,
+    230.0,
+    240.0,
+    250.0
+  ],
+  "definitions": {
+    "alignment_ratio": "transport_wind_ms / layer_mean_speed_ms; 1 indicates no loss from vertical directional cancellation",
+    "layer_mean_speed_ms": "height-weighted mean earth-relative horizontal wind speed over 50-250 m AGL",
+    "pblh_m": "native WRF PBLH; scheme-dependent companion diagnostic",
+    "stability_k": "theta(250 m AGL) - theta(50 m AGL)",
+    "transport_wind_ms": "magnitude of height-weighted mean earth-relative U/V over 50-250 m AGL",
+    "uncertainty": "descriptive circular moving-block sensitivity interval across hourly spatial medians; station field held together; not a formal confidence interval"
+  },
+  "generated_utc": "2026-09-16T05:49:02.992987+00:00",
+  "inputs": {
+    "observations": null,
+    "stations": {
+      "path": "verification/data/stations_2013_selection.csv",
+      "sha256": "80bf36f23b02065ae61e606932941190977f016e78842aaf447b3bbbbe60256a"
+    }
+  },
+  "interactions": [],
+  "runs": {
+    "gfs1": {
+      "files": [
+        {
+          "mtime_utc": "2026-07-11T00:14:27.207054+00:00",
+          "name": "wrfout_d02_2013-02-02_14:00:00",
+          "size_bytes": 49767270
+        },
+        {
+          "mtime_utc": "2026-07-11T00:30:40.490869+00:00",
+          "name": "wrfout_d02_2013-02-02_15:00:00",
+          "size_bytes": 50780615
+        },
+        {
+          "mtime_utc": "2026-07-11T00:47:08.382691+00:00",
+          "name": "wrfout_d02_2013-02-02_16:00:00",
+          "size_bytes": 50693958
+        },
+        {
+          "mtime_utc": "2026-07-11T01:03:35.019266+00:00",
+          "name": "wrfout_d02_2013-02-02_17:00:00",
+          "size_bytes": 50591248
+        },
+        {
+          "mtime_utc": "2026-07-11T01:20:01.966161+00:00",
+          "name": "wrfout_d02_2013-02-02_18:00:00",
+          "size_bytes": 50433763
+        }
+      ],
+      "max_grid_delta_degrees": 0.0,
+      "run_dir": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_gfs_3_1_333m_75lev_oneway/full6h/run_20260710T234000Z",
+      "station_cells": {
+        "KVEL": [
+          95,
+          86
+        ],
+        "QRS": [
+          79,
+          45
+        ],
+        "QV4": [
+          98,
+          82
+        ],
+        "USU01": [
+          46,
+          100
+        ],
+        "USU02": [
+          79,
+          74
+        ],
+        "USU03": [
+          94,
+          14
+        ],
+        "USU04": [
+          21,
+          83
+        ],
+        "USU05": [
+          55,
+          33
+        ],
+        "USU07": [
+          51,
+          60
+        ],
+        "USU08": [
+          63,
+          90
+        ],
+        "UUT01": [
+          76,
+          42
+        ]
+      }
+    },
+    "gfs2": {
+      "files": [
+        {
+          "mtime_utc": "2026-06-30T18:53:35.502385+00:00",
+          "name": "wrfout_d02_2013-02-02_14:00:00",
+          "size_bytes": 49949850
+        },
+        {
+          "mtime_utc": "2026-06-30T19:10:22.356260+00:00",
+          "name": "wrfout_d02_2013-02-02_15:00:00",
+          "size_bytes": 50953811
+        },
+        {
+          "mtime_utc": "2026-06-30T19:27:20.305850+00:00",
+          "name": "wrfout_d02_2013-02-02_16:00:00",
+          "size_bytes": 50853182
+        },
+        {
+          "mtime_utc": "2026-06-30T19:44:22.136482+00:00",
+          "name": "wrfout_d02_2013-02-02_17:00:00",
+          "size_bytes": 50763671
+        },
+        {
+          "mtime_utc": "2026-06-30T20:01:26.883579+00:00",
+          "name": "wrfout_d02_2013-02-02_18:00:00",
+          "size_bytes": 50614930
+        }
+      ],
+      "run_dir": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_gfs_3_1_333m_75lev/full6h/run_20260630T181555Z",
+      "station_cells": {
+        "KVEL": [
+          95,
+          86
+        ],
+        "QRS": [
+          79,
+          45
+        ],
+        "QV4": [
+          98,
+          82
+        ],
+        "USU01": [
+          46,
+          100
+        ],
+        "USU02": [
+          79,
+          74
+        ],
+        "USU03": [
+          94,
+          14
+        ],
+        "USU04": [
+          21,
+          83
+        ],
+        "USU05": [
+          55,
+          33
+        ],
+        "USU07": [
+          51,
+          60
+        ],
+        "USU08": [
+          63,
+          90
+        ],
+        "UUT01": [
+          76,
+          42
+        ]
+      }
+    },
+    "nam1": {
+      "files": [
+        {
+          "mtime_utc": "2026-07-02T06:16:59.544633+00:00",
+          "name": "wrfout_d02_2013-02-02_14:00:00",
+          "size_bytes": 49693364
+        },
+        {
+          "mtime_utc": "2026-07-02T06:38:47.136313+00:00",
+          "name": "wrfout_d02_2013-02-02_15:00:00",
+          "size_bytes": 50817277
+        },
+        {
+          "mtime_utc": "2026-07-02T07:00:49.019979+00:00",
+          "name": "wrfout_d02_2013-02-02_16:00:00",
+          "size_bytes": 50816943
+        },
+        {
+          "mtime_utc": "2026-07-02T07:22:53.669301+00:00",
+          "name": "wrfout_d02_2013-02-02_17:00:00",
+          "size_bytes": 50881286
+        },
+        {
+          "mtime_utc": "2026-07-02T07:44:56.121074+00:00",
+          "name": "wrfout_d02_2013-02-02_18:00:00",
+          "size_bytes": 50973952
+        }
+      ],
+      "max_grid_delta_degrees": 0.0,
+      "run_dir": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway/full6h/run_20260702T053120Z",
+      "station_cells": {
+        "KVEL": [
+          95,
+          86
+        ],
+        "QRS": [
+          79,
+          45
+        ],
+        "QV4": [
+          98,
+          82
+        ],
+        "USU01": [
+          46,
+          100
+        ],
+        "USU02": [
+          79,
+          74
+        ],
+        "USU03": [
+          94,
+          14
+        ],
+        "USU04": [
+          21,
+          83
+        ],
+        "USU05": [
+          55,
+          33
+        ],
+        "USU07": [
+          51,
+          60
+        ],
+        "USU08": [
+          63,
+          90
+        ],
+        "UUT01": [
+          76,
+          42
+        ]
+      }
+    },
+    "nam2": {
+      "files": [
+        {
+          "mtime_utc": "2026-06-26T17:12:57.130735+00:00",
+          "name": "wrfout_d02_2013-02-02_14:00:00",
+          "size_bytes": 49888545
+        },
+        {
+          "mtime_utc": "2026-06-26T17:30:28.378085+00:00",
+          "name": "wrfout_d02_2013-02-02_15:00:00",
+          "size_bytes": 50997096
+        },
+        {
+          "mtime_utc": "2026-06-26T17:48:15.769228+00:00",
+          "name": "wrfout_d02_2013-02-02_16:00:00",
+          "size_bytes": 51004051
+        },
+        {
+          "mtime_utc": "2026-06-26T18:06:06.370149+00:00",
+          "name": "wrfout_d02_2013-02-02_17:00:00",
+          "size_bytes": 51061065
+        },
+        {
+          "mtime_utc": "2026-06-26T18:23:52.248391+00:00",
+          "name": "wrfout_d02_2013-02-02_18:00:00",
+          "size_bytes": 51161324
+        }
+      ],
+      "max_grid_delta_degrees": 0.0,
+      "run_dir": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev/full6h/run_20260626T163737Z",
+      "station_cells": {
+        "KVEL": [
+          95,
+          86
+        ],
+        "QRS": [
+          79,
+          45
+        ],
+        "QV4": [
+          98,
+          82
+        ],
+        "USU01": [
+          46,
+          100
+        ],
+        "USU02": [
+          79,
+          74
+        ],
+        "USU03": [
+          94,
+          14
+        ],
+        "USU04": [
+          21,
+          83
+        ],
+        "USU05": [
+          55,
+          33
+        ],
+        "USU07": [
+          51,
+          60
+        ],
+        "USU08": [
+          63,
+          90
+        ],
+        "UUT01": [
+          76,
+          42
+        ]
+      }
+    }
+  },
+  "seed": 20130202,
+  "software": {
+    "generator": {
+      "path": "/uufs/chpc.utah.edu/common/home/u0737349/gits/mdpi-air-review-layers-658bd00/verification/scripts/analyze_wrf_retention.py",
+      "sha256": "ffb9c663b979a167f4b98de97de65739607e6d0ff26b6c6120ea42c3cb085676"
+    },
+    "numpy": "2.5.0",
+    "pandas": "3.0.3",
+    "polars": "1.42.0",
+    "python": "3.12.13",
+    "xarray": "2026.4.0"
+  },
+  "stations": [
+    "KVEL",
+    "QRS",
+    "QV4",
+    "USU01",
+    "USU02",
+    "USU03",
+    "USU04",
+    "USU05",
+    "USU07",
+    "USU08",
+    "UUT01"
+  ],
+  "window": {
+    "end": "2013-02-02T18:00:00",
+    "n_hours": 5,
+    "start": "2013-02-02T14:00:00"
+  }
+}

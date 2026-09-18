@@ -36,8 +36,10 @@ proves only the two PBL/surface-layer settings change at step two.
 
 - Exact archive paths and configuration fingerprints:
   `verification/provenance/run-inventory.csv`.
-- Runnable manifests and renderer: `../brc-wrf/brc-cases/`; the paper-specific
-  figure TOMLs are under `verification/config/figures/`.
+- As-run identity and control evidence: the run inventory, exact archive packets,
+  WRF headers, and namelist fingerprints; historical WRF-repo commit labels are
+  provenance notes only. Paper-specific figure TOMLs are under
+  `verification/config/figures/`, with reusable rendering in `../brc-tools`.
 - Treatment 1 completed `real.exe`, `wrf.exe`, its 21-file archive, an empty
   WRF error-marker scan, and 54-product quicklook checks.
 - Paired review artifact:

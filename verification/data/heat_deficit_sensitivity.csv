@@ -1,0 +1,4 @@
+scope,definitions,weaker_state_definitions_pass,gfs_loss_definitions_pass,maintenance_definitions_pass,weaker_state_pass,maintenance_pass,difference_in_change_min_mj_m2,difference_in_change_max_mj_m2,retained_hourly_difference_min_mj_m2,retained_hourly_difference_max_mj_m2
+gfs1_minus_nam1,7,7,0,0,True,False,-0.06579429460349973,0.31401518195300415,-1.8045280615631833,-0.71056238568206
+gfs2_minus_nam2,7,7,0,0,True,False,-0.05589978369765913,0.3192807998492877,-1.7706879811264975,-0.7026866853030427
+both_feedback_modes,14,14,0,0,True,False,-0.06579429460349973,0.3192807998492877,-1.8045280615631833,-0.7026866853030427

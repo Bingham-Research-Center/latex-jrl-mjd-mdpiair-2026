@@ -48,8 +48,13 @@ PYTHONPATH=../brc-tools conda run -n brc-tools-2026 \
   --wrf verification/data/wrf_gfs_2way_d02_per_station.csv \
         verification/data/wrf_nam_2way_d02_per_station.csv \
         verification/data/wrf_nam_1way_d02_per_station.csv \
-  --out-dir verification/figures/candidates
+  --out-dir verification/figures/candidates \
+  --data-out-dir verification/data
 ```
+
+Supplying `--data-out-dir` writes the exact bench-minus-floor potential-temperature
+values used in the plot plus a descriptive min/max/mean summary.  A figure cannot be
+promoted from this pipeline unless those CSVs are committed with the figure provenance.
 
 The real common-AGL analysis is intentionally off-login and reproducible through:
 

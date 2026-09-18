@@ -79,6 +79,7 @@ def main() -> None:
     obs = synth_obs(META_CSV)
     obs.write_parquet(obs_path)
     figures = tmp / "figures"
+    derived = tmp / "derived"
     runs = {"fake_warm": +3.0, "fake_cool": -1.0}
     paths = []
     for (label, bias), seed in zip(runs.items(), (1, 2)):
@@ -91,7 +92,8 @@ def main() -> None:
     for script, extra in (
         ("verify_runs_feb0102.py", ["--obs", str(obs_path), "--out-dir", str(tmp)]),
         ("plot_wrf_vs_obs_feb0102.py",
-         ["--obs", str(obs_path), "--out-dir", str(figures)]),
+         ["--obs", str(obs_path), "--out-dir", str(figures),
+          "--data-out-dir", str(derived)]),
     ):
         cmd = env_cmd + [str(SCRIPTS / script), "--wrf", *paths, *extra]
         print(f"\n$ {' '.join(cmd)}")
@@ -112,13 +114,23 @@ def main() -> None:
     assert (tmp / "wrf_runs_spread_feb0102.csv").exists()
     for stem in ("wrf_temp_timeseries_feb0102", "wrf_inversion_index_feb0102"):
         assert (figures / f"{stem}.png").exists(), f"missing figure {stem}.png"
+    dtheta = pl.read_csv(derived / "bulk_theta_contrast_feb0102.csv")
+    summary = pl.read_csv(derived / "bulk_theta_contrast_feb0102_summary.csv")
+    expected_columns = {
+        "valid_time_utc", "hour_mst", "source_type", "series_id", "display_label",
+        "bench_station", "floor_station", "bench_theta_k", "floor_theta_k", "dtheta_k",
+    }
+    assert set(dtheta.columns) == expected_columns, dtheta.columns
+    assert dtheta.height == 3 * 73, f"expected 219 bulk-theta rows, got {dtheta.height}"
+    assert summary.height == 3, f"expected 3 bulk-theta summaries, got {summary.height}"
+    assert summary["n_hours"].to_list() == [73, 73, 73], summary["n_hours"].to_list()
     for stem in ("obs_theta_profiles_feb0102", "obs_temp_timeseries_feb0102",
                  "obs_inversion_index_feb0102"):
         for ext in ("png", "pdf"):
             f = obs_figures / f"{stem}.{ext}"
             assert f.exists() and f.stat().st_size > 10_000, f"missing/empty {f}"
     print(f"\nOK: biases recovered (warm {warm:+.2f} K, cool {cool:+.2f} K), "
-          "spread table + 5 logical figures written")
+          "spread and bulk-theta tables + 5 logical figures written")
     print(f"NOTE: all synthetic-fixture outputs remain isolated under {tmp}")
 
 

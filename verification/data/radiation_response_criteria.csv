@@ -1,0 +1,4 @@
+criterion,threshold,passed
+R1_aspect_organized_swdown,5.0,False
+R2_tsk_follows,>0,True
+ANA18_cmp07_screen,R1 and R2,False

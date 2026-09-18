@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 # chpc_pathcheck.sh — provenance probe for the 2013 baseline (Trang "frozone" WRF).
 #
+# HISTORICAL PROBE: retained to explain the July 2026 discovery path. Its guessed
+# $HOME/brc-wrf checkout is not a current paper authority and may not exist.
+# Do not rerun for final-draft identity; use run-inventory.csv, exact headers,
+# namelist fingerprints, and immutable archive/control packets instead.
+#
 # READ-ONLY: only ls/stat/find/grep/diff, rclone ls*, and ncdump -h. Writes nothing
 # except (optionally) its own log via the tee command below.
 #

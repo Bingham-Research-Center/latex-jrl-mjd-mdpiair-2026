@@ -24,6 +24,13 @@ sounding_hour = 12
 upper_pressure_hpa = 600.0
 upper_adv_domain = "outer"
 heatdeficit_domain = "d02"                  # 1 km nest (innermost d04=111 m is too small to span the basin)
+deficitflux_domain = "inner"                # deficitflux_* families on d04 (111 m) — the canyon-gate scale
+deficitflux_smooth_km = 1.0                 # display-only convergence smoothing; CSV values remain raw
+deficit_active_min_k = 0.25                 # diagnosed active-layer threshold for depth/bulk fields
+deficit_min_heat_mj_m2 = 0.1                # mask F/H and Froude where H is negligible
+deficit_budget_margin_cells = 15             # symmetric interior crop (nominally 1.67 km per side)
+deficit_spinup_hours = 2.0                  # 12-14 UTC is plotted as context, not retained interpretation
+surface_single_domains = ["inner"]          # free-standing d04-only surface figures beside the 4-nest panel
 # Focus point matches this run's prior full-figures (skew-T / profile / heat-deficit).
 # Sections run EW/NS through the domain centre and ignore the focus point.
 focus_point = { name = "Vernal", lat = 40.455, lon = -109.530 }
@@ -47,6 +54,43 @@ Myton                  = { lat = 40.1938, lon = -110.0630 }
 
 [runs]
 nam_d04_111m = { dir = "pelican2013_nam_d04_111m_50lev_oneway_terrain3s", label = "NAM d04 111 m (4-nest)" }
+
+# Terrain-incision transects for the deficitflux_transect family (signed heat-deficit
+# transport Phi(t), GW). The three short gates were located from d04 model-terrain
+# latitude-row incisions, not an authoritative named-creek layer. All lines run
+# west->east, so the rightward normal points SOUTH. Positive Phi is southward transport;
+# neither the short gates nor the long reference line define a basin-export boundary.
+[[transects]]
+name = "western_gate"
+label = "western terrain-incision gate (40.536 N)"
+lat_a = 40.536
+lon_a = -109.625
+lat_b = 40.536
+lon_b = -109.589
+
+[[transects]]
+name = "central_gate"
+label = "central terrain-incision gate (40.536 N)"
+lat_a = 40.536
+lon_a = -109.540
+lat_b = 40.536
+lon_b = -109.504
+
+[[transects]]
+name = "eastern_gate"
+label = "eastern terrain-incision gate (40.536 N)"
+lat_a = 40.536
+lon_a = -109.412
+lat_b = 40.536
+lon_b = -109.376
+
+[[transects]]
+name = "northern_reference"
+label = "northern reference transect (40.470 N)"
+lat_a = 40.470
+lon_a = -109.660
+lat_b = 40.470
+lon_b = -109.360
 
 [style]
 autoscale = false

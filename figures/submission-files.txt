@@ -1,0 +1,12 @@
+# One audited main.tex figure path per line.
+figures/wrf_geographic_locator_d01_d03.pdf
+figures/wrf_nested_domains_d01_d03.png
+figures/episode_context_snow_ozone_janfeb2013.pdf
+figures/obs_temp_timeseries_feb0102.pdf
+figures/fig_common_pipeline_effects.pdf
+figures/wrf_retention_ventilation_d02_14to18.pdf
+figures/wrf_inversion_index_feb0102_gfs2way_vs_nam2way_d02_14to18.pdf
+figures/wrf_heat_deficit_d02_13to18.pdf
+figures/wrf_terrain_cmp11_d02_d03_16z.pdf
+figures/theta_profiles_horsepool_gfs_nam_12z.pdf
+figures/theta_profiles_horsepool_gfs_nam_13z.pdf

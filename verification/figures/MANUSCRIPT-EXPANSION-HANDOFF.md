@@ -1,5 +1,12 @@
 # Manuscript figure-expansion handoff (workstream D)
 
+**Scope update, 13 July 2026:** use `rewrite/RESULTS-EXPANSION-HANDOFF.md` for the
+fresh writing-session decision packet.
+This file remains the detailed promotion/render handoff, but its earlier lean narrative and
+L15--L17 disposition do not cap the paper.
+Current X9, terrain-cleanup, heat-deficit, and compare-count facts live in
+`verification/figures/archive-inventory.md`.
+
 **Written 2026-07-12.** This is a self-contained brief for executing the manuscript
 figure expansion in a **fresh session** (or by the LaTeX/manuscript agent) with clean
 context. It was deliberately *not* executed inline: D is editorial surgery on `main.tex`

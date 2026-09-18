@@ -5,18 +5,23 @@ reusable `../brc-tools` figure engine renders for this manuscript.
 They contain study choices, not reusable plotting code, so this repository is
 their durable home.
 
-The three files were copied byte-for-byte from
-`../wrf-nudge-ozone-air2026` commit `caf5c69` so the accepted hashes remain
-meaningful:
+The original three configurations came from
+`../wrf-nudge-ozone-air2026` commit `caf5c69`.
+They have since evolved in this repository as runs and figure families were
+audited, so their donor hashes are historical provenance rather than current-file
+checksums.
+The d03 terrain-review configuration is manuscript-native.
+Current hashes are:
 
 | Configuration | SHA-256 | Purpose |
 |---|---|---|
-| `pelican2013.toml` | `58e2b12749983f9525046919694c965624c8b2945aec84cc22caaf5dd1a8f06a` | Main eight-run 333 m figure matrix and nine difference families. |
-| `pelican2013_1km.toml` | `646225eb5567f93647677872fe35a1dd5a7134bc3c22009244bbea246b061c40` | Separate 24-hour, two-domain 1 km case. |
-| `pelican2013_d04.toml` | `e2cdd8c0b9c530ab861ca957bbf62454a5ba2f7faf6816c3dfd08376dd2ed42c` | Separate four-domain 111 m case. |
+| `pelican2013.toml` | `ad9d933854fc7067260f1bb398e25aff2e7c286b9df8135a64c9dfa1cf8d2fd7` | Main nine-run 333 m matrix, including the ten controlled/context difference families. |
+| `pelican2013_terrain_d03.toml` | `d723f6061edbf28ad9b2ee85281e85f0f3806a67471863a4b3894543479f3262` | Bounded CMP11 X0-minus-X4 d03 heat-deficit and section review. |
+| `pelican2013_1km.toml` | `b8f44cf389b41149f2435c7bdbe1b2f209dcff5ab61b99cdde0396caba421b1c` | Separate 24-hour, two-domain 1 km case. |
+| `pelican2013_d04.toml` | `bee7ec1dcdfbde2782b7dd133696e022f32d461ff8985e7d7541ae48ad2a0f55` | Separate four-domain 111 m case. |
 
-Some comments inside the preserved TOMLs still use their donor-repository paths.
-They remain only because the files are hash-preserved.
+Some comments inside the inherited TOMLs still use their donor-repository paths.
+Git history preserves that lineage; the table above governs current reproduction.
 Current equivalents are `verification/figures/archive-inventory.md`,
 `verification/docs/pelican2013-pbl-scheme-justification.md`,
 `verification/docs/pelican2013-tran-physics-bridge.md`, and

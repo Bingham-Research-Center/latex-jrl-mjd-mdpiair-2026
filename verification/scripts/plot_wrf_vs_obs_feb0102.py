@@ -7,14 +7,17 @@ observed episode. Two figures:
 
 1. wrf_temp_timeseries_feb0102 -- 2 m temperature at the 4 floor->bench stations
    (one panel each): obs in black, one line per run, min-max across runs shaded.
-   The shaded band IS the IC-driven inter-run spread (#24) at each station.
-2. wrf_inversion_index_feb0102 -- bench-minus-floor delta-theta (USU03 - USU07):
-   does each run HOLD the cold pool (stay above the 8 K CAP threshold) or mix it
-   out like the Jan baseline's +4-6 C warm bias implies?
+   The range across supplied runs is descriptive; its interpretation depends on
+   the members included.
+2. wrf_inversion_index_feb0102 -- bench-minus-floor delta-theta (USU03 - USU07).
+   This two-site contrast is a spatial structural index, not a colocated
+   inversion profile or a physical cold-pool classification threshold.
 
 Inputs are the per-station files from reduce_wrf_to_stations.py (WRF units: temp K,
 pressure Pa; converted here). Obs stays local. Candidate figures go to
 verification/figures/candidates unless an explicit output directory is supplied.
+When ``--data-out-dir`` is supplied, the exact bench-minus-floor values used by the
+plot and a grouped summary are written there as CSV files.
 
 Run:
     PYTHONPATH=~/brc-tools python verification/scripts/plot_wrf_vs_obs_feb0102.py \\
@@ -115,26 +118,103 @@ def _dtheta(df: pl.DataFrame, key: str, group: list[str]) -> pl.DataFrame:
     )
     if BENCH not in both.columns or FLOOR not in both.columns:
         return pl.DataFrame()
-    return (both.drop_nulls([BENCH, FLOOR])
-                .with_columns((pl.col(BENCH) - pl.col(FLOOR)).alias("dtheta"))
-                .sort(group))
+    return (
+        both.drop_nulls([BENCH, FLOOR])
+        .select(
+            *group,
+            pl.col(BENCH).alias("bench_theta_k"),
+            pl.col(FLOOR).alias("floor_theta_k"),
+        )
+        .with_columns(
+            (pl.col("bench_theta_k") - pl.col("floor_theta_k")).alias("dtheta_k")
+        )
+        .sort(group)
+    )
 
 
-def fig_inversion_index(wrf: pl.DataFrame, hourly: pl.DataFrame, runs: list[str],
+def dtheta_table(wrf: pl.DataFrame, hourly: pl.DataFrame) -> pl.DataFrame:
+    """Return the exact observation and model series used in the bulk-theta plot."""
+    obs = _dtheta(hourly, "stid", ["hour_mst"]).with_columns(
+        pl.lit("observation").alias("source_type"),
+        pl.lit("observations").alias("series_id"),
+        pl.lit("Observations").alias("display_label"),
+    )
+    model = (
+        _dtheta(wrf, "waypoint", ["run_id", "run", "hour_mst"])
+        .rename({"run_id": "series_id", "run": "display_label"})
+        .with_columns(pl.lit("model").alias("source_type"))
+    )
+    return (
+        pl.concat([obs, model], how="diagonal")
+        .with_columns(
+            pl.col("hour_mst").dt.offset_by(f"{-UTC_TO_MST}h").alias("valid_time_utc"),
+            pl.lit(BENCH).alias("bench_station"),
+            pl.lit(FLOOR).alias("floor_station"),
+        )
+        .select(
+            "valid_time_utc",
+            "hour_mst",
+            "source_type",
+            "series_id",
+            "display_label",
+            "bench_station",
+            "floor_station",
+            "bench_theta_k",
+            "floor_theta_k",
+            "dtheta_k",
+        )
+        .sort("valid_time_utc", "source_type", "series_id")
+    )
+
+
+def write_dtheta_tables(table: pl.DataFrame, out_dir: Path, out_suffix: str = "") -> None:
+    """Write auditable point values and their descriptive min/max summary."""
+    out_dir.mkdir(parents=True, exist_ok=True)
+    stem = f"bulk_theta_contrast_feb0102{out_suffix}"
+    data_path = out_dir / f"{stem}.csv"
+    summary_path = out_dir / f"{stem}_summary.csv"
+    table.write_csv(data_path)
+    (
+        table.group_by(
+            "source_type",
+            "series_id",
+            "display_label",
+            "bench_station",
+            "floor_station",
+        )
+        .agg(
+            pl.col("valid_time_utc").min().alias("first_valid_time_utc"),
+            pl.col("valid_time_utc").max().alias("last_valid_time_utc"),
+            pl.col("dtheta_k").count().alias("n_hours"),
+            pl.col("dtheta_k").min().alias("minimum_dtheta_k"),
+            pl.col("dtheta_k").max().alias("maximum_dtheta_k"),
+            pl.col("dtheta_k").mean().alias("mean_dtheta_k"),
+        )
+        .sort("source_type", "series_id")
+        .write_csv(summary_path)
+    )
+    print(f"wrote {data_path} + {summary_path}")
+
+
+def fig_inversion_index(table: pl.DataFrame, runs: list[str],
                         out_dir: Path, out_suffix: str = "") -> None:
-    obs_d = _dtheta(hourly, "stid", ["hour_mst"])
+    obs_d = table.filter(pl.col("source_type") == "observation")
     fig, ax = plt.subplots(figsize=(9, 3.8))
     t_min, t_max = obs_d["hour_mst"].min(), obs_d["hour_mst"].max()
     shade_nights(ax, t_min, t_max)
     for run, color in zip(runs, RUN_COLORS):
-        d = _dtheta(wrf.filter(pl.col("run") == run), "waypoint", ["hour_mst"])
+        d = table.filter(
+            (pl.col("source_type") == "model") & (pl.col("display_label") == run)
+        )
         if d.height:
-            ax.plot(d["hour_mst"], d["dtheta"], color=color, lw=1.1, zorder=2, label=run)
-    ax.plot(obs_d["hour_mst"], obs_d["dtheta"], color="black", lw=1.5, zorder=3, label="obs")
-    ax.axhline(8.0, color="0.4", lw=1.0, ls="--")
-    ax.annotate("8 K CAP threshold", xy=(0.99, 8.0), xycoords=("axes fraction", "data"),
-                xytext=(0, 6), textcoords="offset points", fontsize=8, color="0.35",
-                ha="right", va="bottom")
+            ax.plot(
+                d["hour_mst"], d["dtheta_k"], color=color, lw=1.1,
+                marker="o", ms=3.2, zorder=2, label=run,
+            )
+    ax.plot(
+        obs_d["hour_mst"], obs_d["dtheta_k"], color="black", lw=1.5,
+        marker="o", ms=3.2, zorder=3, label="Observations",
+    )
     ax.set_ylabel("Δθ bench − floor (K)")
     ax.set_xlabel("Local time (MST); shaded = night")
     ax.set_xlim(t_min, t_max)
@@ -154,6 +234,8 @@ def main() -> None:
     ap.add_argument("--obs", type=Path, default=DEFAULT_OBS)
     ap.add_argument("--out-dir", type=Path, default=DEFAULT_OUT,
                     help="candidate-figure output directory")
+    ap.add_argument("--data-out-dir", type=Path, default=None,
+                    help="optional directory for exact bulk-theta point and summary CSVs")
     ap.add_argument("--min-time", default=None,
                     help="first UTC valid time to retain, e.g. 2013-02-02T14:00")
     ap.add_argument("--max-time", default=None,
@@ -177,6 +259,7 @@ def main() -> None:
             hourly = hourly.filter(pl.col("hour_mst") <= mst)
     if wrf.is_empty() or hourly.is_empty():
         raise SystemExit("selected valid-time window leaves no WRF or observation rows")
+    wrf = wrf.with_columns(pl.col("run").alias("run_id"))
     runs = wrf["run"].unique(maintain_order=True).to_list()
     if args.labels is not None:
         if len(args.labels) != len(runs):
@@ -186,8 +269,11 @@ def main() -> None:
         runs = args.labels
     print(f"runs: {runs}; WRF stations: {sorted(wrf['waypoint'].unique().to_list())}")
 
+    dtheta = dtheta_table(wrf, hourly)
+    if args.data_out_dir is not None:
+        write_dtheta_tables(dtheta, args.data_out_dir, args.out_suffix)
     fig_temp_timeseries(wrf, hourly, names, runs, args.out_dir, args.out_suffix)
-    fig_inversion_index(wrf, hourly, runs, args.out_dir, args.out_suffix)
+    fig_inversion_index(dtheta, runs, args.out_dir, args.out_suffix)
 
 
 if __name__ == "__main__":

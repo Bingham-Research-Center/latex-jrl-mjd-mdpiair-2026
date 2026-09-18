@@ -1,0 +1,57 @@
+[
+  {
+    "url": "https://api.synopticdata.com/v2/stations/metadata",
+    "parameters": {
+      "stid": "USU04",
+      "complete": 1,
+      "sensorvars": 1,
+      "sitinghistory": 1,
+      "obrange": "201301310000,201302032359"
+    },
+    "retrieved_utc": "2026-09-16T06:24:22.421414+00:00",
+    "http_status": 200,
+    "summary": {
+      "NUMBER_OF_OBJECTS": 1,
+      "RESPONSE_CODE": 1,
+      "RESPONSE_MESSAGE": "OK",
+      "METADATA_QUERY_TIME": "3.9 ms",
+      "METADATA_PARSE_TIME": "0.5 ms",
+      "TOTAL_METADATA_TIME": "4.4 ms",
+      "TOTAL_TIME": "4.4 ms",
+      "VERSION": "v2.39.5"
+    }
+  },
+  {
+    "url": "https://api.synopticdata.com/v2/stations/timeseries",
+    "parameters": {
+      "stid": "USU04",
+      "start": "201301310000",
+      "end": "201302032359",
+      "vars": "air_temp,wind_speed,wind_direction,relative_humidity",
+      "obtimezone": "UTC",
+      "sensorvars": 1,
+      "complete": 1,
+      "sitinghistory": 1,
+      "qc": "on",
+      "qc_remove_data": "off",
+      "qc_flags": "on",
+      "qc_checks": "synopticlabs,madis,mesowest"
+    },
+    "retrieved_utc": "2026-09-16T06:24:22.585365+00:00",
+    "http_status": 200,
+    "summary": {
+      "NUMBER_OF_OBJECTS": 1,
+      "RESPONSE_CODE": 1,
+      "RESPONSE_MESSAGE": "OK",
+      "METADATA_QUERY_TIME": "52.4 ms",
+      "METADATA_PARSE_TIME": "0.4 ms",
+      "TOTAL_METADATA_TIME": "52.8 ms",
+      "DATA_QUERY_TIME": "14.4 ms",
+      "QC_QUERY_TIME": "224.4 ms",
+      "DATA_PARSE_TIME": "3.9 ms",
+      "TOTAL_DATA_TIME": "242.7 ms",
+      "TOTAL_TIME": "295.5 ms",
+      "VERSION": "v2.39.5"
+    }
+  }
+]

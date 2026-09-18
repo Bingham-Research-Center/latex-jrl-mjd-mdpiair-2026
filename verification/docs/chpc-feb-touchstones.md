@@ -81,11 +81,13 @@ PYTHONPATH=~/brc-tools python verification/scripts/verify_runs_feb0102.py \
     --out-dir verification/data
 PYTHONPATH=~/brc-tools python verification/scripts/plot_wrf_vs_obs_feb0102.py \
     --wrf ~/brc-tools/data/wrf_{gfs_2way,nam_2way,nam_1way}_per_station.csv \
-    --out-dir verification/figures/candidates
+    --out-dir verification/figures/candidates \
+    --data-out-dir verification/data
 ```
 
 Outputs: `wrf_runs_scores_feb0102.csv` + `wrf_runs_spread_feb0102.csv` (verification/data/),
-overlay figures (`verification/figures/candidates/`). Both pipelines have hermetic smoke tests
+exact bulk-theta point and summary CSVs (`verification/data/`), and overlay figures
+(`verification/figures/candidates/`). Both pipelines have hermetic smoke tests
 (`smoke_test_runs_feb0102.py`, `smoke_test_cross_sections.py`) — synthetic fixtures,
 so the first real-data run should still be eyeballed against the QC list in
 `docs/how-to-obs-verify.md` (actual-T-not-potential, 1-h offset, units/sign/axis).

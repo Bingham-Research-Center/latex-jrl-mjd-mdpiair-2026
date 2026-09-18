@@ -1,101 +1,58 @@
-# Evaluation of WRF Meteorology for a Uinta Basin Winter Ozone Episode
+# WRF Cold-Pool Sensitivities Relevant to Winter-Ozone Modelling in the Uinta Basin
 
-Working repository for a single-file MDPI **Air** manuscript led by John R. Lawson, with Michael J. Davies, Loknath Dhar, and Seth N. Lyman.
-The study evaluates WRF meteorology for the 2 February 2013 Uinta Basin cold-air pool as a prerequisite for later coupled winter-ozone chemistry experiments.
+Private MDPI **Air** manuscript by John R. Lawson, Michael J. Davies, Loknath Dhar and Seth N. Lyman.
+The study evaluates meteorology during the 2 February 2013 episode; it contains no chemistry calculation.
 
-## In plain language: where truth lives
+## Current revision
 
-This repository is the paper's coordination home.
-It records what the manuscript claims, which exact runs and data support those claims, and which figures are eligible for the paper.
-It does not duplicate large model output or reusable software.
+`main.tex` is the audited first-round revision and submission target.
+The [return record](notes/peer-review-round1-return.md) records the completed CHPC checks, local figure-label closure and reviewer reconciliation.
+The [roadmap](ROADMAP.md) gives the remaining author steps: complete Paperpile export, final response wording and approval.
+The separate supplement is retired; material needed for this revision is in the main article or appendix.
 
-| If you want to know... | Start here |
+## Find the evidence
+
+| Need | Source |
 |---|---|
-| What the paper is trying to say | `ROADMAP.md` and `notes/narrative-and-hypotheses.md` |
-| Whether a claim is defensible | `notes/claim-evidence-ledger.md` |
-| Which exact WRF run was inspected | `verification/provenance/run-inventory.csv` |
-| Which run comparison supports which manuscript story | `verification/provenance/comparison-inventory.csv`, then `notes/narrative-and-hypotheses.md` |
-| Which figures support three defensible manuscript stories | `notes/figure-strategy.md` |
-| Whether a dataset is raw, derived, current, superseded, or context only | `verification/data/manifest.csv` |
-| Which data, script, and output produced a candidate figure | `verification/figures/manifest.csv` |
-| Which full-figure sets exist or still need rendering | `verification/figures/archive-inventory.md` |
-| Which paper-specific full-figure configuration and Slurm wrapper to use | `verification/config/figures/` and `verification/slurm/pelican_figures.slurm` |
-| Which figures may appear in `main.tex` | `figures/MANIFEST.md` |
-| Where a paper, critique, dataset, namelist, script, or external artifact belongs | `notes/resource-map.md` |
+| Current manuscript | [main.tex](main.tex) |
+| Author decisions/reply draft | `~/reviews/lawson-ozone-wrf-mdpiair-2026/peer-review-decisions.md` and `response-to-reviewers.md` |
+| Claims and limits | [claim ledger](notes/claim-evidence-ledger.md) |
+| Exact runs and contrasts | [run inventory](verification/provenance/run-inventory.csv), [comparison inventory](verification/provenance/comparison-inventory.csv) |
+| Derived data | [data manifest](verification/data/manifest.csv) |
+| Figure provenance and admission | [verification manifest](verification/figures/manifest.csv), [promoted figures](figures/MANIFEST.md) |
+| Archive existence | [figure archive inventory](verification/figures/archive-inventory.md) |
+| Literature and bibliography | [resource map](notes/resource-map.md), [source crosswalk](notes/literature-synthesis-register.md), [Paperpile checklist](notes/literature/paperpile-export-list.md) |
+| CHPC work | [bounded dispatch guide](rewrite/CHPC-CODEX-PROMPT.md) |
+| Historical drafts and frozen gates | [rewrite history](rewrite/README.md), [review milestones](drafts/README.md) |
 
-The sibling repositories keep narrower technical responsibilities:
+Architecture C and its failed gates remain frozen.
+The four-run X6/X10/X5/X3 matrix is the primary result; other admitted diagnostics retain their individual scope limits.
+The layer-sensitivity calculations use existing outputs and do not establish native-resolution sensitivity, basin transport or independent vertical validation.
 
-- `../brc-wrf` owns runnable WRF cases, generated control packets, and execution evidence.
-- `../brc-tools` owns reusable download, reduction, verification, and plotting code.
-- Large WRF/NWP/observation files and bulk figure sets remain in CHPC archive or scratch storage; this repo records exact paths, hashes, and commands.
-
-`../wrf-nudge-ozone-air2026` is now a read-only deprecation candidate.
-Its accepted figure workflow and unique paper-specific experiment and literature notes have been migrated or dispositioned here.
-Its raw paper extraction and FISS experiment remain donor history rather than manuscript evidence.
-Do not add new manuscript-facing truth there; wait for the final cross-repository pointer audit before archiving it.
-
-## Start here
-
-- Manuscript: [`main.tex`](main.tex)
-- Large-scale plan and narrative gates: [`ROADMAP.md`](ROADMAP.md)
-- Active granular queue and recovered legacy to-dos: [`tasks/microtasks.md`](tasks/microtasks.md)
-- Scientific framing and candidate hypotheses: [`notes/narrative-and-hypotheses.md`](notes/narrative-and-hypotheses.md)
-- Defensive figure longlist and three draft narratives: [`notes/figure-strategy.md`](notes/figure-strategy.md)
-- Claim status and provenance: [`notes/claim-evidence-ledger.md`](notes/claim-evidence-ledger.md)
-- Run-comparison lookup: [`verification/provenance/comparison-inventory.csv`](verification/provenance/comparison-inventory.csv)
-- Dataset lineage and status: [`verification/data/manifest.csv`](verification/data/manifest.csv)
-- Source-of-truth ownership and selective source-mining map: [`notes/resource-map.md`](notes/resource-map.md)
-- Four-collection literature synthesis register: [`notes/literature-synthesis-register.md`](notes/literature-synthesis-register.md)
-- Hosts, data inventory, and figure workflow: [`notes/hosts-data-and-figures.md`](notes/hosts-data-and-figures.md)
-- External full-figure coverage and gaps: [`verification/figures/archive-inventory.md`](verification/figures/archive-inventory.md)
-- Verification pipeline and inherited diagnostics: [`verification/README.md`](verification/README.md)
-- Donor-repository disposition audit: [`verification/docs/wrf-nudge-donor-disposition.md`](verification/docs/wrf-nudge-donor-disposition.md)
-- Publication-promoted figures only: [`figures/MANIFEST.md`](figures/MANIFEST.md)
-
-Do not load `Definitions/`, all candidate figures, or all of `~/reviews` during a normal cold start.
-Open only the source needed for the current claim, experiment, or figure.
-
-## Build
-
-The manuscript uses the official MDPI ACS template dated 23 June 2026 and compiles with **pdfLaTeX + BibTeX**:
+## Build and review
 
 ```bash
-make pdf
-make check
+make final-draft-check
+make submission-check
+make package
 ```
 
-The supplied archive was `mdpi-template-acs.zip` with SHA-256 `baf827d7d2048a69142232cb422cfb74865adae70bff3eac9f821c6dad823568`.
-Its complete `Definitions/` directory is committed without local edits.
-Ghostscript is required to convert MDPI's EPS logo during a clean local build; Overleaf and CHPC are acceptable final-build environments.
+The first target builds/checks the main manuscript and historical test/v3 sources, runs the `brc-tools` smoke checks and checks the manuscript contract.
+The second independently compiles the allowlisted source package; the third refreshes the tracked, self-contained `submission-package/` folder.
+Inspect the PDFs after changes. Routine root PDFs remain ignored; dated review milestones live in `drafts/`.
+The official MDPI template uses pdfLaTeX and BibTeX with `Definitions/mdpi.bst`; never edit `Definitions/`.
+If Ghostscript is absent, the independent check uses the existing cached logo conversion; the source ZIP remains source-clean.
 
-`paperpile.bib` currently contains a five-paper seed bibliography.
-Replace the complete file with a manuscript-specific Paperpile export when the collection is ready; do not hand-edit later exports.
+`paperpile.bib` remains Paperpile-owned. Replace it wholesale with John's complete export; follow the current checklist rather than the obsolete five-paper seed count.
+The source ZIP is `dist/mdpi-air-submission.zip`; it excludes reviews, notes, verification scripts and Git metadata.
+The package is a review checkpoint until bibliography, response wording and author approval are complete.
 
-## Repository roles
+## Hosts and Git
 
-- `main.tex` contains only manuscript material that is expected to survive.
-- `figures/` contains only figures promoted into the paper.
-- `drafts/` contains selected dated PDFs for coauthor review.
-- `verification/` retains scripts, small derived tables, candidate diagnostics, and provenance inherited from Michael's work.
-- `notes/` carries the compact reasoning that must not be mistaken for manuscript evidence.
+Akamai/Linode owns writing, Git, LaTeX and selective literature work; CHPC owns WRF/data work.
+Label-only figure rerenders from committed summaries can run on the writing host.
+`../brc-tools` owns reusable analysis; sibling WRF repositories do not override this paper's inventories or immutable control packets.
+The legacy manuscript repository is a read-only donor.
 
-Routine `main.pdf` builds, bulk observations, WRF output, and raw provenance archives remain local.
-
-## Hosts
-
-- **Akamai/Linode:** writing, Git, local LaTeX, and selective literature work under `~/reviews`.
-- **CHPC:** WRF runs and figure generation; archive root `/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/`.
-
-Check the host and path availability before acting.
-
-## Git workflow
-
-The private GitHub repository is `Bingham-Research-Center/latex-jrl-mjd-mdpiair-2026`.
-The inherited history is retained through the `legacy` remote.
-After the foundational direct-to-`main` setup, use `jrl/<topic>` branches and pull requests.
-Commits should be logically grouped, have concise subjects and explanatory bodies, and include only contributors who actually participated in the change.
-
-## Submission
-
-`make submission` builds an allowlisted staging tree under `dist/` containing only `main.tex`, `paperpile.bib`, the official `Definitions/`, and any explicitly listed promoted figures.
-Review PDFs, agent instructions, notes, verification material, scripts, and Git metadata never enter the MDPI source ZIP.
+Use `jrl/<topic>` branches and PRs into protected `main`, with narrow verified commits and the required Codex co-author trailer.
+Preserve unrelated dirt and the untracked CHPC transfer archives.
