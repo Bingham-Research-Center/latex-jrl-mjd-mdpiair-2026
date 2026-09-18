@@ -67,8 +67,10 @@ RUN_STYLES = {
 }
 
 PROFILE_METRICS = {
-    "stability_k": ("Δθ, 50–500 m AGL (K)", "K"),
-    "transport_wind_ms": ("50–500 m layer-mean vector magnitude (m s$^{-1}$)", "m s-1"),
+    "stability_k": ("50–500 m AGL\nθ endpoint difference (K)", "K"),
+    "transport_wind_ms": (
+        "50–500 m AGL\nlayer-mean wind-vector\nmagnitude (m s$^{-1}$)", "m s-1"
+    ),
     "layer_mean_speed_ms": ("50–500 m layer-mean scalar speed (m s$^{-1}$)", "m s-1"),
     "alignment_ratio": ("50–500 m vector/scalar alignment ratio", "1"),
     "pblh_m": ("PBL height (m)", "m"),

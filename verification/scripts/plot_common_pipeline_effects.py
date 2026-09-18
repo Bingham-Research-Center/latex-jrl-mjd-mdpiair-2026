@@ -91,8 +91,13 @@ PANELS = [
         "Surface-pressure\nabsolute error",
         "$\\Delta$ absolute error (Pa)",
     ),
-    ("stability_k", "retention", "50–500 m AGL stability", "$\\Delta\\theta$ contrast (K)"),
-    ("transport_wind_ms", "retention", "50–500 m transport wind", "$\\Delta$ (m s$^{-1}$)"),
+    ("stability_k", "retention", "50–500 m AGL\nθ endpoint difference", "$\\Delta S$ (K)"),
+    (
+        "transport_wind_ms",
+        "retention",
+        "50–500 m AGL\nlayer-mean wind-vector\nmagnitude",
+        "$\\Delta U$ (m s$^{-1}$)",
+    ),
     ("pblh_m", "retention", "PBL height\n(scheme-dependent)", "$\\Delta$ (m)"),
 ]
 

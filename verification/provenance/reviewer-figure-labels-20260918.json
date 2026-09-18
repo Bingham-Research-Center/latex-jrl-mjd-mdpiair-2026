@@ -1,0 +1,119 @@
+{
+  "request_id": "20260918-reviewer-figure-labels",
+  "source_commit": "0466fbfa98c59fa6eececada844aee7d880b387c",
+  "source_state": "Label-only generator changes to source_commit; exact generator bytes are pinned below.",
+  "host": "localhost",
+  "environment": "conda environment brc-tools; MPLCONFIGDIR=/tmp/mdpiair-checkpoint-mpl",
+  "generators": [
+    {
+      "path": "verification/scripts/plot_common_pipeline_effects.py",
+      "sha256": "1db55bcb1749df70189b45c9178471665dfc754a45ff3550cf18bff391fc1c35"
+    },
+    {
+      "path": "verification/scripts/analyze_wrf_retention.py",
+      "sha256": "ba068f20ce97a5ba039d801e34188c99e6517b4ef6af97a52fb00e3fc6953756"
+    }
+  ],
+  "commands": [
+    "env MPLCONFIGDIR=/tmp/mdpiair-checkpoint-mpl conda run --no-capture-output -n brc-tools python verification/scripts/plot_common_pipeline_effects.py --out-dir verification/figures/candidates/review-labels-20260918",
+    "env MPLCONFIGDIR=/tmp/mdpiair-checkpoint-mpl conda run --no-capture-output -n brc-tools python verification/scripts/analyze_wrf_retention.py --plot-hourly-summary verification/data/retention_hourly_summary.csv --display 'gfs2=GFS two-way' --display 'gfs1=GFS one-way' --display 'nam2=NAM two-way' --display 'nam1=NAM one-way' --out-dir verification/figures/candidates/review-labels-20260918"
+  ],
+  "inputs": [
+    {
+      "path": "verification/data/surface_skill_pair_summary.csv",
+      "sha256": "c45f8d9f30bed6be4cd689f9aa4a174fafbe2563d13f0da4a7e360ae769b31b3"
+    },
+    {
+      "path": "verification/data/surface_skill_interaction_summary.csv",
+      "sha256": "75d937fa127c9673e93573b96dfa6cc41f12c45216b5a93d90ef0a71aaf15030"
+    },
+    {
+      "path": "verification/data/retention_pair_summary.csv",
+      "sha256": "996c8d5fa531a00549517f12f2b6bd917dc3527f5d653cbe7075d2c2686eed2d"
+    },
+    {
+      "path": "verification/data/retention_interaction_summary.csv",
+      "sha256": "7013183079db3ebc11720aff90ef02a2a4f808afd00b07fc0c786685fd46f599"
+    },
+    {
+      "path": "verification/data/cmp06_surface_skill_pair_summary.csv",
+      "sha256": "e6313cc562642c2770967bb80280e16e573377fa144ae3010dc74a15a9d1615c"
+    },
+    {
+      "path": "verification/data/cmp06_retention_pair_summary.csv",
+      "sha256": "e4410f881b7157f9e9f2739c8e427e1ae42d4d73a6a8a617c2c896ee2e9ba114"
+    },
+    {
+      "path": "verification/data/process_pairs_surface_skill_pair_summary.csv",
+      "sha256": "a61d50895a9b23001d164a3ac06c28ca8f1e33aa13c9984c1d69e117d4c2f688"
+    },
+    {
+      "path": "verification/data/process_pairs_retention_pair_summary.csv",
+      "sha256": "c4bbbbff8632be971edd46e92e5983eb64d176805e3ab2ad37ac892e2f125ee9"
+    },
+    {
+      "path": "verification/data/retention_hourly_summary.csv",
+      "sha256": "1333a00e949910ccf8ba829a39c0f37f0efa3a0d83ab649fdaa5219090f0a063"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "verification/figures/candidates/review-labels-20260918/fig_common_pipeline_effects.pdf",
+      "sha256": "dda70cfad57aa83132d5c7401998879a3d7f4b958f03638695b6a4b274545c01"
+    },
+    {
+      "path": "verification/figures/candidates/review-labels-20260918/fig_common_pipeline_effects.png",
+      "sha256": "1bd899a94c6728d7a0c04657d9f3e7358395ff79932fa2b57b86b35807a633cd"
+    },
+    {
+      "path": "figures/fig_common_pipeline_effects.pdf",
+      "sha256": "dda70cfad57aa83132d5c7401998879a3d7f4b958f03638695b6a4b274545c01"
+    },
+    {
+      "path": "verification/figures/candidates/review-labels-20260918/wrf_retention_ventilation_d02_14to18.pdf",
+      "sha256": "585b1c2b6322b517857f1f6e25b868e00846039aec441d4007835b9e21723b81"
+    },
+    {
+      "path": "verification/figures/candidates/review-labels-20260918/wrf_retention_ventilation_d02_14to18.png",
+      "sha256": "ad98ac1f65e965d2094dc6d8b592ca9a37cf50ca61a68eb00aef841768e4f6db"
+    },
+    {
+      "path": "figures/wrf_retention_ventilation_d02_14to18.pdf",
+      "sha256": "585b1c2b6322b517857f1f6e25b868e00846039aec441d4007835b9e21723b81"
+    }
+  ],
+  "preserved_originals": [
+    {
+      "path": "verification/figures/candidates/fig_common_pipeline_effects.pdf",
+      "sha256": "6c450304f31bf94e2d6cf8bc2727aabe0820d590253d20804050f5536dd8f5ab"
+    },
+    {
+      "path": "verification/figures/candidates/wrf_retention_ventilation_d02_14to18.pdf",
+      "sha256": "6a0e97926dd58aa60710cddea9e0bdf1a03661f907f48dd46eae7fa50c3cc1f7"
+    }
+  ],
+  "scope": "Existing registered summaries only; no WRF extraction, statistical recomputation, changed run support or new scientific result. Legacy transport_wind_ms column remains unchanged.",
+  "inspection": {
+    "standalone_pngs": "passed: both figures viewed at high resolution; titles, units, curves, legends, whiskers, median/IQR shading and label spacing checked",
+    "manuscript_pdf": "recorded separately in reviewer-checkpoint-20260918.json after compilation"
+  },
+  "plot_data_comparison": [
+    {
+      "generator": "verification/scripts/plot_common_pipeline_effects.py",
+      "baseline_commit": "0466fbfa98c59fa6eececada844aee7d880b387c",
+      "comparison": "exact equality of line coordinates, colours, line/marker styles, collection vertices and data limits",
+      "artist_payload_sha256": "ec5ab01ef215dbebfffe39f67dfefd2b609ef2e993f09aba05561be6388f47be"
+    },
+    {
+      "generator": "verification/scripts/analyze_wrf_retention.py",
+      "baseline_commit": "0466fbfa98c59fa6eececada844aee7d880b387c",
+      "comparison": "exact equality of line coordinates, colours, line/marker styles, collection vertices and data limits",
+      "artist_payload_sha256": "002061fc88c505aa5018ceaa84b7a5f7a0b484959dd8665e0f28eaa7f953dab7"
+    }
+  ],
+  "environment_versions": {
+    "python": "3.13.12",
+    "matplotlib": "3.10.8"
+  },
+  "manifest_reconciliation": "Retired radiation supplement row aligned with production manifest; repaired its existing unquoted comma to restore rectangular CSV."
+}
