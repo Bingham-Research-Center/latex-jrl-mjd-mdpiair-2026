@@ -13,6 +13,11 @@ This directory is excluded from the MDPI submission allowlist.
 
 Latest review snapshots:
 
+- `main_2026-09-18_peer-review-checkpoint.pdf` — current 20-page first-round
+  revision checkpoint, with corrected Figures 4–5 labels, integrated layer
+  sensitivity and the bounded editorial reconciliation. The complete new
+  Paperpile export and final author approval remain pending.
+
 - `jrl-manuscript_2026-07-16_compact-utc-draft.pdf` — 16-page build of the
   tracked John author draft, with the two-panel geographic/domain locator,
   direct X-operation table labels, and compact civil-time notation.

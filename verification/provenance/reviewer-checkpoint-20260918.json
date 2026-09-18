@@ -1,0 +1,394 @@
+{
+  "request_id": "20260918-peer-review-checkpoint",
+  "checked_at_utc": "2026-09-18T01:01:18.589942+00:00",
+  "baseline_source_commit": "0466fbfa98c59fa6eececada844aee7d880b387c",
+  "source_commits": [
+    "0749fa077cffecd957b94fc061a9b02cb8c4eef0 Correct reviewer diagnostic labels in Figures 4 and 5",
+    "19686ec1f499c2323d7b5523e39d2c2ea2d51853 Reconcile first-round reviewer actions with the manuscript",
+    "b2cfbfdc6991349826a62564865457bcd5e92467 Refresh revision routes and archive completed July dispatches"
+  ],
+  "scope": "Bounded editorial reconciliation and label-only figure repair; existing bibliography and scientific inputs retained. No new WRF run or scientific result.",
+  "checks": [
+    {
+      "command": "make final-draft-check",
+      "result": "passed; all smoke checks and manuscript contract: 11 figure files, 9 citation keys"
+    },
+    {
+      "command": "make submission-check",
+      "result": "passed; independently compiled allowlisted source tree"
+    },
+    {
+      "command": "make package",
+      "result": "passed; refreshed main-only delivery folder"
+    },
+    {
+      "command": "git diff --check",
+      "result": "passed before release commit"
+    },
+    {
+      "check": "PDF text and package identity",
+      "result": "Independent PDF text equals main PDF text on all 20 pages; package and dated PDF bytes equal root PDF"
+    },
+    {
+      "check": "ZIP integrity and allowlist",
+      "result": "passed; exact file membership and bytes match registered source inputs",
+      "file_count": 22
+    },
+    {
+      "check": "Final LaTeX logs",
+      "result": "No undefined citations/references or overfull/underfull boxes; inherited hyperref PDF-string and fancyhdr header warnings remain"
+    },
+    {
+      "check": "Fonts",
+      "result": "Embedded fonts verified; existing Type 3 font in unchanged manuscript artwork remains; corrected Figures 4 and 5 use embedded TrueType fonts"
+    },
+    {
+      "check": "Figure numerical equivalence",
+      "result": "Exact graphical data and style equality with the baseline generators; see figure receipt"
+    },
+    {
+      "check": "Reviewer integrity",
+      "result": "All 45 IDs remain in source order; saved stances and complete original response quotations preserved; 45 implementation records verified; author approval remains pending"
+    },
+    {
+      "check": "Archive integrity",
+      "result": "Two July dispatch bodies preserved after archival banners; removed supplement duplicate identical to retained a0a1c30 milestone"
+    }
+  ],
+  "visual_inspection": {
+    "pages": 20,
+    "overview": "All 20 final pages inspected; no observed clipping, overlap or missing content",
+    "detail_pages": [
+      2,
+      6,
+      10,
+      11,
+      13,
+      17,
+      18
+    ],
+    "detail_note": "Detailed editorial/figure inspection before final caption correction; page 18 reinspected after correction; final all-page overview confirms layout",
+    "figure_pages": {
+      "4": 10,
+      "5": 11
+    }
+  },
+  "protected_input_count": 89,
+  "protected_inputs_sha256": {
+    "paperpile.bib": "a6ebf73fb8f000f112345858b3485f4e6eec3469d0f62ee12d2c74da2d6c865d",
+    "verification/figures/candidates/fig_common_pipeline_effects.pdf": "6c450304f31bf94e2d6cf8bc2727aabe0820d590253d20804050f5536dd8f5ab",
+    "verification/figures/candidates/wrf_retention_ventilation_d02_14to18.pdf": "6a0e97926dd58aa60710cddea9e0bdf1a03661f907f48dd46eae7fa50c3cc1f7",
+    "latex_jrl_review_layers_15610800_handoff.tar.gz": "19e83bc0eb5fc533577394fe1cc839a00b6df774bfafeb50165d4ded84836363",
+    "Definitions/journalnames.tex": "30a7629adfb074e62683aa3acffe58c032b81b0d090c62f9ad5a6ea7344e7a09",
+    "Definitions/logo-mdpi.eps": "f02d31469c6b2666c9de2da8d8731773bce3751d2fa99a27ff4bcf61a106cdcf",
+    "Definitions/logo-orcid.pdf": "0558a0097dc4d1ffe3f4a1b3c9b4b98c6e568eac7d7439d447ca56ed1a8ec759",
+    "Definitions/logo-updates.eps": "71ad8b00bcca718b62f3286af02ea56678e8199b5843d7ed4fdc86bd969c2809",
+    "Definitions/mdpi.bst": "3b747eee144173c46a43562ead905c26322c7cb394e350a925d36dcf63884680",
+    "Definitions/mdpi.cls": "934058105b2a8d87cfa5a8e4d888f01e73fd48cfc80d8c2ac4c45985a2b71d5c",
+    "Definitions/mdpi_apacite.bst": "c7fffe0231922e5521dc360889fafe941ee26d154c1ce4e167e4ec9f2d13498f",
+    "Definitions/mdpi_apacite.sty": "9e9bb23ded45f7f76236ad304d4bda2c066fb48041b272cebc20f940c17865a7",
+    "Definitions/mdpi_chicago.bst": "4a73faf6e0cf1a225d1b9a41a6955d3cc29a55c5fdce662177d00eee3946ce36",
+    "verification/data/aqs_ozone_daily_janfeb2013_selected.csv": "ac11265751a912ab62536b8b8f31542655b580d8ecf1c03d11b983afa7bb1a43",
+    "verification/data/baseline_scores_jan1521.csv": "413f731a4dbe155ef5cb6b51b463a082505e6f2542d1d459e9edb2164ad21fc1",
+    "verification/data/bulk_theta_contrast_feb0102_gfs2way_vs_nam2way_d02_14to18.csv": "5e0a1741725b08e3a0a202e45f33a6d5f95067275202220f6e513f53afe82be8",
+    "verification/data/bulk_theta_contrast_feb0102_gfs2way_vs_nam2way_d02_14to18_summary.csv": "d87c88a2b6507f45d64fcf7c74b95dad9452584a6d5a2b319db8560b09362864",
+    "verification/data/cmp06_retention_hourly_summary.csv": "e4c7e73ceb2dd8b2ceef213d47418638c6879526b38c69fbfb51a22458c2f940",
+    "verification/data/cmp06_retention_pair_hourly.csv": "563b729e5947f0d5371162fdbd18b09f107518ab938212e122769c7298542319",
+    "verification/data/cmp06_retention_pair_summary.csv": "e4410f881b7157f9e9f2739c8e427e1ae42d4d73a6a8a617c2c896ee2e9ba114",
+    "verification/data/cmp06_surface_skill_pair_hourly.csv": "0e1cea45280c3888e2a95a6c114dd0f42951566f8dc9fc8ca699cf8f19fe35c4",
+    "verification/data/cmp06_surface_skill_pair_summary.csv": "e6313cc562642c2770967bb80280e16e573377fa144ae3010dc74a15a9d1615c",
+    "verification/data/cmp06_surface_skill_summary.csv": "bada9e27f5e062d32fba07242457ff9e6439640bc7851592ff3d164495a911e8",
+    "verification/data/diagnostic-numerical-checks.csv": "36d6f0fe89df1aa45f869a68cb642b0942f6b93a4aaeca9c026b986faed63b2b",
+    "verification/data/heat_deficit_pair_summary.csv": "74fb548baa4932efc0625993a305479a5b83743441ecab203d5b3e5555fabbdd",
+    "verification/data/heat_deficit_sensitivity.csv": "53e3a327b9792593c6d3561579763ea5cf18f62747b0d7d1ee58e71cfb3f4b48",
+    "verification/data/heat_deficit_trajectory.csv": "6c3e67483915b875af6efac71c3f855476392f53705d265bc0af7f2b03a45f36",
+    "verification/data/locator_context.geojson": "2d822dfd90a95f6c6cf257e1ce55e467d200de8d74ec7dec68e18501912a66ae",
+    "verification/data/locator_places.csv": "276239230cab6bb238404a9a865223e9a791a3e991b5cb3d9a54e31ef66dafed",
+    "verification/data/manifest.csv": "10f02fb2043f32f99f4a640d652b473352a83fb025d65f87c4a183545fc8330c",
+    "verification/data/process_pairs_retention_hourly_summary.csv": "7a2b969772969ba84c87ccdeba9b81aa09f666eb14e97d738667b7a3d7358533",
+    "verification/data/process_pairs_retention_pair_hourly.csv": "8404510a5752ab6905560bc0fa2f0d0ea6cba38578101b52c6316d5a048207b5",
+    "verification/data/process_pairs_retention_pair_summary.csv": "c4bbbbff8632be971edd46e92e5983eb64d176805e3ab2ad37ac892e2f125ee9",
+    "verification/data/process_pairs_surface_skill_pair_hourly.csv": "44f3c3adf51b246de0176f657cac22d56b5b475ef89ed7a0053998da17ae683d",
+    "verification/data/process_pairs_surface_skill_pair_summary.csv": "a61d50895a9b23001d164a3ac06c28ca8f1e33aa13c9984c1d69e117d4c2f688",
+    "verification/data/process_pairs_surface_skill_summary.csv": "601100c452b0ade2724cfee88dbd6d9078e78709f40623b84052c16796c1811e",
+    "verification/data/proxies_2013_availability.csv": "7e0dd657c9bb2082864a393514425f65b66e556dcaebba45b3682ce8a6d02c33",
+    "verification/data/radiation_response_criteria.csv": "fa6cf4707a80a8d5a4e898b763940eaa55f5ca7255a31687e3b5e1753a17cfe6",
+    "verification/data/radiation_response_summary.csv": "82b086f0a5ed75ab25744343b130db52d8291c1c636b9d79fd3d3d93d72e21a4",
+    "verification/data/retention_hourly_summary.csv": "1333a00e949910ccf8ba829a39c0f37f0efa3a0d83ab649fdaa5219090f0a063",
+    "verification/data/retention_interaction_hourly.csv": "e23dd1dd87d7069bffc27531dc8bdf30c937a9d33eceff0dce71f2665ecf72e9",
+    "verification/data/retention_interaction_summary.csv": "7013183079db3ebc11720aff90ef02a2a4f808afd00b07fc0c786685fd46f599",
+    "verification/data/retention_pair_hourly.csv": "5080763841d0a3b1dc6f82c9a164ba9a4af4c9dff7aae2f8460a7493a9c7cfef",
+    "verification/data/retention_pair_summary.csv": "996c8d5fa531a00549517f12f2b6bd917dc3527f5d653cbe7075d2c2686eed2d",
+    "verification/data/retention_station_timeseries.csv": "5fca0f9a6f490c7a60cc8212f141f5c79590937b4488b15c564e03824adfc137",
+    "verification/data/reviewer_layer_100-500_step-10_pair_summary.csv": "b882ce3bef51b36ecd673a63b7639461aea82cbe618d0277587d1b312d75b761",
+    "verification/data/reviewer_layer_100-500_step-25_pair_summary.csv": "39af08423ce6c3bd110e38b2f664bd111836e7cc8ec88850cc75ca6aaa3b0f96",
+    "verification/data/reviewer_layer_100-500_step-50_pair_summary.csv": "6dbb2168f35fc53cb70c392a7d36e3a8fab8078b4e2ddd7d67c34616cafd7571",
+    "verification/data/reviewer_layer_50-250_step-10_pair_summary.csv": "dc6ca87553fe6f5f99d440e07b3acc42f2ef99e0928a7cb60a2cfac0b623f82d",
+    "verification/data/reviewer_layer_50-250_step-25_pair_summary.csv": "e1098ae0fb447f9dfd4832ff8e6ddb2f7f4c0291688f2dac962a91bf6466cb09",
+    "verification/data/reviewer_layer_50-250_step-50_pair_summary.csv": "24b2ea9f0e32f38818e116af4f2ce263e390abd4375bb8f4dcf53491c29a5272",
+    "verification/data/reviewer_layer_50-500_step-10_pair_summary.csv": "53526159c9ca9ff5b6d06f7539583fcfea14ba6a336f3cf08bb682d1ba9448df",
+    "verification/data/reviewer_layer_50-500_step-25_pair_summary.csv": "9ec8082963b3b276bff93d5da2a1056280c2f2dafc3ff77fac3ab7a2fdfe3e38",
+    "verification/data/reviewer_layer_50-500_step-50_pair_summary.csv": "8abd20c4c8f12288e50838f9000db93851e541a638b578dc8c561ab9059c238f",
+    "verification/data/reviewer_primary_wind_sensitivity.csv": "f674f5a6fbe870550d9db44b3b442a7437924d2e1dfaf8d3af48de2ffbe348d4",
+    "verification/data/spatial_response_criteria.csv": "a60be1408852f67281029518f5309bda79eb34e0335d39247d4d452421dd2364",
+    "verification/data/spatial_response_summary.csv": "1573e8344cdb9dffc244c527812294773d1f9727971ecfc3aaf552d57216dbb2",
+    "verification/data/station_sampling_audit.csv": "f115667d757bfe14d74551a004b6db198adfb639622d3e5dca70bdc0110e6e42",
+    "verification/data/stations_2013_selection.csv": "80bf36f23b02065ae61e606932941190977f016e78842aaf447b3bbbbe60256a",
+    "verification/data/surface_skill_hourly.csv": "f021246da26fcf96302164b88783de273c151b87a1255db36c3a0e38025d0f57",
+    "verification/data/surface_skill_interaction_hourly.csv": "48e0d00e0a9e624cb90844ae13d99b5026c66c1fe82daf95b318a5276c2c7aae",
+    "verification/data/surface_skill_interaction_summary.csv": "75d937fa127c9673e93573b96dfa6cc41f12c45216b5a93d90ef0a71aaf15030",
+    "verification/data/surface_skill_pair_hourly.csv": "177ffef7a1f009c33147148b0d8d166cb014ee853f629f55f600e6a71a96c159",
+    "verification/data/surface_skill_pair_summary.csv": "c45f8d9f30bed6be4cd689f9aa4a174fafbe2563d13f0da4a7e360ae769b31b3",
+    "verification/data/surface_skill_station_timeseries.csv": "19ea1ebe009eb31d0aa556bca0e092a1a93a91683e6ecdac9d90e2d703e29719",
+    "verification/data/surface_skill_summary.csv": "c2fe90587be67a7f0f58b95a6781169f46263d8fc7ffecaa0fa7094ca75ff0ff",
+    "verification/data/terrain_cmp11_d02_d03_16z_summary.csv": "747703625404e50144d799540abff1fc5816c34a3bb86e79926d6dbd834286cd",
+    "verification/data/terrain_response_criteria.csv": "a5489e427e3a19e002ed2f94a8bf6292922df07a7d7c74a3aed7ed87fae7066a",
+    "verification/data/terrain_response_summary.csv": "6b223cf29a2f4fa20125e14c12ba5da94f06adf3c6883a75bf3142437d9385d0",
+    "verification/data/terrain_station_elevation.csv": "79c030801ab5a2750c416ef8a3205f280867925575f778c35c93abc19e933625",
+    "verification/data/theta_profiles_horsepool_gfs_nam_12z_13z.csv": "9f223a13b43927b5f11ab231c6bff0070be6dc8bc8bf75794a18f05f3963277d",
+    "verification/data/wrf_gfs_2way_d02_per_station.csv": "fefff6a5b55ee8ef64265920d1f783d1fa1e469a2b79fd3ff9c8cc473142dfe7",
+    "verification/data/wrf_nam_1way_d02_per_station.csv": "3327de6a6b81a5fa5141190def2cadf05f97b7922cb1c5b4eaadb9753941a235",
+    "verification/data/wrf_nam_2way_d02_per_station.csv": "2d5ae81963e8d0b17f5b4ec464af5cd3db8af30a34625d529d529f214201fb53",
+    "verification/data/wrf_runs_scores_feb0102.csv": "fda1923ea7831278cc4e1b5717a71aeb4a44bf9afe26df7021ac8e29a4f29604",
+    "verification/data/wrf_runs_scores_feb0102_postspinup.csv": "a9afbaaed3413def14124f557c52378599658f02d3d6da22cc280695fb9bc7ba",
+    "verification/data/wrf_runs_scores_feb0102_postspinup_withtrang.csv": "0e08ca2b89b474b19045310783f321a14eec49b388469392f0a95a885f09c2e6",
+    "verification/data/wrf_runs_spread_feb0102.csv": "cc6fd295c6aa326569ef40f6c03a55f5042654c6e092e0bbd0a24a253e01645b",
+    "verification/data/wrf_runs_spread_feb0102_postspinup.csv": "f5ddf5f27f0d6c3dcd1cfe31b7ab38b0aa986ce2033754db3ff0872a9bc58140",
+    "verification/data/wrf_runs_spread_feb0102_postspinup_withtrang.csv": "9e9ca1b1a77dbe23968e9c444e48e687e82e94195f1a4ebd39529a3e0a75f866",
+    "verification/data/wrf_trang_ref_per_station.csv": "2e48fdea1ed789178c78919b88bcc3aecb06ec344a8c00cd1866998db4dcad47",
+    "verification/data/x8_deficit_budget_intervals.csv": "64ee0637a85c3fba0e01cbb7e280407ac4eedd00a75f0c98365518071a852256",
+    "verification/data/x8_deficit_transport_summary.csv": "374773f6363f5bab23e7579ea90d1806724f8a730f7809f14fda8af02a0b4e89",
+    "verification/data/x8_deficit_transport_timeseries.csv": "537ab81996db00666172b2f6675278c90e41e056719c551d6eba6c9a37f6c9d2",
+    "mdpiair-handoffs/peer-review-round1-chpc-closure-15610800.tar.gz.sha256": "4ac30e42ecb87c4109a9af4f7a84d30f18531fdfdb8fd2407361cf829bd4c29f",
+    "mdpiair-handoffs/peer-review-round1-chpc-closure-15610800.tar.gz": "b594c63981330228e0e9c489ef181b9cdc648c47ea106e1b7b4d2673981fb4f7",
+    "/home/johnrobertlawson/reviews/lawson-ozone-wrf-mdpiair-2026/_peer-review/comments.md": "fc690e10c8e7d793c085eb9d420118e97038095f248ce20aed2d728ef58a880c",
+    "/home/johnrobertlawson/reviews/lawson-ozone-wrf-mdpiair-2026/_peer-review/colleagues/seth-notes.md": "bf03219406ff8775b35238d70fef0669493d1e8f57aaf3d17ef9ae69fa75329a",
+    "/home/johnrobertlawson/reviews/lawson-ozone-wrf-mdpiair-2026/seth-notes.rtf": "5e15fdd5c98446513a3cc9ffdfbf5556f0493aeda58c0e5fca1986b331b0a526"
+  },
+  "registries": [
+    {
+      "path": "verification/figures/manifest.csv",
+      "data_rows": 61,
+      "columns": 14
+    },
+    {
+      "path": "verification/data/manifest.csv",
+      "data_rows": 49,
+      "columns": 12
+    },
+    {
+      "path": "verification/provenance/run-inventory.csv",
+      "data_rows": 11,
+      "columns": 22
+    },
+    {
+      "path": "verification/provenance/comparison-inventory.csv",
+      "data_rows": 13,
+      "columns": 15
+    }
+  ],
+  "bibliography": {
+    "status": "Unchanged complete-export checkpoint; John supplies replacement",
+    "sha256": "a6ebf73fb8f000f112345858b3485f4e6eec3469d0f62ee12d2c74da2d6c865d",
+    "entries": 37,
+    "cited_keys": [
+      "Ahmadov2015-zm",
+      "Davies2025-wy",
+      "Lyman2015-aq",
+      "Mansfield2020-kl",
+      "Matichuk2017-bq",
+      "Neemann2015-ws",
+      "Oltmans2014-md",
+      "Tran2018-ax",
+      "Tran2021-al"
+    ]
+  },
+  "artifacts": [
+    {
+      "path": "main.tex",
+      "sha256": "d4a56877d9a33931575c2c71571046ce0866972f5517fe51eccb3a67cb5ebdcc"
+    },
+    {
+      "path": "main.pdf",
+      "sha256": "e44f4a79238a09c8a8a2278823da4b034df7cfe9674974a47f1a57beaa892704"
+    },
+    {
+      "path": "drafts/main_2026-09-18_peer-review-checkpoint.pdf",
+      "sha256": "e44f4a79238a09c8a8a2278823da4b034df7cfe9674974a47f1a57beaa892704"
+    },
+    {
+      "path": "dist/mdpi-air-submission.zip",
+      "sha256": "c262f301f120b8ccdca46184aa0fc3a5142eed33fe4ca2024af07d8e412daa61"
+    },
+    {
+      "path": "dist/mdpi-air-submission/main.pdf",
+      "sha256": "228a735859edaca6a4f5e69833fe1939568ee1a6d0d2015c1929f7d56ee9e253"
+    },
+    {
+      "path": "submission-package/main.tex",
+      "sha256": "d4a56877d9a33931575c2c71571046ce0866972f5517fe51eccb3a67cb5ebdcc"
+    },
+    {
+      "path": "submission-package/main.pdf",
+      "sha256": "e44f4a79238a09c8a8a2278823da4b034df7cfe9674974a47f1a57beaa892704"
+    },
+    {
+      "path": "submission-package/main.bbl",
+      "sha256": "6a35995ae24e106c4e5d896ca586c832e2cde810cf745315d8fa2160c4e57329"
+    },
+    {
+      "path": "submission-package/README.md",
+      "sha256": "5779c33cff3d7c6809cc3f594db54e5a1e859c5d8762ec14beb7f5ba5c06efad"
+    },
+    {
+      "path": "verification/provenance/reviewer-figure-labels-20260918.json",
+      "sha256": "baace5812a8f0684e52c9ceff3d3891507ecbd69c36ea69b34b988cc0f165e5f"
+    }
+  ],
+  "review_workspace": [
+    {
+      "path": "/home/johnrobertlawson/reviews/lawson-ozone-wrf-mdpiair-2026/peer-review-decisions.md",
+      "sha256": "c7233080fbd53ba09c8acccd7ab94f7b5088994654b5301f35aa5b38ffac2f27"
+    },
+    {
+      "path": "/home/johnrobertlawson/reviews/lawson-ozone-wrf-mdpiair-2026/response-to-reviewers.md",
+      "sha256": "0505f1b11e3fe337f30d47a530fb884b170fdbad6074e38912431281270de22a"
+    },
+    {
+      "path": "/home/johnrobertlawson/reviews/lawson-ozone-wrf-mdpiair-2026/colleague-response-strategy.md",
+      "sha256": "a69efabf69c2cfa9a31abadc9f2d097fa6204da4fb52a573d04d2f3bb0e2ea5d"
+    }
+  ],
+  "cleanup": {
+    "removed_disposable_outputs": [
+      {
+        "path": "main.aux",
+        "sha256": "9be2be50739a28132ae35fb7857730ec29154c045c01cf901143e23454c57525"
+      },
+      {
+        "path": "main.bbl",
+        "sha256": "6a35995ae24e106c4e5d896ca586c832e2cde810cf745315d8fa2160c4e57329"
+      },
+      {
+        "path": "main.blg",
+        "sha256": "2ee759c13c902b90edecd20b1efd96dcef7af7fdc4ac743775d31a7cb3f06a7a"
+      },
+      {
+        "path": "main.fdb_latexmk",
+        "sha256": "66c774aa4cd39d4e2a5c2673f8a335f8eb182713b5c21c53930c941fdecc3430"
+      },
+      {
+        "path": "main.fls",
+        "sha256": "97e9220f72d20de03e3687e57a037c0f503649fd73bd4bb326b5edd9c7a1a72d"
+      },
+      {
+        "path": "main.log",
+        "sha256": "d8a0511f524f60283ad11ab5acc556f15176e6bc58f6da759359d9a922a6e42c"
+      },
+      {
+        "path": "main.out",
+        "sha256": "db261a1c1f457fa3b7b7efdf1e3082052619f66a1072645d3e5cb88fc2621810"
+      },
+      {
+        "path": "_manuscript_test.aux",
+        "sha256": "4ce14313542f826fecac02a146ee8b8bb550b715700def4a92072849900112e6"
+      },
+      {
+        "path": "_manuscript_test.bbl",
+        "sha256": "9b3bd62781c143ed2a9dfb46c13423e05746d857ddf319a532db8b78332b2b65"
+      },
+      {
+        "path": "_manuscript_test.blg",
+        "sha256": "433d6e510264e4f93ab935acfc8c2c2ac4c68ad4323156faf7f182579c75fa94"
+      },
+      {
+        "path": "_manuscript_test.fdb_latexmk",
+        "sha256": "49de70269a3c1670c16baa3d3ef065856466d05c4c9fc52010ed1873f39661d2"
+      },
+      {
+        "path": "_manuscript_test.fls",
+        "sha256": "fe4a00b05077958a39ace2d987da1ea174ce812e5d65d783f3fdc1b8193a71be"
+      },
+      {
+        "path": "_manuscript_test.log",
+        "sha256": "61eb468ca61c277412700204bd8e78fd10e3583d1042ca364fcd9752df9651c5"
+      },
+      {
+        "path": "_manuscript_test.out",
+        "sha256": "53271964907a33d86c2c4a75de479a818440bfdd001257c07e703d20b5c99073"
+      },
+      {
+        "path": "_manuscript_v3.aux",
+        "sha256": "49a90f49ea2ee50520ceaf1770df308ed58d8a3e3dc6763ce9812f1d33bd82a1"
+      },
+      {
+        "path": "_manuscript_v3.bbl",
+        "sha256": "9b3bd62781c143ed2a9dfb46c13423e05746d857ddf319a532db8b78332b2b65"
+      },
+      {
+        "path": "_manuscript_v3.blg",
+        "sha256": "01b9d8781593488d7452df22317cbd8abe5f7d6749554873b39b5c3ad7974fef"
+      },
+      {
+        "path": "_manuscript_v3.fdb_latexmk",
+        "sha256": "4d2ca2c963835d1f100197b994b805afe3fe69f8f250efe558a6be85edb67f83"
+      },
+      {
+        "path": "_manuscript_v3.fls",
+        "sha256": "7fc50180f589ffb08dba54c92564269ae095a5349bfb251665210d530783af1a"
+      },
+      {
+        "path": "_manuscript_v3.log",
+        "sha256": "16c5e032819c772fbe01099c163c66cba9f675bb142b120cf829136e463be3fa"
+      },
+      {
+        "path": "_manuscript_v3.out",
+        "sha256": "2b1316484a11acef6b4761a5f9d693448a111c498c519823a7014a81c9709de8"
+      },
+      {
+        "path": "supplement.aux",
+        "sha256": "0e6b2872ccd7900d7eeca96a8e689434bf4fcd65cb6d28c7331b04341c429d31"
+      },
+      {
+        "path": "supplement.fdb_latexmk",
+        "sha256": "02c90530ad193e06f2471e7c39f1edf1293550289fb94517fe3b8bee7c2fa54e"
+      },
+      {
+        "path": "supplement.fls",
+        "sha256": "422ce8e1c10342c3fd619cca965f42fa2b4ef1ebdb178b6ae16c40d399868109"
+      },
+      {
+        "path": "supplement.log",
+        "sha256": "1c91fb233f7e6c49c389c05edda23800deca6b65833f8cec9c727a82c917d2b8"
+      },
+      {
+        "path": "supplement.out",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "_manuscript_test.pdf",
+        "sha256": "7ad5fa4faa127dbc3ed95ee2ceab8f806b15d360280e4b1bfc23a7a3a24b34dd"
+      },
+      {
+        "path": "_manuscript_v3.pdf",
+        "sha256": "5ea0a99dfd4c42234a66aa83b7e46d96d7220dc9d4d98bcd555a98e5ac8cf3a8"
+      },
+      {
+        "path": "supplement.pdf",
+        "sha256": "3065b93a1aa7d549d55c044a05d9f9452c9de33c5f172b07ab55327648184c7c"
+      },
+      {
+        "path": ":memory:.ses",
+        "sha256": "a05f2680086982cf2d140736ea191b912b690d4b501aa7b867c1205b7d740f44"
+      }
+    ],
+    "retained": "Root main.pdf, new dated PDF, fresh source ZIP/staging, original candidates, archive inputs, cited submission snapshots and historical sources"
+  },
+  "remaining": [
+    "John reviews checkpoint PDF",
+    "Replace paperpile.bib with one complete Paperpile export and reconcile verified references",
+    "Rebuild and resume peer-review-reply for final wording and compiled locators",
+    "Final author/coauthor approval and availability wording before resubmission"
+  ],
+  "publication_state": "Local validation before Git publication; merge and remote state are reported separately."
+}
