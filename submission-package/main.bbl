@@ -23,6 +23,11 @@ Lyman, S.; Tran, T.
 \newblock {\em Atmos. Environ.} {\bf 2015}, {\em 123},~156--165.
 \newblock {\url{https://doi.org/10.1016/j.atmosenv.2015.10.067}}.
 
+\bibitem[Whiteman(2000)]{Whiteman2000}
+Whiteman, C.D.
+\newblock {\em Mountain Meteorology: Fundamentals and Applications}; Oxford University Press: New York, NY, USA,  2000.
+\newblock {\url{https://doi.org/10.1093/oso/9780195132717.001.0001}}.
+
 \bibitem[Oltmans et~al.(2014)Oltmans, Schnell, Johnson, Pétron, Mefford, and Neely]{Oltmans2014-md}
 Oltmans, S.; Schnell, R.; Johnson, B.; Pétron, G.; Mefford, T.; Neely, III, R.
 \newblock Anatomy of wintertime ozone associated with oil and natural gas extraction activity in Wyoming and Utah.
@@ -35,10 +40,10 @@ Mansfield, M.L.; Lyman, S.N.
 \newblock {\em Atmosphere} {\bf 2020}, {\em 12},~4.
 \newblock {\url{https://doi.org/10.3390/atmos12010004}}.
 
-\bibitem[Tran et~al.(2018)Tran, Tran, Mansfield, Lyman, and Crosman]{Tran2018-ax}
+\bibitem[Tran et~al.(2018)Tran, Tran, Mansfield, Lyman, and Crosman]{Tran2018FDDA}
 Tran, T.; Tran, H.; Mansfield, M.; Lyman, S.; Crosman, E.
-\newblock Four dimensional data assimilation ({FDDA}) impacts on {WRF} performance in simulating inversion layer structure and distributions of {CMAQ}-simulated winter ozone concentrations in Uintah Basin.
-\newblock {\em Atmos. Environ. (1994)} {\bf 2018}, {\em 177},~75--92.
+\newblock Four dimensional data assimilation ({FDDA}) impacts on {WRF} performance in simulating inversion layer structure and distributions of {CMAQ}-simulated winter ozone concentrations in {Uintah Basin}.
+\newblock {\em Atmospheric Environment} {\bf 2018}, {\em 177},~75--92.
 \newblock {\url{https://doi.org/10.1016/j.atmosenv.2018.01.012}}.
 
 \bibitem[Tran and Tran(2021)]{Tran2021-al}
@@ -51,5 +56,166 @@ Matichuk, R.; Tonnesen, G.; Luecken, D.; Gilliam, R.; Napelenok, S.L.; Baker, K.
 \newblock Evaluation of the Community Multiscale Air Quality Model for Simulating Winter Ozone Formation in the Uinta Basin.
 \newblock {\em J. Geophys. Res. D: Atmos.} {\bf 2017}, {\em 122},~13545--13572.
 \newblock {\url{https://doi.org/10.1002/2017JD027057}}.
+
+\bibitem[{Synoptic Data PBC}()]{SynopticTimeseries}
+{Synoptic Data PBC}.
+\newblock Mesonet {API}: Time Series Service.
+\newblock (\url{https://docs.synopticdata.com/services/time-series}, accessed 18 September 2026).
+
+\bibitem[Wallace and Hobbs(2006)]{WallaceHobbs2006}
+Wallace, J.M.; Hobbs, P.V.
+\newblock {\em Atmospheric Science: An Introductory Survey}, 2nd ed.; Academic Press: Burlington, MA, USA,  2006.
+
+\bibitem[{US Environmental Protection Agency}()]{EPAAirData}
+{US Environmental Protection Agency}.
+\newblock {AQS AirData}: Daily Ozone Summary, 2013.
+\newblock (\url{https://aqs.epa.gov/aqsweb/airdata/download_files.html}, accessed 18 September 2026).
+\newblock File \texttt{daily\_44201\_2013.zip}; January--February records for Ouray, Redwash, Roosevelt, Vernal and Little Mountain.
+
+\bibitem[{NASA Earth Science Data and Information System}()]{NASAGIBS}
+{NASA Earth Science Data and Information System}.
+\newblock {GIBS/Worldview}: {Terra MODIS} Corrected Reflectance (Bands 7-2-1), 2 February 2013.
+\newblock (\url{https://worldview.earthdata.nasa.gov/}, accessed 18 September 2026).
+
+\bibitem[Liou(2002)]{Liou2002}
+Liou, K.N.
+\newblock {\em An Introduction to Atmospheric Radiation}, 2nd ed.; Academic Press: San Diego, CA, USA,  2002.
+
+\bibitem[{NASA Global Imagery Browse Services}()]{NASAMODIS721}
+{NASA Global Imagery Browse Services}.
+\newblock {MODIS} Corrected Reflectance: Band Combinations and Interpretation.
+\newblock (\url{https://github.com/nasa-gibs/worldview-options-eosdis/blob/master/common/config/metadata/modis/CorrectedReflectance.md}, accessed 18 September 2026).
+
+\bibitem[Skamarock et~al.(2019)Skamarock, Klemp, Dudhia, Gill, Liu, Berner, Wang, Powers, Duda, Barker, and Huang]{Skamarock2019}
+Skamarock, W.C.; Klemp, J.B.; Dudhia, J.; Gill, D.O.; Liu, Z.; Berner, J.; Wang, W.; Powers, J.G.; Duda, M.G.; Barker, D.M.;  et~al.
+\newblock A Description of the Advanced Research {WRF} Model Version 4.
+\newblock NCAR Technical Note NCAR/TN-556+STR, National Center for Atmospheric Research,  2019.
+\newblock {\url{https://doi.org/10.5065/1dfh-6p97}}.
+
+\bibitem[{NOAA National Centers for Environmental Information}({\natexlab{a}})]{GFSAnalysis}
+{NOAA National Centers for Environmental Information}.
+\newblock Global Forecast System Analysis, Grid 004 (0.5{\textdegree}): 2 February 2013, 1200 and 1800 {UTC} Zero-Hour Analyses.
+\newblock (\url{https://www.ncei.noaa.gov/products/weather-climate-models/global-forecast}, accessed 18 September 2026).
+
+\bibitem[{NOAA National Centers for Environmental Information}({\natexlab{b}})]{NAMAnalysis}
+{NOAA National Centers for Environmental Information}.
+\newblock North American Mesoscale Forecast System Analysis, Grid 218 (12 km): 2 February 2013, 1200 and 1800 {UTC} Zero-Hour Analyses.
+\newblock (\url{https://www.ncei.noaa.gov/products/weather-climate-models/north-american-mesoscale}, accessed 18 September 2026).
+
+\bibitem[Thompson et~al.(2008)Thompson, Field, Rasmussen, and Hall]{Thompson2008-ti}
+Thompson, G.; Field, P.R.; Rasmussen, R.M.; Hall, W.D.
+\newblock Explicit forecasts of winter precipitation using an improved bulk microphysics scheme. Part {II}: Implementation of a new snow parameterization.
+\newblock {\em Mon. Weather Rev.} {\bf 2008}, {\em 136},~5095--5115.
+\newblock {\url{https://doi.org/10.1175/2008mwr2387.1}}.
+
+\bibitem[Iacono et~al.(2008)Iacono, Delamere, Mlawer, Shephard, Clough, and Collins]{Iacono2008}
+Iacono, M.J.; Delamere, J.S.; Mlawer, E.J.; Shephard, M.W.; Clough, S.A.; Collins, W.D.
+\newblock Radiative forcing by long-lived greenhouse gases: Calculations with the {AER} radiative transfer models.
+\newblock {\em Journal of Geophysical Research: Atmospheres} {\bf 2008}, {\em 113},~D13103.
+\newblock {\url{https://doi.org/10.1029/2008JD009944}}.
+
+\bibitem[Jim{\'e}nez et~al.(2012)Jim{\'e}nez, Dudhia, Gonz{\'a}lez-Rouco, Navarro, Mont{\'a}vez, and Garc{\'i}a-Bustamante]{Jimenez2012Surface}
+Jim{\'e}nez, P.A.; Dudhia, J.; Gonz{\'a}lez-Rouco, J.F.; Navarro, J.; Mont{\'a}vez, J.P.; Garc{\'i}a-Bustamante, E.
+\newblock A Revised Scheme for the {WRF} Surface Layer Formulation.
+\newblock {\em Monthly Weather Review} {\bf 2012}, {\em 140},~898--918.
+\newblock {\url{https://doi.org/10.1175/MWR-D-11-00056.1}}.
+
+\bibitem[Tewari et~al.(2004)Tewari, Chen, Wang, Dudhia, LeMone, Mitchell, Ek, Gayno, Wegiel, and Cuenca]{Tewari2004}
+Tewari, M.; Chen, F.; Wang, W.; Dudhia, J.; LeMone, M.A.; Mitchell, K.; Ek, M.; Gayno, G.; Wegiel, J.; Cuenca, R.H.
+\newblock Implementation and verification of the unified {NOAH} land surface model in the {WRF} model.
+\newblock In Proceedings of the 20th Conference on Weather Analysis and Forecasting/16th Conference on Numerical Weather Prediction,  2004.
+\newblock Paper 14.2A. (\url{https://www2.mmm.ucar.edu/wrf/users/physics/phys_refs/LAND_SURFACE/noah.pdf}, accessed 18 September 2026).
+
+\bibitem[Hong et~al.(2006)Hong, Noh, and Dudhia]{Hong2006}
+Hong, S.Y.; Noh, Y.; Dudhia, J.
+\newblock A New Vertical Diffusion Package with an Explicit Treatment of Entrainment Processes.
+\newblock {\em Monthly Weather Review} {\bf 2006}, {\em 134},~2318--2341.
+\newblock {\url{https://doi.org/10.1175/MWR3199.1}}.
+
+\bibitem[Danielson and Gesch(2011)]{DanielsonGesch2011}
+Danielson, J.J.; Gesch, D.B.
+\newblock Global Multi-resolution Terrain Elevation Data 2010 ({GMTED2010}).
+\newblock Open-File Report 2011--1073, U.S. Geological Survey,  2011.
+\newblock {\url{https://doi.org/10.3133/ofr20111073}}.
+
+\bibitem[Stull(1988)]{Stull1988}
+Stull, R.B.
+\newblock {\em An Introduction to Boundary Layer Meteorology}; Kluwer Academic Publishers: Dordrecht, The Netherlands,  1988.
+\newblock {\url{https://doi.org/10.1007/978-94-009-3027-8}}.
+
+\bibitem[Wilks(2019)]{Wilks2019}
+Wilks, D.S.
+\newblock {\em Statistical Methods in the Atmospheric Sciences}, 4th ed.; Elsevier: Amsterdam, The Netherlands,  2019.
+
+\bibitem[Whiteman et~al.(1999)Whiteman, Bian, and Zhong]{Whiteman1999}
+Whiteman, C.D.; Bian, X.; Zhong, S.
+\newblock Wintertime Evolution of the Temperature Inversion in the {Colorado Plateau Basin}.
+\newblock {\em Journal of Applied Meteorology} {\bf 1999}, {\em 38},~1103--1117.
+\newblock {\url{https://doi.org/10.1175/1520-0450(1999)038<1103:WEOTTI>2.0.CO;2}}.
+
+\bibitem[Adler et~al.(2023)Adler, Wilczak, Kenyon, Bianco, Djalalova, Olson, and Turner]{Adler2023}
+Adler, B.; Wilczak, J.M.; Kenyon, J.; Bianco, L.; Djalalova, I.V.; Olson, J.B.; Turner, D.D.
+\newblock Evaluation of a cloudy cold-air pool in the {Columbia River} basin in different versions of the {High-Resolution Rapid Refresh (HRRR)} model.
+\newblock {\em Geoscientific Model Development} {\bf 2023}, {\em 16},~597--619.
+\newblock {\url{https://doi.org/10.5194/gmd-16-597-2023}}.
+
+\bibitem[Janji{\'c}(1994)]{Janjic1994}
+Janji{\'c}, Z.I.
+\newblock The Step-Mountain {Eta} Coordinate Model: Further Developments of the Convection, Viscous Sublayer, and Turbulence Closure Schemes.
+\newblock {\em Monthly Weather Review} {\bf 1994}, {\em 122},~927--945.
+\newblock {\url{https://doi.org/10.1175/1520-0493(1994)122<0927:TSMECM>2.0.CO;2}}.
+
+\bibitem[{University of Utah}()]{UtahUBOS}
+{University of Utah}.
+\newblock {UBOS} Observation Page: Provisional {Roosevelt} Soundings, 2013.
+\newblock (\url{https://www.inscc.utah.edu/~u0198116/ubos/obs.html}, accessed 18 September 2026).
+\newblock Roosevelt record \texttt{Roosevelt\_02022013\_1802UTC.txt}.
+
+\bibitem[Blaylock({\natexlab{a}})]{Herbie}
+Blaylock, B.K.
+\newblock {Herbie}: Retrieve Numerical Weather Prediction Model Data.
+\newblock Computer software.
+\newblock (\url{https://github.com/blaylockbk/Herbie}, accessed 18 September 2026), {\url{https://doi.org/10.5281/zenodo.4567540}}.
+
+\bibitem[Blaylock({\natexlab{b}})]{SynopticPy}
+Blaylock, B.K.
+\newblock {SynopticPy}: {Synoptic API} for {Python}.
+\newblock Computer software.
+\newblock (\url{https://github.com/blaylockbk/SynopticPy}, accessed 18 September 2026).
+
+\bibitem[Harris et~al.(2020)Harris, Millman, van~der Walt, Gommers, Virtanen, Cournapeau, Wieser, Taylor, Berg, Smith, Kern, Picus, Hoyer, van Kerkwijk, Brett, Haldane, Fern{\'a}ndez~del R{\'i}o, Wiebe, Peterson, G{\'e}rard-Marchant, Sheppard, Reddy, Weckesser, Abbasi, Gohlke, and Oliphant]{Harris2020NumPy}
+Harris, C.R.; Millman, K.J.; van~der Walt, S.J.; Gommers, R.; Virtanen, P.; Cournapeau, D.; Wieser, E.; Taylor, J.; Berg, S.; Smith, N.J.;  et~al.
+\newblock Array programming with {NumPy}.
+\newblock {\em Nature} {\bf 2020}, {\em 585},~357--362.
+\newblock {\url{https://doi.org/10.1038/s41586-020-2649-2}}.
+
+\bibitem[Virtanen et~al.(2020)Virtanen, Gommers, Oliphant, Haberland, Reddy, Cournapeau, Burovski, Peterson, Weckesser, Bright, van~der Walt, Brett, Wilson, Millman, Mayorov, Nelson, Jones, Kern, Larson, Carey, Polat, Feng, Moore, VanderPlas, Laxalde, Perktold, Cimrman, Henriksen, Quintero, Harris, Archibald, Ribeiro, Pedregosa, van Mulbregt, and {SciPy 1.0 Contributors}]{Virtanen2020SciPy}
+Virtanen, P.; Gommers, R.; Oliphant, T.E.; Haberland, M.; Reddy, T.; Cournapeau, D.; Burovski, E.; Peterson, P.; Weckesser, W.; Bright, J.;  et~al.
+\newblock {SciPy} 1.0: Fundamental Algorithms for Scientific Computing in {Python}.
+\newblock {\em Nature Methods} {\bf 2020}, {\em 17},~261--272.
+\newblock {\url{https://doi.org/10.1038/s41592-019-0686-2}}.
+
+\bibitem[McKinney(2010)]{McKinney2010}
+McKinney, W.
+\newblock Data Structures for Statistical Computing in {Python}.
+\newblock In Proceedings of the 9th Python in Science Conference,  2010, pp. 56--61.
+\newblock {\url{https://doi.org/10.25080/Majora-92bf1922-00a}}.
+
+\bibitem[{Polars developers}()]{Polars}
+{Polars developers}.
+\newblock {Polars} User Guide.
+\newblock (\url{https://docs.pola.rs/}, accessed 18 September 2026).
+
+\bibitem[Hoyer and Hamman(2017)]{HoyerHamman2017}
+Hoyer, S.; Hamman, J.J.
+\newblock {xarray}: {N-D} labeled Arrays and Datasets in {Python}.
+\newblock {\em Journal of Open Research Software} {\bf 2017}, {\em 5},~10.
+\newblock {\url{https://doi.org/10.5334/jors.148}}.
+
+\bibitem[Hunter(2007)]{Hunter2007Matplotlib}
+Hunter, J.D.
+\newblock {Matplotlib}: A {2D} Graphics Environment.
+\newblock {\em Computing in Science \& Engineering} {\bf 2007}, {\em 9},~90--95.
+\newblock {\url{https://doi.org/10.1109/MCSE.2007.55}}.
 
 \end{thebibliography}
