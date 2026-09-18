@@ -1,5 +1,36 @@
 # First-round peer-review revision return record
 
+## Current checkpoint — 18 September 2026
+
+Figures 4 and 5 have been rerendered locally from the checksum-verified committed summaries.
+Their labels now distinguish the potential-temperature endpoint difference and layer-mean wind-vector magnitude; numerical inputs and plotted values are unchanged.
+The original candidates are preserved, and both manifests point to the new derivatives and [figure receipt](../verification/provenance/reviewer-figure-labels-20260918.json).
+No CHPC handoff or WRF run was needed.
+The retired radiation-supplement row in the CSV manifest now agrees with the production manifest; its previously unquoted comma was repaired without changing the underlying evidence.
+
+The bounded editorial pass preserved paragraph order and unaffected prose.
+It corrected the Abstract's surface-observation wording, explained the factor choices and the cited snow/cloud mechanisms, clarified what the endpoint metric cannot resolve, made future nudging/multi-case tests explicit, and moved the existing meteorology-only scope sentence into the opening Introduction.
+Existing registered feedback, process, terrain and heat-deficit magnitudes now support the short Results/Conclusions summaries.
+Table A4's caption now distinguishes its station-based rows from its area-weighted footprint diagnostics.
+The layer-sensitivity results, Seep Ridge qualification, sounding limitation and failed gates below remain unchanged.
+
+All 45 reviewer IDs, quotations and author stances are preserved in the review workspace.
+R3-C016 is complete after the label repair; implementation status remains distinct from author approval.
+The small wording gaps supporting R1-C007, R2-C005/C006/C015/C016/C020 and R3-C004/C009/C017 are now explicit in the manuscript.
+Seth's modelling-history motivation is compatible with the saved decisions; his stronger meteorological interpretation is not a demonstrated result of this study, and 2013 sonde availability is not exact-window vertical validation.
+The older colleague strategy and July report-source policy now point to the later author decisions rather than reopening them.
+
+Validation, PDF inspection and final artefact hashes are recorded in the [checkpoint receipt](../verification/provenance/reviewer-checkpoint-20260918.json).
+The refreshed `submission-package/` contains the current main article, with the retired supplement excluded.
+The dated review PDF is [main_2026-09-18_peer-review-checkpoint.pdf](../drafts/main_2026-09-18_peer-review-checkpoint.pdf).
+
+**Next:** John reviews this checkpoint and supplies one complete Paperpile export using the [updated checklist](literature/paperpile-export-list.md).
+After citation reconciliation and a rebuild, resume `peer-review-reply` from the saved decisions for final wording and compiled locators.
+No fresh intake/synthesis or new simulation is required; final author/coauthor approval and availability wording remain author steps before resubmission.
+The nine CHPC diagnostics remain unpromoted with D1 label defects; repair them only if needed for review.
+
+The remainder of this record preserves the 16 September import and validation snapshot.
+
 ## Imported on the writing host: 16 September 2026
 
 CHPC job `15610800` and its bounded follow-up are complete.
@@ -47,7 +78,7 @@ Neither metric measures basin transport or ventilation.
 - The fresh Seep Ridge pull supplies provider metadata, UTC timestamps and 17/17 retained-window samples for each of four requested variables with no returned QC flags. It supplies no sensor-position or exposure history and does not reproduce the historical observation-cache processing or establish a mechanism for the distinct trace.
 - All nine CHPC diagnostic figures have D1 label overlap/clipping despite passing their numerical checks. They remain unpromoted. Repair requires the existing hourly CSVs on CHPC and separate derivative output; those CSVs were not transferred. No WRF or scientific recalculation is needed, and this repair does not block the numerical table.
 
-## Response reconciliation and validation
+## Response reconciliation and validation — 16 September snapshot
 
 R3-C001/C015/C016/C018 now use the imported results in the response and decision register; R1-C004 includes the verified Seep Ridge metadata qualification.
 All 45 reviewer IDs and quotations were preserved, along with the author's stances and agreed actions.
@@ -62,7 +93,7 @@ Existing template PDF-string/header warnings remain.
 The independently built submission PDF has identical extracted text; the ZIP contains the revised source and only allowlisted production material.
 The [integration-check receipt](../verification/provenance/reviewer-layer-integration-checks-20260916.json) records commands, inspection and source/PDF/ZIP/response hashes.
 
-Remaining executable figure work is a label-only rerender of Figures 4 and 5 and, if needed for review, D1 repair in the nine CHPC diagnostics.
+At the 16 September checkpoint, remaining figure work was a label-only rerender of Figures 4 and 5 and optional D1 repair in the nine CHPC diagnostics; the current disposition is recorded above.
 Keep the original artefacts, render derivatives separately from existing summaries, inspect them, and update both figure manifests before replacing production files.
 No WRF integration, expanded observation window or new scientific claim is authorised by this cleanup.
 The original untracked transfer inputs are preserved outside Git.

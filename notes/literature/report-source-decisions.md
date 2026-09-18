@@ -1,5 +1,14 @@
 # Report-source decisions after narrative freeze
 
+## September revision supersession
+
+On 16 September John confirmed a focused Introduction modelling-lineage paragraph using verified peer-reviewed studies and agency reports in `~/reviews/lawson-ozone-wrf-mdpiair-2026/peer-review-decisions.md`.
+The current manuscript uses the verified 2021 OSIP WRF MPE report (`Tran2021-al`) for that limited lineage context, with assimilation/sample limitations in the same paragraph.
+This later decision supersedes the July Discussion-only restriction for that use; it does not promote the other report leads or establish an independent replication or product ranking.
+Reconciled on 18 September without changing the saved author stance or expanding the report set.
+
+## July source-policy snapshot
+
 Supporting analysis only; this file is excluded from the MDPI submission package.
 
 Decision date: 14 July 2026.
