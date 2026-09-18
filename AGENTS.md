@@ -36,6 +36,7 @@ Open only the route needed. Avoid broad trees, bulk figures, raw PDFs, legacy ch
 - Akamai/Linode owns writing, Git and LaTeX; CHPC owns WRF/data work. Label-only plotting from committed summaries may run locally; reusable analysis belongs in `../brc-tools`.
 - No sibling WRF checkout overrides the paper inventories or immutable CHPC packets.
 - Keep manuscripts single-file, sparse, British English, one sentence per source line. Preserve official names, identifiers, bibliographic titles and direct quotations verbatim.
+- Never use manuscript footnotes. Cite references, websites and data sources in the bibliography; give web URLs and access dates, and acknowledge/cite software with verified DOIs or URLs.
 - Never edit `Definitions/` or hand-edit `paperpile.bib`. John supplies one complete Paperpile replacement; `trang_ref` is not Tran et al. (2018).
 - After analysis/manuscript changes run `make final-draft-check`, `make submission-check`, and inspect PDFs; refresh the delivery folder with `make package`.
 - Production uses only dual-promoted, allowlisted figures. Keep original evidence and transfer inputs; no synthetic output may be promoted.

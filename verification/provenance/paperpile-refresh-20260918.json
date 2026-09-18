@@ -1,0 +1,200 @@
+{
+  "supplied_date": "2026-09-18",
+  "export_date": "not embedded in supplied file",
+  "source_filename": "paperpile-update.bib",
+  "source_sha256": "bfc341cdaed558c5d0d20a5bee3e4bc09a814ba327221930ff38ca1b18aa7c2b",
+  "source_bytes": 1411507,
+  "source_entry_count": 2727,
+  "previous_bibliography_sha256": "a6ebf73fb8f000f112345858b3485f4e6eec3469d0f62ee12d2c74da2d6c865d",
+  "output": "paperpile.bib",
+  "output_sha256": "e3fb5486d195c1c6ba426dd515f92cb441ff71b0223dc63a9de888cdacf9d919",
+  "output_bytes": 7943,
+  "output_entry_count": 14,
+  "selection": "Nine cited sources plus five available additional checklist sources; original entry order and bytes preserved, separators normalised to one blank line.",
+  "retained_entries": [
+    {
+      "key": "Thompson2008-ti",
+      "entry_sha256": "4367a74fc055f3e921416fb53d6b99a4dd3561dd44f3cb175c4ba5c787c56d82",
+      "unchanged_from_supplied_export": true
+    },
+    {
+      "key": "WhitemanUnknown-cy",
+      "entry_sha256": "7b4cc156a458cbed564d9004d76fe4e3f7ab5ff3bf1207bfd163013809be6f6a",
+      "unchanged_from_supplied_export": true
+    },
+    {
+      "key": "Davies2025-wy",
+      "entry_sha256": "83add4b763ca66fa860104bc7be9a4b60a0f88ff5486acb0a8ed50a3b880a3ab",
+      "unchanged_from_supplied_export": true
+    },
+    {
+      "key": "Adler2023-zp",
+      "entry_sha256": "cb233e746d1bb9f137ef3f898a48d58e552efa60efa8ae49104a15ad3769ddce",
+      "unchanged_from_supplied_export": true
+    },
+    {
+      "key": "Skamarock2019-dk",
+      "entry_sha256": "1d5411b13da1c6d16ee50c74a7339f3b82ff0bf553e607cfb6a0da3d8473c777",
+      "unchanged_from_supplied_export": true
+    },
+    {
+      "key": "Oltmans2014-md",
+      "entry_sha256": "75e47200c1393a160310602bbf5d9ebf963f06b079f4a39cbdafe91c5c435d43",
+      "unchanged_from_supplied_export": true
+    },
+    {
+      "key": "Matichuk2017-bq",
+      "entry_sha256": "3d5ba3249dcf5eceeafacaa67d03acb1eb17f242e731043d46be3aec0fc5f319",
+      "unchanged_from_supplied_export": true
+    },
+    {
+      "key": "Neemann2015-ws",
+      "entry_sha256": "4d043f1ceecbb96dfe93866baae482d8edaef0a2958ba0bbc8a8b35c01ae9aa1",
+      "unchanged_from_supplied_export": true
+    },
+    {
+      "key": "Ahmadov2015-zm",
+      "entry_sha256": "d5e9d2ab7682705a86917764df6cac9b0532fe7fbd4fe5db986d7100a5abeb52",
+      "unchanged_from_supplied_export": true
+    },
+    {
+      "key": "Lyman2015-aq",
+      "entry_sha256": "54e0ac17e2c858a338cf8c3b47a69e5f0f6842646d76be28547c958909079bcc",
+      "unchanged_from_supplied_export": true
+    },
+    {
+      "key": "Tran2021-al",
+      "entry_sha256": "a1817af8231bb4a1c8e51f07b000940d5b1fa3a09678519b288085c2d9a639b3",
+      "unchanged_from_supplied_export": true
+    },
+    {
+      "key": "Mansfield2020-kl",
+      "entry_sha256": "25961acb1fb87c14b117b0c825ee4f68a0b770ad58cedb34c2b0ddf49bf384fe",
+      "unchanged_from_supplied_export": true
+    },
+    {
+      "key": "Tran2018-cx",
+      "entry_sha256": "2049df67b0e6b42b8fe41476a9aeb76472371feafe73265508a62b4666aa7a1b",
+      "unchanged_from_supplied_export": true
+    },
+    {
+      "key": "Hong2006-wp",
+      "entry_sha256": "ff880ca6aeb501ddb22d5a56428b2fb756ccc9ecbf9a11c29e57595f8346eecd",
+      "unchanged_from_supplied_export": true
+    }
+  ],
+  "citation_key_mapping": {
+    "Tran2018-ax": "Tran2018-cx"
+  },
+  "key_identity_evidence": {
+    "Tran2018-cx": {
+      "previous_key": "Tran2018-ax",
+      "doi": "10.1016/j.atmosenv.2018.01.012",
+      "publisher_record": "https://www.sciencedirect.com/science/article/abs/pii/S1352231018300189",
+      "verification": "Publisher search result matches exported PII URL, full prior title, year, volume 177, pages 75-92 and prior DOI."
+    }
+  },
+  "missing_checklist_records": [
+    "Iacono et al. (2008), RRTMG",
+    "Jimenez et al. (2012), revised surface layer; Jimenez2012-fo is a different paper",
+    "Tewari et al. (2004), Noah",
+    "Exact GFS/NAM analysis products",
+    "Synoptic Data PBC Mesonet service",
+    "EPA AQS AirData",
+    "NASA GIBS/MODIS corrected-reflectance product",
+    "Herbie (optional formal software citation)",
+    "SynopticPy (optional formal software citation)"
+  ],
+  "metadata_issues": {
+    "Tran2018-cx": "Truncated title, abbreviated authors with others, missing volume/pages/DOI; supplied fields preserved.",
+    "WhitemanUnknown-cy": "Missing year, journal, volume/pages and DOI; title/authors and publisher URL match checklist.",
+    "Adler2023-zp": "DOI absent; title, year, volume/pages and publisher URL match checklist.",
+    "Skamarock2019-dk": "Institution/report number absent; DOI matches checklist."
+  },
+  "manuscript_scope": "Only reconciled Tran citation key in main/test/v3. Existing prose and footnote references remain; no additional formal citations introduced.",
+  "validation": {
+    "commands": [
+      {
+        "command": "make final-draft-check",
+        "exit_code": 0
+      },
+      {
+        "command": "make submission-check package",
+        "exit_code": 0
+      },
+      {
+        "command": "git diff --check",
+        "exit_code": 0
+      }
+    ],
+    "logs": {
+      "main": {
+        "undefined_citations_or_references": false,
+        "overfull_or_underfull_boxes": false,
+        "bibtex_warnings": [
+          "Warning--string name \"aug\" is undefined",
+          "Warning--string name \"jan\" is undefined",
+          "Warning--string name \"dec\" is undefined",
+          "Warning--string name \"jan\" is undefined",
+          "Warning--string name \"dec\" is undefined",
+          "Warning--string name \"dec\" is undefined"
+        ]
+      },
+      "_manuscript_test": {
+        "undefined_citations_or_references": false,
+        "overfull_or_underfull_boxes": false,
+        "bibtex_warnings": [
+          "Warning--string name \"aug\" is undefined",
+          "Warning--string name \"dec\" is undefined",
+          "Warning--string name \"jan\" is undefined"
+        ]
+      },
+      "_manuscript_v3": {
+        "undefined_citations_or_references": false,
+        "overfull_or_underfull_boxes": false,
+        "bibtex_warnings": [
+          "Warning--string name \"aug\" is undefined",
+          "Warning--string name \"dec\" is undefined",
+          "Warning--string name \"jan\" is undefined"
+        ]
+      },
+      "dist/mdpi-air-submission/main": {
+        "undefined_citations_or_references": false,
+        "overfull_or_underfull_boxes": false,
+        "bibtex_warnings": [
+          "Warning--string name \"aug\" is undefined",
+          "Warning--string name \"jan\" is undefined",
+          "Warning--string name \"dec\" is undefined",
+          "Warning--string name \"jan\" is undefined",
+          "Warning--string name \"dec\" is undefined",
+          "Warning--string name \"dec\" is undefined"
+        ]
+      }
+    },
+    "pdf_inspection": {
+      "page_count": 20,
+      "overview_pages": "1-20",
+      "detail_pages": [
+        20
+      ],
+      "result": "No observed clipping, overlap or missing content; reference 7 retains the truncated title and incomplete metadata supplied in the export."
+    },
+    "independent_submission_text_matches_main": true,
+    "package_pdf_matches_main_bytes": true,
+    "package_bibliography_matches_main_bytes": true,
+    "zip_integrity_and_current_sources": true,
+    "retained_entry_bytes_unchanged": true,
+    "original_update_filename_removed": true,
+    "author_review": "pending; PDF review and remaining Paperpile corrections precede final reply wording"
+  },
+  "artefact_sha256": {
+    "main.tex": "62786d6e52c48cec6cb086ff8aa54124af5f2a8a7d02df0788467d1b6b3a17c0",
+    "_manuscript_test.tex": "3177b0a960755fceedf639789598a6bfe2529100b92dcc7cd4444284318907a1",
+    "_manuscript_v3.tex": "1f7a6508a7599a78fe7f4bc13f43f57934b8cea3cbc029d8fe8b9cc95e06ca58",
+    "paperpile.bib": "e3fb5486d195c1c6ba426dd515f92cb441ff71b0223dc63a9de888cdacf9d919",
+    "main.pdf": "2dbad4b8c3fb8cccfd9dee3c24fea5ca7264addcaa2e13a0e58a8ade0c539f33",
+    "main.bbl": "aa3cf8c4c5e1702bb38bcdeccdd389613b6b1340da179701db547afd07fbb6d9",
+    "submission-package/main.pdf": "2dbad4b8c3fb8cccfd9dee3c24fea5ca7264addcaa2e13a0e58a8ade0c539f33",
+    "dist/mdpi-air-submission.zip": "c5db51425ac8ab0429f7d1d26c22ca8d2c42ef1779064297133e0a7f58f07610"
+  }
+}

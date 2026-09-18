@@ -16,6 +16,7 @@ SMOKE_PYTHON ?= $(CONDA) run --no-capture-output -n $(BRC_TOOLS_ENV) python
 MPLCONFIGDIR ?= /tmp/mdpi-air-matplotlib
 SUBMISSION_FIGURE_LIST ?= figures/submission-files.txt
 SUPPLEMENT_FIGURE_LIST ?= figures/supplement-files.txt
+BIB_FILES := review-references.bib paperpile.bib
 
 .PHONY: pdf supplement-pdf rewrite-pdf v3-pdf clean rewrite-clean v3-clean check rewrite-check v3-check \
 	smoke-preflight smoke manuscript-contract-check final-draft-check submission submission-check supplement supplement-check submission-draft-check package
@@ -85,7 +86,7 @@ smoke: smoke-preflight
 manuscript-contract-check:
 	$(PYTHON) verification/scripts/check_manuscript_contract.py \
 		--tex $(MAIN).tex \
-		--bib paperpile.bib \
+		$(foreach bib,$(BIB_FILES),--bib $(bib)) \
 		--figure-list $(SUBMISSION_FIGURE_LIST)
 
 final-draft-check: check rewrite-check v3-check smoke manuscript-contract-check
@@ -93,7 +94,7 @@ final-draft-check: check rewrite-check v3-check smoke manuscript-contract-check
 submission: check manuscript-contract-check
 	rm -rf $(STAGE)
 	mkdir -p $(STAGE)/Definitions
-	cp $(MAIN).tex paperpile.bib $(STAGE)/
+	cp $(MAIN).tex $(BIB_FILES) $(STAGE)/
 	@while IFS= read -r file; do cp "$$file" "$(STAGE)/$$file"; done < <(git ls-files Definitions)
 	@while IFS= read -r figure; do \
 		[[ -z "$$figure" || "$$figure" == \#* ]] && continue; \
@@ -163,7 +164,7 @@ submission-draft-check: final-draft-check submission-check
 package: submission-check
 	rm -rf $(PACKAGE_DIR)
 	mkdir -p $(PACKAGE_DIR)/Definitions
-	cp $(MAIN).tex paperpile.bib $(MAIN).bbl $(PACKAGE_DIR)/
+	cp $(MAIN).tex $(BIB_FILES) $(MAIN).bbl $(PACKAGE_DIR)/
 	cp $(MAIN).pdf $(PACKAGE_DIR)/
 	cp -R Definitions/. $(PACKAGE_DIR)/Definitions/
 	@while IFS= read -r figure; do \

@@ -14,8 +14,8 @@ July readiness and 100-task documents are historical audits, not a second active
 
 ## Next author steps
 
-1. Review the dated checkpoint PDF and its bounded editorial changes.
-2. Supply one complete Paperpile export using the [current checklist](notes/literature/paperpile-export-list.md); replace the bibliography wholesale, resolve actual keys and rebuild.
+1. Review the rebuilt `main.pdf` and record any further manuscript changes; the dated checkpoint remains the earlier snapshot.
+2. Review the two textbook placements flagged in the [editorial record](notes/literature/citation-tightening-20260918.md), then consolidate the verified auxiliary bibliography into Paperpile using the [current checklist](notes/literature/paperpile-export-list.md); the supplied 14-record export remains unchanged.
 3. Resume `peer-review-reply` in `~/reviews/head-office` for a focused completion/wording check against the saved 45 decisions and the final compiled manuscript.
 4. Confirm author/coauthor approval, declarations and final availability wording before journal resubmission.
 
