@@ -1,3 +1,6 @@
+> Completed historical dispatch, archived 18 September 2026. Do not execute.
+> Original request text follows unchanged; see [archive context](README.md).
+
 # CHPC v3 finishing pass
 
 Date: 15 July 2026

@@ -227,7 +227,7 @@ annotation, and do not imply that the ozone series validates the modeled layer.
 These commands document the scientific selections made during review.
 The executable source of truth, including preflight hashes, exact output mappings,
 the older line-free overlay baton, locator/radiation rerenders, allowed writes, and
-return protocol, is `rewrite/CHPC-V3-FIGURE-RECOMPUTE-HANDOFF.md`.
+return protocol, is `rewrite/archive/2026-07/CHPC-V3-FIGURE-RECOMPUTE-HANDOFF.md`.
 Do not dispatch this subsection separately.
 
 Refresh the d02 CMP11 top-down heat-deficit difference without changing the audited
@@ -255,7 +255,7 @@ sbatch verification/slurm/pelican_figures.slurm \
 
 Generate only the two driving-product profiles at initialization and one hour later.
 Use the shared-axis manuscript renderer and exact command in
-`rewrite/CHPC-V3-FIGURE-RECOMPUTE-HANDOFF.md`; the generic per-hour profile family
+`rewrite/archive/2026-07/CHPC-V3-FIGURE-RECOMPUTE-HANDOFF.md`; the generic per-hour profile family
 auto-scales each output independently and is not the final review command.
 
 After visual inspection, copy and rename only the selected files into `figures-draft/`

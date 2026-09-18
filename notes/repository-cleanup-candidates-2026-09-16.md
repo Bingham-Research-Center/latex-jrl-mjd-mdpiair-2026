@@ -1,5 +1,15 @@
 # Repository cleanup candidates
 
+## Executed scope — 18 September 2026
+
+John approved shortening current routers, archiving the two completed July dispatches with repaired navigation, refreshing the delivery package and removing the hash-identical `7951b3b` supplement duplicate.
+Its `a0a1c30` counterpart and exact submitted sources remain retained.
+Disposable root build outputs are cleaned after the new review/package copies are secured; the fresh source ZIP and review PDF remain available.
+Evidence inventories, failed gates, source manuscripts, original figure candidates and untracked CHPC transfers are preserved.
+The inventory below is the earlier proposal, not an active deletion queue; broader draft/candidate deletion remains outside this cleanup.
+
+## Original inventory — 16 September
+
 Read-only inventory, 16 September 2026: nothing deleted or moved.
 Sizes describe this checkout; removing tracked files would not shrink existing Git history.
 
@@ -16,8 +26,8 @@ Sizes describe this checkout; removing tracked files would not shrink existing G
 
 ## The main source of navigation clutter
 
-- `rewrite/CHPC-V3-FIGURE-RECOMPUTE-HANDOFF.md` says "active"; `notes/manuscript-v3-integration-plan.md` and `rewrite/CHPC-CODEX-PROMPT.md` record it as completed.
-- `rewrite/CHPC-V3-FINISHING-PASS.md` is also completed history.
+- `rewrite/archive/2026-07/CHPC-V3-FIGURE-RECOMPUTE-HANDOFF.md` says "active"; `notes/manuscript-v3-integration-plan.md` and `rewrite/CHPC-CODEX-PROMPT.md` record it as completed.
+- `rewrite/archive/2026-07/CHPC-V3-FINISHING-PASS.md` is also completed history.
 - `rewrite/README.md` still directs readers to active v3 recomputation and unresolved July figure work.
 - `README.md`, `ROADMAP.md` and `tasks/final-draft-100.md` retain July final-draft routing. Reconcile their current-versus-historical roles against the first-round review before pruning them.
 

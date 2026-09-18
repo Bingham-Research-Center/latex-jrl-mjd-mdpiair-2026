@@ -1,5 +1,7 @@
 # Final-draft register: 50 required tasks and 50 high-value opportunities
 
+Historical July audit retained for provenance. Current revision and next steps: `notes/peer-review-round1-return.md` and `ROADMAP.md`.
+
 Frozen 15 July 2026 from the branch, evidence, manuscript, build, and repo-rot
 audit in `notes/final-draft-readiness-2026-07-15.md`.
 

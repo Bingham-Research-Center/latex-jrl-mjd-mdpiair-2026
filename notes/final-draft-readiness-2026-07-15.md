@@ -1,5 +1,7 @@
 # Final-draft readiness review — 15 July 2026
 
+Historical July audit retained for provenance. Current revision and next steps: `notes/peer-review-round1-return.md` and `ROADMAP.md`.
+
 ## Author-draft update — 16 July 2026
 
 John's formerly ignored v3 copy is now the tracked `jrl_manuscript.tex` author

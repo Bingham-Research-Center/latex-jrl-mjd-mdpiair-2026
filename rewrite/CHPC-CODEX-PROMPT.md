@@ -2,12 +2,13 @@
 
 This is the stable bridge from the writing checkout to a fresh Codex session on
 CHPC. It replaces the former one-shot July task list and its hard-coded source
-branch. Current scientific priorities live in
-`rewrite/HYBRID-ARCHITECTURE-HANDOFF.md`; this file owns only CHPC bootstrap,
+branch. Current revision priorities live in
+`notes/peer-review-round1-return.md`; the hybrid handoff records frozen gate history.
+This file owns only CHPC bootstrap,
 execution, and return conventions.
 
-The v3 figure dispatches in `rewrite/CHPC-V3-FIGURE-RECOMPUTE-HANDOFF.md` and
-`rewrite/CHPC-V3-FINISHING-PASS.md` are completed historical records.
+The v3 figure dispatches in `rewrite/archive/2026-07/CHPC-V3-FIGURE-RECOMPUTE-HANDOFF.md` and
+`rewrite/archive/2026-07/CHPC-V3-FINISHING-PASS.md` are completed historical records.
 Do not copy or rerun them or the retained ANA-16 packet.
 A future CHPC request needs a new bounded task packet and immutable source ref.
 

@@ -494,7 +494,7 @@ None requires new computation; items marked ⚠ need a scoping decision.
 
 ## 7. The pending CHPC batch, read against the draft
 
-(`rewrite/CHPC-V3-FIGURE-RECOMPUTE-HANDOFF.md`, return record still "Pending CHPC
+(`rewrite/archive/2026-07/CHPC-V3-FIGURE-RECOMPUTE-HANDOFF.md`, return record still "Pending CHPC
 execution." The handoff itself is excellent — tight scope, hashes, exclusions.)
 
 Product-by-product, from the manuscript's point of view:

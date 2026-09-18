@@ -10,11 +10,11 @@ It defines the manuscript-facing experiment vocabulary, evidence-led Results ord
 figure-trim ledger, and the proposed d02-to-d03 transfer gate.
 
 Executed CHPC Batch B record:
-`rewrite/CHPC-V3-FIGURE-RECOMPUTE-HANDOFF.md`.
+`rewrite/archive/2026-07/CHPC-V3-FIGURE-RECOMPUTE-HANDOFF.md`.
 Its return commit was integrated without alteration as `28eb502` on
 `jrl/codex-v3-integration`; `verification/provenance/v3-figure-review-20260714.json`
 is the immutable execution record.
-The separate single-job finishing pass in `rewrite/CHPC-V3-FINISHING-PASS.md`
+The separate single-job finishing pass in `rewrite/archive/2026-07/CHPC-V3-FINISHING-PASS.md`
 also completed and remains an execution record, not a live dispatch.
 
 Literature discovery and controlled manuscript integration are closed.
@@ -26,7 +26,7 @@ Literature discovery and controlled manuscript integration are closed.
 | Batch | Host and owner | Work | Exit condition |
 |---|---|---|---|
 | A | Akamai / Codex | Apply citation-independent literature corrections; remove the non-equivalent 8 K comparison from code and manuscripts; withhold its stored renders; clarify the heat-deficit method and literature caveats. | Builds and repository checks pass; no manuscript includes a withheld figure. |
-| B | CHPC / bounded figure task | Execute `rewrite/CHPC-V3-FIGURE-RECOMPUTE-HANDOFF.md`: finish the line-free overlay baton, then the terrain, profile, locator, and radiation-restyle products from existing output. | Every submitted job reaches a terminal state; selected artifacts are inspected, hashed, provenance-recorded, committed, and pushed; no excluded experiment or post-hoc claim is added. |
+| B | CHPC / bounded figure task | Execute `rewrite/archive/2026-07/CHPC-V3-FIGURE-RECOMPUTE-HANDOFF.md`: finish the line-free overlay baton, then the terrain, profile, locator, and radiation-restyle products from existing output. | Every submitted job reaches a terminal state; selected artifacts are inspected, hashed, provenance-recorded, committed, and pushed; no excluded experiment or post-hoc claim is added. |
 | C | Akamai / John plus Codex | Deferred final-author input: John replaces `paperpile.bib` with one small complete Paperpile export; Codex records generated keys and adds only passage-verified citations. | Tracked in the final-draft register; it did not block citation-independent integration. |
 | D | Akamai / Codex, then coauthors | Complete: admitted only verified candidates, preserved failed gates, promoted the evidence-led candidate to `main.tex`, and froze v3 as the maximal donor. | Main and v3 build and pass visual/contract review; coauthor review remains final-draft work. |
 
@@ -85,7 +85,7 @@ both top-down heat-deficit panels.
 The original raw-render commands remain historical context in
 `notes/manuscript-v3-structure-and-domain-review.md`.
 The authoritative finishing commands, expected filenames, and return contract are now
-in `rewrite/CHPC-V3-FINISHING-PASS.md` and
+in `rewrite/archive/2026-07/CHPC-V3-FINISHING-PASS.md` and
 `verification/slurm/run_v3_finishing_pass.slurm`.
 These are exploratory review additions only; they do not change the failed CMP09 gate
 or create a post-hoc CMP11 claim.
