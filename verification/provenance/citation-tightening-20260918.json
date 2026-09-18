@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "date_utc": "2026-09-18T01:58:20.011036+00:00",
+  "scope": "Author-requested no-footnote citations, five textbooks, experiment simplification, prose tightening and PDF rebuild",
+  "baseline": {
+    "source_sha256": "62786d6e52c48cec6cb086ff8aa54124af5f2a8a7d02df0788467d1b6b3a17c0",
+    "pdf_sha256": "2dbad4b8c3fb8cccfd9dee3c24fea5ca7264addcaa2e13a0e58a8ade0c539f33",
+    "pages": 20
+  },
+  "result": {
+    "pages": 17,
+    "citation_count": 39,
+    "textbooks": [
+      "Whiteman2000",
+      "WallaceHobbs2006",
+      "Stull1988",
+      "Liou2002",
+      "Wilks2019"
+    ],
+    "manuscript_footnotes": 0,
+    "removed": [
+      "former Table 2, controlled contrasts",
+      "former Section 2.4, design exclusions"
+    ],
+    "all_42_appendix_table_headers_and_data_rows_unchanged": true,
+    "all_11_figure_references_unchanged": true,
+    "paperpile_export_unchanged_from_turn_start": true
+  },
+  "prose_count": {
+    "before": 4724,
+    "after": 2948,
+    "reduction_percent": 37.6,
+    "method": "Approximate alphabetic word count from Abstract through Conclusions, excluding figure/table/equation environments, inline maths, citation/label/reference/heading commands and footnotes. Includes abstract and questions; excludes appendix, declarations and bibliography."
+  },
+  "checks": {
+    "make final-draft-check": "passed",
+    "make submission-check": "passed",
+    "make package": "passed",
+    "unzip -t dist/mdpi-air-submission.zip": "passed",
+    "git diff --check": "passed",
+    "contract_negative_checks": "footnote, footnotemark and missing citation rejected; two bibliography inputs accepted",
+    "main_bibtex_warnings": [],
+    "main_layout_or_undefined_reference_warnings": [],
+    "remaining_template_warnings": [
+      "hyperref PDF-string conversion",
+      "fancyhdr headheight"
+    ],
+    "independent_submission_pdf_text": "identical to root PDF",
+    "delivery_pdf_source_bibliographies": "byte-identical to root artefacts",
+    "fonts": "all embedded; existing figure includes a Type 3 font"
+  },
+  "visual_inspection": {
+    "all_pages": "all 17 pages inspected in overview",
+    "final_detail_pages": [
+      1,
+      4,
+      5,
+      8,
+      16,
+      17
+    ],
+    "result": "No observed clipping or overlap; equations, reduced experiment table, citations and access dates are legible. One overlong prose line was reworded before final inspection. Existing fixed-position figure page breaks retained."
+  },
+  "source_note": "notes/literature/citation-tightening-20260918.md",
+  "remaining_author_steps": [
+    "Review shortened manuscript and two flagged textbook placements",
+    "Consolidate verified records through a complete Paperpile export",
+    "Update response locators and approve final reply wording"
+  ],
+  "artefact_sha256": {
+    "main.tex": "e7f65de439d4ed25be1154b383e2231bc213f9cd93ef97aa459e2b1056cf2052",
+    "main.pdf": "bd7d221f08dfbcfed362beded60296d761c91ad40f13c795b0b7c4987171010f",
+    "main.bbl": "2a1fae80d2b4ff490f18b26e856c56077c0bf2e7e6861cae99e43fe600bcc829",
+    "review-references.bib": "8cca2bcb0aa93a4b3ef43a94eb00403327ff4037a1ca9664bece63c51e151761",
+    "paperpile.bib": "e3fb5486d195c1c6ba426dd515f92cb441ff71b0223dc63a9de888cdacf9d919",
+    "submission-package/main.pdf": "bd7d221f08dfbcfed362beded60296d761c91ad40f13c795b0b7c4987171010f",
+    "submission-package/main.tex": "e7f65de439d4ed25be1154b383e2231bc213f9cd93ef97aa459e2b1056cf2052",
+    "submission-package/main.bbl": "2a1fae80d2b4ff490f18b26e856c56077c0bf2e7e6861cae99e43fe600bcc829",
+    "submission-package/review-references.bib": "8cca2bcb0aa93a4b3ef43a94eb00403327ff4037a1ca9664bece63c51e151761",
+    "submission-package/paperpile.bib": "e3fb5486d195c1c6ba426dd515f92cb441ff71b0223dc63a9de888cdacf9d919",
+    "dist/mdpi-air-submission.zip": "0fb25d8f3a871e1124a9eb2a3abe6092a02b975485b05bea94c8bea245b94008",
+    "notes/literature/citation-tightening-20260918.md": "5daee1a4c1ef25d45f0192b8b803f8bf127a21a966f14e22903c0c1bd681d00f",
+    "verification/scripts/check_manuscript_contract.py": "2c139f3d68732b7a05b0409d10a28fda6d5641d9b27b44cc2205c151da76b9eb",
+    "Makefile": "1ea476159c41feee84b040ecd180a8d973fcaf6dead028715fc3fd44a8d3e9e0"
+  }
+}

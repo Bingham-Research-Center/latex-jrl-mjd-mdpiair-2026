@@ -1,10 +1,15 @@
 # Complete Paperpile export for the first-round revision
 
-Updated 18 September 2026 from the actual `main.tex` citation set.
-The current bibliography has 37 entries; the main manuscript cites the nine keys below, all of which resolve.
-The historical test/v3 sources use a subset of those nine.
+Updated 18 September 2026 after the citation and prose revision.
+The unmodified Paperpile export has 14 entries; the main manuscript now resolves 39 references using it together with `review-references.bib`.
+The [revision and source-check record](citation-tightening-20260918.md) lists the five textbook additions, data/software references and complete replacement identities.
+The historical test/v3 sources retain the supplied export keys.
 The former five-paper seed checklist is superseded.
-Do not hand-edit, prune, normalise or invent keys in `paperpile.bib`; John will supply one complete export.
+John supplied `paperpile-update.bib` and explicitly authorised filtering it against this checklist on 18 September.
+The 2,727-entry export was reduced to 14 matching records and renamed over `paperpile.bib`; exported entry contents were preserved.
+Do not hand-edit metadata or invent keys; corrections remain Paperpile-owned.
+The [replacement receipt](../../verification/provenance/paperpile-refresh-20260918.json) records the supplied-file and filtered-file SHA-256 hashes, exact retained keys and remaining gaps.
+The export date is not embedded in the supplied file; 18 September is the supply/import date.
 
 ## Existing cited records to retain
 
@@ -17,33 +22,38 @@ Do not hand-edit, prune, normalise or invent keys in `paperpile.bib`; John will 
 | `Matichuk2017-bq` | Coupled meteorology/chemistry and compensating errors |
 | `Neemann2015-ws` | Cold-pool, snow, cloud and grid sensitivity context |
 | `Oltmans2014-md` | Upper Green River Basin winter-ozone analogue |
-| `Tran2018-ax` | FDDA, scheme-dependent PBL diagnosis and model lineage |
+| `Tran2018-cx` | FDDA, scheme-dependent PBL diagnosis and model lineage; verified replacement for `Tran2018-ax` |
 | `Tran2021-al` | Verified 2021 OSIP WRF MPE agency-report lineage |
 
 Retain these keys where Paperpile permits it.
 If the export uses a different key, verify the exact source identity and update the LaTeX citation, including historical build targets where needed; do not manufacture an alias by editing the export.
-The similarly named `Tran2018-cx` record and `trang_ref` must not be substituted without checking the actual source.
+The supplied `Tran2018-cx` publisher URL resolves to the [same publication](https://www.sciencedirect.com/science/article/abs/pii/S1352231018300189) as the former `Tran2018-ax` DOI, `10.1016/j.atmosenv.2018.01.012`.
+The historical test/v3 sources use the actual exported key.
+The main article now uses the complete verified `Tran2018FDDA` record alongside the other replacements below; consolidate the corrected identity in Paperpile.
+`trang_ref` remains a separate run identifier and must not be substituted for the publication.
 
-## References currently carried in prose/footnotes
+## Records to consolidate into the next export
 
-Include the following records when replacing the existing prose/footnote references with formal bibliography citations; verify the export metadata and use its actual keys.
+Import the verified records in `review-references.bib` into the manuscript's Paperpile collection.
+They are already cited and included in the compiled article and delivery package; there are no remaining manuscript footnotes.
+The addition file includes five textbooks, the missing physics references, exact GFS/NAM and observation/imagery service records, GMTED2010, and the acknowledged software.
 
-- Whiteman, Bian and Zhong (1999), *Wintertime Evolution of the Temperature Inversion in the Colorado Plateau Basin*: DOI `10.1175/1520-0450(1999)038<1103:WEOTTI>2.0.CO;2`.
-- Adler et al. (2023), *Evaluation of a Cloudy Cold-Air Pool in the Columbia River Basin in Different Versions of the HRRR Model*: DOI `10.5194/gmd-16-597-2023`.
-- Skamarock et al. (2019), *A Description of the Advanced Research WRF Model Version 4*: DOI `10.5065/1dfh-6p97`; distinguish this technical note from the as-run WRF 4.8.0 release.
-- The named physics references already listed in Methods: Thompson et al. (2008), Iacono et al. (2008), Jiménez et al. (2012), Tewari et al. (2004) and Hong et al. (2006).
-- Exact forcing products and observation/data services used: GFS/NAM analyses, Synoptic Data PBC Mesonet, EPA AQS AirData and NASA GIBS/MODIS. Use the registered product/version/subset metadata rather than a generic product citation.
-- Herbie and SynopticPy, already acknowledged by DOI, if formal software citations are included.
+Five incomplete or malformed export records have complete counterparts used by the main article: `Whiteman1999`, `Skamarock2019`, `Hong2006`, `Adler2023` and `Tran2018FDDA`.
+The [identity mapping](citation-tightening-20260918.md#bibliography-ownership-and-migration) gives their supplied keys and corrections.
+Reconcile these within Paperpile before exporting so that each work has one complete record.
+Do not import the auxiliary `@string` declarations as publications; they only supply standard month names missing from the MDPI style.
 
-Metadata and source passages are routed through `notes/literature/verified-citations.md`, `notes/literature-synthesis-register.md` and the provenance inventories.
-Additional historical reports remain leads unless the final manuscript actually uses them; the September report-source decision permits the existing focused lineage paragraph, not wholesale literature expansion.
+The old SynopticPy DOI could not be verified; the current reference follows the author's repository-URL recommendation.
+Use a release DOI only after matching the actual retrieval version.
+The website access date is the documentation check date, 18 September 2026, distinct from the archived observation/input retrieval dates.
 
 ## Replacement and close-out
 
-1. John exports the complete manuscript collection once and replaces `paperpile.bib` wholesale.
+1. John consolidates the active records and identity corrections in Paperpile, then exports the complete manuscript collection for wholesale replacement.
 2. Record export date and SHA-256; reconcile actual keys and source identities without changing exported entry contents.
-3. Resolve the existing Methods footnotes using only verified export records, and check main/test/v3 citations and duplicate source identities.
+3. Reconcile main/test/v3 citation keys and remove superseded auxiliary records only when the complete export replaces them; retain the no-footnotes contract and check duplicate source identities.
 4. Run `make final-draft-check`, `make submission-check` and `make package`; inspect the resulting PDF and confirm no undefined citations/references.
 5. Resume `peer-review-reply` with the saved decisions and final compiled manuscript; update reply locators and obtain John's final wording approval.
 
-The 18 September checkpoint deliberately retains the current bibliography unchanged and is available for review before this replacement.
+The current PDF uses the verified auxiliary bibliography while retaining the supplied Paperpile export unchanged.
+The dated checkpoint PDF remains the earlier snapshot.

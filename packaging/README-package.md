@@ -16,7 +16,8 @@ source repository’s first-round return record.
 |---|---|
 | `main.tex` | Main article (MDPI `air` class). |
 | `main.pdf` | Compiled main article. |
-| `paperpile.bib` | Bibliography database. |
+| `paperpile.bib` | Author-supplied Paperpile export. |
+| `review-references.bib` | Verified methods, data, software and textbook additions pending Paperpile consolidation. |
 | `main.bbl` | Pre-built bibliography (lets `main.tex` compile without re-running BibTeX). |
 | `Definitions/` | The MDPI class and support files needed to compile. |
 | `figures/` | Every figure referenced by the main article. |

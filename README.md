@@ -43,6 +43,7 @@ Inspect the PDFs after changes. Routine root PDFs remain ignored; dated review m
 The official MDPI template uses pdfLaTeX and BibTeX with `Definitions/mdpi.bst`; never edit `Definitions/`.
 If Ghostscript is absent, the independent check uses the existing cached logo conversion; the source ZIP remains source-clean.
 
+`review-references.bib` supplies verified methods, data, software and textbook additions pending Paperpile consolidation; both bibliography files are included in the checks and package.
 `paperpile.bib` remains Paperpile-owned. Replace it wholesale with John's complete export; follow the current checklist rather than the obsolete five-paper seed count.
 The source ZIP is `dist/mdpi-air-submission.zip`; it excludes reviews, notes, verification scripts and Git metadata.
 The package is a review checkpoint until bibliography, response wording and author approval are complete.

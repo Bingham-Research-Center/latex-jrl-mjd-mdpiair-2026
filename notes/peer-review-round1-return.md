@@ -24,10 +24,22 @@ Validation, PDF inspection and final artefact hashes are recorded in the [checkp
 The refreshed `submission-package/` contains the current main article, with the retired supplement excluded.
 The dated review PDF is [main_2026-09-18_peer-review-checkpoint.pdf](../drafts/main_2026-09-18_peer-review-checkpoint.pdf).
 
-**Next:** John reviews this checkpoint and supplies one complete Paperpile export using the [updated checklist](literature/paperpile-export-list.md).
-After citation reconciliation and a rebuild, resume `peer-review-reply` from the saved decisions for final wording and compiled locators.
-No fresh intake/synthesis or new simulation is required; final author/coauthor approval and availability wording remain author steps before resubmission.
+The subsequently supplied Paperpile export was filtered to 14 matching records at John's request; entry contents were preserved and the verified Tran citation key was reconciled in main/test/v3.
+The [bibliography receipt](../verification/provenance/paperpile-refresh-20260918.json) records hashes, retained records and validation; the [checklist](literature/paperpile-export-list.md) records missing sources and metadata corrections still needed.
+The dated checkpoint above remains the earlier snapshot; [main.pdf](../main.pdf) is the rebuilt bibliography-review version.
+
+John's subsequent six-part editorial request is implemented in the [citation and tightening record](literature/citation-tightening-20260918.md).
+All footnotes are replaced by bibliography citations; websites have URLs and access dates, and software/data sources receive explicit references.
+Five textbooks are included, with two discretionary placements flagged in that record.
+The former Table 2 and Section 2.4 are removed, secondary experiment pairs are introduced with their results, and repeated prose and numerical summaries are condensed.
+The numerical appendix and evidence inputs are unchanged.
+`review-references.bib` provides the verified additions and complete reference identities while preserving John's export byte for byte.
+
+**Next:** John reviews the shortened `main.pdf` and the two flagged textbook placements, then consolidates the bibliography through Paperpile when ready.
+Resume `peer-review-reply` from the saved decisions for final wording and revised section/page locators.
+Final author/coauthor approval and availability wording remain author steps before resubmission.
 The nine CHPC diagnostics remain unpromoted with D1 label defects; repair them only if needed for review.
+The [editorial validation receipt](../verification/provenance/citation-tightening-20260918.json) records the final build and package checks for this pass.
 
 The remainder of this record preserves the 16 September import and validation snapshot.
 

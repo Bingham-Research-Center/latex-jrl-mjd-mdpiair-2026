@@ -12,6 +12,7 @@ FIGURE_RE = re.compile(r"\\includegraphics(?:\[[^\]]*\])?\{([^}]+)\}")
 CITE_RE = re.compile(r"\\cite(?:p|t)?\{([^}]+)\}")
 BIB_KEY_RE = re.compile(r"@[A-Za-z]+\s*\{\s*([^,\s]+)\s*,")
 FORBIDDEN = {
+    r"\footnote": "footnote (use a bibliography citation or acknowledgement)",
     r"\rewritegate": "visible rewrite gate",
     r"\diagnosticnote": "visible diagnostic note",
     "verification/figures/candidates": "candidate-figure path",
@@ -31,9 +32,9 @@ def read_figure_list(path: Path) -> list[str]:
     return figures
 
 
-def validate(tex_path: Path, bib_path: Path, figure_list_path: Path) -> None:
+def validate(tex_path: Path, bib_paths: list[Path], figure_list_path: Path) -> None:
     tex = tex_path.read_text(encoding="utf-8")
-    bib = bib_path.read_text(encoding="utf-8")
+    bib = "\n".join(path.read_text(encoding="utf-8") for path in bib_paths)
     allowed = read_figure_list(figure_list_path)
     referenced = sorted(set(FIGURE_RE.findall(tex)))
 
@@ -65,7 +66,7 @@ def validate(tex_path: Path, bib_path: Path, figure_list_path: Path) -> None:
     }
     bib_keys = set(BIB_KEY_RE.findall(bib))
     for key in sorted(cited - bib_keys):
-        errors.append(f"citation key is missing from {bib_path}: {key}")
+        errors.append(f"citation key is missing from bibliography inputs: {key}")
 
     if errors:
         raise SystemExit("Manuscript contract failed:\n- " + "\n- ".join(errors))
@@ -78,7 +79,7 @@ def validate(tex_path: Path, bib_path: Path, figure_list_path: Path) -> None:
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser()
     parser.add_argument("--tex", type=Path, required=True)
-    parser.add_argument("--bib", type=Path, required=True)
+    parser.add_argument("--bib", type=Path, action="append", required=True)
     parser.add_argument("--figure-list", type=Path, required=True)
     return parser
 

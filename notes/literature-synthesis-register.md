@@ -2,6 +2,9 @@
 
 Supporting analysis only; this file is excluded from the MDPI submission package.
 
+The [18 September citation revision](literature/citation-tightening-20260918.md) records the five textbook additions, verified data/software references and current citation-key replacements used by `main.tex`.
+The older synthesis rows below preserve their historical keys; use the [current Paperpile checklist](literature/paperpile-export-list.md) for bibliography reconciliation.
+
 The four synthesis directories under `~/reviews/synth-*` were inspected on 10 July 2026.
 They are critiques of linked study sets, not citable publications and not independent evidence.
 Use them to locate contradictions, design gaps, and source passages; cite the underlying paper or report after verifying it.
