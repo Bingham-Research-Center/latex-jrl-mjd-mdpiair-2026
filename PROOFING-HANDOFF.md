@@ -42,6 +42,7 @@ The terrain batch builds to 18 pages; pages 4, 5, 6, 17 and 18 were inspected. A
 The coarse WPS product is a derivative: native USGS GMTED2010 resolutions are 7.5/15/30 arc seconds. Do not claim an undocumented NCAR aggregation method or a new terrain result.
 Terrain correction commit: `757a102d1f61b29d11c6e1a26974a9032f63bdc4`; see the MDPI04b terrain batch in the catalogue for evidence. Its remaining scope is the other actual software versions and final response/audit.
 John asked about figure organisation order. Recommendation: complete affected prose first (this terrain batch is now done), repair logical first-citation order next (MDPI05a), inspect/refine captions, then finalise figure/table placement (MDPI05b/MDPI08c). The premature Methods callouts to Figures 3 and 6 are now removed, retaining their existing Results callouts. First figure citations are verified as 1–9; the 18-page build and pages 3, 6, 7 and 9 pass affected-page checks. Appendix-table citation order and final placement remain open; see MDPI05a.
+Figure citation correction commit: `73edb040452d2ae71f8ce787fe6b8a5efba33f3c`; pushed to `origin/jrl/proofs-round1`.
 
 For agreed TeX changes, build the working source and inspect affected PDF pages; keep query quotations and Paperpile/template files intact.
 The recovery build produced 18 pages; pages 1–5 were inspected, while known duplicate Table A5 labels and unresolved draft placeholders remain.

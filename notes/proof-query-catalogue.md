@@ -289,6 +289,7 @@ Validation: `latexmk` under `texlive/20260330` exited 0 (18 pages); inspected pa
 No undefined citation/reference or overfull-box warnings; existing duplicate Table A5 labels and template warnings remain.
 Proposed reply for this portion: “First figure citations now follow numerical order; the premature Methods callouts to Figures 3 and 6 have been removed, retaining their Results callouts.”
 Outstanding: appendix-table first citations remain 1, A6, A1, A2, A3, A4, A5; final placement remains under MDPI05b/MDPI08c.
+Correction commit: `73edb040452d2ae71f8ce787fe6b8a5efba33f3c`; pushed to `origin/jrl/proofs-round1`.
 
 **MDPI05b: Open — layout check.**
 
