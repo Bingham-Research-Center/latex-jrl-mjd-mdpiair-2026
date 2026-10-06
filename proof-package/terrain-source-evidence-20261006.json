@@ -1,0 +1,284 @@
+{
+  "checked_date": "2026-10-06",
+  "purpose": "MDPI04b proof terrain source identification; text records only, no new WRF/WPS or raster analysis",
+  "study_controls": "Paper inventory X3/default, X4/coarse, X0/fine; X3 reuses the archived NAM baseline preprocessing",
+  "conclusions": {
+    "default": "WPS default GMTED2010 30 arc seconds",
+    "coarse": "NCAR-distributed WPS GMTED2010 5 arc minutes; supported by official catalogue and archived run control/log",
+    "fine": "Custom 3-arc-second WPS tiles from USGS National Map NED/3DEP 1-arc-second DEMs"
+  },
+  "records": [
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway/control/run_20260702T053120Z/README.md",
+      "sha256": "4914f2c59404d38ae037f67301fc6067ffc098586ce2c0a3c64cd1a909d9cc03",
+      "excerpts": [
+        {
+          "line": 29,
+          "text": "- Baseline WPS/metgrid source: `/scratch/general/vast/u0737349/wrf_runs/pelican2013_nam_3_1_333m_75lev/run_20260626T144836Z/wps_run`"
+        },
+        {
+          "line": 30,
+          "text": "- Baseline control source: `/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev/control/run_20260626T144836Z`"
+        }
+      ]
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev/control/run_20260626T144836Z/namelist.wps",
+      "sha256": "7d347a10ccfa476041cd34ad7bef73740b43847ac86e3c2f6cc4c2ff05f3f084",
+      "excerpts": [
+        {
+          "line": 16,
+          "text": " geog_data_res     = 'default','default','default',"
+        },
+        {
+          "line": 25,
+          "text": " geog_data_path = '/uufs/chpc.utah.edu/common/home/lawson-group6/WPS_GEOG/'"
+        }
+      ]
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev/wps_run_run_20260626T144836Z_13695258/geogrid.log",
+      "sha256": "6a55005987ce7d4fe10fb3347f8d820f9b05413abaca559407974565be4c02d5",
+      "excerpts": [
+        {
+          "line": 108,
+          "text": "2026-06-26 08:51:12.849 --- INFORM: Using default data source for HGT_M."
+        },
+        {
+          "line": 351,
+          "text": "2026-06-26 08:51:18.261 --- INFORM: Using default data source for HGT_M."
+        },
+        {
+          "line": 594,
+          "text": "2026-06-26 08:51:22.054 --- INFORM: Using default data source for HGT_M."
+        }
+      ]
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_build/WPS/geogrid/GEOGRID.TBL.ARW",
+      "sha256": "dd1237f317ed5162d03cd289516e8bbd9e88375f053eb7093e26456a20b10a33",
+      "excerpts": [
+        {
+          "line": 21,
+          "text": "        rel_path =        lowres:topo_gmted2010_5m/"
+        },
+        {
+          "line": 22,
+          "text": "        rel_path =       default:topo_gmted2010_30s/"
+        },
+        {
+          "line": 427,
+          "text": "        rel_path =        lowres:varsso_10m/"
+        }
+      ]
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/WPS_GEOG/topo_gmted2010_30s/index",
+      "sha256": "f9e19b3539682694e045d2a6dda4b79884e075cece83bda49ab3c655a5eae8e3",
+      "excerpts": [
+        {
+          "line": 4,
+          "text": "dx = 0.00833333"
+        },
+        {
+          "line": 5,
+          "text": "dy = 0.00833333"
+        },
+        {
+          "line": 16,
+          "text": "description=\"GMTED2010 30-arc-second topography height\""
+        }
+      ]
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway_terrain5m/control/run_20260707T182414Z/namelist.wps",
+      "sha256": "f5f2afe6d1cd5517807cba62cef7c68279030f85832de21c0ca1358884168bff",
+      "excerpts": [
+        {
+          "line": 16,
+          "text": " geog_data_res     = 'gmted2010_5m+default','gmted2010_5m+default','gmted2010_5m+default',"
+        },
+        {
+          "line": 25,
+          "text": " geog_data_path = '/scratch/general/vast/u0737349/wps_geog_topo5m/'"
+        }
+      ]
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway_terrain5m/control/run_20260707T182414Z/GEOGRID.TBL.ARW.hires_terrain",
+      "sha256": "653e5eec46db21eeb84b98fa6e8de12e79d35dffa8044500cb01df0efe548407",
+      "excerpts": [
+        {
+          "line": 17,
+          "text": "        rel_path = gmted2010_5m:topo_gmted2010_5m/"
+        }
+      ]
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway_terrain5m/wps_run_run_20260707T182414Z_13847970/geogrid.log",
+      "sha256": "273b3cd6f69a69e41f7b7418addf42bc08f5aaab09c5d640ae96a41e504d37e7",
+      "excerpts": [
+        {
+          "line": 108,
+          "text": "2026-07-07 12:25:03.162 --- INFORM: Using gmted2010_5m data source for HGT_M."
+        },
+        {
+          "line": 456,
+          "text": "2026-07-07 12:25:07.543 --- INFORM: Using gmted2010_5m data source for HGT_M."
+        },
+        {
+          "line": 804,
+          "text": "2026-07-07 12:25:10.625 --- INFORM: Using gmted2010_5m data source for HGT_M."
+        }
+      ]
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway_terrain3s/control/run_20260708T021809Z/namelist.wps",
+      "sha256": "8a85186c8a9303c17c1e485d505d07cd1420d843ad07c16cfd9c76be7667d8ac",
+      "excerpts": [
+        {
+          "line": 16,
+          "text": " geog_data_res     = 'brc_custom_3s+default','brc_custom_3s+default','brc_custom_3s+default',"
+        },
+        {
+          "line": 25,
+          "text": " geog_data_path = '/scratch/general/vast/u0737349/wps_geog_terrain3s/'"
+        }
+      ]
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway_terrain3s/control/run_20260708T021809Z/GEOGRID.TBL.ARW.terrain3s",
+      "sha256": "6e265e82fcfba3a5061b28f0d1983c9d99419b642b98a5f96db99a2f673e963e",
+      "excerpts": [
+        {
+          "line": 18,
+          "text": "        rel_path = brc_custom_3s:topo_brc_custom_3s/"
+        }
+      ]
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway_terrain3s/wps_run_run_20260708T021809Z_13851884/geogrid.log",
+      "sha256": "919075fd64037536d11ddbb91b846667b284121c6af4b5711ffe576cbabe5c2d",
+      "excerpts": [
+        {
+          "line": 108,
+          "text": "2026-07-07 20:26:46.004 --- INFORM: Using brc_custom_3s data source for HGT_M."
+        },
+        {
+          "line": 456,
+          "text": "2026-07-07 20:26:56.773 --- INFORM: Using brc_custom_3s data source for HGT_M."
+        },
+        {
+          "line": 804,
+          "text": "2026-07-07 20:27:00.809 --- INFORM: Using brc_custom_3s data source for HGT_M."
+        }
+      ]
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway_terrain5m/control/run_20260707T182414Z/README.md",
+      "sha256": "e60df7ffd067924312a15b45837a0e0d47bd6bcf8c4a8098c5db3d4a94bae5b3",
+      "excerpts": [
+        {
+          "line": 9,
+          "text": "`WPS_GEOG` tree and adds only `topo_gmted2010_5m` from the official WPS static"
+        }
+      ]
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway_terrain3s/control/terrain_static_20260707T222250Z/terrain_download.slurm",
+      "sha256": "ad0d32ab70bf22faaa2b7628f1bc6264fb5df1a59d25ff0273d99d88ff4c6f9b",
+      "excerpts": [
+        {
+          "line": 19,
+          "text": "\"${PYTHON_BIN}\" /uufs/chpc.utah.edu/common/home/u0737349/gits/brc-wrf/brc-cases/wps_hgt_static.py query-usgs --bounds -114.002 36.9975 -104.997 44.0025 --dataset 'National Elevation Dataset (NED) 1 arc-second' --prod-format GeoTIFF --max-products 600 --output /uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway_terrain3s/control/terrain_static_20260707T222250Z/terrain_urls.tsv"
+        },
+        {
+          "line": 20,
+          "text": "\"${PYTHON_BIN}\" /uufs/chpc.utah.edu/common/home/u0737349/gits/brc-wrf/brc-cases/wps_hgt_static.py download-manifest --manifest /uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway_terrain3s/control/terrain_static_20260707T222250Z/terrain_urls.tsv --output-dir /scratch/general/vast/u0737349/wrf_inputs/pelican2013_terrain3s/usgs_3dep_1arcsec --inventory /uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway_terrain3s/control/terrain_static_20260707T222250Z/terrain_download_inventory.tsv --timeout 120 --retries 3 --min-free-gb 10.0"
+        }
+      ]
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway_terrain3s/control/terrain_static_20260707T222250Z/terrain_build.slurm",
+      "sha256": "20abffcee07cc1795e1b721d4f029566b13eca420821656fdc10431cbe7d9eb6",
+      "excerpts": [
+        {
+          "line": 18,
+          "text": "\"${PYTHON_BIN}\" /uufs/chpc.utah.edu/common/home/u0737349/gits/brc-wrf/brc-cases/wps_hgt_static.py build-from-inventory --inventory /uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway_terrain3s/control/terrain_static_20260707T222250Z/terrain_download_inventory.tsv --output-dir /scratch/general/vast/u0737349/wps_geog_terrain3s/topo_brc_custom_3s --bounds -114 37 -105 44 --description 'Custom 3-arc-second topography height for BRC WRF'"
+        }
+      ]
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway_terrain3s/control/run_20260708T021809Z/topo_brc_custom_3s.index",
+      "sha256": "635aa73edd5f7f266d1ace6a4e5860cf156230271352c857095937345061a251",
+      "excerpts": [
+        {
+          "line": 4,
+          "text": "dx = 0.000833333333333333"
+        },
+        {
+          "line": 5,
+          "text": "dy = 0.000833333333333333"
+        },
+        {
+          "line": 17,
+          "text": "description=\"Custom 3-arc-second topography height for BRC WRF\""
+        }
+      ]
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway_terrain3s/control/terrain_static_20260707T222250Z/terrain_urls.tsv",
+      "sha256": "05b4cb7a7432c514464c79c5a7ddd2741f55390345635389152cbd870591aea7",
+      "excerpts": [
+        {
+          "line": 1,
+          "text": "url\tfilename\tbytes\tsha256\ttitle"
+        },
+        {
+          "line": 2,
+          "text": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/1/TIFF/historical/n37w105/USGS_1_n37w105_20250311.tif\tUSGS_1_n37w105_20250311.tif\t47321878\t\tUSGS 1 Arc Second n37w105 20250311"
+        }
+      ]
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_archive/pelican2013_nam_3_1_333m_75lev_oneway_terrain3s/control/terrain_static_20260707T222250Z/terrain_download_inventory.tsv",
+      "sha256": "f9da3b987fa259853aaa217487671ad08c5961e9f9c914ef4553de923314b6e1",
+      "excerpts": [
+        {
+          "line": 1,
+          "text": "status\tpath\tbytes\tsha256\turl\terror"
+        },
+        {
+          "line": 2,
+          "text": "cached\t/scratch/general/vast/u0737349/wrf_inputs/pelican2013_terrain3s/usgs_3dep_1arcsec/USGS_1_n37w105_20250311.tif\t47321878\tead57ce0b43ad1bba1ae51ce5b4767ad8ac1381623215c644ca63be664ee71a6\thttps://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/1/TIFF/historical/n37w105/USGS_1_n37w105_20250311.tif\t"
+        }
+      ]
+    },
+    {
+      "path": "/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_build_logs/brc-wrf/terrain_build_pelican2013_nam_3_1_333m_75lev_oneway_terrain3s_13849490.out",
+      "sha256": "87b6306de7367cfcc65717f06aa6966955c3baec4831c2cb952578053594641f",
+      "excerpts": [
+        {
+          "line": 1,
+          "text": "terrain build start 2026-07-07T22:32:43Z host=notch137"
+        },
+        {
+          "line": 8,
+          "text": "terrain build stop 2026-07-07T22:35:40Z"
+        }
+      ]
+    }
+  ],
+  "external_sources": {
+    "GMTED2010_report": "https://www.usgs.gov/publications/global-multi-resolution-terrain-elevation-data-2010-gmted2010",
+    "GMTED2010_doi": "10.3133/ofr20111073",
+    "WPS_products": "https://www2.mmm.ucar.edu/wrf/site/geog_data.html",
+    "fine_source_collection": "https://data.usgs.gov/datacatalog/data/USGS:35f9c4d4-b113-4c8d-8691-47c428c29a5b",
+    "fine_source_collection_DOI": "Official catalogue states no registered DOI"
+  },
+  "limits": [
+    "NCAR 5-arc-minute WPS product is a derivative; native USGS GMTED2010 resolutions are 7.5, 15 and 30 arc seconds. Do not assert an undocumented NCAR aggregation method.",
+    "The September/October ub-wx terrain rebuild concerns another experiment and is not provenance for these July Pelican runs.",
+    "Retired scratch overlay is unavailable at the recorded path; source identity rests on retained controls, logs and official catalogue."
+  ]
+}

@@ -208,20 +208,20 @@ Author position in the saved edit: Instrument information cannot be supplied fro
 
 Outstanding: Final response wording and any applicable documented provider instrument facts; do not infer manufacturers from the aggregator’s name.
 
-**MDPI04b: Partly resolved — WPS version/citation applied; remaining software/terrain provenance open.**
+**MDPI04b: Partly resolved — WPS and terrain source wording applied; remaining retrieval/analysis software versions open.**
 
 Proposed response/action: Supply versions used for the reported simulations, preprocessing, retrieval and analysis from the corresponding archived environments.
 
 Historical saved draft before correction: The working source said WPS 4.8.0 and retained `[WRF/WPS ref]` and `[what?]` terrain placeholders. The nearby author comment describes intended additions, not verified completion.
 
-Outstanding: Complete fine/default/coarse terrain-source descriptions and the remaining retrieval/analysis software versions. WPS version and citation are resolved by the batch below. Coordinate with MDPI18; today’s installed versions and cited software-paper versions are not evidence of the versions used.
+Outstanding: Recover the remaining retrieval/analysis software versions under MDPI18 and assemble the complete MDPI04b reply. WPS and fine/default/coarse terrain-source descriptions are resolved by the batches below. Coordinate with MDPI18; today’s installed versions and cited software-paper versions are not evidence of the versions used.
 
 Earlier 6 October citation advice: retain `Skamarock2019` for WRF, as recommended by [NCAR's citation guidance](https://www2.mmm.ucar.edu/wrf/users/citing_wrf.html), DOI [10.5065/1dfh-6p97](https://doi.org/10.5065/1dfh-6p97).
 For the WPS description, recommend Powers et al. (2017), *The Weather Research and Forecasting Model: Overview, System Efforts, and Future Directions*, *Bulletin of the American Meteorological Society*, 98, 1717–1737, DOI [10.1175/BAMS-D-15-00308.1](https://doi.org/10.1175/BAMS-D-15-00308.1); the [publisher record](https://journals.ametsoc.org/view/journals/bams/98/8/bams-d-15-00308.1.xml) explicitly describes WPS.
 Proposed wording, pending author agreement and actual preprocessing-version evidence: “The terrain datasets were ingested using the WRF Preprocessing System (WPS), version [verified version] [Powers et al., 2017].”
 A targeted search of the paper's `verification/provenance/` found no recorded WPS version; `run-inventory.csv` records WRF 4.8.0, which does not verify WPS 4.8.0.
 At that advice-only checkpoint, the saved WPS version remained unverified; the following batch records the subsequently supplied run-use confirmation and live build evidence.
-Terrain-source provenance remains independently open. Citation verification does not close it.
+At the earlier advice-only checkpoint, terrain-source provenance remained independently open; the later terrain batch below records its direct verification.
 Validation: live branch `jrl/proofs-round1` and clean starting tree checked; working source and relevant embedded entries inspected; NCAR citation guidance and Powers publisher search record checked. Documentation only: no TeX change, new build or PDF inspection.
 
 ### MDPI04b correction batch — 6 October 2026
@@ -242,6 +242,31 @@ No undefined citation/reference or overfull-box warning; existing duplicate Tabl
 Proposed MDPI response for the resolved portion: “The WPS version has been corrected to 4.6.0, and a formal citation to Powers et al. (2017), including its DOI, has been added to the reference list.”
 Remaining: terrain-source provenance and other actual software versions; MDPI04b as a whole remains open.
 Correction commit: `597b0f71b4cb8d2aaa3976e10f2ea21e436877f3`.
+
+### Terrain source correction batch — 6 October 2026 (MDPI04b)
+
+Author instruction: Find and state the source of standard WRF/WPS terrain, define GMTED2010 and check the study’s source identity against local experiment records.
+Applied: moved the terrain description into Methods subsection 2.2 before Table 1, so the dataset is defined before the caption uses its acronym.
+The working source now expands Global Multi-resolution Terrain Elevation Data 2010 (GMTED2010), identifies the default and coarse inputs as NCAR-distributed WPS products at 30 arc seconds and 5 arc minutes, and identifies the fine input as USGS NED/3DEP 1-arc-second digital elevation models resampled to a custom 3-arc-second WPS dataset.
+Removed the `[what?]` placeholder and retained the distinction between source spacing and WRF grid spacing.
+Retained the Danielson–Gesch (2011) DOI reference and added formal bibliography entries for the specific [NCAR WPS geographical data products](https://www2.mmm.ucar.edu/wrf/site/geog_data.html) and the [USGS 1-arc-second DEM collection](https://data.usgs.gov/datacatalog/data/USGS:35f9c4d4-b113-4c8d-8691-47c428c29a5b).
+The USGS catalogue explicitly reports no registered DOI for that collection; these two bibliography entries use authoritative URLs and the current verification access date, without manuscript footnotes.
+
+Exact evidence: [terrain-source-evidence-20261006.json](../proof-package/terrain-source-evidence-20261006.json) preserves 18 small text records’ paths, hashes and selected numbered excerpts, plus authoritative source links and limits.
+The paper’s inventory X3 reuses the June NAM baseline preprocessing. Its archived namelist requests `default`, and its geogrid log selects `default` on all three domains; the WPS v4.6.0 table maps that to `topo_gmted2010_30s`, whose installed index explicitly identifies GMTED2010 30-arc-second terrain.
+For X4, the archived control maps `gmted2010_5m` to `topo_gmted2010_5m`; geogrid job 13847970 selects it on all three domains. The retained control README records the official WPS download origin, and NCAR’s catalogue independently identifies the five-arc-minute GMTED product.
+For X0, the July acquisition packet specifies “National Elevation Dataset (NED) 1 arc-second”; its manifest/inventory records USGS National Map DEM tiles, and the build record/index establishes the custom 3-arc-second product. Geogrid job 13851884 selects `brc_custom_3s` on all three domains.
+The newer `ub-wx` September/October rebuild is a different experiment and was not used to establish these July Pelican sources.
+Limits: the five-arc-minute product is a WPS derivative; native USGS GMTED2010 resolutions are 7.5, 15 and 30 arc seconds. No undocumented NCAR aggregation procedure is asserted. The retired scratch overlay is unavailable, but its source-selection records are retained.
+Only small text files were read; no raster/NetCDF analysis, WPS/WRF execution or new scientific evidence was generated. Paper inventories and frozen result limits remain authoritative.
+
+Validation: working-source `latexmk` under `texlive/20260330` exited 0 (18 pages); inspected pages 4, 5, 6, 17 and 18, including source description, definition before Table 1, changed pagination and both added references. No observed clipping or overlap introduced.
+All 49 bibliography entries and compiled citation numbers match first-citation order; all 47 pre-existing entries and all 23 publisher query comments were preserved. Received TeX intake hash and `git diff --check` passed. No undefined citation/reference or overfull-box warnings; known duplicate Table A5 labels and template warnings remain.
+Proposed MDPI response for this portion: “We have defined GMTED2010 and clarified that the default and coarse terrain are the NCAR-distributed WPS products at 30 arc seconds and 5 arc minutes, respectively. The custom fine terrain was prepared from USGS NED/3DEP 1-arc-second DEMs. Formal source citations have been added.”
+Remaining: other actual software versions under MDPI18 and final proof audit; MDPI04b is not wholly closed.
+Correction commit: pending the validated terrain batch commit.
+
+Figure organisation advice, requested in this session: finish the affected Methods/source prose first, then repair logical first-citation order (MDPI05a). Inspect and refine captions next, and finalise physical figure/table placement (MDPI05b/MDPI08c) after those wording changes. This is a recommended sequence, not acceptance or completion of any figure query; no figures or callouts were reorganised in this batch.
 
 <a id="mdpi05"></a>
 

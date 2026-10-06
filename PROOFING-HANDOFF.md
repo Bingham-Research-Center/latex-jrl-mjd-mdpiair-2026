@@ -19,7 +19,7 @@ Record explicit author decisions separately from suggestions and technical imple
 John previously edited the received copy accidentally; recovery commit `19d2452` preserves his edits in the working copy and restores the received bundle, and `331b971` records its receipt.
 Recheck live status; preserve any newer author edits and resolve source passages by text because line numbers shift.
 
-**Current checkpoint: WPS correction and software-citation placement completed; next discuss terrain provenance under MDPI04b.**
+**Current checkpoint: WPS, terrain-source wording and software-citation placement completed; next discuss figure first-citation order (MDPI05a) or recover remaining software versions (MDPI18).**
 John’s 6 October instruction is to apply agreed changes, confirm each completed batch in chat, and commit with John as author and `Co-Authored-By: Codex <noreply@openai.com>`.
 Keep the concise author-led discussion pattern; ask only for missing facts or material choices, and do not repeatedly seek permission for the agreed scope.
 The working TeX now states WPS **4.6.0** and cites `Powers2017WRF`, DOI [10.1175/BAMS-D-15-00308.1](https://doi.org/10.1175/BAMS-D-15-00308.1).
@@ -34,10 +34,14 @@ The second build remains 18 pages; pages 5, 6, 15, 17 and 18 were inspected. Sof
 Recover actual retrieval/analysis/plotting versions separately; general software DOIs and software-paper versions do not identify the installed releases. MDPI18 remains open for those versions and AI scope; MDPI22’s DOI correction is applied, pending final proof review.
 The working source contains no `\footnote{` or `\footnotetext{` calls; retain table `\footnotesize` typography.
 
-Expand GMTED2010 as Global Multi-resolution Terrain Elevation Data 2010; the existing Danielson–Gesch (2011) reference has DOI [10.3133/ofr20111073](https://doi.org/10.3133/ofr20111073).
-The inventory records custom `topo_brc_custom_3s`, default 30-arc-second-class terrain, and coarse `topo_gmted2010_5m`; exact upstream sources and preparation still need evidence.
-Native GMTED2010 products are 7.5/15/30 arc seconds, so establish the five-arc-minute derivative's provenance.
-Last discussion question: what supplied the custom fine terrain, and did the coarse input come from NCAR or John's own processing? No answer yet.
+The terrain description is now in Methods subsection 2.2, before Table 1. GMTED2010 is expanded as Global Multi-resolution Terrain Elevation Data 2010 and cites Danielson–Gesch (2011), DOI [10.3133/ofr20111073](https://doi.org/10.3133/ofr20111073).
+Direct study records confirm default GMTED2010 at 30 arc seconds and the coarse NCAR-distributed WPS GMTED2010 product at 5 arc minutes. The fine source is USGS NED/3DEP 1-arc-second DEMs resampled to custom 3-arc-second WPS terrain; it is not a GMTED2010 product.
+Formal NCAR product and USGS collection bibliography entries are added; the USGS catalogue explicitly has no registered DOI for the collection. The `[what?]` placeholder is removed.
+The [terrain evidence receipt](proof-package/terrain-source-evidence-20261006.json) records exact archived controls, geogrid selections, July source manifest/build evidence, hashes and limits. The newer `ub-wx` terrain rebuild is a different experiment.
+The terrain batch builds to 18 pages; pages 4, 5, 6, 17 and 18 were inspected. All 49 references and compiled citation numbers match first-citation order; original entries, publisher comments and received source are preserved.
+The coarse WPS product is a derivative: native USGS GMTED2010 resolutions are 7.5/15/30 arc seconds. Do not claim an undocumented NCAR aggregation method or a new terrain result.
+See the MDPI04b terrain batch in the catalogue for the correction commit. Its remaining scope is the other actual software versions and final response/audit.
+John asked about figure organisation order. Recommendation: complete affected prose first (this terrain batch is now done), repair logical first-citation order next (MDPI05a), inspect/refine captions, then finalise figure/table placement (MDPI05b/MDPI08c). No figure or callout corrections have yet been applied; keep those statuses open.
 
 For agreed TeX changes, build the working source and inspect affected PDF pages; keep query quotations and Paperpile/template files intact.
 The recovery build produced 18 pages; pages 1–5 were inspected, while known duplicate Table A5 labels and unresolved draft placeholders remain.

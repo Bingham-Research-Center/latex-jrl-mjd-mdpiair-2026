@@ -154,6 +154,12 @@ Note that GFS and NAM inputs supply 27 and 40 metgrid levels, respectively.
 The WRF grid has approximately 20~m vertical spacing near the surface and a prescribed 50 hPa model top.
 The control physics-parametrisation suite comprises Thompson microphysics~\citep{Thompson2008-ti}, Rapid Radiative Transfer Model for General Circulation Models (RRTMG) longwave and shortwave radiation \citep{Iacono2008}, the~revised fifth-generation Pennsylvania State University--National Center for Atmospheric Research Mesoscale Model (MM5) similarity surface layer \citep{Jimenez2012Surface}, the~Noah land-surface model \citep{Tewari2004}, and the Yonsei University (YSU) planetary boundary layer (PBL) scheme \citep{Hong2006}.
 No nudging or data assimilation was used.
+
+The terrain datasets were ingested using the WRF Preprocessing System (WPS), version 4.6.0 \citep{Powers2017WRF}.
+The default and coarse terrain sources were the 30-arc-second and 5-arc-minute WPS products, respectively, derived from Global Multi-resolution Terrain Elevation Data 2010 (GMTED2010) \citep{DanielsonGesch2011} and distributed by NCAR \citep{WPSGeographicData}.
+The fine terrain was a custom 3-arc-second dataset resampled from U.S. Geological Survey (USGS) National Elevation Dataset (NED)/3D Elevation Program (3DEP) 1-arc-second digital elevation models \citep{USGS3DEP1as}.
+The fine, default and coarse source spacings correspond to approximately 90~m, 900~m and 9~km north--south spacing at $40^{\circ}$N, distinct from WRF horizontal-grid~spacing.
+
 Table~\ref{tab:v3-family} lists the simulations analysed~here.
 
 \begin{table}[H]
@@ -193,9 +199,7 @@ Hollow markers identify the seven site-days with less than 75\% within-day obser
 \label{fig:v3-episode-context}
 \end{figure}
 
-The terrain datasets were ingested using the WRF Preprocessing System (WPS), version 4.6.0 \citep{Powers2017WRF}.
-The fine, default, and coarse sources have spacings of 3 arc seconds, a 30-arc-second class, and 5 arc minutes, respectively; the coarse source is [what?] GMTED2010 \citep{DanielsonGesch2011}.
-These correspond to approximately 90~m, 900~m, and 9~km north--south spacing at $40^{\circ}$N, distinct from WRF horizontal-grid~spacing.
+
 
 Hence, our primary comparison crosses GFS and NAM forcing with one-way and two-way feedback on default terrain (X3, X5, X6, and X10).
 A controlled contrast pairs runs differing in one designated treatment on the same domain, locations, hours, and diagnostic calculation.
@@ -859,6 +863,19 @@ Danielson, J.J.; Gesch, D.B.
 \newblock \emph{Global Multi-Resolution Terrain Elevation Data 2010 ({GMTED2010})};
 \newblock Open-File Report 2011--1073; U.S. Geological Survey: \hl{Reston, VA, USA,} 2011.
 \newblock {\url{https://doi.org/10.3133/ofr20111073}}.
+
+\bibitem[{National Center for Atmospheric Research}()]{WPSGeographicData}
+{National Center for Atmospheric Research}.
+\newblock Geographic Static Data for the WRF Preprocessing System (WPS).
+Available online:
+\newblock \url{https://www2.mmm.ucar.edu/wrf/site/geog_data.html} (accessed on 6 October 2026).
+
+\bibitem[{U.S. Geological Survey}(2024)]{USGS3DEP1as}
+{U.S. Geological Survey}.
+\newblock 1 Arc-second Digital Elevation Models (DEMs)---USGS National Map 3DEP Downloadable Data Collection.
+\newblock Digital Data Collection, 2024.
+Available online:
+\newblock \url{https://data.usgs.gov/datacatalog/data/USGS:35f9c4d4-b113-4c8d-8691-47c428c29a5b} (accessed on 6 October 2026).
 
 \bibitem[Stull(1988)]{Stull1988}
 Stull, R.B.
