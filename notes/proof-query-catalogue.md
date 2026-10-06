@@ -590,7 +590,7 @@ Station-table correction commit: `b5765e10b18c414049801e8dc0c7aebbd53fd64c`; pus
 
 John confirms Table A1 looks good; recorded this with a standalone `% JRL:` approval. The page 7 gap persists, and John requests the first paragraph of Section 3.4 above Figure 4. Moved the unchanged Figure 4 block (including its original size/caption/`[H]` placement) after that paragraph, keeping the Section 3.4 heading/label with its opening text. Added a standalone `% JRL:` placement note. No prose, figures, table data or bibliography content changed.
 Validation: working-source `latexmk` under `texlive/20260330` exited 0 (19 pages); `.aux` puts the Section 3.4 heading on page 7, Figure 4 on page 8, and Table A1 on page 13. First figure calls remain 1–9, table calls 1/A1–A6 and all 49 bibliography numbers match first citation. Figure blocks and table bodies are byte-identical to the preceding source; all 23 publisher notes and the received bundle are preserved. No undefined reference/citation, duplicate-label, overfull-box, oversized-float or narrow-column warning; `git diff --check` passes. No PDF loaded/rendered by Codex. NEXT: John reviews pages 7–8 for the gap and Section 3.4 flow, then final query/reply audit; A1 sizing is author-confirmed.
-Figure 4 placement correction commit: recorded after committing/pushing this batch.
+Figure 4 placement correction commit: `37baff30293d88157566018b2b495ae334e289df`; pushed to `origin/jrl/proofs-round1`.
 
 ### Caption/table confirmation batch — 6 October 2026 (MDPI11–17)
 
