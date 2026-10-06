@@ -4,7 +4,7 @@ Catalogue complete: **22 MDPI comments and one English-editor note**, with compo
 The initial catalogue proposed responses with all follow-ups open; the 6 October recovery checkpoint below records the author decisions now present in the working source.
 The production notice is retained as an acknowledgement item.
 
-**Next discussion: MDPI09 — appendix-table citation format. MDPI08b is applied; the deferred checks below return after caption/layout changes.**
+**Next discussion: MDPI11 — Figure 3 overlap (recommend deferring to final layout), then MDPI12 — Figure 4 panel descriptions. MDPI09/MDPI10 are applied; existing deferred checks remain below.**
 Name the catalogue code whenever referring to the current or next topic, as John requested on 6 October.
 
 **Deferred checks — author agreed, 6 October:**
@@ -404,11 +404,11 @@ Source line 204; supplied PDF page 5; repeated on 8.
 The edited pattern is “Appendix A Table A6” at lines 204–205, with highlighted repetitions for Table A2 at line 307 and Table A3 at line 311.
 After the MDPI05a table batch, these working callouts resolve to A1 (stations), A3 (wind comparison) and A4 (layer sensitivity), respectively; all point to the intended unchanged content.
 
-**MDPI09: Open — reference/editorial check.**
+**MDPI09: Author confirmation applied — 6 October.**
 
-Proposed response/action: Accept a consistent journal appendix/table citation format once every reference resolves to the intended table.
-
-Outstanding: Verify all occurrences after any reordering under MDPI05; confirm the final wording with John. Preserve the referenced content.
+Author approved retaining the publisher’s “Appendix A Table…” format. Added `% JRL: Confirmed; please retain this appendix-table citation format throughout.` on its own line immediately beneath the unchanged query.
+Verified Appendix A and the compiled station/wind/layer targets A1/A3/A4; inspected pages 5 and 8. The callout wording is unchanged. Shared build checks are recorded under MDPI10 below.
+Outstanding: Final proof audit and reply assembly.
 
 <a id="mdpi10"></a>
 
@@ -422,11 +422,15 @@ Source line 213; supplied PDF page 5–6; throughout.
 
 The note begins at the definition of S_{50:500}; its scope includes all equations, inline expressions, captions and tables.
 
-**MDPI10: Open — notation audit.**
+**MDPI10: Audited — minimal typography corrections applied, 6 October.**
 
-Proposed response/action: Check consistent variable/Greek-letter styling, vector/scalar distinctions, units, subscripts, superscripts and averaging bars throughout.
-
-Outstanding: Compare each notation choice against the defined quantity and registered evidence. In particular preserve endpoint difference, vector magnitude, scalar speed and height averaging as distinct quantities; inspect typeset equations after edits.
+Applied: upright descriptive surface/crest pressure subscripts in the heat-deficit integral and inline definition; upright differential `d` in the hydrostatic relation and integral, with thin mathematical spacing. Added a standalone `% JRL:` reply beneath the unchanged publisher query. No quantities, values, bounds, signs or diagnostic definitions changed.
+Audit retained italic scalar variables and Greek quantities, upright units/functions, numerical height subscripts, height-averaging bars, the existing italic pressure subscript in `c_p`, and bold table headings. The latter are heading emphasis, not new vector notation.
+Typesetting basis: [NIST SP 811, chapter 10](https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-10-more-printing-and-using-symbols-and-numbers), sections 10.2.1–10.2.3; `c_p` uses a pressure-variable subscript, whereas surface/crest labels are descriptive. Definitions checked against claim ledger C17/C26 and `verification/provenance/retention-analysis-13896641.json` / `heat-deficit-analysis.json`. No data work or scientific revision.
+Validation: working-source `latexmk` under `texlive/20260330` exited 0 (19 pages); inspected pages 5, 6, 8 and 14, including all three numbered equations, appendix callouts and symbolic table headings. Full extracted PDF text is byte-identical before/after; notation reverse-substitution reproduces the original source except the two new author reply lines.
+First figure/table citations and all 49 bibliography entries/compiled numbers remain ordered; all 23 publisher comments and received source hash are preserved. `git diff --check` passes; no undefined citation/reference or overfull-box warning. Existing duplicate heat-deficit label/template warnings remain.
+Proposed reply: “Mathematical typography has been checked throughout. Descriptive pressure subscripts and differential symbols have been made upright; variable styling and height-averaging notation are retained.”
+Outstanding: Final proof audit and reply assembly.
 
 <a id="mdpi11"></a>
 

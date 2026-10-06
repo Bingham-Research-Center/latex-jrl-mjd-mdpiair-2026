@@ -213,6 +213,7 @@ Snow and other land-surface initial fields remain bundled with the forcing produ
 
 Surface variables and vertical fields were sampled from the same nearest d02\linebreak   ($\Delta x = 1~\text{km}$ horizontal spacing) column at each station, keeping the model terrain and profile consistent.
 The station-to-cell distances are 133--594~m, with~default-terrain elevation offsets of $-32.4$ to $+14.3$~m (\hl{Appendix} %MDPI: We revised the appendix table citation format, please confirm. same as below.
+% JRL: Confirmed; please retain this appendix-table citation format throughout.
  \ref{app:v3-data} Table~\ref{tab:v3-stations}).
 These pairings retain differences in exposure, slope, and land cover; alternative interpolation methods were not tested.
 % Mass-level height above ground level (AGL) was calculated from perturbation plus base geopotential relative to local terrain.
@@ -222,6 +223,7 @@ We repeat the eleven-column, five-hour comparison for all nine combinations of 5
 The bounds define a common shallow layer rather than an observed inversion~boundary.
 
 The finite-layer potential-temperature difference is defined \hl{as} %MDPI: Reminder: Variables/values; greek letters: please keep them in consistent (italic or normal, bold or not, subscript, superscript) in whole text (including in equations) if necessary. Same for the next occurrences. Please check all equations below.
+% JRL: Checked throughout; descriptive pressure subscripts and differential symbols are upright, with variable styling and averaging notation retained.
 \begin{equation}
 S_{50:500}=\theta(500~\mathrm{m})-\theta(50~\mathrm{m}).
 \end{equation}
@@ -252,11 +254,11 @@ Its 2.5th and 97.5th percentiles are descriptive sensitivity bounds for this sin
 \label{sec:v3-heatdeficit-methods}
 
 To represent the cold-pool strength numerically, we adapted the basin heat-deficit formulation of Whiteman et al. \citep{Whiteman1999} and the column implementation of Adler et al. \citep{Adler2023}.
-Using the hydrostatic balance, $dp=-\rho g~dz$, to~express the column mass in pressure coordinates~\citep{WallaceHobbs2006},\linebreak   we defined
+Using the hydrostatic balance, $\mathrm{d}p=-\rho g\,\mathrm{d}z$, to~express the column mass in pressure coordinates~\citep{WallaceHobbs2006},\linebreak   we defined
 \begin{equation}
-H=\frac{c_{p}}{g}\int_{p_{c}}^{p_{s}}\max\{\theta_{\mathrm{crest}}-\theta(p),0\}~dp,
+H=\frac{c_{p}}{g}\int_{p_{\mathrm{c}}}^{p_{\mathrm{s}}}\max\{\theta_{\mathrm{crest}}-\theta(p),0\}\,\mathrm{d}p,
 \end{equation}
-where $c_{p}$ is the dry-air specific heat at constant pressure, $g$ is the gravitational acceleration, and~$p_s>p_c$ are the surface and crest-reference pressures.
+where $c_{p}$ is the dry-air specific heat at constant pressure, $g$ is the gravitational acceleration, and~$p_{\mathrm{s}}>p_{\mathrm{c}}$ are the surface and crest-reference pressures.
 The reference potential temperature is interpolated to the fixed crest height in each modelled column; clipping retains only positive deficits.
 This potential-temperature proxy then describes stratification relative to that reference.
 We report its cell-area-weighted mean in MJ~m$^{-2}$: the primary area is the convex hull of eleven stations and eleven basin waypoints, restricted to terrain below 2200~m (4965 d02 cells covering 5277~km$^{2}$).
