@@ -311,6 +311,19 @@ The series show a spatial surface-temperature pattern, not a co-located vertical
 The forcing-product contrasts give the largest temperature and layer-mean wind responses (Figure~\ref{fig:v3-effects}).
 The PBL/surface-layer response is smaller; slope-radiation and feedback interaction effects cluster near zero on these scales.
 Pressure and wind-error metrics have inconsistent trends in time, preventing an overall configuration ranking for this~case.
+
+
+
+\subsection{Driving-Product Response in the Lower~Layer}
+\label{sec:v3-driving-response}
+
+Runs forced with GFS produced a smaller 50--500~m potential-temperature difference than NAM under both feedback modes (Figure~\ref{fig:v3-retention}).
+Paired GFS-minus-NAM effects averaged $-3.63$~K with two-way feedback and $-3.65$~K with one-way feedback, consistently borne out by a constant sign at every hour (Table~\ref{tab:v3-effects}).
+The layer-mean wind-vector magnitude increased by 0.79 and 0.99~m~s$^{-1}$, respectively, also with consistent hourly signs.
+Scalar-speed differences were similar, and~directional cancellation therefore likely does not create the speed ordering (\hl{Appendix} \ref{app:v3-data} Table~\ref{tab:v3-wind-cancellation}).
+The vector-to-scalar ratio difference was not consistent and hence not analysed~further.
+
+% JRL: Figure 4 moved after the first paragraph of Section 3.4 to use the preceding page space.
 \vspace{-6pt}
 \begin{figure}[H]
 
@@ -323,16 +336,6 @@ Colours and marker shapes identify forcing-product, feedback, and~interaction co
 Whiskers show descriptive block-sensitivity intervals for five dependent hourly medians.}
 \label{fig:v3-effects}
 \end{figure}
-
-
-\subsection{Driving-Product Response in the Lower~Layer}
-\label{sec:v3-driving-response}
-
-Runs forced with GFS produced a smaller 50--500~m potential-temperature difference than NAM under both feedback modes (Figure~\ref{fig:v3-retention}).
-Paired GFS-minus-NAM effects averaged $-3.63$~K with two-way feedback and $-3.65$~K with one-way feedback, consistently borne out by a constant sign at every hour (Table~\ref{tab:v3-effects}).
-The layer-mean wind-vector magnitude increased by 0.79 and 0.99~m~s$^{-1}$, respectively, also with consistent hourly signs.
-Scalar-speed differences were similar, and~directional cancellation therefore likely does not create the speed ordering (\hl{Appendix} \ref{app:v3-data} Table~\ref{tab:v3-wind-cancellation}).
-The vector-to-scalar ratio difference was not consistent and hence not analysed~further.
 
 The paired GFS-minus-NAM endpoint and wind differences retain their respective signs in every hour across all nine layer/increment combinations.
 Their magnitudes depend on layer bounds (\hl{Appendix} \ref{app:v3-data} Table~\ref{tab:v3-layer-sensitivity}); varying the integration increment at fixed bounds changed the mean paired wind effects by less than 0.02~m~s$^{-1}$.
@@ -528,6 +531,7 @@ Appendix~\ref{app:v3-data} retains numerical summaries and sampling metadata for
 \caption{Case-window temperature stations and nearest d02 sampling audit.
 Coordinates (rounded to three decimal places) and reported elevations are from the registered Synoptic Data PBC metadata; separation is great-circle distance to the sampled cell centre, and~the final column is X3 default-terrain model height minus reported station elevation.}
 \label{tab:v3-stations}
+% JRL: Confirmed; the revised Table A1 layout looks good.
 
 % JRL: Coordinates rounded to three decimal places; UUT01 site name shortened.
 % JRL: Table brought within text width with smaller type, tighter padding and wrapped headings.
