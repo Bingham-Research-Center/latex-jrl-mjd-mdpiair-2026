@@ -16,6 +16,44 @@ Pages refer to the [supplied PDF](../proof-package/air-4472509-english/air-44725
 Exact publisher comment text is retained in code blocks, including original spelling and spacing except trailing whitespace.
 No manuscript correction, compilation, full visual proof audit, bibliographic verification or author confirmation is claimed here.
 
+## Walkthrough: where to edit and how to batch the work
+
+Active worktree: `/uufs/chpc.utah.edu/common/home/u0737349/worktrees/air-proofs-round1`, branch `jrl/proofs-round1`.
+**Edit [the working manuscript](../proof-package/working/air-4472509-done.tex).**
+The complete copy is ready; its [creation receipt](../proof-package/working-copy.json) records a byte-for-byte match for all 33 received files before corrections.
+Keep the [received source](../proof-package/air-4472509-english/air-4472509-done.tex) and supplied PDF unchanged.
+Root `main.tex` is the later integration target.
+The README inherited inside both proof folders names the wrong source; compile `air-4472509-done.tex`.
+
+This document combines the walkthrough and previous query catalogue; keep individual decisions in the detailed entries below rather than a competing checklist.
+The batches are a suggested resolution order, not approval to invent missing facts or accept publisher changes.
+Each individual subquery retains its own status even when related work shares a commit.
+
+| Batch | Individual queries / issues | Work and completion evidence | Current state |
+| --- | --- | --- | --- |
+| 1 — Author facts and choices | EE01; MDPI01a/b, MDPI02, MDPI03; AI-use highlights | Confirm title, names, affiliations, ORCIDs, emails, emphasis and applicable AI identifiers from John/saved decisions. Record each exact decision. | Open |
+| 2 — Citation order and cross-references | MDPI05a/b, MDPI08c, MDPI09; duplicate Table A5 label | Repair first-citation order and placement, verify appendix-table references, retain one canonical continued-table label; build and inspect cross-references/pages. | Open |
+| 3 — Figures and captions | MDPI06, MDPI08a/b, MDPI11–16 and their subqueries | Inspect queried overlap; verify markers, panels, shading and dashed lines against registered evidence; apply precise captions and inspect resulting pages. | Open |
+| 4 — Mathematical/table formatting | MDPI10, MDPI17 | Audit notation and Table A4 borders/row associations against source and PDF, then record inspection and decisions. | Open |
+| 5 — Software/equipment provenance | MDPI04a/b, MDPI18; applicable software highlights | Recover actual run/analysis versions and provider instrument facts with exact provenance; record unavailable information explicitly. | Open |
+| 6 — Bibliographic additions/removal | MDPI19, MDPI20a/b, MDPI21, MDPI22; McKinney highlight | Verify publication/conference metadata and removed Herbie DOI; correct embedded references as warranted, preserving Paperpile-owned files. | Open |
+| 7 — Production notice and final proof audit | MDPI07; all preceding queries | Record acknowledgement; compile the working source, inspect all pages against the supplied PDF, and reconcile replies/remaining author decisions. | Open |
+
+For each issue, extend its detailed entry with: applied change or confirmed no-change decision; exact evidence; checks/PDF pages; proposed or final reply; remaining author decision; and correction commit hash.
+Commit one verified issue or small related batch promptly, with query IDs and validation in the commit body.
+Use John's identity and `Co-Authored-By: Codex <noreply@openai.com>` on every commit.
+A subsequent status commit can record the preceding correction hash.
+
+Build from the working directory after actual proof corrections:
+
+```sh
+cd /uufs/chpc.utah.edu/common/home/u0737349/worktrees/air-proofs-round1/proof-package/working
+latexmk -pdf -interaction=nonstopmode -halt-on-error air-4472509-done.tex
+```
+
+The working PDF and copied compilation outputs are ignored; the received PDF remains the immutable comparison.
+Setup checks verify copy integrity, query quotations and paths; they do not resolve any proof query or establish a successful new compilation.
+
 ## Query index
 
 | ID | TeX line | Supplied PDF page | Topic |
@@ -539,7 +577,7 @@ When corrections begin, retain one canonical cross-reference label, preserve the
 ## Next resolution pass
 
 1. Obtain the author facts/choices for EE01, MDPI01–03 and any AI identifiers; consult saved decisions on the writing host where available.
-2. Make the complete `proof-package/working/` copy before any proof editing or compilation.
+2. Use the complete `proof-package/working/` copy already created; preserve the received baseline and record corrections in this register.
 3. Resolve citation order, mathematical/appendix formatting and the duplicate label in that copy; inspect the queried figures using their registered evidence before drafting precise caption changes.
 4. Recover versions from the actual analysis provenance and verify bibliographic additions/removal against authoritative records. Do not substitute current software versions or assume the publisher’s changes are correct.
 5. Build `air-4472509-done.tex` in the working copy and inspect all pages against the supplied PDF; update each follow-up with the applied change, evidence, final reply and any remaining author decision.

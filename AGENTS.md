@@ -8,19 +8,42 @@ For the active proofing task, read `PROOFING-HANDOFF.md` first; `README.md`, `RO
 
 - Branch: `jrl/proofs-round1`; worktree: `/uufs/chpc.utah.edu/common/home/u0737349/worktrees/air-proofs-round1`.
 - Received baseline: commit `92b14d2`, directory `proof-package/air-4472509-english/`; hashes and intake state: `proof-package/intake.json`.
-- Preserve every received file unchanged. Make a complete working copy at `proof-package/working/` before editing or compiling.
-- Actual source: `air-4472509-done.tex`; supplied PDF: `air-4472509-done.pdf` (18 pages). The received README incorrectly names `main.tex` and `main.bbl`; the source embeds `thebibliography`.
+- Preserve every received file unchanged. The complete working copy now exists at `proof-package/working/`; `proof-package/working-copy.json` records all 33 initial file hashes.
+- Edit and compile only `proof-package/working/air-4472509-done.tex`. The received source is an immutable reference; supplied PDF: `air-4472509-done.pdf` (18 pages). The received README incorrectly names `main.tex` and `main.bbl`; the source embeds `thebibliography`.
 - There are 22 `%MDPI:` comment occurrences plus one `%EE:` title note, some with multiple requests. Catalogue each request before resolving it; preserve quotations and record proposed responses/status separately.
 - Keep proof corrections in the working copy until integration is requested. Confirm author facts from saved decisions or John; software versions must come from the recorded analysis environment, not the current shell.
 - Compile the working copy with `latexmk -pdf -interaction=nonstopmode -halt-on-error air-4472509-done.tex`; inspect the resulting PDF. Root Make targets do not validate this proof source.
 - When integrating into root `main.tex`, run the repository checks and package refresh below. Check embedded references explicitly; BibTeX changes alone do not update them.
-- No branch pruning, pushing, journal submission or WRF run has occurred as part of proof intake. Recheck live refs and worktrees before any authorised cleanup.
+- Work only on `jrl/proofs-round1` in the proof worktree. Push setup/correction commits to that branch when authorised; root integration, merging and journal submission are separate actions. Recheck live refs and worktrees before any authorised cleanup.
+
+
+## Proof layout and commit logic
+
+| Purpose | Path in the proof worktree | Rule |
+| --- | --- | --- |
+| Editable manuscript to return | `proof-package/working/air-4472509-done.tex` | Apply accepted proof corrections here. |
+| Issue walkthrough and exact query register | `notes/proof-query-catalogue.md` | Start with the batch plan; retain EE01/MDPI01–22 quotations and individual subqueries. |
+| Received source, PDF and supporting files | `proof-package/air-4472509-english/` | Preserve unchanged, including all original compilation artefacts. |
+| Working-copy creation receipt | `proof-package/working-copy.json` | Initial hashes document the copy; they are not hashes of later corrected files. |
+| Session restart and host boundaries | `PROOFING-HANDOFF.md` | Keep current state, editable path and next action accurate. |
+| Repository manuscript and delivery copy | `main.tex`, `submission-package/` | Update only when integration is requested. |
+
+The walkthrough is the single status register: use its batches to plan work and its individual entries to record decisions.
+After each verified issue or small related batch, record the applied change, exact evidence, validation, proposed/final reply, remaining author decision and correction commit hash.
+Do not mark proposed replies as accepted or technical implementation as author confirmation.
+Commit promptly after validation rather than accumulating a full proof pass.
+Every commit in this workflow must use John's identity and `Co-Authored-By: Codex <noreply@openai.com>`, including documentation, copy setup and later corrections.
+Commit subjects should identify the concern; bodies should name query IDs, changes, evidence/checks and unresolved decisions.
+A follow-up status/documentation commit may record the preceding correction hash; do not claim an unbuilt correction passed PDF inspection.
+Track the working TeX and supporting inputs, including cached logo conversions; compilation outputs and the working manuscript PDF stay ignored.
+Documentation/copy setup needs quotation, path, checksum and whitespace checks.
+Proof corrections need the working-source build and affected-page inspection; root Make checks apply at repository integration.
 
 ## Routes
 
 | Task | Read |
 |---|---|
-| Proofs | `PROOFING-HANDOFF.md` → `proof-package/intake.json` → received source/PDF |
+| Proofs | `PROOFING-HANDOFF.md` → `notes/proof-query-catalogue.md` → working source and exact evidence for the immediate query |
 | Manuscript/revision | `notes/peer-review-round1-return.md` → `main.tex` |
 | Reviewer decisions/replies | `~/reviews/lawson-ozone-wrf-mdpiair-2026/peer-review-decisions.md` → `response-to-reviewers.md`; saved author decisions govern |
 | Claims | `notes/claim-evidence-ledger.md` → exact registered artefact |
