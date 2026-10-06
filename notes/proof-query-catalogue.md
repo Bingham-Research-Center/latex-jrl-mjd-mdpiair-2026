@@ -4,7 +4,7 @@ Catalogue complete: **22 MDPI comments and one English-editor note**, with compo
 The initial catalogue proposed responses with all follow-ups open; the 6 October recovery checkpoint below records the author decisions now present in the working source.
 The production notice is retained as an acknowledgement item.
 
-**Next: MDPI18 applicable AI identifiers/scope, then MDPI04a instrument-limitation reply and the deferred layout/final proof audit. Retrieval, analysis and plotting versions are now applied. MDPI01, MDPI12–17 and MDPI19–22 are confirmed/applied; deferred checks remain below.**
+**Next: MDPI18 AI identifiers/scope (John’s bundled answer pending), then deferred layout/final proof audit. MDPI04a already has John’s saved instrument-metadata limitation reply. Retrieval, analysis and plotting versions are now applied. MDPI01, MDPI12–17 and MDPI19–22 are confirmed/applied; deferred checks remain below.**
 Name the catalogue code whenever referring to the current or next topic, as John requested on 6 October.
 
 **Deferred checks — author agreed, 6 October:**
@@ -68,7 +68,7 @@ Each individual subquery retains its own status even when related work shares a 
 | 2 — Citation order and cross-references | MDPI05a/b, MDPI08c, MDPI09; duplicate Table A5 label | Citation order, appendix references and duplicate label corrected; final placement deferred. | Applied; layout deferred |
 | 3 — Figures and captions | MDPI06, MDPI08a/b, MDPI11–16 and their subqueries | Marker, panel, shading and dashed-line explanations verified and applied; final overlap checks deferred. | Applied; overlap deferred |
 | 4 — Mathematical/table formatting | MDPI10, MDPI17 | Minimal notation corrections applied; Table A5 borders/row associations checked and retained. | Applied; final audit pending |
-| 5 — Software/equipment provenance | MDPI04a/b, MDPI18; applicable software highlights | WRF/WPS and retrieval/analysis/plotting versions applied; AI identifiers/scope and equipment response remain open. | Partly applied; recorded gaps open |
+| 5 — Software/equipment provenance | MDPI04a/b, MDPI18; applicable software highlights | WRF/WPS and retrieval/analysis/plotting versions applied; AI identifiers/scope remain open; saved instrument-metadata limitation reply retained. | Partly applied; recorded gaps open |
 | 6 — Bibliographic additions/removal | MDPI19, MDPI20a/b, MDPI21, MDPI22; McKinney highlight | Publisher/conference additions verified and confirmed; Herbie DOI restored with reply. | Applied; final audit pending |
 | 7 — Production notice and final proof audit | MDPI07; all preceding queries | Record acknowledgement; compile the working source, inspect all pages against the supplied PDF, and reconcile replies/remaining author decisions. | Open |
 
@@ -206,13 +206,13 @@ Source line 93; supplied PDF page 3.
 
 The Methods section uses provider observations and numerical modelling. WRF 4.8.0 is already stated at lines 143 and 156; WRF Preprocessing System is named at line 190 without a version.
 
-**MDPI04a: Open — evidence check.**
+**MDPI04a: Author limitation recorded — final reply/audit pending.**
 
-Proposed response/action: Identify the equipment to which this request applies and add only documented manufacturer names and locations; explain any unavailable provider instrument metadata.
+Applied response: retained John’s saved `% JRL:` explanation that observation-instrument information cannot be supplied from the multi-network Synoptic Data aggregation. No manufacturer/location has been inferred or invented.
 
 Author position in the saved edit: Instrument information cannot be supplied from the multi-network Synoptic Data aggregation alone.
 
-Outstanding: Final response wording and any applicable documented provider instrument facts; do not infer manufacturers from the aggregator’s name.
+Outstanding: Final proof/reply audit; retain any applicable documented provider facts and distinguish unavailable manufacturer/model details. This records the author’s limitation, not a complete instrument inventory. `verification/provenance/observation-evidence-summary.json` separately records a Graw station/probe identifier for the provisional Roosevelt sounding but no exact sonde model; do not extend the aggregation limitation to imply that no provider instrument information exists anywhere.
 
 **MDPI04b: Partly resolved — WPS, terrain source wording and software versions applied; complete reply/final audit pending.**
 
@@ -597,7 +597,7 @@ The [software-version receipt](../proof-package/software-version-evidence-202610
 [PyPI Herbie](https://pypi.org/project/herbie-data/2026.3.0/) and [SynopticPy](https://pypi.org/project/SynopticPy/) release histories corroborate availability: 7 March and 3 June 2026. John’s requested 1 June fallback would give Herbie 2026.3.0/SynopticPy 2025.9.0; it is recorded but not used because the installation evidence was recovered.
 Standalone reply now records that retrieval, analysis and plotting versions are supplied from retained records. Applicable AI identifiers remain open. Python versions 3.12.13/3.13.12 are recorded in the study receipts but were not added to the prose because Python is not separately named in this query.
 Validation: working-source `latexmk` under `texlive/20260330` exited 0 (19 pages); pages 5–7 inspected; extracted text changed only on pages 6–7. All 49 bibliography entries/compiled citation numbers, publisher comments, table bodies and figure assets remain unchanged; first figure/table calls remain 1–9 and 1, A1–A6; received source checksum preserved. No undefined citation/reference, duplicate-label or overfull-box warning; `git diff --check` passes. No footnotes or supplementary-material references introduced.
-Version correction commit: recorded after committing/pushing this batch.
+Version correction commit: `999278208a89ff41d4e837e12ca08cf4d6c38548`; pushed to `origin/jrl/proofs-round1`.
 
 ### Software citation correction batch — 6 October 2026 (MDPI18 and MDPI22)
 
@@ -725,7 +725,7 @@ Resolved in the MDPI11–17 batch: the duplicate now belonged to working Table A
 1. MDPI01 author facts are confirmed; any applicable AI identifiers remain under MDPI18. Retain the saved title, email and emphasis decisions for EE01, MDPI02 and MDPI03.
 2. Use the complete `proof-package/working/` copy already created; preserve the received baseline and record corrections in this register.
 3. Citation order, mathematical/appendix formatting, caption explanations and the duplicate label are applied; finish the recorded deferred layout checks after layout changes.
-4. Software versions and bibliography confirmations are applied; settle applicable AI identifiers/scope under MDPI18 and the provider-instrument limitation response under MDPI04a.
+4. Software versions and bibliography confirmations are applied; settle applicable AI identifiers/scope under MDPI18. MDPI04a’s saved provider-instrument limitation reply is recorded; audit its scope when assembling the final return.
 5. Build `air-4472509-done.tex` in the working copy and inspect all pages against the supplied PDF; update each follow-up with the applied change, evidence, final reply and any remaining author decision.
 
 The received source embeds its bibliography: changing a `.bib` file alone cannot resolve its reference queries.
