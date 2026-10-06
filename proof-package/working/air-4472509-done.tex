@@ -495,6 +495,38 @@ Appendix~\ref{app:v3-data} retains numerical summaries and sampling metadata for
 
 \vspace{-3pt}
 \begin{table}[H]
+\caption{Case-window temperature stations and nearest d02 sampling audit.
+Coordinates and reported elevations are from the registered Synoptic Data PBC metadata; separation is great-circle distance to the sampled cell centre, and~the final column is X3 default-terrain model height minus reported station elevation.}
+\label{tab:v3-stations}
+
+\small
+
+\begin{adjustwidth}{-\extralength}{0cm}
+\centering %% If there is a figure in wide page, please release command \centering
+
+
+\begin{tabularx}{\fulllength}{llRrrrr}
+\toprule
+\textbf{ID} & \textbf{Site} & \textbf{Latitude} & \textbf{Longitude} & \textbf{Elevation (m)} & \textbf{Cell Distance (m)} & \textbf{Elevation Offset (m)} \\
+\midrule
+KVEL & Vernal Airport & 40.44295 & $-$109.51273 & 1604 & 405 & 0.0 \\
+QRS & Roosevelt & 40.29430 & $-$110.00900 & 1588 & 354 & $-$32.4 \\
+QV4 & Vernal & 40.46472 & $-$109.56083 & 1666 & 408 & $-$2.0 \\
+USU01 & Seven Sisters & 39.98130 & $-$109.34540 & 1615 & 555 & $-$3.0 \\
+USU02 & Gusher & 40.29350 & $-$109.65750 & 1550 & 230 & $-$5.0 \\
+USU03 & Mountain Home & 40.43190 & $-$110.38210 & 2228 & 594 & $-$5.8 \\
+USU04 & Seep Ridge & 39.75390 & $-$109.54600 & 1933 & 133 & +2.9 \\
+USU05 & Wells Draw & 40.06700 & $-$110.15100 & 1759 & 187 & +10.1 \\
+USU07 & Pariette Draw & 40.03460 & $-$109.83010 & 1465 & 485 & $-$0.1 \\
+USU08 & USU Research Trailer & 40.14370 & $-$109.46718 & 1570 & 446 & $-$4.2 \\
+UUT01 & Uintah Basin Research Trailer & 40.26560 & $-$110.04120 & 1561 & 419 & +14.3 \\
+\bottomrule
+\end{tabularx}
+\end{adjustwidth}
+\end{table}
+
+\vspace{-9pt}
+\begin{table}[H]
 \caption{Paired effects for the default-terrain forcing-product/feedback matrix, averaged over the five hourly spatial medians.
 Positive temperature values indicate a warmer model-minus-observation bias, positive endpoint-difference values indicate a larger 50--500 m potential-temperature difference, and~positive wind-vector values indicate a larger layer-mean wind-vector magnitude.
 Values are descriptive means for this case.}
@@ -619,37 +651,7 @@ Difference in change (primary) & +0.17 & +0.17 \\
 \end{tabularx}
 \end{table}
 
-\vspace{-9pt}
-\begin{table}[H]
-\caption{Case-window temperature stations and nearest d02 sampling audit.
-Coordinates and reported elevations are from the registered Synoptic Data PBC metadata; separation is great-circle distance to the sampled cell centre, and~the final column is X3 default-terrain model height minus reported station elevation.}
-\label{tab:v3-stations}
 
-\small
-
-\begin{adjustwidth}{-\extralength}{0cm}
-\centering %% If there is a figure in wide page, please release command \centering
-
-
-\begin{tabularx}{\fulllength}{llRrrrr}
-\toprule
-\textbf{ID} & \textbf{Site} & \textbf{Latitude} & \textbf{Longitude} & \textbf{Elevation (m)} & \textbf{Cell Distance (m)} & \textbf{Elevation Offset (m)} \\
-\midrule
-KVEL & Vernal Airport & 40.44295 & $-$109.51273 & 1604 & 405 & 0.0 \\
-QRS & Roosevelt & 40.29430 & $-$110.00900 & 1588 & 354 & $-$32.4 \\
-QV4 & Vernal & 40.46472 & $-$109.56083 & 1666 & 408 & $-$2.0 \\
-USU01 & Seven Sisters & 39.98130 & $-$109.34540 & 1615 & 555 & $-$3.0 \\
-USU02 & Gusher & 40.29350 & $-$109.65750 & 1550 & 230 & $-$5.0 \\
-USU03 & Mountain Home & 40.43190 & $-$110.38210 & 2228 & 594 & $-$5.8 \\
-USU04 & Seep Ridge & 39.75390 & $-$109.54600 & 1933 & 133 & +2.9 \\
-USU05 & Wells Draw & 40.06700 & $-$110.15100 & 1759 & 187 & +10.1 \\
-USU07 & Pariette Draw & 40.03460 & $-$109.83010 & 1465 & 485 & $-$0.1 \\
-USU08 & USU Research Trailer & 40.14370 & $-$109.46718 & 1570 & 446 & $-$4.2 \\
-UUT01 & Uintah Basin Research Trailer & 40.26560 & $-$110.04120 & 1561 & 419 & +14.3 \\
-\bottomrule
-\end{tabularx}
-\end{adjustwidth}
-\end{table}
 
 
 

@@ -4,7 +4,7 @@ Catalogue complete: **22 MDPI comments and one English-editor note**, with compo
 The initial catalogue proposed responses with all follow-ups open; the 6 October recovery checkpoint below records the author decisions now present in the working source.
 The production notice is retained as an acknowledgement item.
 
-**Current discussion: MDPI05a — appendix-table citation order (the early Table A6 callout).**
+**Next discussion: MDPI06 — Figure 1 overlapping content. MDPI05a is applied; final placement checks (MDPI05b/MDPI08c) remain deferred until captions are settled.**
 Name the catalogue code whenever referring to the current or next topic, as John requested on 6 October.
 
 This catalogue follows [AGENTS.md](../AGENTS.md) and [PROOFING-HANDOFF.md](../PROOFING-HANDOFF.md) in the active `jrl/proofs-round1` worktree, inspected at `277cfa629f92e3e495cdb33fc9c371cea4c5e621`.
@@ -284,18 +284,26 @@ Source line 110; supplied PDF page 3.
 
 Received-baseline first figure citations are 1, 3, 6, 2, 4, 5, 7, 8, 9 (reference lines 109, 111, 112, 116, 286, 304, 351, 387, 411). First table citations are 1, A6, A1, A2, A3, A4, A5 (lines 151, 205, 305, 307, 311, 329, 350). These sequences were checked against the supplied .aux and source, with figure/table numbers also checked in extracted PDF text.
 
-**MDPI05a: Partly applied — figure citation order corrected; appendix-table order open.**
+**MDPI05a: Applied — figure and appendix-table first-citation order corrected; final proof audit pending.**
 
 Applied figure batch — 6 October: removed only the premature Figure 3 and Figure 6 parentheticals from Methods; retained the descriptions and existing Results callouts in subsections 3.2 and 3.5. No figures were renumbered or moved.
 Source and compiled `.aux` checks confirm first figure citations 1–9 and each first callout before its figure block.
 Validation: `latexmk` under `texlive/20260330` exited 0 (18 pages); inspected pages 3, 6, 7 and 9, with no observed clipping or overlap introduced. All 49 bibliography entries and compiled citation numbers remain ordered; all 23 publisher comments are preserved except trailing whitespace, and the received source hash is unchanged. `git diff --check` passed.
 No undefined citation/reference or overfull-box warnings; existing duplicate Table A5 labels and template warnings remain.
 Proposed reply for this portion: “First figure citations now follow numerical order; the premature Methods callouts to Figures 3 and 6 have been removed, retaining their Results callouts.”
-Outstanding: appendix-table first citations remain 1, A6, A1, A2, A3, A4, A5; final placement remains under MDPI05b/MDPI08c.
+At the figure-batch checkpoint, appendix-table first citations remained 1, A6, A1, A2, A3, A4, A5; the table batch below resolves that sequence. Final placement remains under MDPI05b/MDPI08c.
 Correction commit: `73edb040452d2ae71f8ce787fe6b8a5efba33f3c`; pushed to `origin/jrl/proofs-round1`.
 
-Advice pending author choice: keep the station-audit callout in Methods and move its table from the end to the start of Appendix A. LaTeX would number it A1 and shift the existing A1–A5 to A2–A6, matching first-citation order without changing prose or table data. Check all resulting numbers and appendix pagination.
-Alternatives: removing the Methods callout is smaller but leaves the sampling numbers without a direct table reference; moving the sampling sentence into Results weakens the Methods organisation. Recommendation: move the table. No manuscript change applied for this choice. MDPI09 concerns the separate “Appendix A Table…” citation format.
+Author accepted this recommendation on 6 October: keep the station-audit callout in Methods and move its table from the end to the start of Appendix A. LaTeX would number it A1 and shift the existing A1–A5 to A2–A6, matching first-citation order without changing prose or table data. Check all resulting numbers and appendix pagination.
+Alternatives: removing the Methods callout is smaller but leaves the sampling numbers without a direct table reference; moving the sampling sentence into Results weakens the Methods organisation. Recommendation accepted and applied below. MDPI09 concerns the separate “Appendix A Table…” citation format.
+
+Applied table batch — 6 October: moved the station-audit table unchanged to the start of Appendix A, retaining its Methods callout. First table citations now run 1, A1–A6; the other tables, including the continued heat-deficit table, renumber automatically through unchanged labels.
+Mapping: stations A1; paired effects A2; wind comparison A3; layer sensitivity A4; surface/spatial corroboration A5; heat deficit A6.
+Validation: `latexmk` under `texlive/20260330` exited 0 (19 pages); inspected pages 5, 8, 10, 12–16 and 19. The additional page results from appendix reflow; no observed clipping or overlap introduced. Final layout optimisation remains deferred.
+All table bodies, all 23 publisher query comments and all 49 bibliography entries are preserved; compiled first-citation sequences and reference numbers pass. Received source hash and `git diff --check` pass. No undefined citation/reference or overfull-box warnings; the existing duplicate heat-deficit label now belongs to Table A6 and remains open.
+John confirmed supplementary material has been ditched. No references to it occur in the working source or rendered proof, or in root `main.tex`/`submission-package/main.tex`; “Supplemental” occurs only in the official cited NOAA team name, which is preserved. Historical supplement files were not altered.
+Proposed reply: “Figure and table first citations now follow numerical order. The station-sampling audit is now Table A1 at the start of Appendix A.”
+Remaining: final proof audit; MDPI09 citation-format confirmation; MDPI05b/MDPI08c final placement checks after captions.
 
 **MDPI05b: Open — layout check.**
 
@@ -380,6 +388,7 @@ Source line 204; supplied PDF page 5; repeated on 8.
 ```
 
 The edited pattern is “Appendix A Table A6” at lines 204–205, with highlighted repetitions for Table A2 at line 307 and Table A3 at line 311.
+After the MDPI05a table batch, these working callouts resolve to A1 (stations), A3 (wind comparison) and A4 (layer sensitivity), respectively; all point to the intended unchanged content.
 
 **MDPI09: Open — reference/editorial check.**
 
@@ -541,7 +550,7 @@ Source line 543; supplied PDF page 14.
 %MDPI: we added border lines in table, please confirm.
 ```
 
-Surface, spatial and vertical corroboration; label tab:v3-surface-summary. Source lines 551 onward contain additional horizontal rules.
+Surface, spatial and vertical corroboration; label tab:v3-surface-summary. Now Table A5 in the working proof after MDPI05a; the received query refers to Table A4. Source lines 551 onward contain additional horizontal rules.
 
 **MDPI17: Open — visual/editorial check.**
 
@@ -686,6 +695,7 @@ These items do not increase the count of 22 MDPI comments.
 `tab:v3-heatdeficit` is defined twice (lines 578 and 596), with the second definition attached to a continued Table A5.
 The supplied `.aux` repeats the label and the supplied `.log` reports it as multiply defined (lines 1326 and 1329).
 This is an observed source/log issue, not an additional publisher query or a new build result.
+After the MDPI05a reorder, the duplicate label belongs to working Table A6; both definitions persist and the current build reports them.
 When corrections begin, retain one canonical cross-reference label, preserve the continued table and verify its references in the rebuilt PDF.
 
 ## Next resolution pass
