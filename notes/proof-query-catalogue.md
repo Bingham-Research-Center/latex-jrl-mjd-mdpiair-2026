@@ -409,6 +409,7 @@ After the MDPI05a table batch, these working callouts resolve to A1 (stations), 
 Author approved retaining the publisher’s “Appendix A Table…” format. Added `% JRL: Confirmed; please retain this appendix-table citation format throughout.` on its own line immediately beneath the unchanged query.
 Verified Appendix A and the compiled station/wind/layer targets A1/A3/A4; inspected pages 5 and 8. The callout wording is unchanged. Shared build checks are recorded under MDPI10 below.
 Outstanding: Final proof audit and reply assembly.
+MDPI09/MDPI10 correction commit: `0bd3be2e7957bc9654abcb9a53d68935d56c2d52`; pushed to `origin/jrl/proofs-round1`.
 
 <a id="mdpi10"></a>
 
@@ -431,6 +432,7 @@ Validation: working-source `latexmk` under `texlive/20260330` exited 0 (19 pages
 First figure/table citations and all 49 bibliography entries/compiled numbers remain ordered; all 23 publisher comments and received source hash are preserved. `git diff --check` passes; no undefined citation/reference or overfull-box warning. Existing duplicate heat-deficit label/template warnings remain.
 Proposed reply: “Mathematical typography has been checked throughout. Descriptive pressure subscripts and differential symbols have been made upright; variable styling and height-averaging notation are retained.”
 Outstanding: Final proof audit and reply assembly.
+MDPI09/MDPI10 correction commit: `0bd3be2e7957bc9654abcb9a53d68935d56c2d52`; pushed to `origin/jrl/proofs-round1`.
 
 <a id="mdpi11"></a>
 
