@@ -1,22 +1,21 @@
-# MDPI Air: revised manuscript LaTeX source
+# Editable MDPI Air proof
 
-WRF Cold-Pool Sensitivities Relevant to Winter-Ozone Modelling in the Uinta Basin
+**Edit [air-4472509-done.tex](air-4472509-done.tex) in this directory.**
 
-John R. Lawson, Michael J. Davies, Loknath Dhar and Seth N. Lyman.
-First-round revision, 18 September 2026.
+Full path: `/uufs/chpc.utah.edu/common/home/u0737349/worktrees/air-proofs-round1/proof-package/working/air-4472509-done.tex`.
+Branch: `jrl/proofs-round1`.
+The sibling `../air-4472509-english/` directory is the preserved received bundle.
 
-Compile from this directory with a TeX distribution that includes pdfLaTeX,
-BibTeX and the packages required by the supplied MDPI template:
+Compile from this directory:
 
 ```sh
-latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
+latexmk -pdf -interaction=nonstopmode -halt-on-error air-4472509-done.tex
 ```
 
-Without latexmk, run `pdflatex main`, `bibtex main`, then `pdflatex main` twice.
-The pre-built `main.bbl` is also included. The MDPI class, bibliography styles,
-logos, both bibliography files and all eleven figure files are supplied.
-A cached conversion of the unchanged MDPI logo permits compilation without
-Ghostscript. The compiled manuscript PDF is supplied separately.
+The source embeds `thebibliography`; it does not require a separate BibTeX run or `main.bbl`.
+The MDPI template, logos, bibliography inputs and eleven figure files are included.
+Compilation outputs and this directory's manuscript PDF are ignored by Git.
+Root `main.tex` and `submission-package/` are separate later integration targets.
 
-The separate supplement is retired; the required material is in the article
-and Appendix A. Reviewer responses are supplied separately.
+Follow [the proof query catalogue](../../notes/proof-query-catalogue.md) for decisions and remaining work.
+The working source is an in-progress author proof with unresolved placeholders; a successful build does not establish submission readiness.

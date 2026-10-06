@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-06",
+  "branch": "jrl/proofs-round1",
+  "operation": "Recover author edits into working proof and restore received baseline",
+  "editable_manuscript": "/uufs/chpc.utah.edu/common/home/u0737349/worktrees/air-proofs-round1/proof-package/working/air-4472509-done.tex",
+  "restored_received_source": "/uufs/chpc.utah.edu/common/home/u0737349/worktrees/air-proofs-round1/proof-package/air-4472509-english/air-4472509-done.tex",
+  "backup_directory": "/tmp/air-proof-recovery-20261006-va87kkb1",
+  "saved_source_sha256": "d64cd1f22e01cdf8a8a17dada2abee420714ae50c37b5d7e17caa84720b309dd",
+  "working_source_sha256": "7c775f8e7a506522b8d8e0283931db52349acbe213e99651a8d360ff119ae30e",
+  "received_source_sha256": "45d002c574a824223f5b07f38bf9ebaee2f92199a2406eaf23e867c90c20104e",
+  "transfer_normalisation": "Removed one newly added trailing space after the MDPI email query; no substantive edit changed.",
+  "received_baseline_verified": true,
+  "unresolved": [
+    "WPS version/provenance and citation placeholder",
+    "Fine/default/coarse terrain-source provenance and definition placeholder",
+    "Added C/D ORCID macros are not attached to the author line",
+    "Remaining proof queries"
+  ],
+  "validation": {
+    "backup_and_destination_verified_before_restore": true,
+    "build": {
+      "command": "latexmk -pdf -interaction=nonstopmode -halt-on-error air-4472509-done.tex",
+      "directory": "proof-package/working",
+      "texlive_module": "texlive/20260330",
+      "exit_code": 0,
+      "pdf_pages": 18,
+      "pdf_sha256": "8e248d2c8aa5f2dedcee1f22ce9ee5893e55d34e3f1ef3c318cd0a2f865e4001"
+    },
+    "pdf_inspection": {
+      "pages": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "result": "Affected text is readable with no observed clipping or overlap introduced by the recovered edits; WPS/terrain placeholders remain visible.",
+      "scope": "Affected pages only; not a full proof audit."
+    },
+    "received_bundle_initial_hashes_verified": "33/33",
+    "author_edits_preserved": "Exact saved bytes except one added trailing space removed",
+    "publisher_queries_preserved": "22 MDPI comments and one EE note; MDPI text matches received source",
+    "documentation_links": "All relative file links in changed Markdown resolve",
+    "whitespace": "git diff --check passed",
+    "build_warnings": "Known duplicate Table A5 labels; template headheight/PDF-string warnings and underfull boxes remain. No overfull boxes or undefined references reported."
+  }
+}

@@ -1,4 +1,4 @@
-# Proofing restart — 5 October 2026
+# Proofing restart — 6 October 2026
 
 Start here:
 ```sh
@@ -7,7 +7,17 @@ git status --short --branch
 ```
 Read `AGENTS.md` and `proof-package/intake.json`, then only the source/PDF and evidence needed for the immediate query.
 
-## State
+## Current editing checkpoint — 6 October 2026
+
+**Edit only [proof-package/working/air-4472509-done.tex](proof-package/working/air-4472509-done.tex).**
+John's saved edits were recovered from the received TeX into this working file; the received TeX has been restored to its checksum-verified intake baseline.
+Close the received-source editor tab without saving it again, and open the working file.
+[proof-package/README.md](proof-package/README.md) and the corrected working README give the same editing path and actual build command.
+The source includes John's title, email and emphasis decisions, added ORCID macros and in-progress WPS/terrain placeholders.
+See the query catalogue's recovery checkpoint and [recovery receipt](proof-package/edit-recovery-20261006.json) for checks and the backup location.
+This migration does not resolve the WPS version/citation or terrain-source provenance.
+
+## Setup state — historical 5 October snapshot
 
 - Branch `jrl/proofs-round1`; created from live-verified GitHub `main` at `5ce57e6`. Setup commits are authorised for push to this branch; verify the live tip after publishing.
 - Baseline commit `92b14d2`: all 33 received files copied and committed unchanged, plus intake receipt; byte-for-byte comparison passed.
@@ -20,7 +30,7 @@ Read `AGENTS.md` and `proof-package/intake.json`, then only the source/PDF and e
 
 ## Next work
 
-1. The [proof query catalogue](notes/proof-query-catalogue.md) now records all 22 `%MDPI:` comments and the `%EE:` title note, with exact quotations, source/PDF locators, proposed responses and outstanding evidence/author facts. All follow-ups remain open; begin resolution from that register. It also records unassigned highlights and the duplicate Table A5 label.
+1. The [proof query catalogue](notes/proof-query-catalogue.md) now records all 22 `%MDPI:` comments and the `%EE:` title note, with exact quotations, source/PDF locators, proposed responses and outstanding evidence/author facts. The recovery checkpoint now records John’s title, email and emphasis decisions; continue the remaining open work from that register. It also records unassigned highlights and the duplicate Table A5 label.
 2. Edit/compile only the existing `proof-package/working/air-4472509-done.tex`; preserve editorial queries and the received baseline. Follow the walkthrough batch plan, committing each verified issue or small related group promptly with documented checks and Codex co-authorship.
 3. Verify software versions against the actual analysis provenance; do not insert versions from today's environment. Confirm personal details and editorial acceptance from John/saved decisions.
 4. Build `air-4472509-done.tex` in the working directory and inspect all pages against the supplied PDF. Resolve scientific wording against the claim ledger and exact artefacts only.

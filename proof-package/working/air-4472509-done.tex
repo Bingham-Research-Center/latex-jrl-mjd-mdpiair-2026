@@ -17,15 +17,19 @@
 
 \Title{WRF Cold-Pool Sensitivities Relevant to Winter Ozone Modelling in the Uinta Basin}
 %EE: Attention: title altered
+% JRL: accepted.
 
 \newcommand{\orcidauthorA}{0000-0003-0305-4090}
 \newcommand{\orcidauthorB}{0009-0009-9083-6568}
+\newcommand{\orcidauthorC}{0009-0002-4536-5778} % JRL: added.
+\newcommand{\orcidauthorD}{0000-0001-8493-9522} % JRL: added.
 \Author{\hl{John R. Lawson} %MDPI: 1. Please carefully check the accuracy of names and affiliations. 2. Please confirm if need keep the orcid of authors.
- $^{1,2,}$*\orcidA{}, Michael J. Davies $^{1}$\orcidB{}, Loknath Dhar $^{1,3}$ and Seth N. Lyman $^{1,3}$}
-\AuthorNames{John R. Lawson, Michael J. Davies, Loknath Dhar and Seth N. Lyman}
+ $^{1,2,}$*\orcidA{}, Michael J. Davies $^{1}$\orcidB{}, Loknath Dhar $^{1,3}$, and Seth N. Lyman $^{1,3}$}
+\AuthorNames{John R. Lawson, Michael J. Davies, Loknath Dhar, and Seth N. Lyman}
 
 \address{%
 $^{1}$ \quad Bingham Research Center, Utah State University, Vernal, UT 84078, USA; \hl{michael.davies@usu.edu (M.J.D.); a02391298@usu.edu (L.D.); seth.lyman@usu.edu (S.N.L.)} %MDPI: We added these email addresses here according to those submitted online at susy.mdpi.com. Please confirm.
+% JRL: This is correct.
 \\
 $^{2}$ \quad Department of Mathematics and Statistics, Utah State University, Logan, UT 84322, USA\\
 $^{3}$ \quad Department of Chemistry and Biochemistry, Utah State University, Logan, UT 84322, USA}
@@ -67,6 +71,7 @@ Further compounding potential error, the~choice of microphysics and domain confi
 Four-dimensional data assimilation (FDDA) depends on the nudged variables, input analysis, and scheme-dependent boundary-layer diagnosis \citep{Tran2018FDDA}.
 A subsequent study examined reinitialisation, snow initialisation, and~nudging, but~assimilated evaluation data and differing samples limit configuration comparisons \citep{Tran2021WRFEvaluation}.
 These studies motivate the present sensitivity tests: \textit{\hl{which model choices most affect the meteorology supplied to a simulation of a cold-pool and high-ozone event}%MDPI: Please confirm if the italics are necessary; if not, please remove them.
+% JRL: Please keep: preference for emphasis.
 }?
 
 Errors in meteorology, emission inventory, photolysis, etc., may cancel in coupled simulations.
@@ -91,6 +96,7 @@ We ask:
 The study contains no chemistry calculation and does not separate initial from lateral-boundary forcing; follow-on work in preparation will connect meteorological representation with air-chemistry modelling for this and related~cases.
 
 \section{\highlighting{Materials and~Methods} %MDPI: For this section, please double check that the following details are provided for all cases: 1. Company names and addresses (city, country) of the instruments and equipment used. For USA or Canadian companies, please provide the state name as well (e.g., city name, abbreviated state name, USA/Canada). 2. For software: Please state the version number of the software.
+% JRL: WPS version and citation added; better citation for data; we cannot provide information about observation instruments as data were obtained from an aggregator over many networks (Synoptic Data).
 }
 \label{sec:v3-methods}
 
@@ -113,7 +119,7 @@ For the observed and modelled Mountain Home-minus-Pariette Draw index (\hl{Figur
 
 The ozone context uses the US Environmental Protection Agency (EPA) Air Quality System (AQS) AirData daily archive for January--February 2013 \citep{EPAAirData}.
 We retained the ``Ozone 8-h 2015'' daily-summary row at Ouray, Redwash, Roosevelt, Vernal and Little Mountain: one row per site on each of 59 local dates, with~a within-day coverage of 47--100\% marked in the figure.
-The satellite panel below (\hl{Figure}~\ref{fig:v3-episode-context}) uses the National Aeronautics and Space Administration (NASA) Global Imagery Browse Services (GIBS) Terra Moderate Resolution Imaging Spectroradiometer (MODIS) corrected-reflectance 7-2-1 layer for 2 February 2013 \citep{NASAGIBS}.
+The satellite panel below (\hl{Figure}~\ref{fig:v3-episode-context}) uses the US National Aeronautics and Space Administration (NASA) Global Imagery Browse Services (GIBS) Terra Moderate Resolution Imaging Spectroradiometer (MODIS) corrected-reflectance 7-2-1 layer for 2 February 2013 \citep{NASAGIBS}. % JRL: Added clarification it is US institution.
 We use spectral absorption and scattering principles described by Liou \citep{Liou2002}, with~snow/cloud colours specified by NASA's layer documentation \citep{NASAMODIS721} to inform~interpretation.
 \vspace{-3pt}
 \begin{figure}[H]
@@ -153,7 +159,7 @@ Table~\ref{tab:v3-family} lists the simulations analysed~here.
 \begin{table}[H]
 \caption{\hl{Simulations} %MDPI: Please note that changes to the position/size of figures or tables may occur during the production stage, in order to ensure the correct order or readability.
  analysed in this study.
-Every run uses WRF 4.8.0, three nests at 3/1/0.333~km with 75 levels, Thompson microphysics, RRTMG radiation, and~Noah land surface unless stated.
+Every run uses WRF 4.8.0, three nests at 3/1/0.333~km with 75 levels, Thompson microphysics, RRTMG radiation, and~Noah land surface unless stated. % JRL: Model version stated here.
 ``Fine terrain'' is the custom 3-arc-second source, ``default terrain'' is the 30-arc-second class, and~``coarse terrain'' is the 5-arc-minute GMTED2010 source.}
 \label{tab:v3-family}
 
@@ -187,11 +193,9 @@ Hollow markers identify the seven site-days with less than 75\% within-day obser
 \label{fig:v3-episode-context}
 \end{figure}
 
-The terrain datasets of varying fineness were ingested by the WRF Preprocessing System.
-The fine, default, and coarse sources have spacings of 3 arc seconds, a 30-arc-second class, and 5 arc minutes, respectively; the coarse source is GMTED2010 \citep{DanielsonGesch2011}.
+The terrain datasets of varying fineness were ingested by the WRF Preprocessing System (WPS version 4.8.0), [WRF/WPS ref].
+The fine, default, and coarse sources have spacings of 3 arc seconds, a 30-arc-second class, and 5 arc minutes, respectively; the coarse source is [what?] GMTED2010 \citep{DanielsonGesch2011}.
 These correspond to approximately 90~m, 900~m, and 9~km north--south spacing at $40^{\circ}$N, distinct from WRF horizontal-grid~spacing.
-
-
 
 Hence, our primary comparison crosses GFS and NAM forcing with one-way and two-way feedback on default terrain (X3, X5, X6, and X10).
 A controlled contrast pairs runs differing in one designated treatment on the same domain, locations, hours, and diagnostic calculation.

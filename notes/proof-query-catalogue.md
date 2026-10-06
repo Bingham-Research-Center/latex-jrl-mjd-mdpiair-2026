@@ -1,7 +1,7 @@
 # First proof query catalogue — 5 October 2026
 
 Catalogue complete: **22 MDPI comments and one English-editor note**, with compound requests split below.
-All responses are proposals; every follow-up remains open and author acceptance is unrecorded.
+The initial catalogue proposed responses with all follow-ups open; the 6 October recovery checkpoint below records the author decisions now present in the working source.
 The production notice is retained as an acknowledgement item.
 
 This catalogue follows [AGENTS.md](../AGENTS.md) and [PROOFING-HANDOFF.md](../PROOFING-HANDOFF.md) in the active `jrl/proofs-round1` worktree, inspected at `277cfa629f92e3e495cdb33fc9c371cea4c5e621`.
@@ -14,7 +14,18 @@ The source and PDF hashes match [intake.json](../proof-package/intake.json):
 Source line numbers refer to the unchanged [received TeX](../proof-package/air-4472509-english/air-4472509-done.tex).
 Pages refer to the [supplied PDF](../proof-package/air-4472509-english/air-4472509-done.pdf), identified by text extraction and the supplied auxiliary file; they are locators, not a visual sign-off.
 Exact publisher comment text is retained in code blocks, including original spelling and spacing except trailing whitespace.
-No manuscript correction, compilation, full visual proof audit, bibliographic verification or author confirmation is claimed here.
+The initial 5 October catalogue claimed no manuscript correction, compilation, full visual proof audit, bibliographic verification or author confirmation; the recovery checkpoint below records subsequent saved author decisions and validation.
+
+## Author editing recovery — 6 October 2026
+
+John saved edits into `proof-package/air-4472509-english/air-4472509-done.tex` while intending to edit the working proof.
+Those edits are now in [the working manuscript](../proof-package/working/air-4472509-done.tex); the received file is restored to its intake hash.
+An exact saved-source backup and patch were verified before restoration; [the recovery receipt](../proof-package/edit-recovery-20261006.json) records paths and hashes.
+Only one newly added trailing space was removed during transfer; all substantive author edits and publisher queries were retained.
+The editing/build instructions are now explicit in both proof-folder READMEs and the restart handoff.
+The working proof builds to 18 pages under `texlive/20260330`; affected pages 1–5 were inspected with no observed clipping or overlap introduced by the edits.
+Known duplicate Table A5 labels, template warnings and unresolved draft text remain; this is not a full proof audit.
+Checks and hashes are recorded in the recovery receipt.
 
 ## Walkthrough: where to edit and how to batch the work
 
@@ -99,11 +110,11 @@ Source line 19; supplied PDF page 1.
 
 The proof title is “WRF Cold-Pool Sensitivities Relevant to Winter Ozone Modelling in the Uinta Basin”. Root main.tex line 17 has “Winter-Ozone”; the visible title change removes that hyphen.
 
-**EE01: Open — author decision.**
+**EE01: Author accepted — 6 October saved edit.**
 
-Proposed response/action: Accept the title with “Winter Ozone”, subject to John’s agreement.
+Author decision/reply: Accept the title with “Winter Ozone”; the working source records `% JRL: accepted.` immediately after the original English-editor note.
 
-Outstanding: John’s acceptance of the edited title; the earlier revision’s approval does not establish proof acceptance.
+Outstanding: Final proof audit; this acceptance is recorded from John’s saved source comment.
 
 <a id="mdpi01"></a>
 
@@ -127,7 +138,7 @@ Outstanding: John/saved author decisions must confirm these personal details. Co
 
 Proposed response/action: Retain each displayed ORCID only after the author confirms that it belongs to them and should appear.
 
-Outstanding: John: 0000-0003-0305-4090; Michael: 0009-0009-9083-6568 (source lines 21–24). No ORCID is displayed for Loknath or Seth; do not infer additional identifiers.
+Outstanding: John: 0000-0003-0305-4090; Michael: 0009-0009-9083-6568 (received source lines 21–24). John’s saved edit adds `orcidauthorC` (0009-0002-4536-5778) and `orcidauthorD` (0000-0001-8493-9522), but does not attach `orcidC`/`orcidD` to the author line. Display and author mapping remain to be completed/confirmed; the migration preserves the macros as supplied.
 
 <a id="mdpi02"></a>
 
@@ -141,11 +152,11 @@ Source line 28; supplied PDF page 1.
 
 The three added addresses are michael.davies@usu.edu (M.J.D.), a02391298@usu.edu (L.D.), and seth.lyman@usu.edu (S.N.L.).
 
-**MDPI02: Open — author facts.**
+**MDPI02: Author confirmed — 6 October saved edit.**
 
-Proposed response/action: Confirm each added address and its author mapping, or provide the exact replacement.
+Author decision/reply: The working source records `% JRL: This is correct.` directly after the publisher’s email query; the three displayed addresses are retained.
 
-Outstanding: Confirmation from John/coauthors or saved submission details. The publisher’s statement that these came from SuSy is recorded, not independently verified.
+Outstanding: Final proof audit; confirmation is John’s saved source comment, not independent verification against SuSy.
 
 <a id="mdpi03"></a>
 
@@ -159,11 +170,11 @@ Source line 69; supplied PDF page 2.
 
 The italicised question ends at source line 70.
 
-**MDPI03: Open — editorial choice.**
+**MDPI03: Author confirmed retention — 6 October saved edit.**
 
-Proposed response/action: Propose removing the emphasis while preserving the question’s wording and punctuation.
+Author decision/reply: Retain the italics; the working source records `% JRL: Please keep: preference for emphasis.` under the preserved publisher query.
 
-Outstanding: John’s preference on emphasis. No scientific change is needed.
+Outstanding: Final proof audit.
 
 <a id="mdpi04"></a>
 
@@ -181,13 +192,17 @@ The Methods section uses provider observations and numerical modelling. WRF 4.8.
 
 Proposed response/action: Identify the equipment to which this request applies and add only documented manufacturer names and locations; explain any unavailable provider instrument metadata.
 
-Outstanding: Author/provider records for applicable instruments, companies, city, state where required, and country. Do not infer equipment provenance from the observation provider’s name.
+Author position in the saved edit: Instrument information cannot be supplied from the multi-network Synoptic Data aggregation alone.
+
+Outstanding: Final response wording and any applicable documented provider instrument facts; do not infer manufacturers from the aggregator’s name.
 
 **MDPI04b: Open — provenance check.**
 
 Proposed response/action: Supply versions used for the reported simulations, preprocessing, retrieval and analysis from the corresponding archived environments.
 
-Outstanding: Verify WRF and WPS provenance and the applicable retrieval/analysis packages. Coordinate with MDPI18; today’s installed versions and cited software-paper versions are not evidence of the versions used.
+Saved draft: The working source now says WPS 4.8.0 and retains `[WRF/WPS ref]` and `[what?]` terrain placeholders. The nearby author comment describes intended additions, not verified completion.
+
+Outstanding: Verify WRF and WPS provenance and complete the WPS citation and fine/default/coarse terrain-source descriptions. Coordinate with MDPI18; today’s installed versions and cited software-paper versions are not evidence of the versions used.
 
 <a id="mdpi05"></a>
 
@@ -576,7 +591,7 @@ When corrections begin, retain one canonical cross-reference label, preserve the
 
 ## Next resolution pass
 
-1. Obtain the author facts/choices for EE01, MDPI01–03 and any AI identifiers; consult saved decisions on the writing host where available.
+1. Complete the remaining author facts for MDPI01 and any AI identifiers; retain the title, email and emphasis decisions recovered from John’s saved source comments for EE01, MDPI02 and MDPI03.
 2. Use the complete `proof-package/working/` copy already created; preserve the received baseline and record corrections in this register.
 3. Resolve citation order, mathematical/appendix formatting and the duplicate label in that copy; inspect the queried figures using their registered evidence before drafting precise caption changes.
 4. Recover versions from the actual analysis provenance and verify bibliographic additions/removal against authoritative records. Do not substitute current software versions or assume the publisher’s changes are correct.
