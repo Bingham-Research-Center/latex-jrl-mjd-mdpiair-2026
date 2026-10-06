@@ -4,7 +4,7 @@ Catalogue complete: **22 MDPI comments and one English-editor note**, with compo
 The initial catalogue proposed responses with all follow-ups open; the 6 October recovery checkpoint below records the author decisions now present in the working source.
 The production notice is retained as an acknowledgement item.
 
-**Next: MDPI19–22 bibliography confirmations, then MDPI18 actual software versions. MDPI12–17 caption/table corrections are applied; MDPI11/MDPI16a join the deferred layout checks below.**
+**Next: MDPI18 actual software versions (coordinate MDPI04b); MDPI01 author details are awaiting John’s bundled confirmation. MDPI12–17 and MDPI19–22 are applied/confirmed; deferred layout checks remain below.**
 Name the catalogue code whenever referring to the current or next topic, as John requested on 6 October.
 
 **Deferred checks — author agreed, 6 October:**
@@ -69,7 +69,7 @@ Each individual subquery retains its own status even when related work shares a 
 | 3 — Figures and captions | MDPI06, MDPI08a/b, MDPI11–16 and their subqueries | Marker, panel, shading and dashed-line explanations verified and applied; final overlap checks deferred. | Applied; overlap deferred |
 | 4 — Mathematical/table formatting | MDPI10, MDPI17 | Minimal notation corrections applied; Table A5 borders/row associations checked and retained. | Applied; final audit pending |
 | 5 — Software/equipment provenance | MDPI04a/b, MDPI18; applicable software highlights | Recover actual run/analysis versions and provider instrument facts with exact provenance; record unavailable information explicitly. | Open |
-| 6 — Bibliographic additions/removal | MDPI19, MDPI20a/b, MDPI21, MDPI22; McKinney highlight | Verify publication/conference metadata and removed Herbie DOI; correct embedded references as warranted, preserving Paperpile-owned files. | Open |
+| 6 — Bibliographic additions/removal | MDPI19, MDPI20a/b, MDPI21, MDPI22; McKinney highlight | Publisher/conference additions verified and confirmed; Herbie DOI restored with reply. | Applied; final audit pending |
 | 7 — Production notice and final proof audit | MDPI07; all preceding queries | Record acknowledgement; compile the working source, inspect all pages against the supplied PDF, and reconcile replies/remaining author decisions. | Open |
 
 For each issue, extend its detailed entry with: applied change or confirmed no-change decision; exact evidence; checks/PDF pages; proposed or final reply; remaining author decision; and correction commit hash.
@@ -564,7 +564,7 @@ John authorised batching easy choices and confirmations. Applied only caption ex
 All five affected plot hashes match both `verification/figures/manifest.csv` and `figures/MANIFEST.md`. Plot meanings were checked against the immutable generator revisions cited above; no model run or plotting recomputation.
 Also removed the second `tab:v3-heatdeficit` label from continued Table A6, retaining its canonical label and both table parts.
 Validation: working-source `latexmk` under `texlive/20260330` exited 0 (19 pages); inspected pages 8–11 and 15, including the final panel-(b) transect explanation. No introduced clipping or overlap observed. All tabular bodies, 49 embedded bibliography entries and first-citation order/compiled numbers are unchanged; figure/table first calls remain 1–9 and 1, A1–A6. All 23 publisher comments and received intake source hash are preserved. No undefined citation/reference, multiply-defined-label or overfull-box warning in the final log; `git diff --check` passes. No manuscript footnotes or supplementary-material references.
-Correction commit: recorded in the next status update after committing/pushing this batch.
+Caption/table correction commit: `10f19a3d6b0d44804d5f8bf160269c577de99e53`; pushed to `origin/jrl/proofs-round1`.
 
 <a id="mdpi18"></a>
 
@@ -616,11 +616,10 @@ Source line 735; supplied PDF page 16.
 
 Stajner2022-uw; the inserted dates are “23–27 May 2022” for the EGU General Assembly 2022, Vienna.
 
-**MDPI19: Open — bibliographic verification.**
+**MDPI19: Confirmed — conference dates retained.**
 
-Proposed response/action: Confirm the added dates only after checking the cited abstract and official conference record; supply corrected dates if they differ.
-
-Outstanding: Authoritative abstract/conference metadata. No external date verification has been performed for this catalogue.
+The [official cited abstract EGU22-10491](https://meetingorganizer.copernicus.org/EGU22/EGU22-10491.html) gives Vienna, Austria, 23–27 May 2022 and the existing DOI. Added a standalone `% JRL:` confirmation; no reference text changed.
+Outstanding: Final proof audit.
 
 <a id="mdpi20"></a>
 
@@ -634,17 +633,14 @@ Source line 765; supplied PDF page 16–17.
 
 Skamarock2019 (reference 17) gains “Boulder, CO, USA” at line 765. The “same as below” scope includes the highlighted “Reston, VA, USA” for DanielsonGesch2011 (reference 31), line 847.
 
-**MDPI20a: Open — bibliographic verification.**
+**MDPI20a: Confirmed — Boulder, CO, USA retained.**
 
-Proposed response/action: Confirm the NCAR technical report’s publisher location against its publication record.
+The [cited NCAR/TN-556+STR report](https://www2.mmm.ucar.edu/wrf/users/docs/technote/v4_technote.pdf), front matter (PDF pages 1–3), identifies Boulder, Colorado, USA and March 2019. Added a standalone `% JRL:` reply under the unchanged publisher query.
 
-Outstanding: The cited NCAR/TN-556+STR record or title/publication page, rather than a present-day address.
+**MDPI20b: Confirmed — Reston, VA, USA retained.**
 
-**MDPI20b: Open — bibliographic verification.**
-
-Proposed response/action: Confirm the USGS Open-File Report 2011–1073 publisher location against its publication record.
-
-Outstanding: The report’s publication record/title page. This follow-up is linked to the original comment and is not counted as an additional MDPI comment.
+The [cited USGS report](https://pubs.usgs.gov/of/2011/1073/pdf/of2011-1073.pdf), publication imprint on PDF page 4, reads “U.S. Geological Survey, Reston, Virginia: 2011”. PDF SHA-256: `502225c4a66c188cf22bc51fd72d4d307256dda78f52e45b1425adcdbce27f74`. Added a standalone `% JRL:` confirmation beside the highlighted location; no reference text changed.
+Outstanding: Final proof audit. This follow-up remains part of the original “same as below” comment.
 
 <a id="mdpi21"></a>
 
@@ -658,11 +654,10 @@ Source line 835; supplied PDF page 17.
 
 Tewari2004; the added text is “Seattle, WA, USA, 11–15 January 2004” for the 20th Conference on Weather Analysis and Forecasting/16th Conference on Numerical Weather Prediction.
 
-**MDPI21: Open — bibliographic verification.**
+**MDPI21: Confirmed — Seattle, WA, USA, 11–15 January 2004 retained.**
 
-Proposed response/action: Verify the exact cited meeting, location and dates together, then confirm or supply the correction.
-
-Outstanding: Official conference programme or the cited proceedings/paper. Do not treat a plausible city/date as verified evidence.
+The [AMS record for the cited paper 14.2a](https://ams.confex.com/ams/84Annual/techprogram/paper_69061.htm) matches Tewari’s title and meeting. The [official AMS conference history](https://www.ametsoc.org/ams/meetings-events/ams-meetings/32waf-28nwp-20meso/printed-program/) gives the 20th Weather Analysis and Forecasting conference as Seattle, WA, 11–15 January 2004. Added a standalone `% JRL:` reply; no reference text changed.
+Outstanding: Final proof audit.
 
 <a id="mdpi22"></a>
 
@@ -678,11 +673,11 @@ Herbie retains its GitHub URL and access date at line 895. The proof does not sh
 
 **MDPI22: Correction applied — author requested DOI retention; final proof audit pending.**
 
-Proposed response/action: Recover and verify the removed identifier and decide whether it is a relevant software/archive DOI before agreeing to delete it.
+Applied: the Herbie DOI was restored in the earlier software batch; this batch adds the standalone author reply beneath the unchanged publisher query.
 
 Author decision, 6 October: apply the DOI preference. The removed Herbie identifier was recovered from `submission-package/main.bbl`, matched to the developer’s recommended DOI and restored in the software citation batch above.
 
-Proposed final reply: “Please retain DOI 10.5281/zenodo.4567540: it is Herbie’s developer-recommended persistent software citation and was present in the submitted reference.”
+Applied reply: `% JRL: Please retain DOI 10.5281/zenodo.4567540; it is the developer-recommended software citation.`
 
 Outstanding: Final proof audit and final response assembly. The general DOI is not proof of the release used; actual Herbie version remains under MDPI18. Paperpile-owned files were not edited.
 
@@ -692,11 +687,18 @@ These items do not increase the count of 22 MDPI comments.
 
 | Item | Source/PDF locator | Relationship and required follow-up | Status |
 | --- | --- | --- | --- |
-| Figure 6 and Figure 2 callouts | Lines 112 and 116; p. 3 | Within the citation-order scope of MDPI05. | Open; linked above |
-| Appendix Table A2 and A3 callouts | Lines 307 and 311; p. 8 | Within “same as below” under MDPI09. | Open; linked above |
+| Figure 6 and Figure 2 callouts | Lines 112 and 116; p. 3 | Within the citation-order scope of MDPI05. | Citation order applied; final placement deferred |
+| Appendix Table A2 and A3 callouts | Lines 307 and 311; p. 8 | Within “same as below” under MDPI09. | Confirmed; final audit pending |
 | Claude and OpenAI Codex | Line 660; p. 16 | Possible continuation of the software-version request; explicit model/version requirements are not stated. Preserve the AI-use disclosure and verify author/session facts before adding identifiers. | Open; scope/author facts |
-| USGS publisher location | Line 847; reference 31, p. 17 | Within “same as below” under MDPI20; tracked as MDPI20b. | Open; linked above |
-| McKinney conference location/dates | Line 919; reference 43, p. 18 | Highlighted “Austin, TX, USA, 28 June–3 July 2010” has no attached comment. Verify the exact cited proceedings and official event metadata before confirming this editorial addition. | Open; bibliographic verification |
+| USGS publisher location | Line 847; reference 31, p. 17 | Within “same as below” under MDPI20; tracked as MDPI20b. | Confirmed; final audit pending |
+| McKinney conference location/dates | Line 919; reference 43, p. 18 | Highlighted “Austin, TX, USA, 28 June–3 July 2010”; verified against the original cited proceedings cover, as recorded below. | Confirmed; final audit pending |
+
+### Bibliography confirmation batch — 6 October 2026 (MDPI19–22 and McKinney highlight)
+
+Applied six standalone `% JRL:` replies: EGU dates, both publisher locations, Tewari meeting details, McKinney proceedings details and retention of the already restored Herbie DOI. Original reference metadata and all publisher comments are unchanged.
+The [original SciPy 2010 proceedings cover](https://proceedings.scipy.org/articles/proceedings-2010.pdf) states June 28–July 3, Austin, Texas; PDF SHA-256 `163d56b9f133137ecb23df373d226e01658a94f5b81b7c90a0ed96b5ff08b71f`. The [contemporaneous PSF record](https://www.python.org/psf/records/board/minutes/2010-05-10/) independently gives 28 June–3 July 2010. The modern proceedings index instead lists 28–30 June; the cited original volume’s cover governs this confirmation.
+Validation: working-source `latexmk` under `texlive/20260330` exited 0 (19 pages); reference pages 17–19 inspected. Removing standalone author comments exactly reproduces the preceding source, including all 49 embedded bibliography entries; first-citation sequence and compiled bibliography numbers remain correct. All 23 publisher comments and received source checksum are preserved; no undefined citation/reference, duplicate-label or overfull-box warning. No footnotes or supplementary-material references added. `git diff --check` passes.
+Bibliography confirmation commit: recorded after committing/pushing this batch.
 
 ## Incidental source issue
 
@@ -710,7 +712,7 @@ Resolved in the MDPI11–17 batch: the duplicate now belonged to working Table A
 1. Complete the remaining author facts for MDPI01 and any AI identifiers; retain the title, email and emphasis decisions recovered from John’s saved source comments for EE01, MDPI02 and MDPI03.
 2. Use the complete `proof-package/working/` copy already created; preserve the received baseline and record corrections in this register.
 3. Citation order, mathematical/appendix formatting, caption explanations and the duplicate label are applied; finish the recorded deferred layout checks after layout changes.
-4. Recover versions from the actual analysis provenance and verify bibliographic additions/removal against authoritative records. Do not substitute current software versions or assume the publisher’s changes are correct.
+4. Recover versions from the actual analysis provenance (MDPI18/MDPI04b); bibliography confirmations are now verified/applied. Do not substitute current software versions.
 5. Build `air-4472509-done.tex` in the working copy and inspect all pages against the supplied PDF; update each follow-up with the applied change, evidence, final reply and any remaining author decision.
 
 The received source embeds its bibliography: changing a `.bib` file alone cannot resolve its reference queries.
