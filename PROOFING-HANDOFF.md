@@ -7,6 +7,31 @@ git status --short --branch
 ```
 Read `AGENTS.md` and `proof-package/intake.json`, then only the source/PDF and evidence needed for the immediate query.
 
+## Resume this chat — terse proof Q&A
+
+John wants a concise back-and-forth through [the proof query catalogue](notes/proof-query-catalogue.md), using the chat to clarify points and brainstorm wording.
+Take the query he raises, explain the decision briefly, recommend wording, and apply agreed edits to the working TeX.
+Ask only for missing author facts or material choices; do not turn brainstorming into an unrequested full proof pass.
+Record explicit author decisions separately from suggestions and technical implementation.
+
+**Worktree:** `/uufs/chpc.utah.edu/common/home/u0737349/worktrees/air-proofs-round1`; **branch:** `jrl/proofs-round1`.
+**Only editable draft:** [proof-package/working/air-4472509-done.tex](proof-package/working/air-4472509-done.tex).
+John previously edited the received copy accidentally; recovery commit `19d2452` preserves his edits in the working copy and restores the received bundle, and `331b971` records its receipt.
+Recheck live status; preserve any newer author edits and resolve source passages by text because line numbers shift.
+
+**Resume with MDPI04b: WPS citation/version and terrain provenance**, around working-source lines 196–197, containing `[WRF/WPS ref]` and `[what?]`.
+John wants formal software bibliography entries, preferably suitable paper/software DOIs, with citations in the text rather than footnotes or acknowledgements.
+Advice so far, not accepted edits: Powers et al. (2017), DOI [10.1175/BAMS-D-15-00308.1](https://doi.org/10.1175/BAMS-D-15-00308.1), describes WPS; retain Skamarock (2019) for WRF.
+WPS version 4.8.0 in the draft is unverified; recover the actual preprocessing version independently of WRF.
+Expand GMTED2010 as Global Multi-resolution Terrain Elevation Data 2010; the existing Danielson–Gesch (2011) reference has DOI [10.3133/ofr20111073](https://doi.org/10.3133/ofr20111073).
+The inventory records custom `topo_brc_custom_3s`, default 30-arc-second-class terrain, and coarse `topo_gmted2010_5m`; exact upstream sources and preparation still need evidence.
+Native GMTED2010 products are 7.5/15/30 arc seconds, so establish the five-arc-minute derivative's provenance.
+Last discussion question: what supplied the custom fine terrain, and did the coarse input come from NCAR or John's own processing? No answer yet.
+
+For agreed TeX changes, build the working source and inspect affected PDF pages; keep query quotations and Paperpile/template files intact.
+The recovery build produced 18 pages; pages 1–5 were inspected, while known duplicate Table A5 labels and unresolved draft placeholders remain.
+Commit verified concerns with John's identity and the Codex trailer; root integration, pushing and submission need their own authorisation.
+
 ## Current editing checkpoint — 6 October 2026
 
 **Edit only [proof-package/working/air-4472509-done.tex](proof-package/working/air-4472509-done.tex).**
