@@ -4,7 +4,7 @@ Catalogue complete: **22 MDPI comments and one English-editor note**, with compo
 The initial catalogue proposed responses with all follow-ups open; the 6 October recovery checkpoint below records the author decisions now present in the working source.
 The production notice is retained as an acknowledgement item.
 
-**Next: MDPI05b — John checks pages 7–8 and the back matter after removal of the forced break before Conflicts of Interest. Table A1 is author-approved. PUB01: add the repository URL and post-proof-submission release timing; final query/reply audit and authorised return/integration remain.**
+**Next: MDPI05b — John checks pages 7–8 and back-matter spacing in the rebuilt proof; final query/reply audit and authorised return/integration follow. PUB01: GitHub URL and post-proof-submission release promise are now printed; make the repository public after confirmed proof submission, with the provenance John selects. Table A1 is author-approved.**
 Name the catalogue code whenever referring to the current or next topic, as John requested on 6 October.
 
 **Author visual review — 6 October:**
@@ -13,7 +13,7 @@ John reports the previous working proof “All clear” except size reductions f
 
 - **MDPI05b:** Table A1 is author-approved; requested Figure 5–9/table reductions are applied. Section 3.4 now starts above Figure 4 to address the reported page 7 gap; John checks the revised page balance.
 - **MDPI08c:** Figure 2 placement/size accepted in John’s “All clear” review.
-- **PUB01:** repository/provenance selection and public release pending.
+- **PUB01:** repository URL supplied; release authorised after proof submission, with provenance selection/preparation pending.
 
 This catalogue follows [AGENTS.md](../AGENTS.md) and [PROOFING-HANDOFF.md](../PROOFING-HANDOFF.md) in the active `jrl/proofs-round1` worktree, inspected at `277cfa629f92e3e495cdb33fc9c371cea4c5e621`.
 The received baseline is commit `92b14d2`; all 33 received files are preserved.
@@ -596,7 +596,7 @@ Figure 4 placement correction commit: `37baff30293d88157566018b2b495ae334e289df`
 
 John requests Conflicts of Interest directly below Acknowledgements. Removed the explicit `\newpage` between the two blocks; their text and normal template spacing are unchanged. Added a standalone `% JRL:` explanation. No template modification or forced layout override.
 Validation: working-source `latexmk` under `texlive/20260330` exited 0 (18 pages, down from 19 after removing the forced break). All figure/table bodies, 49 bibliography entries and 23 publisher query notes remain unchanged; first-citation order and compiled reference numbers pass. Received bundle remains unchanged; `git diff --check` passes. No undefined citation/reference, duplicate-label, overfull-box, oversized-float or narrow-column warning. No PDF loaded/rendered by Codex; John checks final back-matter spacing. PUB01 URL/timing update follows as a separate batch.
-Back-matter placement correction commit: recorded after committing/pushing this batch.
+Back-matter placement correction commit: `93a2a0cbb85e3a688aee8b381724000e0be6bd0c`; pushed to `origin/jrl/proofs-round1`.
 
 ### Caption/table confirmation batch — 6 October 2026 (MDPI11–17)
 
@@ -764,12 +764,14 @@ The [original SciPy 2010 proceedings cover](https://proceedings.scipy.org/articl
 Validation: working-source `latexmk` under `texlive/20260330` exited 0 (19 pages); reference pages 17–19 inspected. Removing standalone author comments exactly reproduces the preceding source, including all 49 embedded bibliography entries; first-citation sequence and compiled bibliography numbers remain correct. All 23 publisher comments and received source checksum are preserved; no undefined citation/reference, duplicate-label or overfull-box warning. No footnotes or supplementary-material references added. `git diff --check` passes.
 Bibliography confirmation commit: `7f14149aa26328cddea07b463c95af9e9b5425b1`; pushed to `origin/jrl/proofs-round1`.
 
-## PUB01 — Planned public repository and selected provenance
+## PUB01 — Public repository after proof submission
 
-Author intends to make the manuscript repository and the provenance he selects publicly accessible. Current [GitHub repository](https://github.com/Bingham-Research-Center/latex-jrl-mjd-mdpiair-2026) visibility was checked via `gh api` on 6 October: `private: true`, `visibility: private`, default branch `main`.
-**PUB01: Pending — provenance selection and public release.**
-Applied: Data Availability now says public release of the manuscript repository and selected provenance records is planned, retaining the accurate private-working-repository description and provider access/reuse terms. No public-access claim or manuscript URL citation has been added prematurely.
-Outstanding: Decide which provenance/files/history John wants to reveal; prepare that concrete release for review; publish the approved scope; verify unauthenticated access and an appropriate repository/archive citation, then update Data Availability. John’s future-release intent does not choose the release contents or establish public accessibility. Root proof integration and final package/PR remain separate steps.
+John instructs this manuscript repository be made public once the proof has been submitted; this is conditional authorisation for the later visibility change. Live `gh api` check on 6 October confirms the [GitHub repository](https://github.com/Bingham-Research-Center/latex-jrl-mjd-mdpiair-2026) is still `private: true`, `visibility: private`, default branch `main`. No visibility change performed in this batch.
+**PUB01: URL/timing applied — public release pending proof submission and selected-provenance preparation.**
+Data Availability retains the current private-working-repository description and provider access/reuse terms. It now states: “The manuscript repository and selected provenance records will be made publicly available at [the GitHub repository](https://github.com/Bingham-Research-Center/latex-jrl-mjd-mdpiair-2026) after proof submission.” Added a standalone `% JRL:` release instruction. This is a future availability promise, not a claim of present public access.
+Validation: final working-source `latexmk` under `texlive/20260330` exited 0 (18 pages). No undefined citation/reference, duplicate-label, overfull-box, oversized-float or narrow-column warning. All figure/table bodies, 49 bibliography entries and 23 publisher notes are unchanged; citation order/compiled numbers and received bundle checks pass; `git diff --check` passes. No footnotes or supplementary-material references. No PDF loaded/rendered by Codex; John checks back-matter wrapping/spacing.
+Outstanding: confirm proof submission has occurred; prepare the provenance contents John selects; make the repository public as instructed after that submission; verify unauthenticated repository access and update availability wording to present tense. Public-release timing is authorised and need not be reconfirmed; do not change visibility before submission. Root proof integration and final package/PR remain separate steps.
+Repository URL/timing correction commit: recorded after committing/pushing this batch.
 
 ## Incidental source issue
 
@@ -783,7 +785,7 @@ Resolved in the MDPI11–17 batch: the duplicate now belonged to working Table A
 1. MDPI01 and Claude/Codex author facts are confirmed; the AI models/CLI use are supplied under MDPI18; final audit remains. Retain the saved title, email and emphasis decisions for EE01, MDPI02 and MDPI03.
 2. Use the complete `proof-package/working/` copy already created; preserve the received baseline and record corrections in this register.
 3. Citation order, mathematical/appendix formatting, caption explanations and the duplicate label are applied; preceding overlap/placement checks are author-confirmed. Table A1 is author-approved; John reviews remaining resized items and pages 7–8 after the Section 3.4/Figure 4 placement correction under MDPI05b.
-4. Software versions and bibliography confirmations are applied; MDPI18 model names/CLI use are supplied; follow PUB01 for the planned repository/provenance release. MDPI04a’s saved provider-instrument limitation reply is recorded; audit its scope when assembling the final return.
+4. Software versions and bibliography confirmations are applied; MDPI18 model names/CLI use are supplied; follow PUB01 for the authorised repository release after confirmed proof submission and selected-provenance preparation. MDPI04a’s saved provider-instrument limitation reply is recorded; audit its scope when assembling the final return.
 5. Build `air-4472509-done.tex` in the working copy; Codex checks source/logs/auxiliary records, and John checks the PDFs visually. Update each follow-up with the applied change, evidence, final reply and any remaining author decision.
 
 The received source embeds its bibliography: changing a `.bib` file alone cannot resolve its reference queries.
