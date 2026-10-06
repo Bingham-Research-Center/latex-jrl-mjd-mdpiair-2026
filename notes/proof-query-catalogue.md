@@ -264,7 +264,7 @@ Validation: working-source `latexmk` under `texlive/20260330` exited 0 (18 pages
 All 49 bibliography entries and compiled citation numbers match first-citation order; all 47 pre-existing entries and all 23 publisher query comments were preserved. Received TeX intake hash and `git diff --check` passed. No undefined citation/reference or overfull-box warnings; known duplicate Table A5 labels and template warnings remain.
 Proposed MDPI response for this portion: “We have defined GMTED2010 and clarified that the default and coarse terrain are the NCAR-distributed WPS products at 30 arc seconds and 5 arc minutes, respectively. The custom fine terrain was prepared from USGS NED/3DEP 1-arc-second DEMs. Formal source citations have been added.”
 Remaining: other actual software versions under MDPI18 and final proof audit; MDPI04b is not wholly closed.
-Correction commit: pending the validated terrain batch commit.
+Correction commit: `757a102d1f61b29d11c6e1a26974a9032f63bdc4`.
 
 Figure organisation advice, requested in this session: finish the affected Methods/source prose first, then repair logical first-citation order (MDPI05a). Inspect and refine captions next, and finalise physical figure/table placement (MDPI05b/MDPI08c) after those wording changes. This is a recommended sequence, not acceptance or completion of any figure query; no figures or callouts were reorganised in this batch.
 

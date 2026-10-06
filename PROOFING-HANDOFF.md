@@ -40,7 +40,7 @@ Formal NCAR product and USGS collection bibliography entries are added; the USGS
 The [terrain evidence receipt](proof-package/terrain-source-evidence-20261006.json) records exact archived controls, geogrid selections, July source manifest/build evidence, hashes and limits. The newer `ub-wx` terrain rebuild is a different experiment.
 The terrain batch builds to 18 pages; pages 4, 5, 6, 17 and 18 were inspected. All 49 references and compiled citation numbers match first-citation order; original entries, publisher comments and received source are preserved.
 The coarse WPS product is a derivative: native USGS GMTED2010 resolutions are 7.5/15/30 arc seconds. Do not claim an undocumented NCAR aggregation method or a new terrain result.
-See the MDPI04b terrain batch in the catalogue for the correction commit. Its remaining scope is the other actual software versions and final response/audit.
+Terrain correction commit: `757a102d1f61b29d11c6e1a26974a9032f63bdc4`; see the MDPI04b terrain batch in the catalogue for evidence. Its remaining scope is the other actual software versions and final response/audit.
 John asked about figure organisation order. Recommendation: complete affected prose first (this terrain batch is now done), repair logical first-citation order next (MDPI05a), inspect/refine captions, then finalise figure/table placement (MDPI05b/MDPI08c). No figure or callout corrections have yet been applied; keep those statuses open.
 
 For agreed TeX changes, build the working source and inspect affected PDF pages; keep query quotations and Paperpile/template files intact.
