@@ -585,7 +585,7 @@ Verification: Google’s [model catalogue](https://ai.google.dev/gemini-api/docs
 Outstanding: Final proof/reply audit and PUB01 publication steps. Model use and CLI environment are author-confirmed; per-session traces/snapshots have not been independently audited or published.
 Author wants readers to access the manuscript repository and selected provenance. GitHub API confirms `Bingham-Research-Center/latex-jrl-mjd-mdpiair-2026` is still private. Added only a planned-release sentence to Data Availability; public-release follow-up is tracked as PUB01 below.
 Validation: working-source `latexmk` under `texlive/20260330` exited 0 (19 pages); pages 16–19 inspected; extracted text changed only on those pages. All publisher comments, embedded bibliography entries/order, table bodies and figure assets remain unchanged; received intake checksum preserved; no footnotes or supplementary-material references introduced. No undefined citation/reference, duplicate-label or overfull-box warning; `git diff --check` passes.
-AI disclosure correction commit: recorded after committing/pushing this batch.
+AI disclosure/PUB01 planned-availability correction commit: `787955008e0941db1af7057436991c6675dd7502`; pushed to `origin/jrl/proofs-round1`.
 
 ### Analysis/plotting version batch — 6 October 2026 (MDPI18/MDPI04b)
 
