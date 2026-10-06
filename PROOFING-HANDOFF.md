@@ -18,7 +18,7 @@ Read `AGENTS.md` and `proof-package/intake.json`, then only the source/PDF and e
 
 ## Next work
 
-1. Catalogue `%MDPI:`/`%EE:` queries with source line, exact quotation, proposed response and outstanding author facts. Topics include title, author/affiliation/email/ORCID checks, italics, methods/software versions, figure citation order, captions/overlap/shading, equations, appendix citations, table borders and references.
+1. The [proof query catalogue](notes/proof-query-catalogue.md) now records all 22 `%MDPI:` comments and the `%EE:` title note, with exact quotations, source/PDF locators, proposed responses and outstanding evidence/author facts. All follow-ups remain open; begin resolution from that register. It also records unassigned highlights and the duplicate Table A5 label.
 2. Copy the received directory to `proof-package/working/`; edit/compile only that copy. Preserve editorial queries and the received baseline.
 3. Verify software versions against the actual analysis provenance; do not insert versions from today's environment. Confirm personal details and editorial acceptance from John/saved decisions.
 4. Build `air-4472509-done.tex` in the working directory and inspect all pages against the supplied PDF. Resolve scientific wording against the claim ledger and exact artefacts only.
