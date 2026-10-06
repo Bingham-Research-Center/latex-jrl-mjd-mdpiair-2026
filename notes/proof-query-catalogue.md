@@ -576,7 +576,7 @@ Figure-size correction commit: `f600da81a5ee7dcebad4ebb74ede51d21d07a112`; pushe
 
 John flagged oversized tables. Reduced Table A2 to 0.92 text width with `\small`, Table A4 to 0.90 text width (existing `\small`), and Table A6 to 0.85 text width with `\small`; centred these three tables. Joined A6’s two three-row parts, retaining all six data rows in order and the canonical caption/label, with a horizontal rule between the two groups. Added standalone `% JRL:` notes. Table 1 and the wide station/prose tables A1/A5 retain their existing sizes. A3’s long fixed-width headings overflowed at 0.90 text width; that trial was reverted, retaining its original full width and small type.
 Validation: final working-source `latexmk` under `texlive/20260330` exited 0 (19 pages). All scientific table rows, original captions apart from the removed repeated continuation heading, figure assets, 49 bibliography entries and 23 publisher query notes are preserved. First figure calls are 1–9 and table calls 1/A1–A6; compiled bibliography numbers match first citation. Received bundle remains unchanged and `git diff --check` passes. No undefined reference/citation, duplicate-label, overfull-box, oversized-float or narrow-X-column warning. Existing underfull boxes and template header-height/PDF-string warnings remain; no new warning type. No PDF opened/rendered by Codex. John checks revised label legibility and any new page-balance/spacing problems.
-Compact-table correction commit: recorded after committing/pushing this batch.
+Compact-table correction commit: `28696df77905a57ff4d02e7c60364112e94d5f5a`; pushed to `origin/jrl/proofs-round1`.
 
 ### Caption/table confirmation batch — 6 October 2026 (MDPI11–17)
 
