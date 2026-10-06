@@ -4,7 +4,7 @@ Catalogue complete: **22 MDPI comments and one English-editor note**, with compo
 The initial catalogue proposed responses with all follow-ups open; the 6 October recovery checkpoint below records the author decisions now present in the working source.
 The production notice is retained as an acknowledgement item.
 
-**Next: MDPI05b — John checks pages 7–8 and back-matter spacing in the rebuilt proof; final query/reply audit and authorised return/integration follow. PUB01: GitHub URL and post-proof-submission release promise are now printed; make the repository public after confirmed proof submission, with the provenance John selects. Table A1 is author-approved.**
+**Next: MDPI05b — John’s final visual check (pages 7–8, resized items and back matter), then the [reply/checklist table](../PROOFER-REPLY-TABLE.md) for all original queries and later author changes. A1 is approved. Final reply/return assembly and authorised integration remain; PUB01 public release follows confirmed proof submission.**
 Name the catalogue code whenever referring to the current or next topic, as John requested on 6 October.
 
 **Author visual review — 6 October:**
@@ -26,6 +26,11 @@ Source line numbers refer to the unchanged [received TeX](../proof-package/air-4
 Pages refer to the [supplied PDF](../proof-package/air-4472509-english/air-4472509-done.pdf), identified by text extraction and the supplied auxiliary file; they are locators, not a visual sign-off.
 Exact publisher comment text is retained in code blocks, including original spelling and spacing except trailing whitespace.
 The initial 5 October catalogue claimed no manuscript correction, compilation, full visual proof audit, bibliographic verification or author confirmation; the recovery checkpoint below records subsequent saved author decisions and validation.
+
+## Final-check handoff — 6 October 2026
+
+[PROOFER-REPLY-TABLE.md](../PROOFER-REPLY-TABLE.md) is a derived 51-row reply/checklist snapshot: original and working TeX lines, current PDF pages, and terse changes/replies. All 23 publisher comment occurrences are covered, including compound requests; HL01 covers the uncommented McKinney highlight and JRL01–10 index later author changes. Exact quotes, decisions and evidence remain here. Unchecked table rows are final-return checks, not reopened author decisions.
+The accepted-format PDF has no printed line numbers; its line column is “—”. Locators come from the unchanged source, compiled auxiliary labels and regenerated SyncTeX metadata (18-page build); no PDF was opened/rendered. Refresh the table after any source/layout edit. AGENTS.md and PROOFING-HANDOFF.md are shortened around the active folder, author-owned PDF review, final return steps and already authorised post-submission release. Documentation changes do not imply final author approval, root integration, submission or public release.
 
 ## Author editing recovery — 6 October 2026
 

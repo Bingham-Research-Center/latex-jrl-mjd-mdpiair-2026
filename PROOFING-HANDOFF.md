@@ -1,108 +1,56 @@
-# Proofing restart — 6 October 2026
+# Proof-return handoff — 6 October 2026
 
-Start here:
+**The requested proof edits are applied; final visual/reply approval and delivery remain. Nothing has been submitted or made public by Codex.**
+
+## Start here
+
 ```sh
 cd /uufs/chpc.utah.edu/common/home/u0737349/worktrees/air-proofs-round1
 git status --short --branch
+git worktree list
 ```
-Read `AGENTS.md` and `proof-package/intake.json`, then only the source/PDF and evidence needed for the immediate query.
 
-## Resume this chat — terse proof Q&A
+Read [AGENTS.md](AGENTS.md), then [PROOFER-REPLY-TABLE.md](PROOFER-REPLY-TABLE.md). Use the [catalogue](notes/proof-query-catalogue.md) only for the relevant exact query, saved author decision or evidence. Do not reopen the complete history for each check.
 
-John wants a concise back-and-forth through [the proof query catalogue](notes/proof-query-catalogue.md), using the chat to clarify points and brainstorm wording.
-Take the query he raises, explain the decision briefly, recommend wording, and apply agreed edits to the working TeX.
-Ask only for missing author facts or material choices; do not turn brainstorming into an unrequested full proof pass.
-Record explicit author decisions separately from suggestions and technical implementation.
+A worktree is another folder on a separate branch, sharing this repository’s Git history. This folder is on `jrl/proofs-round1`; the original `gits/latex-jrl-mjd-mdpiair-2026` folder is an earlier revision checkout. Proof changes are committed/pushed on the proof branch. They reach `main` through a later deliberate integration/PR; they do not automatically replace root `main.tex` or its submission package.
 
-**Worktree:** `/uufs/chpc.utah.edu/common/home/u0737349/worktrees/air-proofs-round1`; **branch:** `jrl/proofs-round1`.
-**Only editable draft:** [proof-package/working/air-4472509-done.tex](proof-package/working/air-4472509-done.tex).
-John previously edited the received copy accidentally; recovery commit `19d2452` preserves his edits in the working copy and restores the received bundle, and `331b971` records its receipt.
-Recheck live status; preserve any newer author edits and resolve source passages by text because line numbers shift.
+## Current files and evidence
 
-**Current checkpoint: MDPI05b forced break before Conflicts of Interest removed; PUB01 GitHub URL and post-proof-submission public-release promise printed. Working proof compiled (18 pages). NEXT: John checks pages 7–8/back matter, then final query/reply audit and authorised return/integration. Make the repo public after confirmed proof submission; provenance selection/preparation remains pending. A1 approved.**
-Latest PUB01 batch: Data Availability gives `https://github.com/Bingham-Research-Center/latex-jrl-mjd-mdpiair-2026` and says the manuscript repository/selected provenance will be made publicly available after proof submission. `% JRL:` records that timing. Live GitHub API still reports private; no visibility change yet. John’s instruction authorises the later change once submission is confirmed; do not ask again merely for the already agreed timing. Prepare his selected provenance and verify unauthenticated access when released, then update to present-tense availability. Final source builds to 18 pages with source/log/auxiliary checks passed; no agent PDF loading. URL/timing correction commit: `2fddf485a6438cde8a30056669c6439ec9051e73`; pushed.
-Latest back-matter batch: removed only the explicit page break before Conflicts of Interest and added `% JRL:`; normal template spacing and disclosure text retained. Working source builds to 18 pages with source/log/auxiliary checks passed and no PDF loading. Back-matter correction commit: `93a2a0cbb85e3a688aee8b381724000e0be6bd0c`; pushed.
-Latest placement batch: recorded Table A1 approval with `% JRL:`; moved unchanged Figure 4 after Section 3.4’s first paragraph, with its heading/label kept above the paragraph. Added a standalone placement note. Build/source/auxiliary checks pass; section heading page 7, Figure 4 page 8, A1 page 13. Prose, figure blocks, table data, publisher notes and 49 references are preserved. No agent PDF inspection; new page balance remains John’s check. Figure 4 placement correction commit: `37baff30293d88157566018b2b495ae334e289df`; pushed.
-Latest A1 batch: eleven coordinate pairs rounded for display only; UUT01 “Uintah Basin Research”; `\footnotesize`, local 3 pt column padding, wrapped headings/Site column, normal text width. Added `% JRL:` replies and caption rounding note. Registered metadata/analysis inputs and all station sampling/elevation metrics remain exact. Build/source/auxiliary checks pass with existing warning types/counts unchanged; no agent PDF inspection. Station-table correction commit: `b5765e10b18c414049801e8dc0c7aebbd53fd64c`; pushed. John’s page 7 gap may result from Figure 4’s forced `[H]` block not fitting after Section 3.3 (source/auxiliary inference); that batch retained placement; the subsequent Figure 4 correction is recorded above.
-John’s latest visual decision: Figures 5–7 should be smaller; 8–9 slightly smaller; the previous proof is otherwise all clear. Figure widths now 0.65/0.65/0.72/0.90 text width, with Figure 9 minipages 0.45 each. Each change has a standalone `% JRL:` note. Prior overlap confirmations are recorded, while revised-size legibility remains pending John’s review.
-MDPI05b figure-size commit: `f600da81a5ee7dcebad4ebb74ede51d21d07a112`; pushed. Final working proof: 19 pages, no undefined/duplicate/overfull/oversized-float warnings; existing underfull boxes and template header/PDF-string warnings remain. Tables A2/A4/A6 now use 0.92/0.90/0.85 text width; A2/A6 use small type and A6 has all six rows together. A3’s narrower trial overflowed and was reverted. Other table sizes are retained for their long headings/prose. Table data, captions, figure assets, 49 references, publisher notes and received bundle are preserved. Compact-table correction commit: `28696df77905a57ff4d02e7c60364112e94d5f5a`; pushed. No agent PDF inspection; source/log/auxiliary checks only.
-John’s latest workflow instruction: avoid loading PDFs into Codex to save tokens; John will inspect them and report visual issues. Continue source, build-log and auxiliary-file checks; do not use `view_image`, screenshots or PDF rendering unless requested. Record visual review as pending until John reports it. Figure/table size changes need a specific observed problem, not an inferred visual sign-off.
-John’s 6 October instruction is to apply agreed changes, confirm each completed batch in chat, commit with John as author and `Co-Authored-By: Codex <noreply@openai.com>`, and push each commit promptly to `jrl/proofs-round1`. Keep changes minimal and match his writing conventions. Author replies use a new standalone `% JRL: ...` line, preserving publisher notes and printed formatting.
-Keep the concise author-led discussion pattern; ask only for missing facts or material choices, and do not repeatedly seek permission for the agreed scope.
-Always name the catalogue code when identifying the current or next topic. MDPI05a is applied: John approved moving the station-audit table to the start of Appendix A, retaining its Methods callout; it is now A1. John’s subsequent “All clear” confirms MDPI06 on the preceding proof; revised-size checks remain under MDPI05b. MDPI07 now has the authorised reply on its own `% JRL:` line beneath the publisher note; the 19-page build and full extracted proof text are unchanged, and page 4 was inspected. MDPI08b now explains the verified marker shapes in one caption sentence and retains the hollow-marker coverage explanation. The 19-page build passes; pages 5 and 6 were inspected, with only page 5’s extracted text changed. John initially deferred MDPI08a/c and subsequently accepted the preceding proof’s overlap/placement. MDPI09 is now confirmed with a standalone `% JRL:` reply. MDPI10 changes only descriptive pressure subscripts/differential typography and adds its reply; the 19-page build, unchanged extracted text and pages 5, 6, 8 and 14 pass checks. MDPI11/MDPI16a were initially deferred and are now author-confirmed on the preceding proof; resized Figure 8 remains for John to review. MDPI12–16 panel, shading and dashed-line explanations are verified against immutable plotting records and added; MDPI17 table rules are confirmed. The working proof builds to 19 pages; pages 8–11 and 15 were inspected. All plot assets, table data, 49 bibliography entries and publisher notes are unchanged. The duplicate continued-Table-A6 label is removed and its warning cleared. See the catalogue for exact evidence and checks.
-Caption/table correction commit: `10f19a3d6b0d44804d5f8bf160269c577de99e53`; pushed to `origin/jrl/proofs-round1`.
-MDPI19–21 and the McKinney highlight are verified against original publisher/conference records and retained; MDPI22 now has the standalone DOI-retention reply. This six-comment confirmation batch changes no printed source or reference metadata; it builds to 19 pages, with reference pages 17–19 inspected. Primary-source links and exact PDF-cover evidence are in the catalogue.
-Bibliography confirmation commit: `7f14149aa26328cddea07b463c95af9e9b5425b1`; pushed to `origin/jrl/proofs-round1`.
-John explicitly confirmed the bundled MDPI01 details and instructed displaying all four ORCIDs. Added Loknath/Seth’s saved C/D macros to their author names and a standalone author reply; 19-page build and page-1 icon/link checks passed.
-Author-detail correction commit: `b9dd679eb99d0fc806f504a7772aa1bb3573846d`; pushed to `origin/jrl/proofs-round1`.
-Software-version correction commit: `999278208a89ff41d4e837e12ca08cf4d6c38548`; pushed to `origin/jrl/proofs-round1`. Working proof remains 19 pages; pages 5–7 inspected and only pages 6–7 change in extracted text. All first-citation orders and original tables/assets/bibliography are preserved.
-MDPI18 AI/PUB01 correction commit: `787955008e0941db1af7057436991c6675dd7502`; pushed to `origin/jrl/proofs-round1`. The working proof builds to 19 pages; pages 16–19 inspected, with extracted-text changes limited to those pages. All 49 references/compiled numbers and figure/table first-citation orders are unchanged; original publisher comments and received source are preserved. Public release is planned, not yet performed.
-MDPI05b/MDPI08c placement commit: `5c978530242986fa04792e9821e06fc5d8b396ff`; pushed to `origin/jrl/proofs-round1`. Moved unchanged Figure 2 after Figure 1 in the observations subsection; widths/captions/assets retained. The 19-page build and source/auxiliary checks pass; Figure 2 is now page 4 and Table 1 page 5. No agent PDF loading/rendering/inspection. John’s compact checklist is under MDPI05b in the catalogue.
-MDPI07 reply commit: `120a6ec0ca486bc0be523bec5364f88ec636e9d2`; pushed to `origin/jrl/proofs-round1`. MDPI09 is the separate appendix-citation-format query.
-MDPI08b caption correction commit: `b303e7453675d83171bc692b2207a831def17187`; pushed to `origin/jrl/proofs-round1`.
-MDPI09/MDPI10 correction commit: `0bd3be2e7957bc9654abcb9a53d68935d56c2d52`; pushed to `origin/jrl/proofs-round1`.
-The working TeX now states WPS **4.6.0** and cites `Powers2017WRF`, DOI [10.1175/BAMS-D-15-00308.1](https://doi.org/10.1175/BAMS-D-15-00308.1).
-John supplied the run-use confirmation; live checks corroborated the WPS README, exact `v4.6.0` tag, official remote and HEAD `335c76a111f84503e8b963abaf273ea8053645bb` at `/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_build/WPS`.
-The embedded reference is correctly inserted at first citation (reference 31 in this batch); all 47 bibliography entries pass the first-citation-order check. Existing entries needed no reordering.
-The working proof built under `texlive/20260330` to 18 pages; pages 5 and 17 were inspected. Publisher query comments and received source hash are preserved; known duplicate Table A5 labels and template warnings remain.
-WPS correction commit: `597b0f71b4cb8d2aaa3976e10f2ea21e436877f3`; see the MDPI04b batch in the catalogue for full evidence.
-John wants formal in-text software citations with verified DOI-bearing bibliography entries where available and no manuscript footnotes.
-The second batch moved all existing retrieval/analysis/plotting citations into Methods, retaining thanks and publisher query comments; the 47 entries and compiled citation numbers now follow the changed first-citation order.
-Herbie’s submitted DOI `10.5281/zenodo.4567540` was restored after matching it to developer citation guidance. Polars now cites software DOI `10.5281/zenodo.7697217` (all versions); SynopticPy retains a formal repository reference because no verified DOI was supplied by its citation guidance.
-The second build remains 18 pages; pages 5, 6, 15, 17 and 18 were inspected. Software correction commit: `54a7ffd2feb028b67546a8f37ac3208f659f4011`; evidence is recorded under MDPI18 in the catalogue.
-MDPI18 now states the archived analysis versions (NumPy 2.5.0, SciPy 1.18.0, pandas 3.0.3, Polars 1.42.0, xarray 2026.4.0) and Matplotlib 3.11.0, with a separate sentence for the later Figures 4/5 label revisions using 3.10.8. The catalogue pins the exact study receipts/stages. Herbie 2026.3.0/SynopticPy 2026.6.0 are now supplied from the recovered CHPC brc-tools-2026 installation, linked to the registered observation-retrieval executable. The software-version evidence receipt pins local files/hashes/dates and attribution limits. John’s 1 June release fallback was not needed (it would have selected older SynopticPy 2025.9.0). John subsequently supplied Claude Opus 5/Fable 5 and Codex Sol 6/Astra 6; the disclosure now uses the verified vendor names and records CLI use in a custom environment. John clarified Gemini CLI labels as `gemini-3.5-flash` and `gemini-3.1-pro`; the disclosure now gives Gemini 3.5 Flash and 3.1 Pro for brainstorming. Google corroborates the readable model names; the Pro CLI label is not independently mapped to a dated/preview snapshot. No model-history or per-session publication claim is made. GitHub still reports this repository as private; Data Availability now records planned public release of the repository and selected provenance. PUB01 now records authorised release after proof submission, selected-provenance preparation and public-access verification. MDPI22’s DOI correction/reply is applied, pending final proof review.
-The working source contains no `\footnote{` or `\footnotetext{` calls; retain table `\footnotesize` typography.
+| Item | Path/state |
+| --- | --- |
+| Edit/return source | `proof-package/working/air-4472509-done.tex`; embedded 49-entry bibliography |
+| Review PDF | `proof-package/working/air-4472509-done.pdf`; 18 pages; ignored by Git |
+| Original proof | `proof-package/air-4472509-english/`; all 33 files unchanged from `92b14d2` |
+| Final review index | `PROOFER-REPLY-TABLE.md`; 51 rows covering all 23 publisher notes, highlights and later author changes |
+| Decisions/evidence/history | `notes/proof-query-catalogue.md`; master register, not superseded by the table |
+| Intake/recovery | `proof-package/intake.json`, `proof-package/edit-recovery-20261006.json`, `proof-package/working-copy.json` |
+| Terrain/software evidence | `proof-package/terrain-source-evidence-20261006.json`, `proof-package/software-version-evidence-20261006.json` |
 
-The terrain description is now in Methods subsection 2.2, before Table 1. GMTED2010 is expanded as Global Multi-resolution Terrain Elevation Data 2010 and cites Danielson–Gesch (2011), DOI [10.3133/ofr20111073](https://doi.org/10.3133/ofr20111073).
-Direct study records confirm default GMTED2010 at 30 arc seconds and the coarse NCAR-distributed WPS GMTED2010 product at 5 arc minutes. The fine source is USGS NED/3DEP 1-arc-second DEMs resampled to custom 3-arc-second WPS terrain; it is not a GMTED2010 product.
-Formal NCAR product and USGS collection bibliography entries are added; the USGS catalogue explicitly has no registered DOI for the collection. The `[what?]` placeholder is removed.
-The [terrain evidence receipt](proof-package/terrain-source-evidence-20261006.json) records exact archived controls, geogrid selections, July source manifest/build evidence, hashes and limits. The newer `ub-wx` terrain rebuild is a different experiment.
-The terrain batch builds to 18 pages; pages 4, 5, 6, 17 and 18 were inspected. All 49 references and compiled citation numbers match first-citation order; original entries, publisher comments and received source are preserved.
-The coarse WPS product is a derivative: native USGS GMTED2010 resolutions are 7.5/15/30 arc seconds. Do not claim an undocumented NCAR aggregation method or a new terrain result.
-Terrain correction commit: `757a102d1f61b29d11c6e1a26974a9032f63bdc4`; see the MDPI04b terrain batch in the catalogue for evidence. The subsequent MDPI18 batch supplies the other software versions; complete response/final audit remain pending.
-John asked about figure organisation order. Recommendation: complete affected prose first (this terrain batch is now done), repair logical first-citation order next (MDPI05a), inspect/refine captions, then finalise figure/table placement (MDPI05b/MDPI08c). The premature Methods callouts to Figures 3 and 6 are now removed, retaining their existing Results callouts. First figure citations are verified as 1–9; the 18-page build and pages 3, 6, 7 and 9 pass affected-page checks. The subsequent table batch resolves appendix citation order; final placement remains open under MDPI05b/MDPI08c.
-Figure citation correction commit: `73edb040452d2ae71f8ce787fe6b8a5efba33f3c`; pushed to `origin/jrl/proofs-round1`.
-The station table is now A1; unchanged labels automatically give first table citations 1, A1–A6. The table batch builds to 19 pages; pages 5, 8, 10, 12–16 and 19 were inspected. Table data, publisher comments, 49 bibliography entries and received source are preserved. The duplicate heat-deficit label moved to A6; the later MDPI11–17 batch removes only its continued-part definition.
-John confirmed there is no supplementary material. No such references occur in the working source/PDF or root/delivery manuscripts; preserve the official cited NOAA team name containing “Supplemental” and historical files.
-Table correction commit: `4a57a764698ca18119e8beb38bead549ae1b61d7`; pushed to `origin/jrl/proofs-round1`.
+The reply-table locators are pinned to source commit `003e67c` and SHA-256 `63b2f1e90a66d5c7b3d72b0ce22c082221b9b0bbff96946703a6c66d044420d6`. PDF pages use compiled labels/source metadata; **there are no printed PDF line numbers**, so the table marks them “—”. Refresh the map if TeX or layout changes. Codex did not load/render the PDF.
 
-For agreed TeX changes, build the working source and check logs/source/auxiliary records; John now owns affected-page visual inspection. Keep query quotations and Paperpile/template files intact.
-The recovery build produced 18 pages; pages 1–5 were inspected, while known duplicate Table A5 labels and unresolved draft placeholders remain.
-Commit verified concerns with John's identity and the Codex trailer; push each commit as authorised; root integration, merging and submission need their own authorisation.
+## NEXT — MDPI05b, then final replies
 
-## Current editing checkpoint — 6 October 2026
+1. John checks pages 7–8: Section 3.4’s heading/opening paragraph now precedes unchanged Figure 4 to address the reported gap. Check flow and white space.
+2. John checks resized Figures 5–9 (pages 9–12), remaining tables A2–A6 (pages 14–15), and back matter (page 16). A1 is explicitly approved. The manual page break before Conflicts of Interest is removed; it follows Acknowledgements. Prior overlap/placement confirmations remain author decisions; resized-page readability needs John’s final check.
+3. Use the reply table as the final checklist: tick each code after checking the current source/PDF and proposed reply. MDPI04a’s aggregator/instrument limitation is recorded, not a complete instrument inventory; retain documented provider facts and the software-version attribution limits. All named AI models/CLI use are author-confirmed; no independent per-session/snapshot claim.
+4. Audit that all 22 MDPI notes plus EE01 and highlighted follow-ups have replies, then obtain John’s final return approval. Source comments are not printed replies; assemble the actual journal response deliberately.
+5. Assemble the corrected TeX/PDF/support files for return. Root `main.tex`/`submission-package` integration, required Make checks/package refresh, protected-main PR/merge and journal submission remain separate requested actions. Do not submit or merge merely because this checklist exists.
+6. **PUB01 after confirmed proof submission:** make the repository public as John has instructed, with his selected provenance prepared; verify unauthenticated access and reconcile availability wording with the final published proof. Current Data Availability gives `https://github.com/Bingham-Research-Center/latex-jrl-mjd-mdpiair-2026` and says it will be publicly available after proof submission. Last live API check (6 October): private. Timing is authorised; do not change visibility before submission.
 
-**Edit only [proof-package/working/air-4472509-done.tex](proof-package/working/air-4472509-done.tex).**
-John's saved edits were recovered from the received TeX into this working file; the received TeX has been restored to its checksum-verified intake baseline.
-Close the received-source editor tab without saving it again, and open the working file.
-[proof-package/README.md](proof-package/README.md) and the corrected working README give the same editing path and actual build command.
-The source includes John's title, email and emphasis decisions and added ORCID macros; WPS/terrain placeholders have since been resolved, and the catalogue records subsequent corrections.
-See the query catalogue's recovery checkpoint and [recovery receipt](proof-package/edit-recovery-20261006.json) for checks and the backup location.
-The migration itself did not resolve WPS/terrain provenance; the subsequent verified batches above did.
+## Continue the agreed batch pattern
 
-## Setup state — historical 5 October snapshot
+Name the catalogue code, make minimal changes with standalone `% JRL:` replies, preserve publisher notes and original files, validate, sync the three proof documents, commit with John/Codex attribution and push immediately. Do not ask again for already agreed edits or release timing. Preserve unrelated dirt and other worktrees/archives.
 
-- Branch `jrl/proofs-round1`; created from live-verified GitHub `main` at `5ce57e6`. Setup commits are authorised for push to this branch; verify the live tip after publishing.
-- Baseline commit `92b14d2`: all 33 received files copied and committed unchanged, plus intake receipt; byte-for-byte comparison passed.
-- Received source/PDF: `proof-package/air-4472509-english/air-4472509-done.{tex,pdf}`; PDF is 18 pages.
-- Source has 22 `%MDPI:` comment occurrences (several contain multiple requests) and one `%EE:` title-change note; no corrections or confirmations have been made.
-- Source embeds its bibliography. The inherited README's `main.tex`/`main.bbl` instructions are stale.
-- Editable source: [proof-package/working/air-4472509-done.tex](proof-package/working/air-4472509-done.tex). The complete working copy was created with all 33 files byte-identical; [creation receipt](proof-package/working-copy.json) records initial hashes.
-- The [walkthrough and query catalogue](notes/proof-query-catalogue.md) is the single issue/status register, with a batch plan and all original detailed queries.
-- Setup has not corrected proof text or confirmed author facts. No new compilation, full visual proof audit, pruning, merge or journal submission has been performed.
+John owns visual PDF review to save tokens. Codex checks source/logs/auxiliary metadata and never marks legibility approved from a successful build. Existing underfull boxes, header-height and PDF-string template warnings remain; no undefined citation/reference, duplicate-label, overfull-box, oversized-float or narrow-column warning in the latest build.
 
-## Next work
+Build only after source changes, or when locators require fresh metadata:
 
-1. The [proof query catalogue](notes/proof-query-catalogue.md) now records all 22 `%MDPI:` comments and the `%EE:` title note, with exact quotations, source/PDF locators, proposed responses and outstanding evidence/author facts. The recovery checkpoint now records John’s title, email and emphasis decisions; continue the remaining open work from that register. It also records the completed AI disclosure and the resolved duplicate continued-table label.
-2. Edit/compile only the existing `proof-package/working/air-4472509-done.tex`; preserve editorial queries and the received baseline. Follow the walkthrough batch plan, committing each verified issue or small related group promptly with documented checks and Codex co-authorship.
-3. Software versions and personal details are now recorded with evidence/author confirmation. MDPI18 model names/CLI use are supplied; prepare John’s selected provenance under PUB01 and carry out the authorised public release after confirmed proof submission; MDPI04a already retains John’s saved limitation reply. Audit its scope and preserve all recorded attribution limits.
-4. Build `air-4472509-done.tex` in the working directory; Codex checks source/logs/auxiliary records and John visually inspects the PDFs. Resolve scientific wording against the claim ledger and exact artefacts only.
-5. When integration is requested, update root `main.tex`/package deliberately, run required Make checks, inspect PDFs, then use a PR into protected `main`. Worktree/working-source edits do not copy automatically to `main`; the saved proof corrections need this explicit integration after the proof pass is ready, as explained to John on 6 October.
+```sh
+cd /uufs/chpc.utah.edu/common/home/u0737349/worktrees/air-proofs-round1/proof-package/working
+module load texlive/20260330
+latexmk -pdf -interaction=nonstopmode -halt-on-error air-4472509-done.tex
+```
 
-## Git and other checkout
+The proof PDF is ignored: a Git push transfers the corrected source/docs, not that generated PDF. Transfer it explicitly if reviewing on another host. Root Make targets validate later repository integration, not this working proof.
 
-- Original checkout remains `/uufs/chpc.utah.edu/common/home/u0737349/gits/latex-jrl-mjd-mdpiair-2026` on `jrl/peer-review-round1`; its uploaded `proof-package/` and `notes/print-review-checklist-2026-09-16.md` remain untracked. Do not remove them during cleanup.
-- Local `main` is still `f0c945b`; GitHub `main` was `5ce57e6`. Recheck live remote tips before promotion/pruning.
-- PR #8 squash commit `309e532` has the same file tree as `jrl/peer-review-round1` at `5129714`; ancestry reports alone therefore overstate unmerged work. Do not merge every old branch.
-- Pruning candidates already reachable from verified `origin/main`: local `jrl/chpc-figure-inventory`, `jrl/consolidate-study-truth`; remote `jrl/paperpile-refresh-20260918`, `prep-final-latex`. Archive other tips before deletion; two old finishing branches have linked worktrees, and the July figure-review tip needs its own check.
-- Review decisions/replies live outside Git at `~/reviews/lawson-ozone-wrf-mdpiair-2026/` on the writing host. Earlier roadmap approval statements are not proof acceptance.
+Latest substantive batches, all pushed: `37baff3` (Section 3.4/Figure 4 and A1 approval), `93a2a0c` (Conflicts of Interest break), `2fddf48` (repository URL/release timing). Detailed earlier commits, provider checks and historical visual inspections remain in the catalogue. This handoff/table batch changes no manuscript content.
