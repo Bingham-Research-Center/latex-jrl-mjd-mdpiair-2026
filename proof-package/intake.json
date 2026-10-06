@@ -1,0 +1,23 @@
+{
+  "intake_date": "2026-10-05",
+  "branch": "jrl/proofs-round1",
+  "base_commit": "5ce57e6e9462680b097ccee00afc595038b590c9",
+  "received_directory": "air-4472509-english",
+  "received_file_count": 33,
+  "source": {
+    "path": "air-4472509-english/air-4472509-done.tex",
+    "sha256": "45d002c574a824223f5b07f38bf9ebaee2f92199a2406eaf23e867c90c20104e",
+    "mdpi_comment_occurrences": 22,
+    "english_editor_comment_occurrences": 1,
+    "bibliography": "Embedded thebibliography; no separate bbl required by this source"
+  },
+  "supplied_pdf": {
+    "path": "air-4472509-english/air-4472509-done.pdf",
+    "sha256": "5743cb0541bf6484e96b6085623a1883028cc286b53800ac02c2d915ed2f343a",
+    "pages": 18
+  },
+  "status": "Received baseline only; proof queries and author confirmations remain unresolved",
+  "preservation": "All received files retained unchanged, including template, bibliography, figures and compilation artefacts",
+  "working_copy_guidance": "Copy the received directory before corrections or compilation; compile air-4472509-done.tex, not main.tex as stated in the inherited README",
+  "promotion_guidance": "Review proof corrections before integrating into root main.tex and the submission package; rerun required repository checks and inspect PDFs at integration"
+}
