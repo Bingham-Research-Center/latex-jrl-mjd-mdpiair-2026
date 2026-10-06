@@ -46,6 +46,7 @@ John asked about figure organisation order. Recommendation: complete affected pr
 Figure citation correction commit: `73edb040452d2ae71f8ce787fe6b8a5efba33f3c`; pushed to `origin/jrl/proofs-round1`.
 The station table is now A1; unchanged labels automatically give first table citations 1, A1–A6. The table batch builds to 19 pages; pages 5, 8, 10, 12–16 and 19 were inspected. Table data, publisher comments, 49 bibliography entries and received source are preserved. The duplicate heat-deficit label now belongs to A6 and remains open.
 John confirmed there is no supplementary material. No such references occur in the working source/PDF or root/delivery manuscripts; preserve the official cited NOAA team name containing “Supplemental” and historical files.
+Table correction commit: `4a57a764698ca18119e8beb38bead549ae1b61d7`; pushed to `origin/jrl/proofs-round1`.
 
 For agreed TeX changes, build the working source and inspect affected PDF pages; keep query quotations and Paperpile/template files intact.
 The recovery build produced 18 pages; pages 1–5 were inspected, while known duplicate Table A5 labels and unresolved draft placeholders remain.

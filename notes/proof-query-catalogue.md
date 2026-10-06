@@ -304,6 +304,7 @@ All table bodies, all 23 publisher query comments and all 49 bibliography entrie
 John confirmed supplementary material has been ditched. No references to it occur in the working source or rendered proof, or in root `main.tex`/`submission-package/main.tex`; “Supplemental” occurs only in the official cited NOAA team name, which is preserved. Historical supplement files were not altered.
 Proposed reply: “Figure and table first citations now follow numerical order. The station-sampling audit is now Table A1 at the start of Appendix A.”
 Remaining: final proof audit; MDPI09 citation-format confirmation; MDPI05b/MDPI08c final placement checks after captions.
+Table correction commit: `4a57a764698ca18119e8beb38bead549ae1b61d7`; pushed to `origin/jrl/proofs-round1`.
 
 **MDPI05b: Open — layout check.**
 
