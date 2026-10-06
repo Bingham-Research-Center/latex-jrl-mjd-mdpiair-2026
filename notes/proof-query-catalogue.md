@@ -315,7 +315,7 @@ Applied: moved only Figure 2’s unchanged block from the WRF-configuration subs
 Source audit: all nine figure blocks follow their first mentions; first calls remain 1–9. The two paired-panel figures use two `0.49\textwidth` minipages with `\linewidth` graphics. Other figure widths remain 0.82–0.98 of `\textwidth`. Appendix A1 retains the publisher’s extended-width table; no unverified size change is made.
 Validation: working-source `latexmk` under `texlive/20260330` exited 0 (19 pages). Auxiliary-file caption locators put Figure 2 on page 4 and Table 1 on page 5. First figure calls remain 1–9 and table calls 1, A1–A6; all 49 compiled bibliography numbers match first citation. No undefined citation/reference, duplicate-label, overfull-box or oversized-float warning; `git diff --check` passes. All figure contents/sizes, table bodies, 49 bibliography entries and publisher query quotations remain unchanged; received source checksum preserved. No PDF opened, rendered or visually signed off by Codex.
 Outstanding: John’s visual check of placement, readable plot/table labels, caption spacing and the four overlap queries listed above. A successful build/source audit does not establish visual readability.
-Placement correction commit: recorded after committing/pushing this batch.
+Placement correction commit: `5c978530242986fa04792e9821e06fc5d8b396ff`; pushed to `origin/jrl/proofs-round1`.
 
 **John’s compact visual checklist — current working PDF; pages from `.aux`, not agent visual verification:**
 
