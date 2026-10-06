@@ -561,8 +561,10 @@ UUT01 & Uintah Basin Research Trailer & 40.26560 & $-$110.04120 & 1561 & 419 & +
 Positive temperature values indicate a warmer model-minus-observation bias, positive endpoint-difference values indicate a larger 50--500 m potential-temperature difference, and~positive wind-vector values indicate a larger layer-mean wind-vector magnitude.
 Values are descriptive means for this case.}
 \label{tab:v3-effects}
+% JRL: Short numeric table reduced in width and set in small type.
 \centering
-\begin{tabularx}{\textwidth}{lRRR}
+\small
+\begin{tabularx}{0.92\textwidth}{lRRR}
 \toprule
 \textbf{Effect} & \textbf{$\boldsymbol{\Delta}$T2 Bias ($\boldsymbol{^{\circ}}$C)} & \textbf{$\boldsymbol{\Delta S_{50:500}}$ (K)} & \textbf{$\boldsymbol{\Delta U_{50:500}}$ (m s$\boldsymbol{^{-1}}$)} \\
 \midrule
@@ -599,8 +601,10 @@ Each value is the mean of five hourly paired-station medians on d02 over the sam
 $\Delta S$ is the potential-temperature endpoint-difference contrast; $\Delta U$ and $\Delta V$ are the layer-mean vector-magnitude and scalar-speed contrasts, respectively.}
 \label{tab:v3-layer-sensitivity}
 
+% JRL: Short numeric table reduced in width.
+\centering
 \small
-\begin{tabularx}{\textwidth}{lRRRRRR}
+\begin{tabularx}{0.90\textwidth}{lRRRRRR}
 \toprule
 & \multicolumn{2}{c}{$\boldsymbol{\Delta S}$ \textbf{(K)}} & \multicolumn{2}{c}{$\boldsymbol{\Delta U}$ \textbf{(m s$\boldsymbol{^{-1}}$)}} & \multicolumn{2}{c}{$\boldsymbol{\Delta V}$ \textbf{(m s$\boldsymbol{^{-1}}$)}} \\
 \textbf{Layer (m AGL)} & \textbf{Two-Way} & \textbf{One-Way} & \textbf{Two-Way} & \textbf{One-Way} & \textbf{Two-Way} & \textbf{One-Way} \\
@@ -652,7 +656,10 @@ The primary definition uses the area convex hull with a 2200 m crest (4965 cells
 The values are deterministic descriptive contrasts in MJ m$^{-2}$.}
 \label{tab:v3-heatdeficit}
 
-\begin{tabularx}{\textwidth}{lRR}
+% JRL: Table reduced in width and set in small type; all six rows retained together.
+\centering
+\small
+\begin{tabularx}{0.85\textwidth}{lRR}
 \toprule
 \textbf{GFS $\boldsymbol{-}$ NAM Quantity} & \textbf{Two-Way Pair} & \textbf{One-Way Pair} \\
 \midrule
@@ -660,20 +667,7 @@ Mean difference (primary) & $-$1.23 & $-$1.25 \\
 Hourly range (primary) & $-$1.50 to $-$0.97 & $-$1.53 to $-$0.99 \\
 Hourly envelope (seven definitions) & $-$1.77 to $-$0.70 & $-$1.80 to $-$0.71 \\
 
-\bottomrule
-\end{tabularx}
-\end{table}
-
-
-
-\begin{table}[H]\ContinuedFloat
-\caption{{\em Cont.}}
-%\begin{adjustwidth}{-\extralength}{0cm}
-\begin{tabularx}{\textwidth}{lRR}
-\toprule
-\textbf{GFS $\boldsymbol{-}$ NAM Quantity} & \textbf{Two-Way Pair} & \textbf{One-Way Pair} \\
 \midrule
-
 GFS change, 1400--1800 UTC & +0.32 & +0.30 \\
 NAM change, 1400--1800 UTC & +0.15 & +0.13 \\
 Difference in change (primary) & +0.17 & +0.17 \\

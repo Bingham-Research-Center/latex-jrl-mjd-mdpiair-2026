@@ -4,7 +4,7 @@ Catalogue complete: **22 MDPI comments and one English-editor note**, with compo
 The initial catalogue proposed responses with all follow-ups open; the 6 October recovery checkpoint below records the author decisions now present in the working source.
 The production notice is retained as an acknowledgement item.
 
-**Next: MDPI05b compact table layout, then John’s review of resized Figures 5–9 and tables. John reports the previous proof otherwise all clear; MDPI06/MDPI08a/MDPI11/MDPI16a overlap confirmations are recorded. PUB01 and final return/integration remain pending.**
+**Next: MDPI05b — John’s review of resized Figures 5–9, compact Tables A2/A4/A6 and resulting page balance. The final working PDF is compiled; prior overlap/placement checks are author-confirmed. PUB01 and final return/integration remain pending.**
 Name the catalogue code whenever referring to the current or next topic, as John requested on 6 October.
 
 **Author visual review — 6 October:**
@@ -66,12 +66,12 @@ Each individual subquery retains its own status even when related work shares a 
 | Batch | Individual queries / issues | Work and completion evidence | Current state |
 | --- | --- | --- | --- |
 | 1 — Author facts and choices | EE01; MDPI01a/b, MDPI02, MDPI03; AI-use highlights | Title, names/affiliations, all four ORCIDs, emails and emphasis confirmed; AI models/CLI use are supplied under MDPI18; final audit remains. | Confirmed; final audit pending |
-| 2 — Citation order and cross-references | MDPI05a/b, MDPI08c, MDPI09; duplicate Table A5 label | Citation order, appendix references and duplicate label corrected; final placement deferred. | Applied; layout deferred |
-| 3 — Figures and captions | MDPI06, MDPI08a/b, MDPI11–16 and their subqueries | Marker, panel, shading and dashed-line explanations verified and applied; final overlap checks deferred. | Applied; overlap deferred |
+| 2 — Citation order and cross-references | MDPI05a/b, MDPI08c, MDPI09; duplicate Table A5 label | Citation order, appendix references and duplicate label corrected; placement accepted, revised sizes await John. | Applied; resized-proof review pending |
+| 3 — Figures and captions | MDPI06, MDPI08a/b, MDPI11–16 and their subqueries | Caption explanations applied; John confirms prior overlap checks, Figures 5–9 resized. | Applied; resized-proof review pending |
 | 4 — Mathematical/table formatting | MDPI10, MDPI17 | Minimal notation corrections applied; Table A5 borders/row associations checked and retained. | Applied; final audit pending |
 | 5 — Software/equipment provenance | MDPI04a/b, MDPI18; applicable software highlights | WRF/WPS and retrieval/analysis/plotting versions applied; All AI models/CLI use and software versions recorded; saved instrument-metadata limitation reply retained. | Applied/limitation recorded; final audit pending |
 | 6 — Bibliographic additions/removal | MDPI19, MDPI20a/b, MDPI21, MDPI22; McKinney highlight | Publisher/conference additions verified and confirmed; Herbie DOI restored with reply. | Applied; final audit pending |
-| 7 — Production notice and final proof audit | MDPI07; all preceding queries | Record acknowledgement; compile the working source, inspect all pages against the supplied PDF, and reconcile replies/remaining author decisions. | Open |
+| 7 — Production notice and final proof audit | MDPI07; all preceding queries | Acknowledgement recorded; Codex compiles/checks source, logs and auxiliary records; John reviews pages and final replies are reconciled. | Open |
 
 For each issue, extend its detailed entry with: applied change or confirmed no-change decision; exact evidence; checks/PDF pages; proposed or final reply; remaining author decision; and correction commit hash.
 Commit one verified issue or small related batch promptly, with query IDs and validation in the commit body.
@@ -309,7 +309,7 @@ Proposed reply: “Figure and table first citations now follow numerical order. 
 Remaining: final proof audit; MDPI09 citation-format confirmation; MDPI05b/MDPI08c final placement checks after captions.
 Table correction commit: `4a57a764698ca18119e8beb38bead549ae1b61d7`; pushed to `origin/jrl/proofs-round1`.
 
-**MDPI05b: Placement accepted; figure/table resizing applied or in progress — revised visual review assigned to John.**
+**MDPI05b: Placement accepted; figure/table resizing applied — revised visual review assigned to John.**
 
 Author workflow decision, 6 October: avoid loading PDFs into Codex to save tokens; John will inspect the rendered proof and report visual problems. This overrides the usual agent PDF-inspection step for this and subsequent batches unless John asks otherwise. Builds, logs, auxiliary-file and source checks continue.
 Applied: moved only Figure 2’s unchanged block from the WRF-configuration subsection to the end of the observations subsection, after Figure 1 and both first mentions. Preserved every figure size, caption and asset; the source still uses the publisher’s `[H]` placement. Added/updated standalone `% JRL:` replies under the original MDPI05/08 comments.
@@ -324,7 +324,7 @@ Placement correction commit: `5c978530242986fa04792e9821e06fc5d8b396ff`; pushed 
 | --- | --- | --- |
 | MDPI05b | Figures 5–7: smaller basic plots, readable labels | 9–10 |
 | MDPI05b/MDPI16a | Figures 8–9: slight reductions, readable panel labels | 11–12 |
-| MDPI05b | Appendix A1–A6 table widths and readable values; compact-table batch next | 13–15 |
+| MDPI05b | Appendix A1–A6 widths/values; compact A2/A4/A6, merged A6 | 13–15 |
 
 The previous proof’s placement/overlap checks are author-confirmed. John reviews the newly resized items and any resulting page reflow; source/build checks do not close that review.
 
@@ -547,7 +547,7 @@ John reports all clear apart from Figure 8’s size. Its asset is uniformly redu
 **MDPI16b: Applied — all dashed features explained.**
 
 Verified against `92d96b1:verification/scripts/plot_terrain_cmp11_supplement.py` and the dual-promoted asset: map (b) solid/dashed lines locate north–south/west–east sections; sections (c,d) dashed lines identify coarse terrain, the horizontal 2200 m crest reference and vertical labelled waypoints. Added panel-specific wording and a standalone author reply. The historical generator filename does not imply supplementary material; none is referenced in the manuscript. Batch validation below.
-Outstanding: Deferred overlap assessment and final proof audit; no observed inversion-top claim added.
+Outstanding: John’s revised-size review and final proof audit; preceding overlap check is author-confirmed, and no observed inversion-top claim added.
 
 <a id="mdpi17"></a>
 
@@ -570,7 +570,13 @@ Outstanding: Final proof audit.
 
 John explicitly requested smaller Figures 5–7 and slight reductions to 8–9. Applied Figure 5/6 widths 0.82→0.65 text width, Figure 7 0.90→0.72, Figure 8 0.98→0.90, and Figure 9 panel minipages 0.49→0.45 each. Added standalone `% JRL:` notes at each changed figure; updated overlap/placement replies to match John’s preceding “All clear”. Figure assets/captions, values, table bodies, first-citation order and the 49 bibliography entries are unchanged.
 Validation: working-source `latexmk` under `texlive/20260330` exited 0 (19 pages). First figure calls are 1–9, table calls 1/A1–A6 and all 49 bibliography numbers match first citation. No undefined reference/citation, duplicate-label, overfull-box or oversized-float warning. Table bodies, publisher notes and received bundle are preserved; `git diff --check` passes. No agent PDF loading/rendering. John reviews the new sizes/legibility; his prior “All clear” is not presented as acceptance of these newly generated pages.
-Figure-size correction commit: recorded after committing/pushing this batch.
+Figure-size correction commit: `f600da81a5ee7dcebad4ebb74ede51d21d07a112`; pushed to `origin/jrl/proofs-round1`.
+
+### Compact-table batch — 6 October 2026 (MDPI05b)
+
+John flagged oversized tables. Reduced Table A2 to 0.92 text width with `\small`, Table A4 to 0.90 text width (existing `\small`), and Table A6 to 0.85 text width with `\small`; centred these three tables. Joined A6’s two three-row parts, retaining all six data rows in order and the canonical caption/label, with a horizontal rule between the two groups. Added standalone `% JRL:` notes. Table 1 and the wide station/prose tables A1/A5 retain their existing sizes. A3’s long fixed-width headings overflowed at 0.90 text width; that trial was reverted, retaining its original full width and small type.
+Validation: final working-source `latexmk` under `texlive/20260330` exited 0 (19 pages). All scientific table rows, original captions apart from the removed repeated continuation heading, figure assets, 49 bibliography entries and 23 publisher query notes are preserved. First figure calls are 1–9 and table calls 1/A1–A6; compiled bibliography numbers match first citation. Received bundle remains unchanged and `git diff --check` passes. No undefined reference/citation, duplicate-label, overfull-box, oversized-float or narrow-X-column warning. Existing underfull boxes and template header-height/PDF-string warnings remain; no new warning type. No PDF opened/rendered by Codex. John checks revised label legibility and any new page-balance/spacing problems.
+Compact-table correction commit: recorded after committing/pushing this batch.
 
 ### Caption/table confirmation batch — 6 October 2026 (MDPI11–17)
 
@@ -725,7 +731,7 @@ These items do not increase the count of 22 MDPI comments.
 
 | Item | Source/PDF locator | Relationship and required follow-up | Status |
 | --- | --- | --- | --- |
-| Figure 6 and Figure 2 callouts | Lines 112 and 116; p. 3 | Within the citation-order scope of MDPI05. | Citation order applied; final placement deferred |
+| Figure 6 and Figure 2 callouts | Lines 112 and 116; p. 3 | Within the citation-order scope of MDPI05. | Citation order/placement accepted; resized-proof review pending |
 | Appendix Table A2 and A3 callouts | Lines 307 and 311; p. 8 | Within “same as below” under MDPI09. | Confirmed; final audit pending |
 | Claude and OpenAI Codex | Line 660; p. 16 | Possible continuation of the software-version request; explicit model/version requirements are not stated. Preserve the AI-use disclosure and verify author/session facts before adding identifiers. | All named models and CLI context supplied; final audit pending |
 | USGS publisher location | Line 847; reference 31, p. 17 | Within “same as below” under MDPI20; tracked as MDPI20b. | Confirmed; final audit pending |
@@ -750,13 +756,13 @@ Outstanding: Decide which provenance/files/history John wants to reveal; prepare
 `tab:v3-heatdeficit` is defined twice (lines 578 and 596), with the second definition attached to a continued Table A5.
 The supplied `.aux` repeats the label and the supplied `.log` reports it as multiply defined (lines 1326 and 1329).
 This is an observed source/log issue, not an additional publisher query or a new build result.
-Resolved in the MDPI11–17 batch: the duplicate now belonged to working Table A6. Removed only the continued-part label; both parts and their data remain unchanged. The rebuilt auxiliary file has one canonical label and the final log has no multiply-defined-label warning.
+Resolved in the MDPI11–17 batch: the duplicate now belonged to working Table A6. Removed only the continued-part label; both parts and their data remain unchanged. The rebuilt auxiliary file has one canonical label and the final log has no multiply-defined-label warning. The subsequent MDPI05b compact-table batch joins the two parts into a single six-row Table A6.
 
 ## Next resolution pass
 
 1. MDPI01 and Claude/Codex author facts are confirmed; the AI models/CLI use are supplied under MDPI18; final audit remains. Retain the saved title, email and emphasis decisions for EE01, MDPI02 and MDPI03.
 2. Use the complete `proof-package/working/` copy already created; preserve the received baseline and record corrections in this register.
-3. Citation order, mathematical/appendix formatting, caption explanations and the duplicate label are applied; John completes the recorded visual layout/overlap checks on the rebuilt PDF.
+3. Citation order, mathematical/appendix formatting, caption explanations and the duplicate label are applied; preceding overlap/placement checks are author-confirmed. John reviews resized Figures 5–9, compact Tables A2/A4/A6 and page reflow under MDPI05b.
 4. Software versions and bibliography confirmations are applied; MDPI18 model names/CLI use are supplied; follow PUB01 for the planned repository/provenance release. MDPI04a’s saved provider-instrument limitation reply is recorded; audit its scope when assembling the final return.
 5. Build `air-4472509-done.tex` in the working copy; Codex checks source/logs/auxiliary records, and John checks the PDFs visually. Update each follow-up with the applied change, evidence, final reply and any remaining author decision.
 
