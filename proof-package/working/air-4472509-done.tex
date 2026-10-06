@@ -526,33 +526,31 @@ Appendix~\ref{app:v3-data} retains numerical summaries and sampling metadata for
 \vspace{-3pt}
 \begin{table}[H]
 \caption{Case-window temperature stations and nearest d02 sampling audit.
-Coordinates and reported elevations are from the registered Synoptic Data PBC metadata; separation is great-circle distance to the sampled cell centre, and~the final column is X3 default-terrain model height minus reported station elevation.}
+Coordinates (rounded to three decimal places) and reported elevations are from the registered Synoptic Data PBC metadata; separation is great-circle distance to the sampled cell centre, and~the final column is X3 default-terrain model height minus reported station elevation.}
 \label{tab:v3-stations}
 
-\small
-
-\begin{adjustwidth}{-\extralength}{0cm}
-\centering %% If there is a figure in wide page, please release command \centering
-
-
-\begin{tabularx}{\fulllength}{llRrrrr}
+% JRL: Coordinates rounded to three decimal places; UUT01 site name shortened.
+% JRL: Table brought within text width with smaller type, tighter padding and wrapped headings.
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\centering
+\begin{tabularx}{\textwidth}{lLrrrrr}
 \toprule
-\textbf{ID} & \textbf{Site} & \textbf{Latitude} & \textbf{Longitude} & \textbf{Elevation (m)} & \textbf{Cell Distance (m)} & \textbf{Elevation Offset (m)} \\
+\textbf{ID} & \textbf{Site} & \textbf{Latitude} & \textbf{Longitude} & \textbf{\shortstack[r]{Elevation\\(m)}} & \textbf{\shortstack[r]{Cell\\Distance (m)}} & \textbf{\shortstack[r]{Elevation\\Offset (m)}} \\
 \midrule
-KVEL & Vernal Airport & 40.44295 & $-$109.51273 & 1604 & 405 & 0.0 \\
-QRS & Roosevelt & 40.29430 & $-$110.00900 & 1588 & 354 & $-$32.4 \\
-QV4 & Vernal & 40.46472 & $-$109.56083 & 1666 & 408 & $-$2.0 \\
-USU01 & Seven Sisters & 39.98130 & $-$109.34540 & 1615 & 555 & $-$3.0 \\
-USU02 & Gusher & 40.29350 & $-$109.65750 & 1550 & 230 & $-$5.0 \\
-USU03 & Mountain Home & 40.43190 & $-$110.38210 & 2228 & 594 & $-$5.8 \\
-USU04 & Seep Ridge & 39.75390 & $-$109.54600 & 1933 & 133 & +2.9 \\
-USU05 & Wells Draw & 40.06700 & $-$110.15100 & 1759 & 187 & +10.1 \\
-USU07 & Pariette Draw & 40.03460 & $-$109.83010 & 1465 & 485 & $-$0.1 \\
-USU08 & USU Research Trailer & 40.14370 & $-$109.46718 & 1570 & 446 & $-$4.2 \\
-UUT01 & Uintah Basin Research Trailer & 40.26560 & $-$110.04120 & 1561 & 419 & +14.3 \\
+KVEL & Vernal Airport & 40.443 & $-$109.513 & 1604 & 405 & 0.0 \\
+QRS & Roosevelt & 40.294 & $-$110.009 & 1588 & 354 & $-$32.4 \\
+QV4 & Vernal & 40.465 & $-$109.561 & 1666 & 408 & $-$2.0 \\
+USU01 & Seven Sisters & 39.981 & $-$109.345 & 1615 & 555 & $-$3.0 \\
+USU02 & Gusher & 40.294 & $-$109.658 & 1550 & 230 & $-$5.0 \\
+USU03 & Mountain Home & 40.432 & $-$110.382 & 2228 & 594 & $-$5.8 \\
+USU04 & Seep Ridge & 39.754 & $-$109.546 & 1933 & 133 & +2.9 \\
+USU05 & Wells Draw & 40.067 & $-$110.151 & 1759 & 187 & +10.1 \\
+USU07 & Pariette Draw & 40.035 & $-$109.830 & 1465 & 485 & $-$0.1 \\
+USU08 & USU Research Trailer & 40.144 & $-$109.467 & 1570 & 446 & $-$4.2 \\
+UUT01 & Uintah Basin Research & 40.266 & $-$110.041 & 1561 & 419 & +14.3 \\
 \bottomrule
 \end{tabularx}
-\end{adjustwidth}
 \end{table}
 
 \vspace{-9pt}

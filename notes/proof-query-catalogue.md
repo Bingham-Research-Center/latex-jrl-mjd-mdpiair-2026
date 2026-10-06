@@ -4,14 +4,14 @@ Catalogue complete: **22 MDPI comments and one English-editor note**, with compo
 The initial catalogue proposed responses with all follow-ups open; the 6 October recovery checkpoint below records the author decisions now present in the working source.
 The production notice is retained as an acknowledgement item.
 
-**Next: MDPI05b — John’s review of resized Figures 5–9, compact Tables A2/A4/A6 and resulting page balance. The final working PDF is compiled; prior overlap/placement checks are author-confirmed. PUB01 and final return/integration remain pending.**
+**Next: MDPI05b — final placement/page-balance pass, starting with John’s reported white space on page 7 below Figure 3/Section 3.3; review compact Table A1 on page 13. Figure/table citation order is settled under MDPI05a. Then final query/reply audit, PUB01 public-release scope and authorised return/integration.**
 Name the catalogue code whenever referring to the current or next topic, as John requested on 6 October.
 
 **Author visual review — 6 October:**
 
 John reports the previous working proof “All clear” except size reductions for Figures 5–9; he also flags oversized tables. This confirms the previous placement/overlap checks under MDPI06/MDPI08a/MDPI11/MDPI16a. Final legibility and page balance after the requested resizing remain with John; Codex does not load/render the PDFs.
 
-- **MDPI05b:** resize Figures 5–7 more substantially, Figures 8–9 slightly, and compact tables; recheck the revised sizes/page balance.
+- **MDPI05b:** requested Figure 5–9 and table reductions applied; Table A1 now fits text width. Final size/placement review remains, including John’s reported page 7 white space.
 - **MDPI08c:** Figure 2 placement/size accepted in John’s “All clear” review.
 - **PUB01:** repository/provenance selection and public release pending.
 
@@ -312,8 +312,8 @@ Table correction commit: `4a57a764698ca18119e8beb38bead549ae1b61d7`; pushed to `
 **MDPI05b: Placement accepted; figure/table resizing applied — revised visual review assigned to John.**
 
 Author workflow decision, 6 October: avoid loading PDFs into Codex to save tokens; John will inspect the rendered proof and report visual problems. This overrides the usual agent PDF-inspection step for this and subsequent batches unless John asks otherwise. Builds, logs, auxiliary-file and source checks continue.
-Applied: moved only Figure 2’s unchanged block from the WRF-configuration subsection to the end of the observations subsection, after Figure 1 and both first mentions. Preserved every figure size, caption and asset; the source still uses the publisher’s `[H]` placement. Added/updated standalone `% JRL:` replies under the original MDPI05/08 comments.
-Source audit: all nine figure blocks follow their first mentions; first calls remain 1–9. The two paired-panel figures use two `0.49\textwidth` minipages with `\linewidth` graphics. Other figure widths remain 0.82–0.98 of `\textwidth`. Appendix A1 retains the publisher’s extended-width table; no unverified size change is made.
+Applied in the placement batch: moved only Figure 2’s unchanged block from the WRF-configuration subsection to the end of the observations subsection, after Figure 1 and both first mentions. Preserved every figure size, caption and asset; the source still uses the publisher’s `[H]` placement. Added/updated standalone `% JRL:` replies under the original MDPI05/08 comments.
+Source audit at the placement checkpoint: all nine figure blocks follow their first mentions; first calls remain 1–9. The two paired-panel figures use two `0.49\textwidth` minipages with `\linewidth` graphics. Other figure widths remain 0.82–0.98 of `\textwidth`. Appendix A1 retains the publisher’s extended-width table; no unverified size change is made.
 Validation: working-source `latexmk` under `texlive/20260330` exited 0 (19 pages). Auxiliary-file caption locators put Figure 2 on page 4 and Table 1 on page 5. First figure calls remain 1–9 and table calls 1, A1–A6; all 49 compiled bibliography numbers match first citation. No undefined citation/reference, duplicate-label, overfull-box or oversized-float warning; `git diff --check` passes. All figure contents/sizes, table bodies, 49 bibliography entries and publisher query quotations remain unchanged; received source checksum preserved. No PDF opened, rendered or visually signed off by Codex.
 John’s subsequent “All clear” accepts this placement and the prior overlap checks. The requested Figure 5–9 and table size changes are recorded below; their revised legibility/page balance remain for John. A successful build/source audit does not establish visual readability.
 Placement correction commit: `5c978530242986fa04792e9821e06fc5d8b396ff`; pushed to `origin/jrl/proofs-round1`.
@@ -324,7 +324,8 @@ Placement correction commit: `5c978530242986fa04792e9821e06fc5d8b396ff`; pushed 
 | --- | --- | --- |
 | MDPI05b | Figures 5–7: smaller basic plots, readable labels | 9–10 |
 | MDPI05b/MDPI16a | Figures 8–9: slight reductions, readable panel labels | 11–12 |
-| MDPI05b | Appendix A1–A6 widths/values; compact A2/A4/A6, merged A6 | 13–15 |
+| MDPI05b | Appendix A1–A6 widths/values; compact A1/A2/A4/A6, merged A6 | 13–15 |
+| MDPI05b | Reported white space below Figure 3/Section 3.3; final placement pass pending | 7 |
 
 The previous proof’s placement/overlap checks are author-confirmed. John reviews the newly resized items and any resulting page reflow; source/build checks do not close that review.
 
@@ -578,6 +579,13 @@ John flagged oversized tables. Reduced Table A2 to 0.92 text width with `\small`
 Validation: final working-source `latexmk` under `texlive/20260330` exited 0 (19 pages). All scientific table rows, original captions apart from the removed repeated continuation heading, figure assets, 49 bibliography entries and 23 publisher query notes are preserved. First figure calls are 1–9 and table calls 1/A1–A6; compiled bibliography numbers match first citation. Received bundle remains unchanged and `git diff --check` passes. No undefined reference/citation, duplicate-label, overfull-box, oversized-float or narrow-X-column warning. Existing underfull boxes and template header-height/PDF-string warnings remain; no new warning type. No PDF opened/rendered by Codex. John checks revised label legibility and any new page-balance/spacing problems.
 Compact-table correction commit: `28696df77905a57ff4d02e7c60364112e94d5f5a`; pushed to `origin/jrl/proofs-round1`.
 
+### Station-table batch and final placement follow-up — 6 October 2026 (MDPI05b)
+
+John reports Table A1 remains too wide. Rounded all eleven displayed latitude/longitude pairs to three decimal places (nearest, half away from zero), shortened UUT01 to “Uintah Basin Research”, and changed A1 from the extended page width to normal text width. Used `\footnotesize` instead of `\small`, local 3 pt column padding, a wrapping Site column and two-line headings for elevation/distance/offset. The caption states the displayed coordinates are rounded. Standalone `% JRL:` notes explain the changes. IDs, all other site names, reported elevations, station-to-cell distances and offsets are exact; full-precision registered metadata and analysis inputs are untouched.
+Validation: working-source `latexmk` under `texlive/20260330` exited 0 (19 pages); A1 remains page 13 according to `.aux`. First figure calls remain 1–9, table calls 1/A1–A6, and all 49 bibliography numbers match first citation. All 23 publisher notes and the received bundle are preserved; `git diff --check` passes. No undefined citation/reference, duplicate-label, overfull-box, oversized-float or narrow-X-column warning; existing warning types/counts match the preceding proof after ignoring shifted source-line numbers. No PDF loaded/rendered by Codex; John reviews the new A1 size.
+John also reports considerable white space on page 7 below Figure 3 and Section 3.3. The source places Figure 4 immediately after the short Section 3.3 prose with `[H]`; the compiled auxiliary file puts Figure 3 on page 7 and Figure 4 on page 8. A figure block too tall for the remaining page is a plausible cause, inferred from source/auxiliary records rather than visually verified. No placement change in this batch. Figure citation order is already settled under MDPI05a; physical placement/page balance can be the last layout pass, now that prose and requested size changes are substantially done. NEXT: MDPI05b final placement, then final query/reply audit; PUB01 publication scope and root/package integration remain separate outstanding steps.
+Station-table correction commit: recorded after committing/pushing this batch.
+
 ### Caption/table confirmation batch — 6 October 2026 (MDPI11–17)
 
 John authorised batching easy choices and confirmations. Applied only caption explanations and standalone `% JRL:` replies; original publisher notes, plot assets and data remain unchanged. Deferred MDPI11/MDPI16a overlap checks until final layout.
@@ -762,7 +770,7 @@ Resolved in the MDPI11–17 batch: the duplicate now belonged to working Table A
 
 1. MDPI01 and Claude/Codex author facts are confirmed; the AI models/CLI use are supplied under MDPI18; final audit remains. Retain the saved title, email and emphasis decisions for EE01, MDPI02 and MDPI03.
 2. Use the complete `proof-package/working/` copy already created; preserve the received baseline and record corrections in this register.
-3. Citation order, mathematical/appendix formatting, caption explanations and the duplicate label are applied; preceding overlap/placement checks are author-confirmed. John reviews resized Figures 5–9, compact Tables A2/A4/A6 and page reflow under MDPI05b.
+3. Citation order, mathematical/appendix formatting, caption explanations and the duplicate label are applied; preceding overlap/placement checks are author-confirmed. John reviews resized Figures 5–9, compact Tables A1/A2/A4/A6 and page reflow under MDPI05b, including the reported page 7 gap.
 4. Software versions and bibliography confirmations are applied; MDPI18 model names/CLI use are supplied; follow PUB01 for the planned repository/provenance release. MDPI04a’s saved provider-instrument limitation reply is recorded; audit its scope when assembling the final return.
 5. Build `air-4472509-done.tex` in the working copy; Codex checks source/logs/auxiliary records, and John checks the PDFs visually. Update each follow-up with the applied change, evidence, final reply and any remaining author decision.
 
