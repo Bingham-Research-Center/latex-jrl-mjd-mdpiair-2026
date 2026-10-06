@@ -4,7 +4,7 @@ Catalogue complete: **22 MDPI comments and one English-editor note**, with compo
 The initial catalogue proposed responses with all follow-ups open; the 6 October recovery checkpoint below records the author decisions now present in the working source.
 The production notice is retained as an acknowledgement item.
 
-**Next: MDPI18 AI identifiers/scope (John will supply the exact identifiers), then deferred layout/final proof audit. MDPI04a already has John’s saved instrument-metadata limitation reply. Retrieval, analysis and plotting versions are now applied. MDPI01, MDPI12–17 and MDPI19–22 are confirmed/applied; deferred checks remain below.**
+**Next: MDPI05b/MDPI08c final placement and size, then MDPI06/MDPI08a/MDPI11/MDPI16a overlap checks and final proof audit. MDPI18 model names/CLI use and software versions are applied; PUB01 public repository/selected-provenance release remains pending.**
 Name the catalogue code whenever referring to the current or next topic, as John requested on 6 October.
 
 **Deferred checks — author agreed, 6 October:**
@@ -64,11 +64,11 @@ Each individual subquery retains its own status even when related work shares a 
 
 | Batch | Individual queries / issues | Work and completion evidence | Current state |
 | --- | --- | --- | --- |
-| 1 — Author facts and choices | EE01; MDPI01a/b, MDPI02, MDPI03; AI-use highlights | Title, names/affiliations, all four ORCIDs, emails and emphasis confirmed; AI identifiers remain under MDPI18. | Confirmed; AI scope open |
+| 1 — Author facts and choices | EE01; MDPI01a/b, MDPI02, MDPI03; AI-use highlights | Title, names/affiliations, all four ORCIDs, emails and emphasis confirmed; AI models/CLI use are supplied under MDPI18; final audit remains. | Confirmed; final audit pending |
 | 2 — Citation order and cross-references | MDPI05a/b, MDPI08c, MDPI09; duplicate Table A5 label | Citation order, appendix references and duplicate label corrected; final placement deferred. | Applied; layout deferred |
 | 3 — Figures and captions | MDPI06, MDPI08a/b, MDPI11–16 and their subqueries | Marker, panel, shading and dashed-line explanations verified and applied; final overlap checks deferred. | Applied; overlap deferred |
 | 4 — Mathematical/table formatting | MDPI10, MDPI17 | Minimal notation corrections applied; Table A5 borders/row associations checked and retained. | Applied; final audit pending |
-| 5 — Software/equipment provenance | MDPI04a/b, MDPI18; applicable software highlights | WRF/WPS and retrieval/analysis/plotting versions applied; AI identifiers/scope remain open; saved instrument-metadata limitation reply retained. | Partly applied; recorded gaps open |
+| 5 — Software/equipment provenance | MDPI04a/b, MDPI18; applicable software highlights | WRF/WPS and retrieval/analysis/plotting versions applied; All AI models/CLI use and software versions recorded; saved instrument-metadata limitation reply retained. | Applied/limitation recorded; final audit pending |
 | 6 — Bibliographic additions/removal | MDPI19, MDPI20a/b, MDPI21, MDPI22; McKinney highlight | Publisher/conference additions verified and confirmed; Herbie DOI restored with reply. | Applied; final audit pending |
 | 7 — Production notice and final proof audit | MDPI07; all preceding queries | Record acknowledgement; compile the working source, inspect all pages against the supplied PDF, and reconcile replies/remaining author decisions. | Open |
 
@@ -573,15 +573,19 @@ Source line 655; supplied PDF page 15; possible continuation on 16.
 
 Explicit highlights cover NumPy, SciPy, pandas, xarray and Matplotlib (lines 655–656). Polars is named without a highlight; Herbie and SynopticPy appear immediately above (line 654). Claude and OpenAI Codex are highlighted in the AI declaration at line 660 without a separate comment.
 
-**MDPI18: Software portion applied — citations and retrieval/analysis/plotting versions supplied; AI-highlight scope remains open.**
+**MDPI18: Applied — software versions and author-confirmed AI models/CLI use supplied; final proof audit pending.**
 
 Proposed response/action: Add the verified versions used for the named analysis/plotting software; coordinate the broader software inventory with MDPI04b. Review the AI highlights separately before interpreting “Same as below”.
 
-Author citation preference, 6 October: cite software in Methods with DOI-bearing bibliography entries where available. Citation placement and actual version additions are applied in the batches below; AI-highlight scope remains open.
+Author citation preference, 6 October: cite software in Methods with DOI-bearing bibliography entries where available. Citation placement, software versions and author-confirmed AI model names/CLI use are applied; final audit remains pending.
 
-Outstanding: Applicable historical AI product/model identifiers and whether the publisher requires them for the highlighted Claude/Codex names. These facts were requested from John on 6 October; his reply identifies the probable CHPC conda/mamba retrieval environment and authorises a 1 June 2026 release-history fallback if it cannot be recovered. The environment was recovered, so the fallback was not used; do not assign an AI model from a release date. The publisher note does not explicitly define the scope of the AI highlights.
-
-Author decision, 6 October: John answered “I’ll provide the exact identifiers” to the bundled AI follow-up. Await those identifiers before changing the disclosure or adding its final `% JRL:` reply; the proposed statement that identifiers were not retained was not accepted.
+Author update, 6 October: Claude (Opus 5; Fable 5), Codex (Sol 6; Astra 6) and Gemini “Flash 5” for brainstorming; all accessed via CLI in a custom environment. This supersedes the earlier promise to supply identifiers. The source retains the original disclosure roles and author responsibility, adds Claude/Codex names and the CLI context, and identifies Gemini’s brainstorming role. John then clarified the Gemini CLI labels as `gemini-3.5-flash` and `gemini-3.1-pro`; the disclosure uses the corresponding readable names Gemini 3.5 Flash and 3.1 Pro.
+Vendor nomenclature checked against [Anthropic’s system-card index](https://www.anthropic.com/system-cards), [OpenAI’s GPT-6 Sol page](https://developers.openai.com/api/docs/models/gpt-6-sol) and [Codex model documentation](https://learn.chatgpt.com/docs/models), preserving Sol 6 rather than substituting the newer Sol 6.1. Study use is John’s explicit report; vendor pages establish names, not per-session usage or dated model snapshots.
+Verification: Google’s [model catalogue](https://ai.google.dev/gemini-api/docs/models) corroborates the readable names Gemini 3.5 Flash and 3.1 Pro; its Pro endpoint is shown as `gemini-3.1-pro-preview`, whereas John reports the CLI label `gemini-3.1-pro`. No preview suffix, dated snapshot or different model has been assigned to his sessions. The earlier “Flash 5” has been superseded by his explicit correction. The proposed claim that model identifiers were not retained was not accepted and is not in the source.
+Outstanding: Final proof/reply audit and PUB01 publication steps. Model use and CLI environment are author-confirmed; per-session traces/snapshots have not been independently audited or published.
+Author wants readers to access the manuscript repository and selected provenance. GitHub API confirms `Bingham-Research-Center/latex-jrl-mjd-mdpiair-2026` is still private. Added only a planned-release sentence to Data Availability; public-release follow-up is tracked as PUB01 below.
+Validation: working-source `latexmk` under `texlive/20260330` exited 0 (19 pages); pages 16–19 inspected; extracted text changed only on those pages. All publisher comments, embedded bibliography entries/order, table bodies and figure assets remain unchanged; received intake checksum preserved; no footnotes or supplementary-material references introduced. No undefined citation/reference, duplicate-label or overfull-box warning; `git diff --check` passes.
+AI disclosure correction commit: recorded after committing/pushing this batch.
 
 ### Analysis/plotting version batch — 6 October 2026 (MDPI18/MDPI04b)
 
@@ -597,7 +601,7 @@ Added only the package versions recorded in the study’s archived receipts to t
 Retrieval follow-up: Herbie 2026.3.0 and SynopticPy 2026.6.0 were recovered from the retained CHPC `brc-tools-2026` installation. Conda history records initial environment creation on 29 June 2026 and Herbie’s exact build, with no later Herbie transaction. SynopticPy’s retained `METADATA` records version 2026.6.0 with modification time 29 June 2026, before the registered July observation retrieval. `verification/figures/chpc-figure-inventory-2026-07-10.md`, “Exact reproduction commands”, explicitly names this environment’s Python for the observation-cache regeneration.
 The [software-version receipt](../proof-package/software-version-evidence-20261006.json) preserves exact paths, hashes, dates and limits: SynopticPy attribution combines the registered executable with retained installation metadata; Herbie installation is verified but no per-forcing-file retrieval log is supplied. These are environment-based attributions, not conclusions from software DOIs.
 [PyPI Herbie](https://pypi.org/project/herbie-data/2026.3.0/) and [SynopticPy](https://pypi.org/project/SynopticPy/) release histories corroborate availability: 7 March and 3 June 2026. John’s requested 1 June fallback would give Herbie 2026.3.0/SynopticPy 2025.9.0; it is recorded but not used because the installation evidence was recovered.
-Standalone reply now records that retrieval, analysis and plotting versions are supplied from retained records. Applicable AI identifiers remain open. Python versions 3.12.13/3.13.12 are recorded in the study receipts but were not added to the prose because Python is not separately named in this query.
+Standalone reply now records that retrieval, analysis and plotting versions are supplied from retained records. The subsequent author-confirmed AI disclosure batch above supplies Claude/Codex names and CLI use; Gemini names are supplied; final audit remains pending. Python versions 3.12.13/3.13.12 are recorded in the study receipts but were not added to the prose because Python is not separately named in this query.
 Validation: working-source `latexmk` under `texlive/20260330` exited 0 (19 pages); pages 5–7 inspected; extracted text changed only on pages 6–7. All 49 bibliography entries/compiled citation numbers, publisher comments, table bodies and figure assets remain unchanged; first figure/table calls remain 1–9 and 1, A1–A6; received source checksum preserved. No undefined citation/reference, duplicate-label or overfull-box warning; `git diff --check` passes. No footnotes or supplementary-material references introduced.
 Version correction commit: `999278208a89ff41d4e837e12ca08cf4d6c38548`; pushed to `origin/jrl/proofs-round1`.
 
@@ -616,7 +620,7 @@ Reordered the embedded bibliography to match the changed first-citation sequence
 All 45 bibliography entries other than the corrected Herbie and Polars entries were preserved byte-for-byte from the preceding batch; all 23 MDPI/EE comments and received intake source hash were preserved. No manuscript footnote was introduced.
 Validation: `texlive/20260330` working-source `latexmk` build exited 0, 18 pages. Inspected pages 5, 6, 15, 17 and 18 for Methods flow, Acknowledgements, numbering and complete DOI/reference wrapping; no observed clipping or overlap introduced.
 No undefined citation/reference or overfull-box warning; known duplicate Table A5 labels and template/underfull warnings remain. Final full-proof review is still pending.
-Proposed MDPI18 response for the implemented portion: “Software use and formal citations have been placed in Methods.” At that citation-only checkpoint, actual versions were outstanding; the subsequent version batch above supplies them. AI-highlight scope/final audit remain pending.
+Proposed MDPI18 response for the implemented portion: “Software use and formal citations have been placed in Methods.” At that citation-only checkpoint, actual versions were outstanding; the subsequent version batch above supplies them. Final proof/reply audit remains pending.
 Correction commit: `54a7ffd2feb028b67546a8f37ac3208f659f4011`.
 
 <a id="mdpi19"></a>
@@ -704,7 +708,7 @@ These items do not increase the count of 22 MDPI comments.
 | --- | --- | --- | --- |
 | Figure 6 and Figure 2 callouts | Lines 112 and 116; p. 3 | Within the citation-order scope of MDPI05. | Citation order applied; final placement deferred |
 | Appendix Table A2 and A3 callouts | Lines 307 and 311; p. 8 | Within “same as below” under MDPI09. | Confirmed; final audit pending |
-| Claude and OpenAI Codex | Line 660; p. 16 | Possible continuation of the software-version request; explicit model/version requirements are not stated. Preserve the AI-use disclosure and verify author/session facts before adding identifiers. | Awaiting exact identifiers from John |
+| Claude and OpenAI Codex | Line 660; p. 16 | Possible continuation of the software-version request; explicit model/version requirements are not stated. Preserve the AI-use disclosure and verify author/session facts before adding identifiers. | All named models and CLI context supplied; final audit pending |
 | USGS publisher location | Line 847; reference 31, p. 17 | Within “same as below” under MDPI20; tracked as MDPI20b. | Confirmed; final audit pending |
 | McKinney conference location/dates | Line 919; reference 43, p. 18 | Highlighted “Austin, TX, USA, 28 June–3 July 2010”; verified against the original cited proceedings cover, as recorded below. | Confirmed; final audit pending |
 
@@ -715,6 +719,13 @@ The [original SciPy 2010 proceedings cover](https://proceedings.scipy.org/articl
 Validation: working-source `latexmk` under `texlive/20260330` exited 0 (19 pages); reference pages 17–19 inspected. Removing standalone author comments exactly reproduces the preceding source, including all 49 embedded bibliography entries; first-citation sequence and compiled bibliography numbers remain correct. All 23 publisher comments and received source checksum are preserved; no undefined citation/reference, duplicate-label or overfull-box warning. No footnotes or supplementary-material references added. `git diff --check` passes.
 Bibliography confirmation commit: `7f14149aa26328cddea07b463c95af9e9b5425b1`; pushed to `origin/jrl/proofs-round1`.
 
+## PUB01 — Planned public repository and selected provenance
+
+Author intends to make the manuscript repository and the provenance he selects publicly accessible. Current [GitHub repository](https://github.com/Bingham-Research-Center/latex-jrl-mjd-mdpiair-2026) visibility was checked via `gh api` on 6 October: `private: true`, `visibility: private`, default branch `main`.
+**PUB01: Pending — provenance selection and public release.**
+Applied: Data Availability now says public release of the manuscript repository and selected provenance records is planned, retaining the accurate private-working-repository description and provider access/reuse terms. No public-access claim or manuscript URL citation has been added prematurely.
+Outstanding: Decide which provenance/files/history John wants to reveal; prepare that concrete release for review; publish the approved scope; verify unauthenticated access and an appropriate repository/archive citation, then update Data Availability. John’s future-release intent does not choose the release contents or establish public accessibility. Root proof integration and final package/PR remain separate steps.
+
 ## Incidental source issue
 
 `tab:v3-heatdeficit` is defined twice (lines 578 and 596), with the second definition attached to a continued Table A5.
@@ -724,10 +735,10 @@ Resolved in the MDPI11–17 batch: the duplicate now belonged to working Table A
 
 ## Next resolution pass
 
-1. MDPI01 author facts are confirmed; any applicable AI identifiers remain under MDPI18. Retain the saved title, email and emphasis decisions for EE01, MDPI02 and MDPI03.
+1. MDPI01 and Claude/Codex author facts are confirmed; the AI models/CLI use are supplied under MDPI18; final audit remains. Retain the saved title, email and emphasis decisions for EE01, MDPI02 and MDPI03.
 2. Use the complete `proof-package/working/` copy already created; preserve the received baseline and record corrections in this register.
 3. Citation order, mathematical/appendix formatting, caption explanations and the duplicate label are applied; finish the recorded deferred layout checks after layout changes.
-4. Software versions and bibliography confirmations are applied; settle applicable AI identifiers/scope under MDPI18. MDPI04a’s saved provider-instrument limitation reply is recorded; audit its scope when assembling the final return.
+4. Software versions and bibliography confirmations are applied; MDPI18 model names/CLI use are supplied; follow PUB01 for the planned repository/provenance release. MDPI04a’s saved provider-instrument limitation reply is recorded; audit its scope when assembling the final return.
 5. Build `air-4472509-done.tex` in the working copy and inspect all pages against the supplied PDF; update each follow-up with the applied change, evidence, final reply and any remaining author decision.
 
 The received source embeds its bibliography: changing a `.bib` file alone cannot resolve its reference queries.
