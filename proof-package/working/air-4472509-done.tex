@@ -290,6 +290,7 @@ The recurring floor-to-bench separation is consistent with a cold-pool surface p
 
 \includegraphics[width=0.9\textwidth]{figures/obs_temp_timeseries_feb0102.pdf}
 \caption{\hl{Observed} %MDPI: Please confirm whether the overlapping content in this figure affects scientific understanding and if it does, please revise it.
+% JRL: Overlap will be rechecked after final layout changes.
  2 m temperature evolution at four elevation-spanning Uinta Basin stations from 31 January through 3 February 2013.
 Shading indicates approximate local night.
 The series show a spatial surface-temperature pattern, not a co-located vertical profile.}
@@ -308,7 +309,9 @@ Pressure and wind-error metrics have inconsistent trends in time, preventing an 
 
 \includegraphics[width=0.98\textwidth]{figures/fig_common_pipeline_effects.pdf}
 \caption{\hl{Mean} %MDPI: Please note that each subfigure should be described separately in the caption., e.g., (a) xxx; (b) xxx.
+% JRL: All six panels are now described separately; the descriptive whisker explanation is retained.
  five-hour effects for the controlled comparisons that share the station/common-AGL pipeline.
+(\textbf{a}) 2 m temperature bias ($^{\circ}$C); (\textbf{b}) 10 m wind-speed absolute error (m s$^{-1}$); (\textbf{c}) surface-pressure absolute error (Pa); (\textbf{d}) 50--500 m AGL potential-temperature endpoint difference (K); (\textbf{e}) layer-mean wind-vector magnitude (m s$^{-1}$); and (\textbf{f}) native PBL height (m).
 Colours and marker shapes identify forcing-product, feedback, and~interaction contrasts.
 Whiskers show descriptive block-sensitivity intervals for five dependent hourly medians.}
 \label{fig:v3-effects}
@@ -333,7 +336,10 @@ Native PBL-height differences change sign under both feedback modes, consistent 
 
 \includegraphics[width=0.82\textwidth]{figures/wrf_retention_ventilation_d02_14to18.pdf}
 \caption{\hl{Station-column} %MDPI: 1. Please note that each subfigure should be described separately in the caption., e.g., (a) xxx; (b) xxx.  2. Please confirm whether an explanation of the shadow area needs to be added to the figure caption.
+% JRL: Both panels, station medians and shaded interquartile ranges are now explained.
  medians and interquartile ranges for the 50--500 m AGL potential-temperature endpoint difference and layer-mean wind-vector magnitude over the matched window.
+(\textbf{a}) Potential-temperature endpoint difference; (\textbf{b}) layer-mean wind-vector magnitude.
+Lines show station medians; shading shows the station interquartile range.
 Solid lines denote two-way feedback and dashed lines denote one-way feedback.
 Both feedback modes retain the GFS--NAM ordering throughout the window.}
 \label{fig:v3-retention}
@@ -352,9 +358,11 @@ Figure~\ref{fig:v3-bulk-theta} compares the observed bench-minus-floor surface i
 
 \includegraphics[width=0.82\textwidth]{figures/wrf_inversion_index_feb0102_gfs2way_vs_nam2way_d02_14to18.pdf}
 \caption{\hl{Observed} %MDPI: Please confirm whether an explanation of the shadow area needs to be added to the figure caption.
+% JRL: Shading indicates approximate local night; this is now stated in the caption.
  and modelled Mountain Home-minus-Pariette Draw surface potential-temperature contrast from 1400 to 1800 UTC on 2 February 2013.
 The modelled series are X6 (GFS two-way) and X5 (NAM two-way) on d02, sampled at the same five hours as the observations.
-The index is a horizontally separated bench-minus-floor surface contrast.}
+The index is a horizontally separated bench-minus-floor surface contrast.
+Shading indicates approximate local night.}
 \label{fig:v3-bulk-theta}
 \end{figure}
 
@@ -371,7 +379,9 @@ Every run ended with a greater deficit at 1800 than at 1400 UTC, despite intermi
 
 \includegraphics[width=0.9\textwidth]{figures/wrf_heat_deficit_d02_13to18.pdf}
 \caption{\hl{Footprint-mean} %MDPI: 1. Please note that each subfigure should be described separately in the caption., e.g., (a) xxx; (b) xxx.  2. Please confirm whether an explanation of the shadow area needs to be added to the figure caption.
+% JRL: Both panels and the shaded sensitivity envelope are now explained.
  heat-deficit trajectories for the four default-terrain matrix members and seven-definition sensitivity envelopes for the two GFS-minus-NAM pairs.
+(\textbf{a}) Four-run trajectories for the primary 2200 m crest footprint; (\textbf{b}) feedback-matched GFS-minus-NAM contrasts for that footprint, with shading spanning the minimum to maximum across the seven footprint definitions.
 The 1300 UTC values orientate the trajectories but are excluded from every reported criterion and effect.
 GFS-driven runs retain a smaller deficit throughout, but~the deficit does not decline faster in either GFS-based member.}
 \label{fig:v3-heatdeficit-traj}
@@ -407,9 +417,12 @@ Figure~\ref{fig:v3-terrain-cmp11} shows this domain-dependent response; it does 
 
 \includegraphics[width=0.98\textwidth]{figures/wrf_terrain_cmp11_d02_d03_16z.pdf}
 \caption{\hl{Diagnostic} %MDPI: 1. Please confirm whether the overlapping content in this figure affects scientific understanding and if it does, please revise it.  2.  Please confirm whether an explanation of the dashed line needs to be added to the figure caption.
+% JRL: Dashed lines are now explained; overlap will be rechecked after final layout changes.
  response to the widest controlled terrain comparison at 1600 UTC, calculated as X0 minus X4 (fine 3-arc-second minus coarse 5-arc-minute source).
 (\textbf{a}) The basin-wide d02 and\linebreak   (\textbf{b}) inner-basin d03 top-down heat-deficit maps share a fixed $\pm1.6$ MJ m$^{-2}$ scale.
-(\textbf{c}) The north--south and (\textbf{d}) west--east d03 lower-atmosphere potential-temperature sections share a fixed $\pm4$ K scale and the 2200 m crest reference.}
+(\textbf{c}) The north--south and (\textbf{d}) west--east d03 lower-atmosphere potential-temperature sections share a fixed $\pm4$ K scale and the 2200 m crest reference.
+In (\textbf{b}), solid and dashed lines locate the north--south and west--east sections, respectively.
+In (\textbf{c},\textbf{d}), dashed terrain lines show coarse terrain, the horizontal dashed line marks the 2200 m crest reference, and vertical dashed lines mark labelled waypoints.}
 \label{fig:v3-terrain-cmp11}
 \end{figure}
 
@@ -590,6 +603,7 @@ $\Delta S$ is the potential-temperature endpoint-difference contrast; $\Delta U$
 \vspace{-9pt}
 \begin{table}[H]
 \caption{\hl{Surface,} %MDPI: we added border lines in table, please confirm.
+% JRL: Confirmed; please retain the added horizontal rules.
  spatial, and~vertical corroboration for the two GFS-minus-NAM forcing-product contrasts.
 All values use the 1400--1800 UTC window described in Section~\ref{sec:v3-surface}.
 The first four rows use station samples; the last four use area-weighted diagnostics over the basin-floor delineated area.}
@@ -642,7 +656,6 @@ Hourly envelope (seven definitions) & $-$1.77 to $-$0.70 & $-$1.80 to $-$0.71 \\
 
 \begin{table}[H]\ContinuedFloat
 \caption{{\em Cont.}}
-\label{tab:v3-heatdeficit}
 %\begin{adjustwidth}{-\extralength}{0cm}
 \begin{tabularx}{\textwidth}{lRR}
 \toprule

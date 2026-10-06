@@ -4,13 +4,14 @@ Catalogue complete: **22 MDPI comments and one English-editor note**, with compo
 The initial catalogue proposed responses with all follow-ups open; the 6 October recovery checkpoint below records the author decisions now present in the working source.
 The production notice is retained as an acknowledgement item.
 
-**Next discussion: MDPI11 — Figure 3 overlap (recommend deferring to final layout), then MDPI12 — Figure 4 panel descriptions. MDPI09/MDPI10 are applied; existing deferred checks remain below.**
+**Next: MDPI19–22 bibliography confirmations, then MDPI18 actual software versions. MDPI12–17 caption/table corrections are applied; MDPI11/MDPI16a join the deferred layout checks below.**
 Name the catalogue code whenever referring to the current or next topic, as John requested on 6 October.
 
 **Deferred checks — author agreed, 6 October:**
 
 - **MDPI06:** Figure 1 overlap; John reports no current overlap. Recheck at final print size after layout changes.
 - **MDPI08a:** Figure 2 overlap; recheck at final print size after layout changes.
+- **MDPI11/MDPI16a:** Figures 3 and 8 overlap; recheck at final print size after layout changes, following John’s instruction to batch straightforward choices.
 - **MDPI05b/MDPI08c:** final figure/table placement and size, after the caption pass. Citation order is already corrected.
 
 This catalogue follows [AGENTS.md](../AGENTS.md) and [PROOFING-HANDOFF.md](../PROOFING-HANDOFF.md) in the active `jrl/proofs-round1` worktree, inspected at `277cfa629f92e3e495cdb33fc9c371cea4c5e621`.
@@ -64,9 +65,9 @@ Each individual subquery retains its own status even when related work shares a 
 | Batch | Individual queries / issues | Work and completion evidence | Current state |
 | --- | --- | --- | --- |
 | 1 — Author facts and choices | EE01; MDPI01a/b, MDPI02, MDPI03; AI-use highlights | Confirm title, names, affiliations, ORCIDs, emails, emphasis and applicable AI identifiers from John/saved decisions. Record each exact decision. | Open |
-| 2 — Citation order and cross-references | MDPI05a/b, MDPI08c, MDPI09; duplicate Table A5 label | Repair first-citation order and placement, verify appendix-table references, retain one canonical continued-table label; build and inspect cross-references/pages. | Open |
-| 3 — Figures and captions | MDPI06, MDPI08a/b, MDPI11–16 and their subqueries | Inspect queried overlap; verify markers, panels, shading and dashed lines against registered evidence; apply precise captions and inspect resulting pages. | Open |
-| 4 — Mathematical/table formatting | MDPI10, MDPI17 | Audit notation and Table A4 borders/row associations against source and PDF, then record inspection and decisions. | Open |
+| 2 — Citation order and cross-references | MDPI05a/b, MDPI08c, MDPI09; duplicate Table A5 label | Citation order, appendix references and duplicate label corrected; final placement deferred. | Applied; layout deferred |
+| 3 — Figures and captions | MDPI06, MDPI08a/b, MDPI11–16 and their subqueries | Marker, panel, shading and dashed-line explanations verified and applied; final overlap checks deferred. | Applied; overlap deferred |
+| 4 — Mathematical/table formatting | MDPI10, MDPI17 | Minimal notation corrections applied; Table A5 borders/row associations checked and retained. | Applied; final audit pending |
 | 5 — Software/equipment provenance | MDPI04a/b, MDPI18; applicable software highlights | Recover actual run/analysis versions and provider instrument facts with exact provenance; record unavailable information explicitly. | Open |
 | 6 — Bibliographic additions/removal | MDPI19, MDPI20a/b, MDPI21, MDPI22; McKinney highlight | Verify publication/conference metadata and removed Herbie DOI; correct embedded references as warranted, preserving Paperpile-owned files. | Open |
 | 7 — Production notice and final proof audit | MDPI07; all preceding queries | Record acknowledgement; compile the working source, inspect all pages against the supplied PDF, and reconcile replies/remaining author decisions. | Open |
@@ -446,11 +447,10 @@ Source line 275; supplied PDF page 7.
 
 Observed temperature series; label fig:v3-observed; asset obs_temp_timeseries_feb0102.pdf. Its caption already states that shading indicates approximate local night.
 
-**MDPI11: Open — visual check.**
+**MDPI11: Deferred — final layout check.**
 
-Proposed response/action: Inspect station labels, legend, annotations and axes at print size; revise any overlap that hides information.
-
-Outstanding: Visual confirmation and registered provenance for any figure derivative. This comment does not request a new interpretation of the night shading.
+Applied reply: `% JRL: Overlap will be rechecked after final layout changes.`
+Outstanding: Inspect station labels, legend, annotations and axes at final print size after layout changes; no figure derivative is authorised by this deferral.
 
 <a id="mdpi12"></a>
 
@@ -464,11 +464,10 @@ Source line 293; supplied PDF page 8.
 
 Controlled-comparison effects; label fig:v3-effects; asset fig_common_pipeline_effects.pdf.
 
-**MDPI12: Open — evidence/caption check.**
+**MDPI12: Applied — six panels described separately.**
 
-Proposed response/action: Describe each panel separately using the lettering actually present in the figure, including its diagnostic and units.
-
-Outstanding: Inspect panel labels/order and the registered plotting definition. Preserve the existing description of whiskers as descriptive block-sensitivity intervals for five dependent hourly medians.
+Added panel diagnostics and units in the plotted order, retaining the descriptive whisker explanation. Verified against `0749fa0:verification/scripts/plot_common_pipeline_effects.py` and the dual-promoted asset. Standalone author reply added; batch validation below.
+Outstanding: Final proof audit.
 
 <a id="mdpi13"></a>
 
@@ -482,17 +481,10 @@ Source line 318; supplied PDF page 9.
 
 Station-column diagnostics; label fig:v3-retention; asset wrf_retention_ventilation_d02_14to18.pdf. The caption already mentions medians and interquartile ranges, and distinguishes solid/two-way from dashed/one-way lines.
 
-**MDPI13a: Open — evidence/caption check.**
+**MDPI13a/b: Applied — panels and shading explained.**
 
-Proposed response/action: Describe the potential-temperature endpoint-difference and layer-mean wind-vector-magnitude panels separately using their actual lettering.
-
-Outstanding: Verify panel lettering and ordering from the figure.
-
-**MDPI13b: Open — evidence/caption check.**
-
-Proposed response/action: Explicitly connect the plotted central curves and shaded bands to their statistics; the current caption suggests medians and interquartile ranges.
-
-Outstanding: Confirm the shading statistic and station population against the registered figure/generator before writing the final explanation; do not relabel these as confidence intervals.
+Added (a) endpoint difference and (b) layer-mean wind-vector magnitude, and explicitly linked lines to station medians and shading to station interquartile ranges. Verified against `0749fa0:verification/scripts/analyze_wrf_retention.py`, whose SHA-256 matches `verification/provenance/reviewer-figure-labels-20260918.json`; retained the fixed 11-station d02 population and existing feedback-line explanation. Standalone author reply added; batch validation below.
+Outstanding: Final proof audit.
 
 <a id="mdpi14"></a>
 
@@ -506,11 +498,10 @@ Source line 337; supplied PDF page 9.
 
 Mountain Home-minus-Pariette Draw surface potential-temperature index; label fig:v3-bulk-theta; asset wrf_inversion_index_feb0102_gfs2way_vs_nam2way_d02_14to18.pdf. The existing caption does not define shading.
 
-**MDPI14: Open — evidence/caption check.**
+**MDPI14: Applied — approximate local night stated.**
 
-Proposed response/action: Add the shading’s exact meaning once established from the figure and plotting provenance.
-
-Outstanding: The source caption alone does not identify the shaded area. Do not infer uncertainty, night or an interquartile range from other figures. Preserve the horizontally separated surface-index interpretation.
+Verified `shade_nights` in `92d96b1:verification/scripts/plot_wrf_vs_obs_feb0102.py` and its `plot_obs_feb0102.py` helper (approximate 18:00–07:30 MST). Added the caption explanation and standalone author reply, retaining the horizontally separated surface-index interpretation. Batch validation below.
+Outstanding: Final proof audit.
 
 <a id="mdpi15"></a>
 
@@ -524,17 +515,10 @@ Source line 356; supplied PDF page 10.
 
 Heat deficit; label fig:v3-heatdeficit-traj; asset wrf_heat_deficit_d02_13to18.pdf. The caption names four-run trajectories and seven-definition sensitivity envelopes without explicit panel-by-panel mapping.
 
-**MDPI15a: Open — evidence/caption check.**
+**MDPI15a/b: Applied — panels and sensitivity envelope explained.**
 
-Proposed response/action: Describe each panel separately, distinguishing the four trajectories from the two paired GFS-minus-NAM contrasts.
-
-Outstanding: Confirm actual panel lettering/order and primary-definition curves from the registered figure.
-
-**MDPI15b: Open — evidence/caption check.**
-
-Proposed response/action: State explicitly which shading depicts the seven-definition sensitivity envelope and identify any other shaded region independently.
-
-Outstanding: Check the generator’s envelope statistic and each shaded feature. Keep 1300 UTC as orientation only and 1400–1800 UTC as the retained window; do not describe these envelopes as sampling confidence intervals.
+Added (a) four-run primary 2200 m crest-footprint trajectories and (b) feedback-matched GFS-minus-NAM contrasts, with shading spanning minimum to maximum over the seven definitions. Verified against `10e5d34:verification/scripts/plot_heat_deficit_summary.py` and its `analyze_heat_deficit.py` generator. Retained the 1300 UTC orientation-only qualification and matched analysis window. Standalone author reply added; batch validation below.
+Outstanding: Final proof audit.
 
 <a id="mdpi16"></a>
 
@@ -548,17 +532,14 @@ Source line 392; supplied PDF page 11.
 
 Terrain comparison; label fig:v3-terrain-cmp11; asset wrf_terrain_cmp11_d02_d03_16z.pdf. The caption describes panels (a)–(d) and a 2200 m crest reference, but does not explicitly map dashed lines to features.
 
-**MDPI16a: Open — visual check.**
+**MDPI16a: Deferred — final layout check.**
 
-Proposed response/action: Inspect maps, section panels, labels and colour bars, and repair overlap that obscures content.
+Recheck maps, sections, labels and colour bars at final print size after layout changes.
 
-Outstanding: Final-size visual assessment and registered inputs for any derivative.
+**MDPI16b: Applied — all dashed features explained.**
 
-**MDPI16b: Open — evidence/caption check.**
-
-Proposed response/action: Explain the dashed line or lines explicitly in the caption, using panel-specific definitions where necessary.
-
-Outstanding: Identify every dashed feature from the figure/generator; do not assume that a map transect and a section crest reference share one meaning. A crest reference must not become an observed inversion top.
+Verified against `92d96b1:verification/scripts/plot_terrain_cmp11_supplement.py` and the dual-promoted asset: map (b) solid/dashed lines locate north–south/west–east sections; sections (c,d) dashed lines identify coarse terrain, the horizontal 2200 m crest reference and vertical labelled waypoints. Added panel-specific wording and a standalone author reply. The historical generator filename does not imply supplementary material; none is referenced in the manuscript. Batch validation below.
+Outstanding: Deferred overlap assessment and final proof audit; no observed inversion-top claim added.
 
 <a id="mdpi17"></a>
 
@@ -572,11 +553,18 @@ Source line 543; supplied PDF page 14.
 
 Surface, spatial and vertical corroboration; label tab:v3-surface-summary. Now Table A5 in the working proof after MDPI05a; the received query refers to Table A4. Source lines 551 onward contain additional horizontal rules.
 
-**MDPI17: Open — visual/editorial check.**
+**MDPI17: Confirmed — added horizontal rules retained.**
 
-Proposed response/action: Accept the added rules if the PDF shows clear row grouping and all entries remain correctly associated.
+Inspected current Table A5 on working PDF page 15: all eight rows remain correctly associated, with the first four station-based and last four footprint-based. All tabular source bodies are unchanged. Standalone reply: `% JRL: Confirmed; please retain the added horizontal rules.`
+Outstanding: Final proof audit.
 
-Outstanding: Inspect the typeset table and compare entries with the source. The first four rows remain station-based and the last four footprint-based.
+### Caption/table confirmation batch — 6 October 2026 (MDPI11–17)
+
+John authorised batching easy choices and confirmations. Applied only caption explanations and standalone `% JRL:` replies; original publisher notes, plot assets and data remain unchanged. Deferred MDPI11/MDPI16a overlap checks until final layout.
+All five affected plot hashes match both `verification/figures/manifest.csv` and `figures/MANIFEST.md`. Plot meanings were checked against the immutable generator revisions cited above; no model run or plotting recomputation.
+Also removed the second `tab:v3-heatdeficit` label from continued Table A6, retaining its canonical label and both table parts.
+Validation: working-source `latexmk` under `texlive/20260330` exited 0 (19 pages); inspected pages 8–11 and 15, including the final panel-(b) transect explanation. No introduced clipping or overlap observed. All tabular bodies, 49 embedded bibliography entries and first-citation order/compiled numbers are unchanged; figure/table first calls remain 1–9 and 1, A1–A6. All 23 publisher comments and received intake source hash are preserved. No undefined citation/reference, multiply-defined-label or overfull-box warning in the final log; `git diff --check` passes. No manuscript footnotes or supplementary-material references.
+Correction commit: recorded in the next status update after committing/pushing this batch.
 
 <a id="mdpi18"></a>
 
@@ -715,14 +703,13 @@ These items do not increase the count of 22 MDPI comments.
 `tab:v3-heatdeficit` is defined twice (lines 578 and 596), with the second definition attached to a continued Table A5.
 The supplied `.aux` repeats the label and the supplied `.log` reports it as multiply defined (lines 1326 and 1329).
 This is an observed source/log issue, not an additional publisher query or a new build result.
-After the MDPI05a reorder, the duplicate label belongs to working Table A6; both definitions persist and the current build reports them.
-When corrections begin, retain one canonical cross-reference label, preserve the continued table and verify its references in the rebuilt PDF.
+Resolved in the MDPI11–17 batch: the duplicate now belonged to working Table A6. Removed only the continued-part label; both parts and their data remain unchanged. The rebuilt auxiliary file has one canonical label and the final log has no multiply-defined-label warning.
 
 ## Next resolution pass
 
 1. Complete the remaining author facts for MDPI01 and any AI identifiers; retain the title, email and emphasis decisions recovered from John’s saved source comments for EE01, MDPI02 and MDPI03.
 2. Use the complete `proof-package/working/` copy already created; preserve the received baseline and record corrections in this register.
-3. Resolve citation order, mathematical/appendix formatting and the duplicate label in that copy; inspect the queried figures using their registered evidence before drafting precise caption changes.
+3. Citation order, mathematical/appendix formatting, caption explanations and the duplicate label are applied; finish the recorded deferred layout checks after layout changes.
 4. Recover versions from the actual analysis provenance and verify bibliographic additions/removal against authoritative records. Do not substitute current software versions or assume the publisher’s changes are correct.
 5. Build `air-4472509-done.tex` in the working copy and inspect all pages against the supplied PDF; update each follow-up with the applied change, evidence, final reply and any remaining author decision.
 
