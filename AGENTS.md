@@ -1,13 +1,26 @@
 # AI guide
 
 Private MDPI *Air* manuscript: WRF meteorology for the 2 February 2013 Uinta Basin episode.
-Cold start: `hostname -f`, `README.md`, then one task route below.
-Current phase and next steps: `ROADMAP.md`; current evidence/revision state: `notes/peer-review-round1-return.md`.
+Cold start: `hostname -f`, `git status --short --branch`, `git worktree list`, then one task route below.
+For the active proofing task, read `PROOFING-HANDOFF.md` first; `README.md`, `ROADMAP.md` and the return record describe the earlier revision, not proof-query completion.
+
+## Active proofing
+
+- Branch: `jrl/proofs-round1`; worktree: `/uufs/chpc.utah.edu/common/home/u0737349/worktrees/air-proofs-round1`.
+- Received baseline: commit `92b14d2`, directory `proof-package/air-4472509-english/`; hashes and intake state: `proof-package/intake.json`.
+- Preserve every received file unchanged. Make a complete working copy at `proof-package/working/` before editing or compiling.
+- Actual source: `air-4472509-done.tex`; supplied PDF: `air-4472509-done.pdf` (18 pages). The received README incorrectly names `main.tex` and `main.bbl`; the source embeds `thebibliography`.
+- There are 22 `%MDPI:` comment occurrences plus one `%EE:` title note, some with multiple requests. Catalogue each request before resolving it; preserve quotations and record proposed responses/status separately.
+- Keep proof corrections in the working copy until integration is requested. Confirm author facts from saved decisions or John; software versions must come from the recorded analysis environment, not the current shell.
+- Compile the working copy with `latexmk -pdf -interaction=nonstopmode -halt-on-error air-4472509-done.tex`; inspect the resulting PDF. Root Make targets do not validate this proof source.
+- When integrating into root `main.tex`, run the repository checks and package refresh below. Check embedded references explicitly; BibTeX changes alone do not update them.
+- No branch pruning, pushing, journal submission or WRF run has occurred as part of proof intake. Recheck live refs and worktrees before any authorised cleanup.
 
 ## Routes
 
 | Task | Read |
 |---|---|
+| Proofs | `PROOFING-HANDOFF.md` → `proof-package/intake.json` → received source/PDF |
 | Manuscript/revision | `notes/peer-review-round1-return.md` → `main.tex` |
 | Reviewer decisions/replies | `~/reviews/lawson-ozone-wrf-mdpiair-2026/peer-review-decisions.md` → `response-to-reviewers.md`; saved author decisions govern |
 | Claims | `notes/claim-evidence-ledger.md` → exact registered artefact |
@@ -19,7 +32,7 @@ Current phase and next steps: `ROADMAP.md`; current evidence/revision state: `no
 | History/gates | `rewrite/README.md` → `rewrite/HYBRID-GATE-REVIEW.md`; July task register is historical |
 
 Open only the route needed. Avoid broad trees, bulk figures, raw PDFs, legacy checklists and `Definitions/` unless required.
-`main.tex` is the audited submission target. `drafts/jrl_manuscript.tex` is the superseded author draft;
+Root `main.tex` is the repository integration target; the active proof source is identified above. `drafts/jrl_manuscript.tex` is the superseded author draft;
 `_manuscript_v3.tex` is the over-inclusive caretaker snapshot and `_manuscript_test.tex` is experimental.
 
 ## Evidence contract
@@ -35,9 +48,9 @@ Open only the route needed. Avoid broad trees, bulk figures, raw PDFs, legacy ch
 
 - Akamai/Linode owns writing, Git and LaTeX; CHPC owns WRF/data work. Label-only plotting from committed summaries may run locally; reusable analysis belongs in `../brc-tools`.
 - No sibling WRF checkout overrides the paper inventories or immutable CHPC packets.
-- Keep manuscripts single-file, sparse, British English, one sentence per source line. Preserve official names, identifiers, bibliographic titles and direct quotations verbatim.
+- Keep manuscripts single-file, sparse, British English, one sentence per source line. Preserve official names, identifiers, bibliographic titles and direct quotations verbatim; avoid wholesale reformatting of the proof source.
 - Never use manuscript footnotes. Cite references, websites and data sources in the bibliography; give web URLs and access dates, and acknowledge/cite software with verified DOIs or URLs.
 - Never edit `Definitions/` or hand-edit `paperpile.bib`. John supplies one complete Paperpile replacement; `trang_ref` is not Tran et al. (2018).
-- After analysis/manuscript changes run `make final-draft-check`, `make submission-check`, and inspect PDFs; refresh the delivery folder with `make package`.
+- After changes to the repository analysis/manuscript run `make final-draft-check`, `make submission-check`, and inspect PDFs; refresh the delivery folder with `make package`. Documentation-only handoffs need whitespace/path checks, not LaTeX builds.
 - Production uses only dual-promoted, allowlisted figures. Keep original evidence and transfer inputs; no synthetic output may be promoted.
 - Use `jrl/<topic>` PRs into protected `main`; preserve unrelated dirt. Commit one verified concern at a time with John's identity and `Co-Authored-By: Codex <noreply@openai.com>`.
