@@ -54,3 +54,5 @@ latexmk -pdf -interaction=nonstopmode -halt-on-error air-4472509-done.tex
 The proof PDF is ignored: a Git push transfers the corrected source/docs, not that generated PDF. Transfer it explicitly if reviewing on another host. Root Make targets validate later repository integration, not this working proof.
 
 Latest substantive batches, all pushed: `37baff3` (Section 3.4/Figure 4 and A1 approval), `93a2a0c` (Conflicts of Interest break), `2fddf48` (repository URL/release timing). Detailed earlier commits, provider checks and historical visual inspections remain in the catalogue. This handoff/table batch changes no manuscript content.
+
+Final-check handoff/reply-table commit: `124a552d3751cab0680ed976873318a02aaa2e06`; pushed to `origin/jrl/proofs-round1`. Source and original proof files remain unchanged.
