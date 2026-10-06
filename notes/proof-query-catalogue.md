@@ -33,8 +33,8 @@ Checks and hashes are recorded in the recovery receipt.
 
 John explicitly requests formal in-text citations for WRF/WPS, software and data sources, with verified paper/software DOIs where available, rather than website-only references, acknowledgements-only mentions or passing references.
 Do not use manuscript footnotes; retain a bibliography URL and access date when no suitable DOI exists, without substituting a DOI for a different resource.
-Recommendation, not yet an accepted TeX edit: put software use, citations and verified versions in Methods; keep personal and institutional thanks in Acknowledgements.
-The working source already cites DOI-bearing entries for WRF, NumPy, SciPy, pandas, xarray and Matplotlib; the Python-package citations currently occur in Acknowledgements.
+Author subsequently authorised this recommendation: put software use and citations in Methods and keep personal/institutional thanks in Acknowledgements. The batches below enact citation placement; remaining software versions still need archived evidence.
+At the advice-only checkpoint, the working source already cited DOI-bearing entries for WRF, NumPy, SciPy, pandas, xarray and Matplotlib, with the Python-package citations in Acknowledgements. They now occur in Methods, as recorded under MDPI18.
 A targeted source check found no `\footnote{` or `\footnotetext{` calls; `\footnotesize` is table typography and is not a footnote.
 Implement this policy incrementally through MDPI04b, MDPI18 and MDPI22, preserving publisher query quotations and the received bundle.
 The advice-only checkpoint above preceded John’s subsequent instruction to apply the recommendations; implementation and validation are recorded below.
@@ -241,7 +241,7 @@ Validation: built with `texlive/20260330` and `latexmk -pdf -interaction=nonstop
 No undefined citation/reference or overfull-box warning; existing duplicate Table A5 labels and template/underfull warnings remain. This is affected-page validation, not a full proof audit.
 Proposed MDPI response for the resolved portion: “The WPS version has been corrected to 4.6.0, and a formal citation to Powers et al. (2017), including its DOI, has been added to the reference list.”
 Remaining: terrain-source provenance and other actual software versions; MDPI04b as a whole remains open.
-Correction commit: pending the validated batch commit.
+Correction commit: `597b0f71b4cb8d2aaa3976e10f2ea21e436877f3`.
 
 <a id="mdpi05"></a>
 
@@ -525,13 +525,31 @@ Source line 655; supplied PDF page 15; possible continuation on 16.
 
 Explicit highlights cover NumPy, SciPy, pandas, xarray and Matplotlib (lines 655–656). Polars is named without a highlight; Herbie and SynopticPy appear immediately above (line 654). Claude and OpenAI Codex are highlighted in the AI declaration at line 660 without a separate comment.
 
-**MDPI18: Open — provenance/author facts.**
+**MDPI18: Partly resolved — citation placement applied; actual versions and AI scope open.**
 
 Proposed response/action: Add the verified versions used for the named analysis/plotting software; coordinate the broader software inventory with MDPI04b. Review the AI highlights separately before interpreting “Same as below”.
 
-Author citation preference, 6 October: cite software in Methods with DOI-bearing bibliography entries where available. Moving the existing acknowledgement citations and adding verified versions remain proposed edits; this query remains open.
+Author citation preference, 6 October: cite software in Methods with DOI-bearing bibliography entries where available. Citation placement is now applied in the batch below; actual version additions and the AI-highlight scope remain open.
 
 Outstanding: Archived analysis and plotting environments may differ by stage/figure. Record package, actual version, task/date and exact provenance source. If unavailable, record the gap for John rather than insert a current version. AI product/model identifiers require author/session evidence where applicable; the source note does not explicitly define the scope of those highlights.
+
+### Software citation correction batch — 6 October 2026 (MDPI18 and MDPI22)
+
+Author instruction: Apply the agreed Methods citation recommendation and DOI preference, with a checked, co-authored commit per batch.
+Applied: moved the existing NumPy, SciPy, pandas, Polars, xarray and Matplotlib use/citation sentence into Methods subsection 2.4, preserving the attached MDPI version request verbatim.
+Moved Herbie/SynopticPy use and citations into the same Methods paragraph. Retained personal/institutional thanks in Acknowledgements and removed its redundant Synoptic service citation (already cited in Methods).
+Retained the existing DOI-bearing entries for NumPy, SciPy, pandas, xarray and Matplotlib without changing their metadata.
+Restored Herbie’s DOI `10.5281/zenodo.4567540`; it matches `submission-package/main.bbl` and the developer’s [CITATION.cff](https://github.com/blaylockbk/Herbie/blob/main/CITATION.cff) and [recommended citation](https://github.com/blaylockbk/Herbie/blob/main/README.md). Retained its repository URL and recorded access date.
+Replaced the Polars User Guide-only entry with a software entry for `pola-rs/polars`, credited to the existing collective author, using `10.5281/zenodo.7697217`, explicitly identified by [Zenodo](https://doi.org/10.5281/zenodo.7697217) as its all-versions DOI and linked by the [project README](https://docs.rs/crate/polars/latest/source/README.md).
+These are general software citations; neither identifies the actual installed release used in the study. No latest package version or publication year was substituted for the analysis environment.
+SynopticPy retains a formal bibliography URL because the [developer’s citation guidance](https://pypi.org/project/SynopticPy/) supplies a repository citation and no verified DOI was found in that guidance.
+
+Reordered the embedded bibliography to match the changed first-citation sequence. All 47 entries match first occurrence; all 47 compiled `\bibcite` numbers independently match the source order. Software entries are references 34–41 in this batch; WPS remains reference 31.
+All 45 bibliography entries other than the corrected Herbie and Polars entries were preserved byte-for-byte from the preceding batch; all 23 MDPI/EE comments and received intake source hash were preserved. No manuscript footnote was introduced.
+Validation: `texlive/20260330` working-source `latexmk` build exited 0, 18 pages. Inspected pages 5, 6, 15, 17 and 18 for Methods flow, Acknowledgements, numbering and complete DOI/reference wrapping; no observed clipping or overlap introduced.
+No undefined citation/reference or overfull-box warning; known duplicate Table A5 labels and template/underfull warnings remain. Final full-proof review is still pending.
+Proposed MDPI18 response for the implemented portion: “Software use and formal citations have been placed in Methods.” The requested actual package versions are still outstanding, so this is not a complete MDPI18 reply.
+Correction commit: pending the validated batch commit.
 
 <a id="mdpi19"></a>
 
@@ -605,13 +623,15 @@ Source line 894; supplied PDF page 17.
 
 Herbie retains its GitHub URL and access date at line 895. The proof does not show the deleted DOI.
 
-**MDPI22: Open — bibliographic/author decision.**
+**MDPI22: Correction applied — author requested DOI retention; final proof audit pending.**
 
 Proposed response/action: Recover and verify the removed identifier and decide whether it is a relevant software/archive DOI before agreeing to delete it.
 
-Author citation preference, 6 October: prefer a verified software/archive DOI to a website-only entry. This does not yet approve restoring the unidentified deleted DOI; recover and verify its target first.
+Author decision, 6 October: apply the DOI preference. The removed Herbie identifier was recovered from `submission-package/main.bbl`, matched to the developer’s recommended DOI and restored in the software citation batch above.
 
-Outstanding: Compare with the submitted reference or Paperpile export, then verify the identifier’s target. If it identifies the software release used, retain a persistent citation as appropriate; otherwise explain the correction. Do not hand-edit paperpile.bib.
+Proposed final reply: “Please retain DOI 10.5281/zenodo.4567540: it is Herbie’s developer-recommended persistent software citation and was present in the submitted reference.”
+
+Outstanding: Final proof audit and final response assembly. The general DOI is not proof of the release used; actual Herbie version remains under MDPI18. Paperpile-owned files were not edited.
 
 ## Highlighted material without a separate comment
 

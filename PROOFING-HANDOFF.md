@@ -19,16 +19,19 @@ Record explicit author decisions separately from suggestions and technical imple
 John previously edited the received copy accidentally; recovery commit `19d2452` preserves his edits in the working copy and restores the received bundle, and `331b971` records its receipt.
 Recheck live status; preserve any newer author edits and resolve source passages by text because line numbers shift.
 
-**Current batch: WPS version/citation completed; next enact the agreed software-citation placement under MDPI18.**
+**Current checkpoint: WPS correction and software-citation placement completed; next discuss terrain provenance under MDPI04b.**
 John’s 6 October instruction is to apply agreed changes, confirm each completed batch in chat, and commit with John as author and `Co-Authored-By: Codex <noreply@openai.com>`.
 Keep the concise author-led discussion pattern; ask only for missing facts or material choices, and do not repeatedly seek permission for the agreed scope.
 The working TeX now states WPS **4.6.0** and cites `Powers2017WRF`, DOI [10.1175/BAMS-D-15-00308.1](https://doi.org/10.1175/BAMS-D-15-00308.1).
 John supplied the run-use confirmation; live checks corroborated the WPS README, exact `v4.6.0` tag, official remote and HEAD `335c76a111f84503e8b963abaf273ea8053645bb` at `/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_build/WPS`.
 The embedded reference is correctly inserted at first citation (reference 31 in this batch); all 47 bibliography entries pass the first-citation-order check. Existing entries needed no reordering.
 The working proof built under `texlive/20260330` to 18 pages; pages 5 and 17 were inspected. Publisher query comments and received source hash are preserved; known duplicate Table A5 labels and template warnings remain.
-See the MDPI04b correction batch in the catalogue for evidence and the correction commit.
+WPS correction commit: `597b0f71b4cb8d2aaa3976e10f2ea21e436877f3`; see the MDPI04b batch in the catalogue for full evidence.
 John wants formal in-text software citations with verified DOI-bearing bibliography entries where available and no manuscript footnotes.
-Next move existing analysis/retrieval citations from Acknowledgements into Methods, retaining thanks and original publisher query text. Verify DOI replacements from the relevant software citation records; recover actual analysis versions separately rather than using current installations.
+The second batch moved all existing retrieval/analysis/plotting citations into Methods, retaining thanks and publisher query comments; the 47 entries and compiled citation numbers now follow the changed first-citation order.
+Herbie’s submitted DOI `10.5281/zenodo.4567540` was restored after matching it to developer citation guidance. Polars now cites software DOI `10.5281/zenodo.7697217` (all versions); SynopticPy retains a formal repository reference because no verified DOI was supplied by its citation guidance.
+The second build remains 18 pages; pages 5, 6, 15, 17 and 18 were inspected. Its correction commit is recorded under MDPI18 in the catalogue after commit.
+Recover actual retrieval/analysis/plotting versions separately; general software DOIs and software-paper versions do not identify the installed releases. MDPI18 remains open for those versions and AI scope; MDPI22’s DOI correction is applied, pending final proof review.
 The working source contains no `\footnote{` or `\footnotetext{` calls; retain table `\footnotesize` typography.
 
 Expand GMTED2010 as Global Multi-resolution Terrain Elevation Data 2010; the existing Danielson–Gesch (2011) reference has DOI [10.3133/ofr20111073](https://doi.org/10.3133/ofr20111073).

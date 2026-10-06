@@ -232,6 +232,10 @@ Native PBL height serves as a scheme-dependent companion diagnostic rather than 
 \subsection{Pairing, Aggregation, and~Short-Sample~Sensitivity}
 \label{sec:v3-aggregation}
 
+Herbie \citep{Herbie} and SynopticPy \citep{SynopticPy} were used for source-data retrieval and Synoptic API access, respectively.
+Analysis and plotting were performed using \hl{NumPy} %MDPI: Please state which version of the software was used. Same as below.
+ \citep{Harris2020NumPy}, \hl{SciPy} \citep{Virtanen2020SciPy}, \hl{pandas}~\citep{McKinney2010}, Polars \citep{Polars}, \hl{xarray} \citep{HoyerHamman2017}, and \hl{Matplotlib} \citep{Hunter2007Matplotlib}.
+
 Run differences were paired by location and valid hour, and then reduced to one spatial median per hour.
 The reported five-hour effects are means of those medians; stations are not spatially independent.
 To explore the sensitivity to temporal dependence \citep{Wilks2019}, a~circular moving-block calculation drew 20,000 resamples of the five medians using two-hour blocks.
@@ -654,10 +658,9 @@ The funders had no role in the design of the study; in the collection, analyses,
 \dataavailability{The analysis scripts, derived hourly and paired summaries, heat-deficit tables, selected EPA AQS daily records, run and comparison inventories, provenance records, and~promoted figures used for this study are retained in the private working repository.
 Raw WRF inputs and Synoptic observations remain subject to the respective providers' access and reuse terms.}
 \acknowledgments{We acknowledge the University of Utah Center for High Performance Computing for their computational resources.
-We acknowledge Synoptic Data PBC and the contributing networks for surface observations \citep{SynopticTimeseries}.
-We thank Brian K. Blaylock for Herbie and SynopticPy, used for source-data retrieval and Synoptic API access \citep{Herbie, SynopticPy}.
-Analysis and plotting were performed using \hl{NumPy} %MDPI: Please state which version of the software was used. Same as below.
- \citep{Harris2020NumPy}, \hl{SciPy} \citep{Virtanen2020SciPy}, \hl{pandas}~\citep{McKinney2010}, Polars \citep{Polars}, \hl{xarray} \citep{HoyerHamman2017}, and \hl{Matplotlib} \citep{Hunter2007Matplotlib}.
+We acknowledge Synoptic Data PBC and the contributing networks for surface observations.
+We thank Brian K. Blaylock for making Herbie and SynopticPy available.
+
 We thank Pamela Gardner for editorial and funding advice and KarLee Zager for continued contributions to collecting data relevant to this~project.}
 \newpage
 \conflictsofinterest{The authors declare no conflicts of~interest.}
@@ -862,6 +865,57 @@ Stull, R.B.
 \newblock {\em An Introduction to Boundary Layer Meteorology}; Kluwer Academic Publishers: Dordrecht, The Netherlands,  1988.
 \newblock {\url{https://doi.org/10.1007/978-94-009-3027-8}}.
 
+\bibitem[Blaylock({\natexlab{a}})]{Herbie}
+Blaylock, B.K.
+\newblock {Herbie}: Retrieve Numerical Weather Prediction Model Data.
+\newblock Computer Software.
+\newblock {\url{https://doi.org/10.5281/zenodo.4567540}}.
+Available \hl{online:} %MDPI: we removed the unnecessary doi link, and only keep the website, please confirm.
+\newblock \url{https://github.com/blaylockbk/Herbie} (accessed on 18 September 2026).
+
+\bibitem[Blaylock({\natexlab{b}})]{SynopticPy}
+Blaylock, B.K.
+\newblock {SynopticPy}: {Synoptic API} for {Python}.
+\newblock Computer Software.
+Available online:
+\newblock \url{https://github.com/blaylockbk/SynopticPy} (accessed on 18 September 2026).
+
+\bibitem[Harris et~al.(2020)Harris, Millman, van~der Walt, Gommers, Virtanen, Cournapeau, Wieser, Taylor, Berg, Smith, Kern, Picus, Hoyer, van Kerkwijk, Brett, Haldane, Fern{\'a}ndez~del R{\'i}o, Wiebe, Peterson, G{\'e}rard-Marchant, Sheppard, Reddy, Weckesser, Abbasi, Gohlke, and Oliphant]{Harris2020NumPy}
+Harris, C.R.; Millman, K.J.; van~der Walt, S.J.; Gommers, R.; Virtanen, P.; Cournapeau, D.; Wieser, E.; Taylor, J.; Berg, S.; Smith, N.J.;  et~al.
+\newblock Array programming with {NumPy}.
+\newblock {\em Nature} {\bf 2020}, {\em 585},~357--362.
+\newblock {\url{https://doi.org/10.1038/s41586-020-2649-2}}.
+
+\bibitem[Virtanen et~al.(2020)Virtanen, Gommers, Oliphant, Haberland, Reddy, Cournapeau, Burovski, Peterson, Weckesser, Bright, van~der Walt, Brett, Wilson, Millman, Mayorov, Nelson, Jones, Kern, Larson, Carey, Polat, Feng, Moore, VanderPlas, Laxalde, Perktold, Cimrman, Henriksen, Quintero, Harris, Archibald, Ribeiro, Pedregosa, van Mulbregt, and {SciPy 1.0 Contributors}]{Virtanen2020SciPy}
+Virtanen, P.; Gommers, R.; Oliphant, T.E.; Haberland, M.; Reddy, T.; Cournapeau, D.; Burovski, E.; Peterson, P.; Weckesser, W.; Bright, J.;  et~al.
+\newblock {SciPy} 1.0: Fundamental Algorithms for Scientific Computing in {Python}.
+\newblock {\em Nat. Methods} {\bf 2020}, {\em 17},~261--272.
+\newblock {\url{https://doi.org/10.1038/s41592-019-0686-2}}.
+
+\bibitem[McKinney(2010)]{McKinney2010}
+McKinney, W.
+\newblock Data Structures for Statistical Computing in {Python}.
+\newblock In Proceedings of the 9th Python in Science Conference,  \hl{Austin, TX,  USA, 28 June--3 July 2010}; pp. 56--61. 
+\newblock {\url{https://doi.org/10.25080/Majora-92bf1922-00a}}.
+
+\bibitem[{Polars developers}()]{Polars}
+{Polars developers}.
+\newblock {pola-rs/polars}.
+\newblock Computer Software; Zenodo.
+\newblock {\url{https://doi.org/10.5281/zenodo.7697217}}.
+
+\bibitem[Hoyer and Hamman(2017)]{HoyerHamman2017}
+Hoyer, S.; Hamman, J.J.
+\newblock {xarray}: {N-D} labeled Arrays and Datasets in {Python}.
+\newblock {\em J. Open Res. Softw.} {\bf 2017}, {\em 5},~10.
+\newblock {\url{https://doi.org/10.5334/jors.148}}.
+
+\bibitem[Hunter(2007)]{Hunter2007Matplotlib}
+Hunter, J.D.
+\newblock {Matplotlib}: A {2D} Graphics Environment.
+\newblock {\em Comput. Sci. Eng.} {\bf 2007}, {\em 9},~90--95.
+\newblock {\url{https://doi.org/10.1109/MCSE.2007.55}}.
+
 \bibitem[Wilks(2019)]{Wilks2019}
 Wilks, D.S.
 \newblock {\em Statistical Methods in the Atmospheric Sciences}, 4th ed.; Elsevier: Amsterdam, The Netherlands,  2019.
@@ -896,56 +950,6 @@ Mandelbrot, B.
 Available online:
 \newblock \url{https://www.inscc.utah.edu/~u0198116/ubos/obs.html} (accessed on 18 September 2026).
 
-
-\bibitem[Blaylock({\natexlab{a}})]{Herbie}
-Blaylock, B.K.
-\newblock {Herbie}: Retrieve Numerical Weather Prediction Model Data.
-\newblock Computer Software.
-Available \hl{online:} %MDPI: we removed the unnecessary doi link, and only keep the website, please confirm.
-\newblock \url{https://github.com/blaylockbk/Herbie} (accessed on 18 September 2026).
-
-\bibitem[Blaylock({\natexlab{b}})]{SynopticPy}
-Blaylock, B.K.
-\newblock {SynopticPy}: {Synoptic API} for {Python}.
-\newblock Computer Software.
-Available online:
-\newblock \url{https://github.com/blaylockbk/SynopticPy} (accessed on 18 September 2026).
-
-\bibitem[Harris et~al.(2020)Harris, Millman, van~der Walt, Gommers, Virtanen, Cournapeau, Wieser, Taylor, Berg, Smith, Kern, Picus, Hoyer, van Kerkwijk, Brett, Haldane, Fern{\'a}ndez~del R{\'i}o, Wiebe, Peterson, G{\'e}rard-Marchant, Sheppard, Reddy, Weckesser, Abbasi, Gohlke, and Oliphant]{Harris2020NumPy}
-Harris, C.R.; Millman, K.J.; van~der Walt, S.J.; Gommers, R.; Virtanen, P.; Cournapeau, D.; Wieser, E.; Taylor, J.; Berg, S.; Smith, N.J.;  et~al.
-\newblock Array programming with {NumPy}.
-\newblock {\em Nature} {\bf 2020}, {\em 585},~357--362.
-\newblock {\url{https://doi.org/10.1038/s41586-020-2649-2}}.
-
-\bibitem[Virtanen et~al.(2020)Virtanen, Gommers, Oliphant, Haberland, Reddy, Cournapeau, Burovski, Peterson, Weckesser, Bright, van~der Walt, Brett, Wilson, Millman, Mayorov, Nelson, Jones, Kern, Larson, Carey, Polat, Feng, Moore, VanderPlas, Laxalde, Perktold, Cimrman, Henriksen, Quintero, Harris, Archibald, Ribeiro, Pedregosa, van Mulbregt, and {SciPy 1.0 Contributors}]{Virtanen2020SciPy}
-Virtanen, P.; Gommers, R.; Oliphant, T.E.; Haberland, M.; Reddy, T.; Cournapeau, D.; Burovski, E.; Peterson, P.; Weckesser, W.; Bright, J.;  et~al.
-\newblock {SciPy} 1.0: Fundamental Algorithms for Scientific Computing in {Python}.
-\newblock {\em Nat. Methods} {\bf 2020}, {\em 17},~261--272.
-\newblock {\url{https://doi.org/10.1038/s41592-019-0686-2}}.
-
-\bibitem[McKinney(2010)]{McKinney2010}
-McKinney, W.
-\newblock Data Structures for Statistical Computing in {Python}.
-\newblock In Proceedings of the 9th Python in Science Conference,  \hl{Austin, TX,  USA, 28 June--3 July 2010}; pp. 56--61. 
-\newblock {\url{https://doi.org/10.25080/Majora-92bf1922-00a}}.
-
-\bibitem[{Polars developers}()]{Polars}
-{Polars developers}.
-\newblock {Polars} User Guide.
-Available online:
-\newblock \url{https://docs.pola.rs/} (accessed on 18 September 2026).
-
-\bibitem[Hoyer and Hamman(2017)]{HoyerHamman2017}
-Hoyer, S.; Hamman, J.J.
-\newblock {xarray}: {N-D} labeled Arrays and Datasets in {Python}.
-\newblock {\em J. Open Res. Softw.} {\bf 2017}, {\em 5},~10.
-\newblock {\url{https://doi.org/10.5334/jors.148}}.
-
-\bibitem[Hunter(2007)]{Hunter2007Matplotlib}
-Hunter, J.D.
-\newblock {Matplotlib}: A {2D} Graphics Environment.
-\newblock {\em Comput. Sci. Eng.} {\bf 2007}, {\em 9},~90--95.
-\newblock {\url{https://doi.org/10.1109/MCSE.2007.55}}.
 
 \end{thebibliography}
 
