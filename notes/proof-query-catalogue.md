@@ -347,6 +347,7 @@ Attached to Table 1 (tab:v3-family), but the notice applies to figures and table
 Author authorised the proposed reply. Added a standalone `% JRL: Noted; please retain legibility and the order of first citation.` line immediately below the original publisher comment; their note and all printed source content are unchanged.
 Validation: working-source `latexmk` under `texlive/20260330` exited 0 (19 pages); full extracted PDF text is byte-identical before/after, and page 4 was inspected. All 23 publisher comments, received source hash and `git diff --check` pass. Existing duplicate heat-deficit label/template warnings remain.
 Outstanding: Include the acknowledgement in the final proof reply. This notice does not establish acceptance of a particular relocation or resize.
+Reply commit: `120a6ec0ca486bc0be523bec5364f88ec636e9d2`; pushed to `origin/jrl/proofs-round1`.
 
 <a id="mdpi08"></a>
 
