@@ -4,6 +4,9 @@ Catalogue complete: **22 MDPI comments and one English-editor note**, with compo
 The initial catalogue proposed responses with all follow-ups open; the 6 October recovery checkpoint below records the author decisions now present in the working source.
 The production notice is retained as an acknowledgement item.
 
+**Current discussion: MDPI05a — appendix-table citation order (the early Table A6 callout).**
+Name the catalogue code whenever referring to the current or next topic, as John requested on 6 October.
+
 This catalogue follows [AGENTS.md](../AGENTS.md) and [PROOFING-HANDOFF.md](../PROOFING-HANDOFF.md) in the active `jrl/proofs-round1` worktree, inspected at `277cfa629f92e3e495cdb33fc9c371cea4c5e621`.
 The received baseline is commit `92b14d2`; all 33 received files are preserved.
 The source and PDF hashes match [intake.json](../proof-package/intake.json):
@@ -290,6 +293,9 @@ No undefined citation/reference or overfull-box warnings; existing duplicate Tab
 Proposed reply for this portion: “First figure citations now follow numerical order; the premature Methods callouts to Figures 3 and 6 have been removed, retaining their Results callouts.”
 Outstanding: appendix-table first citations remain 1, A6, A1, A2, A3, A4, A5; final placement remains under MDPI05b/MDPI08c.
 Correction commit: `73edb040452d2ae71f8ce787fe6b8a5efba33f3c`; pushed to `origin/jrl/proofs-round1`.
+
+Advice pending author choice: keep the station-audit callout in Methods and move its table from the end to the start of Appendix A. LaTeX would number it A1 and shift the existing A1–A5 to A2–A6, matching first-citation order without changing prose or table data. Check all resulting numbers and appendix pagination.
+Alternatives: removing the Methods callout is smaller but leaves the sampling numbers without a direct table reference; moving the sampling sentence into Results weakens the Methods organisation. Recommendation: move the table. No manuscript change applied for this choice. MDPI09 concerns the separate “Appendix A Table…” citation format.
 
 **MDPI05b: Open — layout check.**
 
