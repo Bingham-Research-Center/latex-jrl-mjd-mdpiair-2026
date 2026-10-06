@@ -4,8 +4,14 @@ Catalogue complete: **22 MDPI comments and one English-editor note**, with compo
 The initial catalogue proposed responses with all follow-ups open; the 6 October recovery checkpoint below records the author decisions now present in the working source.
 The production notice is retained as an acknowledgement item.
 
-**Current discussion: MDPI08b — Figure 2 marker meanings. MDPI07 is acknowledged; MDPI06 is deferred after layout changes. Recommendation: defer MDPI08a/c final visual/placement checks and clarify the caption now.**
+**Next discussion: MDPI09 — appendix-table citation format. MDPI08b is applied; the deferred checks below return after caption/layout changes.**
 Name the catalogue code whenever referring to the current or next topic, as John requested on 6 October.
+
+**Deferred checks — author agreed, 6 October:**
+
+- **MDPI06:** Figure 1 overlap; John reports no current overlap. Recheck at final print size after layout changes.
+- **MDPI08a:** Figure 2 overlap; recheck at final print size after layout changes.
+- **MDPI05b/MDPI08c:** final figure/table placement and size, after the caption pass. Citation order is already corrected.
 
 This catalogue follows [AGENTS.md](../AGENTS.md) and [PROOFING-HANDOFF.md](../PROOFING-HANDOFF.md) in the active `jrl/proofs-round1` worktree, inspected at `277cfa629f92e3e495cdb33fc9c371cea4c5e621`.
 The received baseline is commit `92b14d2`; all 33 received files are preserved.
@@ -306,7 +312,7 @@ Proposed reply: “Figure and table first citations now follow numerical order. 
 Remaining: final proof audit; MDPI09 citation-format confirmation; MDPI05b/MDPI08c final placement checks after captions.
 Table correction commit: `4a57a764698ca18119e8beb38bead549ae1b61d7`; pushed to `origin/jrl/proofs-round1`.
 
-**MDPI05b: Open — layout check.**
+**MDPI05b: Deferred — final layout check after captions.**
 
 Proposed response/action: Place figures after their first citations and check the rebuilt layout and table placement throughout.
 
@@ -359,28 +365,30 @@ Source line 181; supplied PDF page 4.
 %MDPI: 1. Please confirm whether the overlapping content in this figure affects scientific understanding and if it does, please revise it.  2. Please confirm whether an explanation of the triangles and squares needs to be added to the figure caption. 3. Figure 2 is not after first citation due to the citation order wrong, please revise citation order and put it after first citation. Same as other figrues, please check all.
 ```
 
-Episode context; label fig:v3-episode-context; asset episode_context_snow_ozone_janfeb2013.pdf. The current caption identifies hollow markers as the seven site-days with less than 75% within-day coverage, but does not identify triangle/square meanings.
+Episode context; label fig:v3-episode-context; asset episode_context_snow_ozone_janfeb2013.pdf. The caption now identifies all five station marker shapes and separately explains hollow markers as the seven site-days with less than 75% within-day coverage.
 
-**MDPI08a: Open — visual check.**
+**MDPI08a: Deferred — final visual check after layout changes.**
 
 Proposed response/action: Inspect the satellite and ozone panels and repair any overlap that obscures information.
 
 Outstanding: Final-size visual review and, if needed, a derivative based on the registered original inputs.
 
-**MDPI08b: Open — evidence/caption check.**
+**MDPI08b: Applied — marker meanings clarified, 6 October.**
 
-Proposed response/action: Add explicit meanings for triangles and squares, distinguishing marker shape from hollow-marker coverage coding.
+Author authorised the proposed caption addition. Applied one sentence explaining all five shapes; retained the independent hollow-marker coverage sentence and unchanged figure asset. Added a standalone `% JRL:` reply beneath the unchanged publisher note, recording the clarification and deferred overlap/placement checks.
 
 Evidence checked — 6 October: both figure manifests and `verification/provenance/episode-context-20260715.json` identify generator `verification/scripts/plot_episode_context.py` at commit `59fa4a0`; its SHA-256 matches the recorded `52902175194863776e2cbd25dcc8866bde9c58b36b61f7c3ea4bb792fc248e12`. The working and registered figure PDFs both match `ea945fbbc3ec1496e25a0fb4965de87fe54da930ee6ecb5db63b7ea95f6aad87`.
 Generator lines 18–24 map circles to Ouray, squares to Redwash, upward triangles to Roosevelt, diamonds to Vernal and downward triangles to Little Mountain. Lines 78–100 independently make markers hollow below 75% coverage.
-Suggested caption addition: “Circles, squares, upward triangles, diamonds, and downward triangles identify Ouray, Redwash, Roosevelt, Vernal, and Little Mountain, respectively.” Keep the existing hollow-marker sentence.
-Recommendation pending author choice: clarify MDPI08b now; defer MDPI08a/c final overlap/placement checks until the layout settles. No Figure 2 or caption change applied. Outstanding: John’s wording choice, then build/inspect.
+Applied caption sentence: “Circles, squares, upward triangles, diamonds, and downward triangles identify Ouray, Redwash, Roosevelt, Vernal, and Little Mountain, respectively.”
+Validation: working-source `latexmk` under `texlive/20260330` exited 0 (19 pages); inspected pages 5 and 6. Only page 5’s extracted text changes; no observed clipping or overlap introduced by the caption addition. Figure citations 1–9, table citations 1/A1–A6, and all 49 bibliography entries/compiled numbers remain ordered. All 23 publisher comments and received source hash are preserved; `git diff --check` passes. Existing duplicate heat-deficit label and template warnings remain; no undefined citation/reference or overfull-box warning.
+Proposed reply: “Marker shapes identifying each site are now explained in the caption; hollow markers separately indicate less than 75% within-day observation coverage.”
+Remaining: final proof audit. John agreed to defer MDPI08a/c until layout changes are complete.
 
-**MDPI08c: Open — technical/layout check.**
+**MDPI08c: Citation order corrected — final placement deferred.**
 
 Proposed response/action: Resolve Figure 2’s citation/placement as part of MDPI05, then check all figures.
 
-Outstanding: The source-level Figure 2 callout at line 116 precedes its figure block at lines 178–188; the independently confirmed defect is non-numerical first-citation order. Final layout still needs inspection.
+MDPI05a corrected first-citation order to Figures 1–9; Figure 2’s first callout precedes its figure block. Outstanding: final physical placement/size inspection with MDPI05b after captions and layout changes.
 
 <a id="mdpi09"></a>
 
