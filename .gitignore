@@ -40,3 +40,6 @@ __pycache__/
 # rules above ignore *.pdf/*.bbl/*-eps-converted-to.pdf by name elsewhere.
 !submission-package/
 !submission-package/**
+
+# Editable proof build output; received baseline PDF remains tracked.
+proof-package/working/air-4472509-done.pdf
