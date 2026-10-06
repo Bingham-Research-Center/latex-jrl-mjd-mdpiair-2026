@@ -771,7 +771,7 @@ John instructs this manuscript repository be made public once the proof has been
 Data Availability retains the current private-working-repository description and provider access/reuse terms. It now states: “The manuscript repository and selected provenance records will be made publicly available at [the GitHub repository](https://github.com/Bingham-Research-Center/latex-jrl-mjd-mdpiair-2026) after proof submission.” Added a standalone `% JRL:` release instruction. This is a future availability promise, not a claim of present public access.
 Validation: final working-source `latexmk` under `texlive/20260330` exited 0 (18 pages). No undefined citation/reference, duplicate-label, overfull-box, oversized-float or narrow-column warning. All figure/table bodies, 49 bibliography entries and 23 publisher notes are unchanged; citation order/compiled numbers and received bundle checks pass; `git diff --check` passes. No footnotes or supplementary-material references. No PDF loaded/rendered by Codex; John checks back-matter wrapping/spacing.
 Outstanding: confirm proof submission has occurred; prepare the provenance contents John selects; make the repository public as instructed after that submission; verify unauthenticated repository access and update availability wording to present tense. Public-release timing is authorised and need not be reconfirmed; do not change visibility before submission. Root proof integration and final package/PR remain separate steps.
-Repository URL/timing correction commit: recorded after committing/pushing this batch.
+Repository URL/timing correction commit: `2fddf485a6438cde8a30056669c6439ec9051e73`; pushed to `origin/jrl/proofs-round1`.
 
 ## Incidental source issue
 
