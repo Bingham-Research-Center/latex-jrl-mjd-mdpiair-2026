@@ -65,6 +65,7 @@ Each individual subquery retains its own status even when related work shares a 
 For each issue, extend its detailed entry with: applied change or confirmed no-change decision; exact evidence; checks/PDF pages; proposed or final reply; remaining author decision; and correction commit hash.
 Commit one verified issue or small related batch promptly, with query IDs and validation in the commit body.
 Use John's identity and `Co-Authored-By: Codex <noreply@openai.com>` on every commit.
+John authorised pushing each batch immediately after committing on 6 October; keep corrections minimal and match his writing conventions.
 A subsequent status commit can record the preceding correction hash.
 
 Build from the working directory after actual proof corrections:
@@ -278,13 +279,16 @@ Source line 110; supplied PDF page 3.
 %MDPI: Figures/Tables citation should be numbered in order of appearance. We detected Figure 3 citation appear after Figure 1,  Figure 6 after Figure 3, order wrong. Please rearrange and ensure all citations appear in numerical order, and please put figures after its first citation.
 ```
 
-First figure citations are 1, 3, 6, 2, 4, 5, 7, 8, 9 (reference lines 109, 111, 112, 116, 286, 304, 351, 387, 411). First table citations are 1, A6, A1, A2, A3, A4, A5 (lines 151, 205, 305, 307, 311, 329, 350). These sequences were checked against the supplied .aux and source, with figure/table numbers also checked in extracted PDF text.
+Received-baseline first figure citations are 1, 3, 6, 2, 4, 5, 7, 8, 9 (reference lines 109, 111, 112, 116, 286, 304, 351, 387, 411). First table citations are 1, A6, A1, A2, A3, A4, A5 (lines 151, 205, 305, 307, 311, 329, 350). These sequences were checked against the supplied .aux and source, with figure/table numbers also checked in extracted PDF text.
 
-**MDPI05a: Open — technical correction.**
+**MDPI05a: Partly applied — figure citation order corrected; appendix-table order open.**
 
-Proposed response/action: Reconcile first citations with numerical order throughout. A candidate figure fix is to move the premature Figure 3 and Figure 6 callouts to the relevant Results passages while preserving the Methods descriptions; check the appendix table sequence too.
-
-Outstanding: Review the resulting reading order and all cross-references in a working copy. No renumbering or relocation has yet been applied.
+Applied figure batch — 6 October: removed only the premature Figure 3 and Figure 6 parentheticals from Methods; retained the descriptions and existing Results callouts in subsections 3.2 and 3.5. No figures were renumbered or moved.
+Source and compiled `.aux` checks confirm first figure citations 1–9 and each first callout before its figure block.
+Validation: `latexmk` under `texlive/20260330` exited 0 (18 pages); inspected pages 3, 6, 7 and 9, with no observed clipping or overlap introduced. All 49 bibliography entries and compiled citation numbers remain ordered; all 23 publisher comments are preserved except trailing whitespace, and the received source hash is unchanged. `git diff --check` passed.
+No undefined citation/reference or overfull-box warnings; existing duplicate Table A5 labels and template warnings remain.
+Proposed reply for this portion: “First figure citations now follow numerical order; the premature Methods callouts to Figures 3 and 6 have been removed, retaining their Results callouts.”
+Outstanding: appendix-table first citations remain 1, A6, A1, A2, A3, A4, A5; final placement remains under MDPI05b/MDPI08c.
 
 **MDPI05b: Open — layout check.**
 
