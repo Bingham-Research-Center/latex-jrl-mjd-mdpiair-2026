@@ -383,6 +383,7 @@ Applied caption sentence: “Circles, squares, upward triangles, diamonds, and d
 Validation: working-source `latexmk` under `texlive/20260330` exited 0 (19 pages); inspected pages 5 and 6. Only page 5’s extracted text changes; no observed clipping or overlap introduced by the caption addition. Figure citations 1–9, table citations 1/A1–A6, and all 49 bibliography entries/compiled numbers remain ordered. All 23 publisher comments and received source hash are preserved; `git diff --check` passes. Existing duplicate heat-deficit label and template warnings remain; no undefined citation/reference or overfull-box warning.
 Proposed reply: “Marker shapes identifying each site are now explained in the caption; hollow markers separately indicate less than 75% within-day observation coverage.”
 Remaining: final proof audit. John agreed to defer MDPI08a/c until layout changes are complete.
+Caption correction commit: `b303e7453675d83171bc692b2207a831def17187`; pushed to `origin/jrl/proofs-round1`.
 
 **MDPI08c: Citation order corrected — final placement deferred.**
 
