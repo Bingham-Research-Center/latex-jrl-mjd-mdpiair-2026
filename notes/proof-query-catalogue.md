@@ -18,6 +18,8 @@ The initial 5 October catalogue claimed no manuscript correction, compilation, f
 
 ## Author editing recovery — 6 October 2026
 
+Recovery commit: `19d2452f921531a8acc46beb451b40e11b863df5` (saved edits, editing paths, decisions and validation).
+
 John saved edits into `proof-package/air-4472509-english/air-4472509-done.tex` while intending to edit the working proof.
 Those edits are now in [the working manuscript](../proof-package/working/air-4472509-done.tex); the received file is restored to its intake hash.
 An exact saved-source backup and patch were verified before restoration; [the recovery receipt](../proof-package/edit-recovery-20261006.json) records paths and hashes.

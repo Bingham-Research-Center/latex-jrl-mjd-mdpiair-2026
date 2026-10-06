@@ -43,5 +43,6 @@
     "documentation_links": "All relative file links in changed Markdown resolve",
     "whitespace": "git diff --check passed",
     "build_warnings": "Known duplicate Table A5 labels; template headheight/PDF-string warnings and underfull boxes remain. No overfull boxes or undefined references reported."
-  }
+  },
+  "recovery_commit": "19d2452f921531a8acc46beb451b40e11b863df5"
 }
