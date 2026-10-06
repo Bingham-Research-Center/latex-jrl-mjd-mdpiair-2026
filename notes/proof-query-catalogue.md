@@ -4,7 +4,7 @@ Catalogue complete: **22 MDPI comments and one English-editor note**, with compo
 The initial catalogue proposed responses with all follow-ups open; the 6 October recovery checkpoint below records the author decisions now present in the working source.
 The production notice is retained as an acknowledgement item.
 
-**Next: MDPI05b — John’s visual check of pages 7–8 after moving the Section 3.4 heading/opening paragraph above Figure 4. Table A1 is author-approved. Then final query/reply audit, PUB01 public-release scope and authorised return/integration.**
+**Next: MDPI05b — John checks pages 7–8 and the back matter after removal of the forced break before Conflicts of Interest. Table A1 is author-approved. PUB01: add the repository URL and post-proof-submission release timing; final query/reply audit and authorised return/integration remain.**
 Name the catalogue code whenever referring to the current or next topic, as John requested on 6 October.
 
 **Author visual review — 6 October:**
@@ -591,6 +591,12 @@ Station-table correction commit: `b5765e10b18c414049801e8dc0c7aebbd53fd64c`; pus
 John confirms Table A1 looks good; recorded this with a standalone `% JRL:` approval. The page 7 gap persists, and John requests the first paragraph of Section 3.4 above Figure 4. Moved the unchanged Figure 4 block (including its original size/caption/`[H]` placement) after that paragraph, keeping the Section 3.4 heading/label with its opening text. Added a standalone `% JRL:` placement note. No prose, figures, table data or bibliography content changed.
 Validation: working-source `latexmk` under `texlive/20260330` exited 0 (19 pages); `.aux` puts the Section 3.4 heading on page 7, Figure 4 on page 8, and Table A1 on page 13. First figure calls remain 1–9, table calls 1/A1–A6 and all 49 bibliography numbers match first citation. Figure blocks and table bodies are byte-identical to the preceding source; all 23 publisher notes and the received bundle are preserved. No undefined reference/citation, duplicate-label, overfull-box, oversized-float or narrow-column warning; `git diff --check` passes. No PDF loaded/rendered by Codex. NEXT: John reviews pages 7–8 for the gap and Section 3.4 flow, then final query/reply audit; A1 sizing is author-confirmed.
 Figure 4 placement correction commit: `37baff30293d88157566018b2b495ae334e289df`; pushed to `origin/jrl/proofs-round1`.
+
+### Back-matter placement batch — 6 October 2026 (MDPI05b)
+
+John requests Conflicts of Interest directly below Acknowledgements. Removed the explicit `\newpage` between the two blocks; their text and normal template spacing are unchanged. Added a standalone `% JRL:` explanation. No template modification or forced layout override.
+Validation: working-source `latexmk` under `texlive/20260330` exited 0 (18 pages, down from 19 after removing the forced break). All figure/table bodies, 49 bibliography entries and 23 publisher query notes remain unchanged; first-citation order and compiled reference numbers pass. Received bundle remains unchanged; `git diff --check` passes. No undefined citation/reference, duplicate-label, overfull-box, oversized-float or narrow-column warning. No PDF loaded/rendered by Codex; John checks final back-matter spacing. PUB01 URL/timing update follows as a separate batch.
+Back-matter placement correction commit: recorded after committing/pushing this batch.
 
 ### Caption/table confirmation batch — 6 October 2026 (MDPI11–17)
 
