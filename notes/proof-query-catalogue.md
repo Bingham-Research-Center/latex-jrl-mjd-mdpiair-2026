@@ -4,15 +4,16 @@ Catalogue complete: **22 MDPI comments and one English-editor note**, with compo
 The initial catalogue proposed responses with all follow-ups open; the 6 October recovery checkpoint below records the author decisions now present in the working source.
 The production notice is retained as an acknowledgement item.
 
-**Next: John’s PDF review of MDPI05b/MDPI08c size/placement and MDPI06/MDPI08a/MDPI11/MDPI16a overlap. Source placement is corrected; no PDF is loaded by Codex in this batch. PUB01 public release and final return/integration remain pending.**
+**Next: MDPI05b compact table layout, then John’s review of resized Figures 5–9 and tables. John reports the previous proof otherwise all clear; MDPI06/MDPI08a/MDPI11/MDPI16a overlap confirmations are recorded. PUB01 and final return/integration remain pending.**
 Name the catalogue code whenever referring to the current or next topic, as John requested on 6 October.
 
-**Visual checks — John will review the PDFs, 6 October:**
+**Author visual review — 6 October:**
 
-- **MDPI06:** Figure 1 overlap; John reports no current overlap. Recheck at final print size after layout changes.
-- **MDPI08a:** Figure 2 overlap; recheck at final print size after layout changes.
-- **MDPI11/MDPI16a:** Figures 3 and 8 overlap; recheck at final print size after layout changes, following John’s instruction to batch straightforward choices.
-- **MDPI05b/MDPI08c:** source order/placement checked; Figure 2 moved into the observations subsection after Figure 1. John checks the rendered placement, size and spacing; current size settings are retained.
+John reports the previous working proof “All clear” except size reductions for Figures 5–9; he also flags oversized tables. This confirms the previous placement/overlap checks under MDPI06/MDPI08a/MDPI11/MDPI16a. Final legibility and page balance after the requested resizing remain with John; Codex does not load/render the PDFs.
+
+- **MDPI05b:** resize Figures 5–7 more substantially, Figures 8–9 slightly, and compact tables; recheck the revised sizes/page balance.
+- **MDPI08c:** Figure 2 placement/size accepted in John’s “All clear” review.
+- **PUB01:** repository/provenance selection and public release pending.
 
 This catalogue follows [AGENTS.md](../AGENTS.md) and [PROOFING-HANDOFF.md](../PROOFING-HANDOFF.md) in the active `jrl/proofs-round1` worktree, inspected at `277cfa629f92e3e495cdb33fc9c371cea4c5e621`.
 The received baseline is commit `92b14d2`; all 33 received files are preserved.
@@ -308,28 +309,24 @@ Proposed reply: “Figure and table first citations now follow numerical order. 
 Remaining: final proof audit; MDPI09 citation-format confirmation; MDPI05b/MDPI08c final placement checks after captions.
 Table correction commit: `4a57a764698ca18119e8beb38bead549ae1b61d7`; pushed to `origin/jrl/proofs-round1`.
 
-**MDPI05b: Source placement applied — visual review assigned to John.**
+**MDPI05b: Placement accepted; figure/table resizing applied or in progress — revised visual review assigned to John.**
 
 Author workflow decision, 6 October: avoid loading PDFs into Codex to save tokens; John will inspect the rendered proof and report visual problems. This overrides the usual agent PDF-inspection step for this and subsequent batches unless John asks otherwise. Builds, logs, auxiliary-file and source checks continue.
 Applied: moved only Figure 2’s unchanged block from the WRF-configuration subsection to the end of the observations subsection, after Figure 1 and both first mentions. Preserved every figure size, caption and asset; the source still uses the publisher’s `[H]` placement. Added/updated standalone `% JRL:` replies under the original MDPI05/08 comments.
 Source audit: all nine figure blocks follow their first mentions; first calls remain 1–9. The two paired-panel figures use two `0.49\textwidth` minipages with `\linewidth` graphics. Other figure widths remain 0.82–0.98 of `\textwidth`. Appendix A1 retains the publisher’s extended-width table; no unverified size change is made.
 Validation: working-source `latexmk` under `texlive/20260330` exited 0 (19 pages). Auxiliary-file caption locators put Figure 2 on page 4 and Table 1 on page 5. First figure calls remain 1–9 and table calls 1, A1–A6; all 49 compiled bibliography numbers match first citation. No undefined citation/reference, duplicate-label, overfull-box or oversized-float warning; `git diff --check` passes. All figure contents/sizes, table bodies, 49 bibliography entries and publisher query quotations remain unchanged; received source checksum preserved. No PDF opened, rendered or visually signed off by Codex.
-Outstanding: John’s visual check of placement, readable plot/table labels, caption spacing and the four overlap queries listed above. A successful build/source audit does not establish visual readability.
+John’s subsequent “All clear” accepts this placement and the prior overlap checks. The requested Figure 5–9 and table size changes are recorded below; their revised legibility/page balance remain for John. A successful build/source audit does not establish visual readability.
 Placement correction commit: `5c978530242986fa04792e9821e06fc5d8b396ff`; pushed to `origin/jrl/proofs-round1`.
 
-**John’s compact visual checklist — current working PDF; pages from `.aux`, not agent visual verification:**
+**John’s compact visual checklist — resized working PDF; pages from `.aux`, not agent visual verification:**
 
 | Code | Check | Pages |
 | --- | --- | --- |
-| MDPI05b/MDPI08c | Figure 2 and Table 1 placement, caption spacing and readable text after the move | 4–5 |
-| MDPI06 | Figure 1: map/panel labels and legend overlap | 3 |
-| MDPI08a | Figure 2: satellite/ozone labels and legend overlap | 4 |
-| MDPI11 | Figure 3: station legend, axes and curves | 7 |
-| MDPI16a | Figure 8: maps, section labels and colour bars | 11 |
-| MDPI05b | Appendix A1–A6 table widths, readable values and continued Table A6 | 14–15 |
+| MDPI05b | Figures 5–7: smaller basic plots, readable labels | 9–10 |
+| MDPI05b/MDPI16a | Figures 8–9: slight reductions, readable panel labels | 11–12 |
+| MDPI05b | Appendix A1–A6 table widths and readable values; compact-table batch next | 13–15 |
 
-John can report all clear or identify the code/figure/page and the observed problem. Do not mark these visual items complete from source/build checks alone.
-
+The previous proof’s placement/overlap checks are author-confirmed. John reviews the newly resized items and any resulting page reflow; source/build checks do not close that review.
 
 <a id="mdpi06"></a>
 
@@ -343,11 +340,11 @@ Source line 131; supplied PDF page 3.
 
 Geographic/sampling locator; label fig:v3-locator. Assets: wrf_geographic_locator_d01_d03.pdf and wrf_nested_domains_d01_d03.png.
 
-**MDPI06: Author reports no current overlap — final check deferred.**
+**MDPI06: Author confirmed — no overlap affecting understanding in the reviewed proof.**
 
 Author decision — 6 October: John reports no current overlap and requests revisiting Figure 1 after the figure/layout shuffling. No manuscript or figure change.
 
-Outstanding: Recheck both panels at final print size after MDPI05b/MDPI08c placement changes, then assemble the final reply. Registered figure provenance and both admission manifests govern any replacement.
+John’s subsequent “All clear” review confirms Figure 1; added a standalone `% JRL:` confirmation. No Figure 1 asset/size change. Outstanding: final return assembly; author rechecks any production resizing.
 
 <a id="mdpi07"></a>
 
@@ -380,11 +377,11 @@ Source line 181; supplied PDF page 4.
 
 Episode context; label fig:v3-episode-context; asset episode_context_snow_ozone_janfeb2013.pdf. The caption now identifies all five station marker shapes and separately explains hollow markers as the seven site-days with less than 75% within-day coverage.
 
-**MDPI08a: Deferred — final visual check after layout changes.**
+**MDPI08a: Author confirmed — reviewed proof all clear.**
 
 Proposed response/action: Inspect the satellite and ozone panels and repair any overlap that obscures information.
 
-Outstanding: Final-size visual review and, if needed, a derivative based on the registered original inputs.
+John’s “All clear” review accepts Figure 2; its existing author reply now records the check. Outstanding: final return assembly/production layout check.
 
 **MDPI08b: Applied — marker meanings clarified, 6 October.**
 
@@ -398,10 +395,10 @@ Proposed reply: “Marker shapes identifying each site are now explained in the 
 Remaining: final proof audit. John agreed to defer MDPI08a/c until layout changes are complete.
 Caption correction commit: `b303e7453675d83171bc692b2207a831def17187`; pushed to `origin/jrl/proofs-round1`.
 
-**MDPI08c: Source citation order/placement corrected — John’s visual review pending.**
+**MDPI08c: Author confirmed — Figure 2 placement/size accepted.**
 
 Figure 2 now follows Figure 1 and its first mention within the observations subsection, before the WRF-configuration subsection. Its caption, asset and 0.93 text-width size are retained. All figure first calls remain 1–9; see the MDPI05b source/build audit.
-Outstanding: John checks the rendered placement/size and MDPI08a overlap; no new agent PDF inspection in this batch.
+John’s “All clear” feedback accepts Figure 2 placement/size and MDPI08a overlap. Outstanding: final return assembly; no agent PDF inspection.
 
 <a id="mdpi09"></a>
 
@@ -458,10 +455,10 @@ Source line 275; supplied PDF page 7.
 
 Observed temperature series; label fig:v3-observed; asset obs_temp_timeseries_feb0102.pdf. Its caption already states that shading indicates approximate local night.
 
-**MDPI11: Deferred — final layout check.**
+**MDPI11: Author confirmed — reviewed proof all clear.**
 
-Applied reply: `% JRL: Overlap will be rechecked after final layout changes.`
-Outstanding: Inspect station labels, legend, annotations and axes at final print size after layout changes; no figure derivative is authorised by this deferral.
+Applied reply after John’s “All clear”: `% JRL: Confirmed; no overlap affecting scientific understanding.`
+Outstanding: final return assembly/production layout check. Figure 3 size/asset is unchanged.
 
 <a id="mdpi12"></a>
 
@@ -543,9 +540,9 @@ Source line 392; supplied PDF page 11.
 
 Terrain comparison; label fig:v3-terrain-cmp11; asset wrf_terrain_cmp11_d02_d03_16z.pdf. The caption describes panels (a)–(d) and a 2200 m crest reference, but does not explicitly map dashed lines to features.
 
-**MDPI16a: Deferred — final layout check.**
+**MDPI16a: Author confirmed — overlap clear in the reviewed proof; Figure 8 reduction requested.**
 
-Recheck maps, sections, labels and colour bars at final print size after layout changes.
+John reports all clear apart from Figure 8’s size. Its asset is uniformly reduced; the updated author reply records previous-proof overlap confirmation and the size change. Revised legibility remains for John to check.
 
 **MDPI16b: Applied — all dashed features explained.**
 
@@ -568,6 +565,12 @@ Surface, spatial and vertical corroboration; label tab:v3-surface-summary. Now T
 
 Inspected current Table A5 on working PDF page 15: all eight rows remain correctly associated, with the first four station-based and last four footprint-based. All tabular source bodies are unchanged. Standalone reply: `% JRL: Confirmed; please retain the added horizontal rules.`
 Outstanding: Final proof audit.
+
+### Figure-size and visual-confirmation batch — 6 October 2026 (MDPI05b and overlap subqueries)
+
+John explicitly requested smaller Figures 5–7 and slight reductions to 8–9. Applied Figure 5/6 widths 0.82→0.65 text width, Figure 7 0.90→0.72, Figure 8 0.98→0.90, and Figure 9 panel minipages 0.49→0.45 each. Added standalone `% JRL:` notes at each changed figure; updated overlap/placement replies to match John’s preceding “All clear”. Figure assets/captions, values, table bodies, first-citation order and the 49 bibliography entries are unchanged.
+Validation: working-source `latexmk` under `texlive/20260330` exited 0 (19 pages). First figure calls are 1–9, table calls 1/A1–A6 and all 49 bibliography numbers match first citation. No undefined reference/citation, duplicate-label, overfull-box or oversized-float warning. Table bodies, publisher notes and received bundle are preserved; `git diff --check` passes. No agent PDF loading/rendering. John reviews the new sizes/legibility; his prior “All clear” is not presented as acceptance of these newly generated pages.
+Figure-size correction commit: recorded after committing/pushing this batch.
 
 ### Caption/table confirmation batch — 6 October 2026 (MDPI11–17)
 
