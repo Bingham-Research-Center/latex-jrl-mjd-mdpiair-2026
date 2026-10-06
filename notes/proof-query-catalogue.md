@@ -4,7 +4,7 @@ Catalogue complete: **22 MDPI comments and one English-editor note**, with compo
 The initial catalogue proposed responses with all follow-ups open; the 6 October recovery checkpoint below records the author decisions now present in the working source.
 The production notice is retained as an acknowledgement item.
 
-**Next: MDPI18 AI identifiers/scope (John’s bundled answer pending), then deferred layout/final proof audit. MDPI04a already has John’s saved instrument-metadata limitation reply. Retrieval, analysis and plotting versions are now applied. MDPI01, MDPI12–17 and MDPI19–22 are confirmed/applied; deferred checks remain below.**
+**Next: MDPI18 AI identifiers/scope (John will supply the exact identifiers), then deferred layout/final proof audit. MDPI04a already has John’s saved instrument-metadata limitation reply. Retrieval, analysis and plotting versions are now applied. MDPI01, MDPI12–17 and MDPI19–22 are confirmed/applied; deferred checks remain below.**
 Name the catalogue code whenever referring to the current or next topic, as John requested on 6 October.
 
 **Deferred checks — author agreed, 6 October:**
@@ -581,6 +581,8 @@ Author citation preference, 6 October: cite software in Methods with DOI-bearing
 
 Outstanding: Applicable historical AI product/model identifiers and whether the publisher requires them for the highlighted Claude/Codex names. These facts were requested from John on 6 October; his reply identifies the probable CHPC conda/mamba retrieval environment and authorises a 1 June 2026 release-history fallback if it cannot be recovered. The environment was recovered, so the fallback was not used; do not assign an AI model from a release date. The publisher note does not explicitly define the scope of the AI highlights.
 
+Author decision, 6 October: John answered “I’ll provide the exact identifiers” to the bundled AI follow-up. Await those identifiers before changing the disclosure or adding its final `% JRL:` reply; the proposed statement that identifiers were not retained was not accepted.
+
 ### Analysis/plotting version batch — 6 October 2026 (MDPI18/MDPI04b)
 
 Added only the package versions recorded in the study’s archived receipts to the existing Methods use/citation sentence, retaining all DOI citations and publisher highlights. Added one sentence identifying Matplotlib 3.10.8 for the later label-only revisions to Figures 4 and 5; the earlier analysis/plotting environment used 3.11.0. No bibliography change, dependency upgrade, rerun or plot recomputation.
@@ -702,7 +704,7 @@ These items do not increase the count of 22 MDPI comments.
 | --- | --- | --- | --- |
 | Figure 6 and Figure 2 callouts | Lines 112 and 116; p. 3 | Within the citation-order scope of MDPI05. | Citation order applied; final placement deferred |
 | Appendix Table A2 and A3 callouts | Lines 307 and 311; p. 8 | Within “same as below” under MDPI09. | Confirmed; final audit pending |
-| Claude and OpenAI Codex | Line 660; p. 16 | Possible continuation of the software-version request; explicit model/version requirements are not stated. Preserve the AI-use disclosure and verify author/session facts before adding identifiers. | Open; scope/author facts |
+| Claude and OpenAI Codex | Line 660; p. 16 | Possible continuation of the software-version request; explicit model/version requirements are not stated. Preserve the AI-use disclosure and verify author/session facts before adding identifiers. | Awaiting exact identifiers from John |
 | USGS publisher location | Line 847; reference 31, p. 17 | Within “same as below” under MDPI20; tracked as MDPI20b. | Confirmed; final audit pending |
 | McKinney conference location/dates | Line 919; reference 43, p. 18 | Highlighted “Austin, TX, USA, 28 June–3 July 2010”; verified against the original cited proceedings cover, as recorded below. | Confirmed; final audit pending |
 
