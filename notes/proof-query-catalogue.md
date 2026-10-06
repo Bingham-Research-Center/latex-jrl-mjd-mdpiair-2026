@@ -4,7 +4,7 @@ Catalogue complete: **22 MDPI comments and one English-editor note**, with compo
 The initial catalogue proposed responses with all follow-ups open; the 6 October recovery checkpoint below records the author decisions now present in the working source.
 The production notice is retained as an acknowledgement item.
 
-**Next: MDPI18 actual software versions (coordinate MDPI04b); MDPI01 author details are awaiting John’s bundled confirmation. MDPI12–17 and MDPI19–22 are applied/confirmed; deferred layout checks remain below.**
+**Next: MDPI18 actual software versions (coordinate MDPI04b); MDPI01 author details are confirmed and all four ORCIDs are displayed. MDPI12–17 and MDPI19–22 are applied/confirmed; deferred layout checks remain below.**
 Name the catalogue code whenever referring to the current or next topic, as John requested on 6 October.
 
 **Deferred checks — author agreed, 6 October:**
@@ -64,7 +64,7 @@ Each individual subquery retains its own status even when related work shares a 
 
 | Batch | Individual queries / issues | Work and completion evidence | Current state |
 | --- | --- | --- | --- |
-| 1 — Author facts and choices | EE01; MDPI01a/b, MDPI02, MDPI03; AI-use highlights | Confirm title, names, affiliations, ORCIDs, emails, emphasis and applicable AI identifiers from John/saved decisions. Record each exact decision. | Open |
+| 1 — Author facts and choices | EE01; MDPI01a/b, MDPI02, MDPI03; AI-use highlights | Title, names/affiliations, all four ORCIDs, emails and emphasis confirmed; AI identifiers remain under MDPI18. | Confirmed; AI scope open |
 | 2 — Citation order and cross-references | MDPI05a/b, MDPI08c, MDPI09; duplicate Table A5 label | Citation order, appendix references and duplicate label corrected; final placement deferred. | Applied; layout deferred |
 | 3 — Figures and captions | MDPI06, MDPI08a/b, MDPI11–16 and their subqueries | Marker, panel, shading and dashed-line explanations verified and applied; final overlap checks deferred. | Applied; overlap deferred |
 | 4 — Mathematical/table formatting | MDPI10, MDPI17 | Minimal notation corrections applied; Table A5 borders/row associations checked and retained. | Applied; final audit pending |
@@ -151,17 +151,12 @@ Source line 23; supplied PDF page 1.
 
 The proof lists John R. Lawson (1,2; corresponding author), Michael J. Davies (1), Loknath Dhar (1,3), and Seth N. Lyman (1,3). Affiliations are Bingham Research Center, Utah State University, Vernal, UT 84078, USA (1); Department of Mathematics and Statistics, Utah State University, Logan, UT 84322, USA (2); and Department of Chemistry and Biochemistry, Utah State University, Logan, UT 84322, USA (3).
 
-**MDPI01a: Open — author facts.**
+**MDPI01a/b: Author confirmed — 6 October bundled reply.**
 
-Proposed response/action: Confirm the displayed author names, order, superscripts, affiliations and correspondence details, or supply exact corrections.
-
-Outstanding: John/saved author decisions must confirm these personal details. Correspondence is john.lawson@usu.edu at source line 32.
-
-**MDPI01b: Open — author facts.**
-
-Proposed response/action: Retain each displayed ORCID only after the author confirms that it belongs to them and should appear.
-
-Outstanding: John: 0000-0003-0305-4090; Michael: 0009-0009-9083-6568 (received source lines 21–24). John’s saved edit adds `orcidauthorC` (0009-0002-4536-5778) and `orcidauthorD` (0000-0001-8493-9522), but does not attach `orcidC`/`orcidD` to the author line. Display and author mapping remain to be completed/confirmed; the migration preserves the macros as supplied.
+John explicitly answered “Confirm all; display all four ORCIDs” to the displayed names/order, affiliations and ORCID mappings listed above. Retained names and affiliations; added `\orcidC{}` for Loknath Dhar (0009-0002-4536-5778) and `\orcidD{}` for Seth N. Lyman (0000-0001-8493-9522), using John’s saved macros. John’s and Michael’s existing ORCIDs are retained. Added a standalone `% JRL:` reply beneath the unchanged publisher query.
+Validation: working-source `latexmk` under `texlive/20260330` exited 0 (19 pages); page 1 inspected for all four icons and correct link targets. Bibliography, names/affiliations and all publisher notes are unchanged; received source checksum preserved; `git diff --check` passes.
+Outstanding: Final proof audit; this is John’s explicit confirmation, not an independent audit of institutional records.
+Author-detail correction commit: recorded after committing/pushing this batch.
 
 <a id="mdpi02"></a>
 
@@ -698,7 +693,7 @@ These items do not increase the count of 22 MDPI comments.
 Applied six standalone `% JRL:` replies: EGU dates, both publisher locations, Tewari meeting details, McKinney proceedings details and retention of the already restored Herbie DOI. Original reference metadata and all publisher comments are unchanged.
 The [original SciPy 2010 proceedings cover](https://proceedings.scipy.org/articles/proceedings-2010.pdf) states June 28–July 3, Austin, Texas; PDF SHA-256 `163d56b9f133137ecb23df373d226e01658a94f5b81b7c90a0ed96b5ff08b71f`. The [contemporaneous PSF record](https://www.python.org/psf/records/board/minutes/2010-05-10/) independently gives 28 June–3 July 2010. The modern proceedings index instead lists 28–30 June; the cited original volume’s cover governs this confirmation.
 Validation: working-source `latexmk` under `texlive/20260330` exited 0 (19 pages); reference pages 17–19 inspected. Removing standalone author comments exactly reproduces the preceding source, including all 49 embedded bibliography entries; first-citation sequence and compiled bibliography numbers remain correct. All 23 publisher comments and received source checksum are preserved; no undefined citation/reference, duplicate-label or overfull-box warning. No footnotes or supplementary-material references added. `git diff --check` passes.
-Bibliography confirmation commit: recorded after committing/pushing this batch.
+Bibliography confirmation commit: `7f14149aa26328cddea07b463c95af9e9b5425b1`; pushed to `origin/jrl/proofs-round1`.
 
 ## Incidental source issue
 
@@ -709,7 +704,7 @@ Resolved in the MDPI11–17 batch: the duplicate now belonged to working Table A
 
 ## Next resolution pass
 
-1. Complete the remaining author facts for MDPI01 and any AI identifiers; retain the title, email and emphasis decisions recovered from John’s saved source comments for EE01, MDPI02 and MDPI03.
+1. MDPI01 author facts are confirmed; any applicable AI identifiers remain under MDPI18. Retain the saved title, email and emphasis decisions for EE01, MDPI02 and MDPI03.
 2. Use the complete `proof-package/working/` copy already created; preserve the received baseline and record corrections in this register.
 3. Citation order, mathematical/appendix formatting, caption explanations and the duplicate label are applied; finish the recorded deferred layout checks after layout changes.
 4. Recover versions from the actual analysis provenance (MDPI18/MDPI04b); bibliography confirmations are now verified/applied. Do not substitute current software versions.
