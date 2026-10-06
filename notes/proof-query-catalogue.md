@@ -29,6 +29,16 @@ The working proof builds to 18 pages under `texlive/20260330`; affected pages 1�
 Known duplicate Table A5 labels, template warnings and unresolved draft text remain; this is not a full proof audit.
 Checks and hashes are recorded in the recovery receipt.
 
+## Author citation preference — 6 October 2026
+
+John explicitly requests formal in-text citations for WRF/WPS, software and data sources, with verified paper/software DOIs where available, rather than website-only references, acknowledgements-only mentions or passing references.
+Do not use manuscript footnotes; retain a bibliography URL and access date when no suitable DOI exists, without substituting a DOI for a different resource.
+Recommendation, not yet an accepted TeX edit: put software use, citations and verified versions in Methods; keep personal and institutional thanks in Acknowledgements.
+The working source already cites DOI-bearing entries for WRF, NumPy, SciPy, pandas, xarray and Matplotlib; the Python-package citations currently occur in Acknowledgements.
+A targeted source check found no `\footnote{` or `\footnotetext{` calls; `\footnotesize` is table typography and is not a footnote.
+Implement this policy incrementally through MDPI04b, MDPI18 and MDPI22, preserving publisher query quotations and the received bundle.
+No new manuscript wording or software version was accepted or implemented in this advice session.
+
 ## Walkthrough: where to edit and how to batch the work
 
 Active worktree: `/uufs/chpc.utah.edu/common/home/u0737349/worktrees/air-proofs-round1`, branch `jrl/proofs-round1`.
@@ -205,6 +215,14 @@ Proposed response/action: Supply versions used for the reported simulations, pre
 Saved draft: The working source now says WPS 4.8.0 and retains `[WRF/WPS ref]` and `[what?]` terrain placeholders. The nearby author comment describes intended additions, not verified completion.
 
 Outstanding: Verify WRF and WPS provenance and complete the WPS citation and fine/default/coarse terrain-source descriptions. Coordinate with MDPI18; today’s installed versions and cited software-paper versions are not evidence of the versions used.
+
+6 October citation advice: retain `Skamarock2019` for WRF, as recommended by [NCAR's citation guidance](https://www2.mmm.ucar.edu/wrf/users/citing_wrf.html), DOI [10.5065/1dfh-6p97](https://doi.org/10.5065/1dfh-6p97).
+For the WPS description, recommend Powers et al. (2017), *The Weather Research and Forecasting Model: Overview, System Efforts, and Future Directions*, *Bulletin of the American Meteorological Society*, 98, 1717–1737, DOI [10.1175/BAMS-D-15-00308.1](https://doi.org/10.1175/BAMS-D-15-00308.1); the [publisher record](https://journals.ametsoc.org/view/journals/bams/98/8/bams-d-15-00308.1.xml) explicitly describes WPS.
+Proposed wording, pending author agreement and actual preprocessing-version evidence: “The terrain datasets were ingested using the WRF Preprocessing System (WPS), version [verified version] [Powers et al., 2017].”
+A targeted search of the paper's `verification/provenance/` found no recorded WPS version; `run-inventory.csv` records WRF 4.8.0, which does not verify WPS 4.8.0.
+The saved WPS version remains unverified; next obtain an archived preprocessing log, build/source record or equivalent record linked to these runs.
+Terrain-source provenance remains independently open. Citation verification does not close it.
+Validation: live branch `jrl/proofs-round1` and clean starting tree checked; working source and relevant embedded entries inspected; NCAR citation guidance and Powers publisher search record checked. Documentation only: no TeX change, new build or PDF inspection.
 
 <a id="mdpi05"></a>
 
@@ -492,6 +510,8 @@ Explicit highlights cover NumPy, SciPy, pandas, xarray and Matplotlib (lines 655
 
 Proposed response/action: Add the verified versions used for the named analysis/plotting software; coordinate the broader software inventory with MDPI04b. Review the AI highlights separately before interpreting “Same as below”.
 
+Author citation preference, 6 October: cite software in Methods with DOI-bearing bibliography entries where available. Moving the existing acknowledgement citations and adding verified versions remain proposed edits; this query remains open.
+
 Outstanding: Archived analysis and plotting environments may differ by stage/figure. Record package, actual version, task/date and exact provenance source. If unavailable, record the gap for John rather than insert a current version. AI product/model identifiers require author/session evidence where applicable; the source note does not explicitly define the scope of those highlights.
 
 <a id="mdpi19"></a>
@@ -569,6 +589,8 @@ Herbie retains its GitHub URL and access date at line 895. The proof does not sh
 **MDPI22: Open — bibliographic/author decision.**
 
 Proposed response/action: Recover and verify the removed identifier and decide whether it is a relevant software/archive DOI before agreeing to delete it.
+
+Author citation preference, 6 October: prefer a verified software/archive DOI to a website-only entry. This does not yet approve restoring the unidentified deleted DOI; recover and verify its target first.
 
 Outstanding: Compare with the submitted reference or Paperpile export, then verify the identifier’s target. If it identifies the software release used, retain a persistent citation as appropriate; otherwise explain the correction. Do not hand-edit paperpile.bib.
 
