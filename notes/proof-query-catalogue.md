@@ -37,7 +37,7 @@ Recommendation, not yet an accepted TeX edit: put software use, citations and ve
 The working source already cites DOI-bearing entries for WRF, NumPy, SciPy, pandas, xarray and Matplotlib; the Python-package citations currently occur in Acknowledgements.
 A targeted source check found no `\footnote{` or `\footnotetext{` calls; `\footnotesize` is table typography and is not a footnote.
 Implement this policy incrementally through MDPI04b, MDPI18 and MDPI22, preserving publisher query quotations and the received bundle.
-No new manuscript wording or software version was accepted or implemented in this advice session.
+The advice-only checkpoint above preceded John’s subsequent instruction to apply the recommendations; implementation and validation are recorded below.
 
 ## Walkthrough: where to edit and how to batch the work
 
@@ -208,21 +208,40 @@ Author position in the saved edit: Instrument information cannot be supplied fro
 
 Outstanding: Final response wording and any applicable documented provider instrument facts; do not infer manufacturers from the aggregator’s name.
 
-**MDPI04b: Open — provenance check.**
+**MDPI04b: Partly resolved — WPS version/citation applied; remaining software/terrain provenance open.**
 
 Proposed response/action: Supply versions used for the reported simulations, preprocessing, retrieval and analysis from the corresponding archived environments.
 
-Saved draft: The working source now says WPS 4.8.0 and retains `[WRF/WPS ref]` and `[what?]` terrain placeholders. The nearby author comment describes intended additions, not verified completion.
+Historical saved draft before correction: The working source said WPS 4.8.0 and retained `[WRF/WPS ref]` and `[what?]` terrain placeholders. The nearby author comment describes intended additions, not verified completion.
 
-Outstanding: Verify WRF and WPS provenance and complete the WPS citation and fine/default/coarse terrain-source descriptions. Coordinate with MDPI18; today’s installed versions and cited software-paper versions are not evidence of the versions used.
+Outstanding: Complete fine/default/coarse terrain-source descriptions and the remaining retrieval/analysis software versions. WPS version and citation are resolved by the batch below. Coordinate with MDPI18; today’s installed versions and cited software-paper versions are not evidence of the versions used.
 
-6 October citation advice: retain `Skamarock2019` for WRF, as recommended by [NCAR's citation guidance](https://www2.mmm.ucar.edu/wrf/users/citing_wrf.html), DOI [10.5065/1dfh-6p97](https://doi.org/10.5065/1dfh-6p97).
+Earlier 6 October citation advice: retain `Skamarock2019` for WRF, as recommended by [NCAR's citation guidance](https://www2.mmm.ucar.edu/wrf/users/citing_wrf.html), DOI [10.5065/1dfh-6p97](https://doi.org/10.5065/1dfh-6p97).
 For the WPS description, recommend Powers et al. (2017), *The Weather Research and Forecasting Model: Overview, System Efforts, and Future Directions*, *Bulletin of the American Meteorological Society*, 98, 1717–1737, DOI [10.1175/BAMS-D-15-00308.1](https://doi.org/10.1175/BAMS-D-15-00308.1); the [publisher record](https://journals.ametsoc.org/view/journals/bams/98/8/bams-d-15-00308.1.xml) explicitly describes WPS.
 Proposed wording, pending author agreement and actual preprocessing-version evidence: “The terrain datasets were ingested using the WRF Preprocessing System (WPS), version [verified version] [Powers et al., 2017].”
 A targeted search of the paper's `verification/provenance/` found no recorded WPS version; `run-inventory.csv` records WRF 4.8.0, which does not verify WPS 4.8.0.
-The saved WPS version remains unverified; next obtain an archived preprocessing log, build/source record or equivalent record linked to these runs.
+At that advice-only checkpoint, the saved WPS version remained unverified; the following batch records the subsequently supplied run-use confirmation and live build evidence.
 Terrain-source provenance remains independently open. Citation verification does not close it.
 Validation: live branch `jrl/proofs-round1` and clean starting tree checked; working source and relevant embedded entries inspected; NCAR citation guidance and Powers publisher search record checked. Documentation only: no TeX change, new build or PDF inspection.
+
+### MDPI04b correction batch — 6 October 2026
+
+Author instruction: Apply the proposed citation changes; confirm each completed batch in chat and commit with John as author and the Codex co-author trailer. Continue the agreed proof work promptly, preserving evidence and individual decisions.
+John supplied the experiment agent’s report that all recent study runs used the single official WPS v4.6.0 build at `/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_build/WPS`.
+Run-use attribution is author-supplied; the build identity was independently checked here: `README` line 1 is “WRF Pre-Processing System Version 4.6.0”; `git describe --tags --exact-match` returns `v4.6.0`; HEAD is `335c76a111f84503e8b963abaf273ea8053645bb`; origin is `https://github.com/wrf-model/WPS.git`.
+README SHA-256: `e56658dcc374d20bc9e784bd6ea6127dea5d4912f6e5f3b725e8ee2376e6dd7d`; README has no diff from HEAD. No claim is made that the entire build checkout is clean.
+
+Applied working-TeX change: “The terrain datasets were ingested using the WRF Preprocessing System (WPS), version 4.6.0” with `\citep{Powers2017WRF}`.
+Added the DOI-bearing Powers et al. (2017) entry to the embedded bibliography immediately after Hong (2006) and before Danielson–Gesch (2011): reference 31 in this batch’s PDF.
+Metadata, including the first ten authors, checked against the [original article hosted by NOAA](https://repository.library.noaa.gov/view/noaa/20592/noaa_20592_DS1.pdf) and the publisher record linked above.
+The complete first-citation-order check passed for all 47 references; the 46 existing entries were already correctly ordered and were preserved byte-for-byte. No incidental bibliography reordering was needed.
+All 23 MDPI/EE query comments were retained exactly; received TeX intake hash remains unchanged. No manuscript footnote was introduced.
+
+Validation: built with `texlive/20260330` and `latexmk -pdf -interaction=nonstopmode -halt-on-error air-4472509-done.tex` (exit 0, 18 pages); inspected pages 5 and 17, including the WPS callout, complete entry and DOI wrapping, with no observed clipping or overlap introduced.
+No undefined citation/reference or overfull-box warning; existing duplicate Table A5 labels and template/underfull warnings remain. This is affected-page validation, not a full proof audit.
+Proposed MDPI response for the resolved portion: “The WPS version has been corrected to 4.6.0, and a formal citation to Powers et al. (2017), including its DOI, has been added to the reference list.”
+Remaining: terrain-source provenance and other actual software versions; MDPI04b as a whole remains open.
+Correction commit: pending the validated batch commit.
 
 <a id="mdpi05"></a>
 

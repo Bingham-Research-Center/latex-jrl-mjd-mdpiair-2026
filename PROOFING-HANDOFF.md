@@ -19,17 +19,18 @@ Record explicit author decisions separately from suggestions and technical imple
 John previously edited the received copy accidentally; recovery commit `19d2452` preserves his edits in the working copy and restores the received bundle, and `331b971` records its receipt.
 Recheck live status; preserve any newer author edits and resolve source passages by text because line numbers shift.
 
-**Resume with MDPI04b: WPS citation/version and terrain provenance**, around working-source lines 196–197, containing `[WRF/WPS ref]` and `[what?]`.
-John wants formal software bibliography entries, preferably suitable paper/software DOIs, with citations in the text rather than footnotes or acknowledgements.
-Verified citation advice, not accepted TeX edits: Powers et al. (2017), DOI [10.1175/BAMS-D-15-00308.1](https://doi.org/10.1175/BAMS-D-15-00308.1), describes WPS; retain Skamarock (2019) for WRF.
-WPS version 4.8.0 in the draft is unverified; recover the actual preprocessing version independently of WRF.
-A targeted search of the paper's `verification/provenance/` found no recorded WPS version; its run inventory records WRF 4.8.0 only.
-John explicitly reiterated the citation policy in this session: formal in-text references, verified paper/software DOIs where available, and no manuscript footnotes.
-Recommend software use/citations/verified versions in Methods; moving citations from Acknowledgements remains advice, not an accepted edit.
-The working source has no `\footnote{` or `\footnotetext{` calls; retain table `\footnotesize` typography.
-Proposed WPS sentence: “The terrain datasets were ingested using the WRF Preprocessing System (WPS), version [verified version] [Powers et al., 2017].”
-Next obtain the archived WPS preprocessing/build version record linked to these runs; the citation itself does not establish the version.
-This session updated the handoff and catalogue only; no manuscript correction, build or PDF inspection was performed.
+**Current batch: WPS version/citation completed; next enact the agreed software-citation placement under MDPI18.**
+John’s 6 October instruction is to apply agreed changes, confirm each completed batch in chat, and commit with John as author and `Co-Authored-By: Codex <noreply@openai.com>`.
+Keep the concise author-led discussion pattern; ask only for missing facts or material choices, and do not repeatedly seek permission for the agreed scope.
+The working TeX now states WPS **4.6.0** and cites `Powers2017WRF`, DOI [10.1175/BAMS-D-15-00308.1](https://doi.org/10.1175/BAMS-D-15-00308.1).
+John supplied the run-use confirmation; live checks corroborated the WPS README, exact `v4.6.0` tag, official remote and HEAD `335c76a111f84503e8b963abaf273ea8053645bb` at `/uufs/chpc.utah.edu/common/home/lawson-group6/jrlawson/wrf_build/WPS`.
+The embedded reference is correctly inserted at first citation (reference 31 in this batch); all 47 bibliography entries pass the first-citation-order check. Existing entries needed no reordering.
+The working proof built under `texlive/20260330` to 18 pages; pages 5 and 17 were inspected. Publisher query comments and received source hash are preserved; known duplicate Table A5 labels and template warnings remain.
+See the MDPI04b correction batch in the catalogue for evidence and the correction commit.
+John wants formal in-text software citations with verified DOI-bearing bibliography entries where available and no manuscript footnotes.
+Next move existing analysis/retrieval citations from Acknowledgements into Methods, retaining thanks and original publisher query text. Verify DOI replacements from the relevant software citation records; recover actual analysis versions separately rather than using current installations.
+The working source contains no `\footnote{` or `\footnotetext{` calls; retain table `\footnotesize` typography.
+
 Expand GMTED2010 as Global Multi-resolution Terrain Elevation Data 2010; the existing Danielson–Gesch (2011) reference has DOI [10.3133/ofr20111073](https://doi.org/10.3133/ofr20111073).
 The inventory records custom `topo_brc_custom_3s`, default 30-arc-second-class terrain, and coarse `topo_gmted2010_5m`; exact upstream sources and preparation still need evidence.
 Native GMTED2010 products are 7.5/15/30 arc seconds, so establish the five-arc-minute derivative's provenance.
