@@ -4,7 +4,7 @@ Catalogue complete: **22 MDPI comments and one English-editor note**, with compo
 The initial catalogue proposed responses with all follow-ups open; the 6 October recovery checkpoint below records the author decisions now present in the working source.
 The production notice is retained as an acknowledgement item.
 
-**Next: MDPI18 actual software versions (coordinate MDPI04b); MDPI01 author details are confirmed and all four ORCIDs are displayed. MDPI12–17 and MDPI19–22 are applied/confirmed; deferred layout checks remain below.**
+**Next: MDPI18 applicable AI identifiers/scope, then MDPI04a instrument-limitation reply and the deferred layout/final proof audit. Retrieval, analysis and plotting versions are now applied. MDPI01, MDPI12–17 and MDPI19–22 are confirmed/applied; deferred checks remain below.**
 Name the catalogue code whenever referring to the current or next topic, as John requested on 6 October.
 
 **Deferred checks — author agreed, 6 October:**
@@ -43,7 +43,7 @@ Checks and hashes are recorded in the recovery receipt.
 
 John explicitly requests formal in-text citations for WRF/WPS, software and data sources, with verified paper/software DOIs where available, rather than website-only references, acknowledgements-only mentions or passing references.
 Do not use manuscript footnotes; retain a bibliography URL and access date when no suitable DOI exists, without substituting a DOI for a different resource.
-Author subsequently authorised this recommendation: put software use and citations in Methods and keep personal/institutional thanks in Acknowledgements. The batches below enact citation placement; remaining software versions still need archived evidence.
+Author subsequently authorised this recommendation: put software use and citations in Methods and keep personal/institutional thanks in Acknowledgements. The batches below enact citation placement and software versions with retained evidence.
 At the advice-only checkpoint, the working source already cited DOI-bearing entries for WRF, NumPy, SciPy, pandas, xarray and Matplotlib, with the Python-package citations in Acknowledgements. They now occur in Methods, as recorded under MDPI18.
 A targeted source check found no `\footnote{` or `\footnotetext{` calls; `\footnotesize` is table typography and is not a footnote.
 Implement this policy incrementally through MDPI04b, MDPI18 and MDPI22, preserving publisher query quotations and the received bundle.
@@ -68,7 +68,7 @@ Each individual subquery retains its own status even when related work shares a 
 | 2 — Citation order and cross-references | MDPI05a/b, MDPI08c, MDPI09; duplicate Table A5 label | Citation order, appendix references and duplicate label corrected; final placement deferred. | Applied; layout deferred |
 | 3 — Figures and captions | MDPI06, MDPI08a/b, MDPI11–16 and their subqueries | Marker, panel, shading and dashed-line explanations verified and applied; final overlap checks deferred. | Applied; overlap deferred |
 | 4 — Mathematical/table formatting | MDPI10, MDPI17 | Minimal notation corrections applied; Table A5 borders/row associations checked and retained. | Applied; final audit pending |
-| 5 — Software/equipment provenance | MDPI04a/b, MDPI18; applicable software highlights | Recover actual run/analysis versions and provider instrument facts with exact provenance; record unavailable information explicitly. | Open |
+| 5 — Software/equipment provenance | MDPI04a/b, MDPI18; applicable software highlights | WRF/WPS and retrieval/analysis/plotting versions applied; AI identifiers/scope and equipment response remain open. | Partly applied; recorded gaps open |
 | 6 — Bibliographic additions/removal | MDPI19, MDPI20a/b, MDPI21, MDPI22; McKinney highlight | Publisher/conference additions verified and confirmed; Herbie DOI restored with reply. | Applied; final audit pending |
 | 7 — Production notice and final proof audit | MDPI07; all preceding queries | Record acknowledgement; compile the working source, inspect all pages against the supplied PDF, and reconcile replies/remaining author decisions. | Open |
 
@@ -156,7 +156,7 @@ The proof lists John R. Lawson (1,2; corresponding author), Michael J. Davies (1
 John explicitly answered “Confirm all; display all four ORCIDs” to the displayed names/order, affiliations and ORCID mappings listed above. Retained names and affiliations; added `\orcidC{}` for Loknath Dhar (0009-0002-4536-5778) and `\orcidD{}` for Seth N. Lyman (0000-0001-8493-9522), using John’s saved macros. John’s and Michael’s existing ORCIDs are retained. Added a standalone `% JRL:` reply beneath the unchanged publisher query.
 Validation: working-source `latexmk` under `texlive/20260330` exited 0 (19 pages); page 1 inspected for all four icons and correct link targets. Bibliography, names/affiliations and all publisher notes are unchanged; received source checksum preserved; `git diff --check` passes.
 Outstanding: Final proof audit; this is John’s explicit confirmation, not an independent audit of institutional records.
-Author-detail correction commit: recorded after committing/pushing this batch.
+Author-detail correction commit: `b9dd679eb99d0fc806f504a7772aa1bb3573846d`; pushed to `origin/jrl/proofs-round1`.
 
 <a id="mdpi02"></a>
 
@@ -214,13 +214,13 @@ Author position in the saved edit: Instrument information cannot be supplied fro
 
 Outstanding: Final response wording and any applicable documented provider instrument facts; do not infer manufacturers from the aggregator’s name.
 
-**MDPI04b: Partly resolved — WPS and terrain source wording applied; remaining retrieval/analysis software versions open.**
+**MDPI04b: Partly resolved — WPS, terrain source wording and software versions applied; complete reply/final audit pending.**
 
 Proposed response/action: Supply versions used for the reported simulations, preprocessing, retrieval and analysis from the corresponding archived environments.
 
 Historical saved draft before correction: The working source said WPS 4.8.0 and retained `[WRF/WPS ref]` and `[what?]` terrain placeholders. The nearby author comment describes intended additions, not verified completion.
 
-Outstanding: Recover the remaining retrieval/analysis software versions under MDPI18 and assemble the complete MDPI04b reply. WPS and fine/default/coarse terrain-source descriptions are resolved by the batches below. Coordinate with MDPI18; today’s installed versions and cited software-paper versions are not evidence of the versions used.
+Outstanding: Final response assembly/audit. Retrieval and recorded analysis/plotting versions are now added under MDPI18, with exact evidence and attribution limits. WPS, terrain-source descriptions and software versions are resolved by the batches below. Preserve the MDPI18 attribution limits; today’s installed versions and cited software-paper versions alone are not evidence of the versions used.
 
 Earlier 6 October citation advice: retain `Skamarock2019` for WRF, as recommended by [NCAR's citation guidance](https://www2.mmm.ucar.edu/wrf/users/citing_wrf.html), DOI [10.5065/1dfh-6p97](https://doi.org/10.5065/1dfh-6p97).
 For the WPS description, recommend Powers et al. (2017), *The Weather Research and Forecasting Model: Overview, System Efforts, and Future Directions*, *Bulletin of the American Meteorological Society*, 98, 1717–1737, DOI [10.1175/BAMS-D-15-00308.1](https://doi.org/10.1175/BAMS-D-15-00308.1); the [publisher record](https://journals.ametsoc.org/view/journals/bams/98/8/bams-d-15-00308.1.xml) explicitly describes WPS.
@@ -246,7 +246,7 @@ All 23 MDPI/EE query comments were retained exactly; received TeX intake hash re
 Validation: built with `texlive/20260330` and `latexmk -pdf -interaction=nonstopmode -halt-on-error air-4472509-done.tex` (exit 0, 18 pages); inspected pages 5 and 17, including the WPS callout, complete entry and DOI wrapping, with no observed clipping or overlap introduced.
 No undefined citation/reference or overfull-box warning; existing duplicate Table A5 labels and template/underfull warnings remain. This is affected-page validation, not a full proof audit.
 Proposed MDPI response for the resolved portion: “The WPS version has been corrected to 4.6.0, and a formal citation to Powers et al. (2017), including its DOI, has been added to the reference list.”
-Remaining: terrain-source provenance and other actual software versions; MDPI04b as a whole remains open.
+At this WPS-only checkpoint, terrain provenance and other software versions remained open; subsequent terrain/MDPI18 batches resolve them. Final reply/audit remains pending.
 Correction commit: `597b0f71b4cb8d2aaa3976e10f2ea21e436877f3`.
 
 ### Terrain source correction batch — 6 October 2026 (MDPI04b)
@@ -269,7 +269,7 @@ Only small text files were read; no raster/NetCDF analysis, WPS/WRF execution or
 Validation: working-source `latexmk` under `texlive/20260330` exited 0 (18 pages); inspected pages 4, 5, 6, 17 and 18, including source description, definition before Table 1, changed pagination and both added references. No observed clipping or overlap introduced.
 All 49 bibliography entries and compiled citation numbers match first-citation order; all 47 pre-existing entries and all 23 publisher query comments were preserved. Received TeX intake hash and `git diff --check` passed. No undefined citation/reference or overfull-box warnings; known duplicate Table A5 labels and template warnings remain.
 Proposed MDPI response for this portion: “We have defined GMTED2010 and clarified that the default and coarse terrain are the NCAR-distributed WPS products at 30 arc seconds and 5 arc minutes, respectively. The custom fine terrain was prepared from USGS NED/3DEP 1-arc-second DEMs. Formal source citations have been added.”
-Remaining: other actual software versions under MDPI18 and final proof audit; MDPI04b is not wholly closed.
+At this terrain-only checkpoint, other software versions remained open; the subsequent MDPI18 batch supplies them. Final reply/audit remains pending.
 Correction commit: `757a102d1f61b29d11c6e1a26974a9032f63bdc4`.
 
 Figure organisation advice, requested in this session: finish the affected Methods/source prose first, then repair logical first-citation order (MDPI05a). Inspect and refine captions next, and finalise physical figure/table placement (MDPI05b/MDPI08c) after those wording changes. This is a recommended sequence, not acceptance or completion of any figure query; no figures or callouts were reorganised in this batch.
@@ -573,13 +573,31 @@ Source line 655; supplied PDF page 15; possible continuation on 16.
 
 Explicit highlights cover NumPy, SciPy, pandas, xarray and Matplotlib (lines 655–656). Polars is named without a highlight; Herbie and SynopticPy appear immediately above (line 654). Claude and OpenAI Codex are highlighted in the AI declaration at line 660 without a separate comment.
 
-**MDPI18: Partly resolved — citation placement applied; actual versions and AI scope open.**
+**MDPI18: Software portion applied — citations and retrieval/analysis/plotting versions supplied; AI-highlight scope remains open.**
 
 Proposed response/action: Add the verified versions used for the named analysis/plotting software; coordinate the broader software inventory with MDPI04b. Review the AI highlights separately before interpreting “Same as below”.
 
-Author citation preference, 6 October: cite software in Methods with DOI-bearing bibliography entries where available. Citation placement is now applied in the batch below; actual version additions and the AI-highlight scope remain open.
+Author citation preference, 6 October: cite software in Methods with DOI-bearing bibliography entries where available. Citation placement and actual version additions are applied in the batches below; AI-highlight scope remains open.
 
-Outstanding: Archived analysis and plotting environments may differ by stage/figure. Record package, actual version, task/date and exact provenance source. If unavailable, record the gap for John rather than insert a current version. AI product/model identifiers require author/session evidence where applicable; the source note does not explicitly define the scope of those highlights.
+Outstanding: Applicable historical AI product/model identifiers and whether the publisher requires them for the highlighted Claude/Codex names. These facts were requested from John on 6 October; his reply identifies the probable CHPC conda/mamba retrieval environment and authorises a 1 June 2026 release-history fallback if it cannot be recovered. The environment was recovered, so the fallback was not used; do not assign an AI model from a release date. The publisher note does not explicitly define the scope of the AI highlights.
+
+### Analysis/plotting version batch — 6 October 2026 (MDPI18/MDPI04b)
+
+Added only the package versions recorded in the study’s archived receipts to the existing Methods use/citation sentence, retaining all DOI citations and publisher highlights. Added one sentence identifying Matplotlib 3.10.8 for the later label-only revisions to Figures 4 and 5; the earlier analysis/plotting environment used 3.11.0. No bibliography change, dependency upgrade, rerun or plot recomputation.
+
+| Package/stage | Recorded version | Exact archived evidence |
+| --- | --- | --- |
+| NumPy; pandas; Polars; xarray — station-column analysis | 2.5.0; 3.0.3; 1.42.0; 2026.4.0 | `verification/provenance/retention-analysis-13896641.json`, `software`; matched four-run d02 station-column analysis, Slurm 13896641, registered under C17/C20 |
+| SciPy — heat-deficit analysis | 1.18.0 | `verification/provenance/heat-deficit-analysis.json`, `environment.scipy`; 13 July 2026, Slurm 13934123, registered under C26; NumPy/pandas/xarray versions agree with the station-column receipt |
+| Matplotlib — earlier analysis/plotting | 3.11.0 | `heat-deficit-analysis.json`, `environment.matplotlib`; `common-pipeline-effects-20260715.json`, `environment.matplotlib_version`, 15 July 2026 |
+| Matplotlib — final Figures 4/5 label-only derivatives | 3.10.8 | `verification/provenance/reviewer-figure-labels-20260918.json`, `environment_versions.matplotlib`; 18 September 2026; both output hashes match the working assets and dual admission manifests |
+
+Retrieval follow-up: Herbie 2026.3.0 and SynopticPy 2026.6.0 were recovered from the retained CHPC `brc-tools-2026` installation. Conda history records initial environment creation on 29 June 2026 and Herbie’s exact build, with no later Herbie transaction. SynopticPy’s retained `METADATA` records version 2026.6.0 with modification time 29 June 2026, before the registered July observation retrieval. `verification/figures/chpc-figure-inventory-2026-07-10.md`, “Exact reproduction commands”, explicitly names this environment’s Python for the observation-cache regeneration.
+The [software-version receipt](../proof-package/software-version-evidence-20261006.json) preserves exact paths, hashes, dates and limits: SynopticPy attribution combines the registered executable with retained installation metadata; Herbie installation is verified but no per-forcing-file retrieval log is supplied. These are environment-based attributions, not conclusions from software DOIs.
+[PyPI Herbie](https://pypi.org/project/herbie-data/2026.3.0/) and [SynopticPy](https://pypi.org/project/SynopticPy/) release histories corroborate availability: 7 March and 3 June 2026. John’s requested 1 June fallback would give Herbie 2026.3.0/SynopticPy 2025.9.0; it is recorded but not used because the installation evidence was recovered.
+Standalone reply now records that retrieval, analysis and plotting versions are supplied from retained records. Applicable AI identifiers remain open. Python versions 3.12.13/3.13.12 are recorded in the study receipts but were not added to the prose because Python is not separately named in this query.
+Validation: working-source `latexmk` under `texlive/20260330` exited 0 (19 pages); pages 5–7 inspected; extracted text changed only on pages 6–7. All 49 bibliography entries/compiled citation numbers, publisher comments, table bodies and figure assets remain unchanged; first figure/table calls remain 1–9 and 1, A1–A6; received source checksum preserved. No undefined citation/reference, duplicate-label or overfull-box warning; `git diff --check` passes. No footnotes or supplementary-material references introduced.
+Version correction commit: recorded after committing/pushing this batch.
 
 ### Software citation correction batch — 6 October 2026 (MDPI18 and MDPI22)
 
@@ -596,7 +614,7 @@ Reordered the embedded bibliography to match the changed first-citation sequence
 All 45 bibliography entries other than the corrected Herbie and Polars entries were preserved byte-for-byte from the preceding batch; all 23 MDPI/EE comments and received intake source hash were preserved. No manuscript footnote was introduced.
 Validation: `texlive/20260330` working-source `latexmk` build exited 0, 18 pages. Inspected pages 5, 6, 15, 17 and 18 for Methods flow, Acknowledgements, numbering and complete DOI/reference wrapping; no observed clipping or overlap introduced.
 No undefined citation/reference or overfull-box warning; known duplicate Table A5 labels and template/underfull warnings remain. Final full-proof review is still pending.
-Proposed MDPI18 response for the implemented portion: “Software use and formal citations have been placed in Methods.” The requested actual package versions are still outstanding, so this is not a complete MDPI18 reply.
+Proposed MDPI18 response for the implemented portion: “Software use and formal citations have been placed in Methods.” At that citation-only checkpoint, actual versions were outstanding; the subsequent version batch above supplies them. AI-highlight scope/final audit remain pending.
 Correction commit: `54a7ffd2feb028b67546a8f37ac3208f659f4011`.
 
 <a id="mdpi19"></a>
@@ -674,7 +692,7 @@ Author decision, 6 October: apply the DOI preference. The removed Herbie identif
 
 Applied reply: `% JRL: Please retain DOI 10.5281/zenodo.4567540; it is the developer-recommended software citation.`
 
-Outstanding: Final proof audit and final response assembly. The general DOI is not proof of the release used; actual Herbie version remains under MDPI18. Paperpile-owned files were not edited.
+Outstanding: Final proof audit and final response assembly. The general DOI is not proof of the release used; the recorded Herbie version and attribution limits are supplied under MDPI18. Paperpile-owned files were not edited.
 
 ## Highlighted material without a separate comment
 
@@ -707,7 +725,7 @@ Resolved in the MDPI11–17 batch: the duplicate now belonged to working Table A
 1. MDPI01 author facts are confirmed; any applicable AI identifiers remain under MDPI18. Retain the saved title, email and emphasis decisions for EE01, MDPI02 and MDPI03.
 2. Use the complete `proof-package/working/` copy already created; preserve the received baseline and record corrections in this register.
 3. Citation order, mathematical/appendix formatting, caption explanations and the duplicate label are applied; finish the recorded deferred layout checks after layout changes.
-4. Recover versions from the actual analysis provenance (MDPI18/MDPI04b); bibliography confirmations are now verified/applied. Do not substitute current software versions.
+4. Software versions and bibliography confirmations are applied; settle applicable AI identifiers/scope under MDPI18 and the provider-instrument limitation response under MDPI04a.
 5. Build `air-4472509-done.tex` in the working copy and inspect all pages against the supplied PDF; update each follow-up with the applied change, evidence, final reply and any remaining author decision.
 
 The received source embeds its bibliography: changing a `.bib` file alone cannot resolve its reference queries.

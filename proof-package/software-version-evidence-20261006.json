@@ -1,0 +1,60 @@
+{
+  "checked_utc": "2026-10-06T20:27:32.289327+00:00",
+  "environment": "/uufs/chpc.utah.edu/common/home/u0737349/software/pkg/miniforge3/envs/brc-tools-2026",
+  "author_context": "John identifies a CHPC conda/mamba environment as the probable retrieval environment; requested a 1 June 2026 release-history fallback only if it could not be recovered.",
+  "packages": {
+    "Herbie": {
+      "version": "2026.3.0",
+      "evidence": "conda_history; herbie_conda_record",
+      "installed_in_environment": "29 June 2026 initial environment creation; no later Herbie transaction in retained history"
+    },
+    "SynopticPy": {
+      "version": "2026.6.0",
+      "evidence": "synopticpy_metadata",
+      "installation_metadata_mtime_utc": "2026-06-29T17:41:08.995576+00:00"
+    }
+  },
+  "sources": {
+    "conda_history": {
+      "path": "/uufs/chpc.utah.edu/common/home/u0737349/software/pkg/miniforge3/envs/brc-tools-2026/conda-meta/history",
+      "sha256": "7da9bbf4701bdc20926e131e414b4f50fc25148e7c0de58aafc65c914687ea04",
+      "mtime_utc": "2026-07-07T18:46:25.500412+00:00"
+    },
+    "herbie_conda_record": {
+      "path": "/uufs/chpc.utah.edu/common/home/u0737349/software/pkg/miniforge3/envs/brc-tools-2026/conda-meta/herbie-data-2026.3.0-pyhd8ed1ab_0.json",
+      "sha256": "cc2fb4cd893dd5b7b41634c025e94ea4a8c1b56f4f9c06c8828c830290c25992",
+      "mtime_utc": "2026-06-29T17:39:37.470287+00:00"
+    },
+    "synopticpy_metadata": {
+      "path": "/uufs/chpc.utah.edu/common/home/u0737349/software/pkg/miniforge3/envs/brc-tools-2026/lib/python3.12/site-packages/synopticpy-2026.6.0.dist-info/METADATA",
+      "sha256": "f2faebad95d42e98889747a77c2dc5b64e7f60aa088bfe6453d5de17034142d2",
+      "mtime_utc": "2026-06-29T17:41:08.995576+00:00"
+    }
+  },
+  "study_environment_link": {
+    "path": "verification/figures/chpc-figure-inventory-2026-07-10.md",
+    "section": "Exact reproduction commands",
+    "scope": "Explicit brc-tools-2026 Python command regenerates the registered Synoptic observation cache; subsequent retention-analysis-13896641.json registers the cache hash."
+  },
+  "limits": [
+    "Conda history verifies Herbie installation, not a per-forcing-file retrieval log.",
+    "SynopticPy attribution combines the registered retrieval executable with retained package metadata dated before retrieval; pip has no conda transaction record.",
+    "Neither package version is inferred from a DOI or today\u2019s release. The June-1 fallback is not used.",
+    "Applicable historical Claude/Codex model identifiers remain unavailable."
+  ],
+  "release_crosscheck": {
+    "Herbie2026.3.0": {
+      "url": "https://pypi.org/project/herbie-data/2026.3.0/",
+      "release_date": "2026-03-07"
+    },
+    "SynopticPy2026.6.0": {
+      "url": "https://pypi.org/project/SynopticPy/2026.6.0/",
+      "release_date": "2026-06-03"
+    },
+    "June1_fallback_not_used": {
+      "Herbie": "2026.3.0",
+      "SynopticPy": "2025.9.0",
+      "basis": "PyPI release histories; available releases are not evidence of study use."
+    }
+  }
+}

@@ -242,9 +242,11 @@ Native PBL height serves as a scheme-dependent companion diagnostic rather than 
 \subsection{Pairing, Aggregation, and~Short-Sample~Sensitivity}
 \label{sec:v3-aggregation}
 
-Herbie \citep{Herbie} and SynopticPy \citep{SynopticPy} were used for source-data retrieval and Synoptic API access, respectively.
-Analysis and plotting were performed using \hl{NumPy} %MDPI: Please state which version of the software was used. Same as below.
- \citep{Harris2020NumPy}, \hl{SciPy} \citep{Virtanen2020SciPy}, \hl{pandas}~\citep{McKinney2010}, Polars \citep{Polars}, \hl{xarray} \citep{HoyerHamman2017}, and \hl{Matplotlib} \citep{Hunter2007Matplotlib}.
+Herbie 2026.3.0 \citep{Herbie} and SynopticPy 2026.6.0 \citep{SynopticPy} were used for source-data retrieval and Synoptic API access, respectively.
+Analysis and plotting were performed using \hl{NumPy} 2.5.0 %MDPI: Please state which version of the software was used. Same as below.
+% JRL: Retrieval, analysis and plotting versions are now stated from the retained environment records.
+ \citep{Harris2020NumPy}, \hl{SciPy} 1.18.0 \citep{Virtanen2020SciPy}, \hl{pandas} 3.0.3~\citep{McKinney2010}, Polars 1.42.0 \citep{Polars}, \hl{xarray} 2026.4.0 \citep{HoyerHamman2017}, and \hl{Matplotlib} 3.11.0 \citep{Hunter2007Matplotlib}.
+The later label revisions to the controlled-comparison and station-column figures used Matplotlib 3.10.8.
 
 Run differences were paired by location and valid hour, and then reduced to one spatial median per hour.
 The reported five-hour effects are means of those medians; stations are not spatially independent.
