@@ -4,7 +4,7 @@ Catalogue complete: **22 MDPI comments and one English-editor note**, with compo
 The initial catalogue proposed responses with all follow-ups open; the 6 October recovery checkpoint below records the author decisions now present in the working source.
 The production notice is retained as an acknowledgement item.
 
-**Next discussion: MDPI07 — production position/size notice, then MDPI08a/b (Figure 2 overlap and marker meanings). MDPI06 is deferred for recheck after layout changes; MDPI05a is applied.**
+**Current discussion: MDPI08b — Figure 2 marker meanings. MDPI07 is acknowledged; MDPI06 is deferred after layout changes. Recommendation: defer MDPI08a/c final visual/placement checks and clarify the caption now.**
 Name the catalogue code whenever referring to the current or next topic, as John requested on 6 October.
 
 This catalogue follows [AGENTS.md](../AGENTS.md) and [PROOFING-HANDOFF.md](../PROOFING-HANDOFF.md) in the active `jrl/proofs-round1` worktree, inspected at `277cfa629f92e3e495cdb33fc9c371cea4c5e621`.
@@ -342,11 +342,11 @@ Source line 154; supplied PDF page 4.
 
 Attached to Table 1 (tab:v3-family), but the notice applies to figures and tables generally.
 
-**MDPI07: Open — notice/acknowledgement.**
+**MDPI07: Author acknowledgement applied — 6 October.**
 
-Proposed response/action: Proposed reply: “Noted; please retain legibility and the order of first citation.”
-
-Outstanding: Acknowledgement can accompany the final proof reply. This is a production notice, not evidence that any particular relocation or resize has been accepted.
+Author authorised the proposed reply. Added a standalone `% JRL: Noted; please retain legibility and the order of first citation.` line immediately below the original publisher comment; their note and all printed source content are unchanged.
+Validation: working-source `latexmk` under `texlive/20260330` exited 0 (19 pages); full extracted PDF text is byte-identical before/after, and page 4 was inspected. All 23 publisher comments, received source hash and `git diff --check` pass. Existing duplicate heat-deficit label/template warnings remain.
+Outstanding: Include the acknowledgement in the final proof reply. This notice does not establish acceptance of a particular relocation or resize.
 
 <a id="mdpi08"></a>
 
@@ -370,7 +370,10 @@ Outstanding: Final-size visual review and, if needed, a derivative based on the 
 
 Proposed response/action: Add explicit meanings for triangles and squares, distinguishing marker shape from hollow-marker coverage coding.
 
-Outstanding: Read the actual panel legends and registered plotting provenance before assigning meanings. Do not guess that all marker shapes represent coverage.
+Evidence checked — 6 October: both figure manifests and `verification/provenance/episode-context-20260715.json` identify generator `verification/scripts/plot_episode_context.py` at commit `59fa4a0`; its SHA-256 matches the recorded `52902175194863776e2cbd25dcc8866bde9c58b36b61f7c3ea4bb792fc248e12`. The working and registered figure PDFs both match `ea945fbbc3ec1496e25a0fb4965de87fe54da930ee6ecb5db63b7ea95f6aad87`.
+Generator lines 18–24 map circles to Ouray, squares to Redwash, upward triangles to Roosevelt, diamonds to Vernal and downward triangles to Little Mountain. Lines 78–100 independently make markers hollow below 75% coverage.
+Suggested caption addition: “Circles, squares, upward triangles, diamonds, and downward triangles identify Ouray, Redwash, Roosevelt, Vernal, and Little Mountain, respectively.” Keep the existing hollow-marker sentence.
+Recommendation pending author choice: clarify MDPI08b now; defer MDPI08a/c final overlap/placement checks until the layout settles. No Figure 2 or caption change applied. Outstanding: John’s wording choice, then build/inspect.
 
 **MDPI08c: Open — technical/layout check.**
 
