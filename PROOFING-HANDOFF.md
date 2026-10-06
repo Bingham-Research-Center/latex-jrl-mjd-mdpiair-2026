@@ -30,7 +30,7 @@ WPS correction commit: `597b0f71b4cb8d2aaa3976e10f2ea21e436877f3`; see the MDPI0
 John wants formal in-text software citations with verified DOI-bearing bibliography entries where available and no manuscript footnotes.
 The second batch moved all existing retrieval/analysis/plotting citations into Methods, retaining thanks and publisher query comments; the 47 entries and compiled citation numbers now follow the changed first-citation order.
 Herbie’s submitted DOI `10.5281/zenodo.4567540` was restored after matching it to developer citation guidance. Polars now cites software DOI `10.5281/zenodo.7697217` (all versions); SynopticPy retains a formal repository reference because no verified DOI was supplied by its citation guidance.
-The second build remains 18 pages; pages 5, 6, 15, 17 and 18 were inspected. Its correction commit is recorded under MDPI18 in the catalogue after commit.
+The second build remains 18 pages; pages 5, 6, 15, 17 and 18 were inspected. Software correction commit: `54a7ffd2feb028b67546a8f37ac3208f659f4011`; evidence is recorded under MDPI18 in the catalogue.
 Recover actual retrieval/analysis/plotting versions separately; general software DOIs and software-paper versions do not identify the installed releases. MDPI18 remains open for those versions and AI scope; MDPI22’s DOI correction is applied, pending final proof review.
 The working source contains no `\footnote{` or `\footnotetext{` calls; retain table `\footnotesize` typography.
 

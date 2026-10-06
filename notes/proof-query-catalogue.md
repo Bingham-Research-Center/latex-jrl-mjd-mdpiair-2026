@@ -549,7 +549,7 @@ All 45 bibliography entries other than the corrected Herbie and Polars entries w
 Validation: `texlive/20260330` working-source `latexmk` build exited 0, 18 pages. Inspected pages 5, 6, 15, 17 and 18 for Methods flow, Acknowledgements, numbering and complete DOI/reference wrapping; no observed clipping or overlap introduced.
 No undefined citation/reference or overfull-box warning; known duplicate Table A5 labels and template/underfull warnings remain. Final full-proof review is still pending.
 Proposed MDPI18 response for the implemented portion: “Software use and formal citations have been placed in Methods.” The requested actual package versions are still outstanding, so this is not a complete MDPI18 reply.
-Correction commit: pending the validated batch commit.
+Correction commit: `54a7ffd2feb028b67546a8f37ac3208f659f4011`.
 
 <a id="mdpi19"></a>
 
