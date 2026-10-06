@@ -116,6 +116,7 @@ The stations span the basin floor, sidewalls, and benches but are unevenly distr
 We use the 1~km d02 domain because seven stations lie outside the usable d03 interior (Figure~\ref{fig:v3-locator}).
 Four stations provide temperature context from 31 January 0000 UTC to 4 February 0000 UTC.
 %MDPI: Figures/Tables citation should be numbered in order of appearance. We detected Figure 3 citation appear after Figure 1,  Figure 6 after Figure 3, order wrong. Please rearrange and ensure all citations appear in numerical order, and please put figures after its first citation.
+% JRL: First citations are in numerical order; Figure 2 now follows Figure 1 in the observations subsection. Final size and overlap will be checked visually.
 For the observed and modelled Mountain Home-minus-Pariette Draw index, we calculate the surface potential temperature as $\theta=T(1000/p)^{0.2854}$, with~$T$ in kelvin and $p$ in hPa, using the dry-air Poisson relation \citep{WallaceHobbs2006}.
 
 The ozone context uses the US Environmental Protection Agency (EPA) Air Quality System (AQS) AirData daily archive for January--February 2013 \citep{EPAAirData}.
@@ -141,6 +142,22 @@ We use spectral absorption and scattering principles described by Liou \citep{Li
 (\textbf{b}) The d01--d02--d03 WRF grid layout places that setting within the full three-domain configuration.
 The d02 domain contains all eleven reporting stations; d03 contains four usable station columns.}
 \label{fig:v3-locator}
+\end{figure}
+
+
+\vspace{-12pt}
+\begin{figure}[H]
+
+\includegraphics[width=0.93\textwidth]{figures/episode_context_snow_ozone_janfeb2013.pdf}
+\caption{\hl{Observed} %MDPI: 1. Please confirm whether the overlapping content in this figure affects scientific understanding and if it does, please revise it.  2. Please confirm whether an explanation of the triangles and squares needs to be added to the figure caption. 3. Figure 2 is not after first citation due to the citation order wrong, please revise citation order and put it after first citation. Same as other figrues, please check all.
+% JRL: Marker shapes are now explained; Figure 2 follows its first citation in the observations subsection. Final size and overlap will be checked visually.
+ context for the 2 February 2013 simulation date.
+(\textbf{a}) NASA GIBS Terra MODIS corrected reflectance, bands 7-2-1, for~the 2 February calendar day; snow and ice generally appear cyan, most liquid cloud appears white, and~ice cloud may also appear cyan.
+(\textbf{b}) EPA AQS first maximum value (the eight-hour ozone daily-summary row) at Ouray, Redwash, Roosevelt, Vernal, and~Little Mountain.
+Circles, squares, upward triangles, diamonds, and downward triangles identify Ouray, Redwash, Roosevelt, Vernal, and Little Mountain, respectively.
+These values use the current EPA daily-summary archive rather than a reconstruction of earlier studies' observation processing.
+Hollow markers identify the seven site-days with less than 75\% within-day observation coverage.}
+\label{fig:v3-episode-context}
 \end{figure}
 
 
@@ -188,20 +205,6 @@ X10 & GFS, one-way & default~terrain \\
 \bottomrule
 \end{tabularx}
 \end{table}
-\vspace{-12pt}
-\begin{figure}[H]
-
-\includegraphics[width=0.93\textwidth]{figures/episode_context_snow_ozone_janfeb2013.pdf}
-\caption{\hl{Observed} %MDPI: 1. Please confirm whether the overlapping content in this figure affects scientific understanding and if it does, please revise it.  2. Please confirm whether an explanation of the triangles and squares needs to be added to the figure caption. 3. Figure 2 is not after first citation due to the citation order wrong, please revise citation order and put it after first citation. Same as other figrues, please check all.
-% JRL: Marker shapes are now explained in the caption; overlap and placement will be rechecked after layout changes.
- context for the 2 February 2013 simulation date.
-(\textbf{a}) NASA GIBS Terra MODIS corrected reflectance, bands 7-2-1, for~the 2 February calendar day; snow and ice generally appear cyan, most liquid cloud appears white, and~ice cloud may also appear cyan.
-(\textbf{b}) EPA AQS first maximum value (the eight-hour ozone daily-summary row) at Ouray, Redwash, Roosevelt, Vernal, and~Little Mountain.
-Circles, squares, upward triangles, diamonds, and downward triangles identify Ouray, Redwash, Roosevelt, Vernal, and Little Mountain, respectively.
-These values use the current EPA daily-summary archive rather than a reconstruction of earlier studies' observation processing.
-Hollow markers identify the seven site-days with less than 75\% within-day observation coverage.}
-\label{fig:v3-episode-context}
-\end{figure}
 
 
 

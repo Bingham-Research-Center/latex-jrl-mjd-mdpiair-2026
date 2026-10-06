@@ -4,15 +4,15 @@ Catalogue complete: **22 MDPI comments and one English-editor note**, with compo
 The initial catalogue proposed responses with all follow-ups open; the 6 October recovery checkpoint below records the author decisions now present in the working source.
 The production notice is retained as an acknowledgement item.
 
-**Next: MDPI05b/MDPI08c final placement and size, then MDPI06/MDPI08a/MDPI11/MDPI16a overlap checks and final proof audit. MDPI18 model names/CLI use and software versions are applied; PUB01 public repository/selected-provenance release remains pending.**
+**Next: John’s PDF review of MDPI05b/MDPI08c size/placement and MDPI06/MDPI08a/MDPI11/MDPI16a overlap. Source placement is corrected; no PDF is loaded by Codex in this batch. PUB01 public release and final return/integration remain pending.**
 Name the catalogue code whenever referring to the current or next topic, as John requested on 6 October.
 
-**Deferred checks — author agreed, 6 October:**
+**Visual checks — John will review the PDFs, 6 October:**
 
 - **MDPI06:** Figure 1 overlap; John reports no current overlap. Recheck at final print size after layout changes.
 - **MDPI08a:** Figure 2 overlap; recheck at final print size after layout changes.
 - **MDPI11/MDPI16a:** Figures 3 and 8 overlap; recheck at final print size after layout changes, following John’s instruction to batch straightforward choices.
-- **MDPI05b/MDPI08c:** final figure/table placement and size, after the caption pass. Citation order is already corrected.
+- **MDPI05b/MDPI08c:** source order/placement checked; Figure 2 moved into the observations subsection after Figure 1. John checks the rendered placement, size and spacing; current size settings are retained.
 
 This catalogue follows [AGENTS.md](../AGENTS.md) and [PROOFING-HANDOFF.md](../PROOFING-HANDOFF.md) in the active `jrl/proofs-round1` worktree, inspected at `277cfa629f92e3e495cdb33fc9c371cea4c5e621`.
 The received baseline is commit `92b14d2`; all 33 received files are preserved.
@@ -308,11 +308,28 @@ Proposed reply: “Figure and table first citations now follow numerical order. 
 Remaining: final proof audit; MDPI09 citation-format confirmation; MDPI05b/MDPI08c final placement checks after captions.
 Table correction commit: `4a57a764698ca18119e8beb38bead549ae1b61d7`; pushed to `origin/jrl/proofs-round1`.
 
-**MDPI05b: Deferred — final layout check after captions.**
+**MDPI05b: Source placement applied — visual review assigned to John.**
 
-Proposed response/action: Place figures after their first citations and check the rebuilt layout and table placement throughout.
+Author workflow decision, 6 October: avoid loading PDFs into Codex to save tokens; John will inspect the rendered proof and report visual problems. This overrides the usual agent PDF-inspection step for this and subsequent batches unless John asks otherwise. Builds, logs, auxiliary-file and source checks continue.
+Applied: moved only Figure 2’s unchanged block from the WRF-configuration subsection to the end of the observations subsection, after Figure 1 and both first mentions. Preserved every figure size, caption and asset; the source still uses the publisher’s `[H]` placement. Added/updated standalone `% JRL:` replies under the original MDPI05/08 comments.
+Source audit: all nine figure blocks follow their first mentions; first calls remain 1–9. The two paired-panel figures use two `0.49\textwidth` minipages with `\linewidth` graphics. Other figure widths remain 0.82–0.98 of `\textwidth`. Appendix A1 retains the publisher’s extended-width table; no unverified size change is made.
+Validation: working-source `latexmk` under `texlive/20260330` exited 0 (19 pages). Auxiliary-file caption locators put Figure 2 on page 4 and Table 1 on page 5. First figure calls remain 1–9 and table calls 1, A1–A6; all 49 compiled bibliography numbers match first citation. No undefined citation/reference, duplicate-label, overfull-box or oversized-float warning; `git diff --check` passes. All figure contents/sizes, table bodies, 49 bibliography entries and publisher query quotations remain unchanged; received source checksum preserved. No PDF opened, rendered or visually signed off by Codex.
+Outstanding: John’s visual check of placement, readable plot/table labels, caption spacing and the four overlap queries listed above. A successful build/source audit does not establish visual readability.
+Placement correction commit: recorded after committing/pushing this batch.
 
-Outstanding: A compiled working copy and page inspection after resolving citation order. MDPI08c repeats this request for Figure 2 and other figures.
+**John’s compact visual checklist — current working PDF; pages from `.aux`, not agent visual verification:**
+
+| Code | Check | Pages |
+| --- | --- | --- |
+| MDPI05b/MDPI08c | Figure 2 and Table 1 placement, caption spacing and readable text after the move | 4–5 |
+| MDPI06 | Figure 1: map/panel labels and legend overlap | 3 |
+| MDPI08a | Figure 2: satellite/ozone labels and legend overlap | 4 |
+| MDPI11 | Figure 3: station legend, axes and curves | 7 |
+| MDPI16a | Figure 8: maps, section labels and colour bars | 11 |
+| MDPI05b | Appendix A1–A6 table widths, readable values and continued Table A6 | 14–15 |
+
+John can report all clear or identify the code/figure/page and the observed problem. Do not mark these visual items complete from source/build checks alone.
+
 
 <a id="mdpi06"></a>
 
@@ -381,11 +398,10 @@ Proposed reply: “Marker shapes identifying each site are now explained in the 
 Remaining: final proof audit. John agreed to defer MDPI08a/c until layout changes are complete.
 Caption correction commit: `b303e7453675d83171bc692b2207a831def17187`; pushed to `origin/jrl/proofs-round1`.
 
-**MDPI08c: Citation order corrected — final placement deferred.**
+**MDPI08c: Source citation order/placement corrected — John’s visual review pending.**
 
-Proposed response/action: Resolve Figure 2’s citation/placement as part of MDPI05, then check all figures.
-
-MDPI05a corrected first-citation order to Figures 1–9; Figure 2’s first callout precedes its figure block. Outstanding: final physical placement/size inspection with MDPI05b after captions and layout changes.
+Figure 2 now follows Figure 1 and its first mention within the observations subsection, before the WRF-configuration subsection. Its caption, asset and 0.93 text-width size are retained. All figure first calls remain 1–9; see the MDPI05b source/build audit.
+Outstanding: John checks the rendered placement/size and MDPI08a overlap; no new agent PDF inspection in this batch.
 
 <a id="mdpi09"></a>
 
@@ -737,9 +753,9 @@ Resolved in the MDPI11–17 batch: the duplicate now belonged to working Table A
 
 1. MDPI01 and Claude/Codex author facts are confirmed; the AI models/CLI use are supplied under MDPI18; final audit remains. Retain the saved title, email and emphasis decisions for EE01, MDPI02 and MDPI03.
 2. Use the complete `proof-package/working/` copy already created; preserve the received baseline and record corrections in this register.
-3. Citation order, mathematical/appendix formatting, caption explanations and the duplicate label are applied; finish the recorded deferred layout checks after layout changes.
+3. Citation order, mathematical/appendix formatting, caption explanations and the duplicate label are applied; John completes the recorded visual layout/overlap checks on the rebuilt PDF.
 4. Software versions and bibliography confirmations are applied; MDPI18 model names/CLI use are supplied; follow PUB01 for the planned repository/provenance release. MDPI04a’s saved provider-instrument limitation reply is recorded; audit its scope when assembling the final return.
-5. Build `air-4472509-done.tex` in the working copy and inspect all pages against the supplied PDF; update each follow-up with the applied change, evidence, final reply and any remaining author decision.
+5. Build `air-4472509-done.tex` in the working copy; Codex checks source/logs/auxiliary records, and John checks the PDFs visually. Update each follow-up with the applied change, evidence, final reply and any remaining author decision.
 
 The received source embeds its bibliography: changing a `.bib` file alone cannot resolve its reference queries.
 Keep Paperpile-owned and template files unchanged, and preserve original figure evidence.
