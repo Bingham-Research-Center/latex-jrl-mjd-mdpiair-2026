@@ -4,7 +4,7 @@ Catalogue complete: **22 MDPI comments and one English-editor note**, with compo
 The initial catalogue proposed responses with all follow-ups open; the 6 October recovery checkpoint below records the author decisions now present in the working source.
 The production notice is retained as an acknowledgement item.
 
-**Next discussion: MDPI06 — Figure 1 overlapping content. MDPI05a is applied; final placement checks (MDPI05b/MDPI08c) remain deferred until captions are settled.**
+**Next discussion: MDPI07 — production position/size notice, then MDPI08a/b (Figure 2 overlap and marker meanings). MDPI06 is deferred for recheck after layout changes; MDPI05a is applied.**
 Name the catalogue code whenever referring to the current or next topic, as John requested on 6 October.
 
 This catalogue follows [AGENTS.md](../AGENTS.md) and [PROOFING-HANDOFF.md](../PROOFING-HANDOFF.md) in the active `jrl/proofs-round1` worktree, inspected at `277cfa629f92e3e495cdb33fc9c371cea4c5e621`.
@@ -324,11 +324,11 @@ Source line 131; supplied PDF page 3.
 
 Geographic/sampling locator; label fig:v3-locator. Assets: wrf_geographic_locator_d01_d03.pdf and wrf_nested_domains_d01_d03.png.
 
-**MDPI06: Open — visual check.**
+**MDPI06: Author reports no current overlap — final check deferred.**
 
-Proposed response/action: Inspect both panels at final print size; identify and repair any overlap that obscures labels or scientific content, or describe the specific harmless overlap if no correction is needed.
+Author decision — 6 October: John reports no current overlap and requests revisiting Figure 1 after the figure/layout shuffling. No manuscript or figure change.
 
-Outstanding: Visual assessment of the supplied figure and any derivative. Registered figure provenance and both admission manifests govern any replacement.
+Outstanding: Recheck both panels at final print size after MDPI05b/MDPI08c placement changes, then assemble the final reply. Registered figure provenance and both admission manifests govern any replacement.
 
 <a id="mdpi07"></a>
 
