@@ -1,58 +1,17 @@
-# WRF Cold-Pool Sensitivities Relevant to Winter-Ozone Modelling in the Uinta Basin
+# Uinta Basin winter-ozone meteorology
 
-Public MDPI **Air** manuscript and evidence history by John R. Lawson, Michael J. Davies, Loknath Dhar and Seth N. Lyman.
-The study evaluates meteorology during the 2 February 2013 episode; it contains no chemistry calculation.
+Public manuscript and evidence history for John R. Lawson, Michael J. Davies, Loknath Dhar and Seth N. Lyman's MDPI *Air* study of the 2 February 2013 episode. The study evaluates WRF meteorology; it does not run atmospheric chemistry.
 
-## Current branches
+## Current journal source
 
-This default `main` branch is an earlier checkout. The [current journal proof source](https://github.com/Bingham-Research-Center/latex-jrl-mjd-mdpiair-2026/blob/jrl/proofs-round1/proof-package/working/air-4472509-done.tex), [publisher replies](https://github.com/Bingham-Research-Center/latex-jrl-mjd-mdpiair-2026/blob/jrl/proofs-round1/PROOFER-RETURN-REPLIES.md) and [proof handoff](https://github.com/Bingham-Research-Center/latex-jrl-mjd-mdpiair-2026/blob/jrl/proofs-round1/PROOFING-HANDOFF.md) are on `jrl/proofs-round1`.
-The [audited first-round revision](https://github.com/Bingham-Research-Center/latex-jrl-mjd-mdpiair-2026/blob/jrl/peer-review-round1/main.tex) and its evidence checkpoint are on `jrl/peer-review-round1`.
-John reports that the proof was returned to MDPI. His later independent tone pass is preserved in commit `be959eb`; generated review PDFs and ZIPs are local artifacts and are not in Git. Integration of these branches into `main` is pending.
+John confirmed return of the corrected proof to MDPI on 11 October 2026. The exact source is preserved at [the proof-return tag](https://github.com/Bingham-Research-Center/latex-jrl-mjd-mdpiair-2026/tree/mdpi-air-proof-return-2026-10-11). The [proof branch](https://github.com/Bingham-Research-Center/latex-jrl-mjd-mdpiair-2026/tree/jrl/proofs-round1) holds the working TeX, publisher replies and query history. The [first-round review branch](https://github.com/Bingham-Research-Center/latex-jrl-mjd-mdpiair-2026/tree/jrl/peer-review-round1) retains the earlier revision and its evidence. This default `main` branch is an older manuscript snapshot; its `main.tex` is not the returned proof.
 
-## Earlier main snapshot and evidence routes
+Generated proof PDFs and ZIPs are local review artifacts, not Git files. The proof branch contains the TeX, template and figures needed to build a PDF; see its [handoff](https://github.com/Bingham-Research-Center/latex-jrl-mjd-mdpiair-2026/blob/jrl/proofs-round1/PROOFING-HANDOFF.md).
 
-| Need | Source |
-|---|---|
-| Earlier manuscript snapshot | [main.tex](main.tex) |
-| Author decisions/reply draft | `~/reviews/lawson-ozone-wrf-mdpiair-2026/peer-review-decisions.md` and `response-to-reviewers.md` |
-| Claims and limits | [claim ledger](notes/claim-evidence-ledger.md) |
-| Exact runs and contrasts | [run inventory](verification/provenance/run-inventory.csv), [comparison inventory](verification/provenance/comparison-inventory.csv) |
-| Derived data | [data manifest](verification/data/manifest.csv) |
-| Figure provenance and admission | [verification manifest](verification/figures/manifest.csv), [promoted figures](figures/MANIFEST.md) |
-| Archive existence | [figure archive inventory](verification/figures/archive-inventory.md) |
-| Literature and bibliography | [resource map](notes/resource-map.md), [source crosswalk](notes/literature-synthesis-register.md), [Paperpile checklist](notes/literature/paperpile-export-list.md) |
-| CHPC work | [bounded dispatch guide](rewrite/CHPC-CODEX-PROMPT.md) |
-| Historical drafts and frozen gates | [rewrite history](rewrite/README.md), [review milestones](drafts/README.md) |
+## Evidence routes
 
-Architecture C and its failed gates remain frozen.
-The four-run X6/X10/X5/X3 matrix is the primary result; other admitted diagnostics retain their individual scope limits.
-The layer-sensitivity calculations use existing outputs and do not establish native-resolution sensitivity, basin transport or independent vertical validation.
+- [Claims and limits](notes/claim-evidence-ledger.md), [run inventory](verification/provenance/run-inventory.csv), [comparison inventory](verification/provenance/comparison-inventory.csv).
+- [Derived data](verification/data/manifest.csv), [figure admission](verification/figures/manifest.csv), [promoted figures](figures/MANIFEST.md).
+- [Earlier revision record](notes/peer-review-round1-return.md) and [research gate history](rewrite/HYBRID-GATE-REVIEW.md).
 
-## Build and review
-
-```bash
-make final-draft-check
-make submission-check
-make package
-```
-
-The first target builds/checks the main manuscript and historical test/v3 sources, runs the `brc-tools` smoke checks and checks the manuscript contract.
-The second independently compiles the allowlisted source package; the third refreshes the tracked, self-contained `submission-package/` folder.
-Inspect the PDFs after changes. Routine root PDFs remain ignored; dated review milestones live in `drafts/`.
-The official MDPI template uses pdfLaTeX and BibTeX with `Definitions/mdpi.bst`; never edit `Definitions/`.
-If Ghostscript is absent, the independent check uses the existing cached logo conversion; the source ZIP remains source-clean.
-
-`review-references.bib` supplies verified methods, data, software and textbook additions pending Paperpile consolidation; both bibliography files are included in the checks and package.
-`paperpile.bib` remains Paperpile-owned. Replace it wholesale with John's complete export; follow the current checklist rather than the obsolete five-paper seed count.
-The source ZIP is `dist/mdpi-air-submission.zip`; it excludes reviews, notes, verification scripts and Git metadata.
-The package is a review checkpoint until bibliography, response wording and author approval are complete.
-
-## Hosts and Git
-
-Akamai/Linode owns writing, Git, LaTeX and selective literature work; CHPC owns WRF/data work.
-Label-only figure rerenders from committed summaries can run on the writing host.
-`../brc-tools` owns reusable analysis; sibling WRF repositories do not override this paper's inventories or immutable control packets.
-The legacy manuscript repository is a read-only donor.
-
-Use `jrl/<topic>` branches and PRs into protected `main`, with narrow verified commits and the required Codex co-author trailer.
-Preserve unrelated dirt and the untracked CHPC transfer archives.
+The four-run X6/X10/X5/X3 matrix is the primary comparison. Other diagnostics retain their recorded limits; this work does not establish chemistry, basin export, inversion depth or multi-day persistence. For the next proof, start with [AGENTS.md](AGENTS.md) and the proof-branch handoff.
