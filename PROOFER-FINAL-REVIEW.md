@@ -1,6 +1,6 @@
 # Final proof-return review route — 11 October 2026
 
-Current branch: `jrl/proofs-round1`; John’s independent author-pass commit `be959eb` follows `b262a24`. He reports that the proof was submitted to MDPI. The new local PDF/ZIP reflect later TeX edits and need his visual check. PUB01 public release remains open; Codex will not submit to MDPI.
+Completed historical checklist. John reviewed the current PDF and confirmed proof return on 11 October 2026; PUB01 public release is complete. The exact submitted-source checkpoint is tag `mdpi-air-proof-return-2026-10-11` (`f06ee3d`). This table records the final review route and decisions, not an open task list. See [the closeout handoff](PROOFING-HANDOFF.md) for the next entry point.
 
 Use the [working PDF](proof-package/working/air-4472509-done.pdf) for printed appearance, the [working TeX](proof-package/working/air-4472509-done.tex) for source comments, the [reply table](PROOFER-REPLY-TABLE.md) for exact old/new TeX and PDF locators, and the [catalogue](notes/proof-query-catalogue.md) only when an exact publisher quotation or evidence detail is needed. The [received proof](proof-package/air-4472509-english/air-4472509-done.tex) is immutable.
 
@@ -23,7 +23,7 @@ Use the [working PDF](proof-package/working/air-4472509-done.pdf) for printed ap
 | 15 | Check the post-submission PDF and ZIP; retain the MDPI receipt. | Local PDF/ZIP and journal replies. | **John reports proof submitted; Codex will not submit anything.** |
 | 16 | Release the repository with selected provenance, verify public access and reconcile availability wording. Integrate the proof into root manuscript/package through its separate gate. | PUB01 in [handoff](PROOFING-HANDOFF.md); root `main.tex` and `submission-package/`. | **Done: public and anonymously readable; default `main` integration remains separate.** |
 
-John’s later TeX tone pass changed printed prose. The new PDF remains 18 pages, but the earlier visual approval does not cover it. The local return ZIP is ignored by Git and must be transferred separately from the pushed source/reply documents.
+John’s later TeX tone pass changed printed prose; he reviewed the resulting 18-page PDF before confirming proof return. The local return ZIP is ignored by Git and must be transferred separately from the pushed source/reply documents.
 
 ## Author-pass wording to check
 
