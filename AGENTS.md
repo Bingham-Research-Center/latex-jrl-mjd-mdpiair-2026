@@ -1,43 +1,24 @@
-# AI guide
+# AI guide — MDPI Air repository
 
-Private MDPI *Air* manuscript: WRF meteorology for the 2 February 2013 Uinta Basin episode.
-Cold start: `hostname -f`, `README.md`, then one task route below.
-Current phase and next steps: `ROADMAP.md`; current evidence/revision state: `notes/peer-review-round1-return.md`.
+Status: John confirmed return of the corrected proof to MDPI on 11 October 2026. The repository is public. The submitted source is tag `mdpi-air-proof-return-2026-10-11` (`f06ee3d`); work continues on `jrl/proofs-round1`. Default `main` and its `main.tex` are older snapshots. No journal action is pending.
+
+Cold start: `hostname -f`, `git status --short --branch`, then [README.md](README.md). For any new publisher proof, use the [proof-branch handoff](https://github.com/Bingham-Research-Center/latex-jrl-mjd-mdpiair-2026/blob/jrl/proofs-round1/PROOFING-HANDOFF.md). Preserve unrelated dirt and existing worktrees.
 
 ## Routes
 
-| Task | Read |
-|---|---|
-| Manuscript/revision | `notes/peer-review-round1-return.md` → `main.tex` |
-| Reviewer decisions/replies | `~/reviews/lawson-ozone-wrf-mdpiair-2026/peer-review-decisions.md` → `response-to-reviewers.md`; saved author decisions govern |
-| Claims | `notes/claim-evidence-ledger.md` → exact registered artefact |
-| Runs/comparisons | `verification/provenance/run-inventory.csv`, `verification/provenance/comparison-inventory.csv` |
-| Figures | `verification/figures/manifest.csv` → `figures/MANIFEST.md`; archive existence: `verification/figures/archive-inventory.md` |
-| Literature/bibliography | `notes/resource-map.md`, `notes/literature-synthesis-register.md`, `notes/literature/paperpile-export-list.md` |
-| Build/package | `Makefile`, `figures/submission-files.txt`, `packaging/README-package.md` |
-| CHPC dispatch | `rewrite/CHPC-CODEX-PROMPT.md`; new bounded packet and immutable source ref required |
-| History/gates | `rewrite/README.md` → `rewrite/HYBRID-GATE-REVIEW.md`; July task register is historical |
+| Task | Read first |
+| --- | --- |
+| Submitted proof | Tag `mdpi-air-proof-return-2026-10-11` → `proof-package/working/air-4472509-done.tex` |
+| Publisher questions | Proof branch `PROOFER-REPLY-TABLE.md` → `notes/proof-query-catalogue.md`; saved author decisions govern |
+| Earlier revision | `notes/peer-review-round1-return.md` → `main.tex` on `jrl/peer-review-round1` |
+| Claims and figures | `notes/claim-evidence-ledger.md` → exact artefact; `verification/figures/manifest.csv`, `figures/MANIFEST.md` |
+| Runs and comparisons | `verification/provenance/run-inventory.csv`, `verification/provenance/comparison-inventory.csv` |
+| Root build/package | `Makefile`, `figures/submission-files.txt`, `packaging/README-package.md` |
 
-Open only the route needed. Avoid broad trees, bulk figures, raw PDFs, legacy checklists and `Definitions/` unless required.
-`main.tex` is the audited submission target. `drafts/jrl_manuscript.tex` is the superseded author draft;
-`_manuscript_v3.tex` is the over-inclusive caretaker snapshot and `_manuscript_test.tex` is experimental.
+## Rules
 
-## Evidence contract
-
-- Architecture C is frozen; all five gates ran. Failed gates stay failed without new predeclared evidence.
-- Inventories govern design, archive records govern existence, both manifests govern figure admission, and the ledger plus exact artefacts govern claims.
-- X6/X10/X5/X3 are the confirmed floor. Other X0–X10 results require their recorded admission and limits; X8 is within-run context, never comparative or basin-export evidence.
-- Every number needs matched runs, domain, stations/footprint, window, inputs and command. Separate controlled, heterogeneous, observational and literature evidence.
-- Chemistry, emissions-inventory adequacy, basin export, inversion depth and multi-day persistence are not demonstrated. Do not separate initial from lateral forcing by wording.
-- Preserve reviewer quotations and author decisions. Colleague advice remains advisory unless explicitly confirmed; do not confuse implementation with author approval.
-
-## Operations
-
-- Akamai/Linode owns writing, Git and LaTeX; CHPC owns WRF/data work. Label-only plotting from committed summaries may run locally; reusable analysis belongs in `../brc-tools`.
-- No sibling WRF checkout overrides the paper inventories or immutable CHPC packets.
-- Keep manuscripts single-file, sparse, British English, one sentence per source line. Preserve official names, identifiers, bibliographic titles and direct quotations verbatim.
-- Never use manuscript footnotes. Cite references, websites and data sources in the bibliography; give web URLs and access dates, and acknowledge/cite software with verified DOIs or URLs.
-- Never edit `Definitions/` or hand-edit `paperpile.bib`. John supplies one complete Paperpile replacement; `trang_ref` is not Tran et al. (2018).
-- After analysis/manuscript changes run `make final-draft-check`, `make submission-check`, and inspect PDFs; refresh the delivery folder with `make package`.
-- Production uses only dual-promoted, allowlisted figures. Keep original evidence and transfer inputs; no synthetic output may be promoted.
-- Use `jrl/<topic>` PRs into protected `main`; preserve unrelated dirt. Commit one verified concern at a time with John's identity and `Co-Authored-By: Codex <noreply@openai.com>`.
+- Treat publisher originals and any new proof intake as immutable. Create a new `jrl/<topic>` branch/worktree for a new round; compare it to the submitted-source tag. Author decisions and visual PDF acceptance govern. Do not submit to MDPI without a new explicit request.
+- Keep manuscript edits small, British English, one sentence per source line. Preserve quotations, official names and identifiers. Do not edit `Definitions/` or hand-edit `paperpile.bib`.
+- Architecture C is frozen; failed gates stay failed without new predeclared evidence. X6/X10/X5/X3 are the confirmed floor. Keep controlled, observational and literature evidence separate; X8 is within-run context only. No chemistry, emissions-adequacy, basin-export, inversion-depth or multi-day-persistence claim without new evidence.
+- Inventories govern designs, archives govern existence, manifests govern figure admission, and the claim ledger plus exact artefacts govern claims. No synthetic output may be promoted.
+- For root manuscript changes run `make final-draft-check`, `make submission-check`, inspect PDFs, then `make package`. Proof-branch builds follow that branch's AGENTS.md. Use protected-main PRs and verified commits attributed to John Lawson <john.rob.lawson@googlemail.com> with `Co-Authored-By: Codex <noreply@openai.com>`.
