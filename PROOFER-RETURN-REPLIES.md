@@ -1,6 +1,6 @@
 # Draft replies for the MDPI proof return
 
-Manuscript `air-4472509`; prepared 11 October 2026 from the corrected [working TeX](proof-package/working/air-4472509-done.tex) and the [query catalogue](notes/proof-query-catalogue.md). The catalogue preserves every publisher note verbatim. John approved all 23 replies on 11 October, including the revised MDPI04 wording. The assembled return still needs his final approval before it is sent.
+Manuscript `air-4472509`; prepared 11 October 2026 from the corrected [working TeX](proof-package/working/air-4472509-done.tex) and the [query catalogue](notes/proof-query-catalogue.md). The catalogue preserves every publisher note verbatim. John approved the original 23 replies on 11 October, including the revised MDPI04 wording. MDPI18 was then updated to match his clarification that Gemini brainstorming belonged to another project. Codex has not sent this document to MDPI.
 
 | Query | Proposed reply |
 | --- | --- |
@@ -22,7 +22,7 @@ Manuscript `air-4472509`; prepared 11 October 2026 from the corrected [working T
 | MDPI15 | The Figure 7 caption now describes both panels and identifies the shading as the footprint-definition sensitivity envelope. |
 | MDPI16 | We checked Figure 8 after resizing; the overlap does not affect scientific understanding. The caption now explains the dashed features. |
 | MDPI17 | We confirm the added horizontal rules in the table; please retain them. |
-| MDPI18 | Versions for the named software are now in Methods, with formal citations. The AI-use statement names the author-confirmed models and command-line use; the authors retain responsibility for the content. |
+| MDPI18 | Versions for the named software are now in Methods, with formal citations. The AI-use statement names the Claude and Codex models used for this manuscript and their command-line access; the authors retain responsibility for the content. |
 | MDPI19 | We confirm the EGU General Assembly dates, 23–27 May 2022. |
 | MDPI20 | We confirm the publisher locations: NCAR in Boulder, CO, USA, and USGS in Reston, VA, USA. |
 | MDPI21 | We confirm the conference location and dates: Seattle, WA, USA, 11–15 January 2004. |

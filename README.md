@@ -1,20 +1,20 @@
 # WRF Cold-Pool Sensitivities Relevant to Winter-Ozone Modelling in the Uinta Basin
 
-Private MDPI **Air** manuscript by John R. Lawson, Michael J. Davies, Loknath Dhar and Seth N. Lyman.
+MDPI **Air** manuscript and evidence repository by John R. Lawson, Michael J. Davies, Loknath Dhar and Seth N. Lyman.
 The study evaluates meteorology during the 2 February 2013 episode; it contains no chemistry calculation.
 
-## Current revision
+## Current proof
 
-`main.tex` is the audited first-round revision and submission target.
-The [return record](notes/peer-review-round1-return.md) records the completed CHPC checks, local figure-label closure and reviewer reconciliation.
-The [roadmap](ROADMAP.md) gives the remaining author steps: complete Paperpile export, final response wording and approval.
-The separate supplement is retired; material needed for this revision is in the main article or appendix.
+The current proof source is [the working TeX](proof-package/working/air-4472509-done.tex) on `jrl/proofs-round1`; the immutable publisher proof is under `proof-package/air-4472509-english/`.
+John reports that he returned the proof to MDPI. His later independent tone pass is checkpointed at `be959eb`, and the corresponding local PDF/ZIP are for his final check; generated artifacts are ignored by Git.
+The first-round revision of `main.tex` and its evidence checkpoint live on `jrl/peer-review-round1`; this proof branch and default `main` have not yet been integrated.
+The [proof handoff](PROOFING-HANDOFF.md) gives the current source, reply and release route. The separate supplement is retired.
 
 ## Find the evidence
 
 | Need | Source |
 |---|---|
-| Current manuscript | [main.tex](main.tex) |
+| Current journal proof | [working TeX](proof-package/working/air-4472509-done.tex) |
 | Author decisions/reply draft | `~/reviews/lawson-ozone-wrf-mdpiair-2026/peer-review-decisions.md` and `response-to-reviewers.md` |
 | Claims and limits | [claim ledger](notes/claim-evidence-ledger.md) |
 | Exact runs and contrasts | [run inventory](verification/provenance/run-inventory.csv), [comparison inventory](verification/provenance/comparison-inventory.csv) |
@@ -45,8 +45,8 @@ If Ghostscript is absent, the independent check uses the existing cached logo co
 
 `review-references.bib` supplies verified methods, data, software and textbook additions pending Paperpile consolidation; both bibliography files are included in the checks and package.
 `paperpile.bib` remains Paperpile-owned. Replace it wholesale with John's complete export; follow the current checklist rather than the obsolete five-paper seed count.
-The source ZIP is `dist/mdpi-air-submission.zip`; it excludes reviews, notes, verification scripts and Git metadata.
-The package is a review checkpoint until bibliography, response wording and author approval are complete.
+The earlier root source ZIP is `dist/mdpi-air-submission.zip`; it excludes reviews, notes, verification scripts and Git metadata.
+The root package is historical on this proof branch; the current proof return is documented in [the handoff](PROOFING-HANDOFF.md).
 
 ## Hosts and Git
 

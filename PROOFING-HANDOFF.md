@@ -1,6 +1,6 @@
 # Proof-return handoff — 6 October 2026
 
-**The requested proof edits and author visual check are complete; final reply approval and delivery remain. Nothing has been submitted or made public by Codex.**
+**John reports that the proof was submitted to MDPI. His later independent TeX tone pass is checkpointed at `be959eb`; a new local PDF and ZIP await his visual check. Codex has submitted nothing to MDPI and has not uploaded a preprint.**
 
 ## Start here
 
@@ -24,20 +24,20 @@ A worktree is another folder on a separate branch, sharing this repository’s G
 | Final review index | `PROOFER-REPLY-TABLE.md`; 51 rows covering all 23 publisher notes, highlights and later author changes |
 | Draft journal replies | `PROOFER-RETURN-REPLIES.md`; one proposed reply for each of the 23 MDPI/EE notes |
 | John's final review route | `PROOFER-FINAL-REVIEW.md`; terse microtasks, files and PDF pages before approval |
-| Return ZIP | `dist/air-4472509-proof-return-20261011.zip`; corrected TeX/PDF/template/eleven figures; ignored by Git |
+| Return ZIP | `dist/air-4472509-proof-return-author-pass-20261011.zip`; current author-pass TeX/PDF/template/eleven figures; ignored by Git |
 | Decisions/evidence/history | `notes/proof-query-catalogue.md`; master register, not superseded by the table |
 | Intake/recovery | `proof-package/intake.json`, `proof-package/edit-recovery-20261006.json`, `proof-package/working-copy.json` |
 | Terrain/software evidence | `proof-package/terrain-source-evidence-20261006.json`, `proof-package/software-version-evidence-20261006.json` |
 
-The reply-table locators match working TeX SHA-256 `1a9b07bea5821956813ac0e1317e45967392b47628bd5d508ef4167cdcce74c3`. The 11 October comment-only edits rebuilt to 18 pages with identical extracted PDF text. PDF pages use compiled labels/source metadata; **there are no printed PDF line numbers**, so the table marks them “—”. Refresh the map if TeX or layout changes. Codex did not load/render the PDF.
+The refreshed TeX locators match working source SHA-256 `789de4b5f473e9bd5aa13f474ae49f9a6733f64919a76603e164efdc0e2d1b55`. The author-pass build remains 18 pages, but printed wording changed after the earlier visual approval. **There are no printed PDF line numbers**; PDF pages are navigation aids until John checks the new PDF. Codex did not render it.
 
-## NEXT — final replies and return assembly
+## NEXT — author-pass review and public release
 
-1. John confirmed on 11 October that pages 7–8, resized Figures 5–9 (pages 9–12), Tables A2–A6 (pages 14–15), and back matter (page 16) are clear. A1 was already approved. The author visual check under MDPI05b is complete for this PDF.
+1. John confirmed on 11 October that pages 7–8, resized Figures 5–9 (pages 9–12), Tables A2–A6 (pages 14–15), and back matter (page 16) are clear. A1 was already approved. That approval applies to the earlier PDF; John needs to check the new author-pass PDF.
 2. The reply table's 50 current-proof rows are checked; PUB01 remains open. MDPI04a's approved reply is scoped to the incomplete multi-network instrument inventory while retaining documented provider facts. Named AI models/CLI use remain author-confirmed, without a per-session/snapshot claim.
-3. John approved all 23 replies in `PROOFER-RETURN-REPLIES.md` on 11 October. Use `PROOFER-FINAL-REVIEW.md` for his review of the assembled return, then obtain final approval before sending. Source comments are not printed replies.
-4. The corrected TeX/PDF/support ZIP is in `dist/`; ZIP integrity and an isolated 18-page build passed. ZIP SHA-256: `0473c9da4ad9234e0e790973ca86dbbd0c7f1f05bda3fcfbe68b9367f832dded`. Root `main.tex`/`submission-package` integration, required Make checks/package refresh, protected-main PR/merge and journal submission remain separate actions.
-5. **PUB01 after confirmed proof submission:** make the repository public as John has instructed, with his selected provenance prepared; verify unauthenticated access and reconcile availability wording with the final published proof. Current Data Availability gives `https://github.com/Bingham-Research-Center/latex-jrl-mjd-mdpiair-2026` and says it will be publicly available after proof submission. Last live API check (6 October): private. Timing is authorised; do not change visibility before submission.
+3. John approved the earlier 23 replies on 11 October. The MDPI18 reply was updated after he clarified that Gemini belonged to another project. The local source/ZIP are for review; Codex is not sending them to MDPI. Source comments are not printed replies.
+4. The current TeX/PDF/support ZIP is in `dist/`; ZIP integrity and an isolated 18-page build passed. ZIP SHA-256: `a8271958e21a31ca8dccb0de616303b3fa4ccb1f21a2c968a695e63ba807b28c`. Root `main.tex`/`submission-package` integration, required Make checks/package refresh, protected-main PR/merge and journal submission remain separate actions.
+5. **PUB01 after confirmed proof submission:** make the repository public as John has instructed, with his selected provenance prepared; verify unauthenticated access and reconcile availability wording with the final published proof. John confirmed proof submission on 11 October; live GitHub API still reported the repository private at the author-pass checkpoint. Current TeX uses present tense, so verify public access before relying on that statement.
 
 ## Continue the agreed batch pattern
 
@@ -53,7 +53,7 @@ module load texlive/20260330
 latexmk -pdf -interaction=nonstopmode -halt-on-error air-4472509-done.tex
 ```
 
-The proof PDF and return ZIP are ignored: a Git push transfers the corrected source/docs, not those generated artifacts. Transfer `dist/air-4472509-proof-return-20261011.zip` explicitly if reviewing on another host. Root Make targets validate later repository integration, not this working proof.
+The proof PDF and return ZIP are ignored: a Git push transfers source/docs, not generated artifacts. Transfer `dist/air-4472509-proof-return-author-pass-20261011.zip` explicitly if reviewing on another host. Root Make targets validate later repository integration, not this working proof.
 
 Latest substantive batches, all pushed: `37baff3` (Section 3.4/Figure 4 and A1 approval), `93a2a0c` (Conflicts of Interest break), `2fddf48` (repository URL/release timing). Detailed earlier commits, provider checks and historical visual inspections remain in the catalogue. The 11 October update changes one source comment; printed manuscript content is unchanged.
 
