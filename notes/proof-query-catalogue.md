@@ -4,7 +4,7 @@ Catalogue complete: **22 MDPI comments and one English-editor note**, with compo
 The initial catalogue proposed responses with all follow-ups open; the 6 October recovery checkpoint below records the author decisions now present in the working source.
 The production notice is retained as an acknowledgement item.
 
-**Next: MDPI05b — John’s final visual check (pages 7–8, resized items and back matter), then the [reply/checklist table](../PROOFER-REPLY-TABLE.md) for all original queries and later author changes. A1 is approved. Final reply/return assembly and authorised integration remain; PUB01 public release follows confirmed proof submission.**
+**Next: Final reply audit and return assembly. John approved the MDPI05b visual checks on 11 October; PUB01 public release follows confirmed proof submission.**
 Name the catalogue code whenever referring to the current or next topic, as John requested on 6 October.
 
 **Author visual review — 6 October:**
@@ -14,6 +14,9 @@ John reports the previous working proof “All clear” except size reductions f
 - **MDPI05b:** Table A1 is author-approved; requested Figure 5–9/table reductions are applied. Section 3.4 now starts above Figure 4 to address the reported page 7 gap; John checks the revised page balance.
 - **MDPI08c:** Figure 2 placement/size accepted in John’s “All clear” review.
 - **PUB01:** repository URL supplied; release authorised after proof submission, with provenance selection/preparation pending.
+
+**Author visual review — 11 October:** John answered “All clear” for pages 7–8 after the Section 3.4/Figure 4 placement change; resized Figures 5–9 on pages 9–12; and Tables A2–A6 plus back matter on pages 14–16. This closes the author visual check under MDPI05b. Codex did not render or inspect the PDF.
+The updated MDPI05/MDPI04 author replies are comment-only; the rebuild remained 18 pages and its extracted text is byte-identical to the preceding PDF. Working TeX SHA-256: `1a9b07bea5821956813ac0e1317e45967392b47628bd5d508ef4167cdcce74c3`. All 23 publisher notes remain present after trailing-space normalisation; all have nearby `% JRL:` replies. [Journal-facing replies](../PROOFER-RETURN-REPLIES.md) cover the 23 notes. John approved all 23 on 11 October, including the revised MDPI04 limitation. The 26-file return ZIP in `dist/` passes integrity and isolated compilation; SHA-256 `0473c9da4ad9234e0e790973ca86dbbd0c7f1f05bda3fcfbe68b9367f832dded`. Final assembled-return approval remains pending.
 
 This catalogue follows [AGENTS.md](../AGENTS.md) and [PROOFING-HANDOFF.md](../PROOFING-HANDOFF.md) in the active `jrl/proofs-round1` worktree, inspected at `277cfa629f92e3e495cdb33fc9c371cea4c5e621`.
 The received baseline is commit `92b14d2`; all 33 received files are preserved.
@@ -212,13 +215,15 @@ Source line 93; supplied PDF page 3.
 
 The Methods section uses provider observations and numerical modelling. WRF 4.8.0 is already stated at lines 143 and 156; WRF Preprocessing System is named at line 190 without a version.
 
-**MDPI04a: Author limitation recorded — final reply/audit pending.**
+**MDPI04a: Scoped instrument limitation approved by John on 11 October; final return pending.**
 
 Applied response: retained John’s saved `% JRL:` explanation that observation-instrument information cannot be supplied from the multi-network Synoptic Data aggregation. No manufacturer/location has been inferred or invented.
 
 Author position in the saved edit: Instrument information cannot be supplied from the multi-network Synoptic Data aggregation alone.
 
 Outstanding: Final proof/reply audit; retain any applicable documented provider facts and distinguish unavailable manufacturer/model details. This records the author’s limitation, not a complete instrument inventory. `verification/provenance/observation-evidence-summary.json` separately records a Graw station/probe identifier for the provisional Roosevelt sounding but no exact sonde model; do not extend the aggregation limitation to imply that no provider instrument information exists anywhere.
+
+11 October author wording: “We obtained surface observations through Synoptic Data’s multi-network service. The records used for this study do not provide a complete manufacturer, model and address inventory for the contributing stations, so we have not added unverified instrument details.” The working `% JRL:` comment now reflects that scope. The separate Roosevelt sounding metadata does not contradict this surface-station claim.
 
 **MDPI04b: Partly resolved — WPS, terrain source wording and software versions applied; complete reply/final audit pending.**
 
@@ -314,7 +319,7 @@ Proposed reply: “Figure and table first citations now follow numerical order. 
 Remaining: final proof audit; MDPI09 citation-format confirmation; MDPI05b/MDPI08c final placement checks after captions.
 Table correction commit: `4a57a764698ca18119e8beb38bead549ae1b61d7`; pushed to `origin/jrl/proofs-round1`.
 
-**MDPI05b: Placement accepted; figure/table resizing applied — revised visual review assigned to John.**
+**MDPI05b: Placement, figure/table resizing and revised visual review author-approved on 11 October.**
 
 Author workflow decision, 6 October: avoid loading PDFs into Codex to save tokens; John will inspect the rendered proof and report visual problems. This overrides the usual agent PDF-inspection step for this and subsequent batches unless John asks otherwise. Builds, logs, auxiliary-file and source checks continue.
 Applied in the placement batch: moved only Figure 2’s unchanged block from the WRF-configuration subsection to the end of the observations subsection, after Figure 1 and both first mentions. Preserved every figure size, caption and asset; the source still uses the publisher’s `[H]` placement. Added/updated standalone `% JRL:` replies under the original MDPI05/08 comments.
@@ -332,7 +337,7 @@ Placement correction commit: `5c978530242986fa04792e9821e06fc5d8b396ff`; pushed 
 | MDPI05b | A1 approved; final A2–A6 widths/values check | 14–15 |
 | MDPI05b | Section 3.4 opening moved before Figure 4; revised page-balance check | 7–8 |
 
-The previous proof’s placement/overlap checks are author-confirmed. John reviews the newly resized items and any resulting page reflow; source/build checks do not close that review.
+The previous proof’s placement/overlap checks were author-confirmed. On 11 October, John answered “All clear” for the final pages 7–8 flow, resized Figures 5–9, remaining Tables A2–A6, and back matter. This records his visual approval, distinct from the source/build checks.
 
 <a id="mdpi06"></a>
 
@@ -789,8 +794,8 @@ Resolved in the MDPI11–17 batch: the duplicate now belonged to working Table A
 
 1. MDPI01 and Claude/Codex author facts are confirmed; the AI models/CLI use are supplied under MDPI18; final audit remains. Retain the saved title, email and emphasis decisions for EE01, MDPI02 and MDPI03.
 2. Use the complete `proof-package/working/` copy already created; preserve the received baseline and record corrections in this register.
-3. Citation order, mathematical/appendix formatting, caption explanations and the duplicate label are applied; preceding overlap/placement checks are author-confirmed. Table A1 is author-approved; John reviews remaining resized items and pages 7–8 after the Section 3.4/Figure 4 placement correction under MDPI05b.
-4. Software versions and bibliography confirmations are applied; MDPI18 model names/CLI use are supplied; follow PUB01 for the authorised repository release after confirmed proof submission and selected-provenance preparation. MDPI04a’s saved provider-instrument limitation reply is recorded; audit its scope when assembling the final return.
+3. Citation order, mathematical/appendix formatting, caption explanations and the duplicate label are applied; John approved the final MDPI05b visual checks on 11 October.
+4. Software versions and bibliography confirmations are applied; MDPI18 model names/CLI use are supplied; follow PUB01 for the authorised repository release after confirmed proof submission and selected-provenance preparation. John approved the scoped MDPI04a reply on 11 October.
 5. Build `air-4472509-done.tex` in the working copy; Codex checks source/logs/auxiliary records, and John checks the PDFs visually. Update each follow-up with the applied change, evidence, final reply and any remaining author decision.
 
 The received source embeds its bibliography: changing a `.bib` file alone cannot resolve its reference queries.

@@ -1,6 +1,6 @@
 # Proof-return handoff — 6 October 2026
 
-**The requested proof edits are applied; final visual/reply approval and delivery remain. Nothing has been submitted or made public by Codex.**
+**The requested proof edits and author visual check are complete; final reply approval and delivery remain. Nothing has been submitted or made public by Codex.**
 
 ## Start here
 
@@ -22,20 +22,21 @@ A worktree is another folder on a separate branch, sharing this repository’s G
 | Review PDF | `proof-package/working/air-4472509-done.pdf`; 18 pages; ignored by Git |
 | Original proof | `proof-package/air-4472509-english/`; all 33 files unchanged from `92b14d2` |
 | Final review index | `PROOFER-REPLY-TABLE.md`; 51 rows covering all 23 publisher notes, highlights and later author changes |
+| Draft journal replies | `PROOFER-RETURN-REPLIES.md`; one proposed reply for each of the 23 MDPI/EE notes |
+| Return ZIP | `dist/air-4472509-proof-return-20261011.zip`; corrected TeX/PDF/template/eleven figures; ignored by Git |
 | Decisions/evidence/history | `notes/proof-query-catalogue.md`; master register, not superseded by the table |
 | Intake/recovery | `proof-package/intake.json`, `proof-package/edit-recovery-20261006.json`, `proof-package/working-copy.json` |
 | Terrain/software evidence | `proof-package/terrain-source-evidence-20261006.json`, `proof-package/software-version-evidence-20261006.json` |
 
-The reply-table locators are pinned to source commit `003e67c` and SHA-256 `63b2f1e90a66d5c7b3d72b0ce22c082221b9b0bbff96946703a6c66d044420d6`. PDF pages use compiled labels/source metadata; **there are no printed PDF line numbers**, so the table marks them “—”. Refresh the map if TeX or layout changes. Codex did not load/render the PDF.
+The reply-table locators match working TeX SHA-256 `1a9b07bea5821956813ac0e1317e45967392b47628bd5d508ef4167cdcce74c3`. The 11 October comment-only edits rebuilt to 18 pages with identical extracted PDF text. PDF pages use compiled labels/source metadata; **there are no printed PDF line numbers**, so the table marks them “—”. Refresh the map if TeX or layout changes. Codex did not load/render the PDF.
 
-## NEXT — MDPI05b, then final replies
+## NEXT — final replies and return assembly
 
-1. John checks pages 7–8: Section 3.4’s heading/opening paragraph now precedes unchanged Figure 4 to address the reported gap. Check flow and white space.
-2. John checks resized Figures 5–9 (pages 9–12), remaining tables A2–A6 (pages 14–15), and back matter (page 16). A1 is explicitly approved. The manual page break before Conflicts of Interest is removed; it follows Acknowledgements. Prior overlap/placement confirmations remain author decisions; resized-page readability needs John’s final check.
-3. Use the reply table as the final checklist: tick each code after checking the current source/PDF and proposed reply. MDPI04a’s aggregator/instrument limitation is recorded, not a complete instrument inventory; retain documented provider facts and the software-version attribution limits. All named AI models/CLI use are author-confirmed; no independent per-session/snapshot claim.
-4. Audit that all 22 MDPI notes plus EE01 and highlighted follow-ups have replies, then obtain John’s final return approval. Source comments are not printed replies; assemble the actual journal response deliberately.
-5. Assemble the corrected TeX/PDF/support files for return. Root `main.tex`/`submission-package` integration, required Make checks/package refresh, protected-main PR/merge and journal submission remain separate requested actions. Do not submit or merge merely because this checklist exists.
-6. **PUB01 after confirmed proof submission:** make the repository public as John has instructed, with his selected provenance prepared; verify unauthenticated access and reconcile availability wording with the final published proof. Current Data Availability gives `https://github.com/Bingham-Research-Center/latex-jrl-mjd-mdpiair-2026` and says it will be publicly available after proof submission. Last live API check (6 October): private. Timing is authorised; do not change visibility before submission.
+1. John confirmed on 11 October that pages 7–8, resized Figures 5–9 (pages 9–12), Tables A2–A6 (pages 14–15), and back matter (page 16) are clear. A1 was already approved. The author visual check under MDPI05b is complete for this PDF.
+2. The reply table's 50 current-proof rows are checked; PUB01 remains open. MDPI04a's approved reply is scoped to the incomplete multi-network instrument inventory while retaining documented provider facts. Named AI models/CLI use remain author-confirmed, without a per-session/snapshot claim.
+3. John approved all 23 replies in `PROOFER-RETURN-REPLIES.md` on 11 October. Obtain his final assembled-return approval before sending. Source comments are not printed replies.
+4. The corrected TeX/PDF/support ZIP is in `dist/`; ZIP integrity and an isolated 18-page build passed. ZIP SHA-256: `0473c9da4ad9234e0e790973ca86dbbd0c7f1f05bda3fcfbe68b9367f832dded`. Root `main.tex`/`submission-package` integration, required Make checks/package refresh, protected-main PR/merge and journal submission remain separate actions.
+5. **PUB01 after confirmed proof submission:** make the repository public as John has instructed, with his selected provenance prepared; verify unauthenticated access and reconcile availability wording with the final published proof. Current Data Availability gives `https://github.com/Bingham-Research-Center/latex-jrl-mjd-mdpiair-2026` and says it will be publicly available after proof submission. Last live API check (6 October): private. Timing is authorised; do not change visibility before submission.
 
 ## Continue the agreed batch pattern
 
@@ -51,8 +52,8 @@ module load texlive/20260330
 latexmk -pdf -interaction=nonstopmode -halt-on-error air-4472509-done.tex
 ```
 
-The proof PDF is ignored: a Git push transfers the corrected source/docs, not that generated PDF. Transfer it explicitly if reviewing on another host. Root Make targets validate later repository integration, not this working proof.
+The proof PDF and return ZIP are ignored: a Git push transfers the corrected source/docs, not those generated artifacts. Transfer `dist/air-4472509-proof-return-20261011.zip` explicitly if reviewing on another host. Root Make targets validate later repository integration, not this working proof.
 
-Latest substantive batches, all pushed: `37baff3` (Section 3.4/Figure 4 and A1 approval), `93a2a0c` (Conflicts of Interest break), `2fddf48` (repository URL/release timing). Detailed earlier commits, provider checks and historical visual inspections remain in the catalogue. This handoff/table batch changes no manuscript content.
+Latest substantive batches, all pushed: `37baff3` (Section 3.4/Figure 4 and A1 approval), `93a2a0c` (Conflicts of Interest break), `2fddf48` (repository URL/release timing). Detailed earlier commits, provider checks and historical visual inspections remain in the catalogue. The 11 October update changes one source comment; printed manuscript content is unchanged.
 
 Final-check handoff/reply-table commit: `124a552d3751cab0680ed976873318a02aaa2e06`; pushed to `origin/jrl/proofs-round1`. Source and original proof files remain unchanged.
