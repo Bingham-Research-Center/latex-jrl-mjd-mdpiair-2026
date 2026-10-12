@@ -4,7 +4,7 @@ Catalogue complete: **22 MDPI comments and one English-editor note**, with compo
 The initial catalogue proposed responses with all follow-ups open; the 6 October recovery checkpoint below records the author decisions now present in the working source.
 The production notice is retained as an acknowledgement item.
 
-**11 October update: John reports that the proof was submitted to MDPI. His independent post-submission tone pass is checkpointed at `be959eb`; the new local PDF/ZIP need his visual check. PUB01 public release is being prepared.**
+**11 October update: John reports that the proof was submitted to MDPI. His independent post-submission tone pass is checkpointed at `be959eb`; the new local PDF/ZIP need his visual check. PUB01 public release is complete and anonymous access was verified.**
 Name the catalogue code whenever referring to the current or next topic, as John requested on 6 October.
 
 **Author visual review — 6 October:**
@@ -803,3 +803,12 @@ Resolved in the MDPI11–17 batch: the duplicate now belonged to working Table A
 The received source embeds its bibliography: changing a `.bib` file alone cannot resolve its reference queries.
 Keep Paperpile-owned and template files unchanged, and preserve original figure evidence.
 Root manuscript/package integration remains a separate requested step under the handoff.
+
+
+## 11 October author pass and PUB01 completion
+
+John independently edited the proof source after `b262a24`; his exact edits were preserved in author-only commit `be959eb`. He described this as a terse tone pass and declined proposed evidence/copy-edit replacements. Codex changed only the later AI comment and the factual repository-status wording in separate commits. John clarified that Gemini brainstorming belonged to another project; the current disclosure and MDPI18 reply name only the Claude/Codex models used for this manuscript.
+
+John reports that the proof was submitted to MDPI; Codex did not submit or upload anything. The repository was changed to public on 11 October after a historical text-blob credential-pattern audit found no hits. Unauthenticated GitHub API, proof-branch page and raw TeX requests succeeded. The GitHub homepage metadata links `jrl/proofs-round1/proof-package/working`; default `main` remains older and a merge rehearsal found content conflicts, so root integration remains separate.
+
+Current working TeX SHA-256: `3dec02cd7aad5da9411977403d4f7b3738d8ba87da096c993a1496447fb4b55e`; local author-pass PDF SHA-256: `ba90154edd0745f705f05a19f4805eea01f3b9605507fed793122aeb9320d909`; local 26-entry ZIP SHA-256: `4ec9052502a2bc893d01c41ad836010b9c9be779a8323c994e5685a02e10d72b`. The PDF and ZIP are ignored by Git. The working source and isolated ZIP each compiled to 18 pages under `texlive/20260330`; extracted text matched. All 23 publisher comments remain present as the same multiset after historical relocation and trailing-space normalisation, and the received bundle is unchanged. The new PDF needs John’s visual check. See `PROOFER-FINAL-REVIEW.md` for four author-pass wording checks that he chose not to change.

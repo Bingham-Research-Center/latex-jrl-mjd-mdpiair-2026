@@ -29,15 +29,15 @@ A worktree is another folder on a separate branch, sharing this repository’s G
 | Intake/recovery | `proof-package/intake.json`, `proof-package/edit-recovery-20261006.json`, `proof-package/working-copy.json` |
 | Terrain/software evidence | `proof-package/terrain-source-evidence-20261006.json`, `proof-package/software-version-evidence-20261006.json` |
 
-The refreshed TeX locators match working source SHA-256 `789de4b5f473e9bd5aa13f474ae49f9a6733f64919a76603e164efdc0e2d1b55`. The author-pass build remains 18 pages, but printed wording changed after the earlier visual approval. **There are no printed PDF line numbers**; PDF pages are navigation aids until John checks the new PDF. Codex did not render it.
+The refreshed TeX locators match working source SHA-256 `3dec02cd7aad5da9411977403d4f7b3738d8ba87da096c993a1496447fb4b55e`. The author-pass build remains 18 pages, but printed wording changed after the earlier visual approval. **There are no printed PDF line numbers**; PDF pages are navigation aids until John checks the new PDF. Codex did not render it.
 
 ## NEXT — author-pass review and public release
 
 1. John confirmed on 11 October that pages 7–8, resized Figures 5–9 (pages 9–12), Tables A2–A6 (pages 14–15), and back matter (page 16) are clear. A1 was already approved. That approval applies to the earlier PDF; John needs to check the new author-pass PDF.
-2. The reply table's 50 current-proof rows are checked; PUB01 remains open. MDPI04a's approved reply is scoped to the incomplete multi-network instrument inventory while retaining documented provider facts. Named AI models/CLI use remain author-confirmed, without a per-session/snapshot claim.
+2. The reply table's 50 current-proof rows are checked; PUB01 is complete. MDPI04a's approved reply is scoped to the incomplete multi-network instrument inventory while retaining documented provider facts. Named AI models/CLI use remain author-confirmed, without a per-session/snapshot claim.
 3. John approved the earlier 23 replies on 11 October. The MDPI18 reply was updated after he clarified that Gemini belonged to another project. The local source/ZIP are for review; Codex is not sending them to MDPI. Source comments are not printed replies.
-4. The current TeX/PDF/support ZIP is in `dist/`; ZIP integrity and an isolated 18-page build passed. ZIP SHA-256: `a8271958e21a31ca8dccb0de616303b3fa4ccb1f21a2c968a695e63ba807b28c`. Root `main.tex`/`submission-package` integration, required Make checks/package refresh, protected-main PR/merge and journal submission remain separate actions.
-5. **PUB01 after confirmed proof submission:** make the repository public as John has instructed, with his selected provenance prepared; verify unauthenticated access and reconcile availability wording with the final published proof. John confirmed proof submission on 11 October; live GitHub API still reported the repository private at the author-pass checkpoint. Current TeX uses present tense, so verify public access before relying on that statement.
+4. The current TeX/PDF/support ZIP is in `dist/`; ZIP integrity and an isolated 18-page build passed. ZIP SHA-256: `4ec9052502a2bc893d01c41ad836010b9c9be779a8323c994e5685a02e10d72b`. Root `main.tex`/`submission-package` integration, required Make checks/package refresh, protected-main PR/merge and journal submission remain separate actions.
+5. **PUB01 complete:** John reported proof submission; the GitHub repository was made public on 11 October. Anonymous API, proof-branch and raw-TeX requests succeeded. Data Availability now uses present tense. Default `main` remains older; its review/proof integration is separate.
 
 ## Continue the agreed batch pattern
 

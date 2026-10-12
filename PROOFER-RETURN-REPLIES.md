@@ -30,4 +30,4 @@ Manuscript `air-4472509`; prepared 11 October 2026 from the corrected [working T
 
 The uncommented McKinney reference highlight was also checked against the proceedings: Austin, TX, USA, 28 June–3 July 2010. Later author corrections to terrain and software citations, figure/table sizes, Table A1, Section 3.4 placement and back-matter spacing are recorded in the [reply table](PROOFER-REPLY-TABLE.md).
 
-The proof source includes standalone `% JRL:` comments for the publisher; this document supplies the journal-facing text. The received proof bundle remains unchanged. The public repository release is scheduled after confirmed proof submission, as already authorised by John.
+The proof source includes standalone `% JRL:` comments for the publisher; this document supplies the journal-facing text. The received proof bundle remains unchanged. John reported proof submission; the repository is now public, with the current proof branch linked from its GitHub homepage metadata.

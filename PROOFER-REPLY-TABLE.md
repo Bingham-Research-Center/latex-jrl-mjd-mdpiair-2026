@@ -1,6 +1,6 @@
 # Proofer reply and final-check table
 
-Working TeX SHA-256 `789de4b5f473e9bd5aa13f474ae49f9a6733f64919a76603e164efdc0e2d1b55` (11 October 2026). John’s independent final-pass edits changed printed text after the earlier visual approval. The new local build has 18 pages; TeX locators below were refreshed from the current source. PDF page references remain navigation aids until John visually checks this new PDF.
+Working TeX SHA-256 `3dec02cd7aad5da9411977403d4f7b3738d8ba87da096c993a1496447fb4b55e` (11 October 2026). John’s independent final-pass edits changed printed text after the earlier visual approval. The new local build has 18 pages; TeX locators below were refreshed from the current source. PDF page references remain navigation aids until John visually checks this new PDF.
 
 “Original” means the immutable [received TeX](proof-package/air-4472509-english/air-4472509-done.tex), baseline `92b14d2`; “Working” means the [corrected TeX](proof-package/working/air-4472509-done.tex). PDF pages refer to the [current working PDF](proof-package/working/air-4472509-done.pdf), using compiled `.aux` labels and SyncTeX/source locators. **PDF line = —: this accepted-format proof has no printed line numbers.** TeX lines locate query/reply anchors or changed passages; source comments do not appear in the PDF. Page ranges are navigation aids, not an agent visual sign-off.
 
@@ -58,7 +58,7 @@ Checked rows record the earlier source audit and author decisions. John’s late
 | ☑ JRL08 | 290–310 | 315–336 | 7–8 / — | Section 3.4 opening precedes unchanged Figure 4; John confirmed flow. |
 | ☑ JRL09 | 652–659 | 692–698 | 16 / — | Forced page break removed; Conflicts of Interest follows Acknowledgements. |
 | ☑ JRL10 | whole source | whole source | all / — | No manuscript footnotes or supplementary references; preserve official NOAA team name. |
-| ☐ PUB01 | 650–651 | 688–691 | 16 / — | GitHub URL supplied; public release authorised after proof submission; still pending. |
+| ☑ PUB01 | 650–651 | 688–691 | 16 / — | GitHub repository public; anonymous access to proof branch and TeX verified. |
 
 Before returning the proof:
 
@@ -67,4 +67,4 @@ Before returning the proof:
 - [x] John approved the earlier 23 [journal-facing replies](PROOFER-RETURN-REPLIES.md) on 11 October. MDPI18 now reflects his clarification that Gemini use belonged to another project.
 - [x] Author-pass TeX, PDF, template files and eleven figures are assembled in `dist/air-4472509-proof-return-author-pass-20261011.zip`; ZIP integrity and an isolated 18-page build passed. The PDF is in the ZIP because the working PDF is ignored by Git.
 - [ ] John visually checks the new post-submission PDF and ZIP. Codex will not submit to MDPI. Root manuscript/package integration remains separate.
-- [ ] Publish the repository with selected provenance, verify public access, and reconcile the availability wording with the final published proof.
+- [x] Public repository and selected provenance are anonymously accessible; Data Availability now uses present tense. Root `main` integration remains separate.
