@@ -23,6 +23,7 @@ A worktree is another folder on a separate branch, sharing this repository’s G
 | Original proof | `proof-package/air-4472509-english/`; all 33 files unchanged from `92b14d2` |
 | Final review index | `PROOFER-REPLY-TABLE.md`; 51 rows covering all 23 publisher notes, highlights and later author changes |
 | Draft journal replies | `PROOFER-RETURN-REPLIES.md`; one proposed reply for each of the 23 MDPI/EE notes |
+| John's final review route | `PROOFER-FINAL-REVIEW.md`; terse microtasks, files and PDF pages before approval |
 | Return ZIP | `dist/air-4472509-proof-return-20261011.zip`; corrected TeX/PDF/template/eleven figures; ignored by Git |
 | Decisions/evidence/history | `notes/proof-query-catalogue.md`; master register, not superseded by the table |
 | Intake/recovery | `proof-package/intake.json`, `proof-package/edit-recovery-20261006.json`, `proof-package/working-copy.json` |
@@ -34,7 +35,7 @@ The reply-table locators match working TeX SHA-256 `1a9b07bea5821956813ac0e1317e
 
 1. John confirmed on 11 October that pages 7–8, resized Figures 5–9 (pages 9–12), Tables A2–A6 (pages 14–15), and back matter (page 16) are clear. A1 was already approved. The author visual check under MDPI05b is complete for this PDF.
 2. The reply table's 50 current-proof rows are checked; PUB01 remains open. MDPI04a's approved reply is scoped to the incomplete multi-network instrument inventory while retaining documented provider facts. Named AI models/CLI use remain author-confirmed, without a per-session/snapshot claim.
-3. John approved all 23 replies in `PROOFER-RETURN-REPLIES.md` on 11 October. Obtain his final assembled-return approval before sending. Source comments are not printed replies.
+3. John approved all 23 replies in `PROOFER-RETURN-REPLIES.md` on 11 October. Use `PROOFER-FINAL-REVIEW.md` for his review of the assembled return, then obtain final approval before sending. Source comments are not printed replies.
 4. The corrected TeX/PDF/support ZIP is in `dist/`; ZIP integrity and an isolated 18-page build passed. ZIP SHA-256: `0473c9da4ad9234e0e790973ca86dbbd0c7f1f05bda3fcfbe68b9367f832dded`. Root `main.tex`/`submission-package` integration, required Make checks/package refresh, protected-main PR/merge and journal submission remain separate actions.
 5. **PUB01 after confirmed proof submission:** make the repository public as John has instructed, with his selected provenance prepared; verify unauthenticated access and reconcile availability wording with the final published proof. Current Data Availability gives `https://github.com/Bingham-Research-Center/latex-jrl-mjd-mdpiair-2026` and says it will be publicly available after proof submission. Last live API check (6 October): private. Timing is authorised; do not change visibility before submission.
 
