@@ -1,20 +1,19 @@
 # WRF Cold-Pool Sensitivities Relevant to Winter-Ozone Modelling in the Uinta Basin
 
-Private MDPI **Air** manuscript by John R. Lawson, Michael J. Davies, Loknath Dhar and Seth N. Lyman.
+Public MDPI **Air** manuscript and evidence history by John R. Lawson, Michael J. Davies, Loknath Dhar and Seth N. Lyman.
 The study evaluates meteorology during the 2 February 2013 episode; it contains no chemistry calculation.
 
-## Current revision
+## Current branches
 
-`main.tex` is the audited first-round revision and submission target.
-The [return record](notes/peer-review-round1-return.md) records the completed CHPC checks, local figure-label closure and reviewer reconciliation.
-The [roadmap](ROADMAP.md) gives the remaining author steps: complete Paperpile export, final response wording and approval.
-The separate supplement is retired; material needed for this revision is in the main article or appendix.
+This default `main` branch is an earlier checkout. The [current journal proof source](https://github.com/Bingham-Research-Center/latex-jrl-mjd-mdpiair-2026/blob/jrl/proofs-round1/proof-package/working/air-4472509-done.tex), [publisher replies](https://github.com/Bingham-Research-Center/latex-jrl-mjd-mdpiair-2026/blob/jrl/proofs-round1/PROOFER-RETURN-REPLIES.md) and [proof handoff](https://github.com/Bingham-Research-Center/latex-jrl-mjd-mdpiair-2026/blob/jrl/proofs-round1/PROOFING-HANDOFF.md) are on `jrl/proofs-round1`.
+The [audited first-round revision](https://github.com/Bingham-Research-Center/latex-jrl-mjd-mdpiair-2026/blob/jrl/peer-review-round1/main.tex) and its evidence checkpoint are on `jrl/peer-review-round1`.
+John reports that the proof was returned to MDPI. His later independent tone pass is preserved in commit `be959eb`; generated review PDFs and ZIPs are local artifacts and are not in Git. Integration of these branches into `main` is pending.
 
-## Find the evidence
+## Earlier main snapshot and evidence routes
 
 | Need | Source |
 |---|---|
-| Current manuscript | [main.tex](main.tex) |
+| Earlier manuscript snapshot | [main.tex](main.tex) |
 | Author decisions/reply draft | `~/reviews/lawson-ozone-wrf-mdpiair-2026/peer-review-decisions.md` and `response-to-reviewers.md` |
 | Claims and limits | [claim ledger](notes/claim-evidence-ledger.md) |
 | Exact runs and contrasts | [run inventory](verification/provenance/run-inventory.csv), [comparison inventory](verification/provenance/comparison-inventory.csv) |
